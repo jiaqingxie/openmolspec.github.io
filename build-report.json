@@ -1,8 +1,10 @@
 {
   "completed": true,
   "active_tasks": 31,
-  "scientific_figures": 46,
+  "scientific_figures": 32,
   "executed_tutorials": 82,
+  "cleaned_nmr_molecular_identities": 2678511,
+  "interactive_3d_examples": 3,
   "external_runtime_dependencies": false,
   "target": "https://jiaqingxie.github.io/openmolspec.github.io/"
 }
