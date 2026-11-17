@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="511.2pt" height="216pt" viewBox="0 0 511.2 216" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 216
+L 511.2 216
+L 511.2 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 86.904 164.16
+L 241.228528 164.16
+L 241.228528 34.56
+L 86.904 34.56
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M -19587.244655 40.450909
+L 231.840664 40.450909
+L 231.840664 60.087273
+L -19587.244655 60.087273
+z
+" clip-path="url(#p6974bca6c3)" style="fill: #397ba6"/>
+   </g>
+   <g id="patch_4">
+    <path d="M -19587.244655 73.178182
+L 228.952879 73.178182
+L 228.952879 92.814545
+L -19587.244655 92.814545
+z
+" clip-path="url(#p6974bca6c3)" style="fill: #397ba6"/>
+   </g>
+   <g id="patch_5">
+    <path d="M -19587.244655 105.905455
+L 207.325669 105.905455
+L 207.325669 125.541818
+L -19587.244655 125.541818
+z
+" clip-path="url(#p6974bca6c3)" style="fill: #397ba6"/>
+   </g>
+   <g id="patch_6">
+    <path d="M -19587.244655 138.632727
+L 147.516803 138.632727
+L 147.516803 158.269091
+L -19587.244655 158.269091
+z
+" clip-path="url(#p6974bca6c3)" style="fill: #397ba6"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m85acc14423" d="M 0 0
+L 0 3
+" style="stroke: #000000; stroke-width: 0.6"/>
+      </defs>
+      <g>
+       <use xlink:href="#m85acc14423" x="88.810807" y="164.16" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <!-- $\mathdefault{10^{0}}$ -->
+      <g transform="translate(82.650807 177.62)">
+       <text>
+        <tspan x="0" y="-0.065625" style="font-size: 8px; font-family: 'Arial'">1</tspan>
+        <tspan x="4.449219" y="-0.065625" style="font-size: 8px; font-family: 'Arial'">0</tspan>
+        <tspan x="8.971172" y="-2.975" style="font-size: 5.6px; font-family: 'Arial'">0</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m85acc14423" x="128.162918" y="164.16" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <!-- $\mathdefault{10^{2}}$ -->
+      <g transform="translate(122.002918 177.62)">
+       <text>
+        <tspan x="0" y="-0.065625" style="font-size: 8px; font-family: 'Arial'">1</tspan>
+        <tspan x="4.449219" y="-0.065625" style="font-size: 8px; font-family: 'Arial'">0</tspan>
+        <tspan x="8.971172" y="-2.975" style="font-size: 5.6px; font-family: 'Arial'">2</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m85acc14423" x="167.515029" y="164.16" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <!-- $\mathdefault{10^{4}}$ -->
+      <g transform="translate(161.355029 177.62)">
+       <text>
+        <tspan x="0" y="-0.076563" style="font-size: 8px; font-family: 'Arial'">1</tspan>
+        <tspan x="4.449219" y="-0.076563" style="font-size: 8px; font-family: 'Arial'">0</tspan>
+        <tspan x="8.971172" y="-2.985938" style="font-size: 5.6px; font-family: 'Arial'">4</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m85acc14423" x="206.86714" y="164.16" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <!-- $\mathdefault{10^{6}}$ -->
+      <g transform="translate(200.70714 177.62)">
+       <text>
+        <tspan x="0" y="-0.065625" style="font-size: 8px; font-family: 'Arial'">1</tspan>
+        <tspan x="4.449219" y="-0.065625" style="font-size: 8px; font-family: 'Arial'">0</tspan>
+        <tspan x="8.971172" y="-2.975" style="font-size: 5.6px; font-family: 'Arial'">6</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 9px; font-family: 'Arial'; text-anchor: middle" x="164.066264" y="189.85584" transform="rotate(-0 164.066264 189.85584)">Spectral entries · log scale</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="m8c76da69b5" d="M 0 0
+L -3 0
+" style="stroke: #000000; stroke-width: 0.6"/>
+      </defs>
+      <g>
+       <use xlink:href="#m8c76da69b5" x="86.904" y="50.269091" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 8px; font-family: 'Arial'; text-anchor: end" x="80.404" y="53.1812" transform="rotate(-0 80.404 53.1812)">NMR</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m8c76da69b5" x="86.904" y="82.996364" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 8px; font-family: 'Arial'; text-anchor: end" x="80.404" y="85.908473" transform="rotate(-0 80.404 85.908473)">MS</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m8c76da69b5" x="86.904" y="115.723636" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 8px; font-family: 'Arial'; text-anchor: end" x="80.404" y="118.635746" transform="rotate(-0 80.404 118.635746)">IR</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m8c76da69b5" x="86.904" y="148.450909" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 8px; font-family: 'Arial'; text-anchor: end" x="80.404" y="151.363018" transform="rotate(-0 80.404 151.363018)">Raman</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_7">
+    <path d="M 86.904 164.16
+L 86.904 34.56
+" style="fill: none; stroke: #000000; stroke-width: 0.6; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 86.904 164.16
+L 241.228528 164.16
+" style="fill: none; stroke: #000000; stroke-width: 0.6; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Arial'; text-anchor: start" x="65.298566" y="21.6" transform="rotate(-0 65.298566 21.6)">a</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 10px; font-family: 'Arial'; text-anchor: middle" x="164.066264" y="28.56" transform="rotate(-0 164.066264 28.56)">OpenDataLab raw collection</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_9">
+    <path d="M 341.539472 164.16
+L 495.864 164.16
+L 495.864 34.56
+L 341.539472 34.56
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_10">
+    <path d="M -21829.099668 40.450909
+L 485.284892 40.450909
+L 485.284892 67.63972
+L -21829.099668 67.63972
+z
+" clip-path="url(#pba80228fd6)" style="fill: #397ba6"/>
+   </g>
+   <g id="patch_11">
+    <path d="M -21829.099668 85.765594
+L 462.918593 85.765594
+L 462.918593 112.954406
+L -21829.099668 112.954406
+z
+" clip-path="url(#pba80228fd6)" style="fill: #178f88"/>
+   </g>
+   <g id="patch_12">
+    <path d="M -21829.099668 131.08028
+L 431.726019 131.08028
+L 431.726019 158.269091
+L -21829.099668 158.269091
+z
+" clip-path="url(#pba80228fd6)" style="fill: #a8b3bf"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m85acc14423" x="343.688237" y="164.16" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <!-- $\mathdefault{10^{0}}$ -->
+      <g transform="translate(337.528237 177.62)">
+       <text>
+        <tspan x="0" y="-0.065625" style="font-size: 8px; font-family: 'Arial'">1</tspan>
+        <tspan x="4.449219" y="-0.065625" style="font-size: 8px; font-family: 'Arial'">0</tspan>
+        <tspan x="8.971172" y="-2.975" style="font-size: 5.6px; font-family: 'Arial'">0</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m85acc14423" x="388.033813" y="164.16" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <!-- $\mathdefault{10^{2}}$ -->
+      <g transform="translate(381.873813 177.62)">
+       <text>
+        <tspan x="0" y="-0.065625" style="font-size: 8px; font-family: 'Arial'">1</tspan>
+        <tspan x="4.449219" y="-0.065625" style="font-size: 8px; font-family: 'Arial'">0</tspan>
+        <tspan x="8.971172" y="-2.975" style="font-size: 5.6px; font-family: 'Arial'">2</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m85acc14423" x="432.379388" y="164.16" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <!-- $\mathdefault{10^{4}}$ -->
+      <g transform="translate(426.219388 177.62)">
+       <text>
+        <tspan x="0" y="-0.076563" style="font-size: 8px; font-family: 'Arial'">1</tspan>
+        <tspan x="4.449219" y="-0.076563" style="font-size: 8px; font-family: 'Arial'">0</tspan>
+        <tspan x="8.971172" y="-2.985938" style="font-size: 5.6px; font-family: 'Arial'">4</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m85acc14423" x="476.724964" y="164.16" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <!-- $\mathdefault{10^{6}}$ -->
+      <g transform="translate(470.564964 177.62)">
+       <text>
+        <tspan x="0" y="-0.065625" style="font-size: 8px; font-family: 'Arial'">1</tspan>
+        <tspan x="4.449219" y="-0.065625" style="font-size: 8px; font-family: 'Arial'">0</tspan>
+        <tspan x="8.971172" y="-2.975" style="font-size: 5.6px; font-family: 'Arial'">6</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 9px; font-family: 'Arial'; text-anchor: middle" x="418.701736" y="189.85584" transform="rotate(-0 418.701736 189.85584)">Molecular records · log scale</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_5">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m8c76da69b5" x="341.539472" y="54.045315" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 8px; font-family: 'Arial'; text-anchor: end" x="335.039472" y="56.957424" transform="rotate(-0 335.039472 56.957424)">H only</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m8c76da69b5" x="341.539472" y="99.36" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <text style="font-size: 8px; font-family: 'Arial'; text-anchor: end" x="335.039472" y="102.272109" transform="rotate(-0 335.039472 102.272109)">H + C</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m8c76da69b5" x="341.539472" y="144.674685" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <text style="font-size: 8px; font-family: 'Arial'; text-anchor: end" x="335.039472" y="147.586795" transform="rotate(-0 335.039472 147.586795)">C only</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_13">
+    <path d="M 341.539472 164.16
+L 341.539472 34.56
+" style="fill: none; stroke: #000000; stroke-width: 0.6; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 341.539472 164.16
+L 495.864 164.16
+" style="fill: none; stroke: #000000; stroke-width: 0.6; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Arial'; text-anchor: start" x="319.934038" y="21.6" transform="rotate(-0 319.934038 21.6)">b</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 10px; font-family: 'Arial'; text-anchor: middle" x="418.701736" y="28.56" transform="rotate(-0 418.701736 28.56)">Curated experimental NMR</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p6974bca6c3">
+   <rect x="86.904" y="34.56" width="154.324528" height="129.6"/>
+  </clipPath>
+  <clipPath id="pba80228fd6">
+   <rect x="341.539472" y="34.56" width="154.324528" height="129.6"/>
+  </clipPath>
+ </defs>
+</svg>
