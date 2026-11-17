@@ -10,6 +10,17 @@
     "en",
     "zh"
   ],
-  "external_runtime_dependencies": false,
+  "dataset_preview_records": 32,
+  "dataset_preview_views": 8,
+  "verified_online_workflows": 8,
+  "agent_demo": "recorded real API and MCP execution",
+  "navigation": [
+    "Introduction",
+    "Tool",
+    "Dataset",
+    "Documentation"
+  ],
+  "cdn_dependencies": false,
+  "online_inference_requires_api": true,
   "target": "https://jiaqingxie.github.io/openmolspec.github.io/"
 }

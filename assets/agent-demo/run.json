@@ -1,0 +1,494 @@
+{
+  "id": "25afe306-ab98-4981-a662-669387467bb1",
+  "status": "completed",
+  "created_at": 1794956114.34667,
+  "result": {
+    "answer": "## 能力发现结果\n\nOpenMolSpec 当前开放 6 个任务：\n\n| 任务 ID | 内容 | 模态 |\n|---|---|---|\n| `nmr.forward.1H` | 结构 → ¹H 峰列表 | ¹H |\n| `nmr.forward.13C` | 结构 → ¹³C 峰列表 | ¹³C |\n| `nmr.assignment` | H/C 实测峰 → 原子指认 | ¹H, ¹³C |\n| `vibrational.gap.ir_raman_hc` | IR+Raman+H/C NMR → HOMO–LUMO 能隙 | IR, Raman, ¹H, ¹³C |\n| `vibrational.retrieval.hc` | IR+Raman+H/C → 结构检索 | IR, Raman, ¹H, ¹³C |\n| `vibrational.generation.hc` | IR+Raman+H/C → SMILES | IR, Raman, ¹H, ¹³C |\n\n## 输入校验\n\n- 任务：`nmr.forward.13C`，输入 `{\"smiles\":\"CCO\"}`\n- 结果：`valid = true`（请求契约通过，才允许调用模型）\n\n## 运行结果\n\n模型：NMRNet liquid C fold 0（冻结权重，`training_performed: false`，即未做训练/微调；退出码 0）\n\n| 原子索引（零基，RDKit AddHs(CCO)） | 对应原子 | 预测位移 |\n|---|---|---|\n| 0 | 甲基碳 CH₃ | 17.774 ppm |\n| 1 | 亚甲基碳 CH₂ | 57.774 ppm |\n\n单位：**ppm**（化学位移，未给出参考标度外的进一步换算）\n\n## 解释\n\n- **原子 0（CH₃，甲基碳）**：≈ 17.8 ppm。甲基碳离电负性的氧较远，只受相邻 CH₂ 的弱的 β-位影响，因此出现在脂肪族碳的高场区，符合\"末端甲基约 10–20 ppm\"的经验范围。\n- **原子 1（CH₂，与羟基相连的亚甲基碳）**：≈ 57.8 ppm。该碳直接与电负性较强的氧成键（α-碳），氧的吸电子效应使碳核去屏蔽，位移显著向低场移动，符合醇类 α-碳\"约 50–65 ppm\"的经验范围。\n- 注意：氧原子（索引 2）不属于 ¹³C 观测对象，因此结果中只有 `atom_indices: [0, 1]` 两个碳峰。\n\n## 说明与限制\n\n- 该结果来自直接推理的冻结检查点，工具返回的校验范围仅为\"请求契约、执行与序列化输出一致性\"，**科学准确性仍需参考实验数据比对**。\n- 如需与实测谱图逐一对应（而非仅做正向预测），可提供实测 ¹H/¹³C 峰位（ppm），改用 `nmr.assignment` 任务做原子指认；若还想知道 ¹H 谱，可用 `nmr.forward.1H` 以同一 SMILES 运行。",
+    "model": "deepseek-v4.1-flash",
+    "usage": [
+      {
+        "prompt_tokens": 1440,
+        "completion_tokens": 118,
+        "total_tokens": 1558
+      },
+      {
+        "prompt_tokens": 1982,
+        "completion_tokens": 107,
+        "total_tokens": 2089,
+        "prompt_tokens_details": {
+          "cached_tokens": 1408
+        }
+      },
+      {
+        "prompt_tokens": 3284,
+        "completion_tokens": 703,
+        "total_tokens": 3987,
+        "prompt_tokens_details": {
+          "cached_tokens": 1920
+        }
+      }
+    ],
+    "transport": "MCP stdio"
+  },
+  "error": null,
+  "events": [
+    {
+      "id": 13,
+      "type": "status",
+      "data": {
+        "stage": "connecting",
+        "label": "Connecting the model API and MCP tools"
+      },
+      "created_at": 1794956114.3613648
+    },
+    {
+      "id": 14,
+      "type": "discovery",
+      "data": {
+        "transport": "MCP stdio",
+        "tools": [
+          "spectra_tasks",
+          "spectra_datasets",
+          "spectra_validate",
+          "spectra_predict"
+        ]
+      },
+      "created_at": 1794956114.372281
+    },
+    {
+      "id": 15,
+      "type": "tool_start",
+      "data": {
+        "id": "6996c985-c388-4272-bf6c-dee4c37031ff",
+        "name": "spectra_tasks",
+        "args": {}
+      },
+      "created_at": 1794956114.3791385
+    },
+    {
+      "id": 16,
+      "type": "tool_end",
+      "data": {
+        "id": "6996c985-c388-4272-bf6c-dee4c37031ff",
+        "name": "spectra_tasks",
+        "result": [
+          {
+            "task": "nmr.forward.1H",
+            "title": "结构 → 1H 峰列表",
+            "modalities": [
+              "1H"
+            ],
+            "domain": "experimental",
+            "harness": "NMR Spectra Harness"
+          },
+          {
+            "task": "nmr.forward.13C",
+            "title": "结构 → 13C 峰列表",
+            "modalities": [
+              "13C"
+            ],
+            "domain": "experimental",
+            "harness": "NMR Spectra Harness"
+          },
+          {
+            "task": "vibrational.gap.ir_raman_hc",
+            "title": "IR + Raman + H/C NMR → HOMO–LUMO gap",
+            "modalities": [
+              "IR",
+              "Raman",
+              "1H",
+              "13C"
+            ],
+            "domain": "computed",
+            "harness": "Vibrational Spectra Harness"
+          },
+          {
+            "task": "nmr.assignment",
+            "title": "H/C 峰 → 原子指认",
+            "modalities": [
+              "1H",
+              "13C"
+            ],
+            "domain": "experimental",
+            "harness": "NMR Spectra Harness"
+          },
+          {
+            "task": "vibrational.retrieval.hc",
+            "title": "IR + Raman + H/C → 结构检索",
+            "modalities": [
+              "IR",
+              "Raman",
+              "1H",
+              "13C"
+            ],
+            "domain": "computed",
+            "harness": "Vibrational Spectra Harness"
+          },
+          {
+            "task": "vibrational.generation.hc",
+            "title": "IR + Raman + H/C → SMILES（Xinyu 协议）",
+            "modalities": [
+              "IR",
+              "Raman",
+              "1H",
+              "13C"
+            ],
+            "domain": "computed",
+            "harness": "Vibrational Spectra Harness"
+          }
+        ],
+        "elapsed_seconds": 0.22142269974574447
+      },
+      "created_at": 1794956114.6081212
+    },
+    {
+      "id": 17,
+      "type": "status",
+      "data": {
+        "stage": "model",
+        "label": "The agent is selecting its next action",
+        "step": 1
+      },
+      "created_at": 1794956114.615766
+    },
+    {
+      "id": 18,
+      "type": "tool_start",
+      "data": {
+        "id": "d3e3f862-faa4-445a-9bd8-600eb10e7d8a",
+        "name": "spectra_tasks",
+        "args": {}
+      },
+      "created_at": 1794956128.9383926
+    },
+    {
+      "id": 19,
+      "type": "tool_end",
+      "data": {
+        "id": "d3e3f862-faa4-445a-9bd8-600eb10e7d8a",
+        "name": "spectra_tasks",
+        "result": [
+          {
+            "task": "nmr.forward.1H",
+            "title": "结构 → 1H 峰列表",
+            "modalities": [
+              "1H"
+            ],
+            "domain": "experimental",
+            "harness": "NMR Spectra Harness"
+          },
+          {
+            "task": "nmr.forward.13C",
+            "title": "结构 → 13C 峰列表",
+            "modalities": [
+              "13C"
+            ],
+            "domain": "experimental",
+            "harness": "NMR Spectra Harness"
+          },
+          {
+            "task": "vibrational.gap.ir_raman_hc",
+            "title": "IR + Raman + H/C NMR → HOMO–LUMO gap",
+            "modalities": [
+              "IR",
+              "Raman",
+              "1H",
+              "13C"
+            ],
+            "domain": "computed",
+            "harness": "Vibrational Spectra Harness"
+          },
+          {
+            "task": "nmr.assignment",
+            "title": "H/C 峰 → 原子指认",
+            "modalities": [
+              "1H",
+              "13C"
+            ],
+            "domain": "experimental",
+            "harness": "NMR Spectra Harness"
+          },
+          {
+            "task": "vibrational.retrieval.hc",
+            "title": "IR + Raman + H/C → 结构检索",
+            "modalities": [
+              "IR",
+              "Raman",
+              "1H",
+              "13C"
+            ],
+            "domain": "computed",
+            "harness": "Vibrational Spectra Harness"
+          },
+          {
+            "task": "vibrational.generation.hc",
+            "title": "IR + Raman + H/C → SMILES（Xinyu 协议）",
+            "modalities": [
+              "IR",
+              "Raman",
+              "1H",
+              "13C"
+            ],
+            "domain": "computed",
+            "harness": "Vibrational Spectra Harness"
+          }
+        ],
+        "elapsed_seconds": 0.004220782313495874
+      },
+      "created_at": 1794956128.9503205
+    },
+    {
+      "id": 20,
+      "type": "tool_start",
+      "data": {
+        "id": "fbf7adca-3c41-404a-97ee-52ecccd95b34",
+        "name": "spectra_validate",
+        "args": {
+          "task": "nmr.forward.13C",
+          "inputs": {
+            "smiles": "CCO"
+          }
+        }
+      },
+      "created_at": 1794956128.9572244
+    },
+    {
+      "id": 21,
+      "type": "tool_end",
+      "data": {
+        "id": "fbf7adca-3c41-404a-97ee-52ecccd95b34",
+        "name": "spectra_validate",
+        "result": {
+          "valid": true,
+          "task": "nmr.forward.13C",
+          "harness": "NMR Spectra Harness"
+        },
+        "elapsed_seconds": 0.0020695962011814117
+      },
+      "created_at": 1794956128.9659164
+    },
+    {
+      "id": 22,
+      "type": "status",
+      "data": {
+        "stage": "model",
+        "label": "The agent is selecting its next action",
+        "step": 2
+      },
+      "created_at": 1794956128.972648
+    },
+    {
+      "id": 23,
+      "type": "tool_start",
+      "data": {
+        "id": "d0cbaf5c-6353-42f2-879e-36ae32613b0c",
+        "name": "spectra_predict",
+        "args": {
+          "task": "nmr.forward.13C",
+          "inputs": {
+            "smiles": "CCO"
+          },
+          "repeats": 1
+        }
+      },
+      "created_at": 1794956131.7661235
+    },
+    {
+      "id": 24,
+      "type": "tool_end",
+      "data": {
+        "id": "d0cbaf5c-6353-42f2-879e-36ae32613b0c",
+        "name": "spectra_predict",
+        "result": {
+          "version": "1.0",
+          "task": "nmr.forward.13C",
+          "harness": "NMR Spectra Harness",
+          "request_sha256": "7b2001cb77aeecb4cfc98bdce971290833bcefa4b23612e5454aa4a8ac4cae9d",
+          "completed": true,
+          "calls": [
+            {
+              "index": 0,
+              "status": "passed",
+              "elapsed_seconds": 46.48543410282582,
+              "output_sha256": "14070a99f64c4d157aada15fad34e2c5282cd8820732ce57b3b3d45349d6c0ae",
+              "prediction_sha256": "7569aa12f74e50a12d8cb868986afc6fe4140bb06140b72769daa243f8f36cc1"
+            }
+          ],
+          "result": {
+            "records": [
+              {
+                "smiles": "CCO",
+                "nucleus": "13C",
+                "atom_indices": [
+                  0,
+                  1
+                ],
+                "prediction_ppm": [
+                  17.774131774902344,
+                  57.77375793457031
+                ]
+              }
+            ],
+            "unit": "ppm",
+            "provenance": {
+              "model": "NMRNet liquid C fold 0",
+              "checkpoint": "<server>/checkpoint_best.pt",
+              "checkpoint_sha256": "0efb06c233a6e851629f695e516d94209963fb60df39194a5dbb20bd3cb9db7b",
+              "scaler_sha256": "f66783695c0d6632f6bdc2c12631609a04c8d5618d91b915abd8c094d9b26f0f",
+              "dictionary_sha256": "94135cb9a9198f988de684cb61e2c372882a3bd59b8320effbae704c38057127",
+              "input_sha256": "47f2b39de037b9bf7345b7b570c7f4b0f0da20168c03ce142f572495521abe21",
+              "geometry": [
+                {
+                  "smiles": "CCO",
+                  "atoms": [
+                    "C",
+                    "C",
+                    "O",
+                    "H",
+                    "H",
+                    "H",
+                    "H",
+                    "H",
+                    "H"
+                  ],
+                  "coordinates_angstrom": [
+                    [
+                      -0.8883105516433716,
+                      0.16700318455696106,
+                      -0.027315888553857803
+                    ],
+                    [
+                      0.46575304865837097,
+                      -0.5115589499473572,
+                      -0.03679533302783966
+                    ],
+                    [
+                      1.4310747385025024,
+                      0.3229162096977234,
+                      0.5866699814796448
+                    ],
+                    [
+                      -0.8487409949302673,
+                      1.1174800395965576,
+                      -0.5695241093635559
+                    ],
+                    [
+                      -1.6471213102340698,
+                      -0.4704427123069763,
+                      -0.4896366000175476
+                    ],
+                    [
+                      -1.196397066116333,
+                      0.3978445529937744,
+                      0.9977232217788696
+                    ],
+                    [
+                      0.7919970154762268,
+                      -0.7224282622337341,
+                      -1.0597258806228638
+                    ],
+                    [
+                      0.4246036410331726,
+                      -1.4558616876602173,
+                      0.5137906670570374
+                    ],
+                    [
+                      1.4671415090560913,
+                      1.1550476551055908,
+                      0.08481395244598389
+                    ]
+                  ],
+                  "mmff_converged": true
+                }
+              ],
+              "training_performed": false,
+              "command": [
+                "<server>/python",
+                "<server>/infer_checked.py",
+                "<server>/state_dict_audit.json",
+                "<server>/infer.py",
+                "--user-dir",
+                "<server>/uninmr",
+                "<server>/openmolspec-atoms-wj4j88pv",
+                "--valid-subset",
+                "valid",
+                "--results-path",
+                "<server>/run",
+                "--saved-dir",
+                "<server>/C_mol_pre_all_h_220816_global_0_kener_gauss_atomdes_0_unimol_large_atom_regloss_mae_lr_1e-3_bs_16_0.06_200",
+                "--num-workers",
+                "0",
+                "--batch-size",
+                "8",
+                "--task",
+                "uninmr",
+                "--loss",
+                "atom_regloss_mae",
+                "--arch",
+                "unimol_large",
+                "--dict-name",
+                "<server>/mol_dict.txt",
+                "--path",
+                "<server>/checkpoint_best.pt",
+                "--selected-atom",
+                "C",
+                "--gaussian-kernel",
+                "--atom-descriptor",
+                "0",
+                "--split-mode",
+                "infer",
+                "--cpu",
+                "--required-batch-size-multiple",
+                "1",
+                "--no-progress-bar"
+              ],
+              "exit_code": 0,
+              "state_dict_audit": {
+                "missing_keys": [],
+                "unexpected_keys": []
+              }
+            },
+            "atom_index_basis": "zero-based RDKit AddHs(input SMILES)",
+            "training_performed": false,
+            "inference_mode": "direct_frozen_checkpoint"
+          },
+          "repeat_outputs_equal": null,
+          "repeat_predictions_equal": null,
+          "repeat_results": [],
+          "validation_scope": "request contract, execution and repeated serialized outputs; scientific accuracy requires reference data"
+        },
+        "elapsed_seconds": 46.488844654057175
+      },
+      "created_at": 1794956178.2629714
+    },
+    {
+      "id": 25,
+      "type": "status",
+      "data": {
+        "stage": "model",
+        "label": "The agent is selecting its next action",
+        "step": 3
+      },
+      "created_at": 1794956178.270648
+    },
+    {
+      "id": 26,
+      "type": "answer",
+      "data": {
+        "content": "## 能力发现结果\n\nOpenMolSpec 当前开放 6 个任务：\n\n| 任务 ID | 内容 | 模态 |\n|---|---|---|\n| `nmr.forward.1H` | 结构 → ¹H 峰列表 | ¹H |\n| `nmr.forward.13C` | 结构 → ¹³C 峰列表 | ¹³C |\n| `nmr.assignment` | H/C 实测峰 → 原子指认 | ¹H, ¹³C |\n| `vibrational.gap.ir_raman_hc` | IR+Raman+H/C NMR → HOMO–LUMO 能隙 | IR, Raman, ¹H, ¹³C |\n| `vibrational.retrieval.hc` | IR+Raman+H/C → 结构检索 | IR, Raman, ¹H, ¹³C |\n| `vibrational.generation.hc` | IR+Raman+H/C → SMILES | IR, Raman, ¹H, ¹³C |\n\n## 输入校验\n\n- 任务：`nmr.forward.13C`，输入 `{\"smiles\":\"CCO\"}`\n- 结果：`valid = true`（请求契约通过，才允许调用模型）\n\n## 运行结果\n\n模型：NMRNet liquid C fold 0（冻结权重，`training_performed: false`，即未做训练/微调；退出码 0）\n\n| 原子索引（零基，RDKit AddHs(CCO)） | 对应原子 | 预测位移 |\n|---|---|---|\n| 0 | 甲基碳 CH₃ | 17.774 ppm |\n| 1 | 亚甲基碳 CH₂ | 57.774 ppm |\n\n单位：**ppm**（化学位移，未给出参考标度外的进一步换算）\n\n## 解释\n\n- **原子 0（CH₃，甲基碳）**：≈ 17.8 ppm。甲基碳离电负性的氧较远，只受相邻 CH₂ 的弱的 β-位影响，因此出现在脂肪族碳的高场区，符合\"末端甲基约 10–20 ppm\"的经验范围。\n- **原子 1（CH₂，与羟基相连的亚甲基碳）**：≈ 57.8 ppm。该碳直接与电负性较强的氧成键（α-碳），氧的吸电子效应使碳核去屏蔽，位移显著向低场移动，符合醇类 α-碳\"约 50–65 ppm\"的经验范围。\n- 注意：氧原子（索引 2）不属于 ¹³C 观测对象，因此结果中只有 `atom_indices: [0, 1]` 两个碳峰。\n\n## 说明与限制\n\n- 该结果来自直接推理的冻结检查点，工具返回的校验范围仅为\"请求契约、执行与序列化输出一致性\"，**科学准确性仍需参考实验数据比对**。\n- 如需与实测谱图逐一对应（而非仅做正向预测），可提供实测 ¹H/¹³C 峰位（ppm），改用 `nmr.assignment` 任务做原子指认；若还想知道 ¹H 谱，可用 `nmr.forward.1H` 以同一 SMILES 运行。"
+      },
+      "created_at": 1794956183.6564648
+    }
+  ],
+  "request": {
+    "kind": "agent",
+    "prompt": "请发现 OpenMolSpec 能力，校验乙醇 CCO 的 13C NMR 预测输入，再实际运行模型，并用中文解释每个碳原子的预测位移与单位。"
+  },
+  "provenance": {
+    "provider": "OpenAI-compatible API",
+    "base_url": "https://hapiopen.cc/v1",
+    "controller": "OpenMolSpec online_api",
+    "mcp": "python -m openmolspec.mcp",
+    "recording": "Unedited public tool events and final API response; provider reasoning fields were not retained."
+  }
+}
