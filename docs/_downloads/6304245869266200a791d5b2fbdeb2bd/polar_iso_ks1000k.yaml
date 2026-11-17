@@ -1,0 +1,40 @@
+experiment:
+  name: shared-spectroscopy-polar_iso
+  release: openmolspec-v1-ks1000k
+  variant: ir-raman-hc-polar_iso-shared-pooling-v2
+  seed: 624
+task:
+  family: spectrum2property
+  modality: ir-raman-nmr
+  targets: [polar_iso]
+model:
+  name: vib2conf
+  architecture: shared_spectroscopy_transformer
+  parameters:
+    d_model: 512
+    nheads: 8
+    nlayers: 6
+    patch_size: 8
+    encoder_layers: 2
+    pooling_layers: 4
+    pooling_queries: 128
+    fusion_channels: 16
+    hidden_channels: 256
+    dropout: 0.1
+data:
+  root: benchmark_data/spectrum_properties_ks1000k_hc_nmr_minmax
+  nmr_normalization: median_iqr
+training:
+  loss: smooth_l1
+  loss_beta: 1.0
+  max_steps: 312500
+  eval_every_steps: 2500
+  batch_size: 128
+  learning_rate: 5.0e-5
+  weight_decay: 1.0e-2
+  workers: 4
+  device: cuda:0
+  gpus: 1
+  progress: tqdm
+output:
+  root: runs

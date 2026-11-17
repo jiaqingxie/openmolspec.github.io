@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MS/MS 碎片指认 &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/tasks/ms-annotation-magma.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="红外 / 拉曼 IR / Raman" href="vibrational.html" />
+    <link rel="prev" title="使用 ICEBERG 预测 MS/MS" href="ms-forward-iceberg.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../tasks/ms-annotation-magma.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">按谱型浏览任务</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#nmr"><span class="xref myst">核磁共振 NMR</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ms"><span class="xref myst">质谱 MS</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman"><span class="xref myst">红外 / 拉曼 IR / Raman</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id2"><span class="xref myst">多谱联合</span></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#id3"><span class="xref myst">暂不推进</span></a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="nmr.html">核磁共振 NMR</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="ms.html">质谱 MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational.html">红外 / 拉曼 IR / Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multimodal.html">多谱联合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deferred.html">暂不推进</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">按谱型浏览任务</a></li>
+          <li class="breadcrumb-item"><a href="ms.html">质谱 MS</a></li>
+      <li class="breadcrumb-item active">MS/MS 碎片指认</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tasks/ms-annotation-magma.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="ms-ms">
+<h1>MS/MS 碎片指认<a class="headerlink" href="#ms-ms" title="Link to this heading"></a></h1>
+<p>为实测 MS/MS 峰寻找对应的分子碎片。</p>
+<section id="id1">
+<h2>输入是什么<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">smiles</span> <span class="pre">/</span> <span class="pre">peaks</span></code></p></td>
+<td><p>已知结构、实测 MS/MS 峰 [m/z, 相对强度] 及加合物。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ppm_tolerance</span></code></p></td>
+<td><p>质量误差容限，默认 10 ppm；不是 NMR 化学位移容限。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h2>输出是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">peak_annotations</span></code></p></td>
+<td><p>候选碎片、分子式、质量误差及 engine_smiles 上的原子/键编号。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">interpretation</span></code></p></td>
+<td><p>候选碎片结构及匹配质量误差。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h2>真实运行案例<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>下面展示示例的输入、预测与参考。下载 JSON 可获取完整数值数组及更多示例。</p>
+<p><img alt="ms.annotation.magma actual results" src="../_images/ms-annotation-magma.png" /></p>
+<p><a class="reference download internal" download="" href="../_downloads/de95e8126e3866776f44c3e56d24c521/ms-annotation-magma.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/c6dc209bc7fde1b5fff089b5eab5e366/ms-annotation-magma.png"><span class="xref download myst">PNG</span></a> · <a class="reference download internal" download="" href="../_downloads/4a6840e2870aea2444c300ae65fa68e7/ms-annotation-magma.json"><span class="xref download myst">Full input/output JSON</span></a></p>
+<details><summary>展开查看实际输入与输出字段</summary>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C1=CC=C(C(=C1)C2=CC=C(C=C2)C(=O)O)C3=NNN=N3"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"adduct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[M+H]+"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"observed_peaks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">[</span>
+<span class="w">          </span><span class="mf">86.0158</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">0.14814814814814814</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="p">[</span>
+<span class="w">          </span><span class="mf">87.0237</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">0.16016016016016016</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="p">[</span>
+<span class="w">          </span><span class="mf">97.0082</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">0.06906906906906907</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="p">[</span>
+<span class="w">          </span><span class="mf">98.0159</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">1.0</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"sample_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MassSpecGymID0046618"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"engine_smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O=C(O)c1ccc(-c2ccccc2-c2nn[nH]n2)cc1"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"peak_annotations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"peak_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"mz"</span><span class="p">:</span><span class="w"> </span><span class="mf">86.0158</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"intensity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.14814814814814814</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"matched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"matched_fragment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"fragment_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16256</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"atom_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">10</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">"bond_indices_cut"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">13</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">21</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"bond_atom_pairs_cut"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">7</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">13</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">14</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">17</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">13</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"formula"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C7H4"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"matched_mass"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.007825032</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"ppm_diff"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.21707883641277</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"h_shift"</span><span class="p">:</span><span class="w"> </span><span class="mi">-3</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"tree_depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"parent_fragment_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="mi">130944</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">245632</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">802815</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"lineage_root_to_fragment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="mi">1048575</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">262016</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">245632</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">16256</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"peak_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"mz"</span><span class="p">:</span><span class="w"> </span><span class="mf">87.0237</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"intensity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.16016016016016016</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"matched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"matched_fragment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"fragment_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">786554</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"atom_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">5</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">"bond_indices_cut"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">6</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"bond_atom_pairs_cut"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">1</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">2</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">7</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"formula"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C7H4"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"matched_mass"</span><span class="p">:</span><span class="w"> </span><span class="mf">86.015650064</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"ppm_diff"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.992363592338872</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"h_shift"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"tree_depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"parent_fragment_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="mi">786555</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">786558</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">1048570</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"lineage_root_to_fragment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="mi">1048575</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">1048574</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">1048570</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">786554</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"peak_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"mz"</span><span class="p">:</span><span class="w"> </span><span class="mf">97.0082</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"intensity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.06906906906906907</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"matched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"matched_fragment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"fragment_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8160</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"atom_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">8</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">"bond_indices_cut"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">12</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">17</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"bond_atom_pairs_cut"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">5</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">12</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">13</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">18</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"formula"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C8H5"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"matched_mass"</span><span class="p">:</span><span class="w"> </span><span class="mf">96.0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"ppm_diff"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.620291666697275</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"h_shift"</span><span class="p">:</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"tree_depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"parent_fragment_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="mi">262112</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">532479</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">794607</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"lineage_root_to_fragment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="mi">1048575</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">1048559</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">794607</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">8160</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"peak_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"mz"</span><span class="p">:</span><span class="w"> </span><span class="mf">98.0159</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"intensity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"matched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"matched_fragment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"fragment_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">786936</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"atom_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">6</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">"bond_indices_cut"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">20</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"bond_atom_pairs_cut"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">3</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">9</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">12</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">7</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"formula"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C8H5"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"matched_mass"</span><span class="p">:</span><span class="w"> </span><span class="mf">97.007825032</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"ppm_diff"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.23145967595748</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"h_shift"</span><span class="p">:</span><span class="w"> </span><span class="mi">-4</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"tree_depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"parent_fragment_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="mi">786943</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">790520</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">1048056</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"lineage_root_to_fragment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="mi">1048575</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">1048568</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">1048056</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">786936</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="id4">
+<h2>实际评测结果<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>matched_peak_fraction</p></td>
+<td class="text-right"><p>0.568182</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>annotated_spectra</p></td>
+<td class="text-right"><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>checked_fragments</p></td>
+<td class="text-right"><p>1534</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h2>模型与方法<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>MAGMa 枚举分子图的碎片，并与实测峰的质量进行匹配。每条指认包含碎片分子式、质量误差及原子／键编号。</p>
+<p>报告峰匹配覆盖率及 ppm 单位的质量误差。</p>
+</section>
+<section id="id6">
+<h2>复现方式<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../notebooks/ms-annotation-magma.html"><span class="std std-doc">Notebook with executed figures</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick Start</span></a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tasks<span class="w"> </span>ms.annotation.magma<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/ms-annotation-magma-new.json
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2>调用模型与微调<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.benchmark</span><span class="w"> </span><span class="kn">import</span> <span class="n">Benchmark</span>
+<span class="n">benchmark</span> <span class="o">=</span> <span class="n">Benchmark</span><span class="p">(</span><span class="n">workspace</span><span class="o">=</span><span class="s1">'/path/to/workspace'</span><span class="p">,</span>
+    <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/task-env/bin/python'</span><span class="p">,</span>
+    <span class="n">magma_source</span><span class="o">=</span><span class="s1">'/path/to/MAGMA-source'</span><span class="p">,</span>
+    <span class="n">ms_input_csv</span><span class="o">=</span><span class="s1">'/path/to/measured-ms.csv'</span><span class="p">,</span>
+    <span class="n">ms_metadata_tsv</span><span class="o">=</span><span class="s1">'/path/to/acquisition-metadata.tsv'</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">benchmark</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">'ms.annotation.magma'</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s1">'new-algorithm-results.json'</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>此任务是算法流程，可调整参考库或匹配规则；没有神经网络参数和训练 loss。具体匹配目标与数据来源见上文。</p>
+<details><summary>来源报告与 SHA-256 指纹</summary>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/magma_real_test_verified_20261115.json">magma_real_test_verified_20261115.json</a> — SHA-256 <code class="docutils literal notranslate"><span class="pre">e65563b00863389105f5eae392d493167d693ac4ca38b9f1abfbd40942d1946b</span></code></p></li>
+</ul>
+</details>
+<p><a class="reference external" href="https://github.com/Dsadd4/MassSpecGym-MAGMA-annotation">Model implementation / 模型实现</a> · <a class="reference internal" href="../model-audit.html"><span class="std std-doc">Model review / 模型检查</span></a></p>
+</section>
+<section id="id8">
+<h2>参考文献<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Ridder, L., van der Hooft, J. J. J. &amp; Verhoeven, S. Automatic Compound Annotation from Mass Spectrometry Data Using MAGMa. Mass Spectrometry 3, S0033 (2014). doi:10.5702/massspectrometry.S0033. <a class="reference external" href="https://doi.org/10.5702/massspectrometry.S0033">Source</a></p></li>
+<li><p>Bushuiev, R., Bushuiev, A., de Jonge, N. F., Young, A., et al. MassSpecGym: A benchmark for the discovery and identification of molecules. Advances in Neural Information Processing Systems 37, Datasets and Benchmarks Track (2024). arXiv:2410.23326. <a class="reference external" href="https://arxiv.org/abs/2410.23326">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="ms-forward-iceberg.html" class="btn btn-neutral float-left" title="使用 ICEBERG 预测 MS/MS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="vibrational.html" class="btn btn-neutral float-right" title="红外 / 拉曼 IR / Raman" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

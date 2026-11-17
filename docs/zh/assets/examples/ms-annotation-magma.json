@@ -1,0 +1,3008 @@
+{
+  "task": "ms.annotation.magma",
+  "enabled": true,
+  "source_files": [
+    "magma_real_test_verified_20261115.json"
+  ],
+  "runs": [
+    {
+      "dataset": "recorded evaluation",
+      "status": "completed",
+      "metrics": {
+        "matched_peak_fraction": 0.5681818181818182,
+        "annotated_spectra": 2,
+        "checked_fragments": 1534
+      },
+      "counts": {
+        "passed": 2
+      }
+    }
+  ],
+  "examples": [
+    {
+      "input": {
+        "smiles": "C1=CC=C(C(=C1)C2=CC=C(C=C2)C(=O)O)C3=NNN=N3",
+        "adduct": "[M+H]+",
+        "observed_peaks": [
+          [
+            86.0158,
+            0.14814814814814814
+          ],
+          [
+            87.0237,
+            0.16016016016016016
+          ],
+          [
+            97.0082,
+            0.06906906906906907
+          ],
+          [
+            98.0159,
+            1.0
+          ],
+          [
+            99.0096,
+            0.05305305305305305
+          ],
+          [
+            99.0229,
+            0.3783783783783784
+          ],
+          [
+            100.0176,
+            0.02002002002002002
+          ],
+          [
+            100.0303,
+            0.08208208208208208
+          ],
+          [
+            101.0386,
+            0.04104104104104104
+          ],
+          [
+            102.046,
+            0.06506506506506507
+          ],
+          [
+            109.007,
+            0.04904904904904905
+          ],
+          [
+            110.0149,
+            0.17217217217217218
+          ],
+          [
+            111.0227,
+            0.07807807807807808
+          ],
+          [
+            113.0379,
+            0.028028028028028028
+          ],
+          [
+            122.0145,
+            0.22622622622622623
+          ],
+          [
+            123.0219,
+            0.06906906906906907
+          ],
+          [
+            124.0301,
+            0.07407407407407407
+          ],
+          [
+            125.0388,
+            0.06506506506506507
+          ],
+          [
+            126.0474,
+            0.08208208208208208
+          ],
+          [
+            148.032,
+            0.037037037037037035
+          ],
+          [
+            149.0377,
+            0.18018018018018017
+          ],
+          [
+            150.0455,
+            0.5795795795795796
+          ],
+          [
+            152.0628,
+            0.016016016016016016
+          ],
+          [
+            175.0412,
+            0.06106106106106106
+          ],
+          [
+            73.0109,
+            0.07407407407407407
+          ],
+          [
+            74.0185,
+            0.8468468468468469
+          ],
+          [
+            75.0259,
+            0.4894894894894895
+          ],
+          [
+            76.0204,
+            0.04104104104104104
+          ],
+          [
+            76.0325,
+            0.12712712712712712
+          ],
+          [
+            77.0412,
+            0.24624624624624625
+          ],
+          [
+            85.0093,
+            0.07807807807807808
+          ],
+          [
+            89.0402,
+            0.03203203203203203
+          ],
+          [
+            98.0429,
+            0.024024024024024024
+          ],
+          [
+            121.0073,
+            0.02002002002002002
+          ],
+          [
+            123.0099,
+            0.04504504504504504
+          ],
+          [
+            127.0405,
+            0.02002002002002002
+          ],
+          [
+            137.0402,
+            0.024024024024024024
+          ],
+          [
+            139.0559,
+            0.024024024024024024
+          ],
+          [
+            151.0385,
+            0.02002002002002002
+          ],
+          [
+            151.0511,
+            0.07407407407407407
+          ]
+        ]
+      },
+      "sample_id": "MassSpecGymID0046618",
+      "output": {
+        "engine_smiles": "O=C(O)c1ccc(-c2ccccc2-c2nn[nH]n2)cc1",
+        "peak_annotations": [
+          {
+            "peak_id": 7,
+            "mz": 86.0158,
+            "intensity": 0.14814814814814814,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 16256,
+              "atom_indices": [
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13
+              ],
+              "bond_indices_cut": [
+                6,
+                13,
+                21
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  6,
+                  7
+                ],
+                [
+                  13,
+                  14
+                ],
+                [
+                  17,
+                  13
+                ]
+              ],
+              "formula": "C7H4",
+              "matched_mass": 85.007825032,
+              "ppm_diff": 8.21707883641277,
+              "score": 5.0,
+              "h_shift": -3,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                130944,
+                245632,
+                802815
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                262016,
+                245632,
+                16256
+              ]
+            }
+          },
+          {
+            "peak_id": 8,
+            "mz": 87.0237,
+            "intensity": 0.16016016016016016,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 786554,
+              "atom_indices": [
+                1,
+                3,
+                4,
+                5,
+                6,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                0,
+                1,
+                6
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ],
+                [
+                  6,
+                  7
+                ]
+              ],
+              "formula": "C7H4",
+              "matched_mass": 86.015650064,
+              "ppm_diff": 8.992363592338872,
+              "score": 5.0,
+              "h_shift": -2,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                786555,
+                786558,
+                1048570
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048574,
+                1048570,
+                786554
+              ]
+            }
+          },
+          {
+            "peak_id": 10,
+            "mz": 97.0082,
+            "intensity": 0.06906906906906907,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 8160,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                17
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  6,
+                  18
+                ]
+              ],
+              "formula": "C8H5",
+              "matched_mass": 96.0,
+              "ppm_diff": 9.620291666697275,
+              "score": 6.0,
+              "h_shift": -5,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                262112,
+                532479,
+                794607
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048559,
+                794607,
+                8160
+              ]
+            }
+          },
+          {
+            "peak_id": 11,
+            "mz": 98.0159,
+            "intensity": 1.0,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 786936,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                8,
+                20
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  8,
+                  9
+                ],
+                [
+                  12,
+                  7
+                ]
+              ],
+              "formula": "C8H5",
+              "matched_mass": 97.007825032,
+              "ppm_diff": 8.23145967595748,
+              "score": 6.0,
+              "h_shift": -4,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                786943,
+                790520,
+                1048056
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                1048056,
+                786936
+              ]
+            }
+          },
+          {
+            "peak_id": 13,
+            "mz": 99.0096,
+            "intensity": 0.05305305305305305,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 147328,
+              "atom_indices": [
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                17
+              ],
+              "bond_indices_cut": [
+                6,
+                13,
+                16
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  6,
+                  7
+                ],
+                [
+                  13,
+                  14
+                ],
+                [
+                  16,
+                  17
+                ]
+              ],
+              "formula": "C7NH4",
+              "matched_mass": 98.003074,
+              "ppm_diff": 7.657433275932159,
+              "score": 4.0,
+              "h_shift": -4,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                196480,
+                245632,
+                933887
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                262016,
+                245632,
+                147328
+              ]
+            }
+          },
+          {
+            "peak_id": 14,
+            "mz": 99.0229,
+            "intensity": 0.3783783783783784,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 8160,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                17
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  6,
+                  18
+                ]
+              ],
+              "formula": "C8H5",
+              "matched_mass": 98.015650064,
+              "ppm_diff": 0.2705282266040922,
+              "score": 6.0,
+              "h_shift": -3,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                262112,
+                532479,
+                794607
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048559,
+                794607,
+                8160
+              ]
+            }
+          },
+          {
+            "peak_id": 15,
+            "mz": 100.0176,
+            "intensity": 0.02002002002002002,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 147328,
+              "atom_indices": [
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                17
+              ],
+              "bond_indices_cut": [
+                6,
+                13,
+                16
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  6,
+                  7
+                ],
+                [
+                  13,
+                  14
+                ],
+                [
+                  16,
+                  17
+                ]
+              ],
+              "formula": "C7NH4",
+              "matched_mass": 99.010899032,
+              "ppm_diff": 5.812329810369573,
+              "score": 4.0,
+              "h_shift": -3,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                196480,
+                245632,
+                933887
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                262016,
+                245632,
+                147328
+              ]
+            }
+          },
+          {
+            "peak_id": 16,
+            "mz": 100.0303,
+            "intensity": 0.08208208208208208,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 8160,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                17
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  6,
+                  18
+                ]
+              ],
+              "formula": "C8H5",
+              "matched_mass": 99.023475096,
+              "ppm_diff": 4.560009629667623,
+              "score": 6.0,
+              "h_shift": -2,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                262112,
+                532479,
+                794607
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048559,
+                794607,
+                8160
+              ]
+            }
+          },
+          {
+            "peak_id": 17,
+            "mz": 101.0386,
+            "intensity": 0.04104104104104104,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 8160,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                17
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  6,
+                  18
+                ]
+              ],
+              "formula": "C8H5",
+              "matched_mass": 100.031300128,
+              "ppm_diff": 0.23412671808858856,
+              "score": 6.0,
+              "h_shift": -1,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                262112,
+                532479,
+                794607
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048559,
+                794607,
+                8160
+              ]
+            }
+          },
+          {
+            "peak_id": 18,
+            "mz": 102.046,
+            "intensity": 0.06506506506506507,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 8160,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                17
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  6,
+                  18
+                ]
+              ],
+              "formula": "C8H5",
+              "matched_mass": 101.03912516,
+              "ppm_diff": 3.9748166797205147,
+              "score": 6.0,
+              "h_shift": 0,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                262112,
+                532479,
+                794607
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048559,
+                794607,
+                8160
+              ]
+            }
+          },
+          {
+            "peak_id": 19,
+            "mz": 109.007,
+            "intensity": 0.04904904904904905,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 270304,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                18
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  18,
+                  19
+                ]
+              ],
+              "formula": "C9H6",
+              "matched_mass": 108.0,
+              "ppm_diff": 2.5597407406876385,
+              "score": 8.0,
+              "h_shift": -6,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                270335,
+                524256,
+                794607
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048559,
+                794607,
+                270304
+              ]
+            }
+          },
+          {
+            "peak_id": 20,
+            "mz": 110.0149,
+            "intensity": 0.17217217217217218,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 787448,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                9,
+                20
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  9,
+                  10
+                ],
+                [
+                  12,
+                  7
+                ]
+              ],
+              "formula": "C9H6",
+              "matched_mass": 109.007825032,
+              "ppm_diff": 1.8483443729143418,
+              "score": 8.0,
+              "h_shift": -5,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                787455,
+                790520,
+                1047544
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                1047544,
+                787448
+              ]
+            }
+          },
+          {
+            "peak_id": 21,
+            "mz": 111.0227,
+            "intensity": 0.07807807807807808,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 8176,
+              "atom_indices": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "bond_indices_cut": [
+                3,
+                12,
+                17
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  3,
+                  4
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  6,
+                  18
+                ]
+              ],
+              "formula": "C9H6",
+              "matched_mass": 110.015650064,
+              "ppm_diff": 2.0589434309221293,
+              "score": 8.0,
+              "h_shift": -4,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                262128,
+                532479,
+                794608
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048560,
+                794608,
+                8176
+              ]
+            }
+          },
+          {
+            "peak_id": 22,
+            "mz": 113.0379,
+            "intensity": 0.028028028028028028,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 787448,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                9,
+                20
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  9,
+                  10
+                ],
+                [
+                  12,
+                  7
+                ]
+              ],
+              "formula": "C9H6",
+              "matched_mass": 112.031300128,
+              "ppm_diff": 6.039205108134113,
+              "score": 8.0,
+              "h_shift": -2,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                787455,
+                790520,
+                1047544
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                1047544,
+                787448
+              ]
+            }
+          },
+          {
+            "peak_id": 24,
+            "mz": 122.0145,
+            "intensity": 0.22622622622622623,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 794592,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                19
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  19,
+                  3
+                ]
+              ],
+              "formula": "C10H7",
+              "matched_mass": 121.007825032,
+              "ppm_diff": 4.9706207002855916,
+              "score": 6.0,
+              "h_shift": -6,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                794607,
+                794608,
+                1048544
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048560,
+                1048544,
+                794592
+              ]
+            }
+          },
+          {
+            "peak_id": 26,
+            "mz": 123.0219,
+            "intensity": 0.06906906906906907,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 794592,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                19
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  19,
+                  3
+                ]
+              ],
+              "formula": "C10H7",
+              "matched_mass": 122.015650064,
+              "ppm_diff": 8.412986362467478,
+              "score": 6.0,
+              "h_shift": -5,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                794607,
+                794608,
+                1048544
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048560,
+                1048544,
+                794592
+              ]
+            }
+          },
+          {
+            "peak_id": 27,
+            "mz": 124.0301,
+            "intensity": 0.07407407407407407,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 794592,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                19
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  19,
+                  3
+                ]
+              ],
+              "formula": "C10H7",
+              "matched_mass": 123.023475096,
+              "ppm_diff": 5.296127421899863,
+              "score": 6.0,
+              "h_shift": -4,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                794607,
+                794608,
+                1048544
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048560,
+                1048544,
+                794592
+              ]
+            }
+          },
+          {
+            "peak_id": 28,
+            "mz": 125.0388,
+            "intensity": 0.06506506506506507,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 794592,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                19
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  19,
+                  3
+                ]
+              ],
+              "formula": "C10H7",
+              "matched_mass": 124.031300128,
+              "ppm_diff": 1.8013195037620569,
+              "score": 6.0,
+              "h_shift": -3,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                794607,
+                794608,
+                1048544
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048560,
+                1048544,
+                794592
+              ]
+            }
+          },
+          {
+            "peak_id": 29,
+            "mz": 126.0474,
+            "intensity": 0.08208208208208208,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 788472,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                10,
+                20
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  10,
+                  11
+                ],
+                [
+                  12,
+                  7
+                ]
+              ],
+              "formula": "C10H7",
+              "matched_mass": 125.03912516,
+              "ppm_diff": 7.984604808469015,
+              "score": 6.0,
+              "h_shift": -2,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                788479,
+                790520,
+                1046520
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                1046520,
+                788472
+              ]
+            }
+          },
+          {
+            "peak_id": 33,
+            "mz": 148.032,
+            "intensity": 0.037037037037037035,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 794616,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                12
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  12,
+                  13
+                ]
+              ],
+              "formula": "C12H8",
+              "matched_mass": 147.023475096,
+              "ppm_diff": 8.491514699836154,
+              "score": 4.0,
+              "h_shift": -5,
+              "tree_depth": 2,
+              "parent_fragment_ids": [
+                794619,
+                794622,
+                794623,
+                917496,
+                983032,
+                1015800,
+                1032184,
+                1048568
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                794616
+              ]
+            }
+          },
+          {
+            "peak_id": 34,
+            "mz": 149.0377,
+            "intensity": 0.18018018018018017,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 794616,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                12
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  12,
+                  13
+                ]
+              ],
+              "formula": "C12H8",
+              "matched_mass": 148.031300128,
+              "ppm_diff": 5.9215854974765465,
+              "score": 4.0,
+              "h_shift": -4,
+              "tree_depth": 2,
+              "parent_fragment_ids": [
+                794619,
+                794622,
+                794623,
+                917496,
+                983032,
+                1015800,
+                1032184,
+                1048568
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                794616
+              ]
+            }
+          },
+          {
+            "peak_id": 35,
+            "mz": 150.0455,
+            "intensity": 0.5795795795795796,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 794616,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                12
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  12,
+                  13
+                ]
+              ],
+              "formula": "C12H8",
+              "matched_mass": 149.03912516,
+              "ppm_diff": 6.049498740944804,
+              "score": 4.0,
+              "h_shift": -3,
+              "tree_depth": 2,
+              "parent_fragment_ids": [
+                794619,
+                794622,
+                794623,
+                917496,
+                983032,
+                1015800,
+                1032184,
+                1048568
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                794616
+              ]
+            }
+          },
+          {
+            "peak_id": 38,
+            "mz": 152.0628,
+            "intensity": 0.016016016016016016,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 794616,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                12
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  12,
+                  13
+                ]
+              ],
+              "formula": "C12H8",
+              "matched_mass": 151.054775224,
+              "ppm_diff": 4.953991020080083,
+              "score": 4.0,
+              "h_shift": -1,
+              "tree_depth": 2,
+              "parent_fragment_ids": [
+                794619,
+                794622,
+                794623,
+                917496,
+                983032,
+                1015800,
+                1032184,
+                1048568
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                794616
+              ]
+            }
+          },
+          {
+            "peak_id": 39,
+            "mz": 175.0412,
+            "intensity": 0.06106106106106106,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 933880,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                17,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                13,
+                16
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  13,
+                  14
+                ],
+                [
+                  16,
+                  17
+                ]
+              ],
+              "formula": "C13NH8",
+              "matched_mass": 174.034374128,
+              "ppm_diff": 2.5890287609198905,
+              "score": 4.0,
+              "h_shift": -4,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                933887,
+                983032,
+                1032184
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                1032184,
+                933880
+              ]
+            }
+          },
+          {
+            "peak_id": 0,
+            "mz": 73.0109,
+            "intensity": 0.07407407407407407,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 1,
+            "mz": 74.0185,
+            "intensity": 0.8468468468468469,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 2,
+            "mz": 75.0259,
+            "intensity": 0.4894894894894895,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 3,
+            "mz": 76.0204,
+            "intensity": 0.04104104104104104,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 4,
+            "mz": 76.0325,
+            "intensity": 0.12712712712712712,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 5,
+            "mz": 77.0412,
+            "intensity": 0.24624624624624625,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 6,
+            "mz": 85.0093,
+            "intensity": 0.07807807807807808,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 9,
+            "mz": 89.0402,
+            "intensity": 0.03203203203203203,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 12,
+            "mz": 98.0429,
+            "intensity": 0.024024024024024024,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 23,
+            "mz": 121.0073,
+            "intensity": 0.02002002002002002,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 25,
+            "mz": 123.0099,
+            "intensity": 0.04504504504504504,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 30,
+            "mz": 127.0405,
+            "intensity": 0.02002002002002002,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 31,
+            "mz": 137.0402,
+            "intensity": 0.024024024024024024,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 32,
+            "mz": 139.0559,
+            "intensity": 0.024024024024024024,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 36,
+            "mz": 151.0385,
+            "intensity": 0.02002002002002002,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 37,
+            "mz": 151.0511,
+            "intensity": 0.07407407407407407,
+            "matched": false,
+            "matched_fragment": null
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "smiles": "C1=CC=C(C(=C1)C2=CC=C(C=C2)C(=O)O)C3=NNN=N3",
+        "adduct": "[M+H]+",
+        "observed_peaks": [
+          [
+            99.0236,
+            0.08008008008008008
+          ],
+          [
+            100.0313,
+            0.011011011011011011
+          ],
+          [
+            101.0394,
+            0.03003003003003003
+          ],
+          [
+            102.047,
+            0.021021021021021023
+          ],
+          [
+            113.0391,
+            0.021021021021021023
+          ],
+          [
+            122.016,
+            0.01001001001001001
+          ],
+          [
+            123.0229,
+            0.016016016016016016
+          ],
+          [
+            124.0308,
+            0.02002002002002002
+          ],
+          [
+            125.0386,
+            0.12812812812812813
+          ],
+          [
+            126.0455,
+            0.05105105105105105
+          ],
+          [
+            127.0545,
+            0.035035035035035036
+          ],
+          [
+            139.0536,
+            0.018018018018018018
+          ],
+          [
+            149.0387,
+            0.1011011011011011
+          ],
+          [
+            150.0471,
+            1.0
+          ],
+          [
+            151.0538,
+            0.32432432432432434
+          ],
+          [
+            152.0619,
+            0.0970970970970971
+          ],
+          [
+            175.0418,
+            0.04904904904904905
+          ],
+          [
+            176.0509,
+            0.055055055055055056
+          ],
+          [
+            177.0575,
+            0.22122122122122123
+          ],
+          [
+            51.0286,
+            0.05405405405405406
+          ],
+          [
+            74.017,
+            0.03003003003003003
+          ],
+          [
+            75.0256,
+            0.06706706706706707
+          ],
+          [
+            76.0326,
+            0.015015015015015015
+          ],
+          [
+            77.0413,
+            0.16016016016016016
+          ],
+          [
+            87.0243,
+            0.012012012012012012
+          ],
+          [
+            89.0405,
+            0.014014014014014014
+          ],
+          [
+            98.0161,
+            0.04104104104104104
+          ],
+          [
+            127.041,
+            0.015015015015015015
+          ],
+          [
+            140.051,
+            0.01701701701701702
+          ],
+          [
+            164.0521,
+            0.025025025025025027
+          ]
+        ]
+      },
+      "sample_id": "MassSpecGymID0046619",
+      "output": {
+        "engine_smiles": "O=C(O)c1ccc(-c2ccccc2-c2nn[nH]n2)cc1",
+        "peak_annotations": [
+          {
+            "peak_id": 8,
+            "mz": 99.0236,
+            "intensity": 0.08008008008008008,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 8160,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                17
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  6,
+                  18
+                ]
+              ],
+              "formula": "C8H5",
+              "matched_mass": 98.015650064,
+              "ppm_diff": 6.8711884231120095,
+              "score": 6.0,
+              "h_shift": -3,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                262112,
+                532479,
+                794607
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048559,
+                794607,
+                8160
+              ]
+            }
+          },
+          {
+            "peak_id": 9,
+            "mz": 100.0313,
+            "intensity": 0.011011011011011011,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 8160,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                17
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  6,
+                  18
+                ]
+              ],
+              "formula": "C8H5",
+              "matched_mass": 99.023475096,
+              "ppm_diff": 5.538605865651117,
+              "score": 6.0,
+              "h_shift": -2,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                262112,
+                532479,
+                794607
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048559,
+                794607,
+                8160
+              ]
+            }
+          },
+          {
+            "peak_id": 10,
+            "mz": 101.0394,
+            "intensity": 0.03003003003003003,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 8160,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                17
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  6,
+                  18
+                ]
+              ],
+              "formula": "C8H5",
+              "matched_mass": 100.031300128,
+              "ppm_diff": 8.23162349134312,
+              "score": 6.0,
+              "h_shift": -1,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                262112,
+                532479,
+                794607
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048559,
+                794607,
+                8160
+              ]
+            }
+          },
+          {
+            "peak_id": 11,
+            "mz": 102.047,
+            "intensity": 0.021021021021021023,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 8160,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                17
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  6,
+                  18
+                ]
+              ],
+              "formula": "C8H5",
+              "matched_mass": 101.03912516,
+              "ppm_diff": 5.922339480400815,
+              "score": 6.0,
+              "h_shift": 0,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                262112,
+                532479,
+                794607
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048559,
+                794607,
+                8160
+              ]
+            }
+          },
+          {
+            "peak_id": 12,
+            "mz": 113.0391,
+            "intensity": 0.021021021021021023,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 787448,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                9,
+                20
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  9,
+                  10
+                ],
+                [
+                  12,
+                  7
+                ]
+              ],
+              "formula": "C9H6",
+              "matched_mass": 112.031300128,
+              "ppm_diff": 4.672087170366349,
+              "score": 8.0,
+              "h_shift": -2,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                787455,
+                790520,
+                1047544
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                1047544,
+                787448
+              ]
+            }
+          },
+          {
+            "peak_id": 13,
+            "mz": 122.016,
+            "intensity": 0.01001001001001001,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 794592,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                19
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  19,
+                  3
+                ]
+              ],
+              "formula": "C10H7",
+              "matched_mass": 121.007825032,
+              "ppm_diff": 7.42527187616964,
+              "score": 6.0,
+              "h_shift": -6,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                794607,
+                794608,
+                1048544
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048560,
+                1048544,
+                794592
+              ]
+            }
+          },
+          {
+            "peak_id": 14,
+            "mz": 123.0229,
+            "intensity": 0.016016016016016016,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 794592,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                19
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  19,
+                  3
+                ]
+              ],
+              "formula": "C10H7",
+              "matched_mass": 122.015650064,
+              "ppm_diff": 0.21731638504858145,
+              "score": 6.0,
+              "h_shift": -5,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                794607,
+                794608,
+                1048544
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048560,
+                1048544,
+                794592
+              ]
+            }
+          },
+          {
+            "peak_id": 15,
+            "mz": 124.0308,
+            "intensity": 0.02002002002002002,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 794592,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                19
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  19,
+                  3
+                ]
+              ],
+              "formula": "C10H7",
+              "matched_mass": 123.023475096,
+              "ppm_diff": 0.3938435324125452,
+              "score": 6.0,
+              "h_shift": -4,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                794607,
+                794608,
+                1048544
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048560,
+                1048544,
+                794592
+              ]
+            }
+          },
+          {
+            "peak_id": 16,
+            "mz": 125.0386,
+            "intensity": 0.12812812812812813,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 794592,
+              "atom_indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                4,
+                12,
+                19
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  4,
+                  5
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  19,
+                  3
+                ]
+              ],
+              "formula": "C10H7",
+              "matched_mass": 124.031300128,
+              "ppm_diff": 0.18882330493136704,
+              "score": 6.0,
+              "h_shift": -3,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                794607,
+                794608,
+                1048544
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048560,
+                1048544,
+                794592
+              ]
+            }
+          },
+          {
+            "peak_id": 17,
+            "mz": 126.0455,
+            "intensity": 0.05105105105105105,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 788472,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                10,
+                20
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  10,
+                  11
+                ],
+                [
+                  12,
+                  7
+                ]
+              ],
+              "formula": "C10H7",
+              "matched_mass": 125.03912516,
+              "ppm_diff": 7.21063906068618,
+              "score": 6.0,
+              "h_shift": -2,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                788479,
+                790520,
+                1046520
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                1046520,
+                788472
+              ]
+            }
+          },
+          {
+            "peak_id": 19,
+            "mz": 127.0545,
+            "intensity": 0.035035035035035036,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 788472,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                10,
+                20
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  10,
+                  11
+                ],
+                [
+                  12,
+                  7
+                ]
+              ],
+              "formula": "C10H7",
+              "matched_mass": 126.046950192,
+              "ppm_diff": 2.1686839672972624,
+              "score": 6.0,
+              "h_shift": -1,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                788479,
+                790520,
+                1046520
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                1046520,
+                788472
+              ]
+            }
+          },
+          {
+            "peak_id": 20,
+            "mz": 139.0536,
+            "intensity": 0.018018018018018018,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 790520,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                11,
+                20
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  11,
+                  12
+                ],
+                [
+                  12,
+                  7
+                ]
+              ],
+              "formula": "C11H8",
+              "matched_mass": 138.046950192,
+              "ppm_diff": 4.53935417733035,
+              "score": 8.0,
+              "h_shift": -2,
+              "tree_depth": 2,
+              "parent_fragment_ids": [
+                790523,
+                790526,
+                790527,
+                794616,
+                917496,
+                983032,
+                1015800,
+                1032184,
+                1048568
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                790520
+              ]
+            }
+          },
+          {
+            "peak_id": 22,
+            "mz": 149.0387,
+            "intensity": 0.1011011011011011,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 794616,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                12
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  12,
+                  13
+                ]
+              ],
+              "formula": "C12H8",
+              "matched_mass": 148.031300128,
+              "ppm_diff": 0.8337425928671368,
+              "score": 4.0,
+              "h_shift": -4,
+              "tree_depth": 2,
+              "parent_fragment_ids": [
+                794619,
+                794622,
+                794623,
+                917496,
+                983032,
+                1015800,
+                1032184,
+                1048568
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                794616
+              ]
+            }
+          },
+          {
+            "peak_id": 23,
+            "mz": 150.0471,
+            "intensity": 1.0,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 794616,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                12
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  12,
+                  13
+                ]
+              ],
+              "formula": "C12H8",
+              "matched_mass": 149.03912516,
+              "ppm_diff": 4.685937328467181,
+              "score": 4.0,
+              "h_shift": -3,
+              "tree_depth": 2,
+              "parent_fragment_ids": [
+                794619,
+                794622,
+                794623,
+                917496,
+                983032,
+                1015800,
+                1032184,
+                1048568
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                794616
+              ]
+            }
+          },
+          {
+            "peak_id": 24,
+            "mz": 151.0538,
+            "intensity": 0.32432432432432434,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 794616,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                12
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  12,
+                  13
+                ]
+              ],
+              "formula": "C12H8",
+              "matched_mass": 150.046950192,
+              "ppm_diff": 2.843403344547804,
+              "score": 4.0,
+              "h_shift": -2,
+              "tree_depth": 2,
+              "parent_fragment_ids": [
+                794619,
+                794622,
+                794623,
+                917496,
+                983032,
+                1015800,
+                1032184,
+                1048568
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                794616
+              ]
+            }
+          },
+          {
+            "peak_id": 25,
+            "mz": 152.0619,
+            "intensity": 0.0970970970970971,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 794616,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                12
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  12,
+                  13
+                ]
+              ],
+              "formula": "C12H8",
+              "matched_mass": 151.054775224,
+              "ppm_diff": 1.0041125795369434,
+              "score": 4.0,
+              "h_shift": -1,
+              "tree_depth": 2,
+              "parent_fragment_ids": [
+                794619,
+                794622,
+                794623,
+                917496,
+                983032,
+                1015800,
+                1032184,
+                1048568
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                794616
+              ]
+            }
+          },
+          {
+            "peak_id": 27,
+            "mz": 175.0418,
+            "intensity": 0.04904904904904905,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 933880,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                17,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                13,
+                16
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  13,
+                  14
+                ],
+                [
+                  16,
+                  17
+                ]
+              ],
+              "formula": "C13NH8",
+              "matched_mass": 174.034374128,
+              "ppm_diff": 0.8585660202708881,
+              "score": 4.0,
+              "h_shift": -4,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                933887,
+                983032,
+                1032184
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                1032184,
+                933880
+              ]
+            }
+          },
+          {
+            "peak_id": 28,
+            "mz": 176.0509,
+            "intensity": 0.055055055055055056,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 933880,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                17,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                13,
+                16
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  13,
+                  14
+                ],
+                [
+                  16,
+                  17
+                ]
+              ],
+              "formula": "C13NH8",
+              "matched_mass": 175.04219916,
+              "ppm_diff": 8.137397763734617,
+              "score": 4.0,
+              "h_shift": -3,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                933887,
+                983032,
+                1032184
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                1032184,
+                933880
+              ]
+            }
+          },
+          {
+            "peak_id": 29,
+            "mz": 177.0575,
+            "intensity": 0.22122122122122123,
+            "matched": true,
+            "matched_fragment": {
+              "fragment_id": 933880,
+              "atom_indices": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                17,
+                18,
+                19
+              ],
+              "bond_indices_cut": [
+                2,
+                13,
+                16
+              ],
+              "bond_atom_pairs_cut": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  13,
+                  14
+                ],
+                [
+                  16,
+                  17
+                ]
+              ],
+              "formula": "C13NH8",
+              "matched_mass": 176.050024192,
+              "ppm_diff": 1.1323826901527125,
+              "score": 4.0,
+              "h_shift": -2,
+              "tree_depth": 3,
+              "parent_fragment_ids": [
+                933887,
+                983032,
+                1032184
+              ],
+              "lineage_root_to_fragment": [
+                1048575,
+                1048568,
+                1032184,
+                933880
+              ]
+            }
+          },
+          {
+            "peak_id": 0,
+            "mz": 51.0286,
+            "intensity": 0.05405405405405406,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 1,
+            "mz": 74.017,
+            "intensity": 0.03003003003003003,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 2,
+            "mz": 75.0256,
+            "intensity": 0.06706706706706707,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 3,
+            "mz": 76.0326,
+            "intensity": 0.015015015015015015,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 4,
+            "mz": 77.0413,
+            "intensity": 0.16016016016016016,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 5,
+            "mz": 87.0243,
+            "intensity": 0.012012012012012012,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 6,
+            "mz": 89.0405,
+            "intensity": 0.014014014014014014,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 7,
+            "mz": 98.0161,
+            "intensity": 0.04104104104104104,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 18,
+            "mz": 127.041,
+            "intensity": 0.015015015015015015,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 21,
+            "mz": 140.051,
+            "intensity": 0.01701701701701702,
+            "matched": false,
+            "matched_fragment": null
+          },
+          {
+            "peak_id": 26,
+            "mz": 164.0521,
+            "intensity": 0.025025025025025027,
+            "matched": false,
+            "matched_fragment": null
+          }
+        ]
+      }
+    }
+  ],
+  "selection_policy": "First recorded example in the cited run; not selected by prediction quality.",
+  "training_performed": false,
+  "plot": {
+    "kind": "magma",
+    "records": [
+      {
+        "spec_id": "MassSpecGymID0046618",
+        "smiles": "O=C(O)c1ccc(-c2ccccc2-c2nn[nH]n2)cc1",
+        "n_peaks": 40,
+        "n_matched": 24,
+        "match_rate": 60.0,
+        "n_frags": 930,
+        "n_scores": 40,
+        "success": true,
+        "status": "passed",
+        "engine_smiles": "O=C(O)c1ccc(-c2ccccc2-c2nn[nH]n2)cc1",
+        "checked_fragments": 930,
+        "invalid_atom_mappings": 0,
+        "invalid_bond_mappings": 0
+      },
+      {
+        "spec_id": "MassSpecGymID0059557",
+        "smiles": "N#Cc1ccccc1NC(=O)c1snc(Cl)c1Cl",
+        "n_peaks": 4,
+        "n_matched": 1,
+        "match_rate": 25.0,
+        "n_frags": 604,
+        "n_scores": 1,
+        "success": true,
+        "status": "passed",
+        "engine_smiles": "N#Cc1ccccc1NC(=O)c1snc(Cl)c1Cl",
+        "checked_fragments": 604,
+        "invalid_atom_mappings": 0,
+        "invalid_bond_mappings": 0
+      }
+    ],
+    "label": "Algorithmic fragment matches; 2 spectra; no learned model"
+  },
+  "source_hashes": {
+    "magma_real_test_verified_20261115.json": "e65563b00863389105f5eae392d493167d693ac4ca38b9f1abfbd40942d1946b"
+  },
+  "status": "recorded_results"
+}

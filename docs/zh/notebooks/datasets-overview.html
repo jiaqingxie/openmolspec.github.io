@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>探索谱学数据集 &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/notebooks/datasets-overview.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="MS/MS 碎片指认" href="ms-annotation-magma.html" />
+    <link rel="prev" title="教程" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../notebooks/datasets-overview.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#theory-simulations">Theory simulations / 理论模拟</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#nmr">核磁共振 NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ms">质谱 MS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman">红外 / 拉曼 IR / Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id2">多谱联合</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#id3">暂不推进</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">探索谱学数据集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-annotation-magma.html">MS/MS 碎片指认</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-forward-glacier.html">使用 GLACIER 预测 MS/MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-forward-iceberg.html">使用 ICEBERG 预测 MS/MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-assignment.html">峰到原子的指认</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-c.html">从 ¹³C NMR 解析结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">从 ¹H NMR 解析结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-hc.html">从 ¹H + ¹³C NMR 解析结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-m2s.html">结构到谱检索：¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-s2m.html">谱到结构检索：¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">结构到谱检索：¹H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">谱到结构检索：¹H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-m2s.html">结构到谱检索：¹H + ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-s2m.html">谱到结构检索：¹H + ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-solvent_transfer.html">跨溶剂化学位移迁移</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdk-inference.html">Python SDK：真实 NMR 推理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdk-training-preflight.html">训练数据准备与启动前检查</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking.html">候选重排：IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking-hc.html">候选重排：IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-ms-isotopes.html">质谱：同位素包络与分辨率</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-nmr-fourier.html">NMR：从自由感应衰减到频谱</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-nmr-inversion.html">NMR 反演：恢复弛豫时间分布</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-vibrational-broadening.html">IR 与 Raman：简正模式和谱线展宽</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-forward.html">从分子构象预测 IR 与 Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir.html">由 IR 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman.html">由 IR + Raman 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman_hc.html">由 IR + Raman + NMR 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-raman.html">由 Raman 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-generation.html">结构生成：IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-generation-hc.html">结构生成：IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval.html">结构检索：IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-hc.html">结构检索：IR + Raman + NMR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">教程</a></li>
+      <li class="breadcrumb-item active">探索谱学数据集</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/datasets-overview.ipynb.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+    <p><a class="btn btn-neutral" href="../../downloads/notebooks/datasets-overview.zh.ipynb" download>下载 notebook</a></p>
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>探索谱学数据集<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>本教程探索清洗后的实验数据集：有多少分子与谱图、有哪些核种、峰位置如何分布，以及如何划分训练数据。图中的分布来自完整清洗数据的直方图。</p>
+<section id="id2">
+<h2>读取数据摘要<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>摘要保存 H/C 分子数量，以及各实验视图的谱数量。选择任务所需数据集之前，先查看这些字段。</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">SVG</span>
+<span class="n">root</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">(),</span> <span class="o">*</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">parents</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="s1">'openmolspec_bench'</span><span class="p">)</span><span class="o">.</span><span class="n">is_dir</span><span class="p">())</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s1">'scripts'</span><span class="p">))</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">((</span><span class="n">root</span> <span class="o">/</span> <span class="s1">'documentation/assets/cleaned-data-summary.json'</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'H/C molecules:'</span><span class="p">,</span> <span class="n">summary</span><span class="p">[</span><span class="s1">'nmr'</span><span class="p">][</span><span class="s1">'molecular_identities'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'H spectra:'</span><span class="p">,</span> <span class="n">summary</span><span class="p">[</span><span class="s1">'nmr'</span><span class="p">][</span><span class="s1">'counts'</span><span class="p">][</span><span class="s1">'h_spectra'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'C spectra:'</span><span class="p">,</span> <span class="n">summary</span><span class="p">[</span><span class="s1">'nmr'</span><span class="p">][</span><span class="s1">'counts'</span><span class="p">][</span><span class="s1">'c_spectra'</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">modality</span><span class="p">,</span> <span class="n">view</span> <span class="ow">in</span> <span class="n">summary</span><span class="p">[</span><span class="s1">'experimental'</span><span class="p">][</span><span class="s1">'views'</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">modality</span><span class="p">,</span> <span class="n">view</span><span class="p">[</span><span class="s1">'spectra'</span><span class="p">],</span> <span class="s1">'spectra;'</span><span class="p">,</span> <span class="n">view</span><span class="p">[</span><span class="s1">'molecules'</span><span class="p">],</span> <span class="s1">'molecules'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H/C molecules: 2678511
+H spectra: 2720828
+C spectra: 252015
+IR 177759 spectra; 168197 molecules
+19F 56679 spectra; 50402 molecules
+31P 21662 spectra; 18238 molecules
+MS 5233 spectra; 4980 molecules
+11B 1140 spectra; 1017 molecules
+Raman 42 spectra; 39 molecules
+29Si 726 spectra; 636 molecules
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>分子大小与化学位移<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>重原子数与分子量描述训练数据覆盖的化学空间。NMR 面板展示解析后的 H/C 峰位置，单位为 ppm。尾部格汇总显示区间之外的值，因此图中保留了全部清洗记录。</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">build_manual_examples</span><span class="w"> </span><span class="kn">import</span> <span class="n">distributions</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">figures</span> <span class="o">=</span> <span class="n">distributions</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">stream</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+    <span class="n">figures</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'svg'</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'Date'</span><span class="p">:</span> <span class="kc">None</span><span class="p">})</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()))</span>
+<span class="n">show</span><span class="p">(</span><span class="s1">'data-cleaned-nmr'</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="s1">'data-cleaned-nmr-shifts'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/47e95b41875a2a6c9f5b6f92f419e62cd2edb819c72f24b3d5c6ba49e2887da5.svg" src="../_images/47e95b41875a2a6c9f5b6f92f419e62cd2edb819c72f24b3d5c6ba49e2887da5.svg" />
+<img alt="../_images/a425c2ed4c677e2231df8f6dea26a28aaebe281d869bc4a238cf1204786444a4.svg" src="../_images/a425c2ed4c677e2231df8f6dea26a28aaebe281d869bc4a238cf1204786444a4.svg" />
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>谱型覆盖与峰分布<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>核种数量图使用对数轴，以便同时展示高丰度和较少的核种。MS 面板展示分子大小与 m/z 峰位置，IR/Raman 面板使用 cm⁻¹ 波数。这些分布可用于选择通道掩码、输入网格和抽样策略。</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'data-cleaned-experimental'</span><span class="p">,</span> <span class="s1">'data-cleaned-ms'</span><span class="p">,</span> <span class="s1">'data-cleaned-vibrational'</span><span class="p">]:</span>
+    <span class="n">show</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">figure</span> <span class="ow">in</span> <span class="n">figures</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">figure</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ca92a64d0f4db77e7f694711a347986c75808615dd0fce1a3b0ad25b926bcd62.svg" src="../_images/ca92a64d0f4db77e7f694711a347986c75808615dd0fce1a3b0ad25b926bcd62.svg" />
+<img alt="../_images/13cc236539bdd72267d64d2065ddb6817562039c7f56bdafc1711f861eca6ce0.svg" src="../_images/13cc236539bdd72267d64d2065ddb6817562039c7f56bdafc1711f861eca6ce0.svg" />
+<img alt="../_images/b262f62fc9671578ddc7010b7a035ab0cbbe3d851bb21412ebea67f8832d47a4.svg" src="../_images/b262f62fc9671578ddc7010b7a035ab0cbbe3d851bb21412ebea67f8832d47a4.svg" />
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>训练、验证和测试文件<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>清洗后的 H/C 集合保留训练、验证和测试文件。摘要记录各文件的分子数量和标准身份交集。使用训练集拟合，在验证集选择模型设置。</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">role</span><span class="p">,</span> <span class="n">view</span> <span class="ow">in</span> <span class="n">summary</span><span class="p">[</span><span class="s1">'nmr'</span><span class="p">][</span><span class="s1">'files'</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">role</span><span class="p">,</span> <span class="n">view</span><span class="p">[</span><span class="s1">'records'</span><span class="p">],</span> <span class="s1">'molecules'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Cross-split identity intersections:'</span><span class="p">,</span> <span class="n">summary</span><span class="p">[</span><span class="s1">'nmr'</span><span class="p">][</span><span class="s1">'split_identity_overlaps'</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>train 2172790 molecules
+val 250836 molecules
+test 254885 molecules
+Cross-split identity intersections: {'train/val': 0, 'train/test': 0, 'val/test': 0}
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference internal" href="../data/index.html"><span class="std std-doc">Data guide</span></a> · <a class="reference internal" href="../api-reference/module-datasets.html"><span class="std std-doc">Dataset API</span></a> · <a class="reference internal" href="../data/splits.html"><span class="std std-doc">Create a split</span></a></p>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="index.html" class="btn btn-neutral float-left" title="教程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="ms-annotation-magma.html" class="btn btn-neutral float-right" title="MS/MS 碎片指认" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

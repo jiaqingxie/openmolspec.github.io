@@ -1,0 +1,775 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>openmolspec.model &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/api-reference/module-models.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Training and evaluation" href="category-learning.html" />
+    <link rel="prev" title="Models" href="category-models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../zh/api-reference/module-models.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">Tasks by spectroscopy family</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="category-data.html">Data access</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="category-models.html">Models</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">openmolspec.model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="category-learning.html">Training and evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-spectroscopy.html">Spectroscopy and record schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-processing.html">Data processing and releases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-agents.html">Agent tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-utilities.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API reference</a></li>
+          <li class="breadcrumb-item"><a href="category-models.html">Models</a></li>
+      <li class="breadcrumb-item active">openmolspec.model</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api-reference/module-models.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="openmolspec-model">
+<h1>openmolspec.model<a class="headerlink" href="#openmolspec-model" title="Link to this heading"></a></h1>
+<p>Public model facades. Heavy dependencies load only inside the selected runtime.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.model.NMRNet" title="openmolspec.model.NMRNet"><code class="xref py py-class docutils literal notranslate"><span class="pre">openmolspec.model.NMRNet</span></code></a></p></td>
+<td><p>Predict atomwise H/C chemical shifts and assign NMR peaks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.model.NMRTransformer" title="openmolspec.model.NMRTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">openmolspec.model.NMRTransformer</span></code></a></p></td>
+<td><p>Retrieve and generate molecular structures from experimental NMR.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.model.GapModel" title="openmolspec.model.GapModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">openmolspec.model.GapModel</span></code></a></p></td>
+<td><p>Predict the HOMO–LUMO energy gap from molecular spectra.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.model.Vib2Mol" title="openmolspec.model.Vib2Mol"><code class="xref py py-class docutils literal notranslate"><span class="pre">openmolspec.model.Vib2Mol</span></code></a></p></td>
+<td><p>Generate, retrieve and rerank structures with the openSpec Vib2Mol model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.model.MSPredictor" title="openmolspec.model.MSPredictor"><code class="xref py py-class docutils literal notranslate"><span class="pre">openmolspec.model.MSPredictor</span></code></a></p></td>
+<td><p>Predict tandem mass spectra with GLACIER or ICEBERG.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class" id="module-openmolspec.model">
+<dt class="sig sig-object py" id="openmolspec.model.NMRNet">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">openmolspec.model.</span></span><span class="sig-name descname"><span class="pre">NMRNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">models_root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nucleus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'13C'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">python</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.NMRNet" title="Link to this definition"></a></dt>
+<dd><p>Predict atomwise H/C chemical shifts and assign NMR peaks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>models_root</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – Directory containing <code class="docutils literal notranslate"><span class="pre">nmrnet/nmrnet-orig</span></code> and <code class="docutils literal notranslate"><span class="pre">nmrnet/weights</span></code>.</p></li>
+<li><p><strong>nucleus</strong> (<em>{'1H'</em><em>, </em><em>'13C'}</em><em>, </em><em>default '13C'</em>) – Nucleus to predict with the liquid-state fold-0 checkpoint and scaler.</p></li>
+<li><p><strong>python</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>default None</em>) – Interpreter of the NMR model environment. <code class="docutils literal notranslate"><span class="pre">None</span></code> selects the current
+Python interpreter.</p></li>
+<li><p><strong>device</strong> (<em>{'cpu'}</em><em>, </em><em>default 'cpu'</em>) – Device used by the NMRNet runtime adapter.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">NMRNet</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">'models'</span><span class="p">,</span> <span class="n">nucleus</span><span class="o">=</span><span class="s1">'13C'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/nmr-env/bin/python'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s1">'CCO'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shifts</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">[</span><span class="s1">'records'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'prediction_ppm'</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Atom indices follow the zero-based RDKit <code class="docutils literal notranslate"><span class="pre">AddHs</span></code> graph of the input SMILES.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L54">Source code</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.NMRNet.from_pretrained">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">models_root</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.NMRNet.from_pretrained" title="Link to this definition"></a></dt>
+<dd><p>Create an NMRNet predictor from a model-assets directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>models_root</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – Directory containing the NMRNet source and weights.</p></li>
+<li><p><strong>**kwargs</strong> – <code class="docutils literal notranslate"><span class="pre">nucleus</span></code>, <code class="docutils literal notranslate"><span class="pre">python</span></code> and <code class="docutils literal notranslate"><span class="pre">device</span></code> constructor settings.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Configured chemical-shift predictor.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#openmolspec.model.NMRNet" title="openmolspec.model.NMRNet">NMRNet</a></p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L90">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.NMRNet.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smiles</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.NMRNet.predict" title="Link to this definition"></a></dt>
+<dd><p>Predict chemical shifts for one molecule or a batch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>smiles</strong> (<em>str</em><em> or </em><em>iterable</em><em> of </em><em>str</em>) – Molecular structures as SMILES strings.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">records</span></code> contains one dictionary per molecule, with <code class="docutils literal notranslate"><span class="pre">smiles</span></code>,
+<code class="docutils literal notranslate"><span class="pre">nucleus</span></code>, <code class="docutils literal notranslate"><span class="pre">atom_indices</span></code> and <code class="docutils literal notranslate"><span class="pre">prediction_ppm</span></code>. Runtime and
+checkpoint information is returned in <code class="docutils literal notranslate"><span class="pre">provenance</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L107">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.NMRNet.assign">
+<span class="sig-name descname"><span class="pre">assign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smiles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peaks_ppm</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance_ppm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.NMRNet.assign" title="Link to this definition"></a></dt>
+<dd><p>Match measured peak positions to predicted atomic environments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>smiles</strong> (<em>str</em>) – Known molecular structure.</p></li>
+<li><p><strong>peaks_ppm</strong> (<em>iterable</em><em> of </em><em>float</em>) – Measured chemical shifts in ppm, in the desired peak-index order.</p></li>
+<li><p><strong>tolerance_ppm</strong> (<em>float</em><em> or </em><em>None</em><em>, </em><em>default None</em>) – Maximum peak/site residual. The default is 0.5 ppm for H and 5 ppm
+for C.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Assignments with peak indices, candidate atom indices, predicted
+shifts, residuals and unmatched peaks/sites.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L129">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.NMRNet.save_config">
+<span class="sig-name descname"><span class="pre">save_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.NMRNet.save_config" title="Link to this definition"></a></dt>
+<dd><p>Save model and runtime settings as JSON.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – New configuration file to create. It stores the model class,
+checkpoint paths, runtime interpreter and device settings.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileExistsError</strong> – If the destination already exists.</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L12">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.NMRNet.from_config">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">overrides</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.NMRNet.from_config" title="Link to this definition"></a></dt>
+<dd><p>Construct a model from a saved configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – JSON file written by <a class="reference internal" href="#openmolspec.model.NMRNet.save_config" title="openmolspec.model.NMRNet.save_config"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_config()</span></code></a>.</p></li>
+<li><p><strong>**overrides</strong> – Constructor options to replace, such as <code class="docutils literal notranslate"><span class="pre">python</span></code> or <code class="docutils literal notranslate"><span class="pre">device</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Configured instance of the requested model class.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>model instance</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L30">Source code</a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.model.NMRNet.capabilities">
+<span class="sig-name descname"><span class="pre">capabilities</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#openmolspec.model.NMRNet.capabilities" title="Link to this definition"></a></dt>
+<dd><p>Supported model operations, nuclei and input domain.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="openmolspec.model.NMRTransformer">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">openmolspec.model.</span></span><span class="sig-name descname"><span class="pre">NMRTransformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'generate'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">python</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.NMRTransformer" title="Link to this definition"></a></dt>
+<dd><p>Retrieve and generate molecular structures from experimental NMR.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkpoint</strong> (<em>str</em><em> or </em><em>pathlib.Path</em><em> or </em><em>None</em><em>, </em><em>default None</em>) – Alignment or generation checkpoint for prediction or initialization.</p></li>
+<li><p><strong>stage</strong> (<em>{'align'</em><em>, </em><em>'generate'}</em><em>, </em><em>default 'generate'</em>) – <code class="docutils literal notranslate"><span class="pre">'align'</span></code> selects the dual encoder; <code class="docutils literal notranslate"><span class="pre">'generate'</span></code> selects the molecular
+decoder. The stage also determines the training plan.</p></li>
+<li><p><strong>python</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>default None</em>) – Interpreter containing the NMR Transformer dependencies.</p></li>
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>default 'cpu'</em>) – Torch device, for example <code class="docutils literal notranslate"><span class="pre">'cpu'</span></code> or <code class="docutils literal notranslate"><span class="pre">'cuda:0'</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">NMRTransformer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">'alignment.pt'</span><span class="p">,</span> <span class="n">stage</span><span class="o">=</span><span class="s1">'align'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ranking</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">[</span><span class="s1">'CCO'</span><span class="p">,</span> <span class="s1">'COC'</span><span class="p">],</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L152">Source code</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.NMRTransformer.from_pretrained">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checkpoint</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.NMRTransformer.from_pretrained" title="Link to this definition"></a></dt>
+<dd><p>Configure a pretrained alignment or generation model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkpoint</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – Trained checkpoint file.</p></li>
+<li><p><strong>**kwargs</strong> – Model <code class="docutils literal notranslate"><span class="pre">stage</span></code>, runtime <code class="docutils literal notranslate"><span class="pre">python</span></code> and <code class="docutils literal notranslate"><span class="pre">device</span></code> settings.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model configured for the requested stage.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#openmolspec.model.NMRTransformer" title="openmolspec.model.NMRTransformer">NMRTransformer</a></p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L182">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.NMRTransformer.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">records</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">beam_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.NMRTransformer.predict" title="Link to this definition"></a></dt>
+<dd><p>Generate SMILES candidates from NMR spectra and molecular formulae.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>records</strong> (<em>dict</em><em> or </em><em>iterable</em><em> of </em><em>dict</em>) – Each query contains <code class="docutils literal notranslate"><span class="pre">formula</span></code>, <code class="docutils literal notranslate"><span class="pre">h_nmr</span></code>, <code class="docutils literal notranslate"><span class="pre">c_nmr</span></code> and optional
+<code class="docutils literal notranslate"><span class="pre">modality_mask</span></code>. NMR records store <code class="docutils literal notranslate"><span class="pre">chemical_shift</span></code> text and
+optional multiplicity, integration, coupling, solvent and frequency.</p></li>
+<li><p><strong>beam_size</strong> (<em>int</em><em>, </em><em>default 5</em>) – Number of candidate sequences explored by beam search.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Generated candidates with SMILES, model scores, validity and
+molecular-formula agreement.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L199">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.NMRTransformer.retrieve">
+<span class="sig-name descname"><span class="pre">retrieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidates</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.NMRTransformer.retrieve" title="Link to this definition"></a></dt>
+<dd><p>Rank candidate molecules for an NMR query.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>dict</em>) – H/C NMR records and their <code class="docutils literal notranslate"><span class="pre">modality_mask</span></code>.</p></li>
+<li><p><strong>candidates</strong> (<em>iterable</em><em> of </em><em>str</em>) – Candidate molecular SMILES.</p></li>
+<li><p><strong>top_k</strong> (<em>int</em><em>, </em><em>default 10</em>) – Number of ranked candidates to return.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Candidate identities and embedding similarity scores in rank order.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L226">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.NMRTransformer.training_plan">
+<span class="sig-name descname"><span class="pre">training_plan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_dir</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_dir</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.NMRTransformer.training_plan" title="Link to this definition"></a></dt>
+<dd><p>Create a training plan for the current model stage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_dir</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – Directory returned by <code class="docutils literal notranslate"><span class="pre">prepare_nmr_training</span></code>.</p></li>
+<li><p><strong>run_dir</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – New output directory for logs and checkpoints.</p></li>
+<li><p><strong>**kwargs</strong> – <a class="reference internal" href="module-training.html#openmolspec.training.TrainingPlan" title="openmolspec.training.TrainingPlan"><code class="xref py py-class docutils literal notranslate"><span class="pre">openmolspec.training.TrainingPlan</span></code></a> options, including
+<code class="docutils literal notranslate"><span class="pre">epochs</span></code>, <code class="docutils literal notranslate"><span class="pre">batch_size</span></code>, <code class="docutils literal notranslate"><span class="pre">learning_rate</span></code> and <code class="docutils literal notranslate"><span class="pre">parameters</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Plan that can be inspected, validated and passed to <a class="reference internal" href="#openmolspec.model.NMRTransformer.fit" title="openmolspec.model.NMRTransformer.fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit()</span></code></a>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="module-training.html#openmolspec.training.TrainingPlan" title="openmolspec.training.TrainingPlan">openmolspec.training.TrainingPlan</a></p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L249">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.NMRTransformer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plan</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.NMRTransformer.fit" title="Link to this definition"></a></dt>
+<dd><p>Train the model and select the best validation checkpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>plan</strong> (<a class="reference internal" href="module-training.html#openmolspec.training.TrainingPlan" title="openmolspec.training.TrainingPlan"><em>openmolspec.training.TrainingPlan</em></a>) – Training settings for the same stage as this model.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Best checkpoint path and SHA-256. The model’s configuration is
+updated to use the newly trained checkpoint.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L272">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.NMRTransformer.save_config">
+<span class="sig-name descname"><span class="pre">save_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.NMRTransformer.save_config" title="Link to this definition"></a></dt>
+<dd><p>Save model and runtime settings as JSON.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – New configuration file to create. It stores the model class,
+checkpoint paths, runtime interpreter and device settings.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileExistsError</strong> – If the destination already exists.</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L12">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.NMRTransformer.from_config">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">overrides</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.NMRTransformer.from_config" title="Link to this definition"></a></dt>
+<dd><p>Construct a model from a saved configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – JSON file written by <a class="reference internal" href="#openmolspec.model.NMRTransformer.save_config" title="openmolspec.model.NMRTransformer.save_config"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_config()</span></code></a>.</p></li>
+<li><p><strong>**overrides</strong> – Constructor options to replace, such as <code class="docutils literal notranslate"><span class="pre">python</span></code> or <code class="docutils literal notranslate"><span class="pre">device</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Configured instance of the requested model class.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>model instance</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L30">Source code</a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.model.NMRTransformer.capabilities">
+<span class="sig-name descname"><span class="pre">capabilities</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#openmolspec.model.NMRTransformer.capabilities" title="Link to this definition"></a></dt>
+<dd><p>Supported model operations, nuclei and input domain.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="openmolspec.model.GapModel">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">openmolspec.model.</span></span><span class="sig-name descname"><span class="pre">GapModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">python</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.GapModel" title="Link to this definition"></a></dt>
+<dd><p>Predict the HOMO–LUMO energy gap from molecular spectra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – openSpec model-assets directory.</p></li>
+<li><p><strong>python</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>default None</em>) – Interpreter containing the openSpec model dependencies.</p></li>
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>default 'cpu'</em>) – Torch device used for inference.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">GapModel</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">'models/openspec'</span><span class="p">,</span> <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/model/python'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gap_ev</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">'gap_ev'</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L294">Source code</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.GapModel.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_missing_modalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.GapModel.predict" title="Link to this definition"></a></dt>
+<dd><p>Predict a molecular energy gap in eV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputs</strong> (<em>dict</em>) – <code class="docutils literal notranslate"><span class="pre">ir</span></code> and <code class="docutils literal notranslate"><span class="pre">raman</span></code> are 1024-point intensity arrays on the
+400–4000 cm⁻¹ grid; <code class="docutils literal notranslate"><span class="pre">nmr_h</span></code> and <code class="docutils literal notranslate"><span class="pre">nmr_c</span></code> contain shifts in ppm.</p></li>
+<li><p><strong>allow_missing_modalities</strong> (<em>bool</em><em>, </em><em>default False</em>) – Set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to evaluate a selected subset of channels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Predicted <code class="docutils literal notranslate"><span class="pre">gap_ev</span></code>, checkpoint information and channel settings.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L318">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.GapModel.save_config">
+<span class="sig-name descname"><span class="pre">save_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.GapModel.save_config" title="Link to this definition"></a></dt>
+<dd><p>Save model and runtime settings as JSON.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – New configuration file to create. It stores the model class,
+checkpoint paths, runtime interpreter and device settings.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileExistsError</strong> – If the destination already exists.</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L12">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.GapModel.from_config">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">overrides</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.GapModel.from_config" title="Link to this definition"></a></dt>
+<dd><p>Construct a model from a saved configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – JSON file written by <a class="reference internal" href="#openmolspec.model.GapModel.save_config" title="openmolspec.model.GapModel.save_config"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_config()</span></code></a>.</p></li>
+<li><p><strong>**overrides</strong> – Constructor options to replace, such as <code class="docutils literal notranslate"><span class="pre">python</span></code> or <code class="docutils literal notranslate"><span class="pre">device</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Configured instance of the requested model class.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>model instance</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L30">Source code</a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.model.GapModel.capabilities">
+<span class="sig-name descname"><span class="pre">capabilities</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#openmolspec.model.GapModel.capabilities" title="Link to this definition"></a></dt>
+<dd><p>Supported model operations, nuclei and input domain.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="openmolspec.model.Vib2Mol">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">openmolspec.model.</span></span><span class="sig-name descname"><span class="pre">Vib2Mol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">python</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.Vib2Mol" title="Link to this definition"></a></dt>
+<dd><p>Generate, retrieve and rerank structures with the openSpec Vib2Mol model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – Directory containing spectral encoders, molecular decoder, tokenizer
+and matching checkpoints.</p></li>
+<li><p><strong>python</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>default None</em>) – Interpreter containing the openSpec dependencies.</p></li>
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>default 'cpu'</em>) – Torch inference device.</p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L337">Source code</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.Vib2Mol.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_missing_modalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.Vib2Mol.predict" title="Link to this definition"></a></dt>
+<dd><p>Generate molecular structures from IR, Raman and NMR spectra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputs</strong> (<em>dict</em>) – Spectral arrays with keys <code class="docutils literal notranslate"><span class="pre">ir</span></code>, <code class="docutils literal notranslate"><span class="pre">raman</span></code>, <code class="docutils literal notranslate"><span class="pre">nmr_h</span></code> and <code class="docutils literal notranslate"><span class="pre">nmr_c</span></code>;
+see <a class="reference internal" href="#openmolspec.model.GapModel.predict" title="openmolspec.model.GapModel.predict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GapModel.predict()</span></code></a> for their units and shapes.</p></li>
+<li><p><strong>top_k</strong> (<em>int</em><em>, </em><em>default 10</em>) – Number of candidates to return, between 1 and 10.</p></li>
+<li><p><strong>allow_missing_modalities</strong> (<em>bool</em><em>, </em><em>default False</em>) – Enable inference on a subset of spectral channels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Canonical candidate structures, decoding/matching scores and
+checkpoint metadata, using beam size 10 and ITM reranking.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L352">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.Vib2Mol.retrieve">
+<span class="sig-name descname"><span class="pre">retrieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidates</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rerank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_missing_modalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.Vib2Mol.retrieve" title="Link to this definition"></a></dt>
+<dd><p>Rank a supplied molecular library against a spectral query.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputs</strong> (<em>dict</em>) – IR/Raman intensity arrays and H/C shift arrays.</p></li>
+<li><p><strong>candidates</strong> (<em>iterable</em><em> of </em><em>str</em>) – Candidate structures as SMILES.</p></li>
+<li><p><strong>top_k</strong> (<em>int</em><em>, </em><em>default 10</em>) – Number of ranked structures to return.</p></li>
+<li><p><strong>rerank</strong> (<em>bool</em><em>, </em><em>default False</em>) – Use the ITM matching head when <code class="docutils literal notranslate"><span class="pre">True</span></code>; otherwise use embedding
+cosine similarity.</p></li>
+<li><p><strong>allow_missing_modalities</strong> (<em>bool</em><em>, </em><em>default False</em>) – Enable inference with selected channels omitted.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">candidate_pool</span></code>, ranking method, and <code class="docutils literal notranslate"><span class="pre">candidates</span></code> with SMILES
+and their scores in descending order.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L376">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.Vib2Mol.save_config">
+<span class="sig-name descname"><span class="pre">save_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.Vib2Mol.save_config" title="Link to this definition"></a></dt>
+<dd><p>Save model and runtime settings as JSON.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – New configuration file to create. It stores the model class,
+checkpoint paths, runtime interpreter and device settings.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileExistsError</strong> – If the destination already exists.</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L12">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.Vib2Mol.from_config">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">overrides</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.Vib2Mol.from_config" title="Link to this definition"></a></dt>
+<dd><p>Construct a model from a saved configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – JSON file written by <a class="reference internal" href="#openmolspec.model.Vib2Mol.save_config" title="openmolspec.model.Vib2Mol.save_config"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_config()</span></code></a>.</p></li>
+<li><p><strong>**overrides</strong> – Constructor options to replace, such as <code class="docutils literal notranslate"><span class="pre">python</span></code> or <code class="docutils literal notranslate"><span class="pre">device</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Configured instance of the requested model class.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>model instance</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L30">Source code</a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.model.Vib2Mol.capabilities">
+<span class="sig-name descname"><span class="pre">capabilities</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#openmolspec.model.Vib2Mol.capabilities" title="Link to this definition"></a></dt>
+<dd><p>Supported model operations, nuclei and input domain.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="openmolspec.model.MSPredictor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">openmolspec.model.</span></span><span class="sig-name descname"><span class="pre">MSPredictor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">python</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.MSPredictor" title="Link to this definition"></a></dt>
+<dd><p>Predict tandem mass spectra with GLACIER or ICEBERG.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>{'glacier'</em><em>, </em><em>'iceberg'}</em>) – Spectrum-prediction architecture.</p></li>
+<li><p><strong>source</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – Directory containing the <code class="docutils literal notranslate"><span class="pre">ms-pred</span></code> implementation.</p></li>
+<li><p><strong>weights</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – Checkpoint or checkpoint directory for the selected architecture.</p></li>
+<li><p><strong>python</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>default None</em>) – Interpreter of the MS model environment.</p></li>
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>default 'cpu'</em>) – Inference device.</p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L405">Source code</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.MSPredictor.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">smiles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adduct</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collision_energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instrument</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precursor_mz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.MSPredictor.predict" title="Link to this definition"></a></dt>
+<dd><p>Predict fragment m/z values and relative intensities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>smiles</strong> (<em>str</em>) – Molecular structure.</p></li>
+<li><p><strong>adduct</strong> (<em>str</em>) – Ion type, for example <code class="docutils literal notranslate"><span class="pre">'[M+H]+'</span></code> or <code class="docutils literal notranslate"><span class="pre">'[M+Na]+'</span></code>.</p></li>
+<li><p><strong>collision_energy</strong> (<em>float</em>) – Collision energy in the checkpoint’s acquisition convention.</p></li>
+<li><p><strong>instrument</strong> (<em>str</em>) – Instrument category, for example <code class="docutils literal notranslate"><span class="pre">'Orbitrap'</span></code> or <code class="docutils literal notranslate"><span class="pre">'QTOF'</span></code>.</p></li>
+<li><p><strong>precursor_mz</strong> (<em>float</em><em> or </em><em>None</em><em>, </em><em>default None</em>) – Measured precursor mass-to-charge ratio when available.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Numerical predicted MS/MS peaks and the acquisition/model metadata.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L430">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.MSPredictor.save_config">
+<span class="sig-name descname"><span class="pre">save_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.MSPredictor.save_config" title="Link to this definition"></a></dt>
+<dd><p>Save model and runtime settings as JSON.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – New configuration file to create. It stores the model class,
+checkpoint paths, runtime interpreter and device settings.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileExistsError</strong> – If the destination already exists.</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L12">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.MSPredictor.from_config">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">overrides</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.MSPredictor.from_config" title="Link to this definition"></a></dt>
+<dd><p>Construct a model from a saved configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – JSON file written by <a class="reference internal" href="#openmolspec.model.MSPredictor.save_config" title="openmolspec.model.MSPredictor.save_config"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_config()</span></code></a>.</p></li>
+<li><p><strong>**overrides</strong> – Constructor options to replace, such as <code class="docutils literal notranslate"><span class="pre">python</span></code> or <code class="docutils literal notranslate"><span class="pre">device</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Configured instance of the requested model class.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>model instance</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L30">Source code</a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.model.MSPredictor.capabilities">
+<span class="sig-name descname"><span class="pre">capabilities</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#openmolspec.model.MSPredictor.capabilities" title="Link to this definition"></a></dt>
+<dd><p>Supported model operations, nuclei and input domain.</p>
+</dd></dl>
+
+</dd></dl>
+
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. <a class="reference external" href="https://doi.org/10.1038/s43588-025-00783-z">Source</a></p></li>
+<li><p>OpenMolSpec contributors. openSpec models and benchmark training workflows. Source archive, v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">Source</a></p></li>
+<li><p>Wang, R.-X., Wang, R. &amp; Coley, C. W. GLACIER: Rethinking Mass Spectrum Prediction as an Object Detection Problem. NeurIPS 2026. arXiv:2606.29161 (2026). <a class="reference external" href="https://arxiv.org/abs/2606.29161">Source</a></p></li>
+<li><p>Wang, R., Manjrekar, M., Mahjour, B., Avila-Pacheco, J., et al. Neural Spectral Prediction for Structure Elucidation with Tandem Mass Spectrometry. bioRxiv (2025). doi:10.1101/2025.05.28.656653. <a class="reference external" href="https://doi.org/10.1101/2025.05.28.656653">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="category-models.html" class="btn btn-neutral float-left" title="Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="category-learning.html" class="btn btn-neutral float-right" title="Training and evaluation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

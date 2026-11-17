@@ -1,0 +1,186 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>核磁共振 NMR &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/theory/nmr.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script>window.MathJax = {"chtml": {"displayAlign": "left"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="质谱 MS" href="ms.html" />
+    <link rel="prev" title="谱学理论" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../theory/nmr.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">谱学理论</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#id2">参考文献</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">核磁共振 NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms.html">质谱 MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational.html">红外 IR 与拉曼 Raman</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">谱学理论</a></li>
+      <li class="breadcrumb-item active">核磁共振 NMR</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/theory/nmr.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="nmr">
+<h1>核磁共振 NMR<a class="headerlink" href="#nmr" title="Link to this heading"></a></h1>
+<section id="id1">
+<h2>化学位移与分子环境<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>电子屏蔽改变原子核感受到的有效磁场。化学位移以参考频率定义：</p>
+<div class="math notranslate nohighlight">
+\[\delta = 10^6(\nu-\nu_\mathrm{ref})/\nu_\mathrm{ref}.\]</div>
+<p>单位是 ppm；以 Hz 表示的频差取决于仪器频率，因此 ppm 和 Hz 不能直接互换。溶剂、温度、浓度、交换过程和参考标准均可能改变观测位移。同一结构在不同实验条件下可以具有不同峰表。</p>
+</section>
+<section id="id2">
+<h2>耦合、积分与峰表<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>弱耦合近似下，标量耦合导致共振裂分；常见的 <span class="math notranslate nohighlight">\(n+1\)</span> 规则只适用于相关的一组等价自旋 ½ 邻核。强耦合、磁不等价、交换和峰重叠都可能使简单规则失效。适当采集与弛豫条件下，积分可反映核数或相对含量。多重峰中心、单条裂分线、逐原子化学位移是不同的数据对象。</p>
+<p>OpenMolSpec 保留位移原文，以及可获得的裂分、积分、耦合常数、溶剂和仪器频率。H/C 正向模型输出逐原子位移。将未指认实验峰与预测位移匹配，可以提出候选指认；需要结合对称性与实验相关谱解释。</p>
+</section>
+<section id="id3">
+<h2>时域信号与傅里叶变换<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>简单复数自由感应衰减可以表示为：</p>
+<div class="math notranslate nohighlight">
+\[s(t)=\sum_k A_k\exp(-t/T_{2,k}^{*})\exp[i(2\pi\nu_k t+\phi_k)].\]</div>
+<p>傅里叶变换把频率成分转为频谱。采集时长决定名义频率分辨率，采样间隔决定带宽，Nyquist 条件限定无混叠频率范围。加窗会改变线宽和噪声；补零增加显示采样点，但不增加原始采集信息。相位和基线处理也影响峰提取与强度解释。</p>
+<p><a class="reference internal" href="../notebooks/theory-nmr-fourier.html"><span class="std std-doc">傅里叶教程</span></a>用三个已知频率生成复数 FID，执行变换，并检查恢复的主频。示例的频率轴使用 Hz 偏移。</p>
+</section>
+<section id="id4">
+<h2>弛豫与逆问题<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p><span class="math notranslate nohighlight">\(T_1\)</span> 描述纵向恢复，<span class="math notranslate nohighlight">\(T_2\)</span> 描述横向衰减，<span class="math notranslate nohighlight">\(T_2^*\)</span> 还包含磁场不均匀等影响。多环境体系可能表现为多指数衰减，因此可以通过<a class="reference internal" href="../inversion/index.html"><span class="std std-doc">正则化反演</span></a>估计分布。核函数、脉冲序列和时间单位必须对应。</p>
+</section>
+<section id="id5">
+<h2>延伸阅读<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://aris-mav.github.io/NMRInversions.jl/stable/theory/">NMRInversions.jl theory</a>：弛豫与扩散反演。</p></li>
+<li><p><a class="reference external" href="https://xacs.xmu.edu.cn/docs/mlatom/">MLatom 文档</a>：分子模拟和计算谱学流程。</p></li>
+</ul>
+</section>
+<section id="id6">
+<h2>参考文献<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>NMRInversions.jl contributors. NMRInversions.jl: inversion of NMR relaxation and diffusion measurements. Software and theory documentation. Accessed 18 November 2026. <a class="reference external" href="https://github.com/aris-mav/NMRInversions.jl">Source</a></p></li>
+<li><p>Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. <a class="reference external" href="https://doi.org/10.1038/s43588-025-00783-z">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="index.html" class="btn btn-neutral float-left" title="谱学理论" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="ms.html" class="btn btn-neutral float-right" title="质谱 MS" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

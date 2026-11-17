@@ -1,0 +1,25 @@
+# Spectroscopy and record schema
+
+| Module | Description |
+| --- | --- |
+| [openmolspec.core.constants](module-core-constants.md) | Shared physical constants and frozen OpenSpec v1 processing parameters. |
+| [openmolspec.core.schema](module-core-schema.md) | Field names, dtypes, shapes and units shared by release builders and validators. |
+| [openmolspec.inversion](module-inversion.md) | Nonnegative regularized inversion of time-domain NMR measurements. |
+| [openmolspec.parsing.gaussian](module-parsing-gaussian.md) | Shared Gaussian log parser used by the extraction entry points. |
+| [openmolspec.parsing.trajectory](module-parsing-trajectory.md) | Streaming Gaussian optimization-trajectory parser. |
+| [openmolspec.core](module-core.md) | Stable schema, constants, processing reports and progress utilities. |
+| [openmolspec.parsing](module-parsing.md) | Gaussian frequency, NMR and optimization-trajectory parsers. |
+
+
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+module-core-constants
+module-core-schema
+module-inversion
+module-parsing-gaussian
+module-parsing-trajectory
+module-core
+module-parsing
+```

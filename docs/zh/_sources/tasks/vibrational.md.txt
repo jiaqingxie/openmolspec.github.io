@@ -1,0 +1,27 @@
+# 红外 / 拉曼 IR / Raman
+
+选择任务，查看用途、输入输出、模型调用与示例。
+
+| Task / input → output | Task ID |
+| --- | --- |
+| [IR → HOMO–LUMO gap](vibrational-gap-ir.md) | `vibrational.gap.ir` |
+| [RAMAN → HOMO–LUMO gap](vibrational-gap-raman.md) | `vibrational.gap.raman` |
+| [IR_RAMAN → HOMO–LUMO gap](vibrational-gap-ir_raman.md) | `vibrational.gap.ir_raman` |
+| [构象 → IR / Raman](vibrational-forward.md) | `vibrational.forward` |
+| [IR / Raman → 结构检索](vibrational-retrieval.md) | `vibrational.retrieval` |
+| [IR / Raman → SMILES](vibrational-generation.md) | `vibrational.generation` |
+| [谱图 + 候选结构 → 重排](spectroscopy-reranking.md) | `spectroscopy.reranking` |
+
+
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+vibrational-gap-ir
+vibrational-gap-raman
+vibrational-gap-ir_raman
+vibrational-forward
+vibrational-retrieval
+vibrational-generation
+spectroscopy-reranking
+```

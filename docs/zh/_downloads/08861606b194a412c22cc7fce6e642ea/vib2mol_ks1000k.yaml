@@ -1,0 +1,32 @@
+# Fixed optimizer-step budget; batch sizes are per GPU.
+experiment:
+  name: vib2mol-ir-raman-hc-generation
+  release: openmolspec-v1-ks1000k
+  variant: ir-raman-hc-generation-v1
+  seed: 624
+task:
+  family: spectrum2structure
+  modality: ir-raman-nmr
+  targets: [kekule_smiles]
+model:
+  name: vib2mol
+  stage: pipeline
+  use_formula: false
+  smiles_augment: true
+  spectra_augment: false
+  frozen_encoder: false
+data:
+  root: benchmark_data/release_v1_ks1000k_hc_nmr_minmax
+training:
+  max_steps: 312500
+  eval_every_steps: 2500
+  batch_size: 64
+  learning_rate: 1.0e-4
+  generation_max_steps: 312500
+  generation_batch_size: 64
+  generation_learning_rate: 1.0e-4
+  workers: 0
+  device: cuda
+  gpus: 4
+output:
+  root: runs

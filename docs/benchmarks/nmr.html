@@ -1,0 +1,3166 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NMR benchmarks &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/benchmarks/nmr.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mass spectrometry benchmarks" href="ms.html" />
+    <link rel="prev" title="Benchmarks" href="../benchmarks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../zh/benchmarks/nmr.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">Tasks by spectroscopy family</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../benchmarks.html">Benchmarks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#task-benchmarks">Task benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#training-benchmark-configurations">Training benchmark configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#metrics">Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#run-a-benchmark">Run a benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#additional-task-definitions">Additional task definitions</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../benchmarks.html#references">References</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">NMR benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms.html">Mass spectrometry benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational.html">IR / Raman benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multimodal.html">Multimodal spectroscopy benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="production.html">Production benchmark results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="training.html">Training benchmark configurations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../benchmarks.html">Benchmarks</a></li>
+      <li class="breadcrumb-item active">NMR benchmarks</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/benchmarks/nmr.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="nmr-benchmarks">
+<h1>NMR benchmarks<a class="headerlink" href="#nmr-benchmarks" title="Link to this heading"></a></h1>
+<p>The sections below give each task definition and the results from its recorded evaluation runs. Open the task guide for model calls and full input/output examples.</p>
+<section id="h-chemical-shift-prediction">
+<h2>1H chemical shift prediction<a class="headerlink" href="#h-chemical-shift-prediction" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.forward.1H</span></code></p>
+<p>Predict the 1H chemical shifts of a molecule from its structure. Use the atom indices to display predictions on the molecular graph or compare them with measured peaks.</p>
+<p>MAE and RMSE are reported in ppm.</p>
+<p><a class="reference internal" href="../tasks/nmr-forward-1H.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-forward-1H.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/23f3d35f7638f35aa8221303eedec6c8/nmr-forward-1H.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrspec_test&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.134143</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>0.236816</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>10.2188</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.519243</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.0769934</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>0.163875</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>10.2188</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.519243</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;patent_test_10k&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.26912</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>0.530869</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>24.7586</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.294737</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>29</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>29</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.227842</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>0.484549</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>24.7586</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.294737</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>29</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>29</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrexp_exp_10k&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.0485825</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>0.0797388</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>8.09375</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.530831</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.030637</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>0.0626249</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>8.09375</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.530831</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrgym_test&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.196824</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>0.393488</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>15.8438</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.529103</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.198216</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>0.406316</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>15.8438</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.529103</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="c-chemical-shift-prediction">
+<h2>13C chemical shift prediction<a class="headerlink" href="#c-chemical-shift-prediction" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.forward.13C</span></code></p>
+<p>Predict the 13C chemical shifts of a molecule from its structure. Use the atom indices to display predictions on the molecular graph or compare them with measured peaks.</p>
+<p>MAE and RMSE are reported in ppm.</p>
+<p><a class="reference internal" href="../tasks/nmr-forward-13C.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-forward-13C.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/3ac98d5b9e5fe9f623a05349be0a45c8/nmr-forward-13C.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrspec_test&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>1.16684</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>2.38985</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>2.65625</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.868315</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.816381</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>2.01372</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>2.65625</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.868315</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;patent_test_10k&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>8.04192</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>24.2975</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>18.1935</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.433151</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>31</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>31</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>7.56152</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>22.9178</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>18.1935</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.433151</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>31</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>31</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrexp_exp_10k&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>1.30638</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>7.49856</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>3.90625</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.753554</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>1.29252</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>8.09745</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>3.90625</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.753554</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrgym_test&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>2.27653</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>3.99254</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>2.625</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.908013</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>2.45342</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>4.1577</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>2.625</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.908013</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="f-chemical-shift-prediction">
+<h2>19F chemical shift prediction<a class="headerlink" href="#f-chemical-shift-prediction" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.forward.19F</span></code></p>
+<p>Predict the 19F chemical shifts of a molecule from its structure. Use the atom indices to display predictions on the molecular graph or compare them with measured peaks.</p>
+<p>MAE and RMSE are reported in ppm.</p>
+<p><a class="reference internal" href="../tasks/nmr-forward-19F.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-forward-19F.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/9ccaab22697d655d3d29db9d73a10725/nmr-forward-19F.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;recorded</span> <span class="pre">evaluation&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>mae_ppm</p></td>
+<td class="text-right"><p>356.345</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>rmse_ppm</p></td>
+<td class="text-right"><p>364.396</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="p-chemical-shift-prediction">
+<h2>31P chemical shift prediction<a class="headerlink" href="#p-chemical-shift-prediction" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.forward.31P</span></code></p>
+<p>Predict the 31P chemical shifts of a molecule from its structure. Use the atom indices to display predictions on the molecular graph or compare them with measured peaks.</p>
+<p>MAE and RMSE are reported in ppm.</p>
+<p><a class="reference internal" href="../tasks/nmr-forward-31P.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-forward-31P.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/6ea4cf694dbfef25d35ee371dcd995a9/nmr-forward-31P.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;recorded</span> <span class="pre">evaluation&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>mae_ppm</p></td>
+<td class="text-right"><p>226.449</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>rmse_ppm</p></td>
+<td class="text-right"><p>237.252</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="b-chemical-shift-prediction">
+<h2>11B chemical shift prediction<a class="headerlink" href="#b-chemical-shift-prediction" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.forward.11B</span></code></p>
+<p>Predict the 11B chemical shifts of a molecule from its structure. Use the atom indices to display predictions on the molecular graph or compare them with measured peaks.</p>
+<p>MAE and RMSE are reported in ppm.</p>
+<p><a class="reference internal" href="../tasks/nmr-forward-11B.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-forward-11B.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/a5190f615a79a3df9a4dd052ef32f7de/nmr-forward-11B.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;recorded</span> <span class="pre">evaluation&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>mae_ppm</p></td>
+<td class="text-right"><p>8.68453</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>rmse_ppm</p></td>
+<td class="text-right"><p>12.4365</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>molecules</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>atoms</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="si-chemical-shift-prediction">
+<h2>29Si chemical shift prediction<a class="headerlink" href="#si-chemical-shift-prediction" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.forward.29Si</span></code></p>
+<p>Predict the 29Si chemical shifts of a molecule from its structure. Use the atom indices to display predictions on the molecular graph or compare them with measured peaks.</p>
+<p>MAE and RMSE are reported in ppm.</p>
+<p><a class="reference internal" href="../tasks/nmr-forward-29Si.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-forward-29Si.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/419127e71f8e40fd8222b219c8dc7440/nmr-forward-29Si.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;recorded</span> <span class="pre">evaluation&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>mae_ppm</p></td>
+<td class="text-right"><p>56.1336</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>rmse_ppm</p></td>
+<td class="text-right"><p>58.1058</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>molecules</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>atoms</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="spectrum-to-structure-retrieval-1h">
+<h2>Spectrum-to-structure retrieval: ¹H<a class="headerlink" href="#spectrum-to-structure-retrieval-1h" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.h.s2m</span></code></p>
+<p>Rank the candidates that best match the query molecule or spectrum.</p>
+<p>Report Recall&#64;1/5/10 and mean reciprocal rank together with the candidate count.</p>
+<p><a class="reference internal" href="../tasks/nmr-retrieval-h-s2m.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-retrieval-h-s2m.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/8a99f73d15838d1439a2b1c37469b3c7/nmr-retrieval-h-s2m.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrspec_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;patent_test_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.6875</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.819568</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrexp_exp_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.875</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.917708</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrgym_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.6875</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.875</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>0.9375</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.76864</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="structure-to-spectrum-retrieval-1h">
+<h2>Structure-to-spectrum retrieval: ¹H<a class="headerlink" href="#structure-to-spectrum-retrieval-1h" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.h.m2s</span></code></p>
+<p>Rank the candidates that best match the query molecule or spectrum.</p>
+<p>Report Recall&#64;1/5/10 and mean reciprocal rank together with the candidate count.</p>
+<p><a class="reference internal" href="../tasks/nmr-retrieval-h-m2s.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-retrieval-h-m2s.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/4cb48d955445500a5668f8deaf2d0809/nmr-retrieval-h-m2s.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrspec_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;patent_test_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.625</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.9375</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.775298</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrexp_exp_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.84375</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.88776</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrgym_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.65625</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.90625</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>0.90625</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.749297</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="structure-elucidation-from-1h-nmr">
+<h2>Structure elucidation from ¹H NMR<a class="headerlink" href="#structure-elucidation-from-1h-nmr" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.generation.h</span></code></p>
+<p>Generate candidate molecular structures from NMR peak lists and a molecular formula.</p>
+<p>Canonical top-k accuracy and valid-SMILES rate summarize generation.</p>
+<p><a class="reference internal" href="../tasks/nmr-generation-h.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-generation-h.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/58199169656c96aa5806df00068d1657/nmr-generation-h.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrspec_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=true</span></code>; <code class="docutils literal notranslate"><span class="pre">beam_size=5</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>modality</p></td>
+<td class="text-right"><p>available</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>skipped_missing_modality</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match</p></td>
+<td class="text-right"><p>27</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact</p></td>
+<td class="text-right"><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid_rate</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match_rate</p></td>
+<td class="text-right"><p>0.84375</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_rate</p></td>
+<td class="text-right"><p>0.09375</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;patent_test_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=true</span></code>; <code class="docutils literal notranslate"><span class="pre">beam_size=5</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>modality</p></td>
+<td class="text-right"><p>available</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>skipped_missing_modality</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid</p></td>
+<td class="text-right"><p>23</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match</p></td>
+<td class="text-right"><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid_rate</p></td>
+<td class="text-right"><p>0.71875</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match_rate</p></td>
+<td class="text-right"><p>0.15625</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_rate</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrexp_exp_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=true</span></code>; <code class="docutils literal notranslate"><span class="pre">beam_size=5</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>modality</p></td>
+<td class="text-right"><p>available</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>skipped_missing_modality</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match</p></td>
+<td class="text-right"><p>27</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact</p></td>
+<td class="text-right"><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid_rate</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match_rate</p></td>
+<td class="text-right"><p>0.84375</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_rate</p></td>
+<td class="text-right"><p>0.46875</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrgym_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=true</span></code>; <code class="docutils literal notranslate"><span class="pre">beam_size=5</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>modality</p></td>
+<td class="text-right"><p>available</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>skipped_missing_modality</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid</p></td>
+<td class="text-right"><p>30</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match</p></td>
+<td class="text-right"><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid_rate</p></td>
+<td class="text-right"><p>0.9375</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match_rate</p></td>
+<td class="text-right"><p>0.46875</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_rate</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="spectrum-to-structure-retrieval-13c">
+<h2>Spectrum-to-structure retrieval: ¹³C<a class="headerlink" href="#spectrum-to-structure-retrieval-13c" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.c.s2m</span></code></p>
+<p>Rank the candidates that best match the query molecule or spectrum.</p>
+<p>Report Recall&#64;1/5/10 and mean reciprocal rank together with the candidate count.</p>
+<p><a class="reference internal" href="../tasks/nmr-retrieval-c-s2m.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-retrieval-c-s2m.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/cb195e6e76d5400f93514ae6d626e537/nmr-retrieval-c-s2m.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrspec_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.90625</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.9375</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.929167</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;patent_test_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.53125</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.8125</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>0.9375</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.662424</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrexp_exp_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.625</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.9375</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.774554</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrgym_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.78125</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.87066</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="structure-to-spectrum-retrieval-13c">
+<h2>Structure-to-spectrum retrieval: ¹³C<a class="headerlink" href="#structure-to-spectrum-retrieval-13c" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.c.m2s</span></code></p>
+<p>Rank the candidates that best match the query molecule or spectrum.</p>
+<p>Report Recall&#64;1/5/10 and mean reciprocal rank together with the candidate count.</p>
+<p><a class="reference internal" href="../tasks/nmr-retrieval-c-m2s.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-retrieval-c-m2s.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/c5025b2ed493664436fdba078d9f953b/nmr-retrieval-c-m2s.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrspec_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.9375</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.950321</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;patent_test_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.5625</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.8125</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>0.875</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.694401</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrexp_exp_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.65625</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.9375</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.774595</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrgym_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.78125</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.9375</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.861111</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="structure-elucidation-from-13c-nmr">
+<h2>Structure elucidation from ¹³C NMR<a class="headerlink" href="#structure-elucidation-from-13c-nmr" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.generation.c</span></code></p>
+<p>Generate candidate molecular structures from NMR peak lists and a molecular formula.</p>
+<p>Canonical top-k accuracy and valid-SMILES rate summarize generation.</p>
+<p><a class="reference internal" href="../tasks/nmr-generation-c.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-generation-c.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/ce252abb5996c4f6a13c364fbd909841/nmr-generation-c.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrspec_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=true</span></code>; <code class="docutils literal notranslate"><span class="pre">beam_size=5</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>modality</p></td>
+<td class="text-right"><p>available</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>skipped_missing_modality</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid</p></td>
+<td class="text-right"><p>31</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match</p></td>
+<td class="text-right"><p>23</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact</p></td>
+<td class="text-right"><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid_rate</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match_rate</p></td>
+<td class="text-right"><p>0.71875</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_rate</p></td>
+<td class="text-right"><p>0.09375</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;patent_test_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=true</span></code>; <code class="docutils literal notranslate"><span class="pre">beam_size=5</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>modality</p></td>
+<td class="text-right"><p>available</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>skipped_missing_modality</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid</p></td>
+<td class="text-right"><p>28</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match</p></td>
+<td class="text-right"><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid_rate</p></td>
+<td class="text-right"><p>0.875</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match_rate</p></td>
+<td class="text-right"><p>0.09375</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_rate</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrexp_exp_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=true</span></code>; <code class="docutils literal notranslate"><span class="pre">beam_size=5</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>modality</p></td>
+<td class="text-right"><p>available</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>skipped_missing_modality</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match</p></td>
+<td class="text-right"><p>30</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact</p></td>
+<td class="text-right"><p>19</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid_rate</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match_rate</p></td>
+<td class="text-right"><p>0.9375</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_rate</p></td>
+<td class="text-right"><p>0.59375</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrgym_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=true</span></code>; <code class="docutils literal notranslate"><span class="pre">beam_size=5</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>modality</p></td>
+<td class="text-right"><p>available</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>skipped_missing_modality</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid</p></td>
+<td class="text-right"><p>30</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match</p></td>
+<td class="text-right"><p>16</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid_rate</p></td>
+<td class="text-right"><p>0.9375</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match_rate</p></td>
+<td class="text-right"><p>0.5</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_rate</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="spectrum-to-structure-retrieval-1h-13c">
+<h2>Spectrum-to-structure retrieval: ¹H + ¹³C<a class="headerlink" href="#spectrum-to-structure-retrieval-1h-13c" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.hc.s2m</span></code></p>
+<p>Rank the candidates that best match the query molecule or spectrum.</p>
+<p>Report Recall&#64;1/5/10 and mean reciprocal rank together with the candidate count.</p>
+<p><a class="reference internal" href="../tasks/nmr-retrieval-hc-s2m.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-retrieval-hc-s2m.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/b1f69d77c89c732581be30c90487f408/nmr-retrieval-hc-s2m.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrspec_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;patent_test_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.65625</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.9375</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>0.9375</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.776217</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrexp_exp_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.90625</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.9375</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrgym_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.8125</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.886979</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="structure-to-spectrum-retrieval-1h-13c">
+<h2>Structure-to-spectrum retrieval: ¹H + ¹³C<a class="headerlink" href="#structure-to-spectrum-retrieval-1h-13c" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.hc.m2s</span></code></p>
+<p>Rank the candidates that best match the query molecule or spectrum.</p>
+<p>Report Recall&#64;1/5/10 and mean reciprocal rank together with the candidate count.</p>
+<p><a class="reference internal" href="../tasks/nmr-retrieval-hc-m2s.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-retrieval-hc-m2s.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/9915957f0fd3f562107ec1458182923a/nmr-retrieval-hc-m2s.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrspec_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;patent_test_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.625</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.90625</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>0.90625</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.738817</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrexp_exp_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.875</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.924479</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrgym_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.84375</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.897254</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="structure-elucidation-from-1h-13c-nmr">
+<h2>Structure elucidation from ¹H + ¹³C NMR<a class="headerlink" href="#structure-elucidation-from-1h-13c-nmr" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.generation.hc</span></code></p>
+<p>Generate candidate molecular structures from NMR peak lists and a molecular formula.</p>
+<p>Canonical top-k accuracy and valid-SMILES rate summarize generation.</p>
+<p><a class="reference internal" href="../tasks/nmr-generation-hc.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-generation-hc.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/ed01451188a068367d6c30c863dff0b8/nmr-generation-hc.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrspec_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=true</span></code>; <code class="docutils literal notranslate"><span class="pre">beam_size=5</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>modality</p></td>
+<td class="text-right"><p>available</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>skipped_missing_modality</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match</p></td>
+<td class="text-right"><p>29</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact</p></td>
+<td class="text-right"><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid_rate</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match_rate</p></td>
+<td class="text-right"><p>0.90625</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_rate</p></td>
+<td class="text-right"><p>0.125</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;patent_test_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=true</span></code>; <code class="docutils literal notranslate"><span class="pre">beam_size=5</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>modality</p></td>
+<td class="text-right"><p>available</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>skipped_missing_modality</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid</p></td>
+<td class="text-right"><p>24</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid_rate</p></td>
+<td class="text-right"><p>0.75</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match_rate</p></td>
+<td class="text-right"><p>0.03125</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_rate</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrexp_exp_10k&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=true</span></code>; <code class="docutils literal notranslate"><span class="pre">beam_size=5</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>modality</p></td>
+<td class="text-right"><p>available</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>skipped_missing_modality</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match</p></td>
+<td class="text-right"><p>29</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact</p></td>
+<td class="text-right"><p>22</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid_rate</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match_rate</p></td>
+<td class="text-right"><p>0.90625</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_rate</p></td>
+<td class="text-right"><p>0.6875</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;nmrgym_test&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">sampling=&quot;first_distinct_canonical_structures_in_file_order&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=true</span></code>; <code class="docutils literal notranslate"><span class="pre">beam_size=5</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>modality</p></td>
+<td class="text-right"><p>available</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>skipped_missing_modality</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid</p></td>
+<td class="text-right"><p>25</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match</p></td>
+<td class="text-right"><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid_rate</p></td>
+<td class="text-right"><p>0.78125</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>formula_match_rate</p></td>
+<td class="text-right"><p>0.46875</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_rate</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="peak-to-atom-assignment">
+<h2>Peak-to-atom assignment<a class="headerlink" href="#peak-to-atom-assignment" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.assignment</span></code></p>
+<p>Assign measured NMR peaks to atoms in a known molecular structure.</p>
+<p>Peak coverage and matched-peak MAE summarize the assignment.</p>
+<p><a class="reference internal" href="../tasks/nmr-assignment.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-assignment.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/ec70670ac0d381b4476925ce03d0e34e/nmr-assignment.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;recorded</span> <span class="pre">evaluation&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>molecules</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>matched_peaks</p></td>
+<td class="text-right"><p>488</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>matched_peak_fraction_macro</p></td>
+<td class="text-right"><p>0.939238</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>matched_residual_mae_ppm</p></td>
+<td class="text-right"><p>0.899131</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>assignment_accuracy</p></td>
+<td class="text-right"><p>not measured</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cross-solvent-chemical-shift-transfer">
+<h2>Cross-solvent chemical shift transfer<a class="headerlink" href="#cross-solvent-chemical-shift-transfer" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.solvent_transfer</span></code></p>
+<p>Estimate a spectrum in a target solvent from measurements in a source solvent.</p>
+<p>Evaluate H and C shifts separately using MAE in ppm.</p>
+<p><a class="reference internal" href="../tasks/nmr-solvent_transfer.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-solvent_transfer.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/a901cec9550d2b5cfa0d338b594984a1/nmr-solvent_transfer.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;recorded</span> <span class="pre">evaluation&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">counts={&quot;distinct_molecules&quot;:</span> <span class="pre">32,</span> <span class="pre">&quot;paired_atoms&quot;:</span> <span class="pre">296,</span> <span class="pre">&quot;skipped_pairs&quot;:</span> <span class="pre">3}</span></code>; <code class="docutils literal notranslate"><span class="pre">seed=42</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>13C</p></td>
+<td><p>atoms</p></td>
+<td class="text-right"><p>140</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>13C</p></td>
+<td><p>molecules</p></td>
+<td class="text-right"><p>13</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>13C</p></td>
+<td><p>mae_ppm</p></td>
+<td class="text-right"><p>1.09429</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>13C</p></td>
+<td><p>unchanged_shift_mae_ppm</p></td>
+<td class="text-right"><p>1.16371</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>13C</p></td>
+<td><p>rmse_ppm</p></td>
+<td class="text-right"><p>1.90935</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>1H</p></td>
+<td><p>atoms</p></td>
+<td class="text-right"><p>156</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>1H</p></td>
+<td><p>molecules</p></td>
+<td class="text-right"><p>19</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>1H</p></td>
+<td><p>mae_ppm</p></td>
+<td class="text-right"><p>0.137628</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>1H</p></td>
+<td><p>unchanged_shift_mae_ppm</p></td>
+<td class="text-right"><p>0.135385</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>1H</p></td>
+<td><p>rmse_ppm</p></td>
+<td class="text-right"><p>0.376179</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">Source</a></p></li>
+<li><p>Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. <a class="reference external" href="https://doi.org/10.1038/s43588-025-00783-z">Source</a></p></li>
+<li><p>Yang, L., Yang, Z., Xie, J., Wang, Y., Gao, B., Fu, T., Wei, X., Sun, J., Wu, J., He, C., Li, Y. &amp; Gu, Q. NMRTrans: Structure Elucidation from Experimental NMR Spectra via Set Transformers. arXiv:2602.10158 (2026). <a class="reference external" href="https://arxiv.org/abs/2602.10158">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../benchmarks.html" class="btn btn-neutral float-left" title="Benchmarks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ms.html" class="btn btn-neutral float-right" title="Mass spectrometry benchmarks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

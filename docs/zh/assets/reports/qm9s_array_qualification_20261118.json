@@ -1,0 +1,61 @@
+{
+  "completed": true,
+  "provider": "QM9S",
+  "domain": "computed",
+  "source_url": "https://www.nature.com/articles/s43588-023-00550-y",
+  "scope": "Complete local broadened IR/Raman numerical CSVs",
+  "identity_alignment": "Processed CSV row indices are not asserted to be molecular mapping IDs",
+  "channels": {
+    "ir": {
+      "file": "ir_boraden.csv",
+      "sha256": "078061df9977146821d7e432ee36dcc5f495d533bb9c7dd5f3340b18bcae073c",
+      "bytes": 8733673295,
+      "counts": {
+        "rows": 129817,
+        "duplicate_row_indices": 0,
+        "finite_correct_length_rows": 129817,
+        "finite_nonconstant_rows": 129817,
+        "constant_rows": 0,
+        "negative_value_rows": 0
+      },
+      "spectral_points": 3501,
+      "axis_min_cm1": 500.0,
+      "axis_max_cm1": 4000.0,
+      "first_row_indices": [
+        "0",
+        "1",
+        "2"
+      ],
+      "last_row_index": "129816",
+      "unique_processed_indices": 129817
+    },
+    "raman": {
+      "file": "raman_boraden.csv",
+      "sha256": "dbe1cecb1b895bba38cf214708fcd6bd17625baa5faa5bb148af2cd9ac752cca",
+      "bytes": 8784506743,
+      "counts": {
+        "rows": 129817,
+        "duplicate_row_indices": 0,
+        "finite_correct_length_rows": 129817,
+        "finite_nonconstant_rows": 129817,
+        "constant_rows": 0,
+        "negative_value_rows": 0
+      },
+      "spectral_points": 3501,
+      "axis_min_cm1": 500.0,
+      "axis_max_cm1": 4000.0,
+      "first_row_indices": [
+        "0",
+        "1",
+        "2"
+      ],
+      "last_row_index": "129816",
+      "unique_processed_indices": 129817
+    }
+  },
+  "processed_row_index_overlap": {
+    "shared_indices": 129817,
+    "both_finite_nonconstant": 129817,
+    "semantics": "Processed index overlap, not verification of shared molecular identity"
+  }
+}

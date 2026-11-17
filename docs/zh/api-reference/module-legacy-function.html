@@ -1,0 +1,398 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>openmolspec.legacy.function &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/api-reference/module-legacy-function.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="openmolspec.maintenance.parse_zinc_v2_nmr" href="module-maintenance-parse_zinc_v2_nmr.html" />
+    <link rel="prev" title="openmolspec.legacy.extract_spectra" href="module-legacy-extract_spectra.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../api-reference/module-legacy-function.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API 参考</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="category-data.html">数据访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-models.html">模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-learning.html">训练与评测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-spectroscopy.html">谱学与数据结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-processing.html">数据处理与发布</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-agents.html">Agent 工具</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="category-utilities.html">工具函数</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-analyze_dataset_comparison.html">openmolspec.analysis.analyze_dataset_comparison</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_align_chemical_distribution.html">openmolspec.analysis.plot_align_chemical_distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_align_overview.html">openmolspec.analysis.plot_align_overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_benchmark_overview.html">openmolspec.analysis.plot_benchmark_overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_dataset_statistics.html">openmolspec.analysis.plot_dataset_statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_element_coverage.html">openmolspec.analysis.plot_element_coverage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_openmolspec_overview.html">openmolspec.analysis.plot_openmolspec_overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-visualize_opt_trajectory.html">openmolspec.analysis.visualize_opt_trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-cli.html">openmolspec.cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-core-processing.html">openmolspec.core.processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-core-progress.html">openmolspec.core.progress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_nmr.html">openmolspec.legacy.extract_nmr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_properties.html">openmolspec.legacy.extract_properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_properties_backup.html">openmolspec.legacy.extract_properties_backup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_spectra.html">openmolspec.legacy.extract_spectra</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">openmolspec.legacy.function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-maintenance-parse_zinc_v2_nmr.html">openmolspec.maintenance.parse_zinc_v2_nmr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-plotting.html">openmolspec.plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-openmolspec.html">openmolspec</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API 参考</a></li>
+          <li class="breadcrumb-item"><a href="category-utilities.html">工具函数</a></li>
+      <li class="breadcrumb-item active">openmolspec.legacy.function</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api-reference/module-legacy-function.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="openmolspec-legacy-function">
+<h1>openmolspec.legacy.function<a class="headerlink" href="#openmolspec-legacy-function" title="Link to this heading"></a></h1>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.legacy.function.car2xyz" title="openmolspec.legacy.function.car2xyz"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.car2xyz()</span></code></a></p></td>
+<td><p>Convert a CAR molecular geometry representation to XYZ.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.legacy.function.log2arc" title="openmolspec.legacy.function.log2arc"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.log2arc()</span></code></a></p></td>
+<td><p>Extract molecular archive data from a Gaussian log.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.legacy.function.arc2xyz" title="openmolspec.legacy.function.arc2xyz"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.arc2xyz()</span></code></a></p></td>
+<td><p>Convert molecular archive coordinates to XYZ.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.legacy.function.np2xyz" title="openmolspec.legacy.function.np2xyz"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.np2xyz()</span></code></a></p></td>
+<td><p>Format atomic identities and NumPy coordinates as XYZ.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.legacy.function.obmol2rdmol" title="openmolspec.legacy.function.obmol2rdmol"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.obmol2rdmol()</span></code></a></p></td>
+<td><p>Convert an Open Babel molecule to an RDKit molecular graph.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.legacy.function.xyz2rdmol_AC" title="openmolspec.legacy.function.xyz2rdmol_AC"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.xyz2rdmol_AC()</span></code></a></p></td>
+<td><p>Construct an RDKit molecular graph from XYZ geometry and connectivity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.legacy.function.pdb2rdmol_AC" title="openmolspec.legacy.function.pdb2rdmol_AC"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.pdb2rdmol_AC()</span></code></a></p></td>
+<td><p>Construct an RDKit molecular graph from PDB geometry and connectivity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.legacy.function.rdmol2x_pos" title="openmolspec.legacy.function.rdmol2x_pos"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.rdmol2x_pos()</span></code></a></p></td>
+<td><p>Extract atomic features and Cartesian positions from an RDKit molecule.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.legacy.function.generate_atoms_edge_index" title="openmolspec.legacy.function.generate_atoms_edge_index"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.generate_atoms_edge_index()</span></code></a></p></td>
+<td><p>Construct atom-level graph edge indices.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.legacy.function.atoms2bonds_edge_index" title="openmolspec.legacy.function.atoms2bonds_edge_index"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.atoms2bonds_edge_index()</span></code></a></p></td>
+<td><p>Convert atom connections to bond-level graph edge indices.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.legacy.function.generate_angel_edge_bondes" title="openmolspec.legacy.function.generate_angel_edge_bondes"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.generate_angel_edge_bondes()</span></code></a></p></td>
+<td><p>Construct angular relationships between molecular graph bonds.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.legacy.function.Is_bonds_edge_index" title="openmolspec.legacy.function.Is_bonds_edge_index"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.Is_bonds_edge_index()</span></code></a></p></td>
+<td><p>Check membership in the molecular bond-edge indices.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.legacy.function.generate_data" title="openmolspec.legacy.function.generate_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.generate_data()</span></code></a></p></td>
+<td><p>Assemble molecular graph features for the model input format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.legacy.function.HessiantoHiHij" title="openmolspec.legacy.function.HessiantoHiHij"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.HessiantoHiHij()</span></code></a></p></td>
+<td><p>Partition a Cartesian Hessian into atomic diagonal and pair blocks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.legacy.function.str2dedipole" title="openmolspec.legacy.function.str2dedipole"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.str2dedipole()</span></code></a></p></td>
+<td><p>Parse dipole-derivative values from molecular archive text.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.legacy.function.str2polar" title="openmolspec.legacy.function.str2polar"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.str2polar()</span></code></a></p></td>
+<td><p>Parse polarizability values from molecular archive text.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.legacy.function.str2depolar" title="openmolspec.legacy.function.str2depolar"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.str2depolar()</span></code></a></p></td>
+<td><p>Parse polarizability-derivative values from molecular archive text.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.legacy.function.str2hessian" title="openmolspec.legacy.function.str2hessian"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.str2hessian()</span></code></a></p></td>
+<td><p>Parse Cartesian Hessian values from molecular archive text.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.legacy.function.arc2tensor" title="openmolspec.legacy.function.arc2tensor"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.arc2tensor()</span></code></a></p></td>
+<td><p>Convert molecular archive quantities to tensor-based model inputs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.legacy.function.shiftactfromfile" title="openmolspec.legacy.function.shiftactfromfile"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.shiftactfromfile()</span></code></a></p></td>
+<td><p>Read atomwise NMR quantities from a source file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.legacy.function.file2pt" title="openmolspec.legacy.function.file2pt"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.file2pt()</span></code></a></p></td>
+<td><p>Convert a molecular source file to tensor-based model data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.legacy.function.rdmol2pt" title="openmolspec.legacy.function.rdmol2pt"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.legacy.function.rdmol2pt()</span></code></a></p></td>
+<td><p>Convert an RDKit molecular graph to tensor-based model data.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function" id="module-openmolspec.legacy.function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.car2xyz">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">car2xyz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">car_filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xyz_filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.car2xyz" title="Link to this definition"></a></dt>
+<dd><p>Convert a CAR molecular geometry representation to XYZ.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L26">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.log2arc">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">log2arc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arc_filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.log2arc" title="Link to this definition"></a></dt>
+<dd><p>Extract molecular archive data from a Gaussian log.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L40">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.arc2xyz">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">arc2xyz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arc_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xyz_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.arc2xyz" title="Link to this definition"></a></dt>
+<dd><p>Convert molecular archive coordinates to XYZ.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L77">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.np2xyz">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">np2xyz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atoms_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atoms_pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.np2xyz" title="Link to this definition"></a></dt>
+<dd><p>Format atomic identities and NumPy coordinates as XYZ.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L91">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.obmol2rdmol">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">obmol2rdmol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obmol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">openbabel.openbabel.OBMol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rdmol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Chem.rdchem.Mol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.obmol2rdmol" title="Link to this definition"></a></dt>
+<dd><p>Convert an Open Babel molecule to an RDKit molecular graph.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L99">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.xyz2rdmol_AC">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">xyz2rdmol_AC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mol_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.xyz2rdmol_AC" title="Link to this definition"></a></dt>
+<dd><p>Construct an RDKit molecular graph from XYZ geometry and connectivity.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L123">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.pdb2rdmol_AC">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">pdb2rdmol_AC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdb_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.pdb2rdmol_AC" title="Link to this definition"></a></dt>
+<dd><p>Construct an RDKit molecular graph from PDB geometry and connectivity.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L137">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.rdmol2x_pos">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">rdmol2x_pos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdmol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.rdmol2x_pos" title="Link to this definition"></a></dt>
+<dd><p>Extract atomic features and Cartesian positions from an RDKit molecule.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L159">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.generate_atoms_edge_index">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">generate_atoms_edge_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atoms_adjacent_matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.array</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Chem.rdchem.Mol</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.generate_atoms_edge_index" title="Link to this definition"></a></dt>
+<dd><p>Construct atom-level graph edge indices.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L170">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.atoms2bonds_edge_index">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">atoms2bonds_edge_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atoms_edge_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.array</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Chem.rdchem.Mol</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.atoms2bonds_edge_index" title="Link to this definition"></a></dt>
+<dd><p>Convert atom connections to bond-level graph edge indices.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L197">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.generate_angel_edge_bondes">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">generate_angel_edge_bondes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atoms_pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.array</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atoms_edge_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.array</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.generate_angel_edge_bondes" title="Link to this definition"></a></dt>
+<dd><p>Construct angular relationships between molecular graph bonds.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L221">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.Is_bonds_edge_index">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">Is_bonds_edge_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bonds_edge_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bonds_x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.Is_bonds_edge_index" title="Link to this definition"></a></dt>
+<dd><p>Check membership in the molecular bond-edge indices.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L243">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.generate_data">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">generate_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atomicNumList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xyz_coordinates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rdmol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matrix_mol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.generate_data" title="Link to this definition"></a></dt>
+<dd><p>Assemble molecular graph features for the model input format.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L251">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.HessiantoHiHij">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">HessiantoHiHij</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Hessian</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.tensor</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atoms_edge_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.tensor</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.HessiantoHiHij" title="Link to this definition"></a></dt>
+<dd><p>Partition a Cartesian Hessian into atomic diagonal and pair blocks.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L275">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.str2dedipole">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">str2dedipole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atoms_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.str2dedipole" title="Link to this definition"></a></dt>
+<dd><p>Parse dipole-derivative values from molecular archive text.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L287">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.str2polar">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">str2polar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atoms_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.str2polar" title="Link to this definition"></a></dt>
+<dd><p>Parse polarizability values from molecular archive text.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L291">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.str2depolar">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">str2depolar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atoms_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.str2depolar" title="Link to this definition"></a></dt>
+<dd><p>Parse polarizability-derivative values from molecular archive text.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L300">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.str2hessian">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">str2hessian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atoms_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.str2hessian" title="Link to this definition"></a></dt>
+<dd><p>Parse Cartesian Hessian values from molecular archive text.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L304">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.arc2tensor">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">arc2tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arc_filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.arc2tensor" title="Link to this definition"></a></dt>
+<dd><p>Convert molecular archive quantities to tensor-based model inputs.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L314">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.shiftactfromfile">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">shiftactfromfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b_filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.shiftactfromfile" title="Link to this definition"></a></dt>
+<dd><p>Read atomwise NMR quantities from a source file.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L338">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.file2pt">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">file2pt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xyz_pdb_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arc_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.file2pt" title="Link to this definition"></a></dt>
+<dd><p>Convert a molecular source file to tensor-based model data.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L355">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.legacy.function.rdmol2pt">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.legacy.function.</span></span><span class="sig-name descname"><span class="pre">rdmol2pt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdmol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Chem.rdchem.Mol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.legacy.function.rdmol2pt" title="Link to this definition"></a></dt>
+<dd><p>Convert an RDKit molecular graph to tensor-based model data.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/legacy/function.py#L392">Source code</a></p>
+</dd></dl>
+
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="module-legacy-extract_spectra.html" class="btn btn-neutral float-left" title="openmolspec.legacy.extract_spectra" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="module-maintenance-parse_zinc_v2_nmr.html" class="btn btn-neutral float-right" title="openmolspec.maintenance.parse_zinc_v2_nmr" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

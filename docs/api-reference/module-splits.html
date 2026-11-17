@@ -1,0 +1,261 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>openmolspec.split &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/api-reference/module-splits.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Models" href="category-models.html" />
+    <link rel="prev" title="openmolspec.datasets.splits" href="module-datasets-splits.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../zh/api-reference/module-splits.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">Tasks by spectroscopy family</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="category-data.html">Data access</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="module-datasets.html">openmolspec.dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-datasets-splits.html">openmolspec.datasets.splits</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">openmolspec.split</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="category-models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-learning.html">Training and evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-spectroscopy.html">Spectroscopy and record schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-processing.html">Data processing and releases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-agents.html">Agent tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-utilities.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API reference</a></li>
+          <li class="breadcrumb-item"><a href="category-data.html">Data access</a></li>
+      <li class="breadcrumb-item active">openmolspec.split</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api-reference/module-splits.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="openmolspec-split">
+<h1>openmolspec.split<a class="headerlink" href="#openmolspec-split" title="Link to this heading"></a></h1>
+<p>Deterministic grouped splits for user-owned spectroscopy records.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.split.scaffold_group_id" title="openmolspec.split.scaffold_group_id"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.split.scaffold_group_id()</span></code></a></p></td>
+<td><p>Generate a connectivity-based key for a molecular scaffold.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.split.molecular_group" title="openmolspec.split.molecular_group"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.split.molecular_group()</span></code></a></p></td>
+<td><p>Assign a standard molecular identity and a split-group key.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.split.split_records" title="openmolspec.split.split_records"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.split.split_records()</span></code></a></p></td>
+<td><p>Export deterministic grouped training, validation and test files.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function" id="module-openmolspec.split">
+<dt class="sig sig-object py" id="openmolspec.split.scaffold_group_id">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.split.</span></span><span class="sig-name descname"><span class="pre">scaffold_group_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scaffold</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.split.scaffold_group_id" title="Link to this definition"></a></dt>
+<dd><p>Generate a connectivity-based key for a molecular scaffold.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>scaffold</strong> (<em>str</em>) – Scaffold SMILES or a 14-letter standard InChIKey connectivity block.
+The optional prefix <code class="docutils literal notranslate"><span class="pre">'scaffold:'</span></code> is accepted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">'scaffold:'</span></code> followed by the normalized connectivity block.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the scaffold cannot be assigned a standard molecular identity.</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/split.py#L15">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.split.molecular_group">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.split.</span></span><span class="sig-name descname"><span class="pre">molecular_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smiles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'scaffold'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.split.molecular_group" title="Link to this definition"></a></dt>
+<dd><p>Assign a standard molecular identity and a split-group key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>smiles</strong> (<em>str</em>) – Molecular structure to group.</p></li>
+<li><p><strong>method</strong> (<em>{'scaffold'</em><em>, </em><em>'random'}</em><em>, </em><em>default 'scaffold'</em>) – Scaffold grouping uses an achiral Bemis–Murcko scaffold after standard
+InChI normalization. Random grouping uses molecular connectivity.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Full standard InChIKey, group key and parsed input molecule. Acyclic
+molecules use connectivity as their scaffold-group fallback.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple of (str, str, rdkit.Chem.Mol)</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the structure, identity conversion or grouping method is invalid.</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/split.py#L44">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.split.split_records">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.split.</span></span><span class="sig-name descname"><span class="pre">split_records</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">records</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'scaffold'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2026</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratios</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.8,</span> <span class="pre">0.1,</span> <span class="pre">0.1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'user_supplied'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'experimental'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.split.split_records" title="Link to this definition"></a></dt>
+<dd><p>Export deterministic grouped training, validation and test files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>records</strong> (<em>iterable</em><em> of </em><em>dict</em>) – Spectroscopy records containing <code class="docutils literal notranslate"><span class="pre">smiles</span></code> or <code class="docutils literal notranslate"><span class="pre">kekule_smiles</span></code>.
+Other molecular, spectral and acquisition fields are preserved.</p></li>
+<li><p><strong>destination</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – New directory for three JSONL files and <code class="docutils literal notranslate"><span class="pre">split-manifest.json</span></code>.</p></li>
+<li><p><strong>method</strong> (<em>{'scaffold'</em><em>, </em><em>'random'}</em><em>, </em><em>default 'scaffold'</em>) – Group molecules by achiral normalized scaffold or connectivity.</p></li>
+<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>default 2026</em>) – Seed incorporated into the deterministic SHA-256 group assignment.</p></li>
+<li><p><strong>ratios</strong> (<em>tuple</em><em> of </em><em>float</em><em>, </em><em>default</em><em> (</em><em>0.8</em><em>, </em><em>0.1</em><em>, </em><em>0.1</em><em>)</em>) – Training, validation and test proportions; nonnegative and summing to
+one. Complete groups are assigned together, so row counts vary.</p></li>
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>default 'user_supplied'</em>) – Data-source label written to the manifest.</p></li>
+<li><p><strong>domain</strong> (<em>{'experimental'</em><em>, </em><em>'computed'}</em><em>, </em><em>default 'experimental'</em>) – Origin of the spectra written to the manifest.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Manifest with per-file counts and SHA-256 values, grouping policy,
+source fingerprint, requested ratios, seed and original split counts.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>FileExistsError</strong> – If the destination already exists.</p></li>
+<li><p><strong>ValueError</strong> – If records or settings are invalid, or one connectivity receives
+conflicting scaffold roles. Exports are staged before publication.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">manifest</span> <span class="o">=</span> <span class="n">split_records</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="s1">'my-data'</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">'scaffold'</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">manifest</span><span class="p">[</span><span class="s1">'groups_disjoint'</span><span class="p">]</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/split.py#L82">Source code</a></p>
+</dd></dl>
+
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="module-datasets-splits.html" class="btn btn-neutral float-left" title="openmolspec.datasets.splits" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="category-models.html" class="btn btn-neutral float-right" title="Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

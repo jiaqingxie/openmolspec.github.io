@@ -1,0 +1,591 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>使用 ICEBERG 预测 MS/MS &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/notebooks/ms-forward-iceberg.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="多谱 → 结构（SpectraLLM）" href="multispectral-spectrallm-generation.html" />
+    <link rel="prev" title="使用 GLACIER 预测 MS/MS" href="ms-forward-glacier.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../notebooks/ms-forward-iceberg.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#theory-simulations">Theory simulations / 理论模拟</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#nmr">核磁共振 NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ms">质谱 MS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman">红外 / 拉曼 IR / Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id2">多谱联合</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#id3">暂不推进</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="datasets-overview.html">探索谱学数据集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-annotation-magma.html">MS/MS 碎片指认</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-forward-glacier.html">使用 GLACIER 预测 MS/MS</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">使用 ICEBERG 预测 MS/MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-assignment.html">峰到原子的指认</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-c.html">从 ¹³C NMR 解析结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">从 ¹H NMR 解析结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-hc.html">从 ¹H + ¹³C NMR 解析结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-m2s.html">结构到谱检索：¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-s2m.html">谱到结构检索：¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">结构到谱检索：¹H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">谱到结构检索：¹H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-m2s.html">结构到谱检索：¹H + ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-s2m.html">谱到结构检索：¹H + ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-solvent_transfer.html">跨溶剂化学位移迁移</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdk-inference.html">Python SDK：真实 NMR 推理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdk-training-preflight.html">训练数据准备与启动前检查</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking.html">候选重排：IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking-hc.html">候选重排：IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-ms-isotopes.html">质谱：同位素包络与分辨率</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-nmr-fourier.html">NMR：从自由感应衰减到频谱</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-nmr-inversion.html">NMR 反演：恢复弛豫时间分布</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-vibrational-broadening.html">IR 与 Raman：简正模式和谱线展宽</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-forward.html">从分子构象预测 IR 与 Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir.html">由 IR 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman.html">由 IR + Raman 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman_hc.html">由 IR + Raman + NMR 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-raman.html">由 Raman 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-generation.html">结构生成：IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-generation-hc.html">结构生成：IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval.html">结构检索：IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-hc.html">结构检索：IR + Raman + NMR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">教程</a></li>
+      <li class="breadcrumb-item active">使用 ICEBERG 预测 MS/MS</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/ms-forward-iceberg.ipynb.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+    <p><a class="btn btn-neutral" href="../../downloads/notebooks/ms-forward-iceberg.zh.ipynb" download>下载 notebook</a></p>
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="iceberg-ms-ms">
+<h1>使用 ICEBERG 预测 MS/MS<a class="headerlink" href="#iceberg-ms-ms" title="Link to this heading"></a></h1>
+<p>在指定采集条件下预测分子的碎片质量和强度。</p>
+<p>ICEBERG 接收分子结构、加合物、碰撞能和仪器类型，通过碎片与强度预测模块生成 MS/MS 峰表。</p>
+<p>本教程读取保存的预测，解释输入输出字段，并评估结果。最后给出在新数据集上运行模型的命令。</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">SVG</span>
+<span class="n">root</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">(),</span> <span class="o">*</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">parents</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="s1">'openmolspec_bench'</span><span class="p">)</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()),</span> <span class="kc">None</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">'Run from the cloned release repository; see Quick Start'</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s1">'scripts'</span><span class="p">))</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">documentation_evidence</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_evidence</span><span class="p">,</span> <span class="n">compact</span><span class="p">,</span> <span class="n">recompute</span><span class="p">,</span> <span class="n">render</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">documentation_content</span><span class="w"> </span><span class="kn">import</span> <span class="n">results_table</span>
+<span class="n">evidence</span> <span class="o">=</span> <span class="n">load_evidence</span><span class="p">(</span><span class="s1">'ms.forward.iceberg'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Task:'</span><span class="p">,</span> <span class="n">evidence</span><span class="p">[</span><span class="s1">'task'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Examples:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">evidence</span><span class="p">[</span><span class="s1">'examples'</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Task: ms.forward.iceberg
+Examples: 3
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h2>输入与输出<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">smiles</span> <span class="pre">/</span> <span class="pre">adduct</span></code></p></td>
+<td><p>分子结构与记录中的离子/加合物类型，例如 [M+H]+ 或 [M+Na]+。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">collision_energy</span> <span class="pre">/</span> <span class="pre">instrument</span></code></p></td>
+<td><p>模型支持的碰撞能与仪器条件。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">precursor_mz</span></code></p></td>
+<td><p>记录中的前体 m/z；按作者接口解释输入条件。</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">predicted_peaks</span></code></p></td>
+<td><p>m/z 与相对强度对；图中显示预测强度最高的 100 个峰。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">similarity</span></code></p></td>
+<td><p>与全部实测参考峰比较的余弦/熵相似度，同时统计跳过记录。</p></td>
+</tr>
+</tbody>
+</table>
+<p>查看下面的示例记录。长数组显示长度与前几个数值，下载 JSON 可获取完整数组。</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">example</span> <span class="ow">in</span> <span class="n">evidence</span><span class="p">[</span><span class="s1">'examples'</span><span class="p">][:</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">compact</span><span class="p">(</span><span class="n">example</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+  "input": {
+    "smiles": "C/C1=C\\[C@@H](C)C/C=C/[C@H]2[C@@H]3O[C@]3(C)[C@@H](C)[C@H]3[C@H](Cc4c[nH]c5ccccc45)NC(=O)[C@]32C(=O)/C=C/C(=O)[C@@H]1O",
+    "adduct": "[M+Na]+",
+    "collision_energy": "35.0",
+    "instrument": "Orbitrap",
+    "precursor_mz": 551.2511
+  },
+  "sample_id": "MassSpecGymID0000403",
+  "output": {
+    "predicted_peaks_top100": {
+      "length": 100,
+      "first_values": [
+        [
+          93.06987621515076,
+          0.0043686628341674805
+        ],
+        [
+          129.0573002311496,
+          0.004620126914232969
+        ],
+        [
+          130.065125248125,
+          0.07967650890350342
+        ],
+        [
+          131.07295026510042,
+          0.011109611950814724
+        ],
+        [
+          135.00526531669922,
+          0.007010995410382748
+        ],
+        [
+          138.031421622966,
+          0.004752202425152063
+        ],
+        [
+          140.0470716569168,
+          0.004455197136849165
+        ],
+        [
+          144.08076276510042,
+          0.013012709096074104
+        ]
+      ]
+    }
+  },
+  "reference": {
+    "observed_peaks": {
+      "length": 12,
+      "first_values": [
+        [
+          160.0366,
+          0.03803803803803804
+        ],
+        [
+          240.0992,
+          0.03803803803803804
+        ],
+        [
+          287.1152,
+          0.04704704704704705
+        ],
+        [
+          289.0945,
+          0.042042042042042045
+        ],
+        [
+          317.0897,
+          0.03303303303303303
+        ],
+        [
+          352.1543,
+          0.04104104104104104
+        ],
+        [
+          371.1727,
+          0.04104104104104104
+        ],
+        [
+          375.1805,
+          0.04004004004004004
+        ]
+      ]
+    }
+  },
+  "metrics": {
+    "cosine_similarity": 0.9412847417548776,
+    "entropy_similarity": 0.6221104979157452,
+    "predicted_nonzero_bins": 100,
+    "reference_nonzero_bins": 12
+  }
+}
+{
+  "input": {
+    "smiles": "CC[C@H](C)/C=C/C1=CC2=C(Cl)C(=O)[C@@]3(C)OC(=O)C(C(=O)[C@@H](C)[C@@H](C)O)=C3C2=CO1",
+    "adduct": "[M+H]+",
+    "collision_energy": "10.0",
+    "instrument": "Orbitrap",
+    "precursor_mz": 433.1407
+  },
+  "sample_id": "MassSpecGymID0000586",
+  "output": {
+    "predicted_peaks_top100": {
+      "length": 100,
+      "first_values": [
+        [
+          28.03075184552948,
+          0.011786120943725109
+        ],
+        [
+          29.038576862504883,
+          0.009780884720385075
+        ],
+        [
+          29.03857687752948,
+          0.0049770972691476345
+        ],
+        [
+          30.046401879480285,
+          0.0073243179358541965
+        ],
+        [
+          31.054226911480285,
+          0.010341393761336803
+        ],
+        [
+          44.025668761423034,
+          0.011736572720110416
+        ],
+        [
+          45.03349377839844,
+          0.010735795833170414
+        ],
+        [
+          45.033493793423034,
+          0.00588536262512207
+        ]
+      ]
+    }
+  },
+  "reference": {
+    "observed_peaks": [
+      [
+        333.0888,
+        0.14914914914914915
+      ],
+      [
+        405.1463,
+        0.055055055055055056
+      ],
+      [
+        433.1412,
+        1.0
+      ]
+    ]
+  },
+  "metrics": {
+    "cosine_similarity": 0.9591707662365022,
+    "entropy_similarity": 0.6137747490784475,
+    "predicted_nonzero_bins": 100,
+    "reference_nonzero_bins": 3
+  }
+}
+{
+  "input": {
+    "smiles": "COc1c(O)c2c(=O)cc3c4c5c(cc(=O)c6c(O)c(OC)c(C[C@@H](C)O)c(c(c1C[C@@H](C)O)c24)c65)OCO3",
+    "adduct": "[M+H]+",
+    "collision_energy": "35.0",
+    "instrument": "Orbitrap",
+    "precursor_mz": 535.1593
+  },
+  "sample_id": "MassSpecGymID0000781",
+  "output": {
+    "predicted_peaks_top100": {
+      "length": 100,
+      "first_values": [
+        [
+          30.010017058542175,
+          0.06472761183977127
+        ],
+        [
+          31.017842075517578,
+          0.04706854745745659
+        ],
+        [
+          31.017842090542175,
+          0.0231085903942585
+        ],
+        [
+          32.02566709249298,
+          0.045019593089818954
+        ],
+        [
+          32.02566710751758,
+          0.0222922433167696
+        ],
+        [
+          33.03349212449298,
+          0.0608987919986248
+        ],
+        [
+          39.994365355661316,
+          0.03386858478188515
+        ],
+        [
+          39.99436690538208,
+          0.06523498892784119
+        ]
+      ]
+    }
+  },
+  "reference": {
+    "observed_peaks": {
+      "length": 37,
+      "first_values": [
+        [
+          355.0601,
+          0.04904904904904905
+        ],
+        [
+          368.0679,
+          0.03403403403403404
+        ],
+        [
+          369.0757,
+          0.037037037037037035
+        ],
+        [
+          373.0707,
+          0.03903903903903904
+        ],
+        [
+          381.0757,
+          0.03303303303303303
+        ],
+        [
+          383.055,
+          0.1981981981981982
+        ],
+        [
+          384.0628,
+          0.08208208208208208
+        ],
+        [
+          385.0707,
+          0.05105105105105105
+        ]
+      ]
+    }
+  },
+  "metrics": {
+    "cosine_similarity": 0.06789852458838831,
+    "entropy_similarity": 0.12688401721063336,
+    "predicted_nonzero_bins": 100,
+    "reference_nonzero_bins": 37
+  }
+}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>评估预测<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>使用余弦相似度与熵相似度比较预测谱和实测谱。</p>
+<p>表格给出每次运行的数据集与指标。后续代码从绘图使用的预测值重新计算汇总结果。</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">results_table</span><span class="p">(</span><span class="n">evidence</span><span class="p">,</span> <span class="kc">False</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">recompute</span><span class="p">(</span><span class="n">evidence</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p>| Dataset / scope | Model / variant | Metric | Value |
+| --- | --- | --- | ---: |
+| recorded evaluation | recorded model | cosine_similarity | 0.4625 |
+| recorded evaluation | recorded model | entropy_similarity | 0.369847 |</p>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+  "scope": "Saved model outputs are shown directly; aggregate metrics are in the run table.",
+  "recorded_runs": 1,
+  "real_examples": 3
+}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>查看结果图<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>实测与预测 MS/MS 谱。</p>
+<p>比较预测与参考，查看返回的结构或峰位置。图由上方读取的记录直接生成。</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="k">for</span> <span class="n">example_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">figure</span> <span class="o">=</span> <span class="n">render</span><span class="p">(</span><span class="s1">'ms.forward.iceberg'</span><span class="p">,</span> <span class="n">evidence</span><span class="p">,</span> <span class="n">example_index</span><span class="o">=</span><span class="n">example_index</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+    <span class="n">figure</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'svg'</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'Date'</span><span class="p">:</span> <span class="kc">None</span><span class="p">})</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">figure</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/cb2997990d212aa617a81f5bcbc624bc34403c7fe04ddb127eb110b7d5e78c61.svg" src="../_images/cb2997990d212aa617a81f5bcbc624bc34403c7fe04ddb127eb110b7d5e78c61.svg" />
+<img alt="../_images/9f2fd932e144dacace3bde93c77cfbe80c8663b64ca9a3f4cb5b5186362c4949.svg" src="../_images/9f2fd932e144dacace3bde93c77cfbe80c8663b64ca9a3f4cb5b5186362c4949.svg" />
+<img alt="../_images/01fa158d7191f4d6da7da2e94a3e31e6b7db75bf0cd7b613dede22df58a8c907.svg" src="../_images/01fa158d7191f4d6da7da2e94a3e31e6b7db75bf0cd7b613dede22df58a8c907.svg" />
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>运行模型<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>按任务指南配置环境和权重，在 benchmark runner 中选择本任务，即可评估自己的数据集。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tasks<span class="w"> </span>ms.forward.iceberg<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/ms-forward-iceberg.json
+</pre></div>
+</div>
+<p><a class="reference internal" href="../tasks/ms-forward-iceberg.html"><span class="std std-doc">Task</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick start</span></a></p>
+</section>
+<section id="id5">
+<h2>参考文献<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Wang, R., Manjrekar, M., Mahjour, B., Avila-Pacheco, J., et al. Neural Spectral Prediction for Structure Elucidation with Tandem Mass Spectrometry. bioRxiv (2025). doi:10.1101/2025.05.28.656653. <a class="reference external" href="https://doi.org/10.1101/2025.05.28.656653">Source</a></p></li>
+<li><p>Bushuiev, R., Bushuiev, A., de Jonge, N. F., Young, A., et al. MassSpecGym: A benchmark for the discovery and identification of molecules. Advances in Neural Information Processing Systems 37, Datasets and Benchmarks Track (2024). arXiv:2410.23326. <a class="reference external" href="https://arxiv.org/abs/2410.23326">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="ms-forward-glacier.html" class="btn btn-neutral float-left" title="使用 GLACIER 预测 MS/MS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="multispectral-spectrallm-generation.html" class="btn btn-neutral float-right" title="多谱 → 结构（SpectraLLM）" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

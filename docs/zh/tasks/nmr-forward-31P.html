@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>31P 化学位移预测 &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/tasks/nmr-forward-31P.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script>window.MathJax = {"chtml": {"displayAlign": "left"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="11B 化学位移预测" href="nmr-forward-11B.html" />
+    <link rel="prev" title="19F 化学位移预测" href="nmr-forward-19F.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../tasks/nmr-forward-31P.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">按谱型浏览任务</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#nmr"><span class="xref myst">核磁共振 NMR</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ms"><span class="xref myst">质谱 MS</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman"><span class="xref myst">红外 / 拉曼 IR / Raman</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id2"><span class="xref myst">多谱联合</span></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#id3"><span class="xref myst">暂不推进</span></a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="nmr.html">核磁共振 NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms.html">质谱 MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational.html">红外 / 拉曼 IR / Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multimodal.html">多谱联合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deferred.html">暂不推进</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">按谱型浏览任务</a></li>
+          <li class="breadcrumb-item"><a href="nmr.html">核磁共振 NMR</a></li>
+      <li class="breadcrumb-item active">31P 化学位移预测</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tasks/nmr-forward-31P.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="p">
+<h1>31P 化学位移预测<a class="headerlink" href="#p" title="Link to this heading"></a></h1>
+<p>根据分子结构预测 31P 化学位移。利用返回的原子编号，可以把预测值标到分子结构上，也可以与实测峰比较。</p>
+<section id="id1">
+<h2>输入是什么<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">smiles</span> <span class="pre">/</span> <span class="pre">geometry</span></code></p></td>
+<td><p>有效分子结构及相容的三维构象，必须保留原子顺序。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nucleus</span></code></p></td>
+<td><p>31P，权重必须覆盖该核种。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reference</span> <span class="pre">peaks</span></code></p></td>
+<td><p>评测时提供实测 ppm 标签；标签不作为模型推理输入。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h2>输出是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">prediction_ppm</span></code></p></td>
+<td><p>逐原子化学位移（ppm）及原子编号，或整理后的峰列表。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">error</span> <span class="pre">/</span> <span class="pre">coverage</span></code></p></td>
+<td><p>与参考谱匹配后的误差及峰覆盖率。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h2>真实运行案例<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>下面展示示例的输入、预测与参考。下载 JSON 可获取完整数值数组及更多示例。</p>
+<p><img alt="nmr.forward.31P actual results" src="../_images/nmr-forward-31P.png" /></p>
+<p><a class="reference download internal" download="" href="../_downloads/8aaf540cbe238741e8256d6ee183b991/nmr-forward-31P.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/afd425668bdbdba93ab154aec8bb7234/nmr-forward-31P.png"><span class="xref download myst">PNG</span></a> · <a class="reference download internal" download="" href="../_downloads/6ea4cf694dbfef25d35ee371dcd995a9/nmr-forward-31P.json"><span class="xref download myst">Full input/output JSON</span></a></p>
+<details><summary>展开查看实际输入与输出字段</summary>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COc1ccc(P(=O)(CCCc2ccccc2)OCC)cc1"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"nucleus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"atom_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="mi">6</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"prediction_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">246.23046875</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">44.90999984741211</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="id4">
+<h2>实际评测结果<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>mae_ppm</p></td>
+<td class="text-right"><p>226.449</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>rmse_ppm</p></td>
+<td class="text-right"><p>237.252</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h2>模型与方法<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>使用固态 NMRNet 权重，为准备好的分子构象生成逐原子 F/P 预测。基准将保存的预测与严格配对的 LMDB 标签计分；调用时指定冻结推理目录，并选择跨数据域比较选项。</p>
+<p>MAE 和 RMSE 的单位均为 ppm。</p>
+</section>
+<section id="id6">
+<h2>复现方式<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../notebooks/nmr-forward-31P.html"><span class="std std-doc">Notebook with executed figures</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick Start</span></a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tasks<span class="w"> </span>nmr.forward.31P<span class="w"> </span>--fp-inference-root<span class="w"> </span>/path/to/frozen-fp<span class="w"> </span>--allow-cross-domain-diagnostic<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/nmr-forward-31P-new.json
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2>调用模型与微调<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.benchmark</span><span class="w"> </span><span class="kn">import</span> <span class="n">Benchmark</span>
+<span class="n">benchmark</span> <span class="o">=</span> <span class="n">Benchmark</span><span class="p">(</span><span class="n">workspace</span><span class="o">=</span><span class="s1">'/path/to/workspace'</span><span class="p">,</span>
+    <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/sdk-env/bin/python'</span><span class="p">,</span>
+    <span class="n">models_root</span><span class="o">=</span><span class="s1">'/path/to/models'</span><span class="p">,</span>
+    <span class="n">nmr_python</span><span class="o">=</span><span class="s1">'/path/to/nmr-env/bin/python'</span><span class="p">,</span>
+    <span class="n">fp_inference_root</span><span class="o">=</span><span class="s1">'/path/to/frozen-fp'</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">benchmark</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">'nmr.forward.31P'</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s1">'31P-results.json'</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">allow_cross_domain_diagnostic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>微调使用 <a class="reference external" href="https://github.com/Colin-Jay/NMRNet">NMRNet 作者训练实现</a>：准备对应核种的逐原子标签、结构／坐标、目标掩码及 train/val LMDB。实现提供 <code class="docutils literal notranslate"><span class="pre">atom_regloss_mae</span></code> 与 <code class="docutils literal notranslate"><span class="pre">atom_regloss_mse</span></code>，在有标签的原子上计算目标。保留 scaler 和参考标准，在验证集选择 checkpoint。该训练流程通过作者实现运行。</p>
+<div class="math notranslate nohighlight">
+\[L_{\rm MAE}=\frac{1}{N_{\rm labelled}}\sum_{i\in\mathcal M}|\hat\delta_i-\delta_i|,\qquad L_{\rm MSE}=\frac{1}{N_{\rm labelled}}\sum_{i\in\mathcal M}(\hat\delta_i-\delta_i)^2.\]</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>模型设置</p></th>
+<th class="head"><p>值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Checkpoint</p></td>
+<td><p>NMRNet 31P checkpoint</p></td>
+</tr>
+<tr class="row-odd"><td><p>Training domain</p></td>
+<td><p>solid-state</p></td>
+</tr>
+<tr class="row-even"><td><p>Shift unit</p></td>
+<td><p>ppm</p></td>
+</tr>
+</tbody>
+</table>
+<details><summary>来源报告与 SHA-256 指纹</summary>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/fp_frozen_fresh_diagnostic_20261115.json">fp_frozen_fresh_diagnostic_20261115.json</a> — SHA-256 <code class="docutils literal notranslate"><span class="pre">7a44203bd5826e778a9006edd92dee0ec71e47930c2a980f6082313974c68475</span></code></p></li>
+</ul>
+</details>
+<p><a class="reference external" href="https://github.com/Colin-Jay/NMRNet">Model implementation / 模型实现</a> · <a class="reference internal" href="../model-audit.html"><span class="std std-doc">Model review / 模型检查</span></a></p>
+</section>
+<section id="id8">
+<h2>参考文献<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. <a class="reference external" href="https://doi.org/10.1038/s43588-025-00783-z">Source</a></p></li>
+<li><p>OpenDataLab. WanJuan MolSpectra, version 1.0.3. Experimental molecular spectroscopy dataset. <a class="reference external" href="https://opendatalab.com/">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="nmr-forward-19F.html" class="btn btn-neutral float-left" title="19F 化学位移预测" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="nmr-forward-11B.html" class="btn btn-neutral float-right" title="11B 化学位移预测" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

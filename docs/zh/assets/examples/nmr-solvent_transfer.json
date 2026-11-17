@@ -1,0 +1,195 @@
+{
+  "task": "nmr.solvent_transfer",
+  "enabled": true,
+  "source_files": [
+    "solvent_transfer_reference32_20261116.json"
+  ],
+  "runs": [
+    {
+      "dataset": "recorded evaluation",
+      "status": "passed",
+      "metrics": {
+        "13C": {
+          "atoms": 140,
+          "molecules": 13,
+          "mae_ppm": 1.0942857142857159,
+          "unchanged_shift_mae_ppm": 1.1637142857142861,
+          "rmse_ppm": 1.9093510490665238
+        },
+        "1H": {
+          "atoms": 156,
+          "molecules": 19,
+          "mae_ppm": 0.13762820512820512,
+          "unchanged_shift_mae_ppm": 0.13538461538461527,
+          "rmse_ppm": 0.3761793421174233
+        }
+      },
+      "counts": {
+        "distinct_molecules": 32,
+        "paired_atoms": 296,
+        "skipped_pairs": 3
+      },
+      "seed": 42
+    }
+  ],
+  "examples": [
+    {
+      "input": {
+        "nucleus": "1H",
+        "source_ppm": 1.45,
+        "source_solvent": "CD3OD",
+        "target_solvent": "acetone-d6",
+        "query_connectivity": "C1CCCCC1"
+      },
+      "output": {
+        "source_ppm": 1.45,
+        "predicted_target_ppm": 1.3799999999999997,
+        "predicted_delta_ppm": -0.07000000000000028,
+        "source_solvent": "CD3OD",
+        "target_solvent": "acetone-d6",
+        "nucleus": "1H",
+        "query_connectivity": "C1CCCCC1",
+        "reference": {
+          "identity": "C1COCCO1",
+          "molecule_id": "10016061",
+          "atom_id": "10093018",
+          "source_ppm": 3.66,
+          "target_ppm": 3.59,
+          "source_spectrum_ids": [
+            "20197666"
+          ],
+          "target_spectrum_ids": [
+            "20197080"
+          ]
+        },
+        "tanimoto_similarity": 0.125,
+        "same_connectivity_excluded": true,
+        "method": "nearest_paired_experimental_reference_delta",
+        "model_kind": "retrieval_baseline_not_neural_model",
+        "query_molecule_id": "10811",
+        "query_atom_id": "10046537",
+        "target_reference_ppm": 1.43,
+        "source_spectrum_ids": [
+          "20197663"
+        ],
+        "target_spectrum_ids": [
+          "20197659"
+        ]
+      }
+    },
+    {
+      "input": {
+        "nucleus": "1H",
+        "source_ppm": 1.45,
+        "source_solvent": "CD3OD",
+        "target_solvent": "acetone-d6",
+        "query_connectivity": "C1CCCCC1"
+      },
+      "output": {
+        "source_ppm": 1.45,
+        "predicted_target_ppm": 1.3799999999999997,
+        "predicted_delta_ppm": -0.07000000000000028,
+        "source_solvent": "CD3OD",
+        "target_solvent": "acetone-d6",
+        "nucleus": "1H",
+        "query_connectivity": "C1CCCCC1",
+        "reference": {
+          "identity": "C1COCCO1",
+          "molecule_id": "10016061",
+          "atom_id": "10093018",
+          "source_ppm": 3.66,
+          "target_ppm": 3.59,
+          "source_spectrum_ids": [
+            "20197666"
+          ],
+          "target_spectrum_ids": [
+            "20197080"
+          ]
+        },
+        "tanimoto_similarity": 0.125,
+        "same_connectivity_excluded": true,
+        "method": "nearest_paired_experimental_reference_delta",
+        "model_kind": "retrieval_baseline_not_neural_model",
+        "query_molecule_id": "10811",
+        "query_atom_id": "10046538",
+        "target_reference_ppm": 1.43,
+        "source_spectrum_ids": [
+          "20197663"
+        ],
+        "target_spectrum_ids": [
+          "20197659"
+        ]
+      }
+    },
+    {
+      "input": {
+        "nucleus": "1H",
+        "source_ppm": 1.45,
+        "source_solvent": "CD3OD",
+        "target_solvent": "acetone-d6",
+        "query_connectivity": "C1CCCCC1"
+      },
+      "output": {
+        "source_ppm": 1.45,
+        "predicted_target_ppm": 1.3799999999999997,
+        "predicted_delta_ppm": -0.07000000000000028,
+        "source_solvent": "CD3OD",
+        "target_solvent": "acetone-d6",
+        "nucleus": "1H",
+        "query_connectivity": "C1CCCCC1",
+        "reference": {
+          "identity": "C1COCCO1",
+          "molecule_id": "10016061",
+          "atom_id": "10093018",
+          "source_ppm": 3.66,
+          "target_ppm": 3.59,
+          "source_spectrum_ids": [
+            "20197666"
+          ],
+          "target_spectrum_ids": [
+            "20197080"
+          ]
+        },
+        "tanimoto_similarity": 0.125,
+        "same_connectivity_excluded": true,
+        "method": "nearest_paired_experimental_reference_delta",
+        "model_kind": "retrieval_baseline_not_neural_model",
+        "query_molecule_id": "10811",
+        "query_atom_id": "10046539",
+        "target_reference_ppm": 1.43,
+        "source_spectrum_ids": [
+          "20197663"
+        ],
+        "target_spectrum_ids": [
+          "20197659"
+        ]
+      }
+    }
+  ],
+  "selection_policy": "First recorded example in the cited run; not selected by prediction quality.",
+  "training_performed": false,
+  "plot": {
+    "kind": "solvent",
+    "metrics": {
+      "13C": {
+        "atoms": 140,
+        "molecules": 13,
+        "mae_ppm": 1.0942857142857159,
+        "unchanged_shift_mae_ppm": 1.1637142857142861,
+        "rmse_ppm": 1.9093510490665238
+      },
+      "1H": {
+        "atoms": 156,
+        "molecules": 19,
+        "mae_ppm": 0.13762820512820512,
+        "unchanged_shift_mae_ppm": 0.13538461538461527,
+        "rmse_ppm": 0.3761793421174233
+      }
+    },
+    "label": "32 molecules / 296 paired atoms; reference-retrieval baseline"
+  },
+  "source_hashes": {
+    "solvent_transfer_reference32_20261116.json": "7532dc2b785a93aa51323934bb748b768f1bfc7c820809bc2065d0840afc543f"
+  },
+  "status": "recorded_results"
+}

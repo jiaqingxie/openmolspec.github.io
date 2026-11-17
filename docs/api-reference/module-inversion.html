@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>openmolspec.inversion &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/api-reference/module-inversion.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="openmolspec.parsing.gaussian" href="module-parsing-gaussian.html" />
+    <link rel="prev" title="openmolspec.core.schema" href="module-core-schema.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../zh/api-reference/module-inversion.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">Tasks by spectroscopy family</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="category-data.html">Data access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-learning.html">Training and evaluation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="category-spectroscopy.html">Spectroscopy and record schema</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="module-core-constants.html">openmolspec.core.constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-core-schema.html">openmolspec.core.schema</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">openmolspec.inversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-parsing-gaussian.html">openmolspec.parsing.gaussian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-parsing-trajectory.html">openmolspec.parsing.trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-core.html">openmolspec.core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-parsing.html">openmolspec.parsing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="category-processing.html">Data processing and releases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-agents.html">Agent tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-utilities.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API reference</a></li>
+          <li class="breadcrumb-item"><a href="category-spectroscopy.html">Spectroscopy and record schema</a></li>
+      <li class="breadcrumb-item active">openmolspec.inversion</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api-reference/module-inversion.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="openmolspec-inversion">
+<h1>openmolspec.inversion<a class="headerlink" href="#openmolspec-inversion" title="Link to this heading"></a></h1>
+<p>Nonnegative regularized inversion of time-domain NMR measurements.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.inversion.kernel" title="openmolspec.inversion.kernel"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.inversion.kernel()</span></code></a></p></td>
+<td><p>Construct a relaxation or diffusion inversion matrix.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.inversion.InversionResult" title="openmolspec.inversion.InversionResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">openmolspec.inversion.InversionResult</span></code></a></p></td>
+<td><p>Recovered nonnegative distribution and its fitted signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.inversion.invert" title="openmolspec.inversion.invert"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.inversion.invert()</span></code></a></p></td>
+<td><p>Recover nonnegative amplitudes with Tikhonov regularization.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function" id="module-openmolspec.inversion">
+<dt class="sig sig-object py" id="openmolspec.inversion.kernel">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.inversion.</span></span><span class="sig-name descname"><span class="pre">kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'T2'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.inversion.kernel" title="Link to this definition"></a></dt>
+<dd><p>Construct a relaxation or diffusion inversion matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>samples</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – Strictly increasing, finite, nonnegative acquisition coordinates.
+Relaxation experiments use time; diffusion experiments use b-values.</p></li>
+<li><p><strong>grid</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_bins</em><em>,</em><em>)</em>) – Strictly increasing positive relaxation times or diffusion constants.
+Relaxation times use the same unit as <code class="docutils literal notranslate"><span class="pre">samples</span></code>; diffusion units
+are chosen so that <code class="docutils literal notranslate"><span class="pre">samples</span> <span class="pre">*</span> <span class="pre">grid</span></code> is dimensionless.</p></li>
+<li><p><strong>experiment</strong> (<em>{'T2'</em><em>, </em><em>'T1_saturation'</em><em>, </em><em>'T1_inversion'</em><em>, </em><em>'diffusion'}</em>) – Select exponential decay, saturation recovery, inversion recovery,
+or diffusion attenuation. Defaults to <code class="docutils literal notranslate"><span class="pre">'T2'</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Matrix mapping discrete component amplitudes to the measured signal.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray of shape (n_samples, n_bins)</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If coordinates are invalid, either vector has fewer than three values,
+or the experiment name is unsupported.</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/inversion.py#L9">Source code</a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="openmolspec.inversion.InversionResult">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">openmolspec.inversion.</span></span><span class="sig-name descname"><span class="pre">InversionResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fitted_signal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residuals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diagnostics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.inversion.InversionResult" title="Link to this definition"></a></dt>
+<dd><p>Recovered nonnegative distribution and its fitted signal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>grid</strong> (<em>numpy.ndarray</em>) – Relaxation-time or diffusion-constant bins supplied to <a class="reference internal" href="#openmolspec.inversion.invert" title="openmolspec.inversion.invert"><code class="xref py py-func docutils literal notranslate"><span class="pre">invert()</span></code></a>.</p></li>
+<li><p><strong>weights</strong> (<em>numpy.ndarray</em>) – Nonnegative discrete amplitudes, one per grid bin.</p></li>
+<li><p><strong>fitted_signal</strong> (<em>numpy.ndarray</em>) – Signal reconstructed by multiplying the kernel by <code class="docutils literal notranslate"><span class="pre">weights</span></code>.</p></li>
+<li><p><strong>residuals</strong> (<em>numpy.ndarray</em>) – Observed signal minus the reconstructed signal.</p></li>
+<li><p><strong>alpha</strong> (<em>float</em>) – Regularization strength used by the solver.</p></li>
+<li><p><strong>experiment</strong> (<em>str</em>) – Kernel selected for the inversion.</p></li>
+<li><p><strong>diagnostics</strong> (<em>dict</em>) – Solver convergence, iteration count, residual error, penalty norm,
+matrix condition number and coordinate counts.</p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/inversion.py#L53">Source code</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.inversion.InversionResult.grid">
+<span class="sig-name descname"><span class="pre">grid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">object</span></em><a class="headerlink" href="#openmolspec.inversion.InversionResult.grid" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">grid</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.inversion.InversionResult.weights">
+<span class="sig-name descname"><span class="pre">weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">object</span></em><a class="headerlink" href="#openmolspec.inversion.InversionResult.weights" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">weights</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.inversion.InversionResult.fitted_signal">
+<span class="sig-name descname"><span class="pre">fitted_signal</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">object</span></em><a class="headerlink" href="#openmolspec.inversion.InversionResult.fitted_signal" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">fitted_signal</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.inversion.InversionResult.residuals">
+<span class="sig-name descname"><span class="pre">residuals</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">object</span></em><a class="headerlink" href="#openmolspec.inversion.InversionResult.residuals" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">residuals</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.inversion.InversionResult.alpha">
+<span class="sig-name descname"><span class="pre">alpha</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#openmolspec.inversion.InversionResult.alpha" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">alpha</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.inversion.InversionResult.experiment">
+<span class="sig-name descname"><span class="pre">experiment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#openmolspec.inversion.InversionResult.experiment" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">experiment</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.inversion.InversionResult.diagnostics">
+<span class="sig-name descname"><span class="pre">diagnostics</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#openmolspec.inversion.InversionResult.diagnostics" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">diagnostics</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.inversion.invert">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.inversion.</span></span><span class="sig-name descname"><span class="pre">invert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'T2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'curvature'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.inversion.invert" title="Link to this definition"></a></dt>
+<dd><p>Recover nonnegative amplitudes with Tikhonov regularization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>samples</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – Acquisition coordinates accepted by <a class="reference internal" href="#openmolspec.inversion.kernel" title="openmolspec.inversion.kernel"><code class="xref py py-func docutils literal notranslate"><span class="pre">kernel()</span></code></a>.</p></li>
+<li><p><strong>signal</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – Finite observed signal, with baseline and phase corrections applied.</p></li>
+<li><p><strong>grid</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_bins</em><em>,</em><em>)</em>) – Positive component coordinates. Curvature regularization requires an
+equally spaced logarithmic grid.</p></li>
+<li><p><strong>experiment</strong> (<em>str</em><em>, </em><em>default 'T2'</em>) – Relaxation or diffusion kernel; see <a class="reference internal" href="#openmolspec.inversion.kernel" title="openmolspec.inversion.kernel"><code class="xref py py-func docutils literal notranslate"><span class="pre">kernel()</span></code></a>.</p></li>
+<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>default 0.01</em>) – Nonnegative regularization strength.</p></li>
+<li><p><strong>penalty</strong> (<em>{'curvature'</em><em>, </em><em>'identity'}</em><em>, </em><em>default 'curvature'</em>) – Second-difference smoothing on the log grid or amplitude regularization.</p></li>
+<li><p><strong>noise_std</strong> (<em>float</em><em> or </em><em>array-like</em><em>, </em><em>optional</em>) – Positive standard deviation used to weight each residual. A scalar
+applies the same weight to all measurements.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Discrete bin amplitudes, fitted signal, residuals and solver diagnostics.
+The objective is <code class="docutils literal notranslate"><span class="pre">||W(Kf</span> <span class="pre">-</span> <span class="pre">signal)||²</span> <span class="pre">+</span> <span class="pre">alpha</span> <span class="pre">*</span> <span class="pre">||Lf||²</span></code> with <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#openmolspec.inversion.InversionResult" title="openmolspec.inversion.InversionResult">InversionResult</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If inputs, noise weights or regularization settings are invalid.</p></li>
+<li><p><strong>RuntimeError</strong> – If the bounded least-squares solver does not converge.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">geomspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">recovered</span> <span class="o">=</span> <span class="n">invert</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">times</span> <span class="o">/</span> <span class="mf">0.2</span><span class="p">),</span> <span class="n">bins</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/inversion.py#L83">Source code</a></p>
+</dd></dl>
+
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>NMRInversions.jl contributors. NMRInversions.jl: inversion of NMR relaxation and diffusion measurements. Software and theory documentation. Accessed 18 November 2026. <a class="reference external" href="https://github.com/aris-mav/NMRInversions.jl">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="module-core-schema.html" class="btn btn-neutral float-left" title="openmolspec.core.schema" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="module-parsing-gaussian.html" class="btn btn-neutral float-right" title="openmolspec.parsing.gaussian" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+{
+  "audited_at": "2026-11-16T19:28:42.508301+00:00",
+  "training_performed": false,
+  "identity": "stored standard-InChI string; evaluation missing IDs generated with RDKit",
+  "scope": "molecular identity overlap, not exact spectral-record overlap; only these checkpoint-recorded train/val files",
+  "pretraining_history_completely_audited": false,
+  "independence_established": false,
+  "evaluation_views": {
+    "nmrspec_test": {
+      "records": 10000,
+      "unique_standard_inchi": 10000,
+      "sha256": "256ca2d733db0103e99aad5855bc66b73e3a0bd2117ce2bd3204b63eff0f67a2"
+    },
+    "patent_test_10k": {
+      "records": 10000,
+      "unique_standard_inchi": 10000,
+      "sha256": "4f90649fce7bbc0d1aa92056baf46ff28ca15b95880f0af8c269b87057e5808a"
+    },
+    "nmrexp_exp_10k": {
+      "records": 9183,
+      "unique_standard_inchi": 9183,
+      "sha256": "e074dab3cc749e126bea8abc348a46f895dd033e5b45a21cacb28035741a2d11"
+    },
+    "nmrgym_test": {
+      "records": 10000,
+      "unique_standard_inchi": 10000,
+      "sha256": "bf8cb0cdcaf19884349e15230206c6110a29b479b1a04bec7ec0b9e5bff3ff9b"
+    }
+  },
+  "models": {
+    "align": {
+      "checkpoint": "/mnt/shared-storage-user/xiejiaqing/OpenMolSpec/runs/f90bd7f743574d18a7f72ae72ce95e59/best.pt",
+      "run_id": "f90bd7f743574d18a7f72ae72ce95e59",
+      "checkpoint_sha256": "94e8cf0b1b53863f8909e4eb1317bd5dfbdf396a435cfead0d25d15403fd9f15",
+      "initialization_checkpoint": null,
+      "splits": {
+        "train": {
+          "path": "/mnt/shared-storage-user/xiejiaqing/OpenMolSpec/data/mix_align_v2/train.jsonl",
+          "sha256": "8b9b6e4c06c379c973e462a9ba79b86f25c37e9e0d10681f3e6078449b98b5e4",
+          "checkpoint_recorded_sha256": "8b9b6e4c06c379c973e462a9ba79b86f25c37e9e0d10681f3e6078449b98b5e4",
+          "checkpoint_fingerprint_matches": true,
+          "interpretation": "fingerprint-matched training file",
+          "records_scanned": 3608853,
+          "records_missing_stored_inchi": 0,
+          "overlap": {
+            "nmrspec_test": {
+              "overlapping_identities": 3281,
+              "evaluated_identities": 10000,
+              "fraction": 0.3281
+            },
+            "patent_test_10k": {
+              "overlapping_identities": 0,
+              "evaluated_identities": 10000,
+              "fraction": 0.0
+            },
+            "nmrexp_exp_10k": {
+              "overlapping_identities": 6794,
+              "evaluated_identities": 9183,
+              "fraction": 0.7398453664379833
+            },
+            "nmrgym_test": {
+              "overlapping_identities": 139,
+              "evaluated_identities": 10000,
+              "fraction": 0.0139
+            }
+          }
+        },
+        "val": {
+          "path": "/mnt/shared-storage-user/xiejiaqing/OpenMolSpec/data/mix_align_v2/val.jsonl",
+          "sha256": "af3e008a5fb67fceeffa9a6042dc643768e379e4a760949ad158f11b1a61414a",
+          "checkpoint_recorded_sha256": "af3e008a5fb67fceeffa9a6042dc643768e379e4a760949ad158f11b1a61414a",
+          "checkpoint_fingerprint_matches": true,
+          "interpretation": "fingerprint-matched training file",
+          "records_scanned": 50000,
+          "records_missing_stored_inchi": 0,
+          "overlap": {
+            "nmrspec_test": {
+              "overlapping_identities": 125,
+              "evaluated_identities": 10000,
+              "fraction": 0.0125
+            },
+            "patent_test_10k": {
+              "overlapping_identities": 0,
+              "evaluated_identities": 10000,
+              "fraction": 0.0
+            },
+            "nmrexp_exp_10k": {
+              "overlapping_identities": 277,
+              "evaluated_identities": 9183,
+              "fraction": 0.030164434280736143
+            },
+            "nmrgym_test": {
+              "overlapping_identities": 1,
+              "evaluated_identities": 10000,
+              "fraction": 0.0001
+            }
+          }
+        }
+      }
+    },
+    "generation_predecessor": {
+      "checkpoint": "/mnt/shared-storage-user/xiejiaqing/OpenMolSpec/runs/aa2fea19535f4b4ab7f472c53480316b/best.pt",
+      "run_id": "aa2fea19535f4b4ab7f472c53480316b",
+      "checkpoint_sha256": "51870601f5e3dbd3c0453ddeb924c466778bfb8ee32c6e9bb19ad08633712838",
+      "initialization_checkpoint": "/mnt/shared-storage-user/xiejiaqing/OpenMolSpec/runs/f90bd7f743574d18a7f72ae72ce95e59/best.pt",
+      "splits": {
+        "train": {
+          "path": "/mnt/shared-storage-user/xiejiaqing/OpenMolSpec/data/mix_align_v2/train.jsonl",
+          "sha256": "8b9b6e4c06c379c973e462a9ba79b86f25c37e9e0d10681f3e6078449b98b5e4",
+          "checkpoint_recorded_sha256": "8b9b6e4c06c379c973e462a9ba79b86f25c37e9e0d10681f3e6078449b98b5e4",
+          "checkpoint_fingerprint_matches": true,
+          "interpretation": "fingerprint-matched training file",
+          "records_scanned": 3608853,
+          "records_missing_stored_inchi": 0,
+          "overlap": {
+            "nmrspec_test": {
+              "overlapping_identities": 3281,
+              "evaluated_identities": 10000,
+              "fraction": 0.3281
+            },
+            "patent_test_10k": {
+              "overlapping_identities": 0,
+              "evaluated_identities": 10000,
+              "fraction": 0.0
+            },
+            "nmrexp_exp_10k": {
+              "overlapping_identities": 6794,
+              "evaluated_identities": 9183,
+              "fraction": 0.7398453664379833
+            },
+            "nmrgym_test": {
+              "overlapping_identities": 139,
+              "evaluated_identities": 10000,
+              "fraction": 0.0139
+            }
+          }
+        },
+        "val": {
+          "path": "/mnt/shared-storage-user/xiejiaqing/OpenMolSpec/data/mix_align_v2/val.jsonl",
+          "sha256": "af3e008a5fb67fceeffa9a6042dc643768e379e4a760949ad158f11b1a61414a",
+          "checkpoint_recorded_sha256": "af3e008a5fb67fceeffa9a6042dc643768e379e4a760949ad158f11b1a61414a",
+          "checkpoint_fingerprint_matches": true,
+          "interpretation": "fingerprint-matched training file",
+          "records_scanned": 50000,
+          "records_missing_stored_inchi": 0,
+          "overlap": {
+            "nmrspec_test": {
+              "overlapping_identities": 125,
+              "evaluated_identities": 10000,
+              "fraction": 0.0125
+            },
+            "patent_test_10k": {
+              "overlapping_identities": 0,
+              "evaluated_identities": 10000,
+              "fraction": 0.0
+            },
+            "nmrexp_exp_10k": {
+              "overlapping_identities": 277,
+              "evaluated_identities": 9183,
+              "fraction": 0.030164434280736143
+            },
+            "nmrgym_test": {
+              "overlapping_identities": 1,
+              "evaluated_identities": 10000,
+              "fraction": 0.0001
+            }
+          }
+        }
+      }
+    },
+    "generate": {
+      "checkpoint": "/mnt/shared-storage-user/xiejiaqing/OpenMolSpec/runs/bebaecf2bca248f1a47eaa01f403002a/best.pt",
+      "run_id": "bebaecf2bca248f1a47eaa01f403002a",
+      "checkpoint_sha256": "a06cedbc201d2a4de8e7bece351884aca8c3b1aca68328bf487cd5a87a20f683",
+      "initialization_checkpoint": "/mnt/shared-storage-user/xiejiaqing/OpenMolSpec/runs/aa2fea19535f4b4ab7f472c53480316b/best.pt",
+      "splits": {
+        "train": {
+          "path": "/mnt/shared-storage-user/xiejiaqing/OpenMolSpec/data/g1_all/train.jsonl",
+          "sha256": "d06c16ee1e21ba4e3d6fe7c5a8037211bedb05997bd4940646b15875f87cdfb7",
+          "checkpoint_recorded_sha256": "bd2aa8f2f11f127462927b368569521f8ec0d38952955ef19bfd73b590f7e165",
+          "checkpoint_fingerprint_matches": false,
+          "interpretation": "current prepared file only; historical training-file identity unresolved",
+          "records_scanned": 2121498,
+          "records_missing_stored_inchi": 16,
+          "overlap": {
+            "nmrspec_test": {
+              "overlapping_identities": 1982,
+              "evaluated_identities": 10000,
+              "fraction": 0.1982
+            },
+            "patent_test_10k": {
+              "overlapping_identities": 181,
+              "evaluated_identities": 10000,
+              "fraction": 0.0181
+            },
+            "nmrexp_exp_10k": {
+              "overlapping_identities": 4216,
+              "evaluated_identities": 9183,
+              "fraction": 0.45910922356528366
+            },
+            "nmrgym_test": {
+              "overlapping_identities": 44,
+              "evaluated_identities": 10000,
+              "fraction": 0.0044
+            }
+          }
+        },
+        "val": {
+          "path": "/mnt/shared-storage-user/xiejiaqing/OpenMolSpec/data/g1_all/val.jsonl",
+          "sha256": "0d8d4db22df307431563d98ab301d7c5b6b76b587ef86c9b83774ece2973d3cf",
+          "checkpoint_recorded_sha256": "0d8d4db22df307431563d98ab301d7c5b6b76b587ef86c9b83774ece2973d3cf",
+          "checkpoint_fingerprint_matches": true,
+          "interpretation": "fingerprint-matched training file",
+          "records_scanned": 21161,
+          "records_missing_stored_inchi": 0,
+          "overlap": {
+            "nmrspec_test": {
+              "overlapping_identities": 0,
+              "evaluated_identities": 10000,
+              "fraction": 0.0
+            },
+            "patent_test_10k": {
+              "overlapping_identities": 0,
+              "evaluated_identities": 10000,
+              "fraction": 0.0
+            },
+            "nmrexp_exp_10k": {
+              "overlapping_identities": 0,
+              "evaluated_identities": 9183,
+              "fraction": 0.0
+            },
+            "nmrgym_test": {
+              "overlapping_identities": 0,
+              "evaluated_identities": 10000,
+              "fraction": 0.0
+            }
+          }
+        }
+      }
+    }
+  },
+  "generation_fingerprint_discrepancy": {
+    "checkpoint_digest_matches_other_file": "/mnt/shared-storage-user/xiejiaqing/OpenMolSpec/data/g1_ne/train.jsonl",
+    "other_file_sha256": "bd2aa8f2f11f127462927b368569521f8ec0d38952955ef19bfd73b590f7e165",
+    "matches_recorded_train_digest": true,
+    "run_log_data_directory": "data/g1_all",
+    "interpretation": "The historical training code copied verification.json digests without hashing the training bytes. The current g1_all train file differs; the recorded digest matches g1_ne. This does not establish which exact historical bytes were consumed."
+  },
+  "completed": true
+}

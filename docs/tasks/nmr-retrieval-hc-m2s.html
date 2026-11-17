@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Structure-to-spectrum retrieval: ¹H + ¹³C &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/tasks/nmr-retrieval-hc-m2s.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>window.MathJax = {"chtml": {"displayAlign": "left"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Structure elucidation from ¹H + ¹³C NMR" href="nmr-generation-hc.html" />
+    <link rel="prev" title="Spectrum-to-structure retrieval: ¹H + ¹³C" href="nmr-retrieval-hc-s2m.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../zh/tasks/nmr-retrieval-hc-m2s.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tasks by spectroscopy family</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#nmr"><span class="xref myst">NMR</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#mass-spectrometry"><span class="xref myst">Mass spectrometry</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman"><span class="xref myst">IR / Raman</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#multimodal-spectroscopy"><span class="xref myst">Multimodal spectroscopy</span></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#deferred-tasks"><span class="xref myst">Deferred tasks</span></a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="nmr.html">NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms.html">Mass spectrometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational.html">IR / Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multimodal.html">Multimodal spectroscopy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deferred.html">Deferred tasks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Tasks by spectroscopy family</a></li>
+          <li class="breadcrumb-item"><a href="nmr.html">NMR</a></li>
+      <li class="breadcrumb-item active">Structure-to-spectrum retrieval: ¹H + ¹³C</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tasks/nmr-retrieval-hc-m2s.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="structure-to-spectrum-retrieval-1h-13c">
+<h1>Structure-to-spectrum retrieval: ¹H + ¹³C<a class="headerlink" href="#structure-to-spectrum-retrieval-1h-13c" title="Link to this heading"></a></h1>
+<p>Rank the candidates that best match the query molecule or spectrum.</p>
+<section id="what-goes-in">
+<h2>What goes in<a class="headerlink" href="#what-goes-in" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">query</span></code></p></td>
+<td><p>HC peak records for s2m; molecular structure for m2s. Direction here: m2s.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">candidate_pool</span></code></p></td>
+<td><p>Explicit candidate structures or spectra; ranking is restricted to this pool.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">formula</span></code></p></td>
+<td><p>Not supplied to the spectral encoder.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="what-comes-out">
+<h2>What comes out<a class="headerlink" href="#what-comes-out" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ranked_candidates</span></code></p></td>
+<td><p>Candidate identity, rank and embedding similarity score.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">recall</span> <span class="pre">/</span> <span class="pre">MRR</span></code></p></td>
+<td><p>Recall&#64;1/5/10 and MRR, with the candidate-pool size.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="a-real-recorded-example">
+<h2>A real recorded example<a class="headerlink" href="#a-real-recorded-example" title="Link to this heading"></a></h2>
+<p>Inspect the input, prediction and reference for the example below. Download the JSON for the complete numerical arrays and additional examples.</p>
+<p><img alt="nmr.retrieval.hc.m2s actual results" src="../_images/nmr-retrieval-hc-m2s.png" /></p>
+<p><a class="reference download internal" download="" href="../_downloads/fe2429416b087ea06609b7803f57b45c/nmr-retrieval-hc-m2s.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/09416f2c438549428055feed9ac85d9b/nmr-retrieval-hc-m2s.png"><span class="xref download myst">PNG</span></a> · <a class="reference download internal" download="" href="../_downloads/9915957f0fd3f562107ec1458182923a/nmr-retrieval-hc-m2s.json"><span class="xref download myst">Full input/output JSON</span></a></p>
+<details><summary>Inspect the actual input and output fields</summary>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"reference_smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9107388854026794</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"reference_match"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5020971298217773</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"reference_match"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cc1cnn(C2CCc3ccccc32)c1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.23823510110378265</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"reference_match"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CC(C)(C)OC(=O)N[C@H](CCC(=O)c1ccccc1)c1c[nH]c2cc(Cl)ccc12"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.22899200022220612</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"reference_match"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="actual-evaluation-results">
+<h2>Actual evaluation results<a class="headerlink" href="#actual-evaluation-results" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.625</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.90625</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>0.90625</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.738817</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.875</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.924479</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.84375</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.897254</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="model-and-method">
+<h2>Model and method<a class="headerlink" href="#model-and-method" title="Link to this heading"></a></h2>
+<p>The dual encoder maps molecular structures and NMR peak lists into a shared embedding space. Candidates are ranked by embedding similarity.</p>
+<p>Report Recall&#64;1/5/10 and mean reciprocal rank together with the candidate count.</p>
+</section>
+<section id="reproduce">
+<h2>Reproduce<a class="headerlink" href="#reproduce" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../notebooks/nmr-retrieval-hc-m2s.html"><span class="std std-doc">Notebook with executed figures</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick Start</span></a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tasks<span class="w"> </span>nmr.retrieval.hc.m2s<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/nmr-retrieval-hc-m2s-new.json
+</pre></div>
+</div>
+</section>
+<section id="call-and-adapt-this-model">
+<h2>Call and adapt this model<a class="headerlink" href="#call-and-adapt-this-model" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">NMRTransformer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">NMRTransformer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+    <span class="s1">'/path/to/checkpoint.pt'</span><span class="p">,</span> <span class="n">stage</span><span class="o">=</span><span class="s1">'align'</span><span class="p">,</span>
+    <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/nmr-env/bin/python'</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.benchmark</span><span class="w"> </span><span class="kn">import</span> <span class="n">Benchmark</span>
+<span class="n">benchmark</span> <span class="o">=</span> <span class="n">Benchmark</span><span class="p">(</span><span class="n">workspace</span><span class="o">=</span><span class="s1">'/path/to/workspace'</span><span class="p">,</span>
+    <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/sdk-env/bin/python'</span><span class="p">,</span>
+    <span class="n">alignment_checkpoint</span><span class="o">=</span><span class="s1">'/path/to/checkpoint.pt'</span><span class="p">,</span>
+    <span class="n">nmr_python</span><span class="o">=</span><span class="s1">'/path/to/nmr-env/bin/python'</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">benchmark</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">'nmr.retrieval.hc.m2s'</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s1">'m2s-results.json'</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">plan</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">training_plan</span><span class="p">(</span>
+    <span class="s1">'prepared-nmr'</span><span class="p">,</span> <span class="n">run_dir</span><span class="o">=</span><span class="s1">'runs/my-model'</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">plan</span><span class="o">.</span><span class="n">validate</span><span class="p">())</span>
+<span class="c1"># trained = model.fit(plan)</span>
+</pre></div>
+</div>
+<p>Prepare disjoint train/validation records with <code class="docutils literal notranslate"><span class="pre">prepare_nmr_training</span></code>; supply an alignment checkpoint for the generator. Use H/C masks to define available inputs and choose model selection criteria on validation data. Pretrained initialization restores model weights. <a class="reference internal" href="../api.html"><span class="std std-doc">Data preparation</span></a> provides the complete workflow.</p>
+<section id="training-objective">
+<h3>Training objective<a class="headerlink" href="#training-objective" title="Link to this heading"></a></h3>
+<div class="math notranslate nohighlight">
+\[L_{\rm align}=\tfrac12[\mathrm{CE}(SM^\top/\tau,I)+\mathrm{CE}(MS^\top/\tau,I)]+\lambda_{\rm ITM}L_{\rm match}.\]</div>
+<p>Generation uses token cross-entropy; an optional joint alignment term follows its configured weight. Alignment uses normalized spectral/molecular representations with symmetric contrastive cross-entropy; ITM configuration adds positive/negative matching. The actual checkpoint/training configuration determines the objective.</p>
+<details><summary>Source reports and SHA-256 fingerprints</summary>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/nmr_documented_examples_20261117_v2.json">nmr_documented_examples_20261117_v2.json</a> — SHA-256 <code class="docutils literal notranslate"><span class="pre">669413d6fc0939bdb6826782d41fc13cf12926a672418ecb46303f0b8ba05b99</span></code></p></li>
+</ul>
+</details>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend">Model implementation / 模型实现</a> · <a class="reference internal" href="../model-audit.html"><span class="std std-doc">Model review / 模型检查</span></a></p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Yang, L., Yang, Z., Xie, J., Wang, Y., Gao, B., Fu, T., Wei, X., Sun, J., Wu, J., He, C., Li, Y. &amp; Gu, Q. NMRTrans: Structure Elucidation from Experimental NMR Spectra via Set Transformers. arXiv:2602.10158 (2026). <a class="reference external" href="https://arxiv.org/abs/2602.10158">Source</a></p></li>
+<li><p>Fang, Z., Yang, C., Yu, H., Luo, H., He, H., Xie, J., Yang, Z. &amp; Xia, J. NMRGym: A Comprehensive Benchmark for Nuclear Magnetic Resonance Based Molecular Structure Elucidation. arXiv:2601.15763 (2026). <a class="reference external" href="https://arxiv.org/abs/2601.15763">Source</a></p></li>
+<li><p>OpenDataLab. WanJuan MolSpectra, version 1.0.3. Experimental molecular spectroscopy dataset. <a class="reference external" href="https://opendatalab.com/">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="nmr-retrieval-hc-s2m.html" class="btn btn-neutral float-left" title="Spectrum-to-structure retrieval: ¹H + ¹³C" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nmr-generation-hc.html" class="btn btn-neutral float-right" title="Structure elucidation from ¹H + ¹³C NMR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

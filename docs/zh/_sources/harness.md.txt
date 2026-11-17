@@ -1,0 +1,53 @@
+# Agent Harness
+
+Spectra Harness 为 Agent 提供统一的 NMR、MS 和振动谱模型接口。一个请求包含任务名称、分子或谱学输入，以及模型运行环境；响应返回预测结果和调用记录。同一份请求可以通过 Python、命令行或 MCP 使用。
+
+## 使用流程
+
+1. 使用 `catalog()` 或 `spectra_tasks` 选择任务。
+2. 按任务准备输入，配置模型路径。
+3. 使用 `validate()` 或 `spectra_validate` 检查字段与数组形状。
+4. 使用 `run()` 或 `spectra_predict` 执行模型。
+5. 从 `result` 读取结果，从 `calls` 查看每次调用的耗时和状态。
+
+```python
+from openmolspec.harness import SpectraHarness
+
+harness = SpectraHarness()
+for task in harness.catalog():
+    print(task['task'], task['harness'])
+```
+
+## 使用指南
+
+- [快速开始](harness/quickstart.md): 完成一次 NMR 请求并读取输出。
+- [Python 接口](harness/python.md): 在 Python 脚本中配置并调用 Harness。
+- [命令行](harness/cli.md): 通过 JSON 请求文件运行模型。
+- [MCP 工具](harness/mcp.md): 连接 Agent，使用发现、验证和预测工具。
+- [NMR Spectra Harness](harness/nmr.md): 预测位移、指认峰并解析结构。
+- [MS Spectra Harness](harness/ms.md): 在指定采集条件下预测 MS/MS。
+- [Vibrational Spectra Harness](harness/vibrational.md): 用多谱输入预测能隙、检索或生成结构。
+- [Examples](harness/examples.md): 查看三类模型的输入与输出。
+
+## 参考文献
+
+- DeepSeek-AI. DeepSeek Harness: modular agent tools and execution infrastructure. Software repository. Accessed 18 November 2026. [Source](https://github.com/deepseek-ai/deepseek-harness)
+- Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. [Source](https://doi.org/10.1038/s43588-025-00783-z)
+- Wang, R.-X., Wang, R. & Coley, C. W. GLACIER: Rethinking Mass Spectrum Prediction as an Object Detection Problem. NeurIPS 2026. arXiv:2606.29161 (2026). [Source](https://arxiv.org/abs/2606.29161)
+- Wang, R., Manjrekar, M., Mahjour, B., Avila-Pacheco, J., et al. Neural Spectral Prediction for Structure Elucidation with Tandem Mass Spectrometry. bioRxiv (2025). doi:10.1101/2025.05.28.656653. [Source](https://doi.org/10.1101/2025.05.28.656653)
+- OpenMolSpec contributors. openSpec models and benchmark training workflows. Source archive, v1.0 (2026). [Source](https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks)
+
+
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+harness/quickstart
+harness/python
+harness/cli
+harness/mcp
+harness/nmr
+harness/ms
+harness/vibrational
+harness/examples
+```

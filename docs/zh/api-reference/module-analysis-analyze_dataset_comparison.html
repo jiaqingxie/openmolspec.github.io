@@ -1,0 +1,268 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>openmolspec.analysis.analyze_dataset_comparison &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/api-reference/module-analysis-analyze_dataset_comparison.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="openmolspec.analysis.plot_align_chemical_distribution" href="module-analysis-plot_align_chemical_distribution.html" />
+    <link rel="prev" title="工具函数" href="category-utilities.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../api-reference/module-analysis-analyze_dataset_comparison.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API 参考</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="category-data.html">数据访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-models.html">模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-learning.html">训练与评测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-spectroscopy.html">谱学与数据结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-processing.html">数据处理与发布</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-agents.html">Agent 工具</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="category-utilities.html">工具函数</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">openmolspec.analysis.analyze_dataset_comparison</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_align_chemical_distribution.html">openmolspec.analysis.plot_align_chemical_distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_align_overview.html">openmolspec.analysis.plot_align_overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_benchmark_overview.html">openmolspec.analysis.plot_benchmark_overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_dataset_statistics.html">openmolspec.analysis.plot_dataset_statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_element_coverage.html">openmolspec.analysis.plot_element_coverage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_openmolspec_overview.html">openmolspec.analysis.plot_openmolspec_overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-visualize_opt_trajectory.html">openmolspec.analysis.visualize_opt_trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-cli.html">openmolspec.cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-core-processing.html">openmolspec.core.processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-core-progress.html">openmolspec.core.progress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_nmr.html">openmolspec.legacy.extract_nmr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_properties.html">openmolspec.legacy.extract_properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_properties_backup.html">openmolspec.legacy.extract_properties_backup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_spectra.html">openmolspec.legacy.extract_spectra</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-function.html">openmolspec.legacy.function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-maintenance-parse_zinc_v2_nmr.html">openmolspec.maintenance.parse_zinc_v2_nmr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-plotting.html">openmolspec.plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-openmolspec.html">openmolspec</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API 参考</a></li>
+          <li class="breadcrumb-item"><a href="category-utilities.html">工具函数</a></li>
+      <li class="breadcrumb-item active">openmolspec.analysis.analyze_dataset_comparison</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api-reference/module-analysis-analyze_dataset_comparison.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="openmolspec-analysis-analyze-dataset-comparison">
+<h1>openmolspec.analysis.analyze_dataset_comparison<a class="headerlink" href="#openmolspec-analysis-analyze-dataset-comparison" title="Link to this heading"></a></h1>
+<p>Build statistical analyses comparing OpenMolSpec with reference datasets.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.analyze_dataset_comparison.read_json" title="openmolspec.analysis.analyze_dataset_comparison.read_json"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.read_json()</span></code></a></p></td>
+<td><p>Read a JSON document from a file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.analyze_dataset_comparison.mol_descriptors" title="openmolspec.analysis.analyze_dataset_comparison.mol_descriptors"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.mol_descriptors()</span></code></a></p></td>
+<td><p>Compute molecular size and composition descriptors from a SMILES string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.analyze_dataset_comparison.descriptor_table" title="openmolspec.analysis.analyze_dataset_comparison.descriptor_table"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.descriptor_table()</span></code></a></p></td>
+<td><p>Build a table of molecular descriptors for the supplied records.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.analyze_dataset_comparison.trajectory_total" title="openmolspec.analysis.analyze_dataset_comparison.trajectory_total"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.trajectory_total()</span></code></a></p></td>
+<td><p>Extract the total trajectory count from dataset summary metadata.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.analyze_dataset_comparison.build_analysis" title="openmolspec.analysis.analyze_dataset_comparison.build_analysis"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.build_analysis()</span></code></a></p></td>
+<td><p>Build current statistics using successfully parsed, complete spectra.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.analyze_dataset_comparison.ecdf" title="openmolspec.analysis.analyze_dataset_comparison.ecdf"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.ecdf()</span></code></a></p></td>
+<td><p>Compute empirical cumulative-distribution coordinates for numerical values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.analyze_dataset_comparison.plot" title="openmolspec.analysis.analyze_dataset_comparison.plot"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.plot()</span></code></a></p></td>
+<td><p>Plot the molecular dataset comparison.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.analyze_dataset_comparison.main" title="openmolspec.analysis.analyze_dataset_comparison.main"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.main()</span></code></a></p></td>
+<td><p>Run the analyze dataset comparison command-line workflow.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.analyze_dataset_comparison.REFERENCE" title="openmolspec.analysis.analyze_dataset_comparison.REFERENCE"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.REFERENCE</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function" id="module-openmolspec.analysis.analyze_dataset_comparison">
+<dt class="sig sig-object py" id="openmolspec.analysis.analyze_dataset_comparison.read_json">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.</span></span><span class="sig-name descname"><span class="pre">read_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#openmolspec.analysis.analyze_dataset_comparison.read_json" title="Link to this definition"></a></dt>
+<dd><p>Read a JSON document from a file.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/analyze_dataset_comparison.py#L35">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.analyze_dataset_comparison.mol_descriptors">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.</span></span><span class="sig-name descname"><span class="pre">mol_descriptors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smiles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#openmolspec.analysis.analyze_dataset_comparison.mol_descriptors" title="Link to this definition"></a></dt>
+<dd><p>Compute molecular size and composition descriptors from a SMILES string.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/analyze_dataset_comparison.py#L41">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.analyze_dataset_comparison.descriptor_table">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.</span></span><span class="sig-name descname"><span class="pre">descriptor_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pd.DataFrame</span></span></span><a class="headerlink" href="#openmolspec.analysis.analyze_dataset_comparison.descriptor_table" title="Link to this definition"></a></dt>
+<dd><p>Build a table of molecular descriptors for the supplied records.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/analyze_dataset_comparison.py#L60">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.analyze_dataset_comparison.trajectory_total">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.</span></span><span class="sig-name descname"><span class="pre">trajectory_total</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#openmolspec.analysis.analyze_dataset_comparison.trajectory_total" title="Link to this definition"></a></dt>
+<dd><p>Extract the total trajectory count from dataset summary metadata.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/analyze_dataset_comparison.py#L76">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.analyze_dataset_comparison.build_analysis">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.</span></span><span class="sig-name descname"><span class="pre">build_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Path('datasets/openspec_manifest.parquet')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency_report_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Path('reports/extraction/processing_report.parquet')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmr_report_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Path('reports/nmr/processing_report.parquet')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descriptor_cache_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Path('reports/analysis/chemical_descriptors.parquet')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">pd.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pd.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.analysis.analyze_dataset_comparison.build_analysis" title="Link to this definition"></a></dt>
+<dd><p>Build current statistics using successfully parsed, complete spectra.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/analyze_dataset_comparison.py#L94">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.analyze_dataset_comparison.ecdf">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.</span></span><span class="sig-name descname"><span class="pre">ecdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">np.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">np.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.analysis.analyze_dataset_comparison.ecdf" title="Link to this definition"></a></dt>
+<dd><p>Compute empirical cumulative-distribution coordinates for numerical values.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/analyze_dataset_comparison.py#L184">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.analyze_dataset_comparison.plot">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#openmolspec.analysis.analyze_dataset_comparison.plot" title="Link to this definition"></a></dt>
+<dd><p>Plot the molecular dataset comparison.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/analyze_dataset_comparison.py#L190">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.analyze_dataset_comparison.main">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#openmolspec.analysis.analyze_dataset_comparison.main" title="Link to this definition"></a></dt>
+<dd><p>Run the analyze dataset comparison command-line workflow.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/analyze_dataset_comparison.py#L289">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.analyze_dataset_comparison.REFERENCE">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.analyze_dataset_comparison.</span></span><span class="sig-name descname"><span class="pre">REFERENCE</span></span><a class="headerlink" href="#openmolspec.analysis.analyze_dataset_comparison.REFERENCE" title="Link to this definition"></a></dt>
+<dd><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/analyze_dataset_comparison.py#L28">Source code</a></p>
+</dd></dl>
+
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="category-utilities.html" class="btn btn-neutral float-left" title="工具函数" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="module-analysis-plot_align_chemical_distribution.html" class="btn btn-neutral float-right" title="openmolspec.analysis.plot_align_chemical_distribution" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

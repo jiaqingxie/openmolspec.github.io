@@ -1,0 +1,92 @@
+# OpenMolSpec
+
+Chemical spectroscopy and deep learning
+
+OpenMolSpec is a Python library for working with molecular spectra. Load experimental and computed datasets, predict spectra and molecular properties, identify structures, and train models with your own data. It supports NMR, mass spectrometry, infrared and Raman spectroscopy.
+
+## Getting started
+
+Follow the [Quick start](quickstart.md) to install OpenMolSpec and work through data loading, prediction and training. The [tutorials](notebooks/index.md) explain each step with code, outputs and figures.
+
+```python
+from openmolspec.dataset import molspectra
+from openmolspec.model import NMRNet
+
+data = molspectra("opendatalab_nmr", root="data/nmr")
+molecule = data["test"].head(1)[0]
+
+model = NMRNet.from_pretrained("models", nucleus="13C",
+    python="/path/to/nmr-env/bin/python")
+prediction = model.predict(molecule["smiles"])
+print(prediction["records"])
+```
+
+## Examples
+
+Explore spectrum prediction, structure elucidation and property prediction in the following examples.
+
+### [Structure elucidation from NMR](notebooks/nmr-generation-hc.ipynb)
+
+Generate molecular structures from proton and carbon NMR peaks.
+
+[![Structure elucidation from NMR](assets/gallery/nmr-generation-hc.png)](notebooks/nmr-generation-hc.ipynb)
+
+### [Predicting tandem mass spectra](notebooks/ms-forward-glacier.ipynb)
+
+Predict fragment peaks and intensities from a molecule and its acquisition conditions.
+
+[![Predicting tandem mass spectra](assets/gallery/ms-forward-glacier.png)](notebooks/ms-forward-glacier.ipynb)
+
+### [IR and Raman from a molecular geometry](notebooks/vibrational-forward.ipynb)
+
+Use the openSpec model to predict vibrational spectra from atomic coordinates.
+
+[![IR and Raman from a molecular geometry](assets/gallery/vibrational-forward.png)](notebooks/vibrational-forward.ipynb)
+
+### [HOMO–LUMO gap prediction](notebooks/vibrational-gap-ir_raman_hc.ipynb)
+
+Combine IR, Raman and NMR spectra to predict the molecular energy gap.
+
+[![HOMO–LUMO gap prediction](assets/gallery/vibrational-gap-ir_raman_hc.png)](notebooks/vibrational-gap-ir_raman_hc.ipynb)
+
+
+### Interactive molecular example
+
+Explore the molecular structure in 3D alongside the dataset orbital energies and the gap predicted from IR, Raman and H/C NMR spectra.
+
+<div class="oms-conformer-demo" data-oms-viewer data-oms-assets="assets/viewer/" data-oms-language="en">
+<label>Molecule <select class="oms-conformer-select" aria-label="Select molecule"></select></label>
+<div class="oms-conformer-canvas" role="img" aria-label="Interactive molecular conformer"></div>
+<p class="oms-conformer-result" aria-live="polite">Loading coordinates…</p>
+</div>
+
+## Documentation
+
+- [Data](data/index.md): Datasets, experimental details, distributions and splits.
+- [Tasks](tasks/index.md): Task definitions, inputs, outputs and model usage.
+- [Tutorials](notebooks/index.md): Step-by-step examples for prediction, training and spectroscopy.
+- [API reference](api-reference/index.md): Classes, functions, arguments, return values and examples.
+- [Benchmarks](benchmarks.md): Benchmark datasets, protocols, metrics and results.
+- [Agent Harness](harness.md): Use spectroscopy tools from Python, the command line or an agent.
+
+
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+quickstart
+data/index
+tasks/index
+model-audit
+api
+notebooks/index
+theory/index
+inversion/index
+gallery
+harness
+api-reference/index
+benchmarks
+faq
+contributing
+citations
+```

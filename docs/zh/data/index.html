@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>数据 &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/data/index.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="NMR 数据" href="nmr.html" />
+    <link rel="prev" title="快速开始" href="../quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../data/index.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#openmolspec">OpenMolSpec 实验数据集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">外部实验资源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">计算光谱</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">加载数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">参考文献</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nmr.html">NMR 数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms.html">质谱数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational.html">IR 与 Raman 数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multimodal.html">多模态数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="splits.html">数据集划分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comparison.html">实验数据集比较</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">数据</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/data/index.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>数据<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>通过统一的数据接口加载实验测量与计算光谱。本节介绍清洗后可用的数据、字段、实验条件，以及训练、验证和测试文件。</p>
+<section id="openmolspec">
+<h2>OpenMolSpec 实验数据集<a class="headerlink" href="#openmolspec" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>数据集</p></th>
+<th class="head"><p>分类</p></th>
+<th class="head"><p>内容描述</p></th>
+<th class="head"><p>清洗后可用数量</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">H/C NMR</span></a></p></td>
+<td><p>实验 NMR</p></td>
+<td><p>氢碳化学位移、结构、分子式、谱文本与采集信息。</p></td>
+<td><p>2,678,511 个分子</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">11B</span></a></p></td>
+<td><p>实验</p></td>
+<td><p>硼化学位移及含硼分子结构。</p></td>
+<td><p>1,140 条谱; 1,017 个分子</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">19F</span></a></p></td>
+<td><p>实验</p></td>
+<td><p>氟化学位移及含氟分子结构。</p></td>
+<td><p>56,679 条谱; 50,402 个分子</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">29Si</span></a></p></td>
+<td><p>实验</p></td>
+<td><p>硅化学位移及含硅分子结构。</p></td>
+<td><p>726 条谱; 636 个分子</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">31P</span></a></p></td>
+<td><p>实验</p></td>
+<td><p>磷化学位移及含磷分子结构。</p></td>
+<td><p>21,662 条谱; 18,238 个分子</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ms.html"><span class="std std-doc">MS</span></a></p></td>
+<td><p>实验</p></td>
+<td><p>数值化 m/z–强度峰表及对应分子结构。</p></td>
+<td><p>5,233 条谱; 4,980 个分子</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="vibrational.html"><span class="std std-doc">IR</span></a></p></td>
+<td><p>实验</p></td>
+<td><p>实验红外峰位置及对应分子结构。</p></td>
+<td><p>177,759 条谱; 168,197 个分子</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="vibrational.html"><span class="std std-doc">Raman</span></a></p></td>
+<td><p>实验</p></td>
+<td><p>实验拉曼峰位置及对应分子结构。</p></td>
+<td><p>42 条谱; 39 个分子</p></td>
+</tr>
+</tbody>
+</table>
+<p>本数据集由 OpenDataLab / WanJuan MolSpectra v1.0.3 清洗整理。H/C 按标准分子身份组织，其他视图保留去重后的数值谱及实验条件。</p>
+<p><img alt="Cleaned experimental spectroscopy coverage" src="../_images/data-cleaned-experimental.png" /></p>
+<p><img alt="Cleaned molecular distributions" src="../_images/data-cleaned-nmr.png" /></p>
+<p>全部 2,678,511 条清洗后 H/C 记录的分子大小与分子量分布；最右侧一格包含更大的分子。<a class="reference download internal" download="" href="../_downloads/4207567ef0c4890498b28f07441a3280/data-cleaned-nmr.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/1978c751fb55443d84c20c2688630cde/data-cleaned-nmr.pdf"><span class="xref download myst">PDF</span></a></p>
+</section>
+<section id="id2">
+<h2>外部实验资源<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>数据集／视图</p></th>
+<th class="head"><p>分类</p></th>
+<th class="head"><p>内容描述</p></th>
+<th class="head"><p>可用条目</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NMRexp v2</p></td>
+<td><p>NMR</p></td>
+<td><p>按核种整理的实验 NMR Parquet 视图，数量见核种表。</p></td>
+<td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">NMR</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>NMRSpec / NMRTrans</p></td>
+<td><p>NMR</p></td>
+<td><p>用于谱结构检索、结构生成的 H/C 谱与目标结构。</p></td>
+<td><p>10,000</p></td>
+</tr>
+<tr class="row-even"><td><p>NMRGym</p></td>
+<td><p>NMR</p></td>
+<td><p>实验 NMR 分子结构解析测试视图。</p></td>
+<td><p>10,000</p></td>
+</tr>
+<tr class="row-odd"><td><p>MassSpecGym v1.5</p></td>
+<td><p>MS/MS</p></td>
+<td><p>具有结构和采集字段、可用于前向预测的数值串联质谱。</p></td>
+<td><p>119,029</p></td>
+</tr>
+<tr class="row-even"><td><p>MassBank</p></td>
+<td><p>MS/MS</p></td>
+<td><p>含有效分子结构的数值 MS2 谱。</p></td>
+<td><p>120,512</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h2>计算光谱<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>数据集／视图</p></th>
+<th class="head"><p>分类</p></th>
+<th class="head"><p>内容描述</p></th>
+<th class="head"><p>可用条目</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>OpenMolSpec / openSpec test</p></td>
+<td><p>IR / Raman / NMR</p></td>
+<td><p>配对光谱、分子结构和量子化学性质，用于多模态学习。</p></td>
+<td><p>20,390</p></td>
+</tr>
+<tr class="row-odd"><td><p>QMe14S</p></td>
+<td><p>IR / Raman</p></td>
+<td><p>覆盖 14 种元素、两通道均为有限且非常数值的 IR/Raman 配对数组。</p></td>
+<td><p>184,252</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h2>加载数据<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">molspectra</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">molspectra</span><span class="p">(</span><span class="s2">"opendatalab_nmr"</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s2">"data/nmr"</span><span class="p">)</span>
+<span class="n">record</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"test"</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">"smiles"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">"h_peaks_ppm"</span><span class="p">])</span>
+<span class="n">paired</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"train"</span><span class="p">]</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">modalities</span><span class="o">=</span><span class="p">[</span><span class="s2">"1H"</span><span class="p">,</span> <span class="s2">"13C"</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>将清洗后的 <code class="docutils literal notranslate"><span class="pre">train.jsonl</span></code>、<code class="docutils literal notranslate"><span class="pre">val.jsonl</span></code>、<code class="docutils literal notranslate"><span class="pre">test.jsonl</span></code> 放在 <code class="docutils literal notranslate"><span class="pre">data/nmr</span></code> 目录。<a class="reference internal" href="nmr.html"><span class="std std-doc">NMR 数据指南</span></a>解释字段，<a class="reference internal" href="splits.html"><span class="std std-doc">划分指南</span></a>说明如何构建自己的数据集。<a class="reference download internal" download="" href="../_downloads/0501662d05ae79cf12ac012b82d77f81/cleaned-data-summary.json"><span class="xref download myst">下载计数与分布</span></a>。</p>
+</section>
+<section id="id5">
+<h2>参考文献<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>OpenDataLab. WanJuan MolSpectra, version 1.0.3. Experimental molecular spectroscopy dataset. <a class="reference external" href="https://opendatalab.com/">Source</a></p></li>
+<li><p>Wang, J.-J., Jin, Y., Zhi, C.-Y., et al. NMRexp: A database of 3.3 million experimental NMR spectra. Scientific Data 12, 1954 (2025). doi:10.1038/s41597-025-06245-5. <a class="reference external" href="https://www.nature.com/articles/s41597-025-06245-5">Source</a></p></li>
+<li><p>Yang, L., Yang, Z., Xie, J., Wang, Y., Gao, B., Fu, T., Wei, X., Sun, J., Wu, J., He, C., Li, Y. &amp; Gu, Q. NMRTrans: Structure Elucidation from Experimental NMR Spectra via Set Transformers. arXiv:2602.10158 (2026). <a class="reference external" href="https://arxiv.org/abs/2602.10158">Source</a></p></li>
+<li><p>Fang, Z., Yang, C., Yu, H., Luo, H., He, H., Xie, J., Yang, Z. &amp; Xia, J. NMRGym: A Comprehensive Benchmark for Nuclear Magnetic Resonance Based Molecular Structure Elucidation. arXiv:2601.15763 (2026). <a class="reference external" href="https://arxiv.org/abs/2601.15763">Source</a></p></li>
+<li><p>Bushuiev, R., Bushuiev, A., de Jonge, N. F., Young, A., et al. MassSpecGym: A benchmark for the discovery and identification of molecules. Advances in Neural Information Processing Systems 37, Datasets and Benchmarks Track (2024). arXiv:2410.23326. <a class="reference external" href="https://arxiv.org/abs/2410.23326">Source</a></p></li>
+<li><p>Horai, H., Arita, M., Kanaya, S., et al. MassBank: a public repository for sharing mass spectral data for life sciences. Journal of Mass Spectrometry 45, 703–714 (2010). doi:10.1002/jms.1777. <a class="reference external" href="https://doi.org/10.1002/jms.1777">Source</a></p></li>
+<li><p>Yuan, M., Zou, Z. &amp; Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). <a class="reference external" href="https://arxiv.org/abs/2501.18876">Source</a></p></li>
+<li><p>OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">Source</a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../quickstart.html" class="btn btn-neutral float-left" title="快速开始" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="nmr.html" class="btn btn-neutral float-right" title="NMR 数据" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

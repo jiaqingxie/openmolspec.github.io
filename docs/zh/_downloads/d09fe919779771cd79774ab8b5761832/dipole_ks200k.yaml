@@ -1,0 +1,32 @@
+experiment:
+  name: equiformer-v3-dipole
+  release: openmolspec-v1-ks200k
+  variant: dipole
+  seed: 624
+
+task:
+  family: structure2property
+  modality: 3d
+  targets:
+    - dipole_total
+
+model:
+  name: equiformer_v3
+  parameters: {}
+
+data:
+  root: benchmark_data/release_v1_ks200k
+
+training:
+  epochs: 20
+  batch_size: 64
+  learning_rate: 3.0e-4
+  weight_decay: 1.0e-4
+  workers: 4
+  progress: tqdm
+  progress_interval_seconds: 30
+  device: cuda:0
+  gpus: 1
+
+output:
+  root: runs

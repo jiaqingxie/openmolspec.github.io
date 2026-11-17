@@ -1,0 +1,100 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "f1c1535cd803",
+   "metadata": {},
+   "source": [
+    "# 谱图 → 分子式\n",
+    "\n",
+    "Additional spectroscopy task.\n",
+    "\n",
+    "\n",
+    "\n",
+    "This tutorial loads the saved predictions, explains the input/output fields and evaluates the results. Use the final command to run the model on a new dataset."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "34f4566a150c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-17T20:13:19.060754Z",
+     "iopub.status.busy": "2026-11-17T20:13:19.060519Z",
+     "iopub.status.idle": "2026-11-17T20:13:19.089819Z",
+     "shell.execute_reply": "2026-11-17T20:13:19.089136Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Task: nmr.formula\n",
+      "Examples: 0\n"
+     ]
+    }
+   ],
+   "source": [
+    "import json, sys, io\n",
+    "from pathlib import Path\n",
+    "from IPython.display import display, Markdown, SVG\n",
+    "root = next((p for p in [Path.cwd(), *Path.cwd().parents] if (p / 'openmolspec_bench').is_dir()), None)\n",
+    "if root is None:\n",
+    "    raise RuntimeError('Run from the cloned release repository; see Quick Start')\n",
+    "sys.path.insert(0, str(root / 'scripts'))\n",
+    "from documentation_evidence import load_evidence, compact, recompute, render\n",
+    "from documentation_content import results_table\n",
+    "evidence = load_evidence('nmr.formula')\n",
+    "print('Task:', evidence['task'])\n",
+    "print('Examples:', len(evidence['examples']))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9c33eae3df21",
+   "metadata": {},
+   "source": [
+    "Task deferred by the user. No model inference or new scientific score is presented."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.5"
+  },
+  "openmolspec_evidence_files": [
+   "documentation/assets/examples/nmr-formula.json",
+   "scripts/documentation_evidence.py",
+   "scripts/documentation_figures.py",
+   "src/openmolspec/plotting.py",
+   "scripts/documentation_content.py"
+  ],
+  "openmolspec_execution": {
+   "engine": "jupyter",
+   "evaluation_index_sha256": "8302e777ace15736883697b46976a838791c48a1c92583fee806aa011163cb7f",
+   "evidence_sha256": "5e00993adcac24dc39538669e146a9f111b3930d39dbe8586344bd22b3a63818",
+   "model_execution_enabled": false,
+   "scope": "real_input_output_recomputed_diagnostics_and_scientific_figures",
+   "source_sha256": "df41cd0f7688ba62ec8a3b6c2998b20b97ac37d6239a3652bf78728548c44ea9",
+   "training_performed": false
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

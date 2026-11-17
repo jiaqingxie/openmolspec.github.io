@@ -1,0 +1,79 @@
+/* Classic RTD navigation, with a wider reading canvas for scientific figures. */
+:root { --oms-ink: #20334b; --oms-muted: #64758a; --oms-teal: #178f88; --oms-rule: #dfe7ed; }
+.wy-nav-content { max-width: 1240px; padding: 2.6rem 3.25rem; }
+.wy-nav-content-wrap { background: #f7f9fb; }
+.rst-content { color: var(--oms-ink); line-height: 1.7; }
+.rst-content h1, .rst-content h2, .rst-content h3 { font-family: Arial, sans-serif; color: var(--oms-ink); }
+.rst-content h1 { font-size: 2.25rem; letter-spacing: -.025em; line-height: 1.2; margin-bottom: 1.3rem; }
+.rst-content h2 { margin-top: 2.4rem; padding-top: .7rem; border-top: 1px solid var(--oms-rule); }
+.rst-content p { line-height: 1.75; }
+.rst-content table.docutils td { vertical-align: top; white-space: normal; }
+.rst-content .wy-table-responsive { margin-bottom: 1.5rem; }
+.rst-content div.highlight { border-radius: 6px; border-color: var(--oms-rule); }
+.rst-content div.highlight pre { font-size: .84rem; line-height: 1.55; }
+.oms-language-switch { margin-top: .75rem; font-size: .9rem; }
+.wy-side-nav-search .oms-language-switch a { color: #fff; }
+.oms-eyebrow { color: var(--oms-teal); font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: none; }
+.oms-lead { font-size: 1.13rem; color: var(--oms-muted); max-width: 58rem; }
+.oms-stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.75rem 0; }
+.oms-stat { padding: 1rem 1.3rem; border-left: 3px solid var(--oms-teal); background: #f4f8fa; }
+.oms-stat strong { display: block; font-size: 1.6rem; font-weight: 700; }
+.oms-stat span { color: var(--oms-muted); font-size: .86rem; }
+.oms-paths { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+.oms-path { display: block; padding: 1.35rem; border: 1px solid var(--oms-rule); border-radius: 8px; background: #fff; }
+.oms-path:hover, .oms-path:focus-visible { border-color: var(--oms-teal); background: #f5faf9; }
+.oms-path strong { display: block; font-size: 1.05rem; margin-bottom: .65rem; color: var(--oms-ink); }
+.oms-path span { display: block; color: var(--oms-muted); font-size: .9rem; line-height: 1.65; }
+.oms-gallery-nav { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.4rem 0; }
+.oms-gallery-nav a { padding: .4rem .9rem; border: 1px solid var(--oms-rule); border-radius: 24px; font-size: .9rem; }
+.oms-gallery-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; margin: 1.5rem 0; }
+.oms-gallery-grid figure { margin: 0; border: 1px solid var(--oms-rule); border-radius: 10px; background: #fff; overflow: hidden; }
+.oms-gallery-grid figure > a { display: block; padding: .5rem; }
+.oms-gallery-grid img { display: block; width: 100%; height: auto; }
+.oms-gallery-grid figcaption { padding: 1rem 1.4rem 1.2rem; border-top: 1px solid var(--oms-rule); background: #f9fbfc; font-size: .94rem; line-height: 1.65; }
+.oms-gallery-grid figcaption strong { display: block; font-size: 1.06rem; margin-bottom: .4rem; }
+.oms-caption-note { display: block; color: var(--oms-muted); margin: .4rem 0 .7rem; }
+.oms-downloads { font-size: .85rem; }
+.rst-content details { margin: 1.25rem 0; padding: .9rem 1.1rem; border: 1px solid var(--oms-rule); border-radius: 6px; }
+.rst-content summary { cursor: pointer; font-weight: 600; color: #256987; }
+.rst-content details[open] summary { margin-bottom: 1rem; }
+.rst-content details pre { max-height: 34rem; overflow: auto; }
+.nboutput .output { overflow-x: auto; }
+.cell_output img, .cell_output svg { max-width: 100%; height: auto; }
+.cell_output .output.text_plain { max-height: 32rem; overflow: auto; }
+@media (min-width: 1100px) { .rst-content .align-default { margin-left: 0; margin-right: 0; } }
+@media (max-width: 1000px) { .wy-nav-content { padding: 2rem; } .oms-paths { grid-template-columns: 1fr; } }
+@media (max-width: 650px) {
+ .wy-nav-content { padding: 1.5rem 1.1rem; } .rst-content h1 { font-size: 1.85rem; }
+ .oms-stat-grid { gap: .4rem; } .oms-stat { padding: .6rem; } .oms-stat strong { font-size: 1.35rem; }
+ .oms-stat span { font-size: .74rem; } .oms-gallery-grid figcaption { padding: .85rem; }
+ .oms-gallery-grid { gap: 1.3rem; }
+}
+
+body, .rst-content { font-family: Arial, sans-serif; }
+.wy-side-nav-search .wy-dropdown>a img.logo,.wy-side-nav-search>a img.logo { max-width: 240px; padding: 0; }
+
+/* Standard Sphinx/RTD reading layout. */
+.wy-nav-content { max-width: 1100px; background: #fff; }
+.wy-nav-content-wrap { background: #fff; }
+.rst-content { color: #24292f; }
+.rst-content h1 { font-size: 2rem; letter-spacing: normal; }
+.rst-content h2 { border-top: 0; padding-top: 0; margin-top: 1.8rem; }
+.rst-content h1 .oms-home-logo { width: 48px; height: 48px; vertical-align: middle; margin: -5px 9px 0 0; }
+.rst-content h3 { margin-top: 1.5rem; }
+.rst-content div.highlight { border-radius: 0; }
+.rst-content details { border: 0; border-radius: 0; padding: 0; }
+.oms-gallery-grid figure { border: 0; border-radius: 0; }
+.oms-gallery-grid figcaption { background: #fff; padding: .5rem 0 1rem; }
+.rst-content dl.py dt { overflow-wrap: anywhere; }
+.rst-content .sig { white-space: normal; }
+.rst-content table.docutils code.literal { white-space: normal; overflow-wrap: anywhere; }
+.rst-content div.math { max-width: 100%; overflow-x: auto; }
+html.writer-html5 .rst-content dl.field-list { grid-template-columns: max-content minmax(0, 1fr); }
+@media (max-width: 650px) {
+ .rst-content dl.py dd { margin-left: 0; }
+ html.writer-html5 .rst-content dl.field-list { display: block; }
+ html.writer-html5 .rst-content dl.field-list > dt { float: none; width: auto; margin-top: .8rem; }
+ html.writer-html5 .rst-content dl.field-list > dd { margin-left: 0; min-width: 0; overflow-wrap: anywhere; }
+}
+.oms-conformer-demo{margin:1.2em 0 2em}.oms-conformer-canvas{position:relative;width:100%;max-width:640px;height:340px;border-bottom:1px solid #d8dee4;margin:12px 0}.oms-conformer-select{max-width:100%;background:white;padding:5px;border:1px solid #d8dee4}.oms-conformer-result{font-size:14px;line-height:1.65}

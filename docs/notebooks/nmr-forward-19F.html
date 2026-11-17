@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>19F chemical shift prediction &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/notebooks/nmr-forward-19F.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1H chemical shift prediction" href="nmr-forward-1H.html" />
+    <link rel="prev" title="13C chemical shift prediction" href="nmr-forward-13C.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../zh/notebooks/nmr-forward-19F.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">Tasks by spectroscopy family</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#theory-simulations">Theory simulations / 理论模拟</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#nmr">NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#mass-spectrometry">Mass spectrometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman">IR / Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#multimodal-spectroscopy">Multimodal spectroscopy</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#deferred-tasks">Deferred tasks</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="datasets-overview.html">Exploring the spectroscopy datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-annotation-magma.html">MS/MS fragment annotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-forward-glacier.html">MS/MS prediction with GLACIER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-forward-iceberg.html">MS/MS prediction with ICEBERG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-assignment.html">Peak-to-atom assignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C chemical shift prediction</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">19F chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-c.html">Structure elucidation from ¹³C NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">Structure elucidation from ¹H NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-hc.html">Structure elucidation from ¹H + ¹³C NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-m2s.html">Structure-to-spectrum retrieval: ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-s2m.html">Spectrum-to-structure retrieval: ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">Structure-to-spectrum retrieval: ¹H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">Spectrum-to-structure retrieval: ¹H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-m2s.html">Structure-to-spectrum retrieval: ¹H + ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-s2m.html">Spectrum-to-structure retrieval: ¹H + ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-solvent_transfer.html">Cross-solvent chemical shift transfer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdk-inference.html">Python SDK: real NMR inference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdk-training-preflight.html">Training data preparation and preflight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking.html">Candidate reranking: IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking-hc.html">Candidate reranking: IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-ms-isotopes.html">Mass spectrometry: isotope envelopes and resolving power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-nmr-fourier.html">NMR: from a free induction decay to a spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-nmr-inversion.html">NMR inversion: recovering a relaxation distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-vibrational-broadening.html">IR and Raman: normal modes and spectral broadening</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-forward.html">IR and Raman from a molecular geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir.html">HOMO–LUMO gap from IR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman.html">HOMO–LUMO gap from IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman_hc.html">HOMO–LUMO gap from IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-raman.html">HOMO–LUMO gap from Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-generation.html">Structure generation: IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-generation-hc.html">Structure generation: IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval.html">Structure retrieval: IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-hc.html">Structure retrieval: IR + Raman + NMR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Tutorials</a></li>
+      <li class="breadcrumb-item active">19F chemical shift prediction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/nmr-forward-19F.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+    <p><a class="btn btn-neutral" href="../downloads/notebooks/nmr-forward-19F.ipynb" download>Download notebook</a></p>
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="f-chemical-shift-prediction">
+<h1>19F chemical shift prediction<a class="headerlink" href="#f-chemical-shift-prediction" title="Link to this heading"></a></h1>
+<p>Predict the 19F chemical shifts of a molecule from its structure. Use the atom indices to display predictions on the molecular graph or compare them with measured peaks.</p>
+<p>Use the solid-state NMRNet checkpoint to generate atomwise F/P predictions for the prepared molecular geometries. The benchmark scores the saved predictions against the exact paired LMDB references. Supply the frozen-inference directory and select the cross-domain comparison option.</p>
+<p>This tutorial loads the saved predictions, explains the input/output fields and evaluates the results. Use the final command to run the model on a new dataset.</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">SVG</span>
+<span class="n">root</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">(),</span> <span class="o">*</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">parents</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="s1">'openmolspec_bench'</span><span class="p">)</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()),</span> <span class="kc">None</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">'Run from the cloned release repository; see Quick Start'</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s1">'scripts'</span><span class="p">))</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">documentation_evidence</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_evidence</span><span class="p">,</span> <span class="n">compact</span><span class="p">,</span> <span class="n">recompute</span><span class="p">,</span> <span class="n">render</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">documentation_content</span><span class="w"> </span><span class="kn">import</span> <span class="n">results_table</span>
+<span class="n">evidence</span> <span class="o">=</span> <span class="n">load_evidence</span><span class="p">(</span><span class="s1">'nmr.forward.19F'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Task:'</span><span class="p">,</span> <span class="n">evidence</span><span class="p">[</span><span class="s1">'task'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Examples:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">evidence</span><span class="p">[</span><span class="s1">'examples'</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Task: nmr.forward.19F
+Examples: 3
+</pre></div>
+</div>
+</div>
+</div>
+<section id="inputs-and-outputs">
+<h2>Inputs and outputs<a class="headerlink" href="#inputs-and-outputs" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">smiles</span> <span class="pre">/</span> <span class="pre">geometry</span></code></p></td>
+<td><p>A valid molecular graph and a compatible 3D conformer; atom order must be preserved.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nucleus</span></code></p></td>
+<td><p>19F; the checkpoint must cover this nucleus.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reference</span> <span class="pre">peaks</span></code></p></td>
+<td><p>Optional measured ppm values for evaluation; not an inference input.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">prediction_ppm</span></code></p></td>
+<td><p>Per-atom chemical shifts in ppm, with atom indices or a peak list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">error</span> <span class="pre">/</span> <span class="pre">coverage</span></code></p></td>
+<td><p>Reference-matched errors and peak coverage.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Inspect the example records below. Long arrays show their length and first values; the downloadable JSON contains the complete arrays.</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">example</span> <span class="ow">in</span> <span class="n">evidence</span><span class="p">[</span><span class="s1">'examples'</span><span class="p">][:</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">compact</span><span class="p">(</span><span class="n">example</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+  "input": {
+    "smiles": "CCC(C)NC(=O)/C(F)=C(\\c1ccccc1)C(C)C(=O)OCC",
+    "nucleus": "F",
+    "atom_indices": [
+      8
+    ]
+  },
+  "output": {
+    "prediction_ppm": 262.4828796386719
+  },
+  "reference": {
+    "ppm": -121.01998138427734
+  }
+}
+{
+  "input": {
+    "smiles": "CC(C)OC1(c2ccc(F)cc2)CCCCC1",
+    "nucleus": "F",
+    "atom_indices": [
+      9
+    ]
+  },
+  "output": {
+    "prediction_ppm": 254.3622283935547
+  },
+  "reference": {
+    "ppm": -116.1999740600586
+  }
+}
+{
+  "input": {
+    "smiles": "CC(=O)C(F)S(=O)(=O)c1ccccc1",
+    "nucleus": "F",
+    "atom_indices": [
+      4
+    ]
+  },
+  "output": {
+    "prediction_ppm": 303.3087158203125
+  },
+  "reference": {
+    "ppm": -179.58999633789062
+  }
+}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluate-the-predictions">
+<h2>Evaluate the predictions<a class="headerlink" href="#evaluate-the-predictions" title="Link to this heading"></a></h2>
+<p>MAE and RMSE are reported in ppm.</p>
+<p>The table gives the dataset and metric for each run. The following calculation recomputes summary values from the plotted predictions.</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">results_table</span><span class="p">(</span><span class="n">evidence</span><span class="p">,</span> <span class="kc">True</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">recompute</span><span class="p">(</span><span class="n">evidence</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p>| Dataset / scope | Model / variant | Metric | Value |
+| — | — | — | —: |
+| recorded evaluation | recorded model | mae_ppm | 356.345 |
+| recorded evaluation | recorded model | rmse_ppm | 364.396 |
+| recorded evaluation | recorded model | examples | 32 |</p>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+  "paired_values": 32,
+  "mae": 356.34472984075546,
+  "rmse": 364.3964037406484,
+  "unit": "ppm"
+}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-the-result">
+<h2>Visualize the result<a class="headerlink" href="#visualize-the-result" title="Link to this heading"></a></h2>
+<p>Predicted and reference values.</p>
+<p>Compare the prediction with the reference and inspect the returned structures or peak positions. The plot is generated directly from the records loaded above.</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="k">for</span> <span class="n">example_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">figure</span> <span class="o">=</span> <span class="n">render</span><span class="p">(</span><span class="s1">'nmr.forward.19F'</span><span class="p">,</span> <span class="n">evidence</span><span class="p">,</span> <span class="n">example_index</span><span class="o">=</span><span class="n">example_index</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+    <span class="n">figure</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'svg'</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'Date'</span><span class="p">:</span> <span class="kc">None</span><span class="p">})</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">figure</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f057c3b367732f03011cc2d1199e333ac06370e1658d124e51e4b43164c398a6.svg" src="../_images/f057c3b367732f03011cc2d1199e333ac06370e1658d124e51e4b43164c398a6.svg" />
+</div>
+</div>
+</section>
+<section id="run-the-model">
+<h2>Run the model<a class="headerlink" href="#run-the-model" title="Link to this heading"></a></h2>
+<p>Configure the runtime and weights following the task guide. Select this task in the benchmark runner to evaluate your dataset.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tasks<span class="w"> </span>nmr.forward.19F<span class="w"> </span>--fp-inference-root<span class="w"> </span>/path/to/frozen-fp<span class="w"> </span>--allow-cross-domain-diagnostic<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/nmr-forward-19F.json
+</pre></div>
+</div>
+<p><a class="reference internal" href="../tasks/nmr-forward-19F.html"><span class="std std-doc">Task</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick start</span></a></p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. <a class="reference external" href="https://doi.org/10.1038/s43588-025-00783-z">Source</a></p></li>
+<li><p>OpenDataLab. WanJuan MolSpectra, version 1.0.3. Experimental molecular spectroscopy dataset. <a class="reference external" href="https://opendatalab.com/">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="nmr-forward-13C.html" class="btn btn-neutral float-left" title="13C chemical shift prediction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nmr-forward-1H.html" class="btn btn-neutral float-right" title="1H chemical shift prediction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

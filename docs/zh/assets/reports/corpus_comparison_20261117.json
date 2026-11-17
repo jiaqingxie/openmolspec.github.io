@@ -1,0 +1,98 @@
+{
+  "completed": true,
+  "training_performed": false,
+  "source_files": {
+    "/mnt/shared-storage-user/luxinyu/nmr_project/model_data/hc_nmr_inchi_v1/train.jsonl": {
+      "sha256": "0dc886524d8729874c09b6530932025e6bec89ba8bd3272d3e222debde9a85be",
+      "bytes": 2250060361,
+      "mtime_ns": 1790221754626411826
+    },
+    "/mnt/shared-storage-user/luxinyu/nmr_project/model_data/hc_nmr_inchi_v1/val.jsonl": {
+      "sha256": "484c228b6ada572f52444cfae8e42371b927f411a47ef076d8e26bd957b867ec",
+      "bytes": 264350326,
+      "mtime_ns": 1790221754628517460
+    },
+    "/mnt/shared-storage-user/luxinyu/nmr_project/model_data/hc_nmr_inchi_v1/test.jsonl": {
+      "sha256": "27ec1c9ade321559675dd84a880b1825e525a452d479a966a465eccddc8e79ae",
+      "bytes": 266794652,
+      "mtime_ns": 1790221754631436197
+    },
+    "/mnt/shared-storage-user/xiejiaqing/data/NMRExp/NMRexp_10to24_1_1004.parquet": {
+      "sha256": "f438d0052f3b36594e35f7141257b1533be2ec5f1680019e62ee556964281b7d",
+      "bytes": 661259287,
+      "mtime_ns": 1768879332186759950
+    }
+  },
+  "identity_policy": "full standard-InChIKey; patent from stored standard InChI, NMRexp generated from released SMILES using RDKit",
+  "scope": "complete local input files; molecular identity overlap, not identical spectral records or independent historical model evaluation",
+  "patent": {
+    "counts": {
+      "records": 2680271,
+      "h_records": 2722790,
+      "c_records": 252158,
+      "H_only": 2432515,
+      "C_only": 9344,
+      "H+C": 238412,
+      "patent_id_present": 2680271,
+      "year_present": 2680271,
+      "h_c_from_different_patents": 20604,
+      "provider:Pistachio": 1705134,
+      "spectral_records_with_frequency": 2894788,
+      "spectral_records_with_structured_solvent": 2925708,
+      "provider:USPTO": 646007,
+      "provider:EPO": 267916,
+      "provider:xiegeo": 21730,
+      "provider:patentchem": 39484
+    },
+    "unique_standard_inchikey": 2680271,
+    "splits": {
+      "train": 2174218,
+      "val": 250984,
+      "test": 255069
+    },
+    "unique_identities_by_modality": {
+      "H": 2670927,
+      "C": 247756,
+      "H+C": 238412
+    }
+  },
+  "nmrexp": {
+    "counts": {
+      "records": 3372987,
+      "nucleus:13C": 1455670,
+      "source_identifier_present": 3372987,
+      "solvent_present": 3372987,
+      "frequency_present": 3372987,
+      "nucleus:1H": 1667135,
+      "nucleus:19F": 197186,
+      "nucleus:31P": 33230,
+      "nucleus:11B": 16891,
+      "nucleus:29Si": 2386,
+      "nucleus:B": 251,
+      "nucleus:P": 222,
+      "invalid_structure_or_inchi": 49,
+      "nucleus:Si": 11,
+      "nucleus:{1H}31P": 4,
+      "nucleus:10B": 1
+    },
+    "unique_standard_inchikey": 1499173,
+    "unique_identities_by_modality": {
+      "H": 1417274,
+      "C": 1265481,
+      "H+C": 1190487
+    }
+  },
+  "overlap": {
+    "union": 4137529,
+    "intersection": 41915,
+    "patent_only": 2638356,
+    "nmrexp_only": 1457258
+  },
+  "limitations": [
+    "Stored patent identities not all regenerated from SMILES in this pass",
+    "Distinct identity is not proof of a novel measurement",
+    "No manual extraction-accuracy claim",
+    "No inference of redistribution rights from local availability"
+  ],
+  "rdkit_version": "2025.03.6"
+}

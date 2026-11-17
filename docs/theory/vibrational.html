@@ -1,0 +1,185 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infrared and Raman spectroscopy &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/theory/vibrational.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>window.MathJax = {"chtml": {"displayAlign": "left"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Inversion" href="../inversion/index.html" />
+    <link rel="prev" title="Mass spectrometry" href="ms.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../zh/theory/vibrational.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">Tasks by spectroscopy family</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Spectroscopy theory</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#references">References</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="nmr.html">Nuclear magnetic resonance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms.html">Mass spectrometry</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Infrared and Raman spectroscopy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Spectroscopy theory</a></li>
+      <li class="breadcrumb-item active">Infrared and Raman spectroscopy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/theory/vibrational.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="infrared-and-raman-spectroscopy">
+<h1>Infrared and Raman spectroscopy<a class="headerlink" href="#infrared-and-raman-spectroscopy" title="Link to this heading"></a></h1>
+<section id="normal-modes-from-the-hessian">
+<h2>Normal modes from the Hessian<a class="headerlink" href="#normal-modes-from-the-hessian" title="Link to this heading"></a></h2>
+<p>Near an equilibrium geometry, the harmonic approximation expands the energy to second order in nuclear displacements. The Hessian contains the second derivatives. Diagonalizing the mass-weighted Hessian gives normal-mode eigenvalues and eigenvectors; positive eigenvalues give squared angular frequencies. Translation and rotation are excluded when constructing vibrational modes. Imaginary frequencies indicate negative curvature and require interpretation before treating a geometry as a minimum.</p>
+<p>A nonlinear molecule has <span class="math notranslate nohighlight">\(3N-6\)</span> vibrational modes; an isolated linear molecule has <span class="math notranslate nohighlight">\(3N-5\)</span>. Frequencies depend on geometry, electronic-structure method, masses and harmonic/anharmonic treatment. A different conformer can produce a different spectrum.</p>
+</section>
+<section id="complementary-selection-rules">
+<h2>Complementary selection rules<a class="headerlink" href="#complementary-selection-rules" title="Link to this heading"></a></h2>
+<p>IR activity depends on the change in electric dipole moment along a normal coordinate. Raman activity depends on derivatives of the polarizability tensor. These are complementary observables: an intense IR mode can be weak in Raman. Experimental Raman intensities additionally depend on excitation frequency, temperature, polarization and collection geometry. Stored Raman activity is not automatically the same as measured intensity.</p>
+</section>
+<section id="from-discrete-modes-to-line-shapes">
+<h2>From discrete modes to line shapes<a class="headerlink" href="#from-discrete-modes-to-line-shapes" title="Link to this heading"></a></h2>
+<p>A plotted spectrum is commonly formed by broadening mode frequencies:</p>
+<div class="math notranslate nohighlight">
+\[I(\tilde\nu)=\sum_k A_k L(\tilde\nu-\tilde\nu_k).\]</div>
+<p>The line shape <span class="math notranslate nohighlight">\(L\)</span> can be Gaussian or Lorentzian. Gaussian width <span class="math notranslate nohighlight">\(\sigma\)</span> and FWHM satisfy <span class="math notranslate nohighlight">\(\mathrm{FWHM}=2\sqrt{2\ln2}\,\sigma\)</span>. Axis limits, line width, frequency scaling and intensity normalization should accompany a calculated spectrum. Broadening does not recover missing experimental physics.</p>
+<p>The <a class="reference internal" href="../notebooks/theory-vibrational-broadening.html"><span class="std std-doc">broadening tutorial</span></a> uses five declared modes and checks that the area under a normalized Gaussian sum equals the total supplied activity. IR and Raman use the same frequencies and different activity vectors.</p>
+</section>
+<section id="experimental-versus-computed-spectra">
+<h2>Experimental versus computed spectra<a class="headerlink" href="#experimental-versus-computed-spectra" title="Link to this heading"></a></h2>
+<p>Absorbance and transmittance are related logarithmically under their respective measurement conventions. Sparse reported IR peak positions do not provide a full intensity curve. Gas, liquid and solid environments can change positions and widths. Frequency resampling must use explicit units and a defined axis; do not interpolate a peak list and claim it is a measured spectrum.</p>
+<p>For conformer-to-spectrum evaluation, use the coordinates associated with the reference. For multimodal learning, define whether NMR and vibrational observables belong to the same conformer, molecular identity or condition and preserve their references.</p>
+</section>
+<section id="sources">
+<h2>Sources<a class="headerlink" href="#sources" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://xacs.xmu.edu.cn/docs/mlatom/">MLatom</a>: computational spectroscopy workflows.</p></li>
+<li><p><a class="reference external" href="https://www.nature.com/articles/s43588-023-00550-y">QM9S</a>: calculated spectra and molecular response properties.</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2501.18876">QMe14S</a>: calculated spectra spanning a broader element set.</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Zou, Z., Zhang, Y., Liang, L., Wei, M., Leng, J., Jiang, J., Luo, Y. &amp; Hu, W. A deep learning model for predicting selected organic molecular spectra. Nature Computational Science 3, 957–964 (2023). doi:10.1038/s43588-023-00550-y. <a class="reference external" href="https://www.nature.com/articles/s43588-023-00550-y">Source</a></p></li>
+<li><p>Yuan, M., Zou, Z. &amp; Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). <a class="reference external" href="https://arxiv.org/abs/2501.18876">Source</a></p></li>
+<li><p>OpenMolSpec contributors. openSpec models and benchmark training workflows. Source archive, v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ms.html" class="btn btn-neutral float-left" title="Mass spectrometry" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../inversion/index.html" class="btn btn-neutral float-right" title="Inversion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

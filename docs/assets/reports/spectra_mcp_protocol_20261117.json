@@ -1,0 +1,22 @@
+{
+  "completed": true,
+  "transport": "stdio",
+  "server": {
+    "name": "OpenMolSpec v1.0",
+    "title": null,
+    "version": "1.0",
+    "description": null,
+    "website_url": null,
+    "icons": null
+  },
+  "tools": [
+    "spectra_tasks",
+    "spectra_datasets",
+    "spectra_validate",
+    "spectra_predict"
+  ],
+  "discovery_call": true,
+  "valid_request_call": true,
+  "invalid_request_rejected": true,
+  "model_inference_performed": false
+}

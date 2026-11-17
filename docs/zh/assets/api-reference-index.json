@@ -1,0 +1,518 @@
+{
+  "modules": {
+    "openmolspec.analysis.analyze_dataset_comparison": [
+      "openmolspec.analysis.analyze_dataset_comparison.read_json",
+      "openmolspec.analysis.analyze_dataset_comparison.mol_descriptors",
+      "openmolspec.analysis.analyze_dataset_comparison.descriptor_table",
+      "openmolspec.analysis.analyze_dataset_comparison.trajectory_total",
+      "openmolspec.analysis.analyze_dataset_comparison.build_analysis",
+      "openmolspec.analysis.analyze_dataset_comparison.ecdf",
+      "openmolspec.analysis.analyze_dataset_comparison.plot",
+      "openmolspec.analysis.analyze_dataset_comparison.main",
+      "openmolspec.analysis.analyze_dataset_comparison.REFERENCE"
+    ],
+    "openmolspec.analysis.plot_align_chemical_distribution": [
+      "openmolspec.analysis.plot_align_chemical_distribution.plot_distribution",
+      "openmolspec.analysis.plot_align_chemical_distribution.main",
+      "openmolspec.analysis.plot_align_chemical_distribution.COLORS",
+      "openmolspec.analysis.plot_align_chemical_distribution.SPLIT_ORDER"
+    ],
+    "openmolspec.analysis.plot_align_overview": [
+      "openmolspec.analysis.plot_align_overview.repository_root",
+      "openmolspec.analysis.plot_align_overview.resolve",
+      "openmolspec.analysis.plot_align_overview.compact_count",
+      "openmolspec.analysis.plot_align_overview.build_align_geometry_cache",
+      "openmolspec.analysis.plot_align_overview.load_align_composition",
+      "openmolspec.analysis.plot_align_overview.element_prevalence",
+      "openmolspec.analysis.plot_align_overview.load_functional_group_summary",
+      "openmolspec.analysis.plot_align_overview.plot_overview",
+      "openmolspec.analysis.plot_align_overview.main",
+      "openmolspec.analysis.plot_align_overview.DATASETS",
+      "openmolspec.analysis.plot_align_overview.YEARS",
+      "openmolspec.analysis.plot_align_overview.FIDELITY_LEVELS",
+      "openmolspec.analysis.plot_align_overview.DATASET_FIDELITY",
+      "openmolspec.analysis.plot_align_overview.FIDELITY_PROTOCOLS",
+      "openmolspec.analysis.plot_align_overview.MOLECULE_COUNTS",
+      "openmolspec.analysis.plot_align_overview.SPECTRAL_MODALITIES",
+      "openmolspec.analysis.plot_align_overview.SPECTRAL_COVERAGE",
+      "openmolspec.analysis.plot_align_overview.ELEMENT_SYMBOLS",
+      "openmolspec.analysis.plot_align_overview.ELEMENT_ORDER",
+      "openmolspec.analysis.plot_align_overview.FUNCTIONAL_GROUP_SMARTS",
+      "openmolspec.analysis.plot_align_overview.BLUE",
+      "openmolspec.analysis.plot_align_overview.LIGHT_BLUE",
+      "openmolspec.analysis.plot_align_overview.GRAY",
+      "openmolspec.analysis.plot_align_overview.DARK_GRAY",
+      "openmolspec.analysis.plot_align_overview.GRID",
+      "openmolspec.analysis.plot_align_overview.TEXT"
+    ],
+    "openmolspec.analysis.plot_benchmark_overview": [
+      "openmolspec.analysis.plot_benchmark_overview.repository_root",
+      "openmolspec.analysis.plot_benchmark_overview.resolve",
+      "openmolspec.analysis.plot_benchmark_overview.plot_benchmark_overview",
+      "openmolspec.analysis.plot_benchmark_overview.parse_args",
+      "openmolspec.analysis.plot_benchmark_overview.main",
+      "openmolspec.analysis.plot_benchmark_overview.BLUE",
+      "openmolspec.analysis.plot_benchmark_overview.LIGHT_BLUE",
+      "openmolspec.analysis.plot_benchmark_overview.PURPLE",
+      "openmolspec.analysis.plot_benchmark_overview.GRAY",
+      "openmolspec.analysis.plot_benchmark_overview.DARK_GRAY",
+      "openmolspec.analysis.plot_benchmark_overview.GRID",
+      "openmolspec.analysis.plot_benchmark_overview.TEXT"
+    ],
+    "openmolspec.analysis.plot_dataset_statistics": [
+      "openmolspec.analysis.plot_dataset_statistics.read_json",
+      "openmolspec.analysis.plot_dataset_statistics.current_openmolspec_counts",
+      "openmolspec.analysis.plot_dataset_statistics.plot_comparison",
+      "openmolspec.analysis.plot_dataset_statistics.main",
+      "openmolspec.analysis.plot_dataset_statistics.DATASETS",
+      "openmolspec.analysis.plot_dataset_statistics.PUBLIC_YEAR",
+      "openmolspec.analysis.plot_dataset_statistics.MOLECULES",
+      "openmolspec.analysis.plot_dataset_statistics.CONFIGURATIONS",
+      "openmolspec.analysis.plot_dataset_statistics.MODALITIES",
+      "openmolspec.analysis.plot_dataset_statistics.COVERAGE"
+    ],
+    "openmolspec.analysis.plot_element_coverage": [
+      "openmolspec.analysis.plot_element_coverage.openmolspec_elements",
+      "openmolspec.analysis.plot_element_coverage.coverage_frame",
+      "openmolspec.analysis.plot_element_coverage.plot_coverage",
+      "openmolspec.analysis.plot_element_coverage.main",
+      "openmolspec.analysis.plot_element_coverage.ELEMENTS",
+      "openmolspec.analysis.plot_element_coverage.REFERENCE_ELEMENTS",
+      "openmolspec.analysis.plot_element_coverage.PUBLIC_YEAR"
+    ],
+    "openmolspec.analysis.plot_openmolspec_overview": [
+      "openmolspec.analysis.plot_openmolspec_overview.load_local_summary",
+      "openmolspec.analysis.plot_openmolspec_overview.add_panel_label",
+      "openmolspec.analysis.plot_openmolspec_overview.human_number",
+      "openmolspec.analysis.plot_openmolspec_overview.log_tick_formatter",
+      "openmolspec.analysis.plot_openmolspec_overview.clean_axis",
+      "openmolspec.analysis.plot_openmolspec_overview.overview_plot",
+      "openmolspec.analysis.plot_openmolspec_overview.main",
+      "openmolspec.analysis.plot_openmolspec_overview.DATASETS",
+      "openmolspec.analysis.plot_openmolspec_overview.YEARS",
+      "openmolspec.analysis.plot_openmolspec_overview.MOLECULES",
+      "openmolspec.analysis.plot_openmolspec_overview.CONFIGURATIONS",
+      "openmolspec.analysis.plot_openmolspec_overview.ELEMENT_SETS",
+      "openmolspec.analysis.plot_openmolspec_overview.DATA_TYPE_GROUPS",
+      "openmolspec.analysis.plot_openmolspec_overview.DATA_TYPE_COVERAGE",
+      "openmolspec.analysis.plot_openmolspec_overview.BLUE",
+      "openmolspec.analysis.plot_openmolspec_overview.LIGHT_BLUE",
+      "openmolspec.analysis.plot_openmolspec_overview.GRAY",
+      "openmolspec.analysis.plot_openmolspec_overview.LIGHT_GRAY",
+      "openmolspec.analysis.plot_openmolspec_overview.DARK_GRAY",
+      "openmolspec.analysis.plot_openmolspec_overview.ORANGE",
+      "openmolspec.analysis.plot_openmolspec_overview.GREEN",
+      "openmolspec.analysis.plot_openmolspec_overview.PURPLE",
+      "openmolspec.analysis.plot_openmolspec_overview.TEXT",
+      "openmolspec.analysis.plot_openmolspec_overview.TITLE",
+      "openmolspec.analysis.plot_openmolspec_overview.GRID"
+    ],
+    "openmolspec.analysis.visualize_opt_trajectory": [
+      "openmolspec.analysis.visualize_opt_trajectory.align_coordinates",
+      "openmolspec.analysis.visualize_opt_trajectory.infer_bonds",
+      "openmolspec.analysis.visualize_opt_trajectory.main",
+      "openmolspec.analysis.visualize_opt_trajectory.ATOM_COLORS"
+    ],
+    "openmolspec.benchmark": [
+      "openmolspec.benchmark.Benchmark",
+      "openmolspec.benchmark.Benchmark.run",
+      "openmolspec.benchmark.evaluate_nmr"
+    ],
+    "openmolspec.cli": [
+      "openmolspec.cli.load_config",
+      "openmolspec.cli.main",
+      "openmolspec.cli.STAGES"
+    ],
+    "openmolspec.core.constants": [
+      "openmolspec.core.constants.CM_TO_HZ",
+      "openmolspec.core.constants.ANGSTROM_TO_METER",
+      "openmolspec.core.constants.BOLTZMANN_CONSTANT",
+      "openmolspec.core.constants.PLANCK_CONSTANT",
+      "openmolspec.core.constants.SPEED_OF_LIGHT",
+      "openmolspec.core.constants.HARTREE_TO_EV",
+      "openmolspec.core.constants.BOHR_TO_ANGSTROM",
+      "openmolspec.core.constants.HESSIAN_AU_TO_EV_ANGSTROM2",
+      "openmolspec.core.constants.SCHEMA_VERSION",
+      "openmolspec.core.constants.PARSER_VERSION",
+      "openmolspec.core.constants.PROCESSING_VERSION",
+      "openmolspec.core.constants.SPECTRUM_PARAMETERS",
+      "openmolspec.core.constants.CALCULATION_METADATA_FIELDS"
+    ],
+    "openmolspec.core.processing": [
+      "openmolspec.core.processing.classify_exception",
+      "openmolspec.core.processing.source_parts",
+      "openmolspec.core.processing.file_sha256",
+      "openmolspec.core.processing.report_row",
+      "openmolspec.core.processing.record_quality_metadata",
+      "openmolspec.core.processing.write_processing_reports",
+      "openmolspec.core.processing.ERROR_TYPES"
+    ],
+    "openmolspec.core.progress": [
+      "openmolspec.core.progress.progress_mode",
+      "openmolspec.core.progress.status",
+      "openmolspec.core.progress.track",
+      "openmolspec.core.progress.T"
+    ],
+    "openmolspec.core.schema": [
+      "openmolspec.core.schema.FieldSpec",
+      "openmolspec.core.schema.FieldSpec.as_dict",
+      "openmolspec.core.schema.FieldSpec.dtype",
+      "openmolspec.core.schema.FieldSpec.shape",
+      "openmolspec.core.schema.FieldSpec.unit",
+      "openmolspec.core.schema.FieldSpec.missing_value_policy",
+      "openmolspec.core.schema.FieldSpec.description",
+      "openmolspec.core.schema.FieldSpec.required",
+      "openmolspec.core.schema.schema_as_dict",
+      "openmolspec.core.schema.validate_record_keys",
+      "openmolspec.core.schema.SCHEMA_VERSION",
+      "openmolspec.core.schema.OPEN_SPEC_V1_SCHEMA",
+      "openmolspec.core.schema.REQUIRED_FIELDS",
+      "openmolspec.core.schema.SCHEMA_METADATA"
+    ],
+    "openmolspec.dataset": [
+      "openmolspec.dataset.sha256",
+      "openmolspec.dataset.list_datasets",
+      "openmolspec.dataset.dataset_info",
+      "openmolspec.dataset.SpectraSplit",
+      "openmolspec.dataset.SpectraSplit.__iter__",
+      "openmolspec.dataset.SpectraSplit.head",
+      "openmolspec.dataset.SpectraSplit.select",
+      "openmolspec.dataset.SpectraSplit.fingerprint",
+      "openmolspec.dataset.SpectraSplit.path",
+      "openmolspec.dataset.SpectraSplit.role",
+      "openmolspec.dataset.SpectraSplit.dataset",
+      "openmolspec.dataset.SpectraSplit.domain",
+      "openmolspec.dataset.SpectraSplit.format",
+      "openmolspec.dataset.SpectraSplit.trusted",
+      "openmolspec.dataset.SpectraSplit.modalities",
+      "openmolspec.dataset.SpectraSplit.limit",
+      "openmolspec.dataset.MolecularSpectra",
+      "openmolspec.dataset.MolecularSpectra.get_split",
+      "openmolspec.dataset.MolecularSpectra.__getitem__",
+      "openmolspec.dataset.MolecularSpectra.summary",
+      "openmolspec.dataset.MolecularSpectra.verify",
+      "openmolspec.dataset.MolecularSpectra.from_jsonl",
+      "openmolspec.dataset.molspectra",
+      "openmolspec.dataset.audit_splits"
+    ],
+    "openmolspec.datasets.splits": [
+      "openmolspec.datasets.splits.leakage_report",
+      "openmolspec.datasets.splits.generate",
+      "openmolspec.datasets.splits.run",
+      "openmolspec.datasets.splits.main",
+      "openmolspec.datasets.splits.SPLIT_NAMES"
+    ],
+    "openmolspec.harness": [
+      "openmolspec.harness.HarnessPlugin",
+      "openmolspec.harness.HarnessPlugin.name",
+      "openmolspec.harness.HarnessPlugin.task_ids",
+      "openmolspec.harness.HarnessPlugin.validate",
+      "openmolspec.harness.HarnessPlugin.execute",
+      "openmolspec.harness.SpectraHarness",
+      "openmolspec.harness.SpectraHarness.catalog",
+      "openmolspec.harness.SpectraHarness.validate",
+      "openmolspec.harness.SpectraHarness.run",
+      "openmolspec.harness.default_plugins",
+      "openmolspec.harness.main"
+    ],
+    "openmolspec.inversion": [
+      "openmolspec.inversion.kernel",
+      "openmolspec.inversion.InversionResult",
+      "openmolspec.inversion.InversionResult.grid",
+      "openmolspec.inversion.InversionResult.weights",
+      "openmolspec.inversion.InversionResult.fitted_signal",
+      "openmolspec.inversion.InversionResult.residuals",
+      "openmolspec.inversion.InversionResult.alpha",
+      "openmolspec.inversion.InversionResult.experiment",
+      "openmolspec.inversion.InversionResult.diagnostics",
+      "openmolspec.inversion.invert"
+    ],
+    "openmolspec.io.tasks": [
+      "openmolspec.io.tasks.load_tasks"
+    ],
+    "openmolspec.legacy.extract_nmr": [
+      "openmolspec.legacy.extract_nmr.Lorenz_broadening",
+      "openmolspec.legacy.extract_nmr.get_nmr_spectrum",
+      "openmolspec.legacy.extract_nmr.LogParser",
+      "openmolspec.legacy.extract_nmr.LogParser.log2nmr",
+      "openmolspec.legacy.extract_nmr.get_args_parser",
+      "openmolspec.legacy.extract_nmr.process_log_file_wrapper",
+      "openmolspec.legacy.extract_nmr.process_log_file_with_report"
+    ],
+    "openmolspec.legacy.extract_properties": [
+      "openmolspec.legacy.extract_properties.get_raman_spectrum",
+      "openmolspec.legacy.extract_properties.get_ir_spectrum",
+      "openmolspec.legacy.extract_properties.LogParser",
+      "openmolspec.legacy.extract_properties.init_worker",
+      "openmolspec.legacy.extract_properties.process_log",
+      "openmolspec.legacy.extract_properties.process_log_with_report",
+      "openmolspec.legacy.extract_properties.main"
+    ],
+    "openmolspec.legacy.extract_properties_backup": [
+      "openmolspec.legacy.extract_properties_backup.LogParser",
+      "openmolspec.legacy.extract_properties_backup.process_log_file_with_report",
+      "openmolspec.legacy.extract_properties_backup.main"
+    ],
+    "openmolspec.legacy.extract_spectra": [
+      "openmolspec.legacy.extract_spectra.get_raman_spectrum",
+      "openmolspec.legacy.extract_spectra.LogParser",
+      "openmolspec.legacy.extract_spectra.init_worker",
+      "openmolspec.legacy.extract_spectra.process_log",
+      "openmolspec.legacy.extract_spectra.process_log_with_report",
+      "openmolspec.legacy.extract_spectra.main"
+    ],
+    "openmolspec.legacy.function": [
+      "openmolspec.legacy.function.car2xyz",
+      "openmolspec.legacy.function.log2arc",
+      "openmolspec.legacy.function.arc2xyz",
+      "openmolspec.legacy.function.np2xyz",
+      "openmolspec.legacy.function.obmol2rdmol",
+      "openmolspec.legacy.function.xyz2rdmol_AC",
+      "openmolspec.legacy.function.pdb2rdmol_AC",
+      "openmolspec.legacy.function.rdmol2x_pos",
+      "openmolspec.legacy.function.generate_atoms_edge_index",
+      "openmolspec.legacy.function.atoms2bonds_edge_index",
+      "openmolspec.legacy.function.generate_angel_edge_bondes",
+      "openmolspec.legacy.function.Is_bonds_edge_index",
+      "openmolspec.legacy.function.generate_data",
+      "openmolspec.legacy.function.HessiantoHiHij",
+      "openmolspec.legacy.function.str2dedipole",
+      "openmolspec.legacy.function.str2polar",
+      "openmolspec.legacy.function.str2depolar",
+      "openmolspec.legacy.function.str2hessian",
+      "openmolspec.legacy.function.arc2tensor",
+      "openmolspec.legacy.function.shiftactfromfile",
+      "openmolspec.legacy.function.file2pt",
+      "openmolspec.legacy.function.rdmol2pt"
+    ],
+    "openmolspec.maintenance.parse_zinc_v2_nmr": [
+      "openmolspec.maintenance.parse_zinc_v2_nmr.parse_zinc_v2_nmr",
+      "openmolspec.maintenance.parse_zinc_v2_nmr.main"
+    ],
+    "openmolspec.mcp": [
+      "openmolspec.mcp.create_server",
+      "openmolspec.mcp.main"
+    ],
+    "openmolspec.model": [
+      "openmolspec.model.NMRNet",
+      "openmolspec.model.NMRNet.from_pretrained",
+      "openmolspec.model.NMRNet.predict",
+      "openmolspec.model.NMRNet.assign",
+      "openmolspec.model.NMRNet.save_config",
+      "openmolspec.model.NMRNet.from_config",
+      "openmolspec.model.NMRNet.capabilities",
+      "openmolspec.model.NMRTransformer",
+      "openmolspec.model.NMRTransformer.from_pretrained",
+      "openmolspec.model.NMRTransformer.predict",
+      "openmolspec.model.NMRTransformer.retrieve",
+      "openmolspec.model.NMRTransformer.training_plan",
+      "openmolspec.model.NMRTransformer.fit",
+      "openmolspec.model.NMRTransformer.save_config",
+      "openmolspec.model.NMRTransformer.from_config",
+      "openmolspec.model.NMRTransformer.capabilities",
+      "openmolspec.model.GapModel",
+      "openmolspec.model.GapModel.predict",
+      "openmolspec.model.GapModel.save_config",
+      "openmolspec.model.GapModel.from_config",
+      "openmolspec.model.GapModel.capabilities",
+      "openmolspec.model.Vib2Mol",
+      "openmolspec.model.Vib2Mol.predict",
+      "openmolspec.model.Vib2Mol.retrieve",
+      "openmolspec.model.Vib2Mol.save_config",
+      "openmolspec.model.Vib2Mol.from_config",
+      "openmolspec.model.Vib2Mol.capabilities",
+      "openmolspec.model.MSPredictor",
+      "openmolspec.model.MSPredictor.predict",
+      "openmolspec.model.MSPredictor.save_config",
+      "openmolspec.model.MSPredictor.from_config",
+      "openmolspec.model.MSPredictor.capabilities"
+    ],
+    "openmolspec.parsing.gaussian": [
+      "openmolspec.parsing.gaussian.lorentzian_broadening",
+      "openmolspec.parsing.gaussian.raman_intensity",
+      "openmolspec.parsing.gaussian.GaussianLogParser",
+      "openmolspec.parsing.gaussian.GaussianLogParser.parse_all",
+      "openmolspec.parsing.gaussian.GaussianNMRParser"
+    ],
+    "openmolspec.parsing.trajectory": [
+      "openmolspec.parsing.trajectory.parse_gaussian_trajectory"
+    ],
+    "openmolspec.plotting": [
+      "openmolspec.plotting.arial_path",
+      "openmolspec.plotting.figure_style"
+    ],
+    "openmolspec.quality.dedup": [
+      "openmolspec.quality.dedup.molecule_identity",
+      "openmolspec.quality.dedup.build_identity_table",
+      "openmolspec.quality.dedup.analyze",
+      "openmolspec.quality.dedup.run",
+      "openmolspec.quality.dedup.main"
+    ],
+    "openmolspec.quality.stats": [
+      "openmolspec.quality.stats.extract_core_features",
+      "openmolspec.quality.stats.extract_trajectory_features",
+      "openmolspec.quality.stats.extract_nmr_features",
+      "openmolspec.quality.stats.convergence_table",
+      "openmolspec.quality.stats.modality_success_table",
+      "openmolspec.quality.stats.imaginary_frequency_table",
+      "openmolspec.quality.stats.outlier_analysis",
+      "openmolspec.quality.stats.duplicate_conformer_tables",
+      "openmolspec.quality.stats.source_success_anomaly_table",
+      "openmolspec.quality.stats.element_coverage",
+      "openmolspec.quality.stats.molecular_distribution_tables",
+      "openmolspec.quality.stats.figure_convergence",
+      "openmolspec.quality.stats.figure_modality_success",
+      "openmolspec.quality.stats.figure_imaginary_frequency",
+      "openmolspec.quality.stats.figure_outlier_detection",
+      "openmolspec.quality.stats.figure_conformer_distribution",
+      "openmolspec.quality.stats.figure_molecular_distributions",
+      "openmolspec.quality.stats.figure_source_rates_heatmap",
+      "openmolspec.quality.stats.run",
+      "openmolspec.quality.stats.main",
+      "openmolspec.quality.stats.OUTLIER_MAD_MULTIPLIER",
+      "openmolspec.quality.stats.OUTLIER_QUANTILES",
+      "openmolspec.quality.stats.FIELD_UNITS",
+      "openmolspec.quality.stats.OUTLIER_FIELDS",
+      "openmolspec.quality.stats.QUALITATIVE_COLORS",
+      "openmolspec.quality.stats.TRAJECTORY_SOURCE_MAP"
+    ],
+    "openmolspec.quality.validation": [
+      "openmolspec.quality.validation.validate_record",
+      "openmolspec.quality.validation.validate_dataframe",
+      "openmolspec.quality.validation.run",
+      "openmolspec.quality.validation.main",
+      "openmolspec.quality.validation.PROPERTY_FIELDS",
+      "openmolspec.quality.validation.SPECTRUM_FIELDS"
+    ],
+    "openmolspec.release.build": [
+      "openmolspec.release.build.run",
+      "openmolspec.release.build.main",
+      "openmolspec.release.build.STAGES"
+    ],
+    "openmolspec.release.catalog": [
+      "openmolspec.release.catalog.build_catalog",
+      "openmolspec.release.catalog.CATALOG_VERSION",
+      "openmolspec.release.catalog.STRICT_ALIGN_DEFINITION"
+    ],
+    "openmolspec.release.common": [
+      "openmolspec.release.common.load_config",
+      "openmolspec.release.common.resolve_path",
+      "openmolspec.release.common.output_dir",
+      "openmolspec.release.common.atomic_json",
+      "openmolspec.release.common.json_default",
+      "openmolspec.release.common.stable_digest",
+      "openmolspec.release.common.file_sha256",
+      "openmolspec.release.common.files_below"
+    ],
+    "openmolspec.release.export": [
+      "openmolspec.release.export.export_pickle",
+      "openmolspec.release.export.export_release",
+      "openmolspec.release.export.index_payload",
+      "openmolspec.release.export.read_array_row",
+      "openmolspec.release.export.EXPORT_VERSION",
+      "openmolspec.release.export.FIELD_ALIASES"
+    ],
+    "openmolspec.release.freeze": [
+      "openmolspec.release.freeze.freeze_release",
+      "openmolspec.release.freeze.FREEZE_VERSION"
+    ],
+    "openmolspec.release.splits": [
+      "openmolspec.release.splits.build_splits",
+      "openmolspec.release.splits.SPLIT_VERSION",
+      "openmolspec.release.splits.PARTITIONS"
+    ],
+    "openmolspec.release.validation": [
+      "openmolspec.release.validation.validate_release",
+      "openmolspec.release.validation.VALIDATION_VERSION"
+    ],
+    "openmolspec.split": [
+      "openmolspec.split.scaffold_group_id",
+      "openmolspec.split.molecular_group",
+      "openmolspec.split.split_records"
+    ],
+    "openmolspec.task": [
+      "openmolspec.task.list_tasks"
+    ],
+    "openmolspec.training": [
+      "openmolspec.training.prepare_nmr_training",
+      "openmolspec.training.TrainingPlan",
+      "openmolspec.training.TrainingPlan.command",
+      "openmolspec.training.TrainingPlan.describe",
+      "openmolspec.training.TrainingPlan.validate",
+      "openmolspec.training.TrainingPlan.run",
+      "openmolspec.training.TrainingPlan.data_dir",
+      "openmolspec.training.TrainingPlan.run_dir",
+      "openmolspec.training.TrainingPlan.stage",
+      "openmolspec.training.TrainingPlan.checkpoint",
+      "openmolspec.training.TrainingPlan.alignment_checkpoint",
+      "openmolspec.training.TrainingPlan.python",
+      "openmolspec.training.TrainingPlan.device",
+      "openmolspec.training.TrainingPlan.epochs",
+      "openmolspec.training.TrainingPlan.batch_size",
+      "openmolspec.training.TrainingPlan.learning_rate",
+      "openmolspec.training.TrainingPlan.seed",
+      "openmolspec.training.TrainingPlan.parameters"
+    ],
+    "openmolspec.workflows.frequency": [
+      "openmolspec.workflows.frequency.extract_frequency"
+    ],
+    "openmolspec.workflows.manifest": [
+      "openmolspec.workflows.manifest.build_manifest"
+    ],
+    "openmolspec.workflows.manifest_scan": [
+      "openmolspec.workflows.manifest_scan.configure_rdkit_logging",
+      "openmolspec.workflows.manifest_scan.sha256_file",
+      "openmolspec.workflows.manifest_scan.normalize_smiles",
+      "openmolspec.workflows.manifest_scan.normalize_peptide_sequence",
+      "openmolspec.workflows.manifest_scan.source_id",
+      "openmolspec.workflows.manifest_scan.label_candidates",
+      "openmolspec.workflows.manifest_scan.load_labels",
+      "openmolspec.workflows.manifest_scan.collect_collection",
+      "openmolspec.workflows.manifest_scan.merge_records",
+      "openmolspec.workflows.manifest_scan.write_outputs",
+      "openmolspec.workflows.manifest_scan.parse_args",
+      "openmolspec.workflows.manifest_scan.main",
+      "openmolspec.workflows.manifest_scan.DEFAULT_DATASETS",
+      "openmolspec.workflows.manifest_scan.DEFAULT_NMR_DATASETS",
+      "openmolspec.workflows.manifest_scan.MANIFEST_CACHE_VERSION",
+      "openmolspec.workflows.manifest_scan.IDENTITY_FIELDS",
+      "openmolspec.workflows.manifest_scan.PUBLIC_ROW_FIELDS",
+      "openmolspec.workflows.manifest_scan.AUDIT_FIELDS",
+      "openmolspec.workflows.manifest_scan.SOURCE_PREFIXES",
+      "openmolspec.workflows.manifest_scan.ALLOW_MISSING_LABEL_DATASETS",
+      "openmolspec.workflows.manifest_scan.STANDARD_AMINO_ACIDS",
+      "openmolspec.workflows.manifest_scan.MODIFIED_AMINO_ACIDS"
+    ],
+    "openmolspec.workflows.nmr": [
+      "openmolspec.workflows.nmr.extract_nmr"
+    ],
+    "openmolspec.workflows.trajectories": [
+      "openmolspec.workflows.trajectories.run_dataset",
+      "openmolspec.workflows.trajectories.main",
+      "openmolspec.workflows.trajectories.SOURCE_PREFIXES"
+    ],
+    "openmolspec": [
+      "openmolspec.OPEN_SPEC_V1_SCHEMA",
+      "openmolspec.SCHEMA_VERSION",
+      "openmolspec.__version__"
+    ],
+    "openmolspec.core": [
+      "openmolspec.core.PARSER_VERSION",
+      "openmolspec.core.PROCESSING_VERSION",
+      "openmolspec.core.SCHEMA_VERSION",
+      "openmolspec.core.OPEN_SPEC_V1_SCHEMA"
+    ],
+    "openmolspec.parsing": [
+      "openmolspec.parsing.GaussianLogParser",
+      "openmolspec.parsing.GaussianLogParser.parse_all",
+      "openmolspec.parsing.GaussianNMRParser",
+      "openmolspec.parsing.parse_gaussian_trajectory"
+    ],
+    "openmolspec.release": [
+      "openmolspec.release.build_catalog",
+      "openmolspec.release.build_splits"
+    ]
+  },
+  "module_count": 52,
+  "object_count": 408
+}

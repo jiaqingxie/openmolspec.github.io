@@ -1,0 +1,622 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1H chemical shift prediction &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/tasks/nmr-forward-1H.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>window.MathJax = {"chtml": {"displayAlign": "left"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="13C chemical shift prediction" href="nmr-forward-13C.html" />
+    <link rel="prev" title="NMR" href="nmr.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../zh/tasks/nmr-forward-1H.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tasks by spectroscopy family</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#nmr"><span class="xref myst">NMR</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#mass-spectrometry"><span class="xref myst">Mass spectrometry</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman"><span class="xref myst">IR / Raman</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#multimodal-spectroscopy"><span class="xref myst">Multimodal spectroscopy</span></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#deferred-tasks"><span class="xref myst">Deferred tasks</span></a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="nmr.html">NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms.html">Mass spectrometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational.html">IR / Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multimodal.html">Multimodal spectroscopy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deferred.html">Deferred tasks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Tasks by spectroscopy family</a></li>
+          <li class="breadcrumb-item"><a href="nmr.html">NMR</a></li>
+      <li class="breadcrumb-item active">1H chemical shift prediction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tasks/nmr-forward-1H.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="h-chemical-shift-prediction">
+<h1>1H chemical shift prediction<a class="headerlink" href="#h-chemical-shift-prediction" title="Link to this heading"></a></h1>
+<p>Predict the 1H chemical shifts of a molecule from its structure. Use the atom indices to display predictions on the molecular graph or compare them with measured peaks.</p>
+<section id="what-goes-in">
+<h2>What goes in<a class="headerlink" href="#what-goes-in" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">smiles</span> <span class="pre">/</span> <span class="pre">geometry</span></code></p></td>
+<td><p>A valid molecular graph and a compatible 3D conformer; atom order must be preserved.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nucleus</span></code></p></td>
+<td><p>1H; the checkpoint must cover this nucleus.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reference</span> <span class="pre">peaks</span></code></p></td>
+<td><p>Optional measured ppm values for evaluation; not an inference input.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="what-comes-out">
+<h2>What comes out<a class="headerlink" href="#what-comes-out" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">prediction_ppm</span></code></p></td>
+<td><p>Per-atom chemical shifts in ppm, with atom indices or a peak list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">error</span> <span class="pre">/</span> <span class="pre">coverage</span></code></p></td>
+<td><p>Reference-matched errors and peak coverage.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="a-real-recorded-example">
+<h2>A real recorded example<a class="headerlink" href="#a-real-recorded-example" title="Link to this heading"></a></h2>
+<p>Inspect the input, prediction and reference for the example below. Download the JSON for the complete numerical arrays and additional examples.</p>
+<p><img alt="nmr.forward.1H actual results" src="../_images/nmr-forward-1H.png" /></p>
+<p><a class="reference download internal" download="" href="../_downloads/86c580b768accea5b7b9cbb884d584f6/nmr-forward-1H.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/a725045da75aa0e9b5bae5859181a5f3/nmr-forward-1H.png"><span class="xref download myst">PNG</span></a> · <a class="reference download internal" download="" href="../_downloads/23f3d35f7638f35aa8221303eedec6c8/nmr-forward-1H.json"><span class="xref download myst">Full input/output JSON</span></a></p>
+<details><summary>Inspect the actual input and output fields</summary>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"prediction_ppm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="mf">5.080643653869629</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">5.033477783203125</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">2.49700927734375</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">2.570378065109253</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nmrnet"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"peaks_ppm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="mf">7.34</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">7.265</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">7.165</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">5.26</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="actual-evaluation-results">
+<h2>Actual evaluation results<a class="headerlink" href="#actual-evaluation-results" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.134143</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>0.236816</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>10.2188</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.519243</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.0769934</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>0.163875</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>10.2188</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.519243</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.26912</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>0.530869</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>24.7586</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.294737</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>29</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>29</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.227842</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>0.484549</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>24.7586</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.294737</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>29</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>29</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.0485825</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>0.0797388</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>8.09375</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.530831</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnet</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.030637</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>0.0626249</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>8.09375</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.530831</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.196824</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>0.393488</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>15.8438</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.529103</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnet</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_mae_ppm</p></td>
+<td class="text-right"><p>0.198216</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_peak_rmse_ppm</p></td>
+<td class="text-right"><p>0.406316</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>peak_count_mae</p></td>
+<td class="text-right"><p>15.8438</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.529103</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>scored_examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>aggregation</p></td>
+<td class="text-right"><p>equal_weight_per_molecule</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>nmrnetpp</p></td>
+<td><p>assignment</p></td>
+<td class="text-right"><p>minimum_absolute_error_without_atom_labels</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="model-and-method">
+<h2>Model and method<a class="headerlink" href="#model-and-method" title="Link to this heading"></a></h2>
+<p>NMRNet encodes the molecular geometry and predicts chemical shifts at the selected atoms. The adapter prepares a conformer, loads the nucleus-specific weights and applies the checkpoint scaler.</p>
+<p>MAE and RMSE are reported in ppm.</p>
+</section>
+<section id="reproduce">
+<h2>Reproduce<a class="headerlink" href="#reproduce" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../notebooks/nmr-forward-1H.html"><span class="std std-doc">Notebook with executed figures</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick Start</span></a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tasks<span class="w"> </span>nmr.forward.1H<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/nmr-forward-1H-new.json
+</pre></div>
+</div>
+</section>
+<section id="call-and-adapt-this-model">
+<h2>Call and adapt this model<a class="headerlink" href="#call-and-adapt-this-model" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">NMRNet</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">NMRNet</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">'/path/to/models'</span><span class="p">,</span> <span class="n">nucleus</span><span class="o">=</span><span class="s1">'1H'</span><span class="p">,</span>
+    <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/nmr-env/bin/python'</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For fine-tuning, use the <a class="reference external" href="https://github.com/Colin-Jay/NMRNet">NMRNet author training implementation</a>, preparing atom-labelled structures/coordinates, target masks and train/validation LMDBs for the selected nucleus. Its <code class="docutils literal notranslate"><span class="pre">atom_regloss_mae</span></code> and <code class="docutils literal notranslate"><span class="pre">atom_regloss_mse</span></code> criteria operate on supervised target atoms. Retain the scaler/reference convention and select the checkpoint on validation data. This author training route is separate from the SDK inference facade.</p>
+<div class="math notranslate nohighlight">
+\[L_{\rm MAE}=\frac{1}{N_{\rm labelled}}\sum_{i\in\mathcal M}|\hat\delta_i-\delta_i|,\qquad L_{\rm MSE}=\frac{1}{N_{\rm labelled}}\sum_{i\in\mathcal M}(\hat\delta_i-\delta_i)^2.\]</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model setting</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Checkpoint</p></td>
+<td><p>NMRNet 1H fold 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Training domain</p></td>
+<td><p>liquid</p></td>
+</tr>
+<tr class="row-even"><td><p>Shift unit</p></td>
+<td><p>ppm</p></td>
+</tr>
+</tbody>
+</table>
+<details><summary>Source reports and SHA-256 fingerprints</summary>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/nmr_documented_examples_20261117_v2.json">nmr_documented_examples_20261117_v2.json</a> — SHA-256 <code class="docutils literal notranslate"><span class="pre">669413d6fc0939bdb6826782d41fc13cf12926a672418ecb46303f0b8ba05b99</span></code></p></li>
+</ul>
+</details>
+<p><a class="reference external" href="https://github.com/Colin-Jay/NMRNet">Model implementation / 模型实现</a> · <a class="reference internal" href="../model-audit.html"><span class="std std-doc">Model review / 模型检查</span></a></p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. <a class="reference external" href="https://doi.org/10.1038/s43588-025-00783-z">Source</a></p></li>
+<li><p>OpenDataLab. WanJuan MolSpectra, version 1.0.3. Experimental molecular spectroscopy dataset. <a class="reference external" href="https://opendatalab.com/">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="nmr.html" class="btn btn-neutral float-left" title="NMR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nmr-forward-13C.html" class="btn btn-neutral float-right" title="13C chemical shift prediction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

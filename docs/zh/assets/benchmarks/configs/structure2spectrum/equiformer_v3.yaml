@@ -1,0 +1,31 @@
+experiment:
+  name: equiformer-v3-ir-raman
+  release: demo-10k
+  variant: ir-raman
+  seed: 624
+
+task:
+  family: structure2spectrum
+  modality: 3d
+  targets:
+    - ir_spectrum
+    - raman_spectrum
+
+model:
+  name: equiformer_v3
+  parameters: {}
+
+data:
+  root: benchmark_data/demo_10k
+
+training:
+  epochs: 2
+  batch_size: 16
+  learning_rate: 3.0e-4
+  weight_decay: 1.0e-4
+  workers: 4
+  device: cuda:0
+  gpus: 1
+
+output:
+  root: runs

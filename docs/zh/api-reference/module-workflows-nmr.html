@@ -1,0 +1,187 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>openmolspec.workflows.nmr &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/api-reference/module-workflows-nmr.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="openmolspec.workflows.trajectories" href="module-workflows-trajectories.html" />
+    <link rel="prev" title="openmolspec.workflows.manifest_scan" href="module-workflows-manifest_scan.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../api-reference/module-workflows-nmr.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API 参考</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="category-data.html">数据访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-models.html">模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-learning.html">训练与评测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-spectroscopy.html">谱学与数据结构</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="category-processing.html">数据处理与发布</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="module-io-tasks.html">openmolspec.io.tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-quality-dedup.html">openmolspec.quality.dedup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-quality-stats.html">openmolspec.quality.stats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-quality-validation.html">openmolspec.quality.validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-release-build.html">openmolspec.release.build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-release-catalog.html">openmolspec.release.catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-release-common.html">openmolspec.release.common</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-release-export.html">openmolspec.release.export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-release-freeze.html">openmolspec.release.freeze</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-release-splits.html">openmolspec.release.splits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-release-validation.html">openmolspec.release.validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-workflows-frequency.html">openmolspec.workflows.frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-workflows-manifest.html">openmolspec.workflows.manifest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-workflows-manifest_scan.html">openmolspec.workflows.manifest_scan</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">openmolspec.workflows.nmr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-workflows-trajectories.html">openmolspec.workflows.trajectories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-release.html">openmolspec.release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="category-agents.html">Agent 工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-utilities.html">工具函数</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API 参考</a></li>
+          <li class="breadcrumb-item"><a href="category-processing.html">数据处理与发布</a></li>
+      <li class="breadcrumb-item active">openmolspec.workflows.nmr</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api-reference/module-workflows-nmr.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="openmolspec-workflows-nmr">
+<h1>openmolspec.workflows.nmr<a class="headerlink" href="#openmolspec-workflows-nmr" title="Link to this heading"></a></h1>
+<p>Batch NMR extraction for the OpenSpec staged pipeline.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.workflows.nmr.extract_nmr" title="openmolspec.workflows.nmr.extract_nmr"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.workflows.nmr.extract_nmr()</span></code></a></p></td>
+<td><p>Parse all NMR files listed by the manifest-generated ID map.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function" id="module-openmolspec.workflows.nmr">
+<dt class="sig sig-object py" id="openmolspec.workflows.nmr.extract_nmr">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.nmr.</span></span><span class="sig-name descname"><span class="pre">extract_nmr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smiles_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">report_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">broadening_sigma</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">SPECTRUM_PARAMETERS['nmr_broadening_sigma']</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.workflows.nmr.extract_nmr" title="Link to this definition"></a></dt>
+<dd><p>Parse all NMR files listed by the manifest-generated ID map.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/nmr.py#L45">Source code</a></p>
+</dd></dl>
+
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="module-workflows-manifest_scan.html" class="btn btn-neutral float-left" title="openmolspec.workflows.manifest_scan" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="module-workflows-trajectories.html" class="btn btn-neutral float-right" title="openmolspec.workflows.trajectories" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

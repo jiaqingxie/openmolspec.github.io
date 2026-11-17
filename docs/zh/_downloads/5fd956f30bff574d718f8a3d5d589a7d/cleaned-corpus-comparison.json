@@ -1,0 +1,10 @@
+{
+  "completed": true,
+  "identity": "full standard InChIKey",
+  "opendatalab_cleaned": 2678511,
+  "nmrexp_valid_identities": 1499173,
+  "shared": 41898,
+  "opendatalab_only": 2636613,
+  "nmrexp_only": 1457275,
+  "union": 4135786
+}

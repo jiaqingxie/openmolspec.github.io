@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>谱到结构检索：¹H &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/tasks/nmr-retrieval-h-s2m.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script>window.MathJax = {"chtml": {"displayAlign": "left"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="结构到谱检索：¹H" href="nmr-retrieval-h-m2s.html" />
+    <link rel="prev" title="29Si 化学位移预测" href="nmr-forward-29Si.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../tasks/nmr-retrieval-h-s2m.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">按谱型浏览任务</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#nmr"><span class="xref myst">核磁共振 NMR</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ms"><span class="xref myst">质谱 MS</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman"><span class="xref myst">红外 / 拉曼 IR / Raman</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id2"><span class="xref myst">多谱联合</span></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#id3"><span class="xref myst">暂不推进</span></a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="nmr.html">核磁共振 NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms.html">质谱 MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational.html">红外 / 拉曼 IR / Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multimodal.html">多谱联合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deferred.html">暂不推进</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">按谱型浏览任务</a></li>
+          <li class="breadcrumb-item"><a href="nmr.html">核磁共振 NMR</a></li>
+      <li class="breadcrumb-item active">谱到结构检索：¹H</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tasks/nmr-retrieval-h-s2m.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="h">
+<h1>谱到结构检索：¹H<a class="headerlink" href="#h" title="Link to this heading"></a></h1>
+<p>为查询分子或谱图寻找最匹配的候选。</p>
+<section id="id1">
+<h2>输入是什么<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">query</span></code></p></td>
+<td><p>s2m 使用 H 峰记录查询结构；m2s 使用结构查询谱。当前方向：s2m。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">candidate_pool</span></code></p></td>
+<td><p>明确提供候选结构或谱库；结果仅在这个候选池内排序。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">formula</span></code></p></td>
+<td><p>谱编码器不接收分子式。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h2>输出是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ranked_candidates</span></code></p></td>
+<td><p>候选 ID、排名与嵌入相似度分数。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">recall</span> <span class="pre">/</span> <span class="pre">MRR</span></code></p></td>
+<td><p>Recall&#64;1/5/10、MRR 及对应候选池大小。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h2>真实运行案例<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>下面展示示例的输入、预测与参考。下载 JSON 可获取完整数值数组及更多示例。</p>
+<p><img alt="nmr.retrieval.h.s2m actual results" src="../_images/nmr-retrieval-h-s2m.png" /></p>
+<p><a class="reference download internal" download="" href="../_downloads/063d8c88019dc86c56d18e7431faf4a6/nmr-retrieval-h-s2m.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/ba437b6452cd3f5de484c6a6129af583/nmr-retrieval-h-s2m.png"><span class="xref download myst">PNG</span></a> · <a class="reference download internal" download="" href="../_downloads/8a99f73d15838d1439a2b1c37469b3c7/nmr-retrieval-h-s2m.json"><span class="xref download myst">Full input/output JSON</span></a></p>
+<details><summary>展开查看实际输入与输出字段</summary>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"h_nmr"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1H NMR"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"chemical_shift"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.34 (s, 4H), 7.265 (m, 2H), 7.165 (m, 3H), 5.26 (d, J=1.6 Hz, 1H), 5.01 (t, J=1.4 Hz, 1H), 2.61 (t, J=7.8 Hz, 2H), 2.53 (t, J=7.6 Hz, 2H), 1.665 (m, 2H), 1.52 (d, J=7.7 Hz, 2H), 1.33 (s, 9H)"</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"c_nmr"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13C NMR"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"chemical_shift"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150.22, 148.03, 142.68, 138.28, 128.36, 128.22, 125.68, 125.58, 125.12, 111.51, 35.72, 35.03, 34.46, 31.32, 31.11, 27.93"</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"modality_mask"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"reference_smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8390898108482361</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"reference_match"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.35815000534057617</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"reference_match"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CC(C)(C)OC(=O)N[C@H](CCC(=O)c1ccccc1)c1c[nH]c2cc(Cl)ccc12"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3557360768318176</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"reference_match"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CC1=C2CCCCCCCCCCC2OC1=O"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2330881506204605</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"reference_match"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="id4">
+<h2>实际评测结果<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrspec_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.6875</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.819568</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.875</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.96875</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.917708</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrexp_exp_10k</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>0.6875</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>0.875</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>0.9375</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>0.76864</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h2>模型与方法<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>双编码器将分子结构与 NMR 峰表映射到同一表征空间，并按嵌入相似度排序。</p>
+<p>报告 Recall&#64;1/5/10、平均倒数排名及候选数。</p>
+</section>
+<section id="id6">
+<h2>复现方式<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../notebooks/nmr-retrieval-h-s2m.html"><span class="std std-doc">Notebook with executed figures</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick Start</span></a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tasks<span class="w"> </span>nmr.retrieval.h.s2m<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/nmr-retrieval-h-s2m-new.json
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2>调用模型与微调<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">NMRTransformer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">NMRTransformer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+    <span class="s1">'/path/to/checkpoint.pt'</span><span class="p">,</span> <span class="n">stage</span><span class="o">=</span><span class="s1">'align'</span><span class="p">,</span>
+    <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/nmr-env/bin/python'</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">candidate_smiles</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plan</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">training_plan</span><span class="p">(</span>
+    <span class="s1">'prepared-nmr'</span><span class="p">,</span> <span class="n">run_dir</span><span class="o">=</span><span class="s1">'runs/my-model'</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">plan</span><span class="o">.</span><span class="n">validate</span><span class="p">())</span>
+<span class="c1"># trained = model.fit(plan)</span>
+</pre></div>
+</div>
+<p>先用 <code class="docutils literal notranslate"><span class="pre">prepare_nmr_training</span></code> 准备相互独立的 train/val；生成阶段需要对齐 checkpoint。用 H/C 掩码定义输入通道，在验证集选择模型。已有权重可用于初始化。<a class="reference internal" href="../api.html"><span class="std std-doc">数据准备与训练指南</span></a>给出完整流程。</p>
+<section id="id8">
+<h3>训练目标<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<div class="math notranslate nohighlight">
+\[L_{\rm align}=\tfrac12[\mathrm{CE}(SM^\top/\tau,I)+\mathrm{CE}(MS^\top/\tau,I)]+\lambda_{\rm ITM}L_{\rm match}.\]</div>
+<p>生成使用 token 交叉熵，可按配置加入联合对齐项。对齐使用归一化谱学／分子表征的双向对比交叉熵；ITM 配置增加正负配对分类项。具体目标与权重以训练配置为准。</p>
+<details><summary>来源报告与 SHA-256 指纹</summary>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/nmr_documented_examples_20261117_v2.json">nmr_documented_examples_20261117_v2.json</a> — SHA-256 <code class="docutils literal notranslate"><span class="pre">669413d6fc0939bdb6826782d41fc13cf12926a672418ecb46303f0b8ba05b99</span></code></p></li>
+</ul>
+</details>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend">Model implementation / 模型实现</a> · <a class="reference internal" href="../model-audit.html"><span class="std std-doc">Model review / 模型检查</span></a></p>
+</section>
+</section>
+<section id="id9">
+<h2>参考文献<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Yang, L., Yang, Z., Xie, J., Wang, Y., Gao, B., Fu, T., Wei, X., Sun, J., Wu, J., He, C., Li, Y. &amp; Gu, Q. NMRTrans: Structure Elucidation from Experimental NMR Spectra via Set Transformers. arXiv:2602.10158 (2026). <a class="reference external" href="https://arxiv.org/abs/2602.10158">Source</a></p></li>
+<li><p>Fang, Z., Yang, C., Yu, H., Luo, H., He, H., Xie, J., Yang, Z. &amp; Xia, J. NMRGym: A Comprehensive Benchmark for Nuclear Magnetic Resonance Based Molecular Structure Elucidation. arXiv:2601.15763 (2026). <a class="reference external" href="https://arxiv.org/abs/2601.15763">Source</a></p></li>
+<li><p>OpenDataLab. WanJuan MolSpectra, version 1.0.3. Experimental molecular spectroscopy dataset. <a class="reference external" href="https://opendatalab.com/">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="nmr-forward-29Si.html" class="btn btn-neutral float-left" title="29Si 化学位移预测" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="nmr-retrieval-h-m2s.html" class="btn btn-neutral float-right" title="结构到谱检索：¹H" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

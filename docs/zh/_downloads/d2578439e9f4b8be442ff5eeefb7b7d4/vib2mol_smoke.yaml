@@ -1,0 +1,37 @@
+experiment:
+  name: vib2mol-two-stage-smoke
+  release: release-v1
+  variant: ir-raman-smoke-minmax
+  seed: 624
+task:
+  family: spectrum2structure
+  modality: ir-raman-nmr
+  targets: [kekule_smiles]
+model:
+  name: vib2mol
+  stage: pipeline
+  use_formula: false
+  smiles_augment: false
+  spectra_augment: false
+  frozen_encoder: false
+data:
+  root: benchmark_data/release_v1_ks200k_hc_nmr_minmax
+training:
+  max_steps: 312500
+  eval_every_steps: 2500
+  batch_size: 16
+  learning_rate: 1.0e-4
+  generation_max_steps: 312500
+  generation_batch_size: 8
+  generation_learning_rate: 1.0e-4
+  workers: 0
+  device: cuda:0
+  gpus: 1
+  progress: tqdm
+debug:
+  enabled: true
+  train_samples: 128
+  eval_samples: 64
+  test_samples: 64
+output:
+  root: runs

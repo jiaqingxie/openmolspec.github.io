@@ -1,0 +1,186 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>红外 IR 与拉曼 Raman &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/theory/vibrational.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script>window.MathJax = {"chtml": {"displayAlign": "left"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Inversion：NMR 数值反演" href="../inversion/index.html" />
+    <link rel="prev" title="质谱 MS" href="ms.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../theory/vibrational.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">谱学理论</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#id2">参考文献</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="nmr.html">核磁共振 NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms.html">质谱 MS</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">红外 IR 与拉曼 Raman</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">谱学理论</a></li>
+      <li class="breadcrumb-item active">红外 IR 与拉曼 Raman</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/theory/vibrational.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="ir-raman">
+<h1>红外 IR 与拉曼 Raman<a class="headerlink" href="#ir-raman" title="Link to this heading"></a></h1>
+<section id="hessian">
+<h2>Hessian 与简正模式<a class="headerlink" href="#hessian" title="Link to this heading"></a></h2>
+<p>在平衡构象附近，谐振近似把势能按核位移展开到二阶。Hessian 是能量二阶导数矩阵；对质量加权 Hessian 对角化，可得到简正模式及对应的角频率平方。构建振动模式时需要处理平移与转动自由度。虚频对应负曲率，不能直接把含显著虚频的构象当作稳定极小值。</p>
+<p>非线性分子有 <span class="math notranslate nohighlight">\(3N-6\)</span> 个振动模式，孤立线性分子有 <span class="math notranslate nohighlight">\(3N-5\)</span> 个。振动频率与构象、电子结构方法、同位素质量及谐性／非谐性处理有关；不同构象可以具有不同谱图。</p>
+</section>
+<section id="id1">
+<h2>互补的选择定则<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>IR 活性与偶极矩沿简正坐标的变化有关；Raman 活性与极化率张量导数有关。因此两个通道提供互补信息，一个 IR 强峰可能对应弱 Raman 信号。实验 Raman 强度还取决于激发频率、温度、偏振与采集几何，数据文件中的 Raman activity 不能自动等同于实测强度。</p>
+</section>
+<section id="id2">
+<h2>离散模式到连续谱形<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>计算谱常通过展宽离散模式得到：</p>
+<div class="math notranslate nohighlight">
+\[I(\tilde\nu)=\sum_k A_k L(\tilde\nu-\tilde\nu_k).\]</div>
+<p><span class="math notranslate nohighlight">\(L\)</span> 可选 Gaussian 或 Lorentzian。Gaussian 的标准差与半峰全宽满足 <span class="math notranslate nohighlight">\(\mathrm{FWHM}=2\sqrt{2\ln2}\,\sigma\)</span>。谱轴、线宽、频率缩放与强度归一化均应明确；展宽本身不会补回缺失的环境或非谐性效应。</p>
+<p><a class="reference internal" href="../notebooks/theory-vibrational-broadening.html"><span class="std std-doc">展宽教程</span></a>使用五个明确给出的模式，并验证归一化 Gaussian 谱的积分等于输入总活性。IR 与 Raman 使用相同模式频率、不同活性向量。</p>
+</section>
+<section id="id3">
+<h2>实验谱与计算谱<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>吸光度与透射率按相应测量约定呈对数关系。稀疏 IR 峰位列表不包含完整强度曲线。气相、液相和固相环境会改变峰位置及线宽。重采样必须明确单位与谱轴，也不能把峰表插值后描述成原始实测谱。</p>
+<p>构象到谱图的评测应使用参考谱对应的坐标。多谱联合学习需要明确：不同模态是对应同一构象、同一分子身份，还是相同实验条件，并保留参考信息。</p>
+</section>
+<section id="id4">
+<h2>来源<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://xacs.xmu.edu.cn/docs/mlatom/">MLatom</a>：计算谱学流程。</p></li>
+<li><p><a class="reference external" href="https://www.nature.com/articles/s43588-023-00550-y">QM9S</a>：计算谱和分子响应性质。</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2501.18876">QMe14S</a>：更广元素覆盖的计算谱数据。</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>参考文献<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Zou, Z., Zhang, Y., Liang, L., Wei, M., Leng, J., Jiang, J., Luo, Y. &amp; Hu, W. A deep learning model for predicting selected organic molecular spectra. Nature Computational Science 3, 957–964 (2023). doi:10.1038/s43588-023-00550-y. <a class="reference external" href="https://www.nature.com/articles/s43588-023-00550-y">Source</a></p></li>
+<li><p>Yuan, M., Zou, Z. &amp; Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). <a class="reference external" href="https://arxiv.org/abs/2501.18876">Source</a></p></li>
+<li><p>OpenMolSpec contributors. openSpec models and benchmark training workflows. Source archive, v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="ms.html" class="btn btn-neutral float-left" title="质谱 MS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../inversion/index.html" class="btn btn-neutral float-right" title="Inversion：NMR 数值反演" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

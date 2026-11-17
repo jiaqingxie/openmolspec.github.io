@@ -1,0 +1,33 @@
+{
+  "checked_on": "2026-11-17",
+  "nmrexp": {
+    "version": "v2",
+    "doi": "10.5281/zenodo.17296666",
+    "url": "https://zenodo.org/records/17296666",
+    "file": "NMRexp_10to24_1_1004.parquet",
+    "published_md5": "2f9ed8bc533364dfb9dce96c83703dd4",
+    "local_md5": "2f9ed8bc533364dfb9dce96c83703dd4",
+    "matches": true
+  },
+  "nmrspec": {
+    "paper_version": "arXiv:2602.10158v1",
+    "paper_benchmark_samples": 239997,
+    "current_release_test_records": 21298,
+    "count_versions_must_not_be_interchanged": true,
+    "urls": [
+      "https://arxiv.org/html/2602.10158v1",
+      "https://github.com/little1d/NMRTrans",
+      "https://huggingface.co/datasets/little1d/NMRTrans-Data"
+    ]
+  },
+  "nmrgym": {
+    "paper_version": "arXiv:2601.15763v1",
+    "reported_unique_molecules": 269999,
+    "url": "https://arxiv.org/abs/2601.15763"
+  },
+  "multimodal": {
+    "type": "simulated spectra",
+    "project_approximate_molecules": 790000,
+    "url": "https://rxn4chemistry.github.io/multimodal-spectroscopic-dataset/"
+  }
+}

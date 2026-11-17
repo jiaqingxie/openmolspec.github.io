@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python SDK &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/api.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script defer="defer" src="_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorials" href="notebooks/index.html" />
+    <link rel="prev" title="Models and training" href="model-audit.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="zh/api.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks/index.html">Tasks by spectroscopy family</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-audit.html">Models and training</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python SDK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-objects">Dataset objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#import-your-own-measurements">Import your own measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-interfaces">Model interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nmrnet">NMRNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nmrtransformer">NMRTransformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vibrational-and-property-models">Vibrational and property models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mass-spectrum-prediction">Mass-spectrum prediction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#training-and-checkpoint-reuse">Training and checkpoint reuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluation-and-numerical-inversion">Evaluation and numerical inversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference/index.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Python SDK</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="python-sdk">
+<h1>Python SDK<a class="headerlink" href="#python-sdk" title="Link to this heading"></a></h1>
+<p>OpenMolSpec provides streaming datasets, spectroscopy model classes, training plans and benchmark runners. This guide explains how these interfaces fit together. Follow <a class="reference internal" href="quickstart.html"><span class="std std-doc">Quick start</span></a> for installation and your first prediction.</p>
+<section id="dataset-objects">
+<h2>Dataset objects<a class="headerlink" href="#dataset-objects" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">molspectra</span><span class="p">,</span> <span class="n">list_datasets</span>
+
+<span class="nb">print</span><span class="p">([</span><span class="n">card</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span> <span class="k">for</span> <span class="n">card</span> <span class="ow">in</span> <span class="n">list_datasets</span><span class="p">()])</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">molspectra</span><span class="p">(</span><span class="s2">"opendatalab_nmr"</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s2">"data/nmr"</span><span class="p">)</span>
+<span class="n">splits</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get_split</span><span class="p">()</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">splits</span><span class="p">[</span><span class="s2">"test"</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">paired</span> <span class="o">=</span> <span class="n">splits</span><span class="p">[</span><span class="s2">"train"</span><span class="p">]</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">modalities</span><span class="o">=</span><span class="p">[</span><span class="s2">"1H"</span><span class="p">,</span> <span class="s2">"13C"</span><span class="p">],</span> <span class="n">limit</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">verify</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">MolecularSpectra</span></code> groups the named splits. Each <code class="docutils literal notranslate"><span class="pre">SpectraSplit</span></code> reads records as you iterate, keeping memory usage bounded. <code class="docutils literal notranslate"><span class="pre">select</span></code> combines channel filters and a row limit; <code class="docutils literal notranslate"><span class="pre">head</span></code> reads a small list. <code class="docutils literal notranslate"><span class="pre">verify</span></code> checks the complete local files against the dataset version.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Registered name</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">opendatalab_nmr</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nmr_jsonl</span></code></p></td>
+<td><p>Cleaned experimental H/C NMR.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nmrspec_test</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nmr_jsonl</span></code></p></td>
+<td><p>NMRSpec / NMRTrans</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">patent_test_10k</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nmr_jsonl</span></code></p></td>
+<td><p>OpenDataLab H/C evaluation subset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nmrexp_exp_10k</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nmr_jsonl</span></code></p></td>
+<td><p>Prepared NMRexp evaluation view.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nmrgym_test</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nmr_jsonl</span></code></p></td>
+<td><p>NMRGym</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">openspec_test</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">openspec_lmdb</span></code></p></td>
+<td><p>Computed multimodal spectra and properties.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">massspecgym_test</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">massspecgym_csv</span></code></p></td>
+<td><p>Prepared MS/MS evaluation CSV.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">massspecgym_1_5</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">massspecgym_tsv</span></code></p></td>
+<td><p>MassSpecGym v1.5 TSV with source folds.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">opendatalab_nmr_prepared</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nmr_jsonl</span></code></p></td>
+<td><p>Original prepared H/C files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">opendatalab_ir</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">jsonl</span></code></p></td>
+<td><p>Cleaned experimental IR</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">opendatalab_19f</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">jsonl</span></code></p></td>
+<td><p>Cleaned experimental 19F</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">opendatalab_31p</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">jsonl</span></code></p></td>
+<td><p>Cleaned experimental 31P</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">opendatalab_ms</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">jsonl</span></code></p></td>
+<td><p>Cleaned experimental MS</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">opendatalab_11b</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">jsonl</span></code></p></td>
+<td><p>Cleaned experimental 11B</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">opendatalab_raman</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">jsonl</span></code></p></td>
+<td><p>Cleaned experimental RAMAN</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">opendatalab_29si</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">jsonl</span></code></p></td>
+<td><p>Cleaned experimental 29SI</p></td>
+</tr>
+</tbody>
+</table>
+<p>Each record retains its source fields. <code class="docutils literal notranslate"><span class="pre">_openmolspec</span></code> adds the dataset, domain, split, file locator and detected channels. The <a class="reference internal" href="data/index.html"><span class="std std-doc">Data guide</span></a> describes numerical fields, units, acquisition conditions and cleaned counts.</p>
+</section>
+<section id="import-your-own-measurements">
+<h2>Import your own measurements<a class="headerlink" href="#import-your-own-measurements" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularSpectra</span>
+
+<span class="n">custom</span> <span class="o">=</span> <span class="n">MolecularSpectra</span><span class="o">.</span><span class="n">from_jsonl</span><span class="p">(</span>
+    <span class="n">splits</span><span class="o">=</span><span class="p">{</span><span class="s2">"train"</span><span class="p">:</span> <span class="s2">"my-train.jsonl"</span><span class="p">,</span> <span class="s2">"val"</span><span class="p">:</span> <span class="s2">"my-val.jsonl"</span><span class="p">},</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"my_measurements"</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">"experimental"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">custom</span><span class="p">[</span><span class="s2">"train"</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Use the H/C JSONL schema for <code class="docutils literal notranslate"><span class="pre">format=&quot;nmr_jsonl&quot;</span></code>. For heteronuclear shifts, optical peak lists or general spectral dictionaries, choose <code class="docutils literal notranslate"><span class="pre">format=&quot;jsonl&quot;</span></code>. The reader recognizes <code class="docutils literal notranslate"><span class="pre">nucleus</span></code> with <code class="docutils literal notranslate"><span class="pre">peaks_ppm</span></code>, <code class="docutils literal notranslate"><span class="pre">modality</span></code> with <code class="docutils literal notranslate"><span class="pre">wavenumber_cm1</span></code>, and numerical mass-spectral <code class="docutils literal notranslate"><span class="pre">peaks</span></code>.</p>
+</section>
+<section id="model-interfaces">
+<h2>Model interfaces<a class="headerlink" href="#model-interfaces" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Class</p></th>
+<th class="head"><p>Input → output</p></th>
+<th class="head"><p>Training route</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NMRNet</span></code></p></td>
+<td><p>SMILES → ¹H/¹³C shifts; structure + peaks → assignments</p></td>
+<td><p><a class="reference internal" href="tasks/nmr-forward-13C.html"><span class="std std-doc">NMRNet</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NMRTransformer(stage=&quot;align&quot;)</span></code></p></td>
+<td><p>NMR + candidates → ranking</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">training_plan</span></code>, <code class="docutils literal notranslate"><span class="pre">fit</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NMRTransformer(stage=&quot;generate&quot;)</span></code></p></td>
+<td><p>NMR + formula → molecular structures</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">training_plan</span></code>, <code class="docutils literal notranslate"><span class="pre">fit</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GapModel</span></code></p></td>
+<td><p>IR + Raman + H/C → gap (eV)</p></td>
+<td><p><a class="reference internal" href="tasks/vibrational-gap-ir_raman_hc.html"><span class="std std-doc">openSpec</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Vib2Mol</span></code></p></td>
+<td><p>Spectra → structures or candidate ranking</p></td>
+<td><p><a class="reference internal" href="tasks/vibrational-generation-hc.html"><span class="std std-doc">openSpec</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MSPredictor</span></code></p></td>
+<td><p>Molecule + acquisition conditions → MS/MS</p></td>
+<td><p><a class="reference internal" href="tasks/ms-forward-glacier.html"><span class="std std-doc">ms-pred</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Select each model’s dependencies through <code class="docutils literal notranslate"><span class="pre">python=</span></code>. This lets a lightweight OpenMolSpec client call the environment containing the author model implementation and its weights.</p>
+<section id="nmrnet">
+<h3>NMRNet<a class="headerlink" href="#nmrnet" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">NMRNet</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">NMRNet</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+    <span class="s2">"models"</span><span class="p">,</span> <span class="n">nucleus</span><span class="o">=</span><span class="s2">"13C"</span><span class="p">,</span> <span class="n">python</span><span class="o">=</span><span class="s2">"/path/to/nmr-env/bin/python"</span><span class="p">)</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">"CCO"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="s2">"records"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"atom_indices"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="s2">"records"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"prediction_ppm"</span><span class="p">])</span>
+<span class="n">assignments</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="s2">"CCO"</span><span class="p">,</span> <span class="p">[</span><span class="mf">18.2</span><span class="p">,</span> <span class="mf">58.3</span><span class="p">],</span> <span class="n">tolerance_ppm</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The model directory contains <code class="docutils literal notranslate"><span class="pre">nmrnet/nmrnet-orig</span></code> and <code class="docutils literal notranslate"><span class="pre">nmrnet/weights</span></code>. The liquid-state fold-0 adapter predicts H/C shifts on CPU. Atom indices use the zero-based RDKit graph after adding hydrogens. The assignment output links measured peak indices to predicted atom sites and includes residuals and alternative matches.</p>
+</section>
+<section id="nmrtransformer">
+<h3>NMRTransformer<a class="headerlink" href="#nmrtransformer" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">NMRTransformer</span>
+
+<span class="n">query</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"test"</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">aligner</span> <span class="o">=</span> <span class="n">NMRTransformer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+    <span class="s2">"alignment.pt"</span><span class="p">,</span> <span class="n">stage</span><span class="o">=</span><span class="s2">"align"</span><span class="p">,</span> <span class="n">python</span><span class="o">=</span><span class="s2">"/path/to/nmr-env/bin/python"</span><span class="p">)</span>
+<span class="n">ranking</span> <span class="o">=</span> <span class="n">aligner</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">[</span><span class="s2">"CCO"</span><span class="p">,</span> <span class="s2">"CCCO"</span><span class="p">,</span> <span class="s2">"COC"</span><span class="p">],</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">generator</span> <span class="o">=</span> <span class="n">NMRTransformer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+    <span class="s2">"generation.pt"</span><span class="p">,</span> <span class="n">stage</span><span class="o">=</span><span class="s2">"generate"</span><span class="p">,</span>
+    <span class="n">python</span><span class="o">=</span><span class="s2">"/path/to/nmr-env/bin/python"</span><span class="p">)</span>
+<span class="n">candidates</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">beam_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Retrieval ranks the supplied molecular candidates from their spectral/molecular embeddings. Generation uses the NMR channels and the known <code class="docutils literal notranslate"><span class="pre">formula</span></code> in the query. Returned candidates include SMILES, validity, formula agreement and model scores.</p>
+</section>
+<section id="vibrational-and-property-models">
+<h3>Vibrational and property models<a class="headerlink" href="#vibrational-and-property-models" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">GapModel</span><span class="p">,</span> <span class="n">Vib2Mol</span>
+
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span>
+    <span class="s2">"documentation/assets/harness/vibrational-request.json"</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">())[</span><span class="s2">"inputs"</span><span class="p">]</span>
+<span class="n">gap_model</span> <span class="o">=</span> <span class="n">GapModel</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s2">"openspec-models"</span><span class="p">,</span> <span class="n">python</span><span class="o">=</span><span class="s2">"/path/to/openspec-env/bin/python"</span><span class="p">)</span>
+<span class="n">gap</span> <span class="o">=</span> <span class="n">gap_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">structure_model</span> <span class="o">=</span> <span class="n">Vib2Mol</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s2">"openspec-models"</span><span class="p">,</span> <span class="n">python</span><span class="o">=</span><span class="s2">"/path/to/openspec-env/bin/python"</span><span class="p">)</span>
+<span class="n">structures</span> <span class="o">=</span> <span class="n">structure_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>IR and Raman inputs each contain 1,024 normalized intensities on the 400–4,000 cm⁻¹ grid. <code class="docutils literal notranslate"><span class="pre">nmr_h</span></code> and <code class="docutils literal notranslate"><span class="pre">nmr_c</span></code> contain ppm shifts using the checkpoint reference. <code class="docutils literal notranslate"><span class="pre">GapModel</span></code> returns energy gaps in eV. <code class="docutils literal notranslate"><span class="pre">Vib2Mol</span></code> generates molecular candidates; its <code class="docutils literal notranslate"><span class="pre">retrieve</span></code> method ranks a supplied candidate library.</p>
+</section>
+<section id="mass-spectrum-prediction">
+<h3>Mass-spectrum prediction<a class="headerlink" href="#mass-spectrum-prediction" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">MSPredictor</span>
+
+<span class="n">ms</span> <span class="o">=</span> <span class="n">MSPredictor</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"glacier"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">"ms-pred"</span><span class="p">,</span>
+    <span class="n">weights</span><span class="o">=</span><span class="s2">"glacier-weights"</span><span class="p">,</span> <span class="n">python</span><span class="o">=</span><span class="s2">"/path/to/ms-env/bin/python"</span><span class="p">)</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">ms</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">smiles</span><span class="o">=</span><span class="s2">"CCO"</span><span class="p">,</span> <span class="n">adduct</span><span class="o">=</span><span class="s2">"[M+H]+"</span><span class="p">,</span>
+    <span class="n">collision_energy</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">instrument</span><span class="o">=</span><span class="s2">"Orbitrap"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Supply the molecular structure, adduct, collision energy and instrument used for the desired spectrum. Choose <code class="docutils literal notranslate"><span class="pre">model=&quot;iceberg&quot;</span></code> for the ICEBERG adapter. See the task guides for model assets and spectral comparison settings.</p>
+</section>
+</section>
+<section id="training-and-checkpoint-reuse">
+<h2>Training and checkpoint reuse<a class="headerlink" href="#training-and-checkpoint-reuse" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.training</span><span class="w"> </span><span class="kn">import</span> <span class="n">prepare_nmr_training</span>
+
+<span class="n">prepared</span> <span class="o">=</span> <span class="n">prepare_nmr_training</span><span class="p">(</span><span class="n">custom</span><span class="p">[</span><span class="s2">"train"</span><span class="p">],</span> <span class="n">custom</span><span class="p">[</span><span class="s2">"val"</span><span class="p">],</span> <span class="s2">"prepared-nmr"</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">NMRTransformer</span><span class="p">(</span><span class="n">stage</span><span class="o">=</span><span class="s2">"align"</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">)</span>
+<span class="n">plan</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">training_plan</span><span class="p">(</span>
+    <span class="n">prepared</span><span class="p">,</span> <span class="n">run_dir</span><span class="o">=</span><span class="s2">"runs/my-encoder"</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">plan</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">plan</span><span class="o">.</span><span class="n">validate</span><span class="p">())</span>
+<span class="n">trained</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">plan</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_config</span><span class="p">(</span><span class="s2">"trained-model.json"</span><span class="p">)</span>
+<span class="n">restored</span> <span class="o">=</span> <span class="n">NMRTransformer</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="s2">"trained-model.json"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Preparation validates the molecular formula, nucleus labels and train/validation identity separation. <code class="docutils literal notranslate"><span class="pre">fit</span></code> launches the configured training stage and selects the best validation checkpoint. For a generator, use <code class="docutils literal notranslate"><span class="pre">stage=&quot;generate&quot;</span></code> and supply its alignment checkpoint. The <a class="reference internal" href="notebooks/sdk-training-preflight.html"><span class="std std-doc">training tutorial</span></a> explains every preparation step and inspects saved training/checkpoint results.</p>
+</section>
+<section id="evaluation-and-numerical-inversion">
+<h2>Evaluation and numerical inversion<a class="headerlink" href="#evaluation-and-numerical-inversion" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.task</span><span class="w"> </span><span class="kn">import</span> <span class="n">list_tasks</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.benchmark</span><span class="w"> </span><span class="kn">import</span> <span class="n">Benchmark</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">list_tasks</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">"nmr"</span><span class="p">))</span>
+<span class="n">benchmark</span> <span class="o">=</span> <span class="n">Benchmark</span><span class="p">(</span><span class="n">workspace</span><span class="o">=</span><span class="s2">"/path/to/OpenMolSpec"</span><span class="p">,</span>
+    <span class="n">python</span><span class="o">=</span><span class="s2">"/path/to/nmr-env/bin/python"</span><span class="p">,</span> <span class="n">alignment_checkpoint</span><span class="o">=</span><span class="s2">"alignment.pt"</span><span class="p">,</span> <span class="n">nmr_python</span><span class="o">=</span><span class="s2">"/path/to/nmr-env/bin/python"</span><span class="p">)</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">benchmark</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"nmr.retrieval.hc.s2m"</span><span class="p">,</span> <span class="n">datasets</span><span class="o">=</span><span class="p">[</span><span class="s2">"nmrspec_test"</span><span class="p">],</span>
+    <span class="n">limit</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">"results/my-retrieval.json"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use <a class="reference internal" href="benchmarks.html"><span class="std std-doc">Benchmarks</span></a> for task metrics and experiment configurations. The inversion module provides nonnegative regularized recovery of relaxation and diffusion distributions; see <a class="reference internal" href="inversion/index.html"><span class="std std-doc">NMR inversion</span></a>. The complete <a class="reference internal" href="api-reference/index.html"><span class="std std-doc">API reference</span></a> includes signatures, parameters and return values.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">Source</a></p></li>
+<li><p>Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. <a class="reference external" href="https://doi.org/10.1038/s43588-025-00783-z">Source</a></p></li>
+<li><p>Yang, L., Yang, Z., Xie, J., Wang, Y., Gao, B., Fu, T., Wei, X., Sun, J., Wu, J., He, C., Li, Y. &amp; Gu, Q. NMRTrans: Structure Elucidation from Experimental NMR Spectra via Set Transformers. arXiv:2602.10158 (2026). <a class="reference external" href="https://arxiv.org/abs/2602.10158">Source</a></p></li>
+<li><p>OpenMolSpec contributors. openSpec models and benchmark training workflows. Source archive, v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">Source</a></p></li>
+<li><p>Wang, R.-X., Wang, R. &amp; Coley, C. W. GLACIER: Rethinking Mass Spectrum Prediction as an Object Detection Problem. NeurIPS 2026. arXiv:2606.29161 (2026). <a class="reference external" href="https://arxiv.org/abs/2606.29161">Source</a></p></li>
+<li><p>Wang, R., Manjrekar, M., Mahjour, B., Avila-Pacheco, J., et al. Neural Spectral Prediction for Structure Elucidation with Tandem Mass Spectrometry. bioRxiv (2025). doi:10.1101/2025.05.28.656653. <a class="reference external" href="https://doi.org/10.1101/2025.05.28.656653">Source</a></p></li>
+<li><p>NMRInversions.jl contributors. NMRInversions.jl: inversion of NMR relaxation and diffusion measurements. Software and theory documentation. Accessed 18 November 2026. <a class="reference external" href="https://github.com/aris-mav/NMRInversions.jl">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="model-audit.html" class="btn btn-neutral float-left" title="Models and training" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="notebooks/index.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

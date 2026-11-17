@@ -1,0 +1,521 @@
+{
+  "schema_version": 1,
+  "snapshot": "2026-11-18",
+  "upstream_pins": {
+    "equiformer_v3": {
+      "url": "https://github.com/atomicarchitects/equiformer_v3.git",
+      "commit": "a7300c58df683dc99cb48027d5bfd4c887486c48",
+      "source_commit_prefix": "a7300c5"
+    },
+    "vib2mol": {
+      "url": "https://github.com/X1nyuLu/vib2mol.git",
+      "commit": "207a86eb3050012ab5ea20a7e237a5b075d8d057",
+      "source_commit_prefix": "207a86e"
+    },
+    "vib2conf": {
+      "url": "https://github.com/X1nyuLu/vib2conf.git",
+      "commit": "70388376639785c2007fc084f15c22f06c1b328a",
+      "source_commit_prefix": "7038837"
+    }
+  },
+  "source_patches": {
+    "benchmarks/scripts/setup_models.sh": "Use verified full commit IDs for Git fetch."
+  },
+  "files": {
+    "benchmarks/__init__.py": {
+      "bytes": 1446,
+      "sha256": "23cadc7c952064c1ab8223c6e9129e27a7d6cc94bf6c596e579f987234e291b5"
+    },
+    "benchmarks/__main__.py": {
+      "bytes": 129,
+      "sha256": "a0bf1088c20caed694e47d796acdd399e635713c3d09fb5b19ad0a8aeeda763c"
+    },
+    "benchmarks/cli.py": {
+      "bytes": 3450,
+      "sha256": "ef20c82e2a6da8d8047ae40e3fb0fdaf80af0555b7c212c3464f4412e40ea9e7"
+    },
+    "benchmarks/configs/spectrum2property/dipole_total_ir_ks1000k.yaml": {
+      "bytes": 808,
+      "sha256": "35e8703ef5f7af63e69b0d0095b69e0b9cc7e5fcc93581bef66b3e6e6af8fc40"
+    },
+    "benchmarks/configs/spectrum2property/dipole_total_ir_raman_ks1000k.yaml": {
+      "bytes": 820,
+      "sha256": "f6d556720512cca7e631630b8c18ee8bbf9b5b14e90a9a6483aefff0e90feedc"
+    },
+    "benchmarks/configs/spectrum2property/dipole_total_ks1000k.yaml": {
+      "bytes": 859,
+      "sha256": "711390eb33f85397e5984ec9185a841e2a159fd5df045c6ace1d77416807596d"
+    },
+    "benchmarks/configs/spectrum2property/dipole_total_ks200k.yaml": {
+      "bytes": 857,
+      "sha256": "61c8410e230d76cc1548590ce5e9dd297ef0555eda613fda61a863003311a8a7"
+    },
+    "benchmarks/configs/spectrum2property/gap_ir_ks1000k.yaml": {
+      "bytes": 781,
+      "sha256": "c334e52031042abda55002b6752591bcc233dde8a1d713afdd078f0d3add08b3"
+    },
+    "benchmarks/configs/spectrum2property/gap_ir_raman_ks1000k.yaml": {
+      "bytes": 793,
+      "sha256": "d411c4c8886360fdf23c315eceea665f371b1e76a14c1aeafef2136ce6f5bafd"
+    },
+    "benchmarks/configs/spectrum2property/gap_ks1000k.yaml": {
+      "bytes": 832,
+      "sha256": "5a3f6795039f7a6d1eaea212cdee976d4528e4feb27575473daa5708805a4545"
+    },
+    "benchmarks/configs/spectrum2property/gap_ks200k.yaml": {
+      "bytes": 830,
+      "sha256": "924d765fb8600cb0a6565a105c5b2eafaff0fe84c8e57936a9130af8dec4c14f"
+    },
+    "benchmarks/configs/spectrum2property/polar_iso_ir_ks1000k.yaml": {
+      "bytes": 799,
+      "sha256": "35c25dec557437577bae1c19e0ff9a9d16992b1d58590ee7864048761c61414d"
+    },
+    "benchmarks/configs/spectrum2property/polar_iso_ir_raman_ks1000k.yaml": {
+      "bytes": 811,
+      "sha256": "cfcbeca14b1805cb89441b992864bfe07b1002d119a3e24b01c392fa0e625465"
+    },
+    "benchmarks/configs/spectrum2property/polar_iso_ks1000k.yaml": {
+      "bytes": 850,
+      "sha256": "c0d4fd275831afbbe1727d6636c5905f449d0c06bfac51d2ad7ff0adb0c61777"
+    },
+    "benchmarks/configs/spectrum2property/polar_iso_ks200k.yaml": {
+      "bytes": 848,
+      "sha256": "f37a61aac77f888d4bd86f174309c14d6ef259411a4d1c3aa00b09c0ac3f30f5"
+    },
+    "benchmarks/configs/spectrum2structure/vib2mol.yaml": {
+      "bytes": 663,
+      "sha256": "e419631423f739db503e4cc9cf830dd91623d4d8c32b112e19a9fda3d4602c81"
+    },
+    "benchmarks/configs/spectrum2structure/vib2mol_batch_probe_ddp2.yaml": {
+      "bytes": 909,
+      "sha256": "a76d4aee21ff40babae43622c00c5337e8be2f19950af6380b7a8cefe5db00c1"
+    },
+    "benchmarks/configs/spectrum2structure/vib2mol_ir_ks1000k.yaml": {
+      "bytes": 695,
+      "sha256": "4f2418218e6e5abb96f80b49f3388dd404d6591bf06842c461027d6a7b8ccd6c"
+    },
+    "benchmarks/configs/spectrum2structure/vib2mol_ir_raman_hnmr_ks1000k.yaml": {
+      "bytes": 793,
+      "sha256": "0cac439d9e38c99a65a1c0b100d0da59ff4947fb9d11a368d42d5fc029868544"
+    },
+    "benchmarks/configs/spectrum2structure/vib2mol_ir_raman_ks1000k.yaml": {
+      "bytes": 713,
+      "sha256": "a48c823374cf657c08bb423653fdebf9754bdc6b2f434cfa3dc8e823fbff6ebb"
+    },
+    "benchmarks/configs/spectrum2structure/vib2mol_ks1000k.yaml": {
+      "bytes": 722,
+      "sha256": "cca59b24e3814b24f0f1c3239427216527bc9621f3b1e849251cf2e1bd977fa6"
+    },
+    "benchmarks/configs/spectrum2structure/vib2mol_ks200k.yaml": {
+      "bytes": 720,
+      "sha256": "93a06495f744b4ee5b22867670359c772b1ac075c33d8703e90122cdb31a7bde"
+    },
+    "benchmarks/configs/spectrum2structure/vib2mol_smoke.yaml": {
+      "bytes": 743,
+      "sha256": "34d5af8d9a67cc8efc549a65aaf38d5055a05d54090ee7816af0b36b5a200c14"
+    },
+    "benchmarks/configs/spectrum2structure/vib2mol_smoke_ddp2.yaml": {
+      "bytes": 751,
+      "sha256": "c7d4377818eda432da8f26cbfff9a2fa582f0106fdebe39092bd1b56c486e748"
+    },
+    "benchmarks/configs/structure2hessian/Hi_ks1000k_r5.yaml": {
+      "bytes": 704,
+      "sha256": "c1bae4b7e976a102ec1517eb2a296a0316ed910fe049df49f1a20448ac972035"
+    },
+    "benchmarks/configs/structure2hessian/Hi_ks200k.yaml": {
+      "bytes": 696,
+      "sha256": "35a1439181ae4bf61e03da6c774f9c9b7ea4e58dae23c8e9c1be142ba78aaf23"
+    },
+    "benchmarks/configs/structure2hessian/Hi_ks200k_r5.yaml": {
+      "bytes": 702,
+      "sha256": "b437de9b8262168c7800b4c2e1e6d2b8c1399c395b8e9ad910d834bcb104866d"
+    },
+    "benchmarks/configs/structure2hessian/Hi_ks200k_r5_ddp2.yaml": {
+      "bytes": 707,
+      "sha256": "485998f311e5f917293a2d7519b9f6e6570527118d3edf988975be5dce27b00b"
+    },
+    "benchmarks/configs/structure2hessian/Hi_ks200k_r8.yaml": {
+      "bytes": 702,
+      "sha256": "e628f6b5403ede13f4cb7210a9fae0233deff855ee22645dec8b3f0a0381e214"
+    },
+    "benchmarks/configs/structure2hessian/Hi_ks400k_r5.yaml": {
+      "bytes": 702,
+      "sha256": "f759d1cbddbecf1cd270a3ca8440bf9e0417ca58f458c516c639bcfcc3bb80bf"
+    },
+    "benchmarks/configs/structure2hessian/Hi_ks600k_r5.yaml": {
+      "bytes": 702,
+      "sha256": "e4b2c50bbf933f075aa49086196a181a295d52db59c68ed02d2b99a6e0326d20"
+    },
+    "benchmarks/configs/structure2hessian/Hi_ks800k_r5.yaml": {
+      "bytes": 702,
+      "sha256": "e0790f0688916aab70a7fe8b074bd6eba8792f40e6e1633706960df799f90e54"
+    },
+    "benchmarks/configs/structure2hessian/Hij_ks1000k_r5.yaml": {
+      "bytes": 706,
+      "sha256": "d9ac3a6ebd133e1bf3f095256c61a594291a94a7ed1a98cd4da26cc8005ed7e1"
+    },
+    "benchmarks/configs/structure2hessian/Hij_ks200k.yaml": {
+      "bytes": 698,
+      "sha256": "70bd78e5e49b033643e50d1d82bf111c4fe963c8c6421541d5a063f1fc95ae8f"
+    },
+    "benchmarks/configs/structure2hessian/Hij_ks200k_r5.yaml": {
+      "bytes": 704,
+      "sha256": "03726cb0981c95d511acb9b9a2716f2e19f7ebe50e11418c32c00d59aa1a9946"
+    },
+    "benchmarks/configs/structure2hessian/Hij_ks200k_r8.yaml": {
+      "bytes": 704,
+      "sha256": "3045353b4682126b1f6e07f514d20d1e930cfc3ee1d08b2ee7f58cbdfc0182b0"
+    },
+    "benchmarks/configs/structure2hessian/Hij_ks400k_r5.yaml": {
+      "bytes": 704,
+      "sha256": "883468b364d1df4b47f963effab006fd113cc63abeec3478c835fa4ba2105066"
+    },
+    "benchmarks/configs/structure2hessian/Hij_ks600k_r5.yaml": {
+      "bytes": 704,
+      "sha256": "19c98275faa5ac7d7ec22158fbff6a440bf985b0c336b90424240169490ba671"
+    },
+    "benchmarks/configs/structure2hessian/Hij_ks800k_r5.yaml": {
+      "bytes": 704,
+      "sha256": "aa40e8cd99822e06976415e4f3e991883f666bc39db357bc4bd0ffe8456d12e7"
+    },
+    "benchmarks/configs/structure2nmr/hc_ks1000k_r5.yaml": {
+      "bytes": 779,
+      "sha256": "195b2a2bfeee84cd25535c501e0c221117a1390223946ab0c7d3d4eae5f0ff8b"
+    },
+    "benchmarks/configs/structure2nmr/hc_ks200k_r5.yaml": {
+      "bytes": 700,
+      "sha256": "23aa884759028ac18115a325597be925d0f8b0f2681c64a9e34e403522945903"
+    },
+    "benchmarks/configs/structure2observables/equiformer_v3.yaml": {
+      "bytes": 527,
+      "sha256": "dd0f984729bae18c3af46cf985578ac73f137eae60eeaa65694574837abff6fa"
+    },
+    "benchmarks/configs/structure2property/dipole.yaml": {
+      "bytes": 457,
+      "sha256": "f0cd78cbdf59d637b460999b4297c1cf980ece7e895ff989a9eca373c93af6dc"
+    },
+    "benchmarks/configs/structure2property/dipole_ks200k.yaml": {
+      "bytes": 479,
+      "sha256": "16d31c34a21bdea9709933e9fc2999193f71334c27cbc17ff1a123108ecec6ce"
+    },
+    "benchmarks/configs/structure2property/equiformer_v3.yaml": {
+      "bytes": 501,
+      "sha256": "c4747daeba7bb054e3a6c7fa2978811ccf1cad75b371f4c83fdf82c0e1ced861"
+    },
+    "benchmarks/configs/structure2response/dedipole_ks1000k_r5.yaml": {
+      "bytes": 719,
+      "sha256": "16375074a6e18b6d6f2d54bcdc7d46adf90d9daf66c38f53c6d765e45de8dc7d"
+    },
+    "benchmarks/configs/structure2response/dedipole_ks200k_r5.yaml": {
+      "bytes": 717,
+      "sha256": "7f26791f597e1ceb8d4f7037748d4d9a5b5a29b28adf2cb7f40c02a0f3ffc9ef"
+    },
+    "benchmarks/configs/structure2response/dedipole_ks400k_r5.yaml": {
+      "bytes": 717,
+      "sha256": "915fa238daa80942618de33163ac6bcdbb0664a916b9aa83898d551852d36b15"
+    },
+    "benchmarks/configs/structure2response/dedipole_ks600k_r5.yaml": {
+      "bytes": 717,
+      "sha256": "7059d4665fdab51ec4b1b029c528f5a032fafad1e8d9c11e91f722ee67dbddf6"
+    },
+    "benchmarks/configs/structure2response/dedipole_ks800k_r5.yaml": {
+      "bytes": 717,
+      "sha256": "e92dc95861cf3243fac2c4163c63591813016c0287398d3b6c53db72cf6956fb"
+    },
+    "benchmarks/configs/structure2response/depolar_ks1000k_r5.yaml": {
+      "bytes": 717,
+      "sha256": "1a4412b3c6d92fc46c52b29d3f359e21ccaa6f3e76e6d54ea706979f58ee0c65"
+    },
+    "benchmarks/configs/structure2response/depolar_ks200k_r5.yaml": {
+      "bytes": 715,
+      "sha256": "ea5fc67724102976c3bc095a96d11adc34183f7c3592e98550cbce627d5581b1"
+    },
+    "benchmarks/configs/structure2response/depolar_ks400k_r5.yaml": {
+      "bytes": 715,
+      "sha256": "b8d75ff401126ca81707dda0c062b24569a045978d14b2ccb7382aebdb9b10a4"
+    },
+    "benchmarks/configs/structure2response/depolar_ks600k_r5.yaml": {
+      "bytes": 715,
+      "sha256": "b30d9a3b5aaf7d4f06fbf0385317ae886cad205f49c987ff86069dd218044847"
+    },
+    "benchmarks/configs/structure2response/depolar_ks800k_r5.yaml": {
+      "bytes": 715,
+      "sha256": "431add368bd1dab91f0dc75d4e51cc6a5ca40d3443e8a6cddc70382bbd2a0c42"
+    },
+    "benchmarks/configs/structure2spectrum/equiformer_v3.yaml": {
+      "bytes": 431,
+      "sha256": "97612d1d3183979e52457142aec6716505c5891e1ad97e154e3f1b4cb3086f15"
+    },
+    "benchmarks/data/__init__.py": {
+      "bytes": 70,
+      "sha256": "686aca0f87ac8ab480682a89ac68eb9fa84aed91c6f6f3e6065de68fafd96591"
+    },
+    "benchmarks/data/nmr_reference.py": {
+      "bytes": 3984,
+      "sha256": "568c4870ac91087927544aa8a9d1559d5ba6863a269958510c96613714fa5880"
+    },
+    "benchmarks/data/normalize_spectra.py": {
+      "bytes": 10399,
+      "sha256": "b0e0e4de6be277e3d485cebc51c4f5fd39a84b7bfadf7d53e4bed75028519d15"
+    },
+    "benchmarks/data/plot_kennard_stone.py": {
+      "bytes": 23936,
+      "sha256": "0ea179f7d7cb48a155d68fff5b171d355cc1dcc5f6599c40faf325f6bff3f429"
+    },
+    "benchmarks/data/prepare.py": {
+      "bytes": 22065,
+      "sha256": "a2854e4c905174c935b457425e7507e248e55eaa078496224173338de81b7d45"
+    },
+    "benchmarks/data/prepare_hessian.py": {
+      "bytes": 6830,
+      "sha256": "fff6fdce487903c81ef05ea5618768de8b3a623ba9b6f34d05a3283388c7df6c"
+    },
+    "benchmarks/data/prepare_multimodal_properties.py": {
+      "bytes": 12773,
+      "sha256": "e28cb07b4e3b761ab2563eec4170456caaf09c077e8e72f5d384015d410d214e"
+    },
+    "benchmarks/data/prepare_multimodal_vib2mol.py": {
+      "bytes": 6533,
+      "sha256": "779493980daa54fa4c095e061794c1e07b2fe283847d309dea820529ea700b5c"
+    },
+    "benchmarks/data/prepare_nmr_shifts.py": {
+      "bytes": 27083,
+      "sha256": "64a9c3a1854d99b6bfcf0320ebca242454c1c2254d25d656867e97da34dbd4a4"
+    },
+    "benchmarks/data/prepare_response.py": {
+      "bytes": 5920,
+      "sha256": "27bc871c60fab3356a3199cea36c2777521c270ba2faf0bf3cd6690e40ff4752"
+    },
+    "benchmarks/data/prepare_spectrum_properties.py": {
+      "bytes": 5399,
+      "sha256": "c4f2a6c8b248d939db4a5ad03df0bca2c20b72beef5608f8cf9088a0cf6d3c37"
+    },
+    "benchmarks/data/profile_property_targets.py": {
+      "bytes": 3800,
+      "sha256": "fd507e1e26d39f560aa10b352449518ffe59066c246620295e6060f1b2d1eb2e"
+    },
+    "benchmarks/data/scalar_properties.py": {
+      "bytes": 1763,
+      "sha256": "240023e0be1b03f83e5b41187ff119984891c740a6750a32363418c631d237bf"
+    },
+    "benchmarks/data/select_kennard_stone.py": {
+      "bytes": 8498,
+      "sha256": "d8263c9b4cfe1b61eea057174987b8b19628bf75744d13b387439df894f9751c"
+    },
+    "benchmarks/data/subset_vib2mol.py": {
+      "bytes": 4583,
+      "sha256": "63ab50db4468efdd32ab7d96e52589ceceb309732a08c5e4aa908ded3c04d104"
+    },
+    "benchmarks/data/verify_nmr_shifts.py": {
+      "bytes": 5958,
+      "sha256": "ecf8928dd3bcf14a209467d0d882fa3532156f47fc1def35cd261e677e824625"
+    },
+    "benchmarks/engines/__init__.py": {
+      "bytes": 883,
+      "sha256": "e543fcf5bcf0ceb62837e4eca8e41732ff3a0afae436922f6c1e7355e88a937a"
+    },
+    "benchmarks/engines/base.py": {
+      "bytes": 6876,
+      "sha256": "f786758f4078165ecd103a632a8d10542dab837395e1b2c6dee42a272d14fc30"
+    },
+    "benchmarks/engines/equiformer.py": {
+      "bytes": 4205,
+      "sha256": "b5de5e1c960117f5dcc312a86b230bac5f5bf2a44eeb02d4b5c5a9ce522d1b75"
+    },
+    "benchmarks/engines/hessian.py": {
+      "bytes": 2869,
+      "sha256": "1d8e52f75fe7b51f5a97465ceb0b9e0d229dd54d34865d8722fda34eadfa2e0a"
+    },
+    "benchmarks/engines/hessian_physics.py": {
+      "bytes": 2642,
+      "sha256": "bff57cc07cc0956a35ee6fb959a6a82c56690bcdca920d4474517614a241cbb0"
+    },
+    "benchmarks/engines/metrics.py": {
+      "bytes": 3361,
+      "sha256": "1cef6c8f1ec82e88e8eae359f19672b5cc2fac635e4d229befd5138bf507c2b3"
+    },
+    "benchmarks/engines/nmr_normalization.py": {
+      "bytes": 5969,
+      "sha256": "e918a590d0a0b835db770c3e3073c924be4cf3da227a775af1fcfb20a50aaa58"
+    },
+    "benchmarks/engines/nmr_shifts.py": {
+      "bytes": 2213,
+      "sha256": "94471a61cd95a3184b3b8ef82967210c4a97ed0aad8857da85702c434fca85ec"
+    },
+    "benchmarks/engines/normalization.py": {
+      "bytes": 8992,
+      "sha256": "c40b49ed7d9c69ff8ed1f9a763ae15ff0203218d0152c5243f7dafd6ff5488ba"
+    },
+    "benchmarks/engines/vib2conf.py": {
+      "bytes": 2818,
+      "sha256": "2925640e14117df2988f9e93173c5ef177c196e79924e7f4821c833ee566eee8"
+    },
+    "benchmarks/evaluate_hessian.py": {
+      "bytes": 7900,
+      "sha256": "767183540f60e4eb8a42b7ef7a16727cb131c6c6d4b20c792fa3891dccb0cb7a"
+    },
+    "benchmarks/models/__init__.py": {
+      "bytes": 78,
+      "sha256": "bcd7e12890d3185c66377f5ddacade34c617705d086581115fa164619109f7a2"
+    },
+    "benchmarks/models/equiformer_v3/__init__.py": {
+      "bytes": 155,
+      "sha256": "9fe2f91587a2577476e727bcd9d849b323591ba02c05180ffe7b5b84deff5689"
+    },
+    "benchmarks/models/equiformer_v3/dataset.py": {
+      "bytes": 2019,
+      "sha256": "6cb669dcfa0184981eb44745a3992f7e0f3a6d30021b2bdad2f6b635f200dd6d"
+    },
+    "benchmarks/models/equiformer_v3/edge_head.py": {
+      "bytes": 4524,
+      "sha256": "76abb5917f894ffb0a5fc0200809751ee4d8aaaf2c6b6b1805834fbc94b4b730"
+    },
+    "benchmarks/models/equiformer_v3/hessian.py": {
+      "bytes": 4753,
+      "sha256": "01af54b4ccbf804c148a4c0529c40d56148c902ee383a3653afed9a039e2c2e5"
+    },
+    "benchmarks/models/equiformer_v3/model.py": {
+      "bytes": 4892,
+      "sha256": "35d7bca192913c015c4bbe7a023ce470fdc8a4b413a99e51b7c6979e3ed3724c"
+    },
+    "benchmarks/models/equiformer_v3/nmr.py": {
+      "bytes": 2000,
+      "sha256": "aa42c9500b591b1c8aa4d00a26391b84d51312bec174228a9bab57b00484ff7b"
+    },
+    "benchmarks/models/equiformer_v3/train.py": {
+      "bytes": 4442,
+      "sha256": "4c93cc8af840aa295b9976f2c76838d3cdb6016c7be1b1e69e1968e4d0ee4ac8"
+    },
+    "benchmarks/models/registry.py": {
+      "bytes": 2909,
+      "sha256": "02df6672b2f4e637ec045c926b53bef2c8566071b017309d8f6adad4fdad20da"
+    },
+    "benchmarks/models/vib2conf/__init__.py": {
+      "bytes": 69,
+      "sha256": "cded06f6448e7d7a11ff4aa0997b45412cec97f289a51bc54007413cc0e32c16"
+    },
+    "benchmarks/models/vib2conf/dataset.py": {
+      "bytes": 5162,
+      "sha256": "0a37eb50b4acb6da7501270e156e12381296e8d854c88012c3371cbefbd37133"
+    },
+    "benchmarks/models/vib2conf/factory.py": {
+      "bytes": 2734,
+      "sha256": "0e730b430ee5065f529b49c48c46cdcf591fcc6453cd52c4901c50579021446e"
+    },
+    "benchmarks/models/vib2conf/model.py": {
+      "bytes": 9879,
+      "sha256": "1380efe266b0067fd56d66efd5367d32c083c99d11ef564cc69d212bdc075b61"
+    },
+    "benchmarks/models/vib2conf/props_head.py": {
+      "bytes": 3689,
+      "sha256": "6d647da2eb67d656da56851daf170f6ed94193f7f14945792dd3f89424d8e702"
+    },
+    "benchmarks/models/vib2mol/__init__.py": {
+      "bytes": 77,
+      "sha256": "05f528fdd46d626bb3bac141b78978fb09cc746754e9257a885314788aaff416"
+    },
+    "benchmarks/models/vib2mol/audit_tokenizer.py": {
+      "bytes": 3850,
+      "sha256": "188edc731736a6d837b8e93b4d75a86fbbc2c5f0b8d5140399f8c26ede78f102"
+    },
+    "benchmarks/models/vib2mol/contrastive.py": {
+      "bytes": 2560,
+      "sha256": "9838c0631b820d7eef454a4dd2ce1ba6252f544c38ed38a4339db8e34b18c6d8"
+    },
+    "benchmarks/models/vib2mol/evaluate_multimodal.py": {
+      "bytes": 13492,
+      "sha256": "657c863881f9984658a73d561b3c62dbae9d7fd00c2ac60cef4ba529bf3296c6"
+    },
+    "benchmarks/models/vib2mol/factory.py": {
+      "bytes": 4925,
+      "sha256": "2a57eef6e0f223436afbb0c6515c6cd1af8b5dd3f509e0ce35c161b5ebaf1796"
+    },
+    "benchmarks/models/vib2mol/kv_cache.py": {
+      "bytes": 9826,
+      "sha256": "954d0aec20567a65b48950db613d9ec0040b382f20aa9e50e649c3c089530d0b"
+    },
+    "benchmarks/models/vib2mol/lifecycle.py": {
+      "bytes": 4240,
+      "sha256": "ffcddc70316d72df79c9cde58d64183ad0392dfb5098483dfd8638a5235ad9fd"
+    },
+    "benchmarks/models/vib2mol/matching.py": {
+      "bytes": 6149,
+      "sha256": "aba56d944d2c94be8cf133012c4624f1bb0fc381e252749f8394d5351d604403"
+    },
+    "benchmarks/models/vib2mol/multimodal.py": {
+      "bytes": 17345,
+      "sha256": "3268644adda4d0fcb34e4e2b3b35b2fbbbccf394025e5a9eae2ac2c9a66412da"
+    },
+    "benchmarks/models/vib2mol/nmr_data.py": {
+      "bytes": 1875,
+      "sha256": "d55a7d45625350407a4a63663fe7e660a016829d1d596901ff2a6506387ebea3"
+    },
+    "benchmarks/models/vib2mol/nmr_embedding.py": {
+      "bytes": 3080,
+      "sha256": "db15139cef80f34012c35daf5b073bda424c5311f69a5cf197f8109cc61b6e13"
+    },
+    "benchmarks/models/vib2mol/steps.py": {
+      "bytes": 7017,
+      "sha256": "3e1163262d6572e11d4ee9c6e78ca7cc997fea079aeb1263336769099727060c"
+    },
+    "benchmarks/models/vib2mol/train_entry.py": {
+      "bytes": 5793,
+      "sha256": "549cde23e4f19c82a72c7ef755ec42329c6041fe3dfda5b4058a1345a0eea23c"
+    },
+    "benchmarks/models/vib2mol/workflow.py": {
+      "bytes": 24248,
+      "sha256": "0543dea7cbd002fabe4bc169d87b622b9ed7ce8dcfef2e2c662a7a9284dda1b1"
+    },
+    "benchmarks/scripts/retire_spectrum_properties.py": {
+      "bytes": 3378,
+      "sha256": "160f8bdeb31b2d2932e162f60ff4f3848c65f387365e8e8070fe6307b923279c"
+    },
+    "benchmarks/scripts/run_equiformer_v3.sh": {
+      "bytes": 768,
+      "sha256": "6929ef081af1f2756b8e4854d4e6af83e49fc3afb93ca4776631a219bd84f589"
+    },
+    "benchmarks/scripts/run_vib2conf.sh": {
+      "bytes": 1625,
+      "sha256": "df8768dec0ecef2a769ccf5ad3df325b2c38f98b897b62805a69d5b6897cb95c"
+    },
+    "benchmarks/scripts/run_vib2mol.sh": {
+      "bytes": 256,
+      "sha256": "90b755f00bced216bb41b2f840961b99fdd2957e05ecb02c0eb0200e48faa2b9"
+    },
+    "benchmarks/scripts/setup_models.sh": {
+      "bytes": 1082,
+      "sha256": "f3d5abe1c315377e7c8ead6eb642914bb78d5885cf5547b455d4ed6293fe19e7"
+    },
+    "benchmarks/trainers/__init__.py": {
+      "bytes": 834,
+      "sha256": "596bf62ec850e7eaa78cfb9f83c78328f045356a12f4c68c405360a5ffc91078"
+    },
+    "benchmarks/trainers/base.py": {
+      "bytes": 8451,
+      "sha256": "8624528173900c7063328c4b64db111b9819fd0e767e15f995391df86c3cd814"
+    },
+    "benchmarks/trainers/equiformer.py": {
+      "bytes": 9283,
+      "sha256": "ee6615dd7349a8bb2a76d9940fc3507b1a2167fc7f52c9287e62b9e62c261985"
+    },
+    "benchmarks/trainers/experiment.py": {
+      "bytes": 27114,
+      "sha256": "7d34bafb08c7b6f0e0e1a4ecda48ce31cb60c2217d2416bce1b0937dbb300ca6"
+    },
+    "benchmarks/trainers/hessian.py": {
+      "bytes": 11337,
+      "sha256": "ea48f2277b893230073581bb0eb84a56037b91adba5cf2cbfd4b468769047759"
+    },
+    "benchmarks/trainers/steps.py": {
+      "bytes": 4502,
+      "sha256": "45429e8343a8d7fd4b45f268f3c2412d4aa2d9355ad99b1924a52d96c42e3b9b"
+    },
+    "benchmarks/trainers/vib2conf.py": {
+      "bytes": 10468,
+      "sha256": "e5d0317ccf1614134b8ff40758e0dd99792ab27ab8d70160eef80f492144c3b9"
+    }
+  },
+  "archive": "openmolspec-benchmark-source.zip",
+  "archive_bytes": 189969,
+  "archive_sha256": "e42d67367eb656bcfbc6f4051ae151a313986328d346ff63e2f78e019b6c2ea6"
+}

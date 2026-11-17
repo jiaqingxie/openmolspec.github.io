@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/data/index.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="NMR data" href="nmr.html" />
+    <link rel="prev" title="Quick start" href="../quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../zh/data/index.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#openmolspec-experimental-collection">OpenMolSpec experimental collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#external-experimental-resources">External experimental resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#computed-spectra">Computed spectra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-a-dataset">Load a dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nmr.html">NMR data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms.html">Mass spectrometry data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational.html">IR and Raman data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multimodal.html">Multimodal data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="splits.html">Dataset splits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comparison.html">Experimental corpus comparison</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">Tasks by spectroscopy family</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/data/index.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="data">
+<h1>Data<a class="headerlink" href="#data" title="Link to this heading"></a></h1>
+<p>Use the dataset interface to load experimental measurements and calculated spectra. This guide describes the cleaned data, their fields, experimental conditions and train/validation/test files.</p>
+<section id="openmolspec-experimental-collection">
+<h2>OpenMolSpec experimental collection<a class="headerlink" href="#openmolspec-experimental-collection" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Category</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Cleaned usable data</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">H/C NMR</span></a></p></td>
+<td><p>Experimental NMR</p></td>
+<td><p>Proton/carbon shifts, structures, formulas, spectral text and acquisition metadata.</p></td>
+<td><p>2,678,511 molecules</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">11B</span></a></p></td>
+<td><p>Experimental</p></td>
+<td><p>Boron chemical shifts and boron-containing structures.</p></td>
+<td><p>1,140 spectra; 1,017 molecules</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">19F</span></a></p></td>
+<td><p>Experimental</p></td>
+<td><p>Fluorine chemical shifts and fluorinated structures.</p></td>
+<td><p>56,679 spectra; 50,402 molecules</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">29Si</span></a></p></td>
+<td><p>Experimental</p></td>
+<td><p>Silicon chemical shifts and silicon-containing structures.</p></td>
+<td><p>726 spectra; 636 molecules</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">31P</span></a></p></td>
+<td><p>Experimental</p></td>
+<td><p>Phosphorus chemical shifts and phosphorus-containing structures.</p></td>
+<td><p>21,662 spectra; 18,238 molecules</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ms.html"><span class="std std-doc">MS</span></a></p></td>
+<td><p>Experimental</p></td>
+<td><p>Numerical m/z–intensity peak lists and molecular structures.</p></td>
+<td><p>5,233 spectra; 4,980 molecules</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="vibrational.html"><span class="std std-doc">IR</span></a></p></td>
+<td><p>Experimental</p></td>
+<td><p>Experimental infrared peak positions and molecular structures.</p></td>
+<td><p>177,759 spectra; 168,197 molecules</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="vibrational.html"><span class="std std-doc">Raman</span></a></p></td>
+<td><p>Experimental</p></td>
+<td><p>Experimental Raman peak positions and molecular structures.</p></td>
+<td><p>42 spectra; 39 molecules</p></td>
+</tr>
+</tbody>
+</table>
+<p>The collection is curated from OpenDataLab / WanJuan MolSpectra v1.0.3. H/C records are grouped by standard molecular identity. The other views retain unique numerical spectra and their source conditions.</p>
+<p><img alt="Cleaned experimental spectroscopy coverage" src="../_images/data-cleaned-experimental.png" /></p>
+<p><img alt="Cleaned molecular distributions" src="../_images/data-cleaned-nmr.png" /></p>
+<p>Molecular size and weight for all 2,678,511 cleaned H/C records. The last bin includes larger molecules. <a class="reference download internal" download="" href="../_downloads/4207567ef0c4890498b28f07441a3280/data-cleaned-nmr.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/1978c751fb55443d84c20c2688630cde/data-cleaned-nmr.pdf"><span class="xref download myst">PDF</span></a></p>
+</section>
+<section id="external-experimental-resources">
+<h2>External experimental resources<a class="headerlink" href="#external-experimental-resources" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / view</p></th>
+<th class="head"><p>Category</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Usable records</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NMRexp v2</p></td>
+<td><p>NMR</p></td>
+<td><p>Per-nucleus experimental NMR Parquet views; see the nucleus table.</p></td>
+<td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">NMR</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>NMRSpec / NMRTrans</p></td>
+<td><p>NMR</p></td>
+<td><p>H/C spectra and target structures for retrieval and structure generation.</p></td>
+<td><p>10,000</p></td>
+</tr>
+<tr class="row-even"><td><p>NMRGym</p></td>
+<td><p>NMR</p></td>
+<td><p>Experimental NMR molecular structure elucidation test view.</p></td>
+<td><p>10,000</p></td>
+</tr>
+<tr class="row-odd"><td><p>MassSpecGym v1.5</p></td>
+<td><p>MS/MS</p></td>
+<td><p>Numerical tandem spectra with molecular and acquisition fields for forward prediction.</p></td>
+<td><p>119,029</p></td>
+</tr>
+<tr class="row-even"><td><p>MassBank</p></td>
+<td><p>MS/MS</p></td>
+<td><p>Numerical MS2 spectra with valid molecular structures.</p></td>
+<td><p>120,512</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="computed-spectra">
+<h2>Computed spectra<a class="headerlink" href="#computed-spectra" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / view</p></th>
+<th class="head"><p>Category</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Usable records</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>OpenMolSpec / openSpec test</p></td>
+<td><p>IR / Raman / NMR</p></td>
+<td><p>Paired spectra, structures and quantum-chemical properties for multimodal learning.</p></td>
+<td><p>20,390</p></td>
+</tr>
+<tr class="row-odd"><td><p>QMe14S</p></td>
+<td><p>IR / Raman</p></td>
+<td><p>Finite, nonconstant paired IR and Raman arrays across 14 elements.</p></td>
+<td><p>184,252</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="load-a-dataset">
+<h2>Load a dataset<a class="headerlink" href="#load-a-dataset" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">molspectra</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">molspectra</span><span class="p">(</span><span class="s2">"opendatalab_nmr"</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s2">"data/nmr"</span><span class="p">)</span>
+<span class="n">record</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"test"</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">"smiles"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">"h_peaks_ppm"</span><span class="p">])</span>
+<span class="n">paired</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"train"</span><span class="p">]</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">modalities</span><span class="o">=</span><span class="p">[</span><span class="s2">"1H"</span><span class="p">,</span> <span class="s2">"13C"</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Place the cleaned <code class="docutils literal notranslate"><span class="pre">train.jsonl</span></code>, <code class="docutils literal notranslate"><span class="pre">val.jsonl</span></code> and <code class="docutils literal notranslate"><span class="pre">test.jsonl</span></code> files in <code class="docutils literal notranslate"><span class="pre">data/nmr</span></code>. The <a class="reference internal" href="nmr.html"><span class="std std-doc">NMR guide</span></a> explains every field and the <a class="reference internal" href="splits.html"><span class="std std-doc">split guide</span></a> explains how to construct your own dataset. <a class="reference download internal" download="" href="../_downloads/0501662d05ae79cf12ac012b82d77f81/cleaned-data-summary.json"><span class="xref download myst">Download counts and distributions</span></a>.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>OpenDataLab. WanJuan MolSpectra, version 1.0.3. Experimental molecular spectroscopy dataset. <a class="reference external" href="https://opendatalab.com/">Source</a></p></li>
+<li><p>Wang, J.-J., Jin, Y., Zhi, C.-Y., et al. NMRexp: A database of 3.3 million experimental NMR spectra. Scientific Data 12, 1954 (2025). doi:10.1038/s41597-025-06245-5. <a class="reference external" href="https://www.nature.com/articles/s41597-025-06245-5">Source</a></p></li>
+<li><p>Yang, L., Yang, Z., Xie, J., Wang, Y., Gao, B., Fu, T., Wei, X., Sun, J., Wu, J., He, C., Li, Y. &amp; Gu, Q. NMRTrans: Structure Elucidation from Experimental NMR Spectra via Set Transformers. arXiv:2602.10158 (2026). <a class="reference external" href="https://arxiv.org/abs/2602.10158">Source</a></p></li>
+<li><p>Fang, Z., Yang, C., Yu, H., Luo, H., He, H., Xie, J., Yang, Z. &amp; Xia, J. NMRGym: A Comprehensive Benchmark for Nuclear Magnetic Resonance Based Molecular Structure Elucidation. arXiv:2601.15763 (2026). <a class="reference external" href="https://arxiv.org/abs/2601.15763">Source</a></p></li>
+<li><p>Bushuiev, R., Bushuiev, A., de Jonge, N. F., Young, A., et al. MassSpecGym: A benchmark for the discovery and identification of molecules. Advances in Neural Information Processing Systems 37, Datasets and Benchmarks Track (2024). arXiv:2410.23326. <a class="reference external" href="https://arxiv.org/abs/2410.23326">Source</a></p></li>
+<li><p>Horai, H., Arita, M., Kanaya, S., et al. MassBank: a public repository for sharing mass spectral data for life sciences. Journal of Mass Spectrometry 45, 703–714 (2010). doi:10.1002/jms.1777. <a class="reference external" href="https://doi.org/10.1002/jms.1777">Source</a></p></li>
+<li><p>Yuan, M., Zou, Z. &amp; Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). <a class="reference external" href="https://arxiv.org/abs/2501.18876">Source</a></p></li>
+<li><p>OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">Source</a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../quickstart.html" class="btn btn-neutral float-left" title="Quick start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nmr.html" class="btn btn-neutral float-right" title="NMR data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

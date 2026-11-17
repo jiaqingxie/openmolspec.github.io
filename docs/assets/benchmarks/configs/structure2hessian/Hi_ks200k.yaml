@@ -1,0 +1,36 @@
+experiment:
+  name: equiformer-v3-hessian-direct
+  release: openmolspec-v1-ks200k
+  variant: Hi-direct
+  seed: 624
+task:
+  family: structure2hessian
+  modality: 3d
+  targets: [Hi]
+model:
+  name: equiformer_v3
+  parameters:
+    num_layers: 4
+    lmax: 4
+    mmax: 2
+    num_channels: 128
+    attn_hidden_channels: 32
+    attn_alpha_channels: 64
+    attn_value_channels: 16
+    ffn_hidden_channels: 512
+    edge_channels: 128
+    max_radius: 5.0
+data:
+  root: benchmark_data/release_v1_ks200k_hessian
+training:
+  max_steps: 312500
+  eval_every_steps: 2500
+  batch_size: 64
+  learning_rate: 3.0e-4
+  weight_decay: 1.0e-4
+  workers: 4
+  progress: tqdm
+  device: cuda:0
+  gpus: 2
+output:
+  root: runs

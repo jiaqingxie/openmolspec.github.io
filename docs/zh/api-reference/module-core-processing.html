@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>openmolspec.core.processing &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/api-reference/module-core-processing.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="openmolspec.core.progress" href="module-core-progress.html" />
+    <link rel="prev" title="openmolspec.cli" href="module-cli.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../api-reference/module-core-processing.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API 参考</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="category-data.html">数据访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-models.html">模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-learning.html">训练与评测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-spectroscopy.html">谱学与数据结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-processing.html">数据处理与发布</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-agents.html">Agent 工具</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="category-utilities.html">工具函数</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-analyze_dataset_comparison.html">openmolspec.analysis.analyze_dataset_comparison</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_align_chemical_distribution.html">openmolspec.analysis.plot_align_chemical_distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_align_overview.html">openmolspec.analysis.plot_align_overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_benchmark_overview.html">openmolspec.analysis.plot_benchmark_overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_dataset_statistics.html">openmolspec.analysis.plot_dataset_statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_element_coverage.html">openmolspec.analysis.plot_element_coverage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_openmolspec_overview.html">openmolspec.analysis.plot_openmolspec_overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-visualize_opt_trajectory.html">openmolspec.analysis.visualize_opt_trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-cli.html">openmolspec.cli</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">openmolspec.core.processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-core-progress.html">openmolspec.core.progress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_nmr.html">openmolspec.legacy.extract_nmr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_properties.html">openmolspec.legacy.extract_properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_properties_backup.html">openmolspec.legacy.extract_properties_backup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_spectra.html">openmolspec.legacy.extract_spectra</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-function.html">openmolspec.legacy.function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-maintenance-parse_zinc_v2_nmr.html">openmolspec.maintenance.parse_zinc_v2_nmr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-plotting.html">openmolspec.plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-openmolspec.html">openmolspec</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API 参考</a></li>
+          <li class="breadcrumb-item"><a href="category-utilities.html">工具函数</a></li>
+      <li class="breadcrumb-item active">openmolspec.core.processing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api-reference/module-core-processing.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="openmolspec-core-processing">
+<h1>openmolspec.core.processing<a class="headerlink" href="#openmolspec-core-processing" title="Link to this heading"></a></h1>
+<p>Shared structured processing results for the extraction CLIs.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.core.processing.classify_exception" title="openmolspec.core.processing.classify_exception"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.core.processing.classify_exception()</span></code></a></p></td>
+<td><p>Map a parser exception to the stable v1 error taxonomy.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.core.processing.source_parts" title="openmolspec.core.processing.source_parts"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.core.processing.source_parts()</span></code></a></p></td>
+<td><p>Return a best-effort source dataset and source ID from a sample ID.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.core.processing.file_sha256" title="openmolspec.core.processing.file_sha256"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.core.processing.file_sha256()</span></code></a></p></td>
+<td><p>Return a source-file SHA-256, or <code class="docutils literal notranslate"><span class="pre">None</span></code> when the file is unavailable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.core.processing.report_row" title="openmolspec.core.processing.report_row"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.core.processing.report_row()</span></code></a></p></td>
+<td><p>Build one machine-readable processing-report row.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.core.processing.record_quality_metadata" title="openmolspec.core.processing.record_quality_metadata"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.core.processing.record_quality_metadata()</span></code></a></p></td>
+<td><p>Return non-destructive missing-field and quality flags for a record.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.core.processing.write_processing_reports" title="openmolspec.core.processing.write_processing_reports"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.core.processing.write_processing_reports()</span></code></a></p></td>
+<td><p>Write the required parquet report and JSON summary.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.core.processing.ERROR_TYPES" title="openmolspec.core.processing.ERROR_TYPES"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.core.processing.ERROR_TYPES</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function" id="module-openmolspec.core.processing">
+<dt class="sig sig-object py" id="openmolspec.core.processing.classify_exception">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.core.processing.</span></span><span class="sig-name descname"><span class="pre">classify_exception</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseException</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#openmolspec.core.processing.classify_exception" title="Link to this definition"></a></dt>
+<dd><p>Map a parser exception to the stable v1 error taxonomy.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/core/processing.py#L33">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.core.processing.source_parts">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.core.processing.</span></span><span class="sig-name descname"><span class="pre">source_parts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.core.processing.source_parts" title="Link to this definition"></a></dt>
+<dd><p>Return a best-effort source dataset and source ID from a sample ID.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/core/processing.py#L56">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.core.processing.file_sha256">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.core.processing.</span></span><span class="sig-name descname"><span class="pre">file_sha256</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#openmolspec.core.processing.file_sha256" title="Link to this definition"></a></dt>
+<dd><p>Return a source-file SHA-256, or <code class="docutils literal notranslate"><span class="pre">None</span></code> when the file is unavailable.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/core/processing.py#L67">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.core.processing.report_row">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.core.processing.</span></span><span class="sig-name descname"><span class="pre">report_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_fields</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quality_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.core.processing.report_row" title="Link to this definition"></a></dt>
+<dd><p>Build one machine-readable processing-report row.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/core/processing.py#L80">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.core.processing.record_quality_metadata">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.core.processing.</span></span><span class="sig-name descname"><span class="pre">record_quality_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modality</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'gaussian'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.core.processing.record_quality_metadata" title="Link to this definition"></a></dt>
+<dd><p>Return non-destructive missing-field and quality flags for a record.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/core/processing.py#L107">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.core.processing.write_processing_reports">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.core.processing.</span></span><span class="sig-name descname"><span class="pre">write_processing_reports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#openmolspec.core.processing.write_processing_reports" title="Link to this definition"></a></dt>
+<dd><p>Write the required parquet report and JSON summary.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/core/processing.py#L141">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.core.processing.ERROR_TYPES">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.core.processing.</span></span><span class="sig-name descname"><span class="pre">ERROR_TYPES</span></span><a class="headerlink" href="#openmolspec.core.processing.ERROR_TYPES" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">'FILE_NOT_FOUND'</span><span class="p">,</span>
+ <span class="s1">'LOG_INCOMPLETE'</span><span class="p">,</span>
+ <span class="s1">'SCF_FAILED'</span><span class="p">,</span>
+ <span class="s1">'OPT_NOT_CONVERGED'</span><span class="p">,</span>
+ <span class="s1">'GEOMETRY_PARSE_FAILED'</span><span class="p">,</span>
+ <span class="s1">'ENERGY_PARSE_FAILED'</span><span class="p">,</span>
+ <span class="s1">'FREQUENCY_PARSE_FAILED'</span><span class="p">,</span>
+ <span class="s1">'IR_PARSE_FAILED'</span><span class="p">,</span>
+ <span class="s1">'RAMAN_PARSE_FAILED'</span><span class="p">,</span>
+ <span class="s1">'NMR_PARSE_FAILED'</span><span class="p">,</span>
+ <span class="s1">'HESSIAN_PARSE_FAILED'</span><span class="p">,</span>
+ <span class="s1">'SMILES_MISSING'</span><span class="p">,</span>
+ <span class="s1">'ATOM_COUNT_MISMATCH'</span><span class="p">,</span>
+ <span class="s1">'INVALID_NUMERIC_VALUE'</span><span class="p">,</span>
+ <span class="s1">'UNKNOWN_ERROR'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/core/processing.py#L14">Source code</a></p>
+</dd></dl>
+
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="module-cli.html" class="btn btn-neutral float-left" title="openmolspec.cli" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="module-core-progress.html" class="btn btn-neutral float-right" title="openmolspec.core.progress" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

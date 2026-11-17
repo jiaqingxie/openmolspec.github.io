@@ -1,0 +1,342 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IR and Raman from a molecular geometry &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/tasks/vibrational-forward.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>window.MathJax = {"chtml": {"displayAlign": "left"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Structure retrieval: IR + Raman" href="vibrational-retrieval.html" />
+    <link rel="prev" title="HOMO–LUMO gap from IR + Raman" href="vibrational-gap-ir_raman.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../zh/tasks/vibrational-forward.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tasks by spectroscopy family</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#nmr"><span class="xref myst">NMR</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#mass-spectrometry"><span class="xref myst">Mass spectrometry</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman"><span class="xref myst">IR / Raman</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#multimodal-spectroscopy"><span class="xref myst">Multimodal spectroscopy</span></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#deferred-tasks"><span class="xref myst">Deferred tasks</span></a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="nmr.html">NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms.html">Mass spectrometry</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="vibrational.html">IR / Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multimodal.html">Multimodal spectroscopy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deferred.html">Deferred tasks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Tasks by spectroscopy family</a></li>
+          <li class="breadcrumb-item"><a href="vibrational.html">IR / Raman</a></li>
+      <li class="breadcrumb-item active">IR and Raman from a molecular geometry</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tasks/vibrational-forward.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="ir-and-raman-from-a-molecular-geometry">
+<h1>IR and Raman from a molecular geometry<a class="headerlink" href="#ir-and-raman-from-a-molecular-geometry" title="Link to this heading"></a></h1>
+<p>Predict infrared and Raman spectra from atomic coordinates using the openSpec model.</p>
+<section id="what-goes-in">
+<h2>What goes in<a class="headerlink" href="#what-goes-in" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code></p></td>
+<td><p>Element symbols and N×3 Cartesian coordinates in Å, taken from the same Gaussian log as the reference.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code></p></td>
+<td><p>openSpec Equiformer-v3 Hessian Hi/Hij and dipole/polarizability derivative weights.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="what-comes-out">
+<h2>What comes out<a class="headerlink" href="#what-comes-out" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IR</span> <span class="pre">/</span> <span class="pre">Raman</span></code></p></td>
+<td><p>Two normalized intensity arrays on 1024 points spanning 400–4000 cm⁻¹.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spectral</span> <span class="pre">error</span></code></p></td>
+<td><p>Channel-wise cosine similarity and intensity MAE against paired computed reference spectra.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="a-real-recorded-example">
+<h2>A real recorded example<a class="headerlink" href="#a-real-recorded-example" title="Link to this heading"></a></h2>
+<p>Inspect the input, prediction and reference for the example below. Download the JSON for the complete numerical arrays and additional examples.</p>
+<p><img alt="vibrational.forward actual results" src="../_images/vibrational-forward.png" /></p>
+<p><a class="reference download internal" download="" href="../_downloads/c90b062fdaa2b7d8acb928aeb5a1feed/vibrational-forward.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/b4fe5a8a6d04776a66f1b36083173c72/vibrational-forward.png"><span class="xref download myst">PNG</span></a> · <a class="reference download internal" download="" href="../_downloads/020dcf89c166ad1e2692b8c80f6f0f8e/vibrational-forward.json"><span class="xref download myst">Full input/output JSON</span></a></p>
+<details><summary>Inspect the actual input and output fields</summary>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"sample_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NISTIR-11730"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"gaussian_log"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NISTIR-11730.log"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"sha256"</span><span class="p">:</span><span class="w"> </span><span class="s2">"894857d2c85d7106e5613540c593ff5a2ca3e2c90bed289575d38227086c2df1"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"atoms"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"wavenumber_cm1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="mf">400.0</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">403.5190734863281</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">407.0381164550781</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">410.55718994140625</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"predicted_ir"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="mf">0.01742994412779808</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.013713346794247627</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.011153731495141983</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.009342214092612267</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"predicted_raman"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="mf">0.009821882471442223</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.007297216448932886</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.005653610453009605</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.004528572782874107</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"reference_ir"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="mf">0.01633988507091999</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.013211564160883427</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.011014701798558235</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.009432419203221798</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"reference_raman"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="mf">0.007780710235238075</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.005948643200099468</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.004715456161648035</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.0038486106786876917</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"metrics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"ir_cosine_similarity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9578531980514526</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"ir_mae"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.009397805668413639</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"raman_cosine_similarity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9989054203033447</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"raman_mae"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0008200838346965611</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="actual-evaluation-results">
+<h2>Actual evaluation results<a class="headerlink" href="#actual-evaluation-results" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>ir_cosine_similarity</p></td>
+<td class="text-right"><p>0.977503</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>ir_mae</p></td>
+<td class="text-right"><p>0.00519438</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>raman_cosine_similarity</p></td>
+<td class="text-right"><p>0.990194</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>raman_mae</p></td>
+<td class="text-right"><p>0.00164467</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="model-and-method">
+<h2>Model and method<a class="headerlink" href="#model-and-method" title="Link to this heading"></a></h2>
+<p>The geometry model predicts the Hessian and dipole/polarizability response tensors. Normal-mode analysis converts these tensors into frequencies and activities, which are broadened onto the spectral grid.</p>
+<p>Compare IR and Raman separately using cosine similarity and intensity MAE.</p>
+</section>
+<section id="reproduce">
+<h2>Reproduce<a class="headerlink" href="#reproduce" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../notebooks/vibrational-forward.html"><span class="std std-doc">Notebook with executed figures</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick Start</span></a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tasks<span class="w"> </span>vibrational.forward<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/vibrational-forward-new.json
+</pre></div>
+</div>
+</section>
+<section id="call-and-adapt-this-model">
+<h2>Call and adapt this model<a class="headerlink" href="#call-and-adapt-this-model" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.benchmark</span><span class="w"> </span><span class="kn">import</span> <span class="n">Benchmark</span>
+<span class="n">benchmark</span> <span class="o">=</span> <span class="n">Benchmark</span><span class="p">(</span><span class="n">workspace</span><span class="o">=</span><span class="s1">'/path/to/workspace'</span><span class="p">,</span>
+    <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/vibrational-env/bin/python'</span><span class="p">,</span>
+    <span class="n">portable_root</span><span class="o">=</span><span class="s1">'/path/to/portable-models'</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">benchmark</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">'vibrational.forward'</span><span class="p">,</span>
+    <span class="n">output</span><span class="o">=</span><span class="s1">'geometry-to-spectrum-results.json'</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Adapt the <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">openSpec training implementation</a> with reference geometries, Hessians and response tensors using the same atom ordering, units and mode conventions. Tensor/property losses train the forward model; spectral similarity is a downstream evaluation, not automatically its training loss. Each released direct model trains its selected tensor head; the Hessian/response engine averages Cartesian SmoothL1 terms by the global number of tensor components. Separate checkpoints and target units are retained when reconstructing normal modes.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\ell_\beta(r)=\begin{cases}r^2/(2\beta),&amp;|r|&lt;\beta,\\ |r|-\beta/2,&amp;|r|\ge\beta.\end{cases}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[L_{\rm tensor}=\sum_{q\in\{H_i,H_{ij},\partial\mu,\partial\alpha\}}\frac1{N_q}\sum_j\ell_1(\hat T_{qj}-T_{qj}).\]</div>
+<details><summary>Source reports and SHA-256 fingerprints</summary>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/vibrational_forward_paired_logs_20261116.json">vibrational_forward_paired_logs_20261116.json</a> — SHA-256 <code class="docutils literal notranslate"><span class="pre">3e35b2c5b0c5b83715f49397e9d3ab5a744429ec90bff2551a96ea0d1641e087</span></code></p></li>
+</ul>
+</details>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">Model implementation / 模型实现</a> · <a class="reference internal" href="../model-audit.html"><span class="std std-doc">Model review / 模型检查</span></a></p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>OpenMolSpec contributors. openSpec models and benchmark training workflows. Source archive, v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">Source</a></p></li>
+<li><p>OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">Source</a></p></li>
+<li><p>Yuan, M., Zou, Z. &amp; Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). <a class="reference external" href="https://arxiv.org/abs/2501.18876">Source</a></p></li>
+<li><p>Zou, Z., Zhang, Y., Liang, L., Wei, M., Leng, J., Jiang, J., Luo, Y. &amp; Hu, W. A deep learning model for predicting selected organic molecular spectra. Nature Computational Science 3, 957–964 (2023). doi:10.1038/s43588-023-00550-y. <a class="reference external" href="https://www.nature.com/articles/s43588-023-00550-y">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vibrational-gap-ir_raman.html" class="btn btn-neutral float-left" title="HOMO–LUMO gap from IR + Raman" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vibrational-retrieval.html" class="btn btn-neutral float-right" title="Structure retrieval: IR + Raman" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

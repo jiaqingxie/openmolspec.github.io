@@ -1,0 +1,262 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>openmolspec.analysis.plot_element_coverage &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/api-reference/module-analysis-plot_element_coverage.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="openmolspec.analysis.plot_openmolspec_overview" href="module-analysis-plot_openmolspec_overview.html" />
+    <link rel="prev" title="openmolspec.analysis.plot_dataset_statistics" href="module-analysis-plot_dataset_statistics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../api-reference/module-analysis-plot_element_coverage.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API 参考</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="category-data.html">数据访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-models.html">模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-learning.html">训练与评测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-spectroscopy.html">谱学与数据结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-processing.html">数据处理与发布</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-agents.html">Agent 工具</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="category-utilities.html">工具函数</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-analyze_dataset_comparison.html">openmolspec.analysis.analyze_dataset_comparison</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_align_chemical_distribution.html">openmolspec.analysis.plot_align_chemical_distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_align_overview.html">openmolspec.analysis.plot_align_overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_benchmark_overview.html">openmolspec.analysis.plot_benchmark_overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_dataset_statistics.html">openmolspec.analysis.plot_dataset_statistics</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">openmolspec.analysis.plot_element_coverage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_openmolspec_overview.html">openmolspec.analysis.plot_openmolspec_overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-visualize_opt_trajectory.html">openmolspec.analysis.visualize_opt_trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-cli.html">openmolspec.cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-core-processing.html">openmolspec.core.processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-core-progress.html">openmolspec.core.progress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_nmr.html">openmolspec.legacy.extract_nmr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_properties.html">openmolspec.legacy.extract_properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_properties_backup.html">openmolspec.legacy.extract_properties_backup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_spectra.html">openmolspec.legacy.extract_spectra</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-function.html">openmolspec.legacy.function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-maintenance-parse_zinc_v2_nmr.html">openmolspec.maintenance.parse_zinc_v2_nmr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-plotting.html">openmolspec.plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-openmolspec.html">openmolspec</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API 参考</a></li>
+          <li class="breadcrumb-item"><a href="category-utilities.html">工具函数</a></li>
+      <li class="breadcrumb-item active">openmolspec.analysis.plot_element_coverage</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api-reference/module-analysis-plot_element_coverage.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="openmolspec-analysis-plot-element-coverage">
+<h1>openmolspec.analysis.plot_element_coverage<a class="headerlink" href="#openmolspec-analysis-plot-element-coverage" title="Link to this heading"></a></h1>
+<p>Plot documented element coverage of OpenMolSpec and public reference sets.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_element_coverage.openmolspec_elements" title="openmolspec.analysis.plot_element_coverage.openmolspec_elements"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_element_coverage.openmolspec_elements()</span></code></a></p></td>
+<td><p>Collect the element coverage of the OpenMolSpec records.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_element_coverage.coverage_frame" title="openmolspec.analysis.plot_element_coverage.coverage_frame"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_element_coverage.coverage_frame()</span></code></a></p></td>
+<td><p>Build a tabular element-coverage summary for the compared collections.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_element_coverage.plot_coverage" title="openmolspec.analysis.plot_element_coverage.plot_coverage"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_element_coverage.plot_coverage()</span></code></a></p></td>
+<td><p>Draw the element-coverage comparison.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_element_coverage.main" title="openmolspec.analysis.plot_element_coverage.main"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_element_coverage.main()</span></code></a></p></td>
+<td><p>Run the plot element coverage command-line workflow.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_element_coverage.ELEMENTS" title="openmolspec.analysis.plot_element_coverage.ELEMENTS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_element_coverage.ELEMENTS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_element_coverage.REFERENCE_ELEMENTS" title="openmolspec.analysis.plot_element_coverage.REFERENCE_ELEMENTS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_element_coverage.REFERENCE_ELEMENTS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_element_coverage.PUBLIC_YEAR" title="openmolspec.analysis.plot_element_coverage.PUBLIC_YEAR"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_element_coverage.PUBLIC_YEAR</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function" id="module-openmolspec.analysis.plot_element_coverage">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_element_coverage.openmolspec_elements">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_element_coverage.</span></span><span class="sig-name descname"><span class="pre">openmolspec_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.analysis.plot_element_coverage.openmolspec_elements" title="Link to this definition"></a></dt>
+<dd><p>Collect the element coverage of the OpenMolSpec records.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_element_coverage.py#L50">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_element_coverage.coverage_frame">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_element_coverage.</span></span><span class="sig-name descname"><span class="pre">coverage_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">open_elements</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pd.DataFrame</span></span></span><a class="headerlink" href="#openmolspec.analysis.plot_element_coverage.coverage_frame" title="Link to this definition"></a></dt>
+<dd><p>Build a tabular element-coverage summary for the compared collections.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_element_coverage.py#L63">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_element_coverage.plot_coverage">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_element_coverage.</span></span><span class="sig-name descname"><span class="pre">plot_coverage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#openmolspec.analysis.plot_element_coverage.plot_coverage" title="Link to this definition"></a></dt>
+<dd><p>Draw the element-coverage comparison.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_element_coverage.py#L76">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_element_coverage.main">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_element_coverage.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#openmolspec.analysis.plot_element_coverage.main" title="Link to this definition"></a></dt>
+<dd><p>Run the plot element coverage command-line workflow.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_element_coverage.py#L127">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_element_coverage.ELEMENTS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_element_coverage.</span></span><span class="sig-name descname"><span class="pre">ELEMENTS</span></span><a class="headerlink" href="#openmolspec.analysis.plot_element_coverage.ELEMENTS" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">'H'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'N'</span><span class="p">,</span> <span class="s1">'O'</span><span class="p">,</span> <span class="s1">'F'</span><span class="p">,</span> <span class="s1">'Al'</span><span class="p">,</span> <span class="s1">'Si'</span><span class="p">,</span> <span class="s1">'P'</span><span class="p">,</span> <span class="s1">'S'</span><span class="p">,</span> <span class="s1">'Cl'</span><span class="p">,</span> <span class="s1">'Br'</span><span class="p">,</span> <span class="s1">'As'</span><span class="p">,</span> <span class="s1">'Se'</span><span class="p">,</span> <span class="s1">'I'</span><span class="p">,</span> <span class="s1">'Ge'</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_element_coverage.py#L22">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_element_coverage.REFERENCE_ELEMENTS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_element_coverage.</span></span><span class="sig-name descname"><span class="pre">REFERENCE_ELEMENTS</span></span><a class="headerlink" href="#openmolspec.analysis.plot_element_coverage.REFERENCE_ELEMENTS" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">'ANI-1'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'H'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'N'</span><span class="p">,</span> <span class="s1">'O'</span><span class="p">},</span> <span class="s1">'QM9S'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'H'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'N'</span><span class="p">,</span> <span class="s1">'O'</span><span class="p">,</span> <span class="s1">'F'</span><span class="p">},</span> <span class="s1">'SQuIRL'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'H'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'N'</span><span class="p">,</span> <span class="s1">'O'</span><span class="p">,</span> <span class="s1">'F'</span><span class="p">},</span> <span class="s1">'QM7-X'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'H'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'N'</span><span class="p">,</span> <span class="s1">'O'</span><span class="p">,</span> <span class="s1">'S'</span><span class="p">,</span> <span class="s1">'Cl'</span><span class="p">},</span> <span class="s1">'ChEMBL IR/Raman'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'H'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'N'</span><span class="p">,</span> <span class="s1">'O'</span><span class="p">,</span> <span class="s1">'F'</span><span class="p">,</span> <span class="s1">'P'</span><span class="p">,</span> <span class="s1">'S'</span><span class="p">,</span> <span class="s1">'Cl'</span><span class="p">,</span> <span class="s1">'Br'</span><span class="p">},</span> <span class="s1">'QCML'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'H'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'N'</span><span class="p">,</span> <span class="s1">'O'</span><span class="p">},</span> <span class="s1">'QMe14S'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'H'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'N'</span><span class="p">,</span> <span class="s1">'O'</span><span class="p">,</span> <span class="s1">'F'</span><span class="p">,</span> <span class="s1">'Al'</span><span class="p">,</span> <span class="s1">'Si'</span><span class="p">,</span> <span class="s1">'P'</span><span class="p">,</span> <span class="s1">'S'</span><span class="p">,</span> <span class="s1">'Cl'</span><span class="p">,</span> <span class="s1">'Br'</span><span class="p">,</span> <span class="s1">'As'</span><span class="p">,</span> <span class="s1">'Se'</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_element_coverage.py#L29">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_element_coverage.PUBLIC_YEAR">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_element_coverage.</span></span><span class="sig-name descname"><span class="pre">PUBLIC_YEAR</span></span><a class="headerlink" href="#openmolspec.analysis.plot_element_coverage.PUBLIC_YEAR" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">'ANI-1'</span><span class="p">:</span> <span class="mi">2017</span><span class="p">,</span>
+ <span class="s1">'QM9S'</span><span class="p">:</span> <span class="mi">2023</span><span class="p">,</span>
+ <span class="s1">'SQuIRL'</span><span class="p">:</span> <span class="mi">2026</span><span class="p">,</span>
+ <span class="s1">'QM7-X'</span><span class="p">:</span> <span class="mi">2021</span><span class="p">,</span>
+ <span class="s1">'ChEMBL IR/Raman'</span><span class="p">:</span> <span class="mi">2025</span><span class="p">,</span>
+ <span class="s1">'QCML'</span><span class="p">:</span> <span class="mi">2025</span><span class="p">,</span>
+ <span class="s1">'QMe14S'</span><span class="p">:</span> <span class="mi">2025</span><span class="p">,</span>
+ <span class="s1">'OpenMolSpec'</span><span class="p">:</span> <span class="mi">2026</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_element_coverage.py#L38">Source code</a></p>
+</dd></dl>
+
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="module-analysis-plot_dataset_statistics.html" class="btn btn-neutral float-left" title="openmolspec.analysis.plot_dataset_statistics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="module-analysis-plot_openmolspec_overview.html" class="btn btn-neutral float-right" title="openmolspec.analysis.plot_openmolspec_overview" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

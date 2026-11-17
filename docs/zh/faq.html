@@ -1,0 +1,179 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>常用流程 &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/faq.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f115507d"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="参与贡献" href="contributing.html" />
+    <link rel="prev" title="训练基准配置" href="benchmarks/training.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../faq.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference/index.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks.html">基准评测</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">常用流程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">选择输入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">读取峰表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">选择模型环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">训练自己的数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">创建数据划分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">把预测映射到原子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">运行教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agent">连接 Agent</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">常用流程</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/faq.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>常用流程<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<section id="id2">
+<h2>选择输入<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>结构用于谱预测，结构与峰用于指认，谱用于检索或生成，时域信号用于数值反演。见<a class="reference internal" href="tasks/index.html"><span class="std std-doc">任务</span></a>。</p>
+</section>
+<section id="id3">
+<h2>读取峰表<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>NMR 使用 ppm 位置，MS 使用 m/z–强度对，IR/Raman 使用 cm⁻¹ 位置及可用强度。构建密集光谱时，将网格和展宽参数与数组一起保存。</p>
+</section>
+<section id="id4">
+<h2>选择模型环境<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>通过 <code class="docutils literal notranslate"><span class="pre">python=</span></code> 指定安装了模型依赖的解释器，在模型类中指定 checkpoint 或模型根目录。见 <a class="reference internal" href="api.html"><span class="std std-doc">SDK</span></a>。</p>
+</section>
+<section id="id5">
+<h2>训练自己的数据<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">MolecularSpectra.from_jsonl</span></code> 导入训练／验证文件，再通过 <code class="docutils literal notranslate"><span class="pre">prepare_nmr_training</span></code> 准备数据，创建训练计划并调用 <code class="docutils literal notranslate"><span class="pre">model.fit(plan)</span></code>。</p>
+</section>
+<section id="id6">
+<h2>创建数据划分<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">split_records</span></code> 按连接关系随机分组或按骨架划分，再从 manifest 查看数量、分组策略和文件哈希。见<a class="reference internal" href="data/splits.html"><span class="std std-doc">划分</span></a>。</p>
+</section>
+<section id="id7">
+<h2>把预测映射到原子<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p>NMRNet 使用 RDKit AddHs 后的 0 起始原子编号，MAGMa 使用 <code class="docutils literal notranslate"><span class="pre">engine_smiles</span></code> 图上的编号。绘制指认时同时保留返回的图和编号。</p>
+</section>
+<section id="id8">
+<h2>运行教程<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<p>克隆 release 分支并安装 <code class="docutils literal notranslate"><span class="pre">requirements-docs-examples.txt</span></code>。科学绘图使用 Arial，可通过 <code class="docutils literal notranslate"><span class="pre">OPENMOLSPEC_ARIAL_FONT</span></code> 指定本机 TTF；SDK 推理教程另外配置模型路径。</p>
+</section>
+<section id="agent">
+<h2>连接 Agent<a class="headerlink" href="#agent" title="Link to this heading"></a></h2>
+<p>通过 Python、JSON 命令行请求或 MCP 使用 Spectra Harness。先发现任务、验证请求，再执行并读取 <code class="docutils literal notranslate"><span class="pre">result</span></code>。见 <a class="reference internal" href="harness.html"><span class="std std-doc">Agent Harness</span></a>。</p>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="benchmarks/training.html" class="btn btn-neutral float-left" title="训练基准配置" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="contributing.html" class="btn btn-neutral float-right" title="参与贡献" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

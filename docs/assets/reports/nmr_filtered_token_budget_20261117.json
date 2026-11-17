@@ -1,0 +1,43 @@
+{
+  "candidate_smiles_capacity_bytes": 160,
+  "spectral_source_capacity_tokens": 512,
+  "selection_sha256": "4c273a613e3c0be4a5e290979f01648a8f9c34a26262690afb827de16c4e9809",
+  "datasets": {
+    "nmrspec_test": {
+      "molecules": 512,
+      "molecular_targets_exceed_capacity": 0,
+      "spectral_text_truncated": {
+        "h": 0,
+        "c": 0,
+        "hc": 10
+      }
+    },
+    "patent_test_10k": {
+      "molecules": 512,
+      "molecular_targets_exceed_capacity": 0,
+      "spectral_text_truncated": {
+        "h": 3,
+        "c": 0,
+        "hc": 14
+      }
+    },
+    "nmrexp_exp_10k": {
+      "molecules": 512,
+      "molecular_targets_exceed_capacity": 0,
+      "spectral_text_truncated": {
+        "h": 4,
+        "c": 0,
+        "hc": 38
+      }
+    },
+    "nmrgym_test": {
+      "molecules": 512,
+      "molecular_targets_exceed_capacity": 0,
+      "spectral_text_truncated": {
+        "h": 1,
+        "c": 0,
+        "hc": 7
+      }
+    }
+  }
+}

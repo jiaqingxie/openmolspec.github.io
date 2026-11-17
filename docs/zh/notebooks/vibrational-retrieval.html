@@ -1,0 +1,575 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>结构检索：IR + Raman &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/notebooks/vibrational-retrieval.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="结构检索：IR + Raman + NMR" href="vibrational-retrieval-hc.html" />
+    <link rel="prev" title="结构生成：IR + Raman + NMR" href="vibrational-generation-hc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../notebooks/vibrational-retrieval.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#theory-simulations">Theory simulations / 理论模拟</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#nmr">核磁共振 NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ms">质谱 MS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman">红外 / 拉曼 IR / Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id2">多谱联合</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#id3">暂不推进</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="datasets-overview.html">探索谱学数据集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-annotation-magma.html">MS/MS 碎片指认</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-forward-glacier.html">使用 GLACIER 预测 MS/MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-forward-iceberg.html">使用 ICEBERG 预测 MS/MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-assignment.html">峰到原子的指认</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-c.html">从 ¹³C NMR 解析结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">从 ¹H NMR 解析结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-hc.html">从 ¹H + ¹³C NMR 解析结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-m2s.html">结构到谱检索：¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-s2m.html">谱到结构检索：¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">结构到谱检索：¹H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">谱到结构检索：¹H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-m2s.html">结构到谱检索：¹H + ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-s2m.html">谱到结构检索：¹H + ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-solvent_transfer.html">跨溶剂化学位移迁移</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdk-inference.html">Python SDK：真实 NMR 推理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdk-training-preflight.html">训练数据准备与启动前检查</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking.html">候选重排：IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking-hc.html">候选重排：IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-ms-isotopes.html">质谱：同位素包络与分辨率</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-nmr-fourier.html">NMR：从自由感应衰减到频谱</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-nmr-inversion.html">NMR 反演：恢复弛豫时间分布</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-vibrational-broadening.html">IR 与 Raman：简正模式和谱线展宽</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-forward.html">从分子构象预测 IR 与 Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir.html">由 IR 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman.html">由 IR + Raman 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman_hc.html">由 IR + Raman + NMR 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-raman.html">由 Raman 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-generation.html">结构生成：IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-generation-hc.html">结构生成：IR + Raman + NMR</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">结构检索：IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-hc.html">结构检索：IR + Raman + NMR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">教程</a></li>
+      <li class="breadcrumb-item active">结构检索：IR + Raman</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/vibrational-retrieval.ipynb.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+    <p><a class="btn btn-neutral" href="../../downloads/notebooks/vibrational-retrieval.zh.ipynb" download>下载 notebook</a></p>
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="ir-raman">
+<h1>结构检索：IR + Raman<a class="headerlink" href="#ir-raman" title="Link to this heading"></a></h1>
+<p>按候选结构与输入谱图的一致性进行排序。</p>
+<p>openSpec 模型通过 Vib2Mol 编码谱通道。生成使用 beam search 和分子匹配分数；检索比较嵌入，候选重排使用匹配头。</p>
+<p>本教程读取保存的预测，解释输入输出字段，并评估结果。最后给出在新数据集上运行模型的命令。</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">SVG</span>
+<span class="n">root</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">(),</span> <span class="o">*</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">parents</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="s1">'openmolspec_bench'</span><span class="p">)</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()),</span> <span class="kc">None</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">'Run from the cloned release repository; see Quick Start'</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s1">'scripts'</span><span class="p">))</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">documentation_evidence</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_evidence</span><span class="p">,</span> <span class="n">compact</span><span class="p">,</span> <span class="n">recompute</span><span class="p">,</span> <span class="n">render</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">documentation_content</span><span class="w"> </span><span class="kn">import</span> <span class="n">results_table</span>
+<span class="n">evidence</span> <span class="o">=</span> <span class="n">load_evidence</span><span class="p">(</span><span class="s1">'vibrational.retrieval'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Task:'</span><span class="p">,</span> <span class="n">evidence</span><span class="p">[</span><span class="s1">'task'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Examples:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">evidence</span><span class="p">[</span><span class="s1">'examples'</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Task: vibrational.retrieval
+Examples: 3
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h2>输入与输出<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IR</span> <span class="pre">/</span> <span class="pre">Raman</span></code></p></td>
+<td><p>每个可见通道 1024 个强度点，按 400→4000 cm⁻¹ 排列，并采用 checkpoint 的归一化。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">missing</span> <span class="pre">channels</span></code></p></td>
+<td><p>输入掩码选择共享四模态权重的可见通道。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">candidate</span> <span class="pre">structures</span></code></p></td>
+<td><p>用于排序的分子候选库。</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ranking</span></code></p></td>
+<td><p>候选结构 ID，以及相似度或 ITM 正类分数。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">recall</span> <span class="pre">/</span> <span class="pre">MRR</span></code></p></td>
+<td><p>排序指标、候选池大小及样本来源构成。</p></td>
+</tr>
+</tbody>
+</table>
+<p>查看下面的示例记录。长数组显示长度与前几个数值，下载 JSON 可获取完整数组。</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">example</span> <span class="ow">in</span> <span class="n">evidence</span><span class="p">[</span><span class="s1">'examples'</span><span class="p">][:</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">compact</span><span class="p">(</span><span class="n">example</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+  "sample_id": "ZINCV2-ZINC000646741030",
+  "input": {
+    "ir": {
+      "length": 1024,
+      "first_values": [
+        0.15220004320144653,
+        0.190755695104599,
+        0.2037702202796936,
+        0.1804114133119583,
+        0.1386023461818695,
+        0.10100352019071579,
+        0.07402963191270828,
+        0.05563068017363548
+      ]
+    },
+    "raman": {
+      "length": 1024,
+      "first_values": [
+        0.04284051060676575,
+        0.0596662312746048,
+        0.059223152697086334,
+        0.04435715824365616,
+        0.03070877492427826,
+        0.02493642456829548,
+        0.021241741254925728,
+        0.01620982028543949
+      ]
+    },
+    "nmr_h_shifts_ppm": [],
+    "nmr_c_shifts_ppm": []
+  },
+  "reference_smiles": "O=C(c1n[nH]c2ccccc12)N1CCOC2CC21",
+  "ranked_candidates": {
+    "length": 10,
+    "first_values": [
+      {
+        "smiles": "O=C1CNc2nonc2N1",
+        "score": 0.47853392362594604,
+        "reference_match": false
+      },
+      {
+        "smiles": "CC(=O)N1C(c2ccccc2)C(C)C(O)C(C)C1c1ccccc1",
+        "score": 0.24985913932323456,
+        "reference_match": false
+      },
+      {
+        "smiles": "C#CC1(F)CN(C(=O)C(C)n2cccn2)C1",
+        "score": 0.20631715655326843,
+        "reference_match": false
+      },
+      {
+        "smiles": "CC1NCCn2cnnc21",
+        "score": 0.10394307971000671,
+        "reference_match": false
+      },
+      {
+        "smiles": "O=C(Nc1nncs1)c1nccs1",
+        "score": 0.0923796221613884,
+        "reference_match": false
+      },
+      {
+        "smiles": "O=[N+]([O-])c1ccc2ncsc2c1",
+        "score": 0.08782949298620224,
+        "reference_match": false
+      },
+      {
+        "smiles": "O=c1c2ccccc2ncn1-c1cccc2nsnc12",
+        "score": 0.025887921452522278,
+        "reference_match": false
+      },
+      {
+        "smiles": "Cc1cccc2sc3nncn3c12",
+        "score": 0.024155132472515106,
+        "reference_match": false
+      }
+    ]
+  }
+}
+{
+  "sample_id": "ZINCV2-ZINC000307618188",
+  "input": {
+    "ir": {
+      "length": 1024,
+      "first_values": [
+        0.0010501602664589882,
+        0.001077173976227641,
+        0.0011079054092988372,
+        0.0011428757570683956,
+        0.001182809006422758,
+        0.0012287184363231063,
+        0.001282043056562543,
+        0.0013448712415993214
+      ]
+    },
+    "raman": {
+      "length": 1024,
+      "first_values": [
+        0.001384648261591792,
+        0.0013985618716105819,
+        0.0014195888070389628,
+        0.001449118135496974,
+        0.0014892042381688952,
+        0.0015428988263010979,
+        0.0016148112481459975,
+        0.0017120839329436421
+      ]
+    },
+    "nmr_h_shifts_ppm": [],
+    "nmr_c_shifts_ppm": []
+  },
+  "reference_smiles": "O=C(Nc1nncs1)c1nccs1",
+  "ranked_candidates": {
+    "length": 10,
+    "first_values": [
+      {
+        "smiles": "O=C1CNc2nonc2N1",
+        "score": 0.4683752954006195,
+        "reference_match": false
+      },
+      {
+        "smiles": "C#CC1(F)CN(C(=O)C(C)n2cccn2)C1",
+        "score": 0.1792929619550705,
+        "reference_match": false
+      },
+      {
+        "smiles": "CC(=O)N1C(c2ccccc2)C(C)C(O)C(C)C1c1ccccc1",
+        "score": 0.16251230239868164,
+        "reference_match": false
+      },
+      {
+        "smiles": "O=C(Nc1nncs1)c1nccs1",
+        "score": 0.091488778591156,
+        "reference_match": true
+      },
+      {
+        "smiles": "O=[N+]([O-])c1ccc2ncsc2c1",
+        "score": 0.040303125977516174,
+        "reference_match": false
+      },
+      {
+        "smiles": "O=c1c2ccccc2ncn1-c1cccc2nsnc12",
+        "score": 0.029038624837994576,
+        "reference_match": false
+      },
+      {
+        "smiles": "CC1NCCn2cnnc21",
+        "score": -0.007181060966104269,
+        "reference_match": false
+      },
+      {
+        "smiles": "c1cnc2ncnc(NC3CCCC34CC4)c2c1",
+        "score": -0.014717372134327888,
+        "reference_match": false
+      }
+    ]
+  }
+}
+{
+  "sample_id": "SDBS-11470",
+  "input": {
+    "ir": {
+      "length": 1024,
+      "first_values": [
+        0.08935871720314026,
+        0.08204560726881027,
+        0.06426363438367844,
+        0.04762554168701172,
+        0.0358852855861187,
+        0.028361300006508827,
+        0.023730443790555,
+        0.020771507173776627
+      ]
+    },
+    "raman": {
+      "length": 1024,
+      "first_values": [
+        0.09699014574289322,
+        0.07799255847930908,
+        0.05177240073680878,
+        0.038467276841402054,
+        0.03500157222151756,
+        0.039790015667676926,
+        0.055753812193870544,
+        0.08332391083240509
+      ]
+    },
+    "nmr_h_shifts_ppm": [],
+    "nmr_c_shifts_ppm": []
+  },
+  "reference_smiles": "CC1=NC(CO)C(c2ccccc2)O1",
+  "ranked_candidates": {
+    "length": 10,
+    "first_values": [
+      {
+        "smiles": "O=C1CNc2nonc2N1",
+        "score": 0.37759077548980713,
+        "reference_match": false
+      },
+      {
+        "smiles": "CC(=O)N1C(c2ccccc2)C(C)C(O)C(C)C1c1ccccc1",
+        "score": 0.28682276606559753,
+        "reference_match": false
+      },
+      {
+        "smiles": "C#CC1(F)CN(C(=O)C(C)n2cccn2)C1",
+        "score": 0.16551706194877625,
+        "reference_match": false
+      },
+      {
+        "smiles": "CC1=NC(CO)C(c2ccccc2)O1",
+        "score": 0.139182910323143,
+        "reference_match": true
+      },
+      {
+        "smiles": "O=CC1C(O)CC2NC21",
+        "score": 0.03983272612094879,
+        "reference_match": false
+      },
+      {
+        "smiles": "CC(O)c1ccccc1Oc1ccc(C#N)cc1",
+        "score": 0.025804152712225914,
+        "reference_match": false
+      },
+      {
+        "smiles": "Cc1ccc(C)c(N2CCOCC2)c1",
+        "score": 0.012087981216609478,
+        "reference_match": false
+      },
+      {
+        "smiles": "O=c1c2ccccc2ncn1-c1cccc2nsnc12",
+        "score": -0.00029239917057566345,
+        "reference_match": false
+      }
+    ]
+  }
+}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>评估预测<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>生成报告 top-k 准确率，排序报告 Recall&#64;k 与 MRR。</p>
+<p>表格给出每次运行的数据集与指标。后续代码从绘图使用的预测值重新计算汇总结果。</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">results_table</span><span class="p">(</span><span class="n">evidence</span><span class="p">,</span> <span class="kc">False</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">recompute</span><span class="p">(</span><span class="n">evidence</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p>| Dataset / scope | Model / variant | Metric | Value |
+| --- | --- | --- | ---: |
+| recorded sample | recorded model | recall_at_1 | 0.0625 |
+| recorded sample | recorded model | recall_at_5 | 0.5625 |
+| recorded sample | recorded model | recall_at_10 | 0.875 |
+| recorded sample | recorded model | mrr | 0.257068 |
+| recorded sample | recorded model | queries | 16 |
+| recorded sample | recorded model | candidate_pool | 16 |
+| recorded sample | recorded model | unique_candidates | 16 |
+| recorded sample | recorded model | tie_policy | stable_candidate_order |</p>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+  "scope": "Saved model outputs are shown directly; aggregate metrics are in the run table.",
+  "recorded_runs": 1,
+  "real_examples": 3
+}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>查看结果图<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>按谱相似度排序的分子候选。</p>
+<p>比较预测与参考，查看返回的结构或峰位置。图由上方读取的记录直接生成。</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="k">for</span> <span class="n">example_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">figure</span> <span class="o">=</span> <span class="n">render</span><span class="p">(</span><span class="s1">'vibrational.retrieval'</span><span class="p">,</span> <span class="n">evidence</span><span class="p">,</span> <span class="n">example_index</span><span class="o">=</span><span class="n">example_index</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+    <span class="n">figure</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'svg'</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'Date'</span><span class="p">:</span> <span class="kc">None</span><span class="p">})</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">figure</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b051eab8392ca7de51efa907645527b864f75829bff4218642248dc1e85eaebc.svg" src="../_images/b051eab8392ca7de51efa907645527b864f75829bff4218642248dc1e85eaebc.svg" />
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>运行模型<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>按任务指南配置环境和权重，在 benchmark runner 中选择本任务，即可评估自己的数据集。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tasks<span class="w"> </span>vibrational.retrieval<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/vibrational-retrieval.json
+</pre></div>
+</div>
+<p><a class="reference internal" href="../tasks/vibrational-retrieval.html"><span class="std std-doc">Task</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick start</span></a></p>
+</section>
+<section id="id5">
+<h2>参考文献<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>OpenMolSpec contributors. openSpec models and benchmark training workflows. Source archive, v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">Source</a></p></li>
+<li><p>OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">Source</a></p></li>
+<li><p>Yuan, M., Zou, Z. &amp; Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). <a class="reference external" href="https://arxiv.org/abs/2501.18876">Source</a></p></li>
+<li><p>Zou, Z., Zhang, Y., Liang, L., Wei, M., Leng, J., Jiang, J., Luo, Y. &amp; Hu, W. A deep learning model for predicting selected organic molecular spectra. Nature Computational Science 3, 957–964 (2023). doi:10.1038/s43588-023-00550-y. <a class="reference external" href="https://www.nature.com/articles/s43588-023-00550-y">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="vibrational-generation-hc.html" class="btn btn-neutral float-left" title="结构生成：IR + Raman + NMR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="vibrational-retrieval-hc.html" class="btn btn-neutral float-right" title="结构检索：IR + Raman + NMR" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

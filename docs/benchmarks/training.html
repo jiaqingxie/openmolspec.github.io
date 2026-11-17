@@ -1,0 +1,608 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Training benchmark configurations &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/benchmarks/training.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Common workflows" href="../faq.html" />
+    <link rel="prev" title="Production benchmark results" href="production.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../zh/benchmarks/training.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">Tasks by spectroscopy family</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../benchmarks.html">Benchmarks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#task-benchmarks">Task benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#training-benchmark-configurations">Training benchmark configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#metrics">Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#run-a-benchmark">Run a benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#additional-task-definitions">Additional task definitions</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../benchmarks.html#references">References</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="nmr.html">NMR benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms.html">Mass spectrometry benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational.html">IR / Raman benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multimodal.html">Multimodal spectroscopy benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="production.html">Production benchmark results</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Training benchmark configurations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../benchmarks.html">Benchmarks</a></li>
+      <li class="breadcrumb-item active">Training benchmark configurations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/benchmarks/training.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="training-benchmark-configurations">
+<h1>Training benchmark configurations<a class="headerlink" href="#training-benchmark-configurations" title="Link to this heading"></a></h1>
+<p>Download the <a class="reference download internal" download="" href="../_downloads/a1bab5cc751a405f353e832499879b4c/openmolspec-benchmark-source.zip"><span class="xref download myst">benchmark source archive</span></a>, unpack it and work from the extracted directory. The archive includes the launcher, model adapters, data-preparation modules and all 53 configurations. <a class="reference download internal" download="" href="../_downloads/be9aae5f9ce3f73e5a1db20ccdd9261e/benchmark-source-manifest.json"><span class="xref download myst">SHA-256 manifest</span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>unzip<span class="w"> </span>openmolspec-benchmark-source.zip
+<span class="nb">cd</span><span class="w"> </span>openmolspec-benchmarks
+python<span class="w"> </span>-m<span class="w"> </span>benchmarks<span class="w"> </span>--help
+python<span class="w"> </span>-m<span class="w"> </span>benchmarks<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--config<span class="w"> </span>benchmarks/configs/structure2property/equiformer_v3.yaml<span class="w"> </span>--dry-run
+</pre></div>
+</div>
+<p>Download a YAML file to inspect the exact targets, architecture and training budget. Configurations are grouped by task family. The production training workflow reads them with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">benchmarks</span> <span class="pre">run</span> <span class="pre">--config</span> <span class="pre">&lt;file&gt;</span></code>.</p>
+<section id="spectrum2property">
+<h2>spectrum2property<a class="headerlink" href="#spectrum2property" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>Input</p></th>
+<th class="head"><p>Targets</p></th>
+<th class="head"><p>Data release</p></th>
+<th class="head"><p>Budget</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/b2893be94b35f84aee70774b67da2f44/dipole_total_ir_ks1000k.yaml"><span class="xref download myst">dipole_total_ir_ks1000k.yaml</span></a></p></td>
+<td><p>ir</p></td>
+<td><p>dipole_total</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/dc0c639741161ac6175753173acc17fc/dipole_total_ir_raman_ks1000k.yaml"><span class="xref download myst">dipole_total_ir_raman_ks1000k.yaml</span></a></p></td>
+<td><p>ir-raman</p></td>
+<td><p>dipole_total</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/fdd0a1d3dc4e17a2477590f9dba9eb6e/dipole_total_ks1000k.yaml"><span class="xref download myst">dipole_total_ks1000k.yaml</span></a></p></td>
+<td><p>ir-raman-nmr</p></td>
+<td><p>dipole_total</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/0ba9e514a2cbed67d2ce537bf806890c/dipole_total_ks200k.yaml"><span class="xref download myst">dipole_total_ks200k.yaml</span></a></p></td>
+<td><p>ir-raman-nmr</p></td>
+<td><p>dipole_total</p></td>
+<td><p>openmolspec-v1-ks200k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/055372c139a531b71166c2cc1b222377/gap_ir_ks1000k.yaml"><span class="xref download myst">gap_ir_ks1000k.yaml</span></a></p></td>
+<td><p>ir</p></td>
+<td><p>gap</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/f8dfe78e528488ce5e39a7c14cff6ca8/gap_ir_raman_ks1000k.yaml"><span class="xref download myst">gap_ir_raman_ks1000k.yaml</span></a></p></td>
+<td><p>ir-raman</p></td>
+<td><p>gap</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/7e4e9c2a008fad8676a74ba9e4804875/gap_ks1000k.yaml"><span class="xref download myst">gap_ks1000k.yaml</span></a></p></td>
+<td><p>ir-raman-nmr</p></td>
+<td><p>gap</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/a71c17094c30e6521a8e1e5a72f8d3e0/gap_ks200k.yaml"><span class="xref download myst">gap_ks200k.yaml</span></a></p></td>
+<td><p>ir-raman-nmr</p></td>
+<td><p>gap</p></td>
+<td><p>openmolspec-v1-ks200k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/1d3377155a367f91e059fbb1a69e3aec/polar_iso_ir_ks1000k.yaml"><span class="xref download myst">polar_iso_ir_ks1000k.yaml</span></a></p></td>
+<td><p>ir</p></td>
+<td><p>polar_iso</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/27a1e2dce71aca8cb2bd90d51164f0a9/polar_iso_ir_raman_ks1000k.yaml"><span class="xref download myst">polar_iso_ir_raman_ks1000k.yaml</span></a></p></td>
+<td><p>ir-raman</p></td>
+<td><p>polar_iso</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/6304245869266200a791d5b2fbdeb2bd/polar_iso_ks1000k.yaml"><span class="xref download myst">polar_iso_ks1000k.yaml</span></a></p></td>
+<td><p>ir-raman-nmr</p></td>
+<td><p>polar_iso</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/fef08a0b1edb9b8ba47575f64f2f1514/polar_iso_ks200k.yaml"><span class="xref download myst">polar_iso_ks200k.yaml</span></a></p></td>
+<td><p>ir-raman-nmr</p></td>
+<td><p>polar_iso</p></td>
+<td><p>openmolspec-v1-ks200k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="spectrum2structure">
+<h2>spectrum2structure<a class="headerlink" href="#spectrum2structure" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>Input</p></th>
+<th class="head"><p>Targets</p></th>
+<th class="head"><p>Data release</p></th>
+<th class="head"><p>Budget</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/fa57bde139667e5a59f8d3f582d5756b/vib2mol.yaml"><span class="xref download myst">vib2mol.yaml</span></a></p></td>
+<td><p>ir-raman-nmr</p></td>
+<td><p>kekule_smiles</p></td>
+<td><p>release-v1</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/8af0d6368c508b618504cdb2946a818e/vib2mol_batch_probe_ddp2.yaml"><span class="xref download myst">vib2mol_batch_probe_ddp2.yaml</span></a></p></td>
+<td><p>ir-raman-nmr</p></td>
+<td><p>kekule_smiles</p></td>
+<td><p>release-v1</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/8aedb96cb437b967f95d48d58f4d7918/vib2mol_ir_ks1000k.yaml"><span class="xref download myst">vib2mol_ir_ks1000k.yaml</span></a></p></td>
+<td><p>ir</p></td>
+<td><p>kekule_smiles</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/0183968213178bc9b861ef8c3d7ce44a/vib2mol_ir_raman_hnmr_ks1000k.yaml"><span class="xref download myst">vib2mol_ir_raman_hnmr_ks1000k.yaml</span></a></p></td>
+<td><p>ir-raman-hnmr</p></td>
+<td><p>kekule_smiles</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/54bc2f4a8759b1a2811a96cf7b05523f/vib2mol_ir_raman_ks1000k.yaml"><span class="xref download myst">vib2mol_ir_raman_ks1000k.yaml</span></a></p></td>
+<td><p>ir-raman</p></td>
+<td><p>kekule_smiles</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/08861606b194a412c22cc7fce6e642ea/vib2mol_ks1000k.yaml"><span class="xref download myst">vib2mol_ks1000k.yaml</span></a></p></td>
+<td><p>ir-raman-nmr</p></td>
+<td><p>kekule_smiles</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/c2a75d12a642391912a38b9521e3179f/vib2mol_ks200k.yaml"><span class="xref download myst">vib2mol_ks200k.yaml</span></a></p></td>
+<td><p>ir-raman-nmr</p></td>
+<td><p>kekule_smiles</p></td>
+<td><p>openmolspec-v1-ks200k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/d2578439e9f4b8be442ff5eeefb7b7d4/vib2mol_smoke.yaml"><span class="xref download myst">vib2mol_smoke.yaml</span></a></p></td>
+<td><p>ir-raman-nmr</p></td>
+<td><p>kekule_smiles</p></td>
+<td><p>release-v1</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/34c64104129ca1602c3778859451a404/vib2mol_smoke_ddp2.yaml"><span class="xref download myst">vib2mol_smoke_ddp2.yaml</span></a></p></td>
+<td><p>ir-raman-nmr</p></td>
+<td><p>kekule_smiles</p></td>
+<td><p>release-v1</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="structure2hessian">
+<h2>structure2hessian<a class="headerlink" href="#structure2hessian" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>Input</p></th>
+<th class="head"><p>Targets</p></th>
+<th class="head"><p>Data release</p></th>
+<th class="head"><p>Budget</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/76996a1b88c58da6f02597953707ed1f/Hi_ks1000k_r5.yaml"><span class="xref download myst">Hi_ks1000k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>Hi</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/2db6b30da18ed39475b20f0fe9fe3a66/Hi_ks200k.yaml"><span class="xref download myst">Hi_ks200k.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>Hi</p></td>
+<td><p>openmolspec-v1-ks200k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/18da6d78293e0c87c656ce8b07fded17/Hi_ks200k_r5.yaml"><span class="xref download myst">Hi_ks200k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>Hi</p></td>
+<td><p>openmolspec-v1-ks200k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/a46101f18beb0bded542874007616ace/Hi_ks200k_r5_ddp2.yaml"><span class="xref download myst">Hi_ks200k_r5_ddp2.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>Hi</p></td>
+<td><p>openmolspec-v1-ks200k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/629bf64d19f60a63a16744081cd01cac/Hi_ks200k_r8.yaml"><span class="xref download myst">Hi_ks200k_r8.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>Hi</p></td>
+<td><p>openmolspec-v1-ks200k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/a648c7c1871d44e95f4302fdabbc98f9/Hi_ks400k_r5.yaml"><span class="xref download myst">Hi_ks400k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>Hi</p></td>
+<td><p>openmolspec-v1-ks400k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/a5ec40eba216c2ab0d5e18d24b21a90d/Hi_ks600k_r5.yaml"><span class="xref download myst">Hi_ks600k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>Hi</p></td>
+<td><p>openmolspec-v1-ks600k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/7a5a5e35a2eec2860371dca75c27e5ee/Hi_ks800k_r5.yaml"><span class="xref download myst">Hi_ks800k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>Hi</p></td>
+<td><p>openmolspec-v1-ks800k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/3da1e34e2ff2b9956a0064d09010c4fd/Hij_ks1000k_r5.yaml"><span class="xref download myst">Hij_ks1000k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>Hij</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/fd258a825be8e46d1010e98238f0eb99/Hij_ks200k.yaml"><span class="xref download myst">Hij_ks200k.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>Hij</p></td>
+<td><p>openmolspec-v1-ks200k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/1c122836e0d7e21f4d0e430138833c26/Hij_ks200k_r5.yaml"><span class="xref download myst">Hij_ks200k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>Hij</p></td>
+<td><p>openmolspec-v1-ks200k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/b2405fda7f4785f1e1aafb90da4b1717/Hij_ks200k_r8.yaml"><span class="xref download myst">Hij_ks200k_r8.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>Hij</p></td>
+<td><p>openmolspec-v1-ks200k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/4cb5e29cf62c2f45ff8c7757363194ec/Hij_ks400k_r5.yaml"><span class="xref download myst">Hij_ks400k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>Hij</p></td>
+<td><p>openmolspec-v1-ks400k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/056271e46cdf6f93b26b1373ec924b52/Hij_ks600k_r5.yaml"><span class="xref download myst">Hij_ks600k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>Hij</p></td>
+<td><p>openmolspec-v1-ks600k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/209a1397ecc360c50c1ed4b3f63574fa/Hij_ks800k_r5.yaml"><span class="xref download myst">Hij_ks800k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>Hij</p></td>
+<td><p>openmolspec-v1-ks800k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="structure2nmr">
+<h2>structure2nmr<a class="headerlink" href="#structure2nmr" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>Input</p></th>
+<th class="head"><p>Targets</p></th>
+<th class="head"><p>Data release</p></th>
+<th class="head"><p>Budget</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/c522db606757886008ec1a2c4acbbf46/hc_ks1000k_r5.yaml"><span class="xref download myst">hc_ks1000k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>H, C</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/322d0d7df6fa8501f3514d27c0b5993d/hc_ks200k_r5.yaml"><span class="xref download myst">hc_ks200k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>H, C</p></td>
+<td><p>openmolspec-v1-ks200k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="structure2observables">
+<h2>structure2observables<a class="headerlink" href="#structure2observables" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>Input</p></th>
+<th class="head"><p>Targets</p></th>
+<th class="head"><p>Data release</p></th>
+<th class="head"><p>Budget</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/fd135a43188df0d12d3e0efff1b94448/equiformer_v3.yaml"><span class="xref download myst">equiformer_v3.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>energy, homo, lumo, gap, dipole_total, zpve, ir_spectrum, raman_spectrum</p></td>
+<td><p>demo-10k</p></td>
+<td><p>2 epochs</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="structure2property">
+<h2>structure2property<a class="headerlink" href="#structure2property" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>Input</p></th>
+<th class="head"><p>Targets</p></th>
+<th class="head"><p>Data release</p></th>
+<th class="head"><p>Budget</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/00690af86c8bbc471e657c8202f8e64d/dipole.yaml"><span class="xref download myst">dipole.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>dipole_total</p></td>
+<td><p>demo-10k</p></td>
+<td><p>20 epochs</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/d09fe919779771cd79774ab8b5761832/dipole_ks200k.yaml"><span class="xref download myst">dipole_ks200k.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>dipole_total</p></td>
+<td><p>openmolspec-v1-ks200k</p></td>
+<td><p>20 epochs</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/07223bf002971453a684b43124d2f2cc/equiformer_v3.yaml"><span class="xref download myst">equiformer_v3.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>energy, homo, lumo, gap, dipole_total, zpve</p></td>
+<td><p>demo-10k</p></td>
+<td><p>2 epochs</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="structure2response">
+<h2>structure2response<a class="headerlink" href="#structure2response" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>Input</p></th>
+<th class="head"><p>Targets</p></th>
+<th class="head"><p>Data release</p></th>
+<th class="head"><p>Budget</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/092fb20c2c48ff874ad550c72029cdf4/dedipole_ks1000k_r5.yaml"><span class="xref download myst">dedipole_ks1000k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>dedipole</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/55a46abc6c2603de7e1b0728caedf548/dedipole_ks200k_r5.yaml"><span class="xref download myst">dedipole_ks200k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>dedipole</p></td>
+<td><p>openmolspec-v1-ks200k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/ca61b50382a7128eb72740be8ecc419a/dedipole_ks400k_r5.yaml"><span class="xref download myst">dedipole_ks400k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>dedipole</p></td>
+<td><p>openmolspec-v1-ks400k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/ec632a622ec257257d2159ad84e591f6/dedipole_ks600k_r5.yaml"><span class="xref download myst">dedipole_ks600k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>dedipole</p></td>
+<td><p>openmolspec-v1-ks600k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/8c1ce6f50a29d4e4ba2f5a93719d04f9/dedipole_ks800k_r5.yaml"><span class="xref download myst">dedipole_ks800k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>dedipole</p></td>
+<td><p>openmolspec-v1-ks800k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/9100a89596b9e89a967ba907b9b72fbd/depolar_ks1000k_r5.yaml"><span class="xref download myst">depolar_ks1000k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>depolar</p></td>
+<td><p>openmolspec-v1-ks1000k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/5ce36e9a68459b8527ad4536c869bc11/depolar_ks200k_r5.yaml"><span class="xref download myst">depolar_ks200k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>depolar</p></td>
+<td><p>openmolspec-v1-ks200k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/9ca16ccfbf5826659b117c0b2a6589ef/depolar_ks400k_r5.yaml"><span class="xref download myst">depolar_ks400k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>depolar</p></td>
+<td><p>openmolspec-v1-ks400k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/56553798bbc2a1d3bb054ec201dcaf60/depolar_ks600k_r5.yaml"><span class="xref download myst">depolar_ks600k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>depolar</p></td>
+<td><p>openmolspec-v1-ks600k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../_downloads/7e7eeef358250907457d0015df001c2c/depolar_ks800k_r5.yaml"><span class="xref download myst">depolar_ks800k_r5.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>depolar</p></td>
+<td><p>openmolspec-v1-ks800k</p></td>
+<td><p>312,500 steps</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="structure2spectrum">
+<h2>structure2spectrum<a class="headerlink" href="#structure2spectrum" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>Input</p></th>
+<th class="head"><p>Targets</p></th>
+<th class="head"><p>Data release</p></th>
+<th class="head"><p>Budget</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../_downloads/db72151c7a8d5d83e41d102c6e0aa273/equiformer_v3.yaml"><span class="xref download myst">equiformer_v3.yaml</span></a></p></td>
+<td><p>3d</p></td>
+<td><p>ir_spectrum, raman_spectrum</p></td>
+<td><p>demo-10k</p></td>
+<td><p>2 epochs</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">Source</a></p></li>
+<li><p>Yuan, M., Zou, Z. &amp; Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). <a class="reference external" href="https://arxiv.org/abs/2501.18876">Source</a></p></li>
+<li><p>Zou, Z., Zhang, Y., Liang, L., Wei, M., Leng, J., Jiang, J., Luo, Y. &amp; Hu, W. A deep learning model for predicting selected organic molecular spectra. Nature Computational Science 3, 957–964 (2023). doi:10.1038/s43588-023-00550-y. <a class="reference external" href="https://www.nature.com/articles/s43588-023-00550-y">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="production.html" class="btn btn-neutral float-left" title="Production benchmark results" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../faq.html" class="btn btn-neutral float-right" title="Common workflows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

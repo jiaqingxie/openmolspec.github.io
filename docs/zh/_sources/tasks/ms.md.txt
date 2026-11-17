@@ -1,0 +1,19 @@
+# 质谱 MS
+
+选择任务，查看用途、输入输出、模型调用与示例。
+
+| Task / input → output | Task ID |
+| --- | --- |
+| [分子 → MS/MS（GLACIER）](ms-forward-glacier.md) | `ms.forward.glacier` |
+| [分子 → MS/MS（ICEBERG）](ms-forward-iceberg.md) | `ms.forward.iceberg` |
+| [MS/MS 峰 → MAGMa 候选碎片标注](ms-annotation-magma.md) | `ms.annotation.magma` |
+
+
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+ms-forward-glacier
+ms-forward-iceberg
+ms-annotation-magma
+```

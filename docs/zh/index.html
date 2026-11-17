@@ -1,0 +1,199 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenMolSpec &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/index.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f115507d"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="快速开始" href="quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="#" class="icon icon-home">
+            OpenMolSpec
+              <img src="_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../index.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference/index.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">OpenMolSpec</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="openmolspec">
+<h1><img src="assets/brand/mark.svg" class="oms-home-logo" alt=""> OpenMolSpec<a class="headerlink" href="#openmolspec" title="Link to this heading"></a></h1>
+<p>Chemical spectroscopy and deep learning</p>
+<p>OpenMolSpec 是面向分子谱学的 Python 工具包。你可以加载实验与计算数据集，预测谱图和分子性质，通过谱图解析结构，也可以用自己的数据训练模型。支持 NMR、质谱、红外与拉曼光谱。</p>
+<section id="id1">
+<h2>开始使用<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>从<a class="reference internal" href="quickstart.html"><span class="std std-doc">快速开始</span></a>安装 OpenMolSpec，依次学习数据加载、模型预测和训练。<a class="reference internal" href="notebooks/index.html"><span class="std std-doc">教程</span></a>配有逐步说明、代码、输出和图。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">molspectra</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">NMRNet</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">molspectra</span><span class="p">(</span><span class="s2">"opendatalab_nmr"</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s2">"data/nmr"</span><span class="p">)</span>
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"test"</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">NMRNet</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"models"</span><span class="p">,</span> <span class="n">nucleus</span><span class="o">=</span><span class="s2">"13C"</span><span class="p">,</span>
+    <span class="n">python</span><span class="o">=</span><span class="s2">"/path/to/nmr-env/bin/python"</span><span class="p">)</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">molecule</span><span class="p">[</span><span class="s2">"smiles"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="s2">"records"</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p>下面的例子展示如何预测谱图、解析分子结构，以及预测分子性质。</p>
+<section id="nmr">
+<h3><a class="reference internal" href="notebooks/nmr-generation-hc.html"><span class="std std-doc">从 NMR 解析结构</span></a><a class="headerlink" href="#nmr" title="Link to this heading"></a></h3>
+<p>输入氢谱、碳谱和分子式，生成候选结构。</p>
+<p><a class="reference internal" href="notebooks/nmr-generation-hc.html"><span class="std std-doc"><img alt="Structure elucidation from NMR" src="_images/nmr-generation-hc.png" /></span></a></p>
+</section>
+<section id="id2">
+<h3><a class="reference internal" href="notebooks/ms-forward-glacier.html"><span class="std std-doc">预测串联质谱</span></a><a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>输入分子结构、加合物和碰撞能，预测碎片峰及其强度。</p>
+<p><a class="reference internal" href="notebooks/ms-forward-glacier.html"><span class="std std-doc"><img alt="Predicting tandem mass spectra" src="_images/ms-forward-glacier.png" /></span></a></p>
+</section>
+<section id="id3">
+<h3><a class="reference internal" href="notebooks/vibrational-forward.html"><span class="std std-doc">由分子构象预测红外与拉曼谱</span></a><a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>使用 openSpec 模型，从原子坐标预测振动光谱。</p>
+<p><a class="reference internal" href="notebooks/vibrational-forward.html"><span class="std std-doc"><img alt="IR and Raman from a molecular geometry" src="_images/vibrational-forward.png" /></span></a></p>
+</section>
+<section id="homolumo">
+<h3><a class="reference internal" href="notebooks/vibrational-gap-ir_raman_hc.html"><span class="std std-doc">预测 HOMO–LUMO 能隙</span></a><a class="headerlink" href="#homolumo" title="Link to this heading"></a></h3>
+<p>结合 IR、Raman 和 NMR，预测分子的 HOMO–LUMO 能隙。</p>
+<p><a class="reference internal" href="notebooks/vibrational-gap-ir_raman_hc.html"><span class="std std-doc"><img alt="HOMO–LUMO gap prediction" src="_images/vibrational-gap-ir_raman_hc.png" /></span></a></p>
+</section>
+<section id="id4">
+<h3>交互式分子示例<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>在三维中查看分子结构，配合数据集中的参考轨道能量，以及由 IR、Raman 和 H/C NMR 光谱预测的能隙。</p>
+<div class="oms-conformer-demo" data-oms-viewer data-oms-assets="assets/viewer/" data-oms-language="zh">
+<label>分子 <select class="oms-conformer-select" aria-label="选择分子"></select></label>
+<div class="oms-conformer-canvas" role="img" aria-label="交互式分子构象"></div>
+<p class="oms-conformer-result" aria-live="polite">正在加载坐标…</p>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2>使用手册<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="data/index.html"><span class="std std-doc">数据</span></a>: 数据集、实验信息、数据分布与划分。</p></li>
+<li><p><a class="reference internal" href="tasks/index.html"><span class="std std-doc">任务</span></a>: 任务定义、输入输出与模型使用。</p></li>
+<li><p><a class="reference internal" href="notebooks/index.html"><span class="std std-doc">教程</span></a>: 预测、训练与谱学理论的分步教程。</p></li>
+<li><p><a class="reference internal" href="api-reference/index.html"><span class="std std-doc">API 参考</span></a>: 类、函数、参数、返回值和调用示例。</p></li>
+<li><p><a class="reference internal" href="benchmarks.html"><span class="std std-doc">基准评测</span></a>: 基准数据、评测流程、指标与结果。</p></li>
+<li><p><a class="reference internal" href="harness.html"><span class="std std-doc">Agent Harness</span></a>: 通过 Python、命令行或 Agent 调用谱学工具。</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="快速开始" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

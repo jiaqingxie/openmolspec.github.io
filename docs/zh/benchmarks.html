@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>基准评测 &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/benchmarks.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f115507d"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=beaddf03"></script>
+      <script>window.MathJax = {"chtml": {"displayAlign": "left"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+      <script defer="defer" src="_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="核磁共振 NMR benchmarks" href="benchmarks/nmr.html" />
+    <link rel="prev" title="openmolspec" href="api-reference/module-openmolspec.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../benchmarks.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference/index.html">API 参考</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">基准评测</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">任务基准</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">训练基准配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">评测指标</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">运行评测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">其他任务定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">参考文献</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="benchmarks/nmr.html">核磁共振 NMR benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarks/ms.html">质谱 MS benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarks/vibrational.html">红外 / 拉曼 IR / Raman benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarks/multimodal.html">多谱联合 benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarks/production.html">生产基准结果</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarks/training.html">训练基准配置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">基准评测</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/benchmarks.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>基准评测<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>OpenMolSpec 为 NMR、质谱、振动光谱与多谱联合定义了基准任务。本目录列出全部活跃任务、保存的评测结果，以及训练实验配置。</p>
+<section id="id2">
+<h2>任务基准<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>类别</p></th>
+<th class="head"><p>任务数</p></th>
+<th class="head"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="benchmarks/nmr.html"><span class="std std-doc">核磁共振 NMR</span></a></p></td>
+<td><p>17</p></td>
+<td><p>任务定义、输入、指标与运行结果。</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="benchmarks/ms.html"><span class="std std-doc">质谱 MS</span></a></p></td>
+<td><p>3</p></td>
+<td><p>任务定义、输入、指标与运行结果。</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="benchmarks/vibrational.html"><span class="std std-doc">红外 / 拉曼 IR / Raman</span></a></p></td>
+<td><p>7</p></td>
+<td><p>任务定义、输入、指标与运行结果。</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="benchmarks/multimodal.html"><span class="std std-doc">多谱联合</span></a></p></td>
+<td><p>4</p></td>
+<td><p>任务定义、输入、指标与运行结果。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h2>训练基准配置<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="benchmarks/production.html"><span class="std std-doc">生产基准结果</span></a>列出保存的 200k／1M 实验，包括 Hessian、H/C 位移、响应张量、分子性质与结构生成。</p>
+<p>配置目录包含 53 个 YAML 实验，记录输入通道、目标、架构、数据版本、随机种子和优化器预算。<a class="reference internal" href="benchmarks/training.html"><span class="std std-doc">查看全部配置</span></a>。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>基准类别</p></th>
+<th class="head"><p>输入 → 输出</p></th>
+<th class="head"><p>模型</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>structure2property</p></td>
+<td><p>三维结构 → 能量、HOMO、LUMO、能隙、偶极矩和零点振动能</p></td>
+<td><p>Equiformer-v3</p></td>
+</tr>
+<tr class="row-odd"><td><p>structure2spectrum</p></td>
+<td><p>三维结构 → IR/Raman 数组</p></td>
+<td><p>Equiformer-v3</p></td>
+</tr>
+<tr class="row-even"><td><p>structure2observables</p></td>
+<td><p>三维结构 → 标量与张量可观测量</p></td>
+<td><p>Equiformer-v3</p></td>
+</tr>
+<tr class="row-odd"><td><p>structure2nmr</p></td>
+<td><p>三维结构 → 逐原子 H/C 化学位移</p></td>
+<td><p>Equiformer-v3</p></td>
+</tr>
+<tr class="row-even"><td><p>structure2hessian</p></td>
+<td><p>三维结构 → Hessian 张量块</p></td>
+<td><p>Equiformer-v3</p></td>
+</tr>
+<tr class="row-odd"><td><p>structure2response</p></td>
+<td><p>三维结构 → 偶极矩／极化率导数</p></td>
+<td><p>Equiformer-v3</p></td>
+</tr>
+<tr class="row-even"><td><p>spectrum2structure</p></td>
+<td><p>光谱 → 分子结构</p></td>
+<td><p>Vib2Mol</p></td>
+</tr>
+<tr class="row-odd"><td><p>spectrum2property</p></td>
+<td><p>光谱 → 量子化学性质</p></td>
+<td><p>Vib2Conf / shared spectroscopy Transformer</p></td>
+</tr>
+<tr class="row-even"><td><p>spectrum2conformer</p></td>
+<td><p>光谱 → 三维构象；协议定义</p></td>
+<td><p>Vib2Conf</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h2>评测指标<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>回归任务以目标单位报告 MAE 与 RMSE；检索报告给定候选池上的 Recall&#64;k 和平均倒数排名；结构生成报告规范化结构 top-k 准确率及有效 SMILES 比例；谱预测使用余弦和熵相似度比较数值强度。</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{MAE}=\frac1N\sum_{i=1}^{N}|\hat y_i-y_i|,\qquad \mathrm{RMSE}=\sqrt{\frac1N\sum_{i=1}^{N}(\hat y_i-y_i)^2}.\]</div>
+<div class="math notranslate nohighlight">
+\[\mathrm{Recall&#64;}k=\frac1N\sum_i\mathbf{1}[r_i\leq k],\qquad \mathrm{MRR}=\frac1N\sum_i\frac1{r_i}.\]</div>
+</section>
+<section id="id5">
+<h2>运行评测<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>list
+python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tasks<span class="w"> </span>nmr.retrieval.hc.s2m<span class="w"> </span>nmr.generation.hc<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--alignment-checkpoint<span class="w"> </span>/path/to/alignment.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--generation-checkpoint<span class="w"> </span>/path/to/generation.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--limit<span class="w"> </span><span class="m">64</span><span class="w"> </span>--sampling<span class="w"> </span>reservoir<span class="w"> </span>--seed<span class="w"> </span><span class="m">42</span><span class="w"> </span>--output<span class="w"> </span>results/nmr.json
+</pre></div>
+</div>
+<p>按任务指南指定所需模型文件。结果 JSON 保存预测、目标值、数据设置、指标与模型指纹。</p>
+</section>
+<section id="id6">
+<h2>其他任务定义<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>分子式预测、谱学 QA 与 SpectraLLM 生成在任务注册表中列为暂缓任务。</p>
+</section>
+<section id="id7">
+<h2>参考文献<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">Source</a></p></li>
+<li><p>Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. <a class="reference external" href="https://doi.org/10.1038/s43588-025-00783-z">Source</a></p></li>
+<li><p>Yang, L., Yang, Z., Xie, J., Wang, Y., Gao, B., Fu, T., Wei, X., Sun, J., Wu, J., He, C., Li, Y. &amp; Gu, Q. NMRTrans: Structure Elucidation from Experimental NMR Spectra via Set Transformers. arXiv:2602.10158 (2026). <a class="reference external" href="https://arxiv.org/abs/2602.10158">Source</a></p></li>
+<li><p>Fang, Z., Yang, C., Yu, H., Luo, H., He, H., Xie, J., Yang, Z. &amp; Xia, J. NMRGym: A Comprehensive Benchmark for Nuclear Magnetic Resonance Based Molecular Structure Elucidation. arXiv:2601.15763 (2026). <a class="reference external" href="https://arxiv.org/abs/2601.15763">Source</a></p></li>
+<li><p>Bushuiev, R., Bushuiev, A., de Jonge, N. F., Young, A., et al. MassSpecGym: A benchmark for the discovery and identification of molecules. Advances in Neural Information Processing Systems 37, Datasets and Benchmarks Track (2024). arXiv:2410.23326. <a class="reference external" href="https://arxiv.org/abs/2410.23326">Source</a></p></li>
+<li><p>Yuan, M., Zou, Z. &amp; Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). <a class="reference external" href="https://arxiv.org/abs/2501.18876">Source</a></p></li>
+<li><p>Zou, Z., Zhang, Y., Liang, L., Wei, M., Leng, J., Jiang, J., Luo, Y. &amp; Hu, W. A deep learning model for predicting selected organic molecular spectra. Nature Computational Science 3, 957–964 (2023). doi:10.1038/s43588-023-00550-y. <a class="reference external" href="https://www.nature.com/articles/s43588-023-00550-y">Source</a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="api-reference/module-openmolspec.html" class="btn btn-neutral float-left" title="openmolspec" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="benchmarks/nmr.html" class="btn btn-neutral float-right" title="核磁共振 NMR benchmarks" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

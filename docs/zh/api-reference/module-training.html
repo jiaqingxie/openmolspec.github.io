@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>openmolspec.training &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/api-reference/module-training.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="谱学与数据结构" href="category-spectroscopy.html" />
+    <link rel="prev" title="openmolspec.task" href="module-tasks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../api-reference/module-training.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API 参考</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="category-data.html">数据访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-models.html">模型</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="category-learning.html">训练与评测</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="module-benchmarks.html">openmolspec.benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-tasks.html">openmolspec.task</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">openmolspec.training</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="category-spectroscopy.html">谱学与数据结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-processing.html">数据处理与发布</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-agents.html">Agent 工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-utilities.html">工具函数</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API 参考</a></li>
+          <li class="breadcrumb-item"><a href="category-learning.html">训练与评测</a></li>
+      <li class="breadcrumb-item active">openmolspec.training</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api-reference/module-training.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="openmolspec-training">
+<h1>openmolspec.training<a class="headerlink" href="#openmolspec-training" title="Link to this heading"></a></h1>
+<p>Prepare train/validation data and explicitly launch the packaged NMR trainer.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.training.prepare_nmr_training" title="openmolspec.training.prepare_nmr_training"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.training.prepare_nmr_training()</span></code></a></p></td>
+<td><p>Prepare train/validation files for NMRTransformer training.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.training.TrainingPlan" title="openmolspec.training.TrainingPlan"><code class="xref py py-class docutils literal notranslate"><span class="pre">openmolspec.training.TrainingPlan</span></code></a></p></td>
+<td><p>Training configuration for the NMR dual encoder or molecular generator.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function" id="module-openmolspec.training">
+<dt class="sig sig-object py" id="openmolspec.training.prepare_nmr_training">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.training.</span></span><span class="sig-name descname"><span class="pre">prepare_nmr_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.training.prepare_nmr_training" title="Link to this definition"></a></dt>
+<dd><p>Prepare train/validation files for NMRTransformer training.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train</strong> (<a class="reference internal" href="module-datasets.html#openmolspec.dataset.SpectraSplit" title="openmolspec.dataset.SpectraSplit"><em>openmolspec.dataset.SpectraSplit</em></a>) -- Experimental H/C NMR training view with role <code class="docutils literal notranslate"><span class="pre">'train'</span></code>.</p></li>
+<li><p><strong>validation</strong> (<a class="reference internal" href="module-datasets.html#openmolspec.dataset.SpectraSplit" title="openmolspec.dataset.SpectraSplit"><em>openmolspec.dataset.SpectraSplit</em></a>) -- Validation view with role <code class="docutils literal notranslate"><span class="pre">'val'</span></code>. Records contain <code class="docutils literal notranslate"><span class="pre">smiles</span></code>,
+<code class="docutils literal notranslate"><span class="pre">formula</span></code>, <code class="docutils literal notranslate"><span class="pre">h_nmr</span></code>, <code class="docutils literal notranslate"><span class="pre">c_nmr</span></code> and a channel mask.</p></li>
+<li><p><strong>destination</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) -- New directory for the prepared JSONLs and verification files.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>Directory containing <code class="docutils literal notranslate"><span class="pre">train.jsonl</span></code>, <code class="docutils literal notranslate"><span class="pre">val.jsonl</span></code>, <code class="docutils literal notranslate"><span class="pre">summary.json</span></code>
+and <code class="docutils literal notranslate"><span class="pre">verification.json</span></code>.</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pathlib.Path</p>
+</dd>
+<dt class="field-even">抛出<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> -- If split roles, molecular formulae, nucleus labels or cross-split
+molecular identities disagree with the training format.</p></li>
+<li><p><strong>FileExistsError</strong> -- If the destination already exists.</p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/training.py#L17">Source code</a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">openmolspec.training.</span></span><span class="sig-name descname"><span class="pre">TrainingPlan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'align'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignment_checkpoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">python</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">sys.executable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2026</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">field(default_factory=dict)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.training.TrainingPlan" title="Link to this definition"></a></dt>
+<dd><p>Training configuration for the NMR dual encoder or molecular generator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_dir</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) -- Prepared directory returned by <a class="reference internal" href="#openmolspec.training.prepare_nmr_training" title="openmolspec.training.prepare_nmr_training"><code class="xref py py-func docutils literal notranslate"><span class="pre">prepare_nmr_training()</span></code></a>.</p></li>
+<li><p><strong>run_dir</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) -- New directory for logs, configuration and model checkpoints.</p></li>
+<li><p><strong>stage</strong> (<em>{'align'</em><em>, </em><em>'generate'}</em><em>, </em><em>default 'align'</em>) -- Dual-encoder alignment or autoregressive SMILES generation.</p></li>
+<li><p><strong>checkpoint</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>default None</em>) -- Weights used to initialize the selected stage.</p></li>
+<li><p><strong>alignment_checkpoint</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>default None</em>) -- Spectral/molecular encoder checkpoint used by the generation stage.</p></li>
+<li><p><strong>python</strong> (<em>str</em><em>, </em><em>default sys.executable</em>) -- Interpreter of the training environment.</p></li>
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>default 'cpu'</em>) -- Torch training device.</p></li>
+<li><p><strong>epochs</strong> (<em>int</em><em>, </em><em>default 10</em>) -- Number of training epochs.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>default 32</em>) -- Number of examples per minibatch, at least two.</p></li>
+<li><p><strong>learning_rate</strong> (<em>float</em><em>, </em><em>default 0.0001</em>) -- Optimizer learning rate.</p></li>
+<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>default 2026</em>) -- Seed for model initialization and data order.</p></li>
+<li><p><strong>parameters</strong> (<em>dict</em><em>, </em><em>optional</em>) -- Stage-specific options. Alignment accepts <code class="docutils literal notranslate"><span class="pre">hidden_size</span></code>, <code class="docutils literal notranslate"><span class="pre">heads</span></code>,
+<code class="docutils literal notranslate"><span class="pre">encoder_layers</span></code>, <code class="docutils literal notranslate"><span class="pre">decoder_layers</span></code>, <code class="docutils literal notranslate"><span class="pre">feedforward_size</span></code>,
+<code class="docutils literal notranslate"><span class="pre">projection_size</span></code>, <code class="docutils literal notranslate"><span class="pre">alignment_temperature</span></code>, <code class="docutils literal notranslate"><span class="pre">input_representation</span></code>,
+<code class="docutils literal notranslate"><span class="pre">max_source_tokens</span></code>, <code class="docutils literal notranslate"><span class="pre">max_val_examples</span></code> and <code class="docutils literal notranslate"><span class="pre">early_stop_patience</span></code>.
+Generation accepts <code class="docutils literal notranslate"><span class="pre">alignment_loss_weight</span></code>, <code class="docutils literal notranslate"><span class="pre">max_val_batches</span></code>,
+<code class="docutils literal notranslate"><span class="pre">generate_examples</span></code> and <code class="docutils literal notranslate"><span class="pre">beam_size</span></code>. Both stages accept
+<code class="docutils literal notranslate"><span class="pre">max_train_batches</span></code>, <code class="docutils literal notranslate"><span class="pre">shuffle_buffer</span></code>, <code class="docutils literal notranslate"><span class="pre">drop_h_prob</span></code>,
+<code class="docutils literal notranslate"><span class="pre">drop_c_prob</span></code>, <code class="docutils literal notranslate"><span class="pre">log_every</span></code> and <code class="docutils literal notranslate"><span class="pre">tqdm</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plan</span> <span class="o">=</span> <span class="n">TrainingPlan</span><span class="p">(</span><span class="s1">'prepared-nmr'</span><span class="p">,</span> <span class="s1">'runs/encoder'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda:0'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settings</span> <span class="o">=</span> <span class="n">plan</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">validation</span> <span class="o">=</span> <span class="n">plan</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">plan</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/training.py#L98">Source code</a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan.command">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">command</span></span><a class="headerlink" href="#openmolspec.training.TrainingPlan.command" title="Link to this definition"></a></dt>
+<dd><p>list of str: Training command with the current plan's arguments.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/training.py#L174">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan.describe">
+<span class="sig-name descname"><span class="pre">describe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.training.TrainingPlan.describe" title="Link to this definition"></a></dt>
+<dd><p>Return the training command and configuration summary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Command arguments, validation state and checkpoint settings.</p>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/training.py#L188">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan.validate">
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.training.TrainingPlan.validate" title="Link to this definition"></a></dt>
+<dd><p>Check the prepared data, checksums, roles and checkpoint files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">validated=True</span></code> with the train/validation split audit.</p>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+<dt class="field-odd">抛出<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ValueError</strong> -- If data metadata, file checksums, batch sizes or split identities
+fail the training requirements.</p></li>
+<li><p><strong>FileNotFoundError</strong> -- If a configured initialization checkpoint is absent.</p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/training.py#L200">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.training.TrainingPlan.run" title="Link to this definition"></a></dt>
+<dd><p>Train, validate and return the best checkpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">checkpoint</span></code> path, its <code class="docutils literal notranslate"><span class="pre">checkpoint_sha256</span></code> and training status.
+The run directory also contains <code class="docutils literal notranslate"><span class="pre">plan.json</span></code>, <code class="docutils literal notranslate"><span class="pre">training.log</span></code>
+and <code class="docutils literal notranslate"><span class="pre">result.json</span></code>.</p>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+<dt class="field-odd">抛出<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>FileExistsError</strong> -- If the run directory already exists.</p></li>
+<li><p><strong>RuntimeError</strong> -- If the trainer finishes without a best checkpoint.</p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/training.py#L241">Source code</a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan.data_dir">
+<span class="sig-name descname"><span class="pre">data_dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></em><a class="headerlink" href="#openmolspec.training.TrainingPlan.data_dir" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">data_dir</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan.run_dir">
+<span class="sig-name descname"><span class="pre">run_dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></em><a class="headerlink" href="#openmolspec.training.TrainingPlan.run_dir" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">run_dir</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan.stage">
+<span class="sig-name descname"><span class="pre">stage</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#openmolspec.training.TrainingPlan.stage" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">stage</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan.checkpoint">
+<span class="sig-name descname"><span class="pre">checkpoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#openmolspec.training.TrainingPlan.checkpoint" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">checkpoint</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan.alignment_checkpoint">
+<span class="sig-name descname"><span class="pre">alignment_checkpoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#openmolspec.training.TrainingPlan.alignment_checkpoint" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">alignment_checkpoint</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan.python">
+<span class="sig-name descname"><span class="pre">python</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#openmolspec.training.TrainingPlan.python" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">python</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan.device">
+<span class="sig-name descname"><span class="pre">device</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#openmolspec.training.TrainingPlan.device" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">device</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan.epochs">
+<span class="sig-name descname"><span class="pre">epochs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#openmolspec.training.TrainingPlan.epochs" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">epochs</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan.batch_size">
+<span class="sig-name descname"><span class="pre">batch_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#openmolspec.training.TrainingPlan.batch_size" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan.learning_rate">
+<span class="sig-name descname"><span class="pre">learning_rate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#openmolspec.training.TrainingPlan.learning_rate" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">learning_rate</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan.seed">
+<span class="sig-name descname"><span class="pre">seed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#openmolspec.training.TrainingPlan.seed" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">seed</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.training.TrainingPlan.parameters">
+<span class="sig-name descname"><span class="pre">parameters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#openmolspec.training.TrainingPlan.parameters" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">parameters</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="module-tasks.html" class="btn btn-neutral float-left" title="openmolspec.task" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="category-spectroscopy.html" class="btn btn-neutral float-right" title="谱学与数据结构" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

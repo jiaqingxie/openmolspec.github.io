@@ -1,0 +1,198 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenMolSpec &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/index.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script defer="defer" src="_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quick start" href="quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="#" class="icon icon-home">
+            OpenMolSpec
+              <img src="_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="zh/index.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks/index.html">Tasks by spectroscopy family</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference/index.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">OpenMolSpec</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="openmolspec">
+<h1><img src="assets/brand/mark.svg" class="oms-home-logo" alt=""> OpenMolSpec<a class="headerlink" href="#openmolspec" title="Link to this heading"></a></h1>
+<p>Chemical spectroscopy and deep learning</p>
+<p>OpenMolSpec is a Python library for working with molecular spectra. Load experimental and computed datasets, predict spectra and molecular properties, identify structures, and train models with your own data. It supports NMR, mass spectrometry, infrared and Raman spectroscopy.</p>
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
+<p>Follow the <a class="reference internal" href="quickstart.html"><span class="std std-doc">Quick start</span></a> to install OpenMolSpec and work through data loading, prediction and training. The <a class="reference internal" href="notebooks/index.html"><span class="std std-doc">tutorials</span></a> explain each step with code, outputs and figures.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">molspectra</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">NMRNet</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">molspectra</span><span class="p">(</span><span class="s2">"opendatalab_nmr"</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s2">"data/nmr"</span><span class="p">)</span>
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"test"</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">NMRNet</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"models"</span><span class="p">,</span> <span class="n">nucleus</span><span class="o">=</span><span class="s2">"13C"</span><span class="p">,</span>
+    <span class="n">python</span><span class="o">=</span><span class="s2">"/path/to/nmr-env/bin/python"</span><span class="p">)</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">molecule</span><span class="p">[</span><span class="s2">"smiles"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="s2">"records"</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p>Explore spectrum prediction, structure elucidation and property prediction in the following examples.</p>
+<section id="structure-elucidation-from-nmr">
+<h3><a class="reference internal" href="notebooks/nmr-generation-hc.html"><span class="std std-doc">Structure elucidation from NMR</span></a><a class="headerlink" href="#structure-elucidation-from-nmr" title="Link to this heading"></a></h3>
+<p>Generate molecular structures from proton and carbon NMR peaks.</p>
+<p><a class="reference internal" href="notebooks/nmr-generation-hc.html"><span class="std std-doc"><img alt="Structure elucidation from NMR" src="_images/nmr-generation-hc.png" /></span></a></p>
+</section>
+<section id="predicting-tandem-mass-spectra">
+<h3><a class="reference internal" href="notebooks/ms-forward-glacier.html"><span class="std std-doc">Predicting tandem mass spectra</span></a><a class="headerlink" href="#predicting-tandem-mass-spectra" title="Link to this heading"></a></h3>
+<p>Predict fragment peaks and intensities from a molecule and its acquisition conditions.</p>
+<p><a class="reference internal" href="notebooks/ms-forward-glacier.html"><span class="std std-doc"><img alt="Predicting tandem mass spectra" src="_images/ms-forward-glacier.png" /></span></a></p>
+</section>
+<section id="ir-and-raman-from-a-molecular-geometry">
+<h3><a class="reference internal" href="notebooks/vibrational-forward.html"><span class="std std-doc">IR and Raman from a molecular geometry</span></a><a class="headerlink" href="#ir-and-raman-from-a-molecular-geometry" title="Link to this heading"></a></h3>
+<p>Use the openSpec model to predict vibrational spectra from atomic coordinates.</p>
+<p><a class="reference internal" href="notebooks/vibrational-forward.html"><span class="std std-doc"><img alt="IR and Raman from a molecular geometry" src="_images/vibrational-forward.png" /></span></a></p>
+</section>
+<section id="homolumo-gap-prediction">
+<h3><a class="reference internal" href="notebooks/vibrational-gap-ir_raman_hc.html"><span class="std std-doc">HOMO–LUMO gap prediction</span></a><a class="headerlink" href="#homolumo-gap-prediction" title="Link to this heading"></a></h3>
+<p>Combine IR, Raman and NMR spectra to predict the molecular energy gap.</p>
+<p><a class="reference internal" href="notebooks/vibrational-gap-ir_raman_hc.html"><span class="std std-doc"><img alt="HOMO–LUMO gap prediction" src="_images/vibrational-gap-ir_raman_hc.png" /></span></a></p>
+</section>
+<section id="interactive-molecular-example">
+<h3>Interactive molecular example<a class="headerlink" href="#interactive-molecular-example" title="Link to this heading"></a></h3>
+<p>Explore the molecular structure in 3D alongside the dataset orbital energies and the gap predicted from IR, Raman and H/C NMR spectra.</p>
+<div class="oms-conformer-demo" data-oms-viewer data-oms-assets="assets/viewer/" data-oms-language="en">
+<label>Molecule <select class="oms-conformer-select" aria-label="Select molecule"></select></label>
+<div class="oms-conformer-canvas" role="img" aria-label="Interactive molecular conformer"></div>
+<p class="oms-conformer-result" aria-live="polite">Loading coordinates…</p>
+</div>
+</section>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="data/index.html"><span class="std std-doc">Data</span></a>: Datasets, experimental details, distributions and splits.</p></li>
+<li><p><a class="reference internal" href="tasks/index.html"><span class="std std-doc">Tasks</span></a>: Task definitions, inputs, outputs and model usage.</p></li>
+<li><p><a class="reference internal" href="notebooks/index.html"><span class="std std-doc">Tutorials</span></a>: Step-by-step examples for prediction, training and spectroscopy.</p></li>
+<li><p><a class="reference internal" href="api-reference/index.html"><span class="std std-doc">API reference</span></a>: Classes, functions, arguments, return values and examples.</p></li>
+<li><p><a class="reference internal" href="benchmarks.html"><span class="std std-doc">Benchmarks</span></a>: Benchmark datasets, protocols, metrics and results.</p></li>
+<li><p><a class="reference internal" href="harness.html"><span class="std std-doc">Agent Harness</span></a>: Use spectroscopy tools from Python, the command line or an agent.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quick start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

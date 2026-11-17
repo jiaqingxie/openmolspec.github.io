@@ -1,0 +1,356 @@
+{
+  "task": "nmr.retrieval.h.s2m",
+  "enabled": true,
+  "source_files": [
+    "nmr_documented_examples_20261117_v2.json"
+  ],
+  "runs": [
+    {
+      "dataset": "nmrspec_test",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 1.0,
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "mrr": 1.0,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "patent_test_10k",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.6875,
+        "recall_at_5": 0.96875,
+        "recall_at_10": 1.0,
+        "mrr": 0.8195684523809523,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "nmrexp_exp_10k",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.875,
+        "recall_at_5": 0.96875,
+        "recall_at_10": 1.0,
+        "mrr": 0.9177083333333333,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "nmrgym_test",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.6875,
+        "recall_at_5": 0.875,
+        "recall_at_10": 0.9375,
+        "mrr": 0.7686395202020202,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    }
+  ],
+  "examples": [
+    {
+      "input": {
+        "h_nmr": [
+          {
+            "type": "1H NMR",
+            "chemical_shift": "7.34 (s, 4H), 7.265 (m, 2H), 7.165 (m, 3H), 5.26 (d, J=1.6 Hz, 1H), 5.01 (t, J=1.4 Hz, 1H), 2.61 (t, J=7.8 Hz, 2H), 2.53 (t, J=7.6 Hz, 2H), 1.665 (m, 2H), 1.52 (d, J=7.7 Hz, 2H), 1.33 (s, 9H)"
+          }
+        ],
+        "c_nmr": [
+          {
+            "type": "13C NMR",
+            "chemical_shift": "150.22, 148.03, 142.68, 138.28, 128.36, 128.22, 125.68, 125.58, 125.12, 111.51, 35.72, 35.03, 34.46, 31.32, 31.11, 27.93"
+          }
+        ],
+        "modality_mask": [
+          1,
+          0
+        ]
+      },
+      "reference_smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+      "output": [
+        {
+          "smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+          "score": 0.8390898108482361,
+          "reference_match": true
+        },
+        {
+          "smiles": "Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1",
+          "score": 0.35815000534057617,
+          "reference_match": false
+        },
+        {
+          "smiles": "CC(C)(C)OC(=O)N[C@H](CCC(=O)c1ccccc1)c1c[nH]c2cc(Cl)ccc12",
+          "score": 0.3557360768318176,
+          "reference_match": false
+        },
+        {
+          "smiles": "CC1=C2CCCCCCCCCCC2OC1=O",
+          "score": 0.2330881506204605,
+          "reference_match": false
+        },
+        {
+          "smiles": "CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O",
+          "score": 0.1790425181388855,
+          "reference_match": false
+        },
+        {
+          "smiles": "CCOC(=O)C(OS(=O)(=O)c1ccc2ccccc2c1)c1ccc(F)cc1",
+          "score": 0.15159519016742706,
+          "reference_match": false
+        },
+        {
+          "smiles": "O=C1c2sccc2[C@H]2[C@H]([C@H]3O[C@@H]2c2cc(Br)c(Br)cc23)N1c1cccc2cccnc12",
+          "score": 0.09379248321056366,
+          "reference_match": false
+        },
+        {
+          "smiles": "O=C1C[C@@H](c2cccc([N+](=O)[O-])c2)SC(c2ccccc2)=N1",
+          "score": 0.09298570454120636,
+          "reference_match": false
+        },
+        {
+          "smiles": "COC(=O)c1cc(-c2ccccc2)n(N)c1C",
+          "score": 0.08452405780553818,
+          "reference_match": false
+        },
+        {
+          "smiles": "CC[C@H]1c2c(n(Cc3ccccc3)c3c(C)cccc23)CC[C@@H]1C=O",
+          "score": 0.05777878314256668,
+          "reference_match": false
+        }
+      ]
+    },
+    {
+      "input": {
+        "h_nmr": [
+          {
+            "type": "1H NMR",
+            "chemical_shift": "7.55 (m, 2H), 7.415 (m, 4H), 7.32 (m, 3H), 5.67 (s, 1H), 5.04 (s, 1H), 4.115 (m, 2H), 3.66 (s, 3H), 2.36 (d, J=1.6 Hz, 6H), 1.25 (t, J=7.2 Hz, 3H)"
+          }
+        ],
+        "c_nmr": [
+          {
+            "type": "13C NMR",
+            "chemical_shift": "168.1, 167.6, 146.7, 144.3, 144, 141.2, 139, 128.7, 128.2, 127, 126.9, 126.8, 104.2, 103.8, 59.9, 51.1, 39.2, 19.8, 19.7, 14.3"
+          }
+        ],
+        "modality_mask": [
+          1,
+          0
+        ]
+      },
+      "reference_smiles": "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+      "output": [
+        {
+          "smiles": "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+          "score": 0.8009666800498962,
+          "reference_match": true
+        },
+        {
+          "smiles": "COC(=O)c1cc(-c2ccccc2)n(N)c1C",
+          "score": 0.4152456223964691,
+          "reference_match": false
+        },
+        {
+          "smiles": "O=C(c1ccccc1)c1cn(Cc2ccccc2)c2cc(Br)cc([N+](=O)[O-])c12",
+          "score": 0.2771257162094116,
+          "reference_match": false
+        },
+        {
+          "smiles": "Cc1ccc(-c2nn(-c3ccccc3)cc2C(Cc2onc(C)c2[N+](=O)[O-])C[N+](=O)[O-])cc1",
+          "score": 0.25693634152412415,
+          "reference_match": false
+        },
+        {
+          "smiles": "COC(=O)C[C@@H]1C[C@@H]([N+](=O)[O-])[C@@H](c2ccc(C)cc2)[C@H]1C=O",
+          "score": 0.21493405103683472,
+          "reference_match": false
+        },
+        {
+          "smiles": "CCOC(=O)C(OS(=O)(=O)c1ccc2ccccc2c1)c1ccc(F)cc1",
+          "score": 0.20840273797512054,
+          "reference_match": false
+        },
+        {
+          "smiles": "Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1",
+          "score": 0.18922334909439087,
+          "reference_match": false
+        },
+        {
+          "smiles": "Nc1cccc(C(=O)c2ccccc2)c1",
+          "score": 0.17765045166015625,
+          "reference_match": false
+        },
+        {
+          "smiles": "O=C1c2sccc2[C@H]2[C@H]([C@H]3O[C@@H]2c2cc(Br)c(Br)cc23)N1c1cccc2cccnc12",
+          "score": 0.13993676006793976,
+          "reference_match": false
+        },
+        {
+          "smiles": "O=C1C[C@@H](c2cccc([N+](=O)[O-])c2)SC(c2ccccc2)=N1",
+          "score": 0.13450634479522705,
+          "reference_match": false
+        }
+      ]
+    },
+    {
+      "input": {
+        "h_nmr": [
+          {
+            "type": "1H NMR",
+            "chemical_shift": "8.13 (d, J=8.2 Hz, 1H), 7.52 (m, 1H), 7.47 (m, 1H), 7.395 (m, 2H), 7.16 (m, 2H), 3.8 (s, 3H)"
+          }
+        ],
+        "c_nmr": [
+          {
+            "type": "13C NMR",
+            "chemical_shift": "153.75, 145.7, 134.13, 131.02, 128.17, 127.52, 125.38, 123.83, 121.12, 119.88, 112.43, 111.17, 55.85"
+          }
+        ],
+        "modality_mask": [
+          1,
+          0
+        ]
+      },
+      "reference_smiles": "COc1ccccc1-n1nnc2ccccc21",
+      "output": [
+        {
+          "smiles": "COc1ccccc1-n1nnc2ccccc21",
+          "score": 0.8109002113342285,
+          "reference_match": true
+        },
+        {
+          "smiles": "CCN(CC)c1nc2ccccc2c2ccccc12",
+          "score": 0.2476402372121811,
+          "reference_match": false
+        },
+        {
+          "smiles": "CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O",
+          "score": 0.1781938374042511,
+          "reference_match": false
+        },
+        {
+          "smiles": "CCCCCCOc1cc2ccccc2c(B(O)O)c1OCCCCCC",
+          "score": 0.17545320093631744,
+          "reference_match": false
+        },
+        {
+          "smiles": "O=C1/C(=C(/c2ccccc2)c2c(OC3CCCCC3)ccc3ccccc23)Cc2ccccc21",
+          "score": 0.13697892427444458,
+          "reference_match": false
+        },
+        {
+          "smiles": "CC[C@H]1c2c(n(Cc3ccccc3)c3c(C)cccc23)CC[C@@H]1C=O",
+          "score": 0.10534244775772095,
+          "reference_match": false
+        },
+        {
+          "smiles": "FC(F)(F)C1(C#Cc2ccsc2)CNCC1c1ccccc1",
+          "score": 0.10008236765861511,
+          "reference_match": false
+        },
+        {
+          "smiles": "Cc1c(C(=O)OCc2ccccc2)c2ccccc2n1-c1ccccn1",
+          "score": 0.09341516345739365,
+          "reference_match": false
+        },
+        {
+          "smiles": "Cc1cc(C[C@H](C(=O)c2nccn2C(C)C)c2ccc(F)cc2)cc(C)c1O",
+          "score": 0.06076311692595482,
+          "reference_match": false
+        },
+        {
+          "smiles": "CC(C)CC(/C=C/c1ccccc1)CO",
+          "score": 0.05976412817835808,
+          "reference_match": false
+        }
+      ]
+    }
+  ],
+  "selection_policy": "First recorded example in the cited run; not selected by prediction quality.",
+  "training_performed": false,
+  "plot": {
+    "kind": "ranking",
+    "candidates": [
+      {
+        "smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+        "score": 0.8390898108482361,
+        "reference_match": true
+      },
+      {
+        "smiles": "Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1",
+        "score": 0.35815000534057617,
+        "reference_match": false
+      },
+      {
+        "smiles": "CC(C)(C)OC(=O)N[C@H](CCC(=O)c1ccccc1)c1c[nH]c2cc(Cl)ccc12",
+        "score": 0.3557360768318176,
+        "reference_match": false
+      },
+      {
+        "smiles": "CC1=C2CCCCCCCCCCC2OC1=O",
+        "score": 0.2330881506204605,
+        "reference_match": false
+      },
+      {
+        "smiles": "CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O",
+        "score": 0.1790425181388855,
+        "reference_match": false
+      },
+      {
+        "smiles": "CCOC(=O)C(OS(=O)(=O)c1ccc2ccccc2c1)c1ccc(F)cc1",
+        "score": 0.15159519016742706,
+        "reference_match": false
+      },
+      {
+        "smiles": "O=C1c2sccc2[C@H]2[C@H]([C@H]3O[C@@H]2c2cc(Br)c(Br)cc23)N1c1cccc2cccnc12",
+        "score": 0.09379248321056366,
+        "reference_match": false
+      },
+      {
+        "smiles": "O=C1C[C@@H](c2cccc([N+](=O)[O-])c2)SC(c2ccccc2)=N1",
+        "score": 0.09298570454120636,
+        "reference_match": false
+      },
+      {
+        "smiles": "COC(=O)c1cc(-c2ccccc2)n(N)c1C",
+        "score": 0.08452405780553818,
+        "reference_match": false
+      },
+      {
+        "smiles": "CC[C@H]1c2c(n(Cc3ccccc3)c3c(C)cccc23)CC[C@@H]1C=O",
+        "score": 0.05777878314256668,
+        "reference_match": false
+      }
+    ],
+    "label": "Dual encoder scores; first query; 32 candidates"
+  },
+  "source_hashes": {
+    "nmr_documented_examples_20261117_v2.json": "669413d6fc0939bdb6826782d41fc13cf12926a672418ecb46303f0b8ba05b99"
+  },
+  "status": "recorded_results"
+}

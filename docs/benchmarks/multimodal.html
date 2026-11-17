@@ -1,0 +1,413 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multimodal spectroscopy benchmarks &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/benchmarks/multimodal.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Production benchmark results" href="production.html" />
+    <link rel="prev" title="IR / Raman benchmarks" href="vibrational.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../zh/benchmarks/multimodal.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">Tasks by spectroscopy family</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../benchmarks.html">Benchmarks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#task-benchmarks">Task benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#training-benchmark-configurations">Training benchmark configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#metrics">Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#run-a-benchmark">Run a benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#additional-task-definitions">Additional task definitions</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../benchmarks.html#references">References</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="nmr.html">NMR benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms.html">Mass spectrometry benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational.html">IR / Raman benchmarks</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Multimodal spectroscopy benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="production.html">Production benchmark results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="training.html">Training benchmark configurations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../benchmarks.html">Benchmarks</a></li>
+      <li class="breadcrumb-item active">Multimodal spectroscopy benchmarks</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/benchmarks/multimodal.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="multimodal-spectroscopy-benchmarks">
+<h1>Multimodal spectroscopy benchmarks<a class="headerlink" href="#multimodal-spectroscopy-benchmarks" title="Link to this heading"></a></h1>
+<p>The sections below give each task definition and the results from its recorded evaluation runs. Open the task guide for model calls and full input/output examples.</p>
+<section id="homolumo-gap-from-ir-raman-nmr">
+<h2>HOMO–LUMO gap from IR + Raman + NMR<a class="headerlink" href="#homolumo-gap-from-ir-raman-nmr" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">vibrational.gap.ir_raman_hc</span></code></p>
+<p>Estimate the molecular HOMO–LUMO energy gap from spectra.</p>
+<p>Report MAE and RMSE in eV.</p>
+<p><a class="reference internal" href="../tasks/vibrational-gap-ir_raman_hc.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/vibrational-gap-ir_raman_hc.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/052539359920d689560b176e6075b9c5/vibrational-gap-ir_raman_hc.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">sampling=&quot;reservoir&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">seed=42</span></code>; <code class="docutils literal notranslate"><span class="pre">given_nmr=true</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>mae_ev</p></td>
+<td class="text-right"><p>0.131446</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>rmse_ev</p></td>
+<td class="text-right"><p>0.205964</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>128</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>Training-mean baseline</p></td>
+<td><p>constant_ev</p></td>
+<td class="text-right"><p>5.64512</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>Training-mean baseline</p></td>
+<td><p>mae_ev</p></td>
+<td class="text-right"><p>0.89994</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>Training-mean baseline</p></td>
+<td><p>rmse_ev</p></td>
+<td class="text-right"><p>1.06962</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>Training-mean baseline</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>128</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="structure-retrieval-ir-raman-nmr">
+<h2>Structure retrieval: IR + Raman + NMR<a class="headerlink" href="#structure-retrieval-ir-raman-nmr" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">vibrational.retrieval.hc</span></code></p>
+<p>Rank molecular structures by agreement with the input spectra.</p>
+<p>Report top-k accuracy for generation, and Recall&#64;k/MRR for ranking.</p>
+<p><a class="reference internal" href="../tasks/vibrational-retrieval-hc.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/vibrational-retrieval-hc.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/8fcf6da4274b4615f266661ee2f6bd25/vibrational-retrieval-hc.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">sampling=&quot;reservoir&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">seed=42</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code>; <code class="docutils literal notranslate"><span class="pre">given_nmr=true</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>16</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>16</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>16</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="structure-generation-ir-raman-nmr">
+<h2>Structure generation: IR + Raman + NMR<a class="headerlink" href="#structure-generation-ir-raman-nmr" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">vibrational.generation.hc</span></code></p>
+<p>Generate structures from molecular spectra.</p>
+<p>Report top-k accuracy for generation, and Recall&#64;k/MRR for ranking.</p>
+<p><a class="reference internal" href="../tasks/vibrational-generation-hc.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/vibrational-generation-hc.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/9dd5cfd75bcd8dae9b0b9d906078d8d1/vibrational-generation-hc.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">sampling=&quot;reservoir&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">seed=42</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code>; <code class="docutils literal notranslate"><span class="pre">given_nmr=true</span></code>; <code class="docutils literal notranslate"><span class="pre">beam_size=10</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_canonical_top1</p></td>
+<td class="text-right"><p>0.75</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_canonical_top3</p></td>
+<td class="text-right"><p>0.890625</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_canonical_top5</p></td>
+<td class="text-right"><p>0.890625</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_canonical_top10</p></td>
+<td class="text-right"><p>0.890625</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>valid_smiles_fraction</p></td>
+<td class="text-right"><p>0.959375</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>duplicate_valid_beams</p></td>
+<td class="text-right"><p>455</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>64</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>ITM reranked</p></td>
+<td><p>exact_canonical_top1</p></td>
+<td class="text-right"><p>0.6875</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>ITM reranked</p></td>
+<td><p>exact_canonical_top3</p></td>
+<td class="text-right"><p>0.84375</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>ITM reranked</p></td>
+<td><p>exact_canonical_top5</p></td>
+<td class="text-right"><p>0.890625</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>ITM reranked</p></td>
+<td><p>exact_canonical_top10</p></td>
+<td class="text-right"><p>0.890625</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="candidate-reranking-ir-raman-nmr">
+<h2>Candidate reranking: IR + Raman + NMR<a class="headerlink" href="#candidate-reranking-ir-raman-nmr" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">spectroscopy.reranking.hc</span></code></p>
+<p>Rank molecular structures by agreement with the input spectra.</p>
+<p>Report top-k accuracy for generation, and Recall&#64;k/MRR for ranking.</p>
+<p><a class="reference internal" href="../tasks/spectroscopy-reranking-hc.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/spectroscopy-reranking-hc.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/93a26df65f38a1424b7e7a9a423e97bb/spectroscopy-reranking-hc.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">sampling=&quot;reservoir&quot;</span></code>; <code class="docutils literal notranslate"><span class="pre">seed=42</span></code>; <code class="docutils literal notranslate"><span class="pre">given_formula=false</span></code>; <code class="docutils literal notranslate"><span class="pre">given_nmr=true</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_1</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_5</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>recall_at_10</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>mrr</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>queries</p></td>
+<td class="text-right"><p>16</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>candidate_pool</p></td>
+<td class="text-right"><p>16</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>unique_candidates</p></td>
+<td class="text-right"><p>16</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>tie_policy</p></td>
+<td class="text-right"><p>stable_candidate_order</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>top_1_hit_rate</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">Source</a></p></li>
+<li><p>Yuan, M., Zou, Z. &amp; Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). <a class="reference external" href="https://arxiv.org/abs/2501.18876">Source</a></p></li>
+<li><p>Zou, Z., Zhang, Y., Liang, L., Wei, M., Leng, J., Jiang, J., Luo, Y. &amp; Hu, W. A deep learning model for predicting selected organic molecular spectra. Nature Computational Science 3, 957–964 (2023). doi:10.1038/s43588-023-00550-y. <a class="reference external" href="https://www.nature.com/articles/s43588-023-00550-y">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vibrational.html" class="btn btn-neutral float-left" title="IR / Raman benchmarks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="production.html" class="btn btn-neutral float-right" title="Production benchmark results" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

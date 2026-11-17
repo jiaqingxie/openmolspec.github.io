@@ -1,0 +1,311 @@
+{
+  "task": "nmr.retrieval.c.m2s",
+  "enabled": true,
+  "source_files": [
+    "nmr_documented_examples_20261117_v2.json"
+  ],
+  "runs": [
+    {
+      "dataset": "nmrspec_test",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.9375,
+        "recall_at_5": 0.96875,
+        "recall_at_10": 0.96875,
+        "mrr": 0.9503205128205128,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "patent_test_10k",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.5625,
+        "recall_at_5": 0.8125,
+        "recall_at_10": 0.875,
+        "mrr": 0.6944010416666666,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "nmrexp_exp_10k",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.65625,
+        "recall_at_5": 0.9375,
+        "recall_at_10": 0.96875,
+        "mrr": 0.7745949074074074,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "nmrgym_test",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.78125,
+        "recall_at_5": 0.9375,
+        "recall_at_10": 1.0,
+        "mrr": 0.8611111111111112,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    }
+  ],
+  "examples": [
+    {
+      "input": {
+        "smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1"
+      },
+      "reference_smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+      "output": [
+        {
+          "smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+          "score": 0.7985133528709412,
+          "reference_match": true
+        },
+        {
+          "smiles": "Cc1cnn(C2CCc3ccccc32)c1",
+          "score": 0.5333701372146606,
+          "reference_match": false
+        },
+        {
+          "smiles": "CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O",
+          "score": 0.4344002604484558,
+          "reference_match": false
+        },
+        {
+          "smiles": "CC(C)(C)OC(=O)N[C@H](CCC(=O)c1ccccc1)c1c[nH]c2cc(Cl)ccc12",
+          "score": 0.30310308933258057,
+          "reference_match": false
+        },
+        {
+          "smiles": "O=C1/C(=C(/c2ccccc2)c2c(OC3CCCCC3)ccc3ccccc23)Cc2ccccc21",
+          "score": 0.2818439304828644,
+          "reference_match": false
+        },
+        {
+          "smiles": "Cc1ccc(-c2nn(-c3ccccc3)cc2C(Cc2onc(C)c2[N+](=O)[O-])C[N+](=O)[O-])cc1",
+          "score": 0.1850658357143402,
+          "reference_match": false
+        },
+        {
+          "smiles": "C[C@H]1CCc2ccccc2N1",
+          "score": 0.163297638297081,
+          "reference_match": false
+        },
+        {
+          "smiles": "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+          "score": 0.1247771829366684,
+          "reference_match": false
+        },
+        {
+          "smiles": "Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1",
+          "score": 0.12378618866205215,
+          "reference_match": false
+        },
+        {
+          "smiles": "CCOC(=O)C(OS(=O)(=O)c1ccc2ccccc2c1)c1ccc(F)cc1",
+          "score": 0.11319118738174438,
+          "reference_match": false
+        }
+      ]
+    },
+    {
+      "input": {
+        "smiles": "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1"
+      },
+      "reference_smiles": "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+      "output": [
+        {
+          "smiles": "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+          "score": 0.621666669845581,
+          "reference_match": true
+        },
+        {
+          "smiles": "COC(=O)[C@@]12N=NC[C@@H]1CN(Cc1ccccc1)[C@@H]2C",
+          "score": 0.2514853775501251,
+          "reference_match": false
+        },
+        {
+          "smiles": "CCOC(=O)C(OS(=O)(=O)c1ccc2ccccc2c1)c1ccc(F)cc1",
+          "score": 0.1747651994228363,
+          "reference_match": false
+        },
+        {
+          "smiles": "COC(=O)c1cc(-c2ccccc2)n(N)c1C",
+          "score": 0.168487086892128,
+          "reference_match": false
+        },
+        {
+          "smiles": "Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1",
+          "score": 0.16761872172355652,
+          "reference_match": false
+        },
+        {
+          "smiles": "Cc1ccc(S(=O)(=O)N2C[C@@H](O)[C@@H](C(=O)c3ccc(F)cc3)[C@@H]3CC(=O)C=C[C@]32C)cc1",
+          "score": 0.12308777868747711,
+          "reference_match": false
+        },
+        {
+          "smiles": "Nc1cccc(C(=O)c2ccccc2)c1",
+          "score": 0.11058659851551056,
+          "reference_match": false
+        },
+        {
+          "smiles": "CC1=C2CCCCCCCCCCC2OC1=O",
+          "score": 0.10437475889921188,
+          "reference_match": false
+        },
+        {
+          "smiles": "COC(=O)C[C@@H]1C[C@@H]([N+](=O)[O-])[C@@H](c2ccc(C)cc2)[C@H]1C=O",
+          "score": 0.09442070871591568,
+          "reference_match": false
+        },
+        {
+          "smiles": "CCOP(=O)(CC(CP(=O)(OCC)OCC)C(=O)c1ccc(C)cc1C)OCC",
+          "score": 0.08918310701847076,
+          "reference_match": false
+        }
+      ]
+    },
+    {
+      "input": {
+        "smiles": "COc1ccccc1-n1nnc2ccccc21"
+      },
+      "reference_smiles": "COc1ccccc1-n1nnc2ccccc21",
+      "output": [
+        {
+          "smiles": "COc1ccccc1-n1nnc2ccccc21",
+          "score": 0.6692595481872559,
+          "reference_match": true
+        },
+        {
+          "smiles": "CCN(CC)c1nc2ccccc2c2ccccc12",
+          "score": 0.2357776165008545,
+          "reference_match": false
+        },
+        {
+          "smiles": "FC(F)(F)C1(C#Cc2ccsc2)CNCC1c1ccccc1",
+          "score": 0.2145272046327591,
+          "reference_match": false
+        },
+        {
+          "smiles": "Cc1c(/C=C/[N+](=O)[O-])cc([N+](=O)[O-])c(Cl)c1[N+](=O)[O-]",
+          "score": 0.19537150859832764,
+          "reference_match": false
+        },
+        {
+          "smiles": "CC[C@H]1c2c(n(Cc3ccccc3)c3c(C)cccc23)CC[C@@H]1C=O",
+          "score": 0.18949033319950104,
+          "reference_match": false
+        },
+        {
+          "smiles": "Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1",
+          "score": 0.15864335000514984,
+          "reference_match": false
+        },
+        {
+          "smiles": "Nc1cccc(C(=O)c2ccccc2)c1",
+          "score": 0.149392768740654,
+          "reference_match": false
+        },
+        {
+          "smiles": "Cc1cc(C[C@H](C(=O)c2nccn2C(C)C)c2ccc(F)cc2)cc(C)c1O",
+          "score": 0.13931502401828766,
+          "reference_match": false
+        },
+        {
+          "smiles": "CCCCCCOc1cc2ccccc2c(B(O)O)c1OCCCCCC",
+          "score": 0.11225375533103943,
+          "reference_match": false
+        },
+        {
+          "smiles": "CC(C)(C)OC(=O)N[C@H](CCC(=O)c1ccccc1)c1c[nH]c2cc(Cl)ccc12",
+          "score": 0.11168668419122696,
+          "reference_match": false
+        }
+      ]
+    }
+  ],
+  "selection_policy": "First recorded example in the cited run; not selected by prediction quality.",
+  "training_performed": false,
+  "plot": {
+    "kind": "ranking",
+    "candidates": [
+      {
+        "smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+        "score": 0.7985133528709412,
+        "reference_match": true
+      },
+      {
+        "smiles": "Cc1cnn(C2CCc3ccccc32)c1",
+        "score": 0.5333701372146606,
+        "reference_match": false
+      },
+      {
+        "smiles": "CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O",
+        "score": 0.4344002604484558,
+        "reference_match": false
+      },
+      {
+        "smiles": "CC(C)(C)OC(=O)N[C@H](CCC(=O)c1ccccc1)c1c[nH]c2cc(Cl)ccc12",
+        "score": 0.30310308933258057,
+        "reference_match": false
+      },
+      {
+        "smiles": "O=C1/C(=C(/c2ccccc2)c2c(OC3CCCCC3)ccc3ccccc23)Cc2ccccc21",
+        "score": 0.2818439304828644,
+        "reference_match": false
+      },
+      {
+        "smiles": "Cc1ccc(-c2nn(-c3ccccc3)cc2C(Cc2onc(C)c2[N+](=O)[O-])C[N+](=O)[O-])cc1",
+        "score": 0.1850658357143402,
+        "reference_match": false
+      },
+      {
+        "smiles": "C[C@H]1CCc2ccccc2N1",
+        "score": 0.163297638297081,
+        "reference_match": false
+      },
+      {
+        "smiles": "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+        "score": 0.1247771829366684,
+        "reference_match": false
+      },
+      {
+        "smiles": "Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1",
+        "score": 0.12378618866205215,
+        "reference_match": false
+      },
+      {
+        "smiles": "CCOC(=O)C(OS(=O)(=O)c1ccc2ccccc2c1)c1ccc(F)cc1",
+        "score": 0.11319118738174438,
+        "reference_match": false
+      }
+    ],
+    "label": "Dual encoder scores; first query; 32 candidates"
+  },
+  "source_hashes": {
+    "nmr_documented_examples_20261117_v2.json": "669413d6fc0939bdb6826782d41fc13cf12926a672418ecb46303f0b8ba05b99"
+  },
+  "status": "recorded_results"
+}

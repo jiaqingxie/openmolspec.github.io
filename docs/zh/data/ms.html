@@ -1,0 +1,184 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>质谱数据 &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/data/ms.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="IR 与 Raman 数据" href="vibrational.html" />
+    <link rel="prev" title="NMR 数据" href="nmr.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../data/ms.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">数据</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#openmolspec">OpenMolSpec 实验数据集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id2">外部实验资源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id3">计算光谱</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id4">加载数据</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#id5">参考文献</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="nmr.html">NMR 数据</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">质谱数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational.html">IR 与 Raman 数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multimodal.html">多模态数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="splits.html">数据集划分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comparison.html">实验数据集比较</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">数据</a></li>
+      <li class="breadcrumb-item active">质谱数据</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/data/ms.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>质谱数据<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>质谱数据保存 m/z 位置与强度。MS/MS 预测还使用离子／加合物、碰撞能、仪器及前体质量来定义采集条件。</p>
+<section id="opendatalab">
+<h2>OpenDataLab<a class="headerlink" href="#opendatalab" title="Link to this heading"></a></h2>
+<p>数值化 m/z–强度峰表及对应分子结构。 5,233 条谱，覆盖 4,980 个分子。</p>
+<p>清洗保留至少两个有限正 m/z、强度有限非负且强度总和为正的谱；相同分子身份、谱值及实验条件的重复谱会被去除。</p>
+<p><img alt="Cleaned MS molecular size and peak positions" src="../_images/data-cleaned-ms.png" /></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">molspectra</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">molspectra</span><span class="p">(</span><span class="s2">"opendatalab_ms"</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s2">"data/experimental"</span><span class="p">)</span>
+<span class="n">record</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"test"</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">"smiles"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">"peaks"</span><span class="p">][:</span><span class="mi">5</span><span class="p">])</span>  <span class="c1"># [[m/z, intensity], ...]</span>
+</pre></div>
+</div>
+</section>
+<section id="massspecgym">
+<h2>MassSpecGym<a class="headerlink" href="#massspecgym" title="Link to this heading"></a></h2>
+<p>v1.5 前向预测视图包含 119,029 条具有模拟任务所需采集字段的谱。读取器保留 <code class="docutils literal notranslate"><span class="pre">spec_id</span></code>、<code class="docutils literal notranslate"><span class="pre">smiles</span></code>、<code class="docutils literal notranslate"><span class="pre">peaks</span></code>、<code class="docutils literal notranslate"><span class="pre">adduct</span></code>、<code class="docutils literal notranslate"><span class="pre">collision_energy</span></code>、<code class="docutils literal notranslate"><span class="pre">instrument</span></code> 和 <code class="docutils literal notranslate"><span class="pre">precursor_mz</span></code>。TSV 源文件用 <code class="docutils literal notranslate"><span class="pre">molspectra(&quot;massspecgym_1_5&quot;,</span> <span class="pre">root=...)</span></code> 加载；整理好的 CSV 使用 <code class="docutils literal notranslate"><span class="pre">SpectraSplit(format=&quot;massspecgym_csv&quot;,</span> <span class="pre">...)</span></code> 导入。</p>
+</section>
+<section id="massbank">
+<h2>MassBank<a class="headerlink" href="#massbank" title="Link to this heading"></a></h2>
+<p>数值 MS2 视图包含 120,512 条具有有效结构的谱。使用峰数组时同时保留谱编号、离子模式、仪器、碰撞条件与来源许可信息。</p>
+</section>
+<section id="id2">
+<h2>参考文献<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>OpenDataLab. WanJuan MolSpectra, version 1.0.3. Experimental molecular spectroscopy dataset. <a class="reference external" href="https://opendatalab.com/">Source</a></p></li>
+<li><p>Bushuiev, R., Bushuiev, A., de Jonge, N. F., Young, A., et al. MassSpecGym: A benchmark for the discovery and identification of molecules. Advances in Neural Information Processing Systems 37, Datasets and Benchmarks Track (2024). arXiv:2410.23326. <a class="reference external" href="https://arxiv.org/abs/2410.23326">Source</a></p></li>
+<li><p>Horai, H., Arita, M., Kanaya, S., et al. MassBank: a public repository for sharing mass spectral data for life sciences. Journal of Mass Spectrometry 45, 703–714 (2010). doi:10.1002/jms.1777. <a class="reference external" href="https://doi.org/10.1002/jms.1777">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="nmr.html" class="btn btn-neutral float-left" title="NMR 数据" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="vibrational.html" class="btn btn-neutral float-right" title="IR 与 Raman 数据" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "task": "spectroscopy.qa",
+  "enabled": false,
+  "source_files": [],
+  "runs": [],
+  "examples": [],
+  "selection_policy": "First recorded example in the cited run; not selected by prediction quality.",
+  "training_performed": false,
+  "source_hashes": {},
+  "status": "deferred_by_user"
+}

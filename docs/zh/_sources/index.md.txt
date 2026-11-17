@@ -1,0 +1,92 @@
+# OpenMolSpec
+
+Chemical spectroscopy and deep learning
+
+OpenMolSpec 是面向分子谱学的 Python 工具包。你可以加载实验与计算数据集，预测谱图和分子性质，通过谱图解析结构，也可以用自己的数据训练模型。支持 NMR、质谱、红外与拉曼光谱。
+
+## 开始使用
+
+从[快速开始](quickstart.md)安装 OpenMolSpec，依次学习数据加载、模型预测和训练。[教程](notebooks/index.md)配有逐步说明、代码、输出和图。
+
+```python
+from openmolspec.dataset import molspectra
+from openmolspec.model import NMRNet
+
+data = molspectra("opendatalab_nmr", root="data/nmr")
+molecule = data["test"].head(1)[0]
+
+model = NMRNet.from_pretrained("models", nucleus="13C",
+    python="/path/to/nmr-env/bin/python")
+prediction = model.predict(molecule["smiles"])
+print(prediction["records"])
+```
+
+## Examples
+
+下面的例子展示如何预测谱图、解析分子结构，以及预测分子性质。
+
+### [从 NMR 解析结构](notebooks/nmr-generation-hc.ipynb)
+
+输入氢谱、碳谱和分子式，生成候选结构。
+
+[![Structure elucidation from NMR](assets/gallery/nmr-generation-hc.png)](notebooks/nmr-generation-hc.ipynb)
+
+### [预测串联质谱](notebooks/ms-forward-glacier.ipynb)
+
+输入分子结构、加合物和碰撞能，预测碎片峰及其强度。
+
+[![Predicting tandem mass spectra](assets/gallery/ms-forward-glacier.png)](notebooks/ms-forward-glacier.ipynb)
+
+### [由分子构象预测红外与拉曼谱](notebooks/vibrational-forward.ipynb)
+
+使用 openSpec 模型，从原子坐标预测振动光谱。
+
+[![IR and Raman from a molecular geometry](assets/gallery/vibrational-forward.png)](notebooks/vibrational-forward.ipynb)
+
+### [预测 HOMO–LUMO 能隙](notebooks/vibrational-gap-ir_raman_hc.ipynb)
+
+结合 IR、Raman 和 NMR，预测分子的 HOMO–LUMO 能隙。
+
+[![HOMO–LUMO gap prediction](assets/gallery/vibrational-gap-ir_raman_hc.png)](notebooks/vibrational-gap-ir_raman_hc.ipynb)
+
+
+### 交互式分子示例
+
+在三维中查看分子结构，配合数据集中的参考轨道能量，以及由 IR、Raman 和 H/C NMR 光谱预测的能隙。
+
+<div class="oms-conformer-demo" data-oms-viewer data-oms-assets="assets/viewer/" data-oms-language="zh">
+<label>分子 <select class="oms-conformer-select" aria-label="选择分子"></select></label>
+<div class="oms-conformer-canvas" role="img" aria-label="交互式分子构象"></div>
+<p class="oms-conformer-result" aria-live="polite">正在加载坐标…</p>
+</div>
+
+## 使用手册
+
+- [数据](data/index.md): 数据集、实验信息、数据分布与划分。
+- [任务](tasks/index.md): 任务定义、输入输出与模型使用。
+- [教程](notebooks/index.md): 预测、训练与谱学理论的分步教程。
+- [API 参考](api-reference/index.md): 类、函数、参数、返回值和调用示例。
+- [基准评测](benchmarks.md): 基准数据、评测流程、指标与结果。
+- [Agent Harness](harness.md): 通过 Python、命令行或 Agent 调用谱学工具。
+
+
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+quickstart
+data/index
+tasks/index
+model-audit
+api
+notebooks/index
+theory/index
+inversion/index
+gallery
+harness
+api-reference/index
+benchmarks
+faq
+contributing
+citations
+```

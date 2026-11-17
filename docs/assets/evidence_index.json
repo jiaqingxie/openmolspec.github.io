@@ -1,0 +1,265 @@
+{
+  "nmr.forward.1H": {
+    "status": "recorded_results",
+    "sources": [
+      "nmr_documented_examples_20261117_v2.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-forward-1H.png"
+  },
+  "nmr.forward.13C": {
+    "status": "recorded_results",
+    "sources": [
+      "nmr_documented_examples_20261117_v2.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-forward-13C.png"
+  },
+  "nmr.forward.19F": {
+    "status": "diagnostic_only",
+    "sources": [
+      "fp_frozen_fresh_diagnostic_20261115.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-forward-19F.png"
+  },
+  "nmr.forward.31P": {
+    "status": "diagnostic_only",
+    "sources": [
+      "fp_frozen_fresh_diagnostic_20261115.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-forward-31P.png"
+  },
+  "nmr.forward.11B": {
+    "status": "diagnostic_only",
+    "sources": [
+      "bsi_frozen_diagnostic_20261116.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-forward-11B.png"
+  },
+  "nmr.forward.29Si": {
+    "status": "diagnostic_only",
+    "sources": [
+      "bsi_frozen_diagnostic_20261116.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-forward-29Si.png"
+  },
+  "nmr.retrieval.h.s2m": {
+    "status": "recorded_results",
+    "sources": [
+      "nmr_documented_examples_20261117_v2.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-retrieval-h-s2m.png"
+  },
+  "nmr.retrieval.h.m2s": {
+    "status": "recorded_results",
+    "sources": [
+      "nmr_documented_examples_20261117_v2.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-retrieval-h-m2s.png"
+  },
+  "nmr.generation.h": {
+    "status": "recorded_results",
+    "sources": [
+      "nmr_documented_examples_20261117_v2.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-generation-h.png"
+  },
+  "nmr.retrieval.c.s2m": {
+    "status": "recorded_results",
+    "sources": [
+      "nmr_documented_examples_20261117_v2.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-retrieval-c-s2m.png"
+  },
+  "nmr.retrieval.c.m2s": {
+    "status": "recorded_results",
+    "sources": [
+      "nmr_documented_examples_20261117_v2.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-retrieval-c-m2s.png"
+  },
+  "nmr.generation.c": {
+    "status": "recorded_results",
+    "sources": [
+      "nmr_documented_examples_20261117_v2.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-generation-c.png"
+  },
+  "nmr.retrieval.hc.s2m": {
+    "status": "recorded_results",
+    "sources": [
+      "nmr_documented_examples_20261117_v2.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-retrieval-hc-s2m.png"
+  },
+  "nmr.retrieval.hc.m2s": {
+    "status": "recorded_results",
+    "sources": [
+      "nmr_documented_examples_20261117_v2.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-retrieval-hc-m2s.png"
+  },
+  "nmr.generation.hc": {
+    "status": "recorded_results",
+    "sources": [
+      "nmr_documented_examples_20261117_v2.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-generation-hc.png"
+  },
+  "vibrational.gap.ir": {
+    "status": "recorded_results",
+    "sources": [
+      "gap_protocol_random128_20261116.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/vibrational-gap-ir.png"
+  },
+  "vibrational.gap.raman": {
+    "status": "recorded_results",
+    "sources": [
+      "gap_protocol_random128_20261116.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/vibrational-gap-raman.png"
+  },
+  "vibrational.gap.ir_raman": {
+    "status": "recorded_results",
+    "sources": [
+      "gap_protocol_random128_20261116.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/vibrational-gap-ir_raman.png"
+  },
+  "vibrational.gap.ir_raman_hc": {
+    "status": "recorded_results",
+    "sources": [
+      "gap_protocol_random128_20261116.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/vibrational-gap-ir_raman_hc.png"
+  },
+  "vibrational.forward": {
+    "status": "recorded_results",
+    "sources": [
+      "vibrational_forward_paired_logs_20261116.json"
+    ],
+    "example_count": 2,
+    "figure": "gallery/vibrational-forward.png"
+  },
+  "vibrational.retrieval": {
+    "status": "recorded_results",
+    "sources": [
+      "vibrational_ranked_examples_20261117.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/vibrational-retrieval.png"
+  },
+  "vibrational.generation": {
+    "status": "recorded_results",
+    "sources": [
+      "smoke_vib2mol_20261115.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/vibrational-generation.png"
+  },
+  "nmr.assignment": {
+    "status": "recorded_results",
+    "sources": [
+      "assignment_carbon32_20261116.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-assignment.png"
+  },
+  "nmr.solvent_transfer": {
+    "status": "recorded_results",
+    "sources": [
+      "solvent_transfer_reference32_20261116.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/nmr-solvent_transfer.png"
+  },
+  "nmr.formula": {
+    "status": "deferred_by_user",
+    "sources": [],
+    "example_count": 0
+  },
+  "spectroscopy.qa": {
+    "status": "deferred_by_user",
+    "sources": [],
+    "example_count": 0
+  },
+  "spectroscopy.reranking": {
+    "status": "recorded_results",
+    "sources": [
+      "vibrational_ranked_examples_20261117.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/spectroscopy-reranking.png"
+  },
+  "vibrational.retrieval.hc": {
+    "status": "recorded_results",
+    "sources": [
+      "vibrational_ranked_examples_20261117.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/vibrational-retrieval-hc.png"
+  },
+  "vibrational.generation.hc": {
+    "status": "recorded_results",
+    "sources": [
+      "vib2mol_xinyu_random64_20261116.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/vibrational-generation-hc.png"
+  },
+  "spectroscopy.reranking.hc": {
+    "status": "recorded_results",
+    "sources": [
+      "vibrational_ranked_examples_20261117.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/spectroscopy-reranking-hc.png"
+  },
+  "ms.forward.glacier": {
+    "status": "recorded_results",
+    "sources": [
+      "ms_glacier_32_molecules_20261116.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/ms-forward-glacier.png"
+  },
+  "ms.forward.iceberg": {
+    "status": "recorded_results",
+    "sources": [
+      "ms_iceberg_32_molecules_20261116.json"
+    ],
+    "example_count": 3,
+    "figure": "gallery/ms-forward-iceberg.png"
+  },
+  "ms.annotation.magma": {
+    "status": "recorded_results",
+    "sources": [
+      "magma_real_test_verified_20261115.json"
+    ],
+    "example_count": 2,
+    "figure": "gallery/ms-annotation-magma.png"
+  },
+  "multispectral.spectrallm.generation": {
+    "status": "deferred_by_user",
+    "sources": [],
+    "example_count": 0
+  }
+}

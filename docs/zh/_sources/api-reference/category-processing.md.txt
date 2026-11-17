@@ -1,0 +1,45 @@
+# 数据处理与发布
+
+| Module | Description |
+| --- | --- |
+| [openmolspec.io.tasks](module-io-tasks.md) | Input loading shared by native staged extraction pipelines. |
+| [openmolspec.quality.dedup](module-quality-dedup.md) | Molecular identity and duplicate analysis for OpenSpec records. |
+| [openmolspec.quality.stats](module-quality-stats.md) | Publication-ready validation statistics for the OpenSpec dataset. |
+| [openmolspec.quality.validation](module-quality-validation.md) | Non-destructive internal validation for legacy and v1-style datasets. |
+| [openmolspec.release.build](module-release-build.md) | Build a frozen, leakage-safe and publication-ready OpenMolSpec release. |
+| [openmolspec.release.catalog](module-release-catalog.md) | Build molecule-level full and strictly aligned OpenMolSpec catalogs. |
+| [openmolspec.release.common](module-release-common.md) | Shared helpers for versioned OpenMolSpec release construction. |
+| [openmolspec.release.export](module-release-export.md) | Export legacy DataFrame pickles as resumable Parquet + HDF5 shards. |
+| [openmolspec.release.freeze](module-release-freeze.md) | Create an immutable release lock with provenance and SHA-256 inventories. |
+| [openmolspec.release.splits](module-release-splits.md) | Scaffold-disjoint official train/validation/test splits for OpenMolSpec. |
+| [openmolspec.release.validation](module-release-validation.md) | Fast, non-destructive release-gate validation over catalog metadata. |
+| [openmolspec.workflows.frequency](module-workflows-frequency.md) | Batch Gaussian extraction stage for the OpenSpec pipeline. |
+| [openmolspec.workflows.manifest](module-workflows-manifest.md) | Orchestrate source scanning and assembly of the unified manifest. |
+| [openmolspec.workflows.manifest_scan](module-workflows-manifest_scan.md) | Build reproducible OpenSpec sample manifests and legacy JSON maps. |
+| [openmolspec.workflows.nmr](module-workflows-nmr.md) | Batch NMR extraction for the OpenSpec staged pipeline. |
+| [openmolspec.workflows.trajectories](module-workflows-trajectories.md) | Extract optimization trajectories from Gaussian frequency logs. |
+| [openmolspec.release](module-release.md) | Versioned OpenMolSpec release construction utilities. |
+
+
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+module-io-tasks
+module-quality-dedup
+module-quality-stats
+module-quality-validation
+module-release-build
+module-release-catalog
+module-release-common
+module-release-export
+module-release-freeze
+module-release-splits
+module-release-validation
+module-workflows-frequency
+module-workflows-manifest
+module-workflows-manifest_scan
+module-workflows-nmr
+module-workflows-trajectories
+module-release
+```

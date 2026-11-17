@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>快速开始 &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/quickstart.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f115507d"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="数据" href="data/index.html" />
+    <link rel="prev" title="OpenMolSpec" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../quickstart.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">快速开始</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#openmolspec">1. 安装 OpenMolSpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">2. 读取第一条谱</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">3. 加载完整数据集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">4. 预测化学位移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">5. 与实测峰比较并保存结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nmr">6. 使用自己的 NMR 数据训练</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">继续学习</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference/index.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">快速开始</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/quickstart.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>快速开始<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>本教程从安装开始，依次介绍如何读取 NMR 记录、预测化学位移，以及用自己的数据训练模型。命令在克隆后的仓库根目录运行，示例文件位于仓库中。</p>
+<section id="openmolspec">
+<h2>1. 安装 OpenMolSpec<a class="headerlink" href="#openmolspec" title="Link to this heading"></a></h2>
+<p>使用 Python 3.10 或更新版本。创建环境后，安装工具包及数据格式、绘图依赖。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--branch<span class="w"> </span>release/openmolspec-v1<span class="w"> </span>https://github.com/jiaqingxie/openmolspec-studio-frontend.git
+<span class="nb">cd</span><span class="w"> </span>openmolspec-studio-frontend
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[data,analysis]"</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">v1.0 发布页</a>也提供 wheel 安装包。release 分支包含当前数据卡与手册示例。</p>
+</section>
+<section id="id2">
+<h2>2. 读取第一条谱<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>先读取仓库自带的三个 NMRSpec 示例分子。<code class="docutils literal notranslate"><span class="pre">MolecularSpectra</span></code> 按名称组织数据划分，每个划分从文件逐条读取；<code class="docutils literal notranslate"><span class="pre">head(1)</span></code> 返回第一条记录。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularSpectra</span>
+
+<span class="n">examples</span> <span class="o">=</span> <span class="n">MolecularSpectra</span><span class="o">.</span><span class="n">from_jsonl</span><span class="p">(</span>
+    <span class="n">splits</span><span class="o">=</span><span class="p">{</span><span class="s2">"test"</span><span class="p">:</span> <span class="s2">"documentation/assets/sdk-nmr-test-examples.jsonl"</span><span class="p">},</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"nmrspec_examples"</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">"experimental"</span><span class="p">)</span>
+<span class="n">record</span> <span class="o">=</span> <span class="n">examples</span><span class="p">[</span><span class="s2">"test"</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">"smiles"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">"formula"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">"c_nmr"</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">smiles</span></code> 描述分子结构，<code class="docutils literal notranslate"><span class="pre">formula</span></code> 保存分子式，<code class="docutils literal notranslate"><span class="pre">h_nmr</span></code>／<code class="docutils literal notranslate"><span class="pre">c_nmr</span></code> 保存实验谱记录。<code class="docutils literal notranslate"><span class="pre">_openmolspec</span></code> 记录数据集名称、划分和可用通道。</p>
+</section>
+<section id="id3">
+<h2>3. 加载完整数据集<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>使用清洗后的 OpenDataLab H/C 集合时，将 <code class="docutils literal notranslate"><span class="pre">train.jsonl</span></code>、<code class="docutils literal notranslate"><span class="pre">val.jsonl</span></code>、<code class="docutils literal notranslate"><span class="pre">test.jsonl</span></code> 放在 <code class="docutils literal notranslate"><span class="pre">data/nmr</span></code>，再按注册名称加载。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">molspectra</span><span class="p">,</span> <span class="n">list_datasets</span>
+
+<span class="nb">print</span><span class="p">([</span><span class="n">card</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span> <span class="k">for</span> <span class="n">card</span> <span class="ow">in</span> <span class="n">list_datasets</span><span class="p">()])</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">molspectra</span><span class="p">(</span><span class="s2">"opendatalab_nmr"</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s2">"data/nmr"</span><span class="p">)</span>
+<span class="n">paired</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"train"</span><span class="p">]</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">modalities</span><span class="o">=</span><span class="p">[</span><span class="s2">"1H"</span><span class="p">,</span> <span class="s2">"13C"</span><span class="p">],</span> <span class="n">limit</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">molecule</span> <span class="ow">in</span> <span class="n">paired</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">molecule</span><span class="p">[</span><span class="s2">"smiles"</span><span class="p">],</span> <span class="n">molecule</span><span class="p">[</span><span class="s2">"h_peaks_ppm"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">verify</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>通道筛选会选择同时含 H、C 谱的分子。<code class="docutils literal notranslate"><span class="pre">verify()</span></code> 核对本地文件与数据版本是否一致。<a class="reference internal" href="data/index.html"><span class="std std-doc">数据指南</span></a>提供清洗后数量、各核种文件、实验条件及其他资源。</p>
+</section>
+<section id="id4">
+<h2>4. 预测化学位移<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>NMRNet 使用发布的模型文件和对应 Python 环境。<code class="docutils literal notranslate"><span class="pre">models_root</span></code> 指向包含 <code class="docutils literal notranslate"><span class="pre">nmrnet/</span></code> 的目录，<code class="docutils literal notranslate"><span class="pre">python</span></code> 指向安装了 NMRNet 依赖的解释器。<a class="reference internal" href="tasks/nmr-forward-13C.html"><span class="std std-doc">模型指南</span></a>介绍所需文件及核种设置。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">NMRNet</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">NMRNet</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+    <span class="s2">"models"</span><span class="p">,</span> <span class="n">nucleus</span><span class="o">=</span><span class="s2">"13C"</span><span class="p">,</span> <span class="n">python</span><span class="o">=</span><span class="s2">"/path/to/nmr-env/bin/python"</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">"CCO"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">"records"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"atom_indices"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">"records"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"prediction_ppm"</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>乙醇示例返回碳原子编号 <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>，位移约为 <code class="docutils literal notranslate"><span class="pre">[17.774,</span> <span class="pre">57.774]</span></code> ppm。原子编号遵循 RDKit 加氢后的 0 起始顺序，可用这些编号把位移标到分子图上。</p>
+</section>
+<section id="id5">
+<h2>5. 与实测峰比较并保存结果<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.benchmark</span><span class="w"> </span><span class="kn">import</span> <span class="n">evaluate_nmr</span>
+
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">evaluate_nmr</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="p">[[</span><span class="mf">18.2</span><span class="p">,</span> <span class="mf">58.3</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
+<span class="n">Path</span><span class="p">(</span><span class="s2">"ethanol-prediction.json"</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_config</span><span class="p">(</span><span class="s2">"nmrnet-config.json"</span><span class="p">)</span>
+<span class="n">restored</span> <span class="o">=</span> <span class="n">NMRNet</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="s2">"nmrnet-config.json"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">evaluate_nmr</span></code> 匹配预测峰与实测峰，并返回误差和覆盖率。结果 JSON 保存逐原子预测及模型来源；配置文件保存模型设置，便于后续加载。</p>
+</section>
+<section id="nmr">
+<h2>6. 使用自己的 NMR 数据训练<a class="headerlink" href="#nmr" title="Link to this heading"></a></h2>
+<p>先安装训练依赖，再按 <a class="reference internal" href="data/nmr.html"><span class="std std-doc">NMR 字段格式</span></a>准备独立的训练、验证 JSONL 文件。每条记录包含分子结构、分子式、谱文本与通道掩码。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[train]"</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularSpectra</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.training</span><span class="w"> </span><span class="kn">import</span> <span class="n">prepare_nmr_training</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">NMRTransformer</span>
+
+<span class="n">custom</span> <span class="o">=</span> <span class="n">MolecularSpectra</span><span class="o">.</span><span class="n">from_jsonl</span><span class="p">(</span>
+    <span class="n">splits</span><span class="o">=</span><span class="p">{</span><span class="s2">"train"</span><span class="p">:</span> <span class="s2">"train.jsonl"</span><span class="p">,</span> <span class="s2">"val"</span><span class="p">:</span> <span class="s2">"val.jsonl"</span><span class="p">},</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"my_nmr"</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">"experimental"</span><span class="p">)</span>
+<span class="n">prepared</span> <span class="o">=</span> <span class="n">prepare_nmr_training</span><span class="p">(</span>
+    <span class="n">custom</span><span class="p">[</span><span class="s2">"train"</span><span class="p">],</span> <span class="n">custom</span><span class="p">[</span><span class="s2">"val"</span><span class="p">],</span> <span class="s2">"prepared-nmr"</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">NMRTransformer</span><span class="p">(</span><span class="n">stage</span><span class="o">=</span><span class="s2">"align"</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">)</span>
+<span class="n">plan</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">training_plan</span><span class="p">(</span>
+    <span class="n">prepared</span><span class="p">,</span> <span class="n">run_dir</span><span class="o">=</span><span class="s2">"runs/my-encoder"</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">plan</span><span class="o">.</span><span class="n">validate</span><span class="p">())</span>
+<span class="n">trained</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">plan</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">trained</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>数据准备会检查分子式、核种标签及训练／验证分子重叠。对齐阶段学习共享的谱与分子表征。训练结构生成器时使用 <code class="docutils literal notranslate"><span class="pre">stage=&quot;generate&quot;</span></code>，并提供保存的对齐 checkpoint。<a class="reference internal" href="notebooks/sdk-training-preflight.html"><span class="std std-doc">训练教程</span></a>逐步介绍数据准备、参数配置、权重保存与重载。</p>
+</section>
+<section id="id6">
+<h2>继续学习<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="tasks/index.html"><span class="std std-doc">Tasks</span></a>: 每个谱学任务的输入、输出与模型调用。</p></li>
+<li><p><a class="reference internal" href="notebooks/index.html"><span class="std std-doc">Tutorials</span></a>: 已执行的示例、图与解释。</p></li>
+<li><p><a class="reference internal" href="api-reference/index.html"><span class="std std-doc">API reference</span></a>: 类、签名、参数与返回值。</p></li>
+<li><p><a class="reference internal" href="harness.html"><span class="std std-doc">Agent Harness</span></a>: Python、CLI 与 MCP 谱学工具。</p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="index.html" class="btn btn-neutral float-left" title="OpenMolSpec" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="data/index.html" class="btn btn-neutral float-right" title="数据" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

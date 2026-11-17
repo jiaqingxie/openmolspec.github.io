@@ -1,0 +1,181 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mass spectrometry &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/theory/ms.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>window.MathJax = {"chtml": {"displayAlign": "left"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Infrared and Raman spectroscopy" href="vibrational.html" />
+    <link rel="prev" title="Nuclear magnetic resonance" href="nmr.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../zh/theory/ms.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">Tasks by spectroscopy family</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Spectroscopy theory</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#references">References</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="nmr.html">Nuclear magnetic resonance</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Mass spectrometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational.html">Infrared and Raman spectroscopy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Spectroscopy theory</a></li>
+      <li class="breadcrumb-item active">Mass spectrometry</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/theory/ms.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="mass-spectrometry">
+<h1>Mass spectrometry<a class="headerlink" href="#mass-spectrometry" title="Link to this heading"></a></h1>
+<section id="molecular-mass-ions-and-adducts">
+<h2>Molecular mass, ions and adducts<a class="headerlink" href="#molecular-mass-ions-and-adducts" title="Link to this heading"></a></h2>
+<p>A mass spectrometer measures ions. The observed coordinate is mass-to-charge ratio, <span class="math notranslate nohighlight">\(m/z\)</span>, rather than neutral molecular mass. Protonation, deprotonation, sodium adduction, charge state and electron mass conventions affect the mapping from a molecular formula to an ion. Exact monoisotopic mass, nominal mass and average molecular weight serve different purposes.</p>
+<p>An isolated reported m/z helps constrain molecular identity. Use complete m/z–intensity peak lists for MS/MS learning and evaluation. <a class="reference internal" href="../data/index.html"><span class="std std-doc">Data</span></a> distinguishes these record forms.</p>
+</section>
+<section id="isotope-patterns-and-resolving-power">
+<h2>Isotope patterns and resolving power<a class="headerlink" href="#isotope-patterns-and-resolving-power" title="Link to this heading"></a></h2>
+<p>Natural isotope abundances produce a distribution of ion masses. In a carbon-only illustration, the number of ¹³C atoms follows a binomial distribution. Real envelopes also depend on hydrogen, nitrogen, oxygen, sulfur, halogens and the ion composition. Resolving power is commonly expressed as <span class="math notranslate nohighlight">\(R=m/\Delta m\)</span>, with the width convention specified, often FWHM.</p>
+<p>The <a class="reference internal" href="../notebooks/theory-ms-isotopes.html"><span class="std std-doc">isotope tutorial</span></a> normalizes a carbon-only probability distribution and shows two resolving powers. It illustrates how isotope abundance and resolving power shape the envelope.</p>
+</section>
+<section id="tandem-mass-spectrometry">
+<h2>Tandem mass spectrometry<a class="headerlink" href="#tandem-mass-spectrometry" title="Link to this heading"></a></h2>
+<p>MS/MS selects a precursor and records product ions after activation. Fragmentation depends on molecular graph, charge localization, adduct, collision energy, instrument and acquisition mode. Relative intensities can change substantially across conditions. Numerical energy values from different instrument conventions are not automatically equivalent.</p>
+<p>GLACIER and ICEBERG in OpenMolSpec require explicit acquisition inputs. MAGMa proposes mass-compatible fragments on a specified graph. A fragment mass match supports a candidate explanation; multiple pathways or isomers may remain possible.</p>
+</section>
+<section id="comparing-spectra">
+<h2>Comparing spectra<a class="headerlink" href="#comparing-spectra" title="Link to this heading"></a></h2>
+<p>For vectors <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, cosine similarity is <span class="math notranslate nohighlight">\((x\cdot y)/(\|x\|\|y\|)\)</span>. Peak tolerance or bin width, normalization, precursor removal, filtering and unassigned-peak handling all affect the result. Report these choices and the spectrum identities with every comparison. Evaluation should also respect molecule, acquisition and source partitions.</p>
+</section>
+<section id="sources">
+<h2>Sources<a class="headerlink" href="#sources" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://huggingface.co/datasets/roman-bushuiev/MassSpecGym">MassSpecGym</a>: versioned experimental MS/MS and benchmark definitions.</p></li>
+<li><p><a class="reference external" href="https://github.com/coleygroup/ms-pred">ms-pred</a>: GLACIER/ICEBERG implementations and model training procedures.</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Bushuiev, R., Bushuiev, A., de Jonge, N. F., Young, A., et al. MassSpecGym: A benchmark for the discovery and identification of molecules. Advances in Neural Information Processing Systems 37, Datasets and Benchmarks Track (2024). arXiv:2410.23326. <a class="reference external" href="https://arxiv.org/abs/2410.23326">Source</a></p></li>
+<li><p>Wang, R.-X., Wang, R. &amp; Coley, C. W. GLACIER: Rethinking Mass Spectrum Prediction as an Object Detection Problem. NeurIPS 2026. arXiv:2606.29161 (2026). <a class="reference external" href="https://arxiv.org/abs/2606.29161">Source</a></p></li>
+<li><p>Wang, R., Manjrekar, M., Mahjour, B., Avila-Pacheco, J., et al. Neural Spectral Prediction for Structure Elucidation with Tandem Mass Spectrometry. bioRxiv (2025). doi:10.1101/2025.05.28.656653. <a class="reference external" href="https://doi.org/10.1101/2025.05.28.656653">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="nmr.html" class="btn btn-neutral float-left" title="Nuclear magnetic resonance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vibrational.html" class="btn btn-neutral float-right" title="Infrared and Raman spectroscopy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

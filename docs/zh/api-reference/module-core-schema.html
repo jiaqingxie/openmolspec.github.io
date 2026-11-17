@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>openmolspec.core.schema &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/api-reference/module-core-schema.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="openmolspec.inversion" href="module-inversion.html" />
+    <link rel="prev" title="openmolspec.core.constants" href="module-core-constants.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../api-reference/module-core-schema.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API 参考</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="category-data.html">数据访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-models.html">模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-learning.html">训练与评测</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="category-spectroscopy.html">谱学与数据结构</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="module-core-constants.html">openmolspec.core.constants</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">openmolspec.core.schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-inversion.html">openmolspec.inversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-parsing-gaussian.html">openmolspec.parsing.gaussian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-parsing-trajectory.html">openmolspec.parsing.trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-core.html">openmolspec.core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-parsing.html">openmolspec.parsing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="category-processing.html">数据处理与发布</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-agents.html">Agent 工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-utilities.html">工具函数</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API 参考</a></li>
+          <li class="breadcrumb-item"><a href="category-spectroscopy.html">谱学与数据结构</a></li>
+      <li class="breadcrumb-item active">openmolspec.core.schema</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api-reference/module-core-schema.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="openmolspec-core-schema">
+<h1>openmolspec.core.schema<a class="headerlink" href="#openmolspec-core-schema" title="Link to this heading"></a></h1>
+<p>Field names, dtypes, shapes and units shared by release builders and validators.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.core.schema.FieldSpec" title="openmolspec.core.schema.FieldSpec"><code class="xref py py-class docutils literal notranslate"><span class="pre">openmolspec.core.schema.FieldSpec</span></code></a></p></td>
+<td><p>Describe one field in the OpenSpec molecular record schema.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.core.schema.schema_as_dict" title="openmolspec.core.schema.schema_as_dict"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.core.schema.schema_as_dict()</span></code></a></p></td>
+<td><p>Return the complete schema as serializable dictionaries.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.core.schema.validate_record_keys" title="openmolspec.core.schema.validate_record_keys"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.core.schema.validate_record_keys()</span></code></a></p></td>
+<td><p>Identify required field names absent from a molecular record.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.core.schema.SCHEMA_VERSION" title="openmolspec.core.schema.SCHEMA_VERSION"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.core.schema.SCHEMA_VERSION</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.core.schema.OPEN_SPEC_V1_SCHEMA" title="openmolspec.core.schema.OPEN_SPEC_V1_SCHEMA"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.core.schema.OPEN_SPEC_V1_SCHEMA</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.core.schema.REQUIRED_FIELDS" title="openmolspec.core.schema.REQUIRED_FIELDS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.core.schema.REQUIRED_FIELDS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.core.schema.SCHEMA_METADATA" title="openmolspec.core.schema.SCHEMA_METADATA"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.core.schema.SCHEMA_METADATA</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class" id="module-openmolspec.core.schema">
+<dt class="sig sig-object py" id="openmolspec.core.schema.FieldSpec">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">openmolspec.core.schema.</span></span><span class="sig-name descname"><span class="pre">FieldSpec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_value_policy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">required</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.core.schema.FieldSpec" title="Link to this definition"></a></dt>
+<dd><p>Describe one field in the OpenSpec molecular record schema.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dtype</strong> (<em>str</em>) -- Logical storage type, such as <code class="docutils literal notranslate"><span class="pre">'float32'</span></code> or <code class="docutils literal notranslate"><span class="pre">'string'</span></code>.</p></li>
+<li><p><strong>shape</strong> (<em>str</em>) -- Scalar or array dimensions, including symbolic atom count <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p></li>
+<li><p><strong>unit</strong> (<em>str</em><em> or </em><em>None</em>) -- Physical unit; <code class="docutils literal notranslate"><span class="pre">None</span></code> denotes a unitless metadata field.</p></li>
+<li><p><strong>missing_value_policy</strong> (<em>str</em>) -- Representation of an unavailable value and its associated flags.</p></li>
+<li><p><strong>description</strong> (<em>str</em>) -- Meaning of the field for a molecular record.</p></li>
+<li><p><strong>required</strong> (<em>bool</em><em>, </em><em>default False</em>) -- Whether the field name must be present in a conforming record.</p></li>
+</ul>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/core/schema.py#L16">Source code</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.core.schema.FieldSpec.as_dict">
+<span class="sig-name descname"><span class="pre">as_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.core.schema.FieldSpec.as_dict" title="Link to this definition"></a></dt>
+<dd><p>Return the field specification as a plain dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dtype, shape, unit, missing-value policy, description and required flag.</p>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/core/schema.py#L42">Source code</a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.core.schema.FieldSpec.dtype">
+<span class="sig-name descname"><span class="pre">dtype</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#openmolspec.core.schema.FieldSpec.dtype" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">dtype</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.core.schema.FieldSpec.shape">
+<span class="sig-name descname"><span class="pre">shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#openmolspec.core.schema.FieldSpec.shape" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">shape</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.core.schema.FieldSpec.unit">
+<span class="sig-name descname"><span class="pre">unit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#openmolspec.core.schema.FieldSpec.unit" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">unit</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.core.schema.FieldSpec.missing_value_policy">
+<span class="sig-name descname"><span class="pre">missing_value_policy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#openmolspec.core.schema.FieldSpec.missing_value_policy" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">missing_value_policy</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.core.schema.FieldSpec.description">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#openmolspec.core.schema.FieldSpec.description" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">description</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="openmolspec.core.schema.FieldSpec.required">
+<span class="sig-name descname"><span class="pre">required</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#openmolspec.core.schema.FieldSpec.required" title="Link to this definition"></a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">required</span></code> field; see the constructor parameter description.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.core.schema.schema_as_dict">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.core.schema.</span></span><span class="sig-name descname"><span class="pre">schema_as_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.core.schema.schema_as_dict" title="Link to this definition"></a></dt>
+<dd><p>Return the complete schema as serializable dictionaries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'schema'</span></code> contains version and processing metadata; <code class="docutils literal notranslate"><span class="pre">'fields'</span></code>
+maps every molecular record field to its <a class="reference internal" href="#openmolspec.core.schema.FieldSpec" title="openmolspec.core.schema.FieldSpec"><code class="xref py py-class docutils literal notranslate"><span class="pre">FieldSpec</span></code></a> values.</p>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/core/schema.py#L149">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.core.schema.validate_record_keys">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.core.schema.</span></span><span class="sig-name descname"><span class="pre">validate_record_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.core.schema.validate_record_keys" title="Link to this definition"></a></dt>
+<dd><p>Identify required field names absent from a molecular record.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>record</strong> (<em>mapping</em>) -- Molecular record whose keys are checked against <code class="docutils literal notranslate"><span class="pre">REQUIRED_FIELDS</span></code>.</p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>Required field names missing from the record, in schema order.</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple of str</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/core/schema.py#L165">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.core.schema.SCHEMA_VERSION">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.core.schema.</span></span><span class="sig-name descname"><span class="pre">SCHEMA_VERSION</span></span><a class="headerlink" href="#openmolspec.core.schema.SCHEMA_VERSION" title="Link to this definition"></a></dt>
+<dd><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/core/schema.py#L72">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.core.schema.OPEN_SPEC_V1_SCHEMA">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.core.schema.</span></span><span class="sig-name descname"><span class="pre">OPEN_SPEC_V1_SCHEMA</span></span><a class="headerlink" href="#openmolspec.core.schema.OPEN_SPEC_V1_SCHEMA" title="Link to this definition"></a></dt>
+<dd><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/core/schema.py#L74">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.core.schema.REQUIRED_FIELDS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.core.schema.</span></span><span class="sig-name descname"><span class="pre">REQUIRED_FIELDS</span></span><a class="headerlink" href="#openmolspec.core.schema.REQUIRED_FIELDS" title="Link to this definition"></a></dt>
+<dd><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/core/schema.py#L134">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.core.schema.SCHEMA_METADATA">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.core.schema.</span></span><span class="sig-name descname"><span class="pre">SCHEMA_METADATA</span></span><a class="headerlink" href="#openmolspec.core.schema.SCHEMA_METADATA" title="Link to this definition"></a></dt>
+<dd><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/core/schema.py#L139">Source code</a></p>
+</dd></dl>
+
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="module-core-constants.html" class="btn btn-neutral float-left" title="openmolspec.core.constants" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="module-inversion.html" class="btn btn-neutral float-right" title="openmolspec.inversion" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

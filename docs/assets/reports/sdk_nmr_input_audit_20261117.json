@@ -1,0 +1,267 @@
+{
+  "audited_at": "2026-11-16T19:19:00.812557+00:00",
+  "training_performed": false,
+  "scope": "Complete scans of four local evaluation JSONLs; not the full OpenDataLab corpus",
+  "interpretation": "Flags require source review. No records were changed, deleted or relabeled.",
+  "datasets": {
+    "nmrspec_test": {
+      "path": "../data/align_eval/nmrspec_test/test.jsonl",
+      "sha256": "256ca2d733db0103e99aad5855bc66b73e3a0bd2117ce2bd3204b63eff0f67a2",
+      "counts": {
+        "records": 10000,
+        "records_with_any_flag": 0
+      },
+      "examples": {}
+    },
+    "patent_test_10k": {
+      "path": "../data/align_eval/patent_test_10k/test.jsonl",
+      "sha256": "4f90649fce7bbc0d1aa92056baf46ff28ca15b95880f0af8c269b87057e5808a",
+      "counts": {
+        "records": 10000,
+        "records_with_any_flag": 5,
+        "H_records_without_nucleus_in_structure": 5,
+        "C_records_without_nucleus_in_structure": 2
+      },
+      "examples": {
+        "H_records_without_nucleus_in_structure": [
+          {
+            "line": 216,
+            "record": {
+              "inchi": "InChI=1S/3C6H2Cl4O2.Nb/c3*7-1-2(8)4(10)6(12)5(11)3(1)9;/h3*11-12H;/q;;;+6/p-6",
+              "smiles": "Clc1c(Cl)c(Cl)c2c(c1Cl)O[Nb]13(O2)(Oc2c(Cl)c(Cl)c(Cl)c(Cl)c2O1)Oc1c(Cl)c(Cl)c(Cl)c(Cl)c1O3",
+              "formula": "C18Cl12NbO6",
+              "h_nmr": [
+                {
+                  "type": "1H NMR",
+                  "chemical_shift": "16.73 (s, 1H), 4.08 (br, 8H), 1.44 (br, 12H)",
+                  "frequency": "400 MHz",
+                  "solvent": "CD2Cl2",
+                  "source_line": 1214
+                }
+              ],
+              "c_nmr": [],
+              "modality_mask": [
+                1,
+                0
+              ],
+              "scaffold": "c1ccc2c(c1)O[Nb]13(O2)(Oc2ccccc2O1)Oc1ccccc1O3",
+              "patent_id": "2021/US11168100-20211109",
+              "year": "2021",
+              "source": "USPTO",
+              "source_rows": 1,
+              "smiles_variants": 1,
+              "h_smiles": "Clc1c(Cl)c(Cl)c2c(c1Cl)O[Nb]13(O2)(Oc2c(Cl)c(Cl)c(Cl)c(Cl)c2O1)Oc1c(Cl)c(Cl)c(Cl)c(Cl)c1O3",
+              "c_smiles": null,
+              "h_provenance": {
+                "patent_id": "2021/US11168100-20211109",
+                "year": "2021",
+                "source": "USPTO"
+              },
+              "c_provenance": null
+            }
+          },
+          {
+            "line": 222,
+            "record": {
+              "inchi": "InChI=1S/Ag.2BrH/h;2*1H/q+1;;/p-2",
+              "smiles": "Br[Ag-]Br",
+              "formula": "AgBr2-",
+              "h_nmr": [
+                {
+                  "type": "1H NMR",
+                  "chemical_shift": "-21.76 (t, J=23.5 Hz, 1H), 2.90 (s, 6H), 3.42 (m, 4H), 3.58 (m, 4H), 6.44 (d, J=1.9 Hz, 2H), 6.67 (d, J=1.9 Hz, 2H), 7.09-7.15 (m, 12H), 7.20 (t, J=7.3 Hz, 12H), 7.28 (t, J=7.1 Hz, 6H)",
+                  "frequency": "400 MHz",
+                  "solvent": "CD2Cl2",
+                  "source_line": 1092
+                }
+              ],
+              "c_nmr": [
+                {
+                  "type": "13C NMR",
+                  "chemical_shift": "37.60, 49.95, 72.53, 121.42, 123.61, 127.99, 128.86, 132.94, 138.31, 191.56",
+                  "frequency": "100 MHz",
+                  "solvent": "CD2Cl2",
+                  "source_line": 1093
+                }
+              ],
+              "modality_mask": [
+                1,
+                1
+              ],
+              "scaffold": "acyclic:Br[Ag-]Br",
+              "patent_id": "2015/US20150057450A1-20150226",
+              "year": "2015",
+              "source": "Pistachio",
+              "source_rows": 2,
+              "smiles_variants": 1,
+              "h_smiles": "Br[Ag-]Br",
+              "c_smiles": "Br[Ag-]Br",
+              "h_provenance": {
+                "patent_id": "2015/US20150057450A1-20150226",
+                "year": "2015",
+                "source": "Pistachio"
+              },
+              "c_provenance": {
+                "patent_id": "2015/US20150057450A1-20150226",
+                "year": "2015",
+                "source": "Pistachio"
+              }
+            }
+          },
+          {
+            "line": 223,
+            "record": {
+              "inchi": "InChI=1S/B.ClPS.2Tc/c;1-2-3;;/i;;1-95;1-96",
+              "smiles": "S=P(\\Cl)=[2Tc]/B=[3Tc]",
+              "formula": "BClPSTc2",
+              "h_nmr": [
+                {
+                  "type": "1H NMR",
+                  "chemical_shift": "9.53 (s, 1H), 8.27-7.87 (m, 2H), 7.42 (d, J=8 Hz, 1H), 7.29-7.15 (m, 2H), 6.92-6.77 (m, 2H), 5.02-4.77 (m, 3H), 4.56-4.27 (m, 2H), 3.37 (s, 3H), 3.06-2.60 (m, 2H), 1.56-1.42 (m, 12H)",
+                  "frequency": "300 MHz",
+                  "solvent": "CDCl3",
+                  "source_line": 763
+                }
+              ],
+              "c_nmr": [],
+              "modality_mask": [
+                1,
+                0
+              ],
+              "scaffold": "acyclic:S=P(\\Cl)=[2Tc]/B=[3Tc]",
+              "patent_id": "2002/US20020137686A1-20020926",
+              "year": "2002",
+              "source": "Pistachio",
+              "source_rows": 1,
+              "smiles_variants": 1,
+              "h_smiles": "S=P(\\Cl)=[2Tc]/B=[3Tc]",
+              "c_smiles": null,
+              "h_provenance": {
+                "patent_id": "2002/US20020137686A1-20020926",
+                "year": "2002",
+                "source": "Pistachio"
+              },
+              "c_provenance": null
+            }
+          }
+        ],
+        "C_records_without_nucleus_in_structure": [
+          {
+            "line": 222,
+            "record": {
+              "inchi": "InChI=1S/Ag.2BrH/h;2*1H/q+1;;/p-2",
+              "smiles": "Br[Ag-]Br",
+              "formula": "AgBr2-",
+              "h_nmr": [
+                {
+                  "type": "1H NMR",
+                  "chemical_shift": "-21.76 (t, J=23.5 Hz, 1H), 2.90 (s, 6H), 3.42 (m, 4H), 3.58 (m, 4H), 6.44 (d, J=1.9 Hz, 2H), 6.67 (d, J=1.9 Hz, 2H), 7.09-7.15 (m, 12H), 7.20 (t, J=7.3 Hz, 12H), 7.28 (t, J=7.1 Hz, 6H)",
+                  "frequency": "400 MHz",
+                  "solvent": "CD2Cl2",
+                  "source_line": 1092
+                }
+              ],
+              "c_nmr": [
+                {
+                  "type": "13C NMR",
+                  "chemical_shift": "37.60, 49.95, 72.53, 121.42, 123.61, 127.99, 128.86, 132.94, 138.31, 191.56",
+                  "frequency": "100 MHz",
+                  "solvent": "CD2Cl2",
+                  "source_line": 1093
+                }
+              ],
+              "modality_mask": [
+                1,
+                1
+              ],
+              "scaffold": "acyclic:Br[Ag-]Br",
+              "patent_id": "2015/US20150057450A1-20150226",
+              "year": "2015",
+              "source": "Pistachio",
+              "source_rows": 2,
+              "smiles_variants": 1,
+              "h_smiles": "Br[Ag-]Br",
+              "c_smiles": "Br[Ag-]Br",
+              "h_provenance": {
+                "patent_id": "2015/US20150057450A1-20150226",
+                "year": "2015",
+                "source": "Pistachio"
+              },
+              "c_provenance": {
+                "patent_id": "2015/US20150057450A1-20150226",
+                "year": "2015",
+                "source": "Pistachio"
+              }
+            }
+          },
+          {
+            "line": 224,
+            "record": {
+              "inchi": "InChI=1S/BrH/h1H/p-1",
+              "smiles": "[Br-]",
+              "formula": "Br-",
+              "h_nmr": [
+                {
+                  "type": "1H NMR",
+                  "chemical_shift": "5.40 (dd, J=3.5, 1.0 Hz, 1H), 5.24 (dd, J=10.9, 8.0 Hz, 1H), 5.03 (dd, J=10.3, 3.4 Hz, 1H), 4.54 (d, J=8.0 Hz, 1H), 4.17-4.21 (m, 2H), 4.12 (dd, J=11.2, 6.6 Hz, 1H), 3.92 (td, J=6.6, 1.1 Hz, 1H), 3.80-3.85 (m, 1H), 3.46-3.51 (m, 2H), 2.16 (s, 3H), 2.09 (s, 3H), 2.06 (s, 3H), 1.99 (s, 3H)",
+                  "frequency": "500 MHz",
+                  "solvent": "CDCl3",
+                  "source_line": 381
+                }
+              ],
+              "c_nmr": [
+                {
+                  "type": "13C NMR",
+                  "chemical_shift": "149.6, 144.3, 135.0, 113.4, 111.1, 106.3, 102.0-100.7 (m), 56.9",
+                  "frequency": "126 MHz",
+                  "solvent": "CDCl3",
+                  "source_line": 1708
+                }
+              ],
+              "modality_mask": [
+                1,
+                1
+              ],
+              "scaffold": "acyclic:[Br-]",
+              "patent_id": "2006/US07138400-20061121",
+              "year": "2006",
+              "source": "patentchem",
+              "source_rows": 15,
+              "smiles_variants": 1,
+              "h_smiles": "[Br-]",
+              "c_smiles": "[Br-]",
+              "h_provenance": {
+                "patent_id": "2023/EP21784026NWA1",
+                "year": "2023",
+                "source": "EPO"
+              },
+              "c_provenance": {
+                "patent_id": "2024/US12084456-20240910",
+                "year": "2024",
+                "source": "USPTO"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "nmrexp_exp_10k": {
+      "path": "../data/align_eval/nmrexp_exp_10k/test.jsonl",
+      "sha256": "e074dab3cc749e126bea8abc348a46f895dd033e5b45a21cacb28035741a2d11",
+      "counts": {
+        "records": 9183,
+        "records_with_any_flag": 0
+      },
+      "examples": {}
+    },
+    "nmrgym_test": {
+      "path": "../data/align_eval/nmrgym_test/test.jsonl",
+      "sha256": "bf8cb0cdcaf19884349e15230206c6110a29b479b1a04bec7ec0b9e5bff3ff9b",
+      "counts": {
+        "records": 10000,
+        "records_with_any_flag": 0
+      },
+      "examples": {}
+    }
+  }
+}

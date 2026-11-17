@@ -1,0 +1,1440 @@
+{
+  "task": "nmr.assignment",
+  "enabled": true,
+  "source_files": [
+    "assignment_carbon32_20261116.json"
+  ],
+  "runs": [
+    {
+      "dataset": "recorded evaluation",
+      "status": "passed",
+      "metrics": {
+        "molecules": 32,
+        "matched_peaks": 488,
+        "matched_peak_fraction_macro": 0.9392376720501721,
+        "matched_residual_mae_ppm": 0.8991307922920895,
+        "assignment_accuracy": null
+      }
+    }
+  ],
+  "examples": [
+    {
+      "input": {
+        "smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+        "nucleus": "13C",
+        "peaks_ppm": [
+          150.22,
+          148.03,
+          142.68,
+          138.28,
+          128.36,
+          128.22,
+          125.68,
+          125.58,
+          125.12,
+          111.51,
+          35.72,
+          35.03,
+          34.46,
+          31.32,
+          31.11,
+          27.93
+        ],
+        "note": "Assigned observed peaks; unmatched indices retained in output"
+      },
+      "output": {
+        "smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+        "symbol": "C",
+        "mapped_smiles": "[C:1](=[C:2]([C:3]([C:4]([C:5]([C:6]([c:7]1[c:8]([H:33])[c:9]([H:34])[c:10]([H:35])[c:11]([H:36])[c:12]1[H:37])([H:31])[H:32])([H:29])[H:30])([H:27])[H:28])([H:25])[H:26])[c:13]1[c:14]([H:38])[c:15]([H:39])[c:16]([C:17]([C:18]([H:40])([H:41])[H:42])([C:19]([H:43])([H:44])[H:45])[C:20]([H:46])([H:47])[H:48])[c:21]([H:49])[c:22]1[H:50])([H:23])[H:24]",
+        "atom_index_basis": "zero-based RDKit AddHs(input_smiles); atom-map numbers = index + 1",
+        "equivalence": "topological symmetry including chirality; not proof of magnetic equivalence",
+        "assignments": [
+          {
+            "peak_index": 0,
+            "observed_ppm": 150.22,
+            "atom_indices": [
+              15
+            ],
+            "predicted_ppm": 150.09881591796875,
+            "absolute_error_ppm": 0.12118408203124886,
+            "other_sites_within_tolerance": [
+              1
+            ]
+          },
+          {
+            "peak_index": 1,
+            "observed_ppm": 148.03,
+            "atom_indices": [
+              1
+            ],
+            "predicted_ppm": 148.56301879882812,
+            "absolute_error_ppm": 0.5330187988281239,
+            "other_sites_within_tolerance": [
+              13
+            ]
+          },
+          {
+            "peak_index": 2,
+            "observed_ppm": 142.68,
+            "atom_indices": [
+              6
+            ],
+            "predicted_ppm": 142.5129852294922,
+            "absolute_error_ppm": 0.16701477050781932,
+            "other_sites_within_tolerance": [
+              10
+            ]
+          },
+          {
+            "peak_index": 3,
+            "observed_ppm": 138.28,
+            "atom_indices": [
+              12
+            ],
+            "predicted_ppm": 139.7798614501953,
+            "absolute_error_ppm": 1.4998614501953114,
+            "other_sites_within_tolerance": [
+              6
+            ]
+          },
+          {
+            "peak_index": 4,
+            "observed_ppm": 128.36,
+            "atom_indices": [
+              8,
+              10
+            ],
+            "predicted_ppm": 128.52506256103516,
+            "absolute_error_ppm": 0.1650625610351426,
+            "other_sites_within_tolerance": [
+              7,
+              9,
+              11,
+              12
+            ]
+          },
+          {
+            "peak_index": 5,
+            "observed_ppm": 128.22,
+            "atom_indices": [
+              7,
+              11
+            ],
+            "predicted_ppm": 128.537353515625,
+            "absolute_error_ppm": 0.31735351562500114,
+            "other_sites_within_tolerance": [
+              8,
+              9,
+              11,
+              12
+            ]
+          },
+          {
+            "peak_index": 6,
+            "observed_ppm": 125.68,
+            "atom_indices": [
+              13,
+              21
+            ],
+            "predicted_ppm": 126.19123458862305,
+            "absolute_error_ppm": 0.51123458862304,
+            "other_sites_within_tolerance": [
+              7,
+              8,
+              9,
+              12
+            ]
+          },
+          {
+            "peak_index": 7,
+            "observed_ppm": 125.58,
+            "atom_indices": [
+              9
+            ],
+            "predicted_ppm": 126.21155548095703,
+            "absolute_error_ppm": 0.631555480957033,
+            "other_sites_within_tolerance": [
+              7,
+              8,
+              11,
+              12
+            ]
+          },
+          {
+            "peak_index": 8,
+            "observed_ppm": 125.12,
+            "atom_indices": [
+              14,
+              20
+            ],
+            "predicted_ppm": 125.48467254638672,
+            "absolute_error_ppm": 0.3646725463867142,
+            "other_sites_within_tolerance": [
+              7,
+              8,
+              9,
+              11
+            ]
+          },
+          {
+            "peak_index": 9,
+            "observed_ppm": 111.51,
+            "atom_indices": [
+              0
+            ],
+            "predicted_ppm": 111.92984008789062,
+            "absolute_error_ppm": 0.4198400878906199,
+            "other_sites_within_tolerance": []
+          },
+          {
+            "peak_index": 10,
+            "observed_ppm": 35.72,
+            "atom_indices": [
+              5
+            ],
+            "predicted_ppm": 35.74638366699219,
+            "absolute_error_ppm": 0.026383666992188637,
+            "other_sites_within_tolerance": [
+              2,
+              4,
+              14,
+              15
+            ]
+          },
+          {
+            "peak_index": 11,
+            "observed_ppm": 35.03,
+            "atom_indices": [
+              2
+            ],
+            "predicted_ppm": 34.59314727783203,
+            "absolute_error_ppm": 0.4368527221679699,
+            "other_sites_within_tolerance": [
+              4,
+              5,
+              14,
+              15
+            ]
+          },
+          {
+            "peak_index": 12,
+            "observed_ppm": 34.46,
+            "atom_indices": [
+              16
+            ],
+            "predicted_ppm": 34.164398193359375,
+            "absolute_error_ppm": 0.29560180664062585,
+            "other_sites_within_tolerance": [
+              2,
+              4,
+              5,
+              15
+            ]
+          },
+          {
+            "peak_index": 13,
+            "observed_ppm": 31.32,
+            "atom_indices": [
+              17,
+              18,
+              19
+            ],
+            "predicted_ppm": 31.490572611490887,
+            "absolute_error_ppm": 0.17057261149088632,
+            "other_sites_within_tolerance": [
+              2,
+              3,
+              4,
+              5,
+              14
+            ]
+          },
+          {
+            "peak_index": 14,
+            "observed_ppm": 31.11,
+            "atom_indices": [
+              4
+            ],
+            "predicted_ppm": 30.951845169067383,
+            "absolute_error_ppm": 0.15815483093261662,
+            "other_sites_within_tolerance": [
+              2,
+              3,
+              5,
+              14,
+              15
+            ]
+          },
+          {
+            "peak_index": 15,
+            "observed_ppm": 27.93,
+            "atom_indices": [
+              3
+            ],
+            "predicted_ppm": 27.1068172454834,
+            "absolute_error_ppm": 0.8231827545166013,
+            "other_sites_within_tolerance": [
+              4,
+              15
+            ]
+          }
+        ],
+        "unmatched_peak_indices": [],
+        "unmatched_sites": [],
+        "sites": [
+          {
+            "atom_indices": [
+              0
+            ],
+            "predicted_ppm": 111.92984008789062
+          },
+          {
+            "atom_indices": [
+              1
+            ],
+            "predicted_ppm": 148.56301879882812
+          },
+          {
+            "atom_indices": [
+              2
+            ],
+            "predicted_ppm": 34.59314727783203
+          },
+          {
+            "atom_indices": [
+              3
+            ],
+            "predicted_ppm": 27.1068172454834
+          },
+          {
+            "atom_indices": [
+              4
+            ],
+            "predicted_ppm": 30.951845169067383
+          },
+          {
+            "atom_indices": [
+              5
+            ],
+            "predicted_ppm": 35.74638366699219
+          },
+          {
+            "atom_indices": [
+              6
+            ],
+            "predicted_ppm": 142.5129852294922
+          },
+          {
+            "atom_indices": [
+              7,
+              11
+            ],
+            "predicted_ppm": 128.537353515625
+          },
+          {
+            "atom_indices": [
+              8,
+              10
+            ],
+            "predicted_ppm": 128.52506256103516
+          },
+          {
+            "atom_indices": [
+              9
+            ],
+            "predicted_ppm": 126.21155548095703
+          },
+          {
+            "atom_indices": [
+              12
+            ],
+            "predicted_ppm": 139.7798614501953
+          },
+          {
+            "atom_indices": [
+              13,
+              21
+            ],
+            "predicted_ppm": 126.19123458862305
+          },
+          {
+            "atom_indices": [
+              14,
+              20
+            ],
+            "predicted_ppm": 125.48467254638672
+          },
+          {
+            "atom_indices": [
+              15
+            ],
+            "predicted_ppm": 150.09881591796875
+          },
+          {
+            "atom_indices": [
+              16
+            ],
+            "predicted_ppm": 34.164398193359375
+          },
+          {
+            "atom_indices": [
+              17,
+              18,
+              19
+            ],
+            "predicted_ppm": 31.490572611490887
+          }
+        ],
+        "tolerance_ppm": 5.0,
+        "matched_fraction": 1.0,
+        "assignment_accuracy": null,
+        "accuracy_note": "Predicted assignments; experimental atom labels are not supplied."
+      }
+    },
+    {
+      "input": {
+        "smiles": "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+        "nucleus": "13C",
+        "peaks_ppm": [
+          168.1,
+          144.0,
+          141.2,
+          139.0,
+          128.7,
+          128.2,
+          127.0,
+          126.9,
+          126.8,
+          59.9,
+          51.1,
+          39.2,
+          19.8,
+          19.7,
+          14.3
+        ],
+        "note": "Assigned observed peaks; unmatched indices retained in output"
+      },
+      "output": {
+        "smiles": "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+        "symbol": "C",
+        "mapped_smiles": "[C:1]([C:2]([O:3][C:4](=[O:5])[C:6]1=[C:7]([C:8]([H:35])([H:36])[H:37])[N:9]([H:38])[C:10]([C:11]([H:40])([H:41])[H:42])([H:39])[C:12]([C:13]([H:43])([H:44])[H:45])([C:14](=[O:15])[O-:16])[C:17]1([c:18]1[c:19]([H:47])[c:20]([H:48])[c:21](-[c:22]2[c:23]([H:49])[c:24]([H:50])[c:25]([H:51])[c:26]([H:52])[c:27]2[H:53])[c:28]([H:54])[c:29]1[H:55])[H:46])([H:33])[H:34])([H:30])([H:31])[H:32]",
+        "atom_index_basis": "zero-based RDKit AddHs(input_smiles); atom-map numbers = index + 1",
+        "equivalence": "topological symmetry including chirality; not proof of magnetic equivalence",
+        "assignments": [
+          {
+            "peak_index": 0,
+            "observed_ppm": 168.1,
+            "atom_indices": [
+              3
+            ],
+            "predicted_ppm": 169.51910400390625,
+            "absolute_error_ppm": 1.4191040039062557,
+            "other_sites_within_tolerance": []
+          },
+          {
+            "peak_index": 4,
+            "observed_ppm": 144.0,
+            "atom_indices": [
+              17
+            ],
+            "predicted_ppm": 142.0853271484375,
+            "absolute_error_ppm": 1.9146728515625,
+            "other_sites_within_tolerance": [
+              15,
+              16
+            ]
+          },
+          {
+            "peak_index": 5,
+            "observed_ppm": 141.2,
+            "atom_indices": [
+              21
+            ],
+            "predicted_ppm": 140.38922119140625,
+            "absolute_error_ppm": 0.8107788085937386,
+            "other_sites_within_tolerance": [
+              12,
+              15
+            ]
+          },
+          {
+            "peak_index": 6,
+            "observed_ppm": 139.0,
+            "atom_indices": [
+              20
+            ],
+            "predicted_ppm": 140.2573699951172,
+            "absolute_error_ppm": 1.2573699951171875,
+            "other_sites_within_tolerance": [
+              12,
+              16
+            ]
+          },
+          {
+            "peak_index": 7,
+            "observed_ppm": 128.7,
+            "atom_indices": [
+              23,
+              25
+            ],
+            "predicted_ppm": 128.7144546508789,
+            "absolute_error_ppm": 0.014454650878917619,
+            "other_sites_within_tolerance": [
+              13,
+              14,
+              17,
+              19
+            ]
+          },
+          {
+            "peak_index": 8,
+            "observed_ppm": 128.2,
+            "atom_indices": [
+              18,
+              28
+            ],
+            "predicted_ppm": 128.07968521118164,
+            "absolute_error_ppm": 0.120314788818348,
+            "other_sites_within_tolerance": [
+              14,
+              17,
+              18,
+              19
+            ]
+          },
+          {
+            "peak_index": 9,
+            "observed_ppm": 127.0,
+            "atom_indices": [
+              19,
+              27
+            ],
+            "predicted_ppm": 126.98398208618164,
+            "absolute_error_ppm": 0.016017913818359375,
+            "other_sites_within_tolerance": [
+              13,
+              17,
+              18,
+              19
+            ]
+          },
+          {
+            "peak_index": 10,
+            "observed_ppm": 126.9,
+            "atom_indices": [
+              24
+            ],
+            "predicted_ppm": 126.97576904296875,
+            "absolute_error_ppm": 0.07576904296874432,
+            "other_sites_within_tolerance": [
+              13,
+              14,
+              17,
+              18
+            ]
+          },
+          {
+            "peak_index": 11,
+            "observed_ppm": 126.8,
+            "atom_indices": [
+              22,
+              26
+            ],
+            "predicted_ppm": 126.68981552124023,
+            "absolute_error_ppm": 0.11018447875976278,
+            "other_sites_within_tolerance": [
+              13,
+              14,
+              18,
+              19
+            ]
+          },
+          {
+            "peak_index": 14,
+            "observed_ppm": 59.9,
+            "atom_indices": [
+              1
+            ],
+            "predicted_ppm": 59.17812728881836,
+            "absolute_error_ppm": 0.7218727111816392,
+            "other_sites_within_tolerance": [
+              6
+            ]
+          },
+          {
+            "peak_index": 15,
+            "observed_ppm": 51.1,
+            "atom_indices": [
+              11
+            ],
+            "predicted_ppm": 50.45841598510742,
+            "absolute_error_ppm": 0.6415840148925795,
+            "other_sites_within_tolerance": [
+              6
+            ]
+          },
+          {
+            "peak_index": 16,
+            "observed_ppm": 39.2,
+            "atom_indices": [
+              16
+            ],
+            "predicted_ppm": 43.24230194091797,
+            "absolute_error_ppm": 4.042301940917966,
+            "other_sites_within_tolerance": []
+          },
+          {
+            "peak_index": 17,
+            "observed_ppm": 19.8,
+            "atom_indices": [
+              7
+            ],
+            "predicted_ppm": 20.057470321655273,
+            "absolute_error_ppm": 0.2574703216552727,
+            "other_sites_within_tolerance": [
+              9
+            ]
+          },
+          {
+            "peak_index": 18,
+            "observed_ppm": 19.7,
+            "atom_indices": [
+              12
+            ],
+            "predicted_ppm": 19.293432235717773,
+            "absolute_error_ppm": 0.40656776428222585,
+            "other_sites_within_tolerance": [
+              5
+            ]
+          },
+          {
+            "peak_index": 19,
+            "observed_ppm": 14.3,
+            "atom_indices": [
+              0
+            ],
+            "predicted_ppm": 14.498011589050293,
+            "absolute_error_ppm": 0.19801158905029226,
+            "other_sites_within_tolerance": [
+              7,
+              9
+            ]
+          }
+        ],
+        "unmatched_peak_indices": [
+          1,
+          2,
+          3,
+          12,
+          13
+        ],
+        "unmatched_sites": [
+          {
+            "atom_indices": [
+              5
+            ],
+            "predicted_ppm": 96.5701675415039
+          },
+          {
+            "atom_indices": [
+              6
+            ],
+            "predicted_ppm": 154.8041229248047
+          },
+          {
+            "atom_indices": [
+              9
+            ],
+            "predicted_ppm": 56.00575256347656
+          },
+          {
+            "atom_indices": [
+              10
+            ],
+            "predicted_ppm": 14.66994857788086
+          },
+          {
+            "atom_indices": [
+              13
+            ],
+            "predicted_ppm": 178.74996948242188
+          }
+        ],
+        "sites": [
+          {
+            "atom_indices": [
+              0
+            ],
+            "predicted_ppm": 14.498011589050293
+          },
+          {
+            "atom_indices": [
+              1
+            ],
+            "predicted_ppm": 59.17812728881836
+          },
+          {
+            "atom_indices": [
+              3
+            ],
+            "predicted_ppm": 169.51910400390625
+          },
+          {
+            "atom_indices": [
+              5
+            ],
+            "predicted_ppm": 96.5701675415039
+          },
+          {
+            "atom_indices": [
+              6
+            ],
+            "predicted_ppm": 154.8041229248047
+          },
+          {
+            "atom_indices": [
+              7
+            ],
+            "predicted_ppm": 20.057470321655273
+          },
+          {
+            "atom_indices": [
+              9
+            ],
+            "predicted_ppm": 56.00575256347656
+          },
+          {
+            "atom_indices": [
+              10
+            ],
+            "predicted_ppm": 14.66994857788086
+          },
+          {
+            "atom_indices": [
+              11
+            ],
+            "predicted_ppm": 50.45841598510742
+          },
+          {
+            "atom_indices": [
+              12
+            ],
+            "predicted_ppm": 19.293432235717773
+          },
+          {
+            "atom_indices": [
+              13
+            ],
+            "predicted_ppm": 178.74996948242188
+          },
+          {
+            "atom_indices": [
+              16
+            ],
+            "predicted_ppm": 43.24230194091797
+          },
+          {
+            "atom_indices": [
+              17
+            ],
+            "predicted_ppm": 142.0853271484375
+          },
+          {
+            "atom_indices": [
+              18,
+              28
+            ],
+            "predicted_ppm": 128.07968521118164
+          },
+          {
+            "atom_indices": [
+              19,
+              27
+            ],
+            "predicted_ppm": 126.98398208618164
+          },
+          {
+            "atom_indices": [
+              20
+            ],
+            "predicted_ppm": 140.2573699951172
+          },
+          {
+            "atom_indices": [
+              21
+            ],
+            "predicted_ppm": 140.38922119140625
+          },
+          {
+            "atom_indices": [
+              22,
+              26
+            ],
+            "predicted_ppm": 126.68981552124023
+          },
+          {
+            "atom_indices": [
+              23,
+              25
+            ],
+            "predicted_ppm": 128.7144546508789
+          },
+          {
+            "atom_indices": [
+              24
+            ],
+            "predicted_ppm": 126.97576904296875
+          }
+        ],
+        "tolerance_ppm": 5.0,
+        "matched_fraction": 0.75,
+        "assignment_accuracy": null,
+        "accuracy_note": "Predicted assignments; experimental atom labels are not supplied."
+      }
+    },
+    {
+      "input": {
+        "smiles": "COc1ccccc1-n1nnc2ccccc21",
+        "nucleus": "13C",
+        "peaks_ppm": [
+          153.75,
+          145.7,
+          134.13,
+          131.02,
+          128.17,
+          127.52,
+          125.38,
+          123.83,
+          121.12,
+          119.88,
+          112.43,
+          111.17,
+          55.85
+        ],
+        "note": "Assigned observed peaks; unmatched indices retained in output"
+      },
+      "output": {
+        "smiles": "COc1ccccc1-n1nnc2ccccc21",
+        "symbol": "C",
+        "mapped_smiles": "[C:1]([O:2][c:3]1[c:4]([H:21])[c:5]([H:22])[c:6]([H:23])[c:7]([H:24])[c:8]1-[n:9]1[n:10][n:11][c:12]2[c:13]([H:25])[c:14]([H:26])[c:15]([H:27])[c:16]([H:28])[c:17]12)([H:18])([H:19])[H:20]",
+        "atom_index_basis": "zero-based RDKit AddHs(input_smiles); atom-map numbers = index + 1",
+        "equivalence": "topological symmetry including chirality; not proof of magnetic equivalence",
+        "assignments": [
+          {
+            "peak_index": 0,
+            "observed_ppm": 153.75,
+            "atom_indices": [
+              2
+            ],
+            "predicted_ppm": 152.29034423828125,
+            "absolute_error_ppm": 1.45965576171875,
+            "other_sites_within_tolerance": []
+          },
+          {
+            "peak_index": 1,
+            "observed_ppm": 145.7,
+            "atom_indices": [
+              11
+            ],
+            "predicted_ppm": 145.75225830078125,
+            "absolute_error_ppm": 0.05225830078126137,
+            "other_sites_within_tolerance": []
+          },
+          {
+            "peak_index": 2,
+            "observed_ppm": 134.13,
+            "atom_indices": [
+              16
+            ],
+            "predicted_ppm": 133.663818359375,
+            "absolute_error_ppm": 0.46618164062499545,
+            "other_sites_within_tolerance": [
+              3
+            ]
+          },
+          {
+            "peak_index": 3,
+            "observed_ppm": 131.02,
+            "atom_indices": [
+              4
+            ],
+            "predicted_ppm": 129.50868225097656,
+            "absolute_error_ppm": 1.5113177490234477,
+            "other_sites_within_tolerance": [
+              10,
+              12
+            ]
+          },
+          {
+            "peak_index": 4,
+            "observed_ppm": 128.17,
+            "atom_indices": [
+              14
+            ],
+            "predicted_ppm": 127.53754425048828,
+            "absolute_error_ppm": 0.6324557495117062,
+            "other_sites_within_tolerance": [
+              3,
+              5,
+              6,
+              9
+            ]
+          },
+          {
+            "peak_index": 5,
+            "observed_ppm": 127.52,
+            "atom_indices": [
+              7
+            ],
+            "predicted_ppm": 125.65699005126953,
+            "absolute_error_ppm": 1.8630099487304648,
+            "other_sites_within_tolerance": [
+              3,
+              5,
+              9,
+              10
+            ]
+          },
+          {
+            "peak_index": 6,
+            "observed_ppm": 125.38,
+            "atom_indices": [
+              6
+            ],
+            "predicted_ppm": 125.24679565429688,
+            "absolute_error_ppm": 0.13320434570312045,
+            "other_sites_within_tolerance": [
+              3,
+              4,
+              6,
+              9,
+              10
+            ]
+          },
+          {
+            "peak_index": 7,
+            "observed_ppm": 123.83,
+            "atom_indices": [
+              13
+            ],
+            "predicted_ppm": 124.28091430664062,
+            "absolute_error_ppm": 0.4509143066406267,
+            "other_sites_within_tolerance": [
+              4,
+              5,
+              6,
+              8,
+              10
+            ]
+          },
+          {
+            "peak_index": 8,
+            "observed_ppm": 121.12,
+            "atom_indices": [
+              5
+            ],
+            "predicted_ppm": 121.5787124633789,
+            "absolute_error_ppm": 0.4587124633789017,
+            "other_sites_within_tolerance": [
+              5,
+              6,
+              8,
+              9
+            ]
+          },
+          {
+            "peak_index": 9,
+            "observed_ppm": 119.88,
+            "atom_indices": [
+              12
+            ],
+            "predicted_ppm": 120.08674621582031,
+            "absolute_error_ppm": 0.20674621582031705,
+            "other_sites_within_tolerance": [
+              4,
+              9
+            ]
+          },
+          {
+            "peak_index": 10,
+            "observed_ppm": 112.43,
+            "atom_indices": [
+              3
+            ],
+            "predicted_ppm": 112.32875061035156,
+            "absolute_error_ppm": 0.10124938964844432,
+            "other_sites_within_tolerance": [
+              11
+            ]
+          },
+          {
+            "peak_index": 11,
+            "observed_ppm": 111.17,
+            "atom_indices": [
+              15
+            ],
+            "predicted_ppm": 111.33279418945312,
+            "absolute_error_ppm": 0.1627941894531233,
+            "other_sites_within_tolerance": [
+              2
+            ]
+          },
+          {
+            "peak_index": 12,
+            "observed_ppm": 55.85,
+            "atom_indices": [
+              0
+            ],
+            "predicted_ppm": 56.42796325683594,
+            "absolute_error_ppm": 0.5779632568359361,
+            "other_sites_within_tolerance": []
+          }
+        ],
+        "unmatched_peak_indices": [],
+        "unmatched_sites": [],
+        "sites": [
+          {
+            "atom_indices": [
+              0
+            ],
+            "predicted_ppm": 56.42796325683594
+          },
+          {
+            "atom_indices": [
+              2
+            ],
+            "predicted_ppm": 152.29034423828125
+          },
+          {
+            "atom_indices": [
+              3
+            ],
+            "predicted_ppm": 112.32875061035156
+          },
+          {
+            "atom_indices": [
+              4
+            ],
+            "predicted_ppm": 129.50868225097656
+          },
+          {
+            "atom_indices": [
+              5
+            ],
+            "predicted_ppm": 121.5787124633789
+          },
+          {
+            "atom_indices": [
+              6
+            ],
+            "predicted_ppm": 125.24679565429688
+          },
+          {
+            "atom_indices": [
+              7
+            ],
+            "predicted_ppm": 125.65699005126953
+          },
+          {
+            "atom_indices": [
+              11
+            ],
+            "predicted_ppm": 145.75225830078125
+          },
+          {
+            "atom_indices": [
+              12
+            ],
+            "predicted_ppm": 120.08674621582031
+          },
+          {
+            "atom_indices": [
+              13
+            ],
+            "predicted_ppm": 124.28091430664062
+          },
+          {
+            "atom_indices": [
+              14
+            ],
+            "predicted_ppm": 127.53754425048828
+          },
+          {
+            "atom_indices": [
+              15
+            ],
+            "predicted_ppm": 111.33279418945312
+          },
+          {
+            "atom_indices": [
+              16
+            ],
+            "predicted_ppm": 133.663818359375
+          }
+        ],
+        "tolerance_ppm": 5.0,
+        "matched_fraction": 1.0,
+        "assignment_accuracy": null,
+        "accuracy_note": "Predicted assignments; experimental atom labels are not supplied."
+      }
+    }
+  ],
+  "selection_policy": "First recorded example in the cited run; not selected by prediction quality.",
+  "training_performed": false,
+  "plot": {
+    "kind": "assignment",
+    "record": {
+      "smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+      "symbol": "C",
+      "mapped_smiles": "[C:1](=[C:2]([C:3]([C:4]([C:5]([C:6]([c:7]1[c:8]([H:33])[c:9]([H:34])[c:10]([H:35])[c:11]([H:36])[c:12]1[H:37])([H:31])[H:32])([H:29])[H:30])([H:27])[H:28])([H:25])[H:26])[c:13]1[c:14]([H:38])[c:15]([H:39])[c:16]([C:17]([C:18]([H:40])([H:41])[H:42])([C:19]([H:43])([H:44])[H:45])[C:20]([H:46])([H:47])[H:48])[c:21]([H:49])[c:22]1[H:50])([H:23])[H:24]",
+      "atom_index_basis": "zero-based RDKit AddHs(input_smiles); atom-map numbers = index + 1",
+      "equivalence": "topological symmetry including chirality; not proof of magnetic equivalence",
+      "assignments": [
+        {
+          "peak_index": 0,
+          "observed_ppm": 150.22,
+          "atom_indices": [
+            15
+          ],
+          "predicted_ppm": 150.09881591796875,
+          "absolute_error_ppm": 0.12118408203124886,
+          "other_sites_within_tolerance": [
+            1
+          ]
+        },
+        {
+          "peak_index": 1,
+          "observed_ppm": 148.03,
+          "atom_indices": [
+            1
+          ],
+          "predicted_ppm": 148.56301879882812,
+          "absolute_error_ppm": 0.5330187988281239,
+          "other_sites_within_tolerance": [
+            13
+          ]
+        },
+        {
+          "peak_index": 2,
+          "observed_ppm": 142.68,
+          "atom_indices": [
+            6
+          ],
+          "predicted_ppm": 142.5129852294922,
+          "absolute_error_ppm": 0.16701477050781932,
+          "other_sites_within_tolerance": [
+            10
+          ]
+        },
+        {
+          "peak_index": 3,
+          "observed_ppm": 138.28,
+          "atom_indices": [
+            12
+          ],
+          "predicted_ppm": 139.7798614501953,
+          "absolute_error_ppm": 1.4998614501953114,
+          "other_sites_within_tolerance": [
+            6
+          ]
+        },
+        {
+          "peak_index": 4,
+          "observed_ppm": 128.36,
+          "atom_indices": [
+            8,
+            10
+          ],
+          "predicted_ppm": 128.52506256103516,
+          "absolute_error_ppm": 0.1650625610351426,
+          "other_sites_within_tolerance": [
+            7,
+            9,
+            11,
+            12
+          ]
+        },
+        {
+          "peak_index": 5,
+          "observed_ppm": 128.22,
+          "atom_indices": [
+            7,
+            11
+          ],
+          "predicted_ppm": 128.537353515625,
+          "absolute_error_ppm": 0.31735351562500114,
+          "other_sites_within_tolerance": [
+            8,
+            9,
+            11,
+            12
+          ]
+        },
+        {
+          "peak_index": 6,
+          "observed_ppm": 125.68,
+          "atom_indices": [
+            13,
+            21
+          ],
+          "predicted_ppm": 126.19123458862305,
+          "absolute_error_ppm": 0.51123458862304,
+          "other_sites_within_tolerance": [
+            7,
+            8,
+            9,
+            12
+          ]
+        },
+        {
+          "peak_index": 7,
+          "observed_ppm": 125.58,
+          "atom_indices": [
+            9
+          ],
+          "predicted_ppm": 126.21155548095703,
+          "absolute_error_ppm": 0.631555480957033,
+          "other_sites_within_tolerance": [
+            7,
+            8,
+            11,
+            12
+          ]
+        },
+        {
+          "peak_index": 8,
+          "observed_ppm": 125.12,
+          "atom_indices": [
+            14,
+            20
+          ],
+          "predicted_ppm": 125.48467254638672,
+          "absolute_error_ppm": 0.3646725463867142,
+          "other_sites_within_tolerance": [
+            7,
+            8,
+            9,
+            11
+          ]
+        },
+        {
+          "peak_index": 9,
+          "observed_ppm": 111.51,
+          "atom_indices": [
+            0
+          ],
+          "predicted_ppm": 111.92984008789062,
+          "absolute_error_ppm": 0.4198400878906199,
+          "other_sites_within_tolerance": []
+        },
+        {
+          "peak_index": 10,
+          "observed_ppm": 35.72,
+          "atom_indices": [
+            5
+          ],
+          "predicted_ppm": 35.74638366699219,
+          "absolute_error_ppm": 0.026383666992188637,
+          "other_sites_within_tolerance": [
+            2,
+            4,
+            14,
+            15
+          ]
+        },
+        {
+          "peak_index": 11,
+          "observed_ppm": 35.03,
+          "atom_indices": [
+            2
+          ],
+          "predicted_ppm": 34.59314727783203,
+          "absolute_error_ppm": 0.4368527221679699,
+          "other_sites_within_tolerance": [
+            4,
+            5,
+            14,
+            15
+          ]
+        },
+        {
+          "peak_index": 12,
+          "observed_ppm": 34.46,
+          "atom_indices": [
+            16
+          ],
+          "predicted_ppm": 34.164398193359375,
+          "absolute_error_ppm": 0.29560180664062585,
+          "other_sites_within_tolerance": [
+            2,
+            4,
+            5,
+            15
+          ]
+        },
+        {
+          "peak_index": 13,
+          "observed_ppm": 31.32,
+          "atom_indices": [
+            17,
+            18,
+            19
+          ],
+          "predicted_ppm": 31.490572611490887,
+          "absolute_error_ppm": 0.17057261149088632,
+          "other_sites_within_tolerance": [
+            2,
+            3,
+            4,
+            5,
+            14
+          ]
+        },
+        {
+          "peak_index": 14,
+          "observed_ppm": 31.11,
+          "atom_indices": [
+            4
+          ],
+          "predicted_ppm": 30.951845169067383,
+          "absolute_error_ppm": 0.15815483093261662,
+          "other_sites_within_tolerance": [
+            2,
+            3,
+            5,
+            14,
+            15
+          ]
+        },
+        {
+          "peak_index": 15,
+          "observed_ppm": 27.93,
+          "atom_indices": [
+            3
+          ],
+          "predicted_ppm": 27.1068172454834,
+          "absolute_error_ppm": 0.8231827545166013,
+          "other_sites_within_tolerance": [
+            4,
+            15
+          ]
+        }
+      ],
+      "unmatched_peak_indices": [],
+      "unmatched_sites": [],
+      "sites": [
+        {
+          "atom_indices": [
+            0
+          ],
+          "predicted_ppm": 111.92984008789062
+        },
+        {
+          "atom_indices": [
+            1
+          ],
+          "predicted_ppm": 148.56301879882812
+        },
+        {
+          "atom_indices": [
+            2
+          ],
+          "predicted_ppm": 34.59314727783203
+        },
+        {
+          "atom_indices": [
+            3
+          ],
+          "predicted_ppm": 27.1068172454834
+        },
+        {
+          "atom_indices": [
+            4
+          ],
+          "predicted_ppm": 30.951845169067383
+        },
+        {
+          "atom_indices": [
+            5
+          ],
+          "predicted_ppm": 35.74638366699219
+        },
+        {
+          "atom_indices": [
+            6
+          ],
+          "predicted_ppm": 142.5129852294922
+        },
+        {
+          "atom_indices": [
+            7,
+            11
+          ],
+          "predicted_ppm": 128.537353515625
+        },
+        {
+          "atom_indices": [
+            8,
+            10
+          ],
+          "predicted_ppm": 128.52506256103516
+        },
+        {
+          "atom_indices": [
+            9
+          ],
+          "predicted_ppm": 126.21155548095703
+        },
+        {
+          "atom_indices": [
+            12
+          ],
+          "predicted_ppm": 139.7798614501953
+        },
+        {
+          "atom_indices": [
+            13,
+            21
+          ],
+          "predicted_ppm": 126.19123458862305
+        },
+        {
+          "atom_indices": [
+            14,
+            20
+          ],
+          "predicted_ppm": 125.48467254638672
+        },
+        {
+          "atom_indices": [
+            15
+          ],
+          "predicted_ppm": 150.09881591796875
+        },
+        {
+          "atom_indices": [
+            16
+          ],
+          "predicted_ppm": 34.164398193359375
+        },
+        {
+          "atom_indices": [
+            17,
+            18,
+            19
+          ],
+          "predicted_ppm": 31.490572611490887
+        }
+      ],
+      "tolerance_ppm": 5.0,
+      "matched_fraction": 1.0,
+      "assignment_accuracy": null,
+      "accuracy_note": "Predicted assignments; experimental atom labels are not supplied."
+    },
+    "label": "First molecule; predicted atom assignments, no experimental assignment labels"
+  },
+  "source_hashes": {
+    "assignment_carbon32_20261116.json": "c3d25150e5811b8987060e147f43d9add4f729e340da420b94425766e1e76540"
+  },
+  "status": "recorded_results"
+}

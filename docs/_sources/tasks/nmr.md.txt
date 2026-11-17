@@ -1,0 +1,47 @@
+# NMR
+
+Choose a task to see its purpose, inputs, outputs, model call and examples.
+
+| Task / input → output | Task ID |
+| --- | --- |
+| [1H chemical shift prediction](nmr-forward-1H.md) | `nmr.forward.1H` |
+| [13C chemical shift prediction](nmr-forward-13C.md) | `nmr.forward.13C` |
+| [19F chemical shift prediction](nmr-forward-19F.md) | `nmr.forward.19F` |
+| [31P chemical shift prediction](nmr-forward-31P.md) | `nmr.forward.31P` |
+| [11B chemical shift prediction](nmr-forward-11B.md) | `nmr.forward.11B` |
+| [29Si chemical shift prediction](nmr-forward-29Si.md) | `nmr.forward.29Si` |
+| [Spectrum-to-structure retrieval: ¹H](nmr-retrieval-h-s2m.md) | `nmr.retrieval.h.s2m` |
+| [Structure-to-spectrum retrieval: ¹H](nmr-retrieval-h-m2s.md) | `nmr.retrieval.h.m2s` |
+| [Structure elucidation from ¹H NMR](nmr-generation-h.md) | `nmr.generation.h` |
+| [Spectrum-to-structure retrieval: ¹³C](nmr-retrieval-c-s2m.md) | `nmr.retrieval.c.s2m` |
+| [Structure-to-spectrum retrieval: ¹³C](nmr-retrieval-c-m2s.md) | `nmr.retrieval.c.m2s` |
+| [Structure elucidation from ¹³C NMR](nmr-generation-c.md) | `nmr.generation.c` |
+| [Spectrum-to-structure retrieval: ¹H + ¹³C](nmr-retrieval-hc-s2m.md) | `nmr.retrieval.hc.s2m` |
+| [Structure-to-spectrum retrieval: ¹H + ¹³C](nmr-retrieval-hc-m2s.md) | `nmr.retrieval.hc.m2s` |
+| [Structure elucidation from ¹H + ¹³C NMR](nmr-generation-hc.md) | `nmr.generation.hc` |
+| [Peak-to-atom assignment](nmr-assignment.md) | `nmr.assignment` |
+| [Cross-solvent chemical shift transfer](nmr-solvent_transfer.md) | `nmr.solvent_transfer` |
+
+
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+nmr-forward-1H
+nmr-forward-13C
+nmr-forward-19F
+nmr-forward-31P
+nmr-forward-11B
+nmr-forward-29Si
+nmr-retrieval-h-s2m
+nmr-retrieval-h-m2s
+nmr-generation-h
+nmr-retrieval-c-s2m
+nmr-retrieval-c-m2s
+nmr-generation-c
+nmr-retrieval-hc-s2m
+nmr-retrieval-hc-m2s
+nmr-generation-hc
+nmr-assignment
+nmr-solvent_transfer
+```

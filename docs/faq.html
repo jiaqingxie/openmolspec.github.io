@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Common workflows &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/faq.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script defer="defer" src="_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Training benchmark configurations" href="benchmarks/training.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="zh/faq.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks/index.html">Tasks by spectroscopy family</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference/index.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Common workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#choose-your-input">Choose your input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#read-a-peak-list">Read a peak list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#select-model-environments">Select model environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#train-with-your-own-data">Train with your own data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-dataset-splits">Create dataset splits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#map-predictions-to-atoms">Map predictions to atoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-a-tutorial">Run a tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#connect-an-agent">Connect an agent</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Common workflows</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/faq.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="common-workflows">
+<h1>Common workflows<a class="headerlink" href="#common-workflows" title="Link to this heading"></a></h1>
+<section id="choose-your-input">
+<h2>Choose your input<a class="headerlink" href="#choose-your-input" title="Link to this heading"></a></h2>
+<p>Use molecular structures for spectrum prediction, structures plus peaks for assignment, spectra for retrieval/generation, and time-domain traces for numerical inversion. <a class="reference internal" href="tasks/index.html"><span class="std std-doc">Tasks</span></a>.</p>
+</section>
+<section id="read-a-peak-list">
+<h2>Read a peak list<a class="headerlink" href="#read-a-peak-list" title="Link to this heading"></a></h2>
+<p>NMR uses ppm positions; MS uses m/z–intensity pairs; IR and Raman use cm⁻¹ positions with intensities where supplied. To produce dense optical inputs, save the grid and broadening parameters with the array.</p>
+</section>
+<section id="select-model-environments">
+<h2>Select model environments<a class="headerlink" href="#select-model-environments" title="Link to this heading"></a></h2>
+<p>Pass the interpreter containing the model dependencies through <code class="docutils literal notranslate"><span class="pre">python=</span></code>. Set the checkpoint or model-root path on the corresponding model class. <a class="reference internal" href="api.html"><span class="std std-doc">SDK</span></a>.</p>
+</section>
+<section id="train-with-your-own-data">
+<h2>Train with your own data<a class="headerlink" href="#train-with-your-own-data" title="Link to this heading"></a></h2>
+<p>Import named train/validation files with <code class="docutils literal notranslate"><span class="pre">MolecularSpectra.from_jsonl</span></code>, prepare them with <code class="docutils literal notranslate"><span class="pre">prepare_nmr_training</span></code>, create a training plan and call <code class="docutils literal notranslate"><span class="pre">model.fit(plan)</span></code>.</p>
+</section>
+<section id="create-dataset-splits">
+<h2>Create dataset splits<a class="headerlink" href="#create-dataset-splits" title="Link to this heading"></a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">split_records</span></code> with grouped random or scaffold assignment. Inspect the manifest for split counts, group policy and file hashes. <a class="reference internal" href="data/splits.html"><span class="std std-doc">Splits</span></a>.</p>
+</section>
+<section id="map-predictions-to-atoms">
+<h2>Map predictions to atoms<a class="headerlink" href="#map-predictions-to-atoms" title="Link to this heading"></a></h2>
+<p>NMRNet uses zero-based RDKit AddHs atom indices. MAGMa returns indices on its <code class="docutils literal notranslate"><span class="pre">engine_smiles</span></code> graph. Keep the returned graph with the indices when drawing annotations.</p>
+</section>
+<section id="run-a-tutorial">
+<h2>Run a tutorial<a class="headerlink" href="#run-a-tutorial" title="Link to this heading"></a></h2>
+<p>Clone the release branch and install <code class="docutils literal notranslate"><span class="pre">requirements-docs-examples.txt</span></code>. Scientific plots use Arial; set <code class="docutils literal notranslate"><span class="pre">OPENMOLSPEC_ARIAL_FONT</span></code> to the TTF file on your machine. Configure model paths for the SDK inference notebook.</p>
+</section>
+<section id="connect-an-agent">
+<h2>Connect an agent<a class="headerlink" href="#connect-an-agent" title="Link to this heading"></a></h2>
+<p>Use Spectra Harness from Python, JSON CLI requests or MCP. Discover tasks, validate the request, execute it, then read <code class="docutils literal notranslate"><span class="pre">result</span></code>. <a class="reference internal" href="harness.html"><span class="std std-doc">Agent Harness</span></a>.</p>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="benchmarks/training.html" class="btn btn-neutral float-left" title="Training benchmark configurations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="contributing.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

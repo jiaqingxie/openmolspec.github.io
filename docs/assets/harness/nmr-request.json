@@ -1,0 +1,11 @@
+{
+  "task": "nmr.forward.13C",
+  "inputs": {
+    "smiles": "CCO"
+  },
+  "model_config": {
+    "root": "/path/to/models",
+    "python": "/path/to/nmr-env/bin/python"
+  },
+  "repeats": 2
+}

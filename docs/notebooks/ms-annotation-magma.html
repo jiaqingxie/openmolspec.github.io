@@ -1,0 +1,1321 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MS/MS fragment annotation &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/notebooks/ms-annotation-magma.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MS/MS prediction with GLACIER" href="ms-forward-glacier.html" />
+    <link rel="prev" title="Exploring the spectroscopy datasets" href="datasets-overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../zh/notebooks/ms-annotation-magma.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">Tasks by spectroscopy family</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#theory-simulations">Theory simulations / 理论模拟</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#nmr">NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#mass-spectrometry">Mass spectrometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman">IR / Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#multimodal-spectroscopy">Multimodal spectroscopy</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#deferred-tasks">Deferred tasks</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="datasets-overview.html">Exploring the spectroscopy datasets</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MS/MS fragment annotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-forward-glacier.html">MS/MS prediction with GLACIER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-forward-iceberg.html">MS/MS prediction with ICEBERG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-assignment.html">Peak-to-atom assignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-c.html">Structure elucidation from ¹³C NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">Structure elucidation from ¹H NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-hc.html">Structure elucidation from ¹H + ¹³C NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-m2s.html">Structure-to-spectrum retrieval: ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-s2m.html">Spectrum-to-structure retrieval: ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">Structure-to-spectrum retrieval: ¹H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">Spectrum-to-structure retrieval: ¹H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-m2s.html">Structure-to-spectrum retrieval: ¹H + ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-s2m.html">Spectrum-to-structure retrieval: ¹H + ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-solvent_transfer.html">Cross-solvent chemical shift transfer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdk-inference.html">Python SDK: real NMR inference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdk-training-preflight.html">Training data preparation and preflight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking.html">Candidate reranking: IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking-hc.html">Candidate reranking: IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-ms-isotopes.html">Mass spectrometry: isotope envelopes and resolving power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-nmr-fourier.html">NMR: from a free induction decay to a spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-nmr-inversion.html">NMR inversion: recovering a relaxation distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory-vibrational-broadening.html">IR and Raman: normal modes and spectral broadening</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-forward.html">IR and Raman from a molecular geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir.html">HOMO–LUMO gap from IR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman.html">HOMO–LUMO gap from IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman_hc.html">HOMO–LUMO gap from IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-raman.html">HOMO–LUMO gap from Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-generation.html">Structure generation: IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-generation-hc.html">Structure generation: IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval.html">Structure retrieval: IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-hc.html">Structure retrieval: IR + Raman + NMR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Tutorials</a></li>
+      <li class="breadcrumb-item active">MS/MS fragment annotation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/ms-annotation-magma.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+    <p><a class="btn btn-neutral" href="../downloads/notebooks/ms-annotation-magma.ipynb" download>Download notebook</a></p>
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="ms-ms-fragment-annotation">
+<h1>MS/MS fragment annotation<a class="headerlink" href="#ms-ms-fragment-annotation" title="Link to this heading"></a></h1>
+<p>Find molecular fragments that explain the measured MS/MS peaks.</p>
+<p>MAGMa enumerates fragments of the molecular graph and matches their masses to the measured peaks. Each annotation contains its fragment formula, mass error and atom/bond indices.</p>
+<p>This tutorial loads the saved predictions, explains the input/output fields and evaluates the results. Use the final command to run the model on a new dataset.</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">SVG</span>
+<span class="n">root</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">(),</span> <span class="o">*</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">parents</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="s1">'openmolspec_bench'</span><span class="p">)</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()),</span> <span class="kc">None</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">'Run from the cloned release repository; see Quick Start'</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s1">'scripts'</span><span class="p">))</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">documentation_evidence</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_evidence</span><span class="p">,</span> <span class="n">compact</span><span class="p">,</span> <span class="n">recompute</span><span class="p">,</span> <span class="n">render</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">documentation_content</span><span class="w"> </span><span class="kn">import</span> <span class="n">results_table</span>
+<span class="n">evidence</span> <span class="o">=</span> <span class="n">load_evidence</span><span class="p">(</span><span class="s1">'ms.annotation.magma'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Task:'</span><span class="p">,</span> <span class="n">evidence</span><span class="p">[</span><span class="s1">'task'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Examples:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">evidence</span><span class="p">[</span><span class="s1">'examples'</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Task: ms.annotation.magma
+Examples: 2
+</pre></div>
+</div>
+</div>
+</div>
+<section id="inputs-and-outputs">
+<h2>Inputs and outputs<a class="headerlink" href="#inputs-and-outputs" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">smiles</span> <span class="pre">/</span> <span class="pre">peaks</span></code></p></td>
+<td><p>Known structure, measured MS/MS peaks [m/z, relative intensity], and adduct.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ppm_tolerance</span></code></p></td>
+<td><p>Mass tolerance, default 10 ppm; not an NMR chemical-shift tolerance.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">peak_annotations</span></code></p></td>
+<td><p>Candidate fragments, formulas, mass errors and atom/bond indices on engine_smiles.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">interpretation</span></code></p></td>
+<td><p>Candidate fragment structures and matching mass errors.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Inspect the example records below. Long arrays show their length and first values; the downloadable JSON contains the complete arrays.</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">example</span> <span class="ow">in</span> <span class="n">evidence</span><span class="p">[</span><span class="s1">'examples'</span><span class="p">][:</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">compact</span><span class="p">(</span><span class="n">example</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+  "input": {
+    "smiles": "C1=CC=C(C(=C1)C2=CC=C(C=C2)C(=O)O)C3=NNN=N3",
+    "adduct": "[M+H]+",
+    "observed_peaks": {
+      "length": 40,
+      "first_values": [
+        [
+          86.0158,
+          0.14814814814814814
+        ],
+        [
+          87.0237,
+          0.16016016016016016
+        ],
+        [
+          97.0082,
+          0.06906906906906907
+        ],
+        [
+          98.0159,
+          1.0
+        ],
+        [
+          99.0096,
+          0.05305305305305305
+        ],
+        [
+          99.0229,
+          0.3783783783783784
+        ],
+        [
+          100.0176,
+          0.02002002002002002
+        ],
+        [
+          100.0303,
+          0.08208208208208208
+        ]
+      ]
+    }
+  },
+  "sample_id": "MassSpecGymID0046618",
+  "output": {
+    "engine_smiles": "O=C(O)c1ccc(-c2ccccc2-c2nn[nH]n2)cc1",
+    "peak_annotations": {
+      "length": 40,
+      "first_values": [
+        {
+          "peak_id": 7,
+          "mz": 86.0158,
+          "intensity": 0.14814814814814814,
+          "matched": true,
+          "matched_fragment": {
+            "fragment_id": 16256,
+            "atom_indices": [
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ],
+            "bond_indices_cut": [
+              6,
+              13,
+              21
+            ],
+            "bond_atom_pairs_cut": [
+              [
+                6,
+                7
+              ],
+              [
+                13,
+                14
+              ],
+              [
+                17,
+                13
+              ]
+            ],
+            "formula": "C7H4",
+            "matched_mass": 85.007825032,
+            "ppm_diff": 8.21707883641277,
+            "score": 5.0,
+            "h_shift": -3,
+            "tree_depth": 3,
+            "parent_fragment_ids": [
+              130944,
+              245632,
+              802815
+            ],
+            "lineage_root_to_fragment": [
+              1048575,
+              262016,
+              245632,
+              16256
+            ]
+          }
+        },
+        {
+          "peak_id": 8,
+          "mz": 87.0237,
+          "intensity": 0.16016016016016016,
+          "matched": true,
+          "matched_fragment": {
+            "fragment_id": 786554,
+            "atom_indices": [
+              1,
+              3,
+              4,
+              5,
+              6,
+              18,
+              19
+            ],
+            "bond_indices_cut": [
+              0,
+              1,
+              6
+            ],
+            "bond_atom_pairs_cut": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                6,
+                7
+              ]
+            ],
+            "formula": "C7H4",
+            "matched_mass": 86.015650064,
+            "ppm_diff": 8.992363592338872,
+            "score": 5.0,
+            "h_shift": -2,
+            "tree_depth": 3,
+            "parent_fragment_ids": [
+              786555,
+              786558,
+              1048570
+            ],
+            "lineage_root_to_fragment": [
+              1048575,
+              1048574,
+              1048570,
+              786554
+            ]
+          }
+        },
+        {
+          "peak_id": 10,
+          "mz": 97.0082,
+          "intensity": 0.06906906906906907,
+          "matched": true,
+          "matched_fragment": {
+            "fragment_id": 8160,
+            "atom_indices": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "bond_indices_cut": [
+              4,
+              12,
+              17
+            ],
+            "bond_atom_pairs_cut": [
+              [
+                4,
+                5
+              ],
+              [
+                12,
+                13
+              ],
+              [
+                6,
+                18
+              ]
+            ],
+            "formula": "C8H5",
+            "matched_mass": 96.0,
+            "ppm_diff": 9.620291666697275,
+            "score": 6.0,
+            "h_shift": -5,
+            "tree_depth": 3,
+            "parent_fragment_ids": [
+              262112,
+              532479,
+              794607
+            ],
+            "lineage_root_to_fragment": [
+              1048575,
+              1048559,
+              794607,
+              8160
+            ]
+          }
+        },
+        {
+          "peak_id": 11,
+          "mz": 98.0159,
+          "intensity": 1.0,
+          "matched": true,
+          "matched_fragment": {
+            "fragment_id": 786936,
+            "atom_indices": [
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              18,
+              19
+            ],
+            "bond_indices_cut": [
+              2,
+              8,
+              20
+            ],
+            "bond_atom_pairs_cut": [
+              [
+                1,
+                3
+              ],
+              [
+                8,
+                9
+              ],
+              [
+                12,
+                7
+              ]
+            ],
+            "formula": "C8H5",
+            "matched_mass": 97.007825032,
+            "ppm_diff": 8.23145967595748,
+            "score": 6.0,
+            "h_shift": -4,
+            "tree_depth": 3,
+            "parent_fragment_ids": [
+              786943,
+              790520,
+              1048056
+            ],
+            "lineage_root_to_fragment": [
+              1048575,
+              1048568,
+              1048056,
+              786936
+            ]
+          }
+        },
+        {
+          "peak_id": 13,
+          "mz": 99.0096,
+          "intensity": 0.05305305305305305,
+          "matched": true,
+          "matched_fragment": {
+            "fragment_id": 147328,
+            "atom_indices": [
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              17
+            ],
+            "bond_indices_cut": [
+              6,
+              13,
+              16
+            ],
+            "bond_atom_pairs_cut": [
+              [
+                6,
+                7
+              ],
+              [
+                13,
+                14
+              ],
+              [
+                16,
+                17
+              ]
+            ],
+            "formula": "C7NH4",
+            "matched_mass": 98.003074,
+            "ppm_diff": 7.657433275932159,
+            "score": 4.0,
+            "h_shift": -4,
+            "tree_depth": 3,
+            "parent_fragment_ids": [
+              196480,
+              245632,
+              933887
+            ],
+            "lineage_root_to_fragment": [
+              1048575,
+              262016,
+              245632,
+              147328
+            ]
+          }
+        },
+        {
+          "peak_id": 14,
+          "mz": 99.0229,
+          "intensity": 0.3783783783783784,
+          "matched": true,
+          "matched_fragment": {
+            "fragment_id": 8160,
+            "atom_indices": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "bond_indices_cut": [
+              4,
+              12,
+              17
+            ],
+            "bond_atom_pairs_cut": [
+              [
+                4,
+                5
+              ],
+              [
+                12,
+                13
+              ],
+              [
+                6,
+                18
+              ]
+            ],
+            "formula": "C8H5",
+            "matched_mass": 98.015650064,
+            "ppm_diff": 0.2705282266040922,
+            "score": 6.0,
+            "h_shift": -3,
+            "tree_depth": 3,
+            "parent_fragment_ids": [
+              262112,
+              532479,
+              794607
+            ],
+            "lineage_root_to_fragment": [
+              1048575,
+              1048559,
+              794607,
+              8160
+            ]
+          }
+        },
+        {
+          "peak_id": 15,
+          "mz": 100.0176,
+          "intensity": 0.02002002002002002,
+          "matched": true,
+          "matched_fragment": {
+            "fragment_id": 147328,
+            "atom_indices": [
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              17
+            ],
+            "bond_indices_cut": [
+              6,
+              13,
+              16
+            ],
+            "bond_atom_pairs_cut": [
+              [
+                6,
+                7
+              ],
+              [
+                13,
+                14
+              ],
+              [
+                16,
+                17
+              ]
+            ],
+            "formula": "C7NH4",
+            "matched_mass": 99.010899032,
+            "ppm_diff": 5.812329810369573,
+            "score": 4.0,
+            "h_shift": -3,
+            "tree_depth": 3,
+            "parent_fragment_ids": [
+              196480,
+              245632,
+              933887
+            ],
+            "lineage_root_to_fragment": [
+              1048575,
+              262016,
+              245632,
+              147328
+            ]
+          }
+        },
+        {
+          "peak_id": 16,
+          "mz": 100.0303,
+          "intensity": 0.08208208208208208,
+          "matched": true,
+          "matched_fragment": {
+            "fragment_id": 8160,
+            "atom_indices": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "bond_indices_cut": [
+              4,
+              12,
+              17
+            ],
+            "bond_atom_pairs_cut": [
+              [
+                4,
+                5
+              ],
+              [
+                12,
+                13
+              ],
+              [
+                6,
+                18
+              ]
+            ],
+            "formula": "C8H5",
+            "matched_mass": 99.023475096,
+            "ppm_diff": 4.560009629667623,
+            "score": 6.0,
+            "h_shift": -2,
+            "tree_depth": 3,
+            "parent_fragment_ids": [
+              262112,
+              532479,
+              794607
+            ],
+            "lineage_root_to_fragment": [
+              1048575,
+              1048559,
+              794607,
+              8160
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+{
+  "input": {
+    "smiles": "C1=CC=C(C(=C1)C2=CC=C(C=C2)C(=O)O)C3=NNN=N3",
+    "adduct": "[M+H]+",
+    "observed_peaks": {
+      "length": 30,
+      "first_values": [
+        [
+          99.0236,
+          0.08008008008008008
+        ],
+        [
+          100.0313,
+          0.011011011011011011
+        ],
+        [
+          101.0394,
+          0.03003003003003003
+        ],
+        [
+          102.047,
+          0.021021021021021023
+        ],
+        [
+          113.0391,
+          0.021021021021021023
+        ],
+        [
+          122.016,
+          0.01001001001001001
+        ],
+        [
+          123.0229,
+          0.016016016016016016
+        ],
+        [
+          124.0308,
+          0.02002002002002002
+        ]
+      ]
+    }
+  },
+  "sample_id": "MassSpecGymID0046619",
+  "output": {
+    "engine_smiles": "O=C(O)c1ccc(-c2ccccc2-c2nn[nH]n2)cc1",
+    "peak_annotations": {
+      "length": 30,
+      "first_values": [
+        {
+          "peak_id": 8,
+          "mz": 99.0236,
+          "intensity": 0.08008008008008008,
+          "matched": true,
+          "matched_fragment": {
+            "fragment_id": 8160,
+            "atom_indices": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "bond_indices_cut": [
+              4,
+              12,
+              17
+            ],
+            "bond_atom_pairs_cut": [
+              [
+                4,
+                5
+              ],
+              [
+                12,
+                13
+              ],
+              [
+                6,
+                18
+              ]
+            ],
+            "formula": "C8H5",
+            "matched_mass": 98.015650064,
+            "ppm_diff": 6.8711884231120095,
+            "score": 6.0,
+            "h_shift": -3,
+            "tree_depth": 3,
+            "parent_fragment_ids": [
+              262112,
+              532479,
+              794607
+            ],
+            "lineage_root_to_fragment": [
+              1048575,
+              1048559,
+              794607,
+              8160
+            ]
+          }
+        },
+        {
+          "peak_id": 9,
+          "mz": 100.0313,
+          "intensity": 0.011011011011011011,
+          "matched": true,
+          "matched_fragment": {
+            "fragment_id": 8160,
+            "atom_indices": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "bond_indices_cut": [
+              4,
+              12,
+              17
+            ],
+            "bond_atom_pairs_cut": [
+              [
+                4,
+                5
+              ],
+              [
+                12,
+                13
+              ],
+              [
+                6,
+                18
+              ]
+            ],
+            "formula": "C8H5",
+            "matched_mass": 99.023475096,
+            "ppm_diff": 5.538605865651117,
+            "score": 6.0,
+            "h_shift": -2,
+            "tree_depth": 3,
+            "parent_fragment_ids": [
+              262112,
+              532479,
+              794607
+            ],
+            "lineage_root_to_fragment": [
+              1048575,
+              1048559,
+              794607,
+              8160
+            ]
+          }
+        },
+        {
+          "peak_id": 10,
+          "mz": 101.0394,
+          "intensity": 0.03003003003003003,
+          "matched": true,
+          "matched_fragment": {
+            "fragment_id": 8160,
+            "atom_indices": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "bond_indices_cut": [
+              4,
+              12,
+              17
+            ],
+            "bond_atom_pairs_cut": [
+              [
+                4,
+                5
+              ],
+              [
+                12,
+                13
+              ],
+              [
+                6,
+                18
+              ]
+            ],
+            "formula": "C8H5",
+            "matched_mass": 100.031300128,
+            "ppm_diff": 8.23162349134312,
+            "score": 6.0,
+            "h_shift": -1,
+            "tree_depth": 3,
+            "parent_fragment_ids": [
+              262112,
+              532479,
+              794607
+            ],
+            "lineage_root_to_fragment": [
+              1048575,
+              1048559,
+              794607,
+              8160
+            ]
+          }
+        },
+        {
+          "peak_id": 11,
+          "mz": 102.047,
+          "intensity": 0.021021021021021023,
+          "matched": true,
+          "matched_fragment": {
+            "fragment_id": 8160,
+            "atom_indices": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "bond_indices_cut": [
+              4,
+              12,
+              17
+            ],
+            "bond_atom_pairs_cut": [
+              [
+                4,
+                5
+              ],
+              [
+                12,
+                13
+              ],
+              [
+                6,
+                18
+              ]
+            ],
+            "formula": "C8H5",
+            "matched_mass": 101.03912516,
+            "ppm_diff": 5.922339480400815,
+            "score": 6.0,
+            "h_shift": 0,
+            "tree_depth": 3,
+            "parent_fragment_ids": [
+              262112,
+              532479,
+              794607
+            ],
+            "lineage_root_to_fragment": [
+              1048575,
+              1048559,
+              794607,
+              8160
+            ]
+          }
+        },
+        {
+          "peak_id": 12,
+          "mz": 113.0391,
+          "intensity": 0.021021021021021023,
+          "matched": true,
+          "matched_fragment": {
+            "fragment_id": 787448,
+            "atom_indices": {
+              "length": 9,
+              "first_values": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                18
+              ]
+            },
+            "bond_indices_cut": [
+              2,
+              9,
+              20
+            ],
+            "bond_atom_pairs_cut": [
+              [
+                1,
+                3
+              ],
+              [
+                9,
+                10
+              ],
+              [
+                12,
+                7
+              ]
+            ],
+            "formula": "C9H6",
+            "matched_mass": 112.031300128,
+            "ppm_diff": 4.672087170366349,
+            "score": 8.0,
+            "h_shift": -2,
+            "tree_depth": 3,
+            "parent_fragment_ids": [
+              787455,
+              790520,
+              1047544
+            ],
+            "lineage_root_to_fragment": [
+              1048575,
+              1048568,
+              1047544,
+              787448
+            ]
+          }
+        },
+        {
+          "peak_id": 13,
+          "mz": 122.016,
+          "intensity": 0.01001001001001001,
+          "matched": true,
+          "matched_fragment": {
+            "fragment_id": 794592,
+            "atom_indices": {
+              "length": 10,
+              "first_values": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ]
+            },
+            "bond_indices_cut": [
+              4,
+              12,
+              19
+            ],
+            "bond_atom_pairs_cut": [
+              [
+                4,
+                5
+              ],
+              [
+                12,
+                13
+              ],
+              [
+                19,
+                3
+              ]
+            ],
+            "formula": "C10H7",
+            "matched_mass": 121.007825032,
+            "ppm_diff": 7.42527187616964,
+            "score": 6.0,
+            "h_shift": -6,
+            "tree_depth": 3,
+            "parent_fragment_ids": [
+              794607,
+              794608,
+              1048544
+            ],
+            "lineage_root_to_fragment": [
+              1048575,
+              1048560,
+              1048544,
+              794592
+            ]
+          }
+        },
+        {
+          "peak_id": 14,
+          "mz": 123.0229,
+          "intensity": 0.016016016016016016,
+          "matched": true,
+          "matched_fragment": {
+            "fragment_id": 794592,
+            "atom_indices": {
+              "length": 10,
+              "first_values": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ]
+            },
+            "bond_indices_cut": [
+              4,
+              12,
+              19
+            ],
+            "bond_atom_pairs_cut": [
+              [
+                4,
+                5
+              ],
+              [
+                12,
+                13
+              ],
+              [
+                19,
+                3
+              ]
+            ],
+            "formula": "C10H7",
+            "matched_mass": 122.015650064,
+            "ppm_diff": 0.21731638504858145,
+            "score": 6.0,
+            "h_shift": -5,
+            "tree_depth": 3,
+            "parent_fragment_ids": [
+              794607,
+              794608,
+              1048544
+            ],
+            "lineage_root_to_fragment": [
+              1048575,
+              1048560,
+              1048544,
+              794592
+            ]
+          }
+        },
+        {
+          "peak_id": 15,
+          "mz": 124.0308,
+          "intensity": 0.02002002002002002,
+          "matched": true,
+          "matched_fragment": {
+            "fragment_id": 794592,
+            "atom_indices": {
+              "length": 10,
+              "first_values": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ]
+            },
+            "bond_indices_cut": [
+              4,
+              12,
+              19
+            ],
+            "bond_atom_pairs_cut": [
+              [
+                4,
+                5
+              ],
+              [
+                12,
+                13
+              ],
+              [
+                19,
+                3
+              ]
+            ],
+            "formula": "C10H7",
+            "matched_mass": 123.023475096,
+            "ppm_diff": 0.3938435324125452,
+            "score": 6.0,
+            "h_shift": -4,
+            "tree_depth": 3,
+            "parent_fragment_ids": [
+              794607,
+              794608,
+              1048544
+            ],
+            "lineage_root_to_fragment": [
+              1048575,
+              1048560,
+              1048544,
+              794592
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluate-the-predictions">
+<h2>Evaluate the predictions<a class="headerlink" href="#evaluate-the-predictions" title="Link to this heading"></a></h2>
+<p>Report matched-peak coverage and mass errors in ppm.</p>
+<p>The table gives the dataset and metric for each run. The following calculation recomputes summary values from the plotted predictions.</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">results_table</span><span class="p">(</span><span class="n">evidence</span><span class="p">,</span> <span class="kc">True</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">recompute</span><span class="p">(</span><span class="n">evidence</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p>| Dataset / scope | Model / variant | Metric | Value |
+| — | — | — | —: |
+| recorded evaluation | recorded model | matched_peak_fraction | 0.568182 |
+| recorded evaluation | recorded model | annotated_spectra | 2 |
+| recorded evaluation | recorded model | checked_fragments | 1534 |</p>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+  "scope": "Saved model outputs are shown directly; aggregate metrics are in the run table.",
+  "recorded_runs": 1,
+  "real_examples": 2
+}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-the-result">
+<h2>Visualize the result<a class="headerlink" href="#visualize-the-result" title="Link to this heading"></a></h2>
+<p>Fragments assigned to the measured MS/MS peaks.</p>
+<p>Compare the prediction with the reference and inspect the returned structures or peak positions. The plot is generated directly from the records loaded above.</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="k">for</span> <span class="n">example_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">figure</span> <span class="o">=</span> <span class="n">render</span><span class="p">(</span><span class="s1">'ms.annotation.magma'</span><span class="p">,</span> <span class="n">evidence</span><span class="p">,</span> <span class="n">example_index</span><span class="o">=</span><span class="n">example_index</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+    <span class="n">figure</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'svg'</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'Date'</span><span class="p">:</span> <span class="kc">None</span><span class="p">})</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">figure</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3204a6d8b32ccd7cc4ee27ce01117a22546d18244e7e00ee135cb9f285ed5374.svg" src="../_images/3204a6d8b32ccd7cc4ee27ce01117a22546d18244e7e00ee135cb9f285ed5374.svg" />
+</div>
+</div>
+</section>
+<section id="run-the-model">
+<h2>Run the model<a class="headerlink" href="#run-the-model" title="Link to this heading"></a></h2>
+<p>Configure the runtime and weights following the task guide. Select this task in the benchmark runner to evaluate your dataset.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tasks<span class="w"> </span>ms.annotation.magma<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/ms-annotation-magma.json
+</pre></div>
+</div>
+<p><a class="reference internal" href="../tasks/ms-annotation-magma.html"><span class="std std-doc">Task</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick start</span></a></p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Ridder, L., van der Hooft, J. J. J. &amp; Verhoeven, S. Automatic Compound Annotation from Mass Spectrometry Data Using MAGMa. Mass Spectrometry 3, S0033 (2014). doi:10.5702/massspectrometry.S0033. <a class="reference external" href="https://doi.org/10.5702/massspectrometry.S0033">Source</a></p></li>
+<li><p>Bushuiev, R., Bushuiev, A., de Jonge, N. F., Young, A., et al. MassSpecGym: A benchmark for the discovery and identification of molecules. Advances in Neural Information Processing Systems 37, Datasets and Benchmarks Track (2024). arXiv:2410.23326. <a class="reference external" href="https://arxiv.org/abs/2410.23326">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="datasets-overview.html" class="btn btn-neutral float-left" title="Exploring the spectroscopy datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ms-forward-glacier.html" class="btn btn-neutral float-right" title="MS/MS prediction with GLACIER" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

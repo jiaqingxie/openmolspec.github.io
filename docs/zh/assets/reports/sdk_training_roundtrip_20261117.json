@@ -1,0 +1,27 @@
+{
+  "scope": "software integration only, not a performance experiment",
+  "authorization": "user requested running the missing learning-value experiments on 2026-11-17",
+  "train_records": 2,
+  "validation_records": 2,
+  "test_records": 0,
+  "training_performed": true,
+  "steps_per_stage": 1,
+  "stages": {
+    "align": {
+      "training_performed": true,
+      "checkpoint": "/mnt/shared-storage-user/xiejiaqing/OpenMolSpec/studio/.runtime/sdk-training-20261117/align/863adcd7bd5d40bc9cc41418334fc637/best.pt",
+      "checkpoint_sha256": "13950f0306ec2a958f52daf2d8646e7a34794f62d615365911eca1c09fbf299a",
+      "uses_test_split": false,
+      "save_reload_inference_equal": true
+    },
+    "generate": {
+      "training_performed": true,
+      "checkpoint": "/mnt/shared-storage-user/xiejiaqing/OpenMolSpec/studio/.runtime/sdk-training-20261117/generate-retry-1794880888/10d65bbfab7d4e0a813fb9ee72f168c4/best.pt",
+      "checkpoint_sha256": "7458c141273390b6c5c21c2e61f4f32a1d90aad18a7df827ed7f3206868dcee0",
+      "uses_test_split": false,
+      "save_reload_inference_equal": true
+    }
+  },
+  "completed": true,
+  "elapsed_seconds": 86.394
+}

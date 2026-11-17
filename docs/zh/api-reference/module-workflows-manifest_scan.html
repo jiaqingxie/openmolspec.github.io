@@ -1,0 +1,472 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>openmolspec.workflows.manifest_scan &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/api-reference/module-workflows-manifest_scan.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="openmolspec.workflows.nmr" href="module-workflows-nmr.html" />
+    <link rel="prev" title="openmolspec.workflows.manifest" href="module-workflows-manifest.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../api-reference/module-workflows-manifest_scan.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API 参考</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="category-data.html">数据访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-models.html">模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-learning.html">训练与评测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-spectroscopy.html">谱学与数据结构</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="category-processing.html">数据处理与发布</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="module-io-tasks.html">openmolspec.io.tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-quality-dedup.html">openmolspec.quality.dedup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-quality-stats.html">openmolspec.quality.stats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-quality-validation.html">openmolspec.quality.validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-release-build.html">openmolspec.release.build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-release-catalog.html">openmolspec.release.catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-release-common.html">openmolspec.release.common</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-release-export.html">openmolspec.release.export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-release-freeze.html">openmolspec.release.freeze</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-release-splits.html">openmolspec.release.splits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-release-validation.html">openmolspec.release.validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-workflows-frequency.html">openmolspec.workflows.frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-workflows-manifest.html">openmolspec.workflows.manifest</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">openmolspec.workflows.manifest_scan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-workflows-nmr.html">openmolspec.workflows.nmr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-workflows-trajectories.html">openmolspec.workflows.trajectories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-release.html">openmolspec.release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="category-agents.html">Agent 工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-utilities.html">工具函数</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API 参考</a></li>
+          <li class="breadcrumb-item"><a href="category-processing.html">数据处理与发布</a></li>
+      <li class="breadcrumb-item active">openmolspec.workflows.manifest_scan</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api-reference/module-workflows-manifest_scan.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="openmolspec-workflows-manifest-scan">
+<h1>openmolspec.workflows.manifest_scan<a class="headerlink" href="#openmolspec-workflows-manifest-scan" title="Link to this heading"></a></h1>
+<p>Build reproducible OpenSpec sample manifests and legacy JSON maps.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.configure_rdkit_logging" title="openmolspec.workflows.manifest_scan.configure_rdkit_logging"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.configure_rdkit_logging()</span></code></a></p></td>
+<td><p>Keep RDKit diagnostics from corrupting progress output.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.sha256_file" title="openmolspec.workflows.manifest_scan.sha256_file"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.sha256_file()</span></code></a></p></td>
+<td><p>Return a file hash, or <code class="docutils literal notranslate"><span class="pre">None</span></code> when the file cannot be read.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.normalize_smiles" title="openmolspec.workflows.manifest_scan.normalize_smiles"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.normalize_smiles()</span></code></a></p></td>
+<td><p>Validate and canonicalize a SMILES or InChI molecular identifier.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.normalize_peptide_sequence" title="openmolspec.workflows.manifest_scan.normalize_peptide_sequence"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.normalize_peptide_sequence()</span></code></a></p></td>
+<td><p>Build a standard or modified peptide from a hyphen-delimited ID.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.source_id" title="openmolspec.workflows.manifest_scan.source_id"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.source_id()</span></code></a></p></td>
+<td><p>Return globally unique sample ID and original source ID.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.label_candidates" title="openmolspec.workflows.manifest_scan.label_candidates"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.label_candidates()</span></code></a></p></td>
+<td><p>Return likely label JSON paths in priority order.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.load_labels" title="openmolspec.workflows.manifest_scan.load_labels"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.load_labels()</span></code></a></p></td>
+<td><p>Read molecular labels for matching source log files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.collect_collection" title="openmolspec.workflows.manifest_scan.collect_collection"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.collect_collection()</span></code></a></p></td>
+<td><p>Collect one frequency/property or NMR collection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.merge_records" title="openmolspec.workflows.manifest_scan.merge_records"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.merge_records()</span></code></a></p></td>
+<td><p>Merge frequency and NMR rows by global sample ID and check SMILES.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.write_outputs" title="openmolspec.workflows.manifest_scan.write_outputs"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.write_outputs()</span></code></a></p></td>
+<td><p>Write the scanned source manifest and its summary files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.parse_args" title="openmolspec.workflows.manifest_scan.parse_args"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.parse_args()</span></code></a></p></td>
+<td><p>Parse command-line arguments into an argparse namespace.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.main" title="openmolspec.workflows.manifest_scan.main"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.main()</span></code></a></p></td>
+<td><p>Run the manifest scan command-line workflow.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.DEFAULT_DATASETS" title="openmolspec.workflows.manifest_scan.DEFAULT_DATASETS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.DEFAULT_DATASETS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.DEFAULT_NMR_DATASETS" title="openmolspec.workflows.manifest_scan.DEFAULT_NMR_DATASETS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.DEFAULT_NMR_DATASETS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.MANIFEST_CACHE_VERSION" title="openmolspec.workflows.manifest_scan.MANIFEST_CACHE_VERSION"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.MANIFEST_CACHE_VERSION</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.IDENTITY_FIELDS" title="openmolspec.workflows.manifest_scan.IDENTITY_FIELDS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.IDENTITY_FIELDS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.PUBLIC_ROW_FIELDS" title="openmolspec.workflows.manifest_scan.PUBLIC_ROW_FIELDS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.PUBLIC_ROW_FIELDS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.AUDIT_FIELDS" title="openmolspec.workflows.manifest_scan.AUDIT_FIELDS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.AUDIT_FIELDS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.SOURCE_PREFIXES" title="openmolspec.workflows.manifest_scan.SOURCE_PREFIXES"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.SOURCE_PREFIXES</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.ALLOW_MISSING_LABEL_DATASETS" title="openmolspec.workflows.manifest_scan.ALLOW_MISSING_LABEL_DATASETS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.ALLOW_MISSING_LABEL_DATASETS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.STANDARD_AMINO_ACIDS" title="openmolspec.workflows.manifest_scan.STANDARD_AMINO_ACIDS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.STANDARD_AMINO_ACIDS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.workflows.manifest_scan.MODIFIED_AMINO_ACIDS" title="openmolspec.workflows.manifest_scan.MODIFIED_AMINO_ACIDS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.workflows.manifest_scan.MODIFIED_AMINO_ACIDS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function" id="module-openmolspec.workflows.manifest_scan">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.configure_rdkit_logging">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">configure_rdkit_logging</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show_warnings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.configure_rdkit_logging" title="Link to this definition"></a></dt>
+<dd><p>Keep RDKit diagnostics from corrupting progress output.</p>
+<p>Invalid labels and canonicalization failures are retained in the manifest
+audit table.  The high-volume RDKit warning stream is therefore hidden by
+default, while errors remain visible.  Set <code class="docutils literal notranslate"><span class="pre">show_warnings</span></code> when
+investigating a particular label.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L119">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.sha256_file">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">sha256_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1024</span> <span class="pre">*</span> <span class="pre">1024</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.sha256_file" title="Link to this definition"></a></dt>
+<dd><p>Return a file hash, or <code class="docutils literal notranslate"><span class="pre">None</span></code> when the file cannot be read.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L134">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.normalize_smiles">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">normalize_smiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smiles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.normalize_smiles" title="Link to this definition"></a></dt>
+<dd><p>Validate and canonicalize a SMILES or InChI molecular identifier.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L288">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.normalize_peptide_sequence">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">normalize_peptide_sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.normalize_peptide_sequence" title="Link to this definition"></a></dt>
+<dd><p>Build a standard or modified peptide from a hyphen-delimited ID.</p>
+<p><code class="docutils literal notranslate"><span class="pre">p*</span></code> residues carry phosphate and <code class="docutils literal notranslate"><span class="pre">s*</span></code> residues carry sulfate. The
+modification is attached to the named atom in the corresponding residue,
+preserving the peptide bonds and stereochemistry created by RDKit.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L316">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.source_id">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">source_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.source_id" title="Link to this definition"></a></dt>
+<dd><p>Return globally unique sample ID and original source ID.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L400">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.label_candidates">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">label_candidates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fallback_dirs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.label_candidates" title="Link to this definition"></a></dt>
+<dd><p>Return likely label JSON paths in priority order.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L408">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.load_labels">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">load_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">candidates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.load_labels" title="Link to this definition"></a></dt>
+<dd><p>Read molecular labels for matching source log files.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L430">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.collect_collection">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">collect_collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hash_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_fallback_dirs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incremental</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_file_age_seconds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identity_lookup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audit_all_records</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.collect_collection" title="Link to this definition"></a></dt>
+<dd><p>Collect one frequency/property or NMR collection.</p>
+<p>Collection shards are reused when path, size, mtime, label metadata and
+cache schema are unchanged. <code class="docutils literal notranslate"><span class="pre">identity_lookup</span></code> lets NMR records reuse the
+already-normalized frequency identity, which is also required for peptide
+collections whose sequence is encoded in the filename.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L446">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.merge_records">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">merge_records</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">records</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">pd.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.merge_records" title="Link to this definition"></a></dt>
+<dd><p>Merge frequency and NMR rows by global sample ID and check SMILES.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L738">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.write_outputs">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">write_outputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_compatibility_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.write_outputs" title="Link to this definition"></a></dt>
+<dd><p>Write the scanned source manifest and its summary files.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L788">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.parse_args">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">argparse.Namespace</span></span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.parse_args" title="Link to this definition"></a></dt>
+<dd><p>Parse command-line arguments into an argparse namespace.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L859">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.main">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.main" title="Link to this definition"></a></dt>
+<dd><p>Run the manifest scan command-line workflow.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L896">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.DEFAULT_DATASETS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_DATASETS</span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.DEFAULT_DATASETS" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">'nist_ir'</span><span class="p">,</span>
+ <span class="s1">'pah'</span><span class="p">,</span>
+ <span class="s1">'pcqm4mv2'</span><span class="p">,</span>
+ <span class="s1">'qm9'</span><span class="p">,</span>
+ <span class="s1">'rxn'</span><span class="p">,</span>
+ <span class="s1">'sdbs'</span><span class="p">,</span>
+ <span class="s1">'wiley_ir'</span><span class="p">,</span>
+ <span class="s1">'wiley_raman'</span><span class="p">,</span>
+ <span class="s1">'peptide'</span><span class="p">,</span>
+ <span class="s1">'zinc_v1'</span><span class="p">,</span>
+ <span class="s1">'zinc_v2'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L41">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.DEFAULT_NMR_DATASETS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_NMR_DATASETS</span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.DEFAULT_NMR_DATASETS" title="Link to this definition"></a></dt>
+<dd><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L54">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.MANIFEST_CACHE_VERSION">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">MANIFEST_CACHE_VERSION</span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.MANIFEST_CACHE_VERSION" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'2'</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L55">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.IDENTITY_FIELDS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">IDENTITY_FIELDS</span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.IDENTITY_FIELDS" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">'smiles'</span><span class="p">,</span> <span class="s1">'canonical_smiles'</span><span class="p">,</span> <span class="s1">'inchikey'</span><span class="p">,</span> <span class="s1">'scaffold'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L56">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.PUBLIC_ROW_FIELDS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">PUBLIC_ROW_FIELDS</span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.PUBLIC_ROW_FIELDS" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">'sample_id'</span><span class="p">,</span>
+ <span class="s1">'source_dataset'</span><span class="p">,</span>
+ <span class="s1">'source_id'</span><span class="p">,</span>
+ <span class="s1">'smiles'</span><span class="p">,</span>
+ <span class="s1">'canonical_smiles'</span><span class="p">,</span>
+ <span class="s1">'inchikey'</span><span class="p">,</span>
+ <span class="s1">'scaffold'</span><span class="p">,</span>
+ <span class="s1">'log_path'</span><span class="p">,</span>
+ <span class="s1">'source_file_hash'</span><span class="p">,</span>
+ <span class="s1">'frequency_file_hash'</span><span class="p">,</span>
+ <span class="s1">'nmr_file_hash'</span><span class="p">,</span>
+ <span class="s1">'label_path'</span><span class="p">,</span>
+ <span class="s1">'label_status'</span><span class="p">,</span>
+ <span class="s1">'label_errors'</span><span class="p">,</span>
+ <span class="s1">'available_modalities'</span><span class="p">,</span>
+ <span class="s1">'frequency_log_path'</span><span class="p">,</span>
+ <span class="s1">'nmr_log_path'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L57">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.AUDIT_FIELDS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">AUDIT_FIELDS</span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.AUDIT_FIELDS" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">'sample_id'</span><span class="p">,</span>
+ <span class="s1">'source_dataset'</span><span class="p">,</span>
+ <span class="s1">'source_id'</span><span class="p">,</span>
+ <span class="s1">'modality'</span><span class="p">,</span>
+ <span class="s1">'status'</span><span class="p">,</span>
+ <span class="s1">'error_type'</span><span class="p">,</span>
+ <span class="s1">'log_path'</span><span class="p">,</span>
+ <span class="s1">'label_path'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L76">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.SOURCE_PREFIXES">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">SOURCE_PREFIXES</span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.SOURCE_PREFIXES" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">'nist_ir'</span><span class="p">:</span> <span class="s1">'NISTIR'</span><span class="p">,</span>
+ <span class="s1">'pah'</span><span class="p">:</span> <span class="s1">'PAH'</span><span class="p">,</span>
+ <span class="s1">'pcqm4mv2'</span><span class="p">:</span> <span class="s1">'PCQM4MV2'</span><span class="p">,</span>
+ <span class="s1">'qm9'</span><span class="p">:</span> <span class="s1">'QM9'</span><span class="p">,</span>
+ <span class="s1">'rxn'</span><span class="p">:</span> <span class="s1">'RXN'</span><span class="p">,</span>
+ <span class="s1">'sdbs'</span><span class="p">:</span> <span class="s1">'SDBS'</span><span class="p">,</span>
+ <span class="s1">'wiley_ir'</span><span class="p">:</span> <span class="s1">'WILEYIR'</span><span class="p">,</span>
+ <span class="s1">'wiley_raman'</span><span class="p">:</span> <span class="s1">'WILEYRAMAN'</span><span class="p">,</span>
+ <span class="s1">'peptide'</span><span class="p">:</span> <span class="s1">'PEPTIDE'</span><span class="p">,</span>
+ <span class="s1">'zinc_v1'</span><span class="p">:</span> <span class="s1">'ZINCV1'</span><span class="p">,</span>
+ <span class="s1">'zinc_v2'</span><span class="p">:</span> <span class="s1">'ZINCV2'</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L88">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.ALLOW_MISSING_LABEL_DATASETS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">ALLOW_MISSING_LABEL_DATASETS</span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.ALLOW_MISSING_LABEL_DATASETS" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">'sdbs'</span><span class="p">,</span> <span class="s1">'peptide'</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L105">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.STANDARD_AMINO_ACIDS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">STANDARD_AMINO_ACIDS</span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.STANDARD_AMINO_ACIDS" title="Link to this definition"></a></dt>
+<dd><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L106">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.workflows.manifest_scan.MODIFIED_AMINO_ACIDS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.workflows.manifest_scan.</span></span><span class="sig-name descname"><span class="pre">MODIFIED_AMINO_ACIDS</span></span><a class="headerlink" href="#openmolspec.workflows.manifest_scan.MODIFIED_AMINO_ACIDS" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">'pS'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'S'</span><span class="p">,</span> <span class="s1">'OG'</span><span class="p">,</span> <span class="s1">'P'</span><span class="p">),</span>
+ <span class="s1">'pT'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'T'</span><span class="p">,</span> <span class="s1">'OG1'</span><span class="p">,</span> <span class="s1">'P'</span><span class="p">),</span>
+ <span class="s1">'pY'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'Y'</span><span class="p">,</span> <span class="s1">'OH'</span><span class="p">,</span> <span class="s1">'P'</span><span class="p">),</span>
+ <span class="s1">'pH1'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'H'</span><span class="p">,</span> <span class="s1">'ND1'</span><span class="p">,</span> <span class="s1">'P'</span><span class="p">),</span>
+ <span class="s1">'pH2'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'H'</span><span class="p">,</span> <span class="s1">'NE2'</span><span class="p">,</span> <span class="s1">'P'</span><span class="p">),</span>
+ <span class="s1">'sS'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'S'</span><span class="p">,</span> <span class="s1">'OG'</span><span class="p">,</span> <span class="s1">'S'</span><span class="p">),</span>
+ <span class="s1">'sT'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'T'</span><span class="p">,</span> <span class="s1">'OG1'</span><span class="p">,</span> <span class="s1">'S'</span><span class="p">),</span>
+ <span class="s1">'sY'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'Y'</span><span class="p">,</span> <span class="s1">'OH'</span><span class="p">,</span> <span class="s1">'S'</span><span class="p">)}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/workflows/manifest_scan.py#L107">Source code</a></p>
+</dd></dl>
+
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="module-workflows-manifest.html" class="btn btn-neutral float-left" title="openmolspec.workflows.manifest" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="module-workflows-nmr.html" class="btn btn-neutral float-right" title="openmolspec.workflows.nmr" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

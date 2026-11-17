@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>从分子构象预测 IR 与 Raman &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/tasks/vibrational-forward.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script>window.MathJax = {"chtml": {"displayAlign": "left"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="结构检索：IR + Raman" href="vibrational-retrieval.html" />
+    <link rel="prev" title="由 IR + Raman 预测 HOMO–LUMO 能隙" href="vibrational-gap-ir_raman.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../tasks/vibrational-forward.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">按谱型浏览任务</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#nmr"><span class="xref myst">核磁共振 NMR</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ms"><span class="xref myst">质谱 MS</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman"><span class="xref myst">红外 / 拉曼 IR / Raman</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id2"><span class="xref myst">多谱联合</span></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#id3"><span class="xref myst">暂不推进</span></a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="nmr.html">核磁共振 NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms.html">质谱 MS</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="vibrational.html">红外 / 拉曼 IR / Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multimodal.html">多谱联合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deferred.html">暂不推进</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">按谱型浏览任务</a></li>
+          <li class="breadcrumb-item"><a href="vibrational.html">红外 / 拉曼 IR / Raman</a></li>
+      <li class="breadcrumb-item active">从分子构象预测 IR 与 Raman</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tasks/vibrational-forward.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="ir-raman">
+<h1>从分子构象预测 IR 与 Raman<a class="headerlink" href="#ir-raman" title="Link to this heading"></a></h1>
+<p>使用 openSpec 模型，从原子坐标预测红外与拉曼光谱。</p>
+<section id="id1">
+<h2>输入是什么<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code></p></td>
+<td><p>元素列表及 N×3 笛卡尔坐标（Å），与参考谱取自同一份 Gaussian 日志。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">checkpoints</span></code></p></td>
+<td><p>openSpec 的 Equiformer-v3 Hessian Hi/Hij 及偶极矩/极化率导数权重。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h2>输出是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IR</span> <span class="pre">/</span> <span class="pre">Raman</span></code></p></td>
+<td><p>400–4000 cm⁻¹、1024 点共同网格上的两条归一化强度数组。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spectral</span> <span class="pre">error</span></code></p></td>
+<td><p>与成对计算参考谱比较的分通道余弦相似度及强度 MAE。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h2>真实运行案例<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>下面展示示例的输入、预测与参考。下载 JSON 可获取完整数值数组及更多示例。</p>
+<p><img alt="vibrational.forward actual results" src="../_images/vibrational-forward.png" /></p>
+<p><a class="reference download internal" download="" href="../_downloads/c90b062fdaa2b7d8acb928aeb5a1feed/vibrational-forward.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/b4fe5a8a6d04776a66f1b36083173c72/vibrational-forward.png"><span class="xref download myst">PNG</span></a> · <a class="reference download internal" download="" href="../_downloads/020dcf89c166ad1e2692b8c80f6f0f8e/vibrational-forward.json"><span class="xref download myst">Full input/output JSON</span></a></p>
+<details><summary>展开查看实际输入与输出字段</summary>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"sample_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NISTIR-11730"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"gaussian_log"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NISTIR-11730.log"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"sha256"</span><span class="p">:</span><span class="w"> </span><span class="s2">"894857d2c85d7106e5613540c593ff5a2ca3e2c90bed289575d38227086c2df1"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"atoms"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"wavenumber_cm1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="mf">400.0</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">403.5190734863281</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">407.0381164550781</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">410.55718994140625</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"predicted_ir"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="mf">0.01742994412779808</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.013713346794247627</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.011153731495141983</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.009342214092612267</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"predicted_raman"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="mf">0.009821882471442223</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.007297216448932886</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.005653610453009605</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.004528572782874107</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"reference_ir"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="mf">0.01633988507091999</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.013211564160883427</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.011014701798558235</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.009432419203221798</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"reference_raman"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="mf">0.007780710235238075</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.005948643200099468</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.004715456161648035</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.0038486106786876917</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"metrics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"ir_cosine_similarity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9578531980514526</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"ir_mae"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.009397805668413639</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"raman_cosine_similarity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9989054203033447</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"raman_mae"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0008200838346965611</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="id4">
+<h2>实际评测结果<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>ir_cosine_similarity</p></td>
+<td class="text-right"><p>0.977503</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>ir_mae</p></td>
+<td class="text-right"><p>0.00519438</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>raman_cosine_similarity</p></td>
+<td class="text-right"><p>0.990194</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded sample</p></td>
+<td><p>recorded model</p></td>
+<td><p>raman_mae</p></td>
+<td class="text-right"><p>0.00164467</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h2>模型与方法<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>构象模型预测 Hessian、偶极矩与极化率响应张量；通过简正模式分析得到频率与活性，再展宽为连续光谱。</p>
+<p>分别使用余弦相似度和强度 MAE 比较 IR 与 Raman。</p>
+</section>
+<section id="id6">
+<h2>复现方式<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../notebooks/vibrational-forward.html"><span class="std std-doc">Notebook with executed figures</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick Start</span></a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tasks<span class="w"> </span>vibrational.forward<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/vibrational-forward-new.json
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2>调用模型与微调<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.benchmark</span><span class="w"> </span><span class="kn">import</span> <span class="n">Benchmark</span>
+<span class="n">benchmark</span> <span class="o">=</span> <span class="n">Benchmark</span><span class="p">(</span><span class="n">workspace</span><span class="o">=</span><span class="s1">'/path/to/workspace'</span><span class="p">,</span>
+    <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/vibrational-env/bin/python'</span><span class="p">,</span>
+    <span class="n">portable_root</span><span class="o">=</span><span class="s1">'/path/to/portable-models'</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">benchmark</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">'vibrational.forward'</span><span class="p">,</span>
+    <span class="n">output</span><span class="o">=</span><span class="s1">'geometry-to-spectrum-results.json'</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>按 <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">openSpec 训练实现</a>准备参考构象、Hessian 与响应张量，保持原子顺序、单位和模式约定。正向模型训练使用张量／性质目标；下游谱相似度不自动等于其训练 loss。 各 direct 模型训练其选定的张量头；Hessian／响应引擎按全局张量分量数平均 Cartesian SmoothL1。重建简正模式时保留各目标的独立 checkpoint 与单位。</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\ell_\beta(r)=\begin{cases}r^2/(2\beta),&amp;|r|&lt;\beta,\\ |r|-\beta/2,&amp;|r|\ge\beta.\end{cases}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[L_{\rm tensor}=\sum_{q\in\{H_i,H_{ij},\partial\mu,\partial\alpha\}}\frac1{N_q}\sum_j\ell_1(\hat T_{qj}-T_{qj}).\]</div>
+<details><summary>来源报告与 SHA-256 指纹</summary>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/vibrational_forward_paired_logs_20261116.json">vibrational_forward_paired_logs_20261116.json</a> — SHA-256 <code class="docutils literal notranslate"><span class="pre">3e35b2c5b0c5b83715f49397e9d3ab5a744429ec90bff2551a96ea0d1641e087</span></code></p></li>
+</ul>
+</details>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">Model implementation / 模型实现</a> · <a class="reference internal" href="../model-audit.html"><span class="std std-doc">Model review / 模型检查</span></a></p>
+</section>
+<section id="id8">
+<h2>参考文献<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>OpenMolSpec contributors. openSpec models and benchmark training workflows. Source archive, v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">Source</a></p></li>
+<li><p>OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">Source</a></p></li>
+<li><p>Yuan, M., Zou, Z. &amp; Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). <a class="reference external" href="https://arxiv.org/abs/2501.18876">Source</a></p></li>
+<li><p>Zou, Z., Zhang, Y., Liang, L., Wei, M., Leng, J., Jiang, J., Luo, Y. &amp; Hu, W. A deep learning model for predicting selected organic molecular spectra. Nature Computational Science 3, 957–964 (2023). doi:10.1038/s43588-023-00550-y. <a class="reference external" href="https://www.nature.com/articles/s43588-023-00550-y">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="vibrational-gap-ir_raman.html" class="btn btn-neutral float-left" title="由 IR + Raman 预测 HOMO–LUMO 能隙" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="vibrational-retrieval.html" class="btn btn-neutral float-right" title="结构检索：IR + Raman" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

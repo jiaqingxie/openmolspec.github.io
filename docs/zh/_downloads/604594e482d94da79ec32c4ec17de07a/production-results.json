@@ -1,0 +1,157 @@
+{
+  "source": "docs/figures/openmolspec_benchmark_overview.json",
+  "source_sha256": "b865d615f39aa63d1b8fd30a5babb89d39446430b126b621250e123b8bd19349",
+  "metrics": {
+    "hessian_frequency_mae_cm1": {
+      "200k_5A": 1.5526481382992063,
+      "1000k_5A": 1.5541238503925987,
+      "cutoff_reference_5A": 0.6524871873741296
+    },
+    "structure2nmr": {
+      "200k": {
+        "MAE_H": 0.016456803363382396,
+        "RMSE_H": 0.0399399244546736,
+        "count_H": 294607,
+        "MAE_C": 0.21087243978095083,
+        "RMSE_C": 0.8504739186753638,
+        "count_C": 227786
+      },
+      "1000k": {
+        "MAE_H": 0.014761316427973029,
+        "RMSE_H": 0.030331904931076573,
+        "count_H": 294607,
+        "MAE_C": 0.193099970261078,
+        "RMSE_C": 0.6172865904337173,
+        "count_C": 227786
+      }
+    },
+    "structure2response": {
+      "200k": {
+        "dedipole": {
+          "train_records": 200000,
+          "validation_records": 10390,
+          "test_records": 20390,
+          "max_steps": 312500,
+          "best_step": 287500,
+          "global_batch_size": 128,
+          "unit": "Debye/Angstrom",
+          "validation": {
+            "MAE_dedipole": 0.008017925142408266,
+            "RMSE_dedipole": 0.041947376747314115
+          },
+          "test": {
+            "MAE_dedipole": 0.007202818483670254,
+            "RMSE_dedipole": 0.02411236069848229
+          }
+        },
+        "depolar": {
+          "train_records": 200000,
+          "validation_records": 10390,
+          "test_records": 20390,
+          "max_steps": 312500,
+          "best_step": 290000,
+          "global_batch_size": 128,
+          "unit": "Bohr^3/Angstrom",
+          "validation": {
+            "MAE_depolar": 0.11701491417409904,
+            "RMSE_depolar": 2.081738204819483
+          },
+          "test": {
+            "MAE_depolar": 0.0978366449022408,
+            "RMSE_depolar": 0.3949804153773721
+          }
+        }
+      },
+      "1000k": {
+        "dedipole": {
+          "train_records": 1000000,
+          "validation_records": 10390,
+          "test_records": 20390,
+          "max_steps": 312500,
+          "best_step": 300000,
+          "global_batch_size": 128,
+          "unit": "Debye/Angstrom",
+          "validation": {
+            "MAE_dedipole": 0.007659506586122823,
+            "RMSE_dedipole": 0.019380055610498107
+          },
+          "test": {
+            "MAE_dedipole": 0.007013671735266584,
+            "RMSE_dedipole": 0.014993984469488256
+          }
+        },
+        "depolar": {
+          "train_records": 1000000,
+          "validation_records": 10390,
+          "test_records": 20390,
+          "max_steps": 312500,
+          "best_step": 302500,
+          "global_batch_size": 128,
+          "unit": "Bohr^3/Angstrom",
+          "validation": {
+            "MAE_depolar": 0.10483971613001825,
+            "RMSE_depolar": 1.4942254880856007
+          },
+          "test": {
+            "MAE_depolar": 0.09028224893791294,
+            "RMSE_depolar": 0.3033314888320356
+          }
+        }
+      }
+    },
+    "spectrum2property_mae": {
+      "properties": [
+        "Dipole magnitude",
+        "Isotropic polarizability",
+        "HOMO\u2013LUMO gap"
+      ],
+      "units": [
+        "D",
+        "\u00c5\u00b3",
+        "eV"
+      ],
+      "200k": [
+        0.9759857550312374,
+        0.42722506298628316,
+        0.15659853085517417
+      ],
+      "1000k": [
+        0.8094831307619713,
+        0.34856681723171384,
+        0.12638195820916454
+      ]
+    },
+    "vib2mol_generation": {
+      "ranks": [
+        1,
+        3,
+        5,
+        10
+      ],
+      "200k_full": [
+        0.6535066208925944,
+        0.7697891123099558,
+        0.7928886709171162,
+        0.8012751348700343
+      ],
+      "1000k_ir": [
+        0.5389406571848946,
+        0.6777341834232466,
+        0.714271701814615,
+        0.7310936733692986
+      ],
+      "1000k_ir_raman": [
+        0.7271701814615007,
+        0.8374203040706228,
+        0.8565963707699853,
+        0.8660127513487004
+      ],
+      "1000k_full": [
+        0.8120156939676312,
+        0.9023540951446788,
+        0.9189798921039726,
+        0.9264345267287887
+      ]
+    }
+  }
+}

@@ -1,0 +1,541 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>openmolspec.analysis.plot_align_overview &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/api-reference/module-analysis-plot_align_overview.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="openmolspec.analysis.plot_benchmark_overview" href="module-analysis-plot_benchmark_overview.html" />
+    <link rel="prev" title="openmolspec.analysis.plot_align_chemical_distribution" href="module-analysis-plot_align_chemical_distribution.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../api-reference/module-analysis-plot_align_overview.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API 参考</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="category-data.html">数据访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-models.html">模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-learning.html">训练与评测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-spectroscopy.html">谱学与数据结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-processing.html">数据处理与发布</a></li>
+<li class="toctree-l2"><a class="reference internal" href="category-agents.html">Agent 工具</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="category-utilities.html">工具函数</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-analyze_dataset_comparison.html">openmolspec.analysis.analyze_dataset_comparison</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_align_chemical_distribution.html">openmolspec.analysis.plot_align_chemical_distribution</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">openmolspec.analysis.plot_align_overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_benchmark_overview.html">openmolspec.analysis.plot_benchmark_overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_dataset_statistics.html">openmolspec.analysis.plot_dataset_statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_element_coverage.html">openmolspec.analysis.plot_element_coverage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_openmolspec_overview.html">openmolspec.analysis.plot_openmolspec_overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-analysis-visualize_opt_trajectory.html">openmolspec.analysis.visualize_opt_trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-cli.html">openmolspec.cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-core-processing.html">openmolspec.core.processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-core-progress.html">openmolspec.core.progress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_nmr.html">openmolspec.legacy.extract_nmr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_properties.html">openmolspec.legacy.extract_properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_properties_backup.html">openmolspec.legacy.extract_properties_backup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_spectra.html">openmolspec.legacy.extract_spectra</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-legacy-function.html">openmolspec.legacy.function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-maintenance-parse_zinc_v2_nmr.html">openmolspec.maintenance.parse_zinc_v2_nmr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-plotting.html">openmolspec.plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-openmolspec.html">openmolspec</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API 参考</a></li>
+          <li class="breadcrumb-item"><a href="category-utilities.html">工具函数</a></li>
+      <li class="breadcrumb-item active">openmolspec.analysis.plot_align_overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api-reference/module-analysis-plot_align_overview.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="openmolspec-analysis-plot-align-overview">
+<h1>openmolspec.analysis.plot_align_overview<a class="headerlink" href="#openmolspec-analysis-plot-align-overview" title="Link to this heading"></a></h1>
+<p>Draw the main OpenMolSpec Align overview figure.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.repository_root" title="openmolspec.analysis.plot_align_overview.repository_root"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.repository_root()</span></code></a></p></td>
+<td><p>Return the repository root for the standard <code class="docutils literal notranslate"><span class="pre">src</span></code> layout.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.resolve" title="openmolspec.analysis.plot_align_overview.resolve"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.resolve()</span></code></a></p></td>
+<td><p>Resolve a configured input or output path.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.compact_count" title="openmolspec.analysis.plot_align_overview.compact_count"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.compact_count()</span></code></a></p></td>
+<td><p>Format a count with a compact magnitude suffix.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.build_align_geometry_cache" title="openmolspec.analysis.plot_align_overview.build_align_geometry_cache"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.build_align_geometry_cache()</span></code></a></p></td>
+<td><p>Build molecule-level atom statistics from matched Align geometries.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.load_align_composition" title="openmolspec.analysis.plot_align_overview.load_align_composition"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.load_align_composition()</span></code></a></p></td>
+<td><p>Read the composition statistics of the aligned release.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.element_prevalence" title="openmolspec.analysis.plot_align_overview.element_prevalence"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.element_prevalence()</span></code></a></p></td>
+<td><p>Compute elemental prevalence from molecular composition counts.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.load_functional_group_summary" title="openmolspec.analysis.plot_align_overview.load_functional_group_summary"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.load_functional_group_summary()</span></code></a></p></td>
+<td><p>Count molecule-level functional-group presence in the Align split.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.plot_overview" title="openmolspec.analysis.plot_align_overview.plot_overview"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.plot_overview()</span></code></a></p></td>
+<td><p>Draw the aligned-release composition overview.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.main" title="openmolspec.analysis.plot_align_overview.main"><code class="xref py py-func docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.main()</span></code></a></p></td>
+<td><p>Run the plot align overview command-line workflow.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.DATASETS" title="openmolspec.analysis.plot_align_overview.DATASETS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.DATASETS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.YEARS" title="openmolspec.analysis.plot_align_overview.YEARS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.YEARS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.FIDELITY_LEVELS" title="openmolspec.analysis.plot_align_overview.FIDELITY_LEVELS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.FIDELITY_LEVELS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.DATASET_FIDELITY" title="openmolspec.analysis.plot_align_overview.DATASET_FIDELITY"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.DATASET_FIDELITY</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.FIDELITY_PROTOCOLS" title="openmolspec.analysis.plot_align_overview.FIDELITY_PROTOCOLS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.FIDELITY_PROTOCOLS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.MOLECULE_COUNTS" title="openmolspec.analysis.plot_align_overview.MOLECULE_COUNTS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.MOLECULE_COUNTS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.SPECTRAL_MODALITIES" title="openmolspec.analysis.plot_align_overview.SPECTRAL_MODALITIES"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.SPECTRAL_MODALITIES</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.SPECTRAL_COVERAGE" title="openmolspec.analysis.plot_align_overview.SPECTRAL_COVERAGE"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.SPECTRAL_COVERAGE</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.ELEMENT_SYMBOLS" title="openmolspec.analysis.plot_align_overview.ELEMENT_SYMBOLS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.ELEMENT_SYMBOLS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.ELEMENT_ORDER" title="openmolspec.analysis.plot_align_overview.ELEMENT_ORDER"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.ELEMENT_ORDER</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.FUNCTIONAL_GROUP_SMARTS" title="openmolspec.analysis.plot_align_overview.FUNCTIONAL_GROUP_SMARTS"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.FUNCTIONAL_GROUP_SMARTS</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.BLUE" title="openmolspec.analysis.plot_align_overview.BLUE"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.BLUE</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.LIGHT_BLUE" title="openmolspec.analysis.plot_align_overview.LIGHT_BLUE"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.LIGHT_BLUE</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.GRAY" title="openmolspec.analysis.plot_align_overview.GRAY"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.GRAY</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.DARK_GRAY" title="openmolspec.analysis.plot_align_overview.DARK_GRAY"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.DARK_GRAY</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.GRID" title="openmolspec.analysis.plot_align_overview.GRID"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.GRID</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#openmolspec.analysis.plot_align_overview.TEXT" title="openmolspec.analysis.plot_align_overview.TEXT"><code class="xref py py-data docutils literal notranslate"><span class="pre">openmolspec.analysis.plot_align_overview.TEXT</span></code></a></p></td>
+<td><p>Module constant or schema value.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function" id="module-openmolspec.analysis.plot_align_overview">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.repository_root">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">repository_root</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.repository_root" title="Link to this definition"></a></dt>
+<dd><p>Return the repository root for the standard <code class="docutils literal notranslate"><span class="pre">src</span></code> layout.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L148">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.resolve">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">resolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.resolve" title="Link to this definition"></a></dt>
+<dd><p>Resolve a configured input or output path.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L154">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.compact_count">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">compact_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.compact_count" title="Link to this definition"></a></dt>
+<dd><p>Format a count with a compact magnitude suffix.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L159">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.build_align_geometry_cache">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">build_align_geometry_cache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">align_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency_index_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency_payload_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pd.DataFrame</span></span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.build_align_geometry_cache" title="Link to this definition"></a></dt>
+<dd><p>Build molecule-level atom statistics from matched Align geometries.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L182">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.load_align_composition">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">load_align_composition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">align_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency_index_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency_payload_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rebuild_cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pd.DataFrame</span></span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.load_align_composition" title="Link to this definition"></a></dt>
+<dd><p>Read the composition statistics of the aligned release.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L251">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.element_prevalence">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">element_prevalence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">object</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pd.Series</span></span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.element_prevalence" title="Link to this definition"></a></dt>
+<dd><p>Compute elemental prevalence from molecular composition counts.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L274">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.load_functional_group_summary">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">load_functional_group_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">align_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rebuild_cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.load_functional_group_summary" title="Link to this definition"></a></dt>
+<dd><p>Count molecule-level functional-group presence in the Align split.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L284">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.plot_overview">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">plot_overview</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">composition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaffold_keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pd.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">functional_group_summary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_molecules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trajectory_frames</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.plot_overview" title="Link to this definition"></a></dt>
+<dd><p>Draw the aligned-release composition overview.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L547">Source code</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.main">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.main" title="Link to this definition"></a></dt>
+<dd><p>Run the plot align overview command-line workflow.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L761">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.DATASETS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">DATASETS</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.DATASETS" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">'QM9S'</span><span class="p">,</span>
+ <span class="s1">'QMe14S'</span><span class="p">,</span>
+ <span class="s1">'ChEMBL IR/Raman'</span><span class="p">,</span>
+ <span class="s1">'SQuIRL'</span><span class="p">,</span>
+ <span class="s1">'Multimodal Spec.'</span><span class="p">,</span>
+ <span class="s1">'SpecX Large'</span><span class="p">,</span>
+ <span class="s1">'OpenMolSpec'</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L29">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.YEARS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">YEARS</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.YEARS" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">'QM9S'</span><span class="p">:</span> <span class="mi">2023</span><span class="p">,</span>
+ <span class="s1">'QMe14S'</span><span class="p">:</span> <span class="mi">2025</span><span class="p">,</span>
+ <span class="s1">'ChEMBL IR/Raman'</span><span class="p">:</span> <span class="mi">2025</span><span class="p">,</span>
+ <span class="s1">'SQuIRL'</span><span class="p">:</span> <span class="mi">2026</span><span class="p">,</span>
+ <span class="s1">'Multimodal Spec.'</span><span class="p">:</span> <span class="mi">2024</span><span class="p">,</span>
+ <span class="s1">'SpecX Large'</span><span class="p">:</span> <span class="mi">2026</span><span class="p">,</span>
+ <span class="s1">'OpenMolSpec'</span><span class="p">:</span> <span class="mi">2026</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L38">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.FIDELITY_LEVELS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">FIDELITY_LEVELS</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.FIDELITY_LEVELS" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">'Classical /</span><span class="se">\n</span><span class="s1">empirical'</span><span class="p">,</span>
+ <span class="s1">'Mixed-</span><span class="se">\n</span><span class="s1">fidelity'</span><span class="p">,</span>
+ <span class="s1">'GGA /</span><span class="se">\n</span><span class="s1">DZ'</span><span class="p">,</span>
+ <span class="s1">'Hybrid /</span><span class="se">\n</span><span class="s1">TZ'</span><span class="p">,</span>
+ <span class="s1">'Hybrid / TZ</span><span class="se">\n</span><span class="s1">+ diffuse'</span><span class="p">,</span>
+ <span class="s1">'RSH /</span><span class="se">\n</span><span class="s1">aug-TZ'</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L48">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.DATASET_FIDELITY">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">DATASET_FIDELITY</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.DATASET_FIDELITY" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">'Multimodal Spec.'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+ <span class="s1">'SpecX Large'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+ <span class="s1">'ChEMBL IR/Raman'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+ <span class="s1">'QM9S'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+ <span class="s1">'QMe14S'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+ <span class="s1">'OpenMolSpec'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+ <span class="s1">'SQuIRL'</span><span class="p">:</span> <span class="mi">6</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L56">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.FIDELITY_PROTOCOLS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">FIDELITY_PROTOCOLS</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.FIDELITY_PROTOCOLS" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">'Multimodal Spec.'</span><span class="p">:</span> <span class="s1">'GAFF/LAMMPS IR; MestReNova NMR; predicted MS/MS'</span><span class="p">,</span>
+ <span class="s1">'SpecX Large'</span><span class="p">:</span> <span class="s1">'GAFF/LAMMPS IR; MestReNova NMR; DFT Raman; TD-DFT UV; CFM-ID MS/MS'</span><span class="p">,</span>
+ <span class="s1">'ChEMBL IR/Raman'</span><span class="p">:</span> <span class="s1">'PBEPBE/6-31G'</span><span class="p">,</span>
+ <span class="s1">'QM9S'</span><span class="p">:</span> <span class="s1">'B3LYP/def-TZVP'</span><span class="p">,</span>
+ <span class="s1">'QMe14S'</span><span class="p">:</span> <span class="s1">'B3LYP/TZVP'</span><span class="p">,</span>
+ <span class="s1">'OpenMolSpec'</span><span class="p">:</span> <span class="s1">'B3LYP-D3(BJ)/6-311+G(d,p) vibration; OPBE/6-311+G(2d,p) NMR'</span><span class="p">,</span>
+ <span class="s1">'SQuIRL'</span><span class="p">:</span> <span class="s1">'ωB97X-D/aug-cc-pVTZ IR'</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L65">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.MOLECULE_COUNTS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">MOLECULE_COUNTS</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.MOLECULE_COUNTS" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">'QM9S'</span><span class="p">:</span> <span class="mi">133885</span><span class="p">,</span>
+ <span class="s1">'QMe14S'</span><span class="p">:</span> <span class="mi">186102</span><span class="p">,</span>
+ <span class="s1">'ChEMBL IR/Raman'</span><span class="p">:</span> <span class="mi">220000</span><span class="p">,</span>
+ <span class="s1">'SQuIRL'</span><span class="p">:</span> <span class="mi">133885</span><span class="p">,</span>
+ <span class="s1">'Multimodal Spec.'</span><span class="p">:</span> <span class="mi">794403</span><span class="p">,</span>
+ <span class="s1">'SpecX Large'</span><span class="p">:</span> <span class="mi">994386</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L77">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.SPECTRAL_MODALITIES">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">SPECTRAL_MODALITIES</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.SPECTRAL_MODALITIES" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">'IR'</span><span class="p">,</span> <span class="s1">'Raman'</span><span class="p">,</span> <span class="s1">'NMR'</span><span class="p">,</span> <span class="s1">'MS'</span><span class="p">,</span> <span class="s1">'UV–Vis'</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L87">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.SPECTRAL_COVERAGE">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">SPECTRAL_COVERAGE</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.SPECTRAL_COVERAGE" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">'QM9S'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'●'</span><span class="p">,</span> <span class="s1">'●'</span><span class="p">,</span> <span class="s1">'–'</span><span class="p">,</span> <span class="s1">'–'</span><span class="p">,</span> <span class="s1">'–'</span><span class="p">),</span>
+ <span class="s1">'QMe14S'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'●'</span><span class="p">,</span> <span class="s1">'●'</span><span class="p">,</span> <span class="s1">'◐'</span><span class="p">,</span> <span class="s1">'–'</span><span class="p">,</span> <span class="s1">'–'</span><span class="p">),</span>
+ <span class="s1">'ChEMBL IR/Raman'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'●'</span><span class="p">,</span> <span class="s1">'●'</span><span class="p">,</span> <span class="s1">'–'</span><span class="p">,</span> <span class="s1">'–'</span><span class="p">,</span> <span class="s1">'–'</span><span class="p">),</span>
+ <span class="s1">'SQuIRL'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'●'</span><span class="p">,</span> <span class="s1">'–'</span><span class="p">,</span> <span class="s1">'–'</span><span class="p">,</span> <span class="s1">'–'</span><span class="p">,</span> <span class="s1">'–'</span><span class="p">),</span>
+ <span class="s1">'Multimodal Spec.'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'○'</span><span class="p">,</span> <span class="s1">'–'</span><span class="p">,</span> <span class="s1">'○'</span><span class="p">,</span> <span class="s1">'○'</span><span class="p">,</span> <span class="s1">'–'</span><span class="p">),</span>
+ <span class="s1">'SpecX Large'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'○'</span><span class="p">,</span> <span class="s1">'●'</span><span class="p">,</span> <span class="s1">'○'</span><span class="p">,</span> <span class="s1">'○'</span><span class="p">,</span> <span class="s1">'○'</span><span class="p">),</span>
+ <span class="s1">'OpenMolSpec'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'●'</span><span class="p">,</span> <span class="s1">'●'</span><span class="p">,</span> <span class="s1">'●'</span><span class="p">,</span> <span class="s1">'–'</span><span class="p">,</span> <span class="s1">'–'</span><span class="p">)}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L88">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.ELEMENT_SYMBOLS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">ELEMENT_SYMBOLS</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.ELEMENT_SYMBOLS" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">'H'</span><span class="p">,</span>
+ <span class="mi">5</span><span class="p">:</span> <span class="s1">'B'</span><span class="p">,</span>
+ <span class="mi">6</span><span class="p">:</span> <span class="s1">'C'</span><span class="p">,</span>
+ <span class="mi">7</span><span class="p">:</span> <span class="s1">'N'</span><span class="p">,</span>
+ <span class="mi">8</span><span class="p">:</span> <span class="s1">'O'</span><span class="p">,</span>
+ <span class="mi">9</span><span class="p">:</span> <span class="s1">'F'</span><span class="p">,</span>
+ <span class="mi">13</span><span class="p">:</span> <span class="s1">'Al'</span><span class="p">,</span>
+ <span class="mi">14</span><span class="p">:</span> <span class="s1">'Si'</span><span class="p">,</span>
+ <span class="mi">15</span><span class="p">:</span> <span class="s1">'P'</span><span class="p">,</span>
+ <span class="mi">16</span><span class="p">:</span> <span class="s1">'S'</span><span class="p">,</span>
+ <span class="mi">17</span><span class="p">:</span> <span class="s1">'Cl'</span><span class="p">,</span>
+ <span class="mi">32</span><span class="p">:</span> <span class="s1">'Ge'</span><span class="p">,</span>
+ <span class="mi">33</span><span class="p">:</span> <span class="s1">'As'</span><span class="p">,</span>
+ <span class="mi">34</span><span class="p">:</span> <span class="s1">'Se'</span><span class="p">,</span>
+ <span class="mi">35</span><span class="p">:</span> <span class="s1">'Br'</span><span class="p">,</span>
+ <span class="mi">53</span><span class="p">:</span> <span class="s1">'I'</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L98">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.ELEMENT_ORDER">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">ELEMENT_ORDER</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.ELEMENT_ORDER" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">'H'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'N'</span><span class="p">,</span> <span class="s1">'O'</span><span class="p">,</span> <span class="s1">'F'</span><span class="p">,</span> <span class="s1">'Al'</span><span class="p">,</span> <span class="s1">'Si'</span><span class="p">,</span> <span class="s1">'P'</span><span class="p">,</span> <span class="s1">'S'</span><span class="p">,</span> <span class="s1">'Cl'</span><span class="p">,</span> <span class="s1">'Br'</span><span class="p">,</span> <span class="s1">'As'</span><span class="p">,</span> <span class="s1">'Se'</span><span class="p">,</span> <span class="s1">'I'</span><span class="p">,</span> <span class="s1">'Ge'</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L116">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.FUNCTIONAL_GROUP_SMARTS">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">FUNCTIONAL_GROUP_SMARTS</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.FUNCTIONAL_GROUP_SMARTS" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">'Aromatic'</span><span class="p">:</span> <span class="s1">'[a;r]'</span><span class="p">,</span>
+ <span class="s1">'Carbonyl'</span><span class="p">:</span> <span class="s1">'[CX3]=[OX1]'</span><span class="p">,</span>
+ <span class="s1">'Amine'</span><span class="p">:</span> <span class="s1">'[NX3;!$([N][C,S,P]=[O,S,N]);!$([N+])]'</span><span class="p">,</span>
+ <span class="s1">'Ether'</span><span class="p">:</span> <span class="s1">'[OD2;!$([O][C,S,P]=O)]([#6])[#6]'</span><span class="p">,</span>
+ <span class="s1">'Amide'</span><span class="p">:</span> <span class="s1">'[NX3][CX3](=[OX1])'</span><span class="p">,</span>
+ <span class="s1">'Halogen'</span><span class="p">:</span> <span class="s1">'[F,Cl,Br,I]'</span><span class="p">,</span>
+ <span class="s1">'Hydroxyl'</span><span class="p">:</span> <span class="s1">'[OX2H;!$([O][C,S,P]=O)]'</span><span class="p">,</span>
+ <span class="s1">'Ester'</span><span class="p">:</span> <span class="s1">'[CX3](=[OX1])[OX2][#6]'</span><span class="p">,</span>
+ <span class="s1">'Carboxylic acid'</span><span class="p">:</span> <span class="s1">'[CX3](=[OX1])[OX2H1]'</span><span class="p">,</span>
+ <span class="s1">'Nitrile'</span><span class="p">:</span> <span class="s1">'[CX2]#[NX1]'</span><span class="p">,</span>
+ <span class="s1">'Sulfonyl'</span><span class="p">:</span> <span class="s1">'[SX4](=[OX1])(=[OX1])'</span><span class="p">,</span>
+ <span class="s1">'Nitro'</span><span class="p">:</span> <span class="s1">'[$([NX3+](=O)[O-]),$([NX3](=O)=O)]'</span><span class="p">,</span>
+ <span class="s1">'Thiol'</span><span class="p">:</span> <span class="s1">'[SX2H]'</span><span class="p">,</span>
+ <span class="s1">'Phosphoryl'</span><span class="p">:</span> <span class="s1">'[PX4](=[OX1])'</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L123">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.BLUE">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">BLUE</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.BLUE" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'#2F6FDB'</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L140">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.LIGHT_BLUE">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">LIGHT_BLUE</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.LIGHT_BLUE" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'#A9C5F5'</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L141">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.GRAY">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">GRAY</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.GRAY" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'#A9B9CC'</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L142">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.DARK_GRAY">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">DARK_GRAY</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.DARK_GRAY" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'#536273'</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L143">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.GRID">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">GRID</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.GRID" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'#D7DEE8'</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L144">Source code</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="openmolspec.analysis.plot_align_overview.TEXT">
+<span class="sig-prename descclassname"><span class="pre">openmolspec.analysis.plot_align_overview.</span></span><span class="sig-name descname"><span class="pre">TEXT</span></span><a class="headerlink" href="#openmolspec.analysis.plot_align_overview.TEXT" title="Link to this definition"></a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'#263442'</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/analysis/plot_align_overview.py#L145">Source code</a></p>
+</dd></dl>
+
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="module-analysis-plot_align_chemical_distribution.html" class="btn btn-neutral float-left" title="openmolspec.analysis.plot_align_chemical_distribution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="module-analysis-plot_benchmark_overview.html" class="btn btn-neutral float-right" title="openmolspec.analysis.plot_benchmark_overview" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

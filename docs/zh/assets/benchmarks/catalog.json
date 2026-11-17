@@ -1,0 +1,1321 @@
+{
+  "configured_experiments": [
+    {
+      "config": "spectrum2property/dipole_total_ir_ks1000k.yaml",
+      "family": "spectrum2property",
+      "modality": "ir",
+      "targets": [
+        "dipole_total"
+      ],
+      "model": "vib2conf",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "ir-dipole_total-shared-pooling-v2",
+      "seed": 624,
+      "training": {
+        "loss": "smooth_l1",
+        "loss_beta": 1.0,
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 128,
+        "learning_rate": 5e-05,
+        "weight_decay": 0.01,
+        "workers": 4,
+        "device": "cuda:0",
+        "gpus": 1,
+        "progress": "tqdm"
+      },
+      "sha256": "35e8703ef5f7af63e69b0d0095b69e0b9cc7e5fcc93581bef66b3e6e6af8fc40"
+    },
+    {
+      "config": "spectrum2property/dipole_total_ir_raman_ks1000k.yaml",
+      "family": "spectrum2property",
+      "modality": "ir-raman",
+      "targets": [
+        "dipole_total"
+      ],
+      "model": "vib2conf",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "ir-raman-dipole_total-shared-pooling-v2",
+      "seed": 624,
+      "training": {
+        "loss": "smooth_l1",
+        "loss_beta": 1.0,
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 128,
+        "learning_rate": 5e-05,
+        "weight_decay": 0.01,
+        "workers": 4,
+        "device": "cuda:0",
+        "gpus": 1,
+        "progress": "tqdm"
+      },
+      "sha256": "f6d556720512cca7e631630b8c18ee8bbf9b5b14e90a9a6483aefff0e90feedc"
+    },
+    {
+      "config": "spectrum2property/dipole_total_ks1000k.yaml",
+      "family": "spectrum2property",
+      "modality": "ir-raman-nmr",
+      "targets": [
+        "dipole_total"
+      ],
+      "model": "vib2conf",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "ir-raman-hc-dipole_total-shared-pooling-v2",
+      "seed": 624,
+      "training": {
+        "loss": "smooth_l1",
+        "loss_beta": 1.0,
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 128,
+        "learning_rate": 5e-05,
+        "weight_decay": 0.01,
+        "workers": 4,
+        "device": "cuda:0",
+        "gpus": 1,
+        "progress": "tqdm"
+      },
+      "sha256": "711390eb33f85397e5984ec9185a841e2a159fd5df045c6ace1d77416807596d"
+    },
+    {
+      "config": "spectrum2property/dipole_total_ks200k.yaml",
+      "family": "spectrum2property",
+      "modality": "ir-raman-nmr",
+      "targets": [
+        "dipole_total"
+      ],
+      "model": "vib2conf",
+      "release": "openmolspec-v1-ks200k",
+      "variant": "ir-raman-hc-dipole_total-shared-pooling-v2",
+      "seed": 624,
+      "training": {
+        "loss": "smooth_l1",
+        "loss_beta": 1.0,
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 128,
+        "learning_rate": 5e-05,
+        "weight_decay": 0.01,
+        "workers": 4,
+        "device": "cuda:0",
+        "gpus": 1,
+        "progress": "tqdm"
+      },
+      "sha256": "61c8410e230d76cc1548590ce5e9dd297ef0555eda613fda61a863003311a8a7"
+    },
+    {
+      "config": "spectrum2property/gap_ir_ks1000k.yaml",
+      "family": "spectrum2property",
+      "modality": "ir",
+      "targets": [
+        "gap"
+      ],
+      "model": "vib2conf",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "ir-gap-shared-pooling-v2",
+      "seed": 624,
+      "training": {
+        "loss": "smooth_l1",
+        "loss_beta": 1.0,
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 128,
+        "learning_rate": 5e-05,
+        "weight_decay": 0.01,
+        "workers": 4,
+        "device": "cuda:0",
+        "gpus": 1,
+        "progress": "tqdm"
+      },
+      "sha256": "c334e52031042abda55002b6752591bcc233dde8a1d713afdd078f0d3add08b3"
+    },
+    {
+      "config": "spectrum2property/gap_ir_raman_ks1000k.yaml",
+      "family": "spectrum2property",
+      "modality": "ir-raman",
+      "targets": [
+        "gap"
+      ],
+      "model": "vib2conf",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "ir-raman-gap-shared-pooling-v2",
+      "seed": 624,
+      "training": {
+        "loss": "smooth_l1",
+        "loss_beta": 1.0,
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 128,
+        "learning_rate": 5e-05,
+        "weight_decay": 0.01,
+        "workers": 4,
+        "device": "cuda:0",
+        "gpus": 1,
+        "progress": "tqdm"
+      },
+      "sha256": "d411c4c8886360fdf23c315eceea665f371b1e76a14c1aeafef2136ce6f5bafd"
+    },
+    {
+      "config": "spectrum2property/gap_ks1000k.yaml",
+      "family": "spectrum2property",
+      "modality": "ir-raman-nmr",
+      "targets": [
+        "gap"
+      ],
+      "model": "vib2conf",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "ir-raman-hc-gap-shared-pooling-v2",
+      "seed": 624,
+      "training": {
+        "loss": "smooth_l1",
+        "loss_beta": 1.0,
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 128,
+        "learning_rate": 5e-05,
+        "weight_decay": 0.01,
+        "workers": 4,
+        "device": "cuda:0",
+        "gpus": 1,
+        "progress": "tqdm"
+      },
+      "sha256": "5a3f6795039f7a6d1eaea212cdee976d4528e4feb27575473daa5708805a4545"
+    },
+    {
+      "config": "spectrum2property/gap_ks200k.yaml",
+      "family": "spectrum2property",
+      "modality": "ir-raman-nmr",
+      "targets": [
+        "gap"
+      ],
+      "model": "vib2conf",
+      "release": "openmolspec-v1-ks200k",
+      "variant": "ir-raman-hc-gap-shared-pooling-v2",
+      "seed": 624,
+      "training": {
+        "loss": "smooth_l1",
+        "loss_beta": 1.0,
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 128,
+        "learning_rate": 5e-05,
+        "weight_decay": 0.01,
+        "workers": 4,
+        "device": "cuda:0",
+        "gpus": 1,
+        "progress": "tqdm"
+      },
+      "sha256": "924d765fb8600cb0a6565a105c5b2eafaff0fe84c8e57936a9130af8dec4c14f"
+    },
+    {
+      "config": "spectrum2property/polar_iso_ir_ks1000k.yaml",
+      "family": "spectrum2property",
+      "modality": "ir",
+      "targets": [
+        "polar_iso"
+      ],
+      "model": "vib2conf",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "ir-polar_iso-shared-pooling-v2",
+      "seed": 624,
+      "training": {
+        "loss": "smooth_l1",
+        "loss_beta": 1.0,
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 128,
+        "learning_rate": 5e-05,
+        "weight_decay": 0.01,
+        "workers": 4,
+        "device": "cuda:0",
+        "gpus": 1,
+        "progress": "tqdm"
+      },
+      "sha256": "35c25dec557437577bae1c19e0ff9a9d16992b1d58590ee7864048761c61414d"
+    },
+    {
+      "config": "spectrum2property/polar_iso_ir_raman_ks1000k.yaml",
+      "family": "spectrum2property",
+      "modality": "ir-raman",
+      "targets": [
+        "polar_iso"
+      ],
+      "model": "vib2conf",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "ir-raman-polar_iso-shared-pooling-v2",
+      "seed": 624,
+      "training": {
+        "loss": "smooth_l1",
+        "loss_beta": 1.0,
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 128,
+        "learning_rate": 5e-05,
+        "weight_decay": 0.01,
+        "workers": 4,
+        "device": "cuda:0",
+        "gpus": 1,
+        "progress": "tqdm"
+      },
+      "sha256": "cfcbeca14b1805cb89441b992864bfe07b1002d119a3e24b01c392fa0e625465"
+    },
+    {
+      "config": "spectrum2property/polar_iso_ks1000k.yaml",
+      "family": "spectrum2property",
+      "modality": "ir-raman-nmr",
+      "targets": [
+        "polar_iso"
+      ],
+      "model": "vib2conf",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "ir-raman-hc-polar_iso-shared-pooling-v2",
+      "seed": 624,
+      "training": {
+        "loss": "smooth_l1",
+        "loss_beta": 1.0,
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 128,
+        "learning_rate": 5e-05,
+        "weight_decay": 0.01,
+        "workers": 4,
+        "device": "cuda:0",
+        "gpus": 1,
+        "progress": "tqdm"
+      },
+      "sha256": "c0d4fd275831afbbe1727d6636c5905f449d0c06bfac51d2ad7ff0adb0c61777"
+    },
+    {
+      "config": "spectrum2property/polar_iso_ks200k.yaml",
+      "family": "spectrum2property",
+      "modality": "ir-raman-nmr",
+      "targets": [
+        "polar_iso"
+      ],
+      "model": "vib2conf",
+      "release": "openmolspec-v1-ks200k",
+      "variant": "ir-raman-hc-polar_iso-shared-pooling-v2",
+      "seed": 624,
+      "training": {
+        "loss": "smooth_l1",
+        "loss_beta": 1.0,
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 128,
+        "learning_rate": 5e-05,
+        "weight_decay": 0.01,
+        "workers": 4,
+        "device": "cuda:0",
+        "gpus": 1,
+        "progress": "tqdm"
+      },
+      "sha256": "f37a61aac77f888d4bd86f174309c14d6ef259411a4d1c3aa00b09c0ac3f30f5"
+    },
+    {
+      "config": "spectrum2structure/vib2mol.yaml",
+      "family": "spectrum2structure",
+      "modality": "ir-raman-nmr",
+      "targets": [
+        "kekule_smiles"
+      ],
+      "model": "vib2mol",
+      "release": "release-v1",
+      "variant": "ir-raman-hc-generation-v1",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0001,
+        "generation_max_steps": 312500,
+        "generation_batch_size": 64,
+        "generation_learning_rate": 0.0001,
+        "workers": 0,
+        "device": "cuda",
+        "gpus": 4
+      },
+      "sha256": "e419631423f739db503e4cc9cf830dd91623d4d8c32b112e19a9fda3d4602c81"
+    },
+    {
+      "config": "spectrum2structure/vib2mol_batch_probe_ddp2.yaml",
+      "family": "spectrum2structure",
+      "modality": "ir-raman-nmr",
+      "targets": [
+        "kekule_smiles"
+      ],
+      "model": "vib2mol",
+      "release": "release-v1",
+      "variant": "ir-raman-batch-probe-ddp2-minmax",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0001,
+        "generation_max_steps": 312500,
+        "generation_batch_size": 64,
+        "generation_learning_rate": 0.0001,
+        "workers": 0,
+        "device": "cuda",
+        "gpus": 2,
+        "progress": "tqdm"
+      },
+      "sha256": "a76d4aee21ff40babae43622c00c5337e8be2f19950af6380b7a8cefe5db00c1"
+    },
+    {
+      "config": "spectrum2structure/vib2mol_ir_ks1000k.yaml",
+      "family": "spectrum2structure",
+      "modality": "ir",
+      "targets": [
+        "kekule_smiles"
+      ],
+      "model": "vib2mol",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "ir-generation-v1",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0001,
+        "generation_max_steps": 312500,
+        "generation_batch_size": 64,
+        "generation_learning_rate": 0.0001,
+        "workers": 0,
+        "device": "cuda",
+        "gpus": 4
+      },
+      "sha256": "4f2418218e6e5abb96f80b49f3388dd404d6591bf06842c461027d6a7b8ccd6c"
+    },
+    {
+      "config": "spectrum2structure/vib2mol_ir_raman_hnmr_ks1000k.yaml",
+      "family": "spectrum2structure",
+      "modality": "ir-raman-hnmr",
+      "targets": [
+        "kekule_smiles"
+      ],
+      "model": "vib2mol",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "ir-raman-h-generation-v1",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0001,
+        "generation_max_steps": 312500,
+        "generation_batch_size": 64,
+        "generation_learning_rate": 0.0001,
+        "workers": 0,
+        "device": "cuda",
+        "gpus": 4
+      },
+      "sha256": "0cac439d9e38c99a65a1c0b100d0da59ff4947fb9d11a368d42d5fc029868544"
+    },
+    {
+      "config": "spectrum2structure/vib2mol_ir_raman_ks1000k.yaml",
+      "family": "spectrum2structure",
+      "modality": "ir-raman",
+      "targets": [
+        "kekule_smiles"
+      ],
+      "model": "vib2mol",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "ir-raman-generation-v1",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0001,
+        "generation_max_steps": 312500,
+        "generation_batch_size": 64,
+        "generation_learning_rate": 0.0001,
+        "workers": 0,
+        "device": "cuda",
+        "gpus": 4
+      },
+      "sha256": "a48c823374cf657c08bb423653fdebf9754bdc6b2f434cfa3dc8e823fbff6ebb"
+    },
+    {
+      "config": "spectrum2structure/vib2mol_ks1000k.yaml",
+      "family": "spectrum2structure",
+      "modality": "ir-raman-nmr",
+      "targets": [
+        "kekule_smiles"
+      ],
+      "model": "vib2mol",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "ir-raman-hc-generation-v1",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0001,
+        "generation_max_steps": 312500,
+        "generation_batch_size": 64,
+        "generation_learning_rate": 0.0001,
+        "workers": 0,
+        "device": "cuda",
+        "gpus": 4
+      },
+      "sha256": "cca59b24e3814b24f0f1c3239427216527bc9621f3b1e849251cf2e1bd977fa6"
+    },
+    {
+      "config": "spectrum2structure/vib2mol_ks200k.yaml",
+      "family": "spectrum2structure",
+      "modality": "ir-raman-nmr",
+      "targets": [
+        "kekule_smiles"
+      ],
+      "model": "vib2mol",
+      "release": "openmolspec-v1-ks200k",
+      "variant": "ir-raman-hc-generation-v1",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0001,
+        "generation_max_steps": 312500,
+        "generation_batch_size": 64,
+        "generation_learning_rate": 0.0001,
+        "workers": 0,
+        "device": "cuda",
+        "gpus": 4
+      },
+      "sha256": "93a06495f744b4ee5b22867670359c772b1ac075c33d8703e90122cdb31a7bde"
+    },
+    {
+      "config": "spectrum2structure/vib2mol_smoke.yaml",
+      "family": "spectrum2structure",
+      "modality": "ir-raman-nmr",
+      "targets": [
+        "kekule_smiles"
+      ],
+      "model": "vib2mol",
+      "release": "release-v1",
+      "variant": "ir-raman-smoke-minmax",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 16,
+        "learning_rate": 0.0001,
+        "generation_max_steps": 312500,
+        "generation_batch_size": 8,
+        "generation_learning_rate": 0.0001,
+        "workers": 0,
+        "device": "cuda:0",
+        "gpus": 1,
+        "progress": "tqdm"
+      },
+      "sha256": "34d5af8d9a67cc8efc549a65aaf38d5055a05d54090ee7816af0b36b5a200c14"
+    },
+    {
+      "config": "spectrum2structure/vib2mol_smoke_ddp2.yaml",
+      "family": "spectrum2structure",
+      "modality": "ir-raman-nmr",
+      "targets": [
+        "kekule_smiles"
+      ],
+      "model": "vib2mol",
+      "release": "release-v1",
+      "variant": "ir-raman-smoke-ddp2-minmax",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 16,
+        "learning_rate": 0.0001,
+        "generation_max_steps": 312500,
+        "generation_batch_size": 8,
+        "generation_learning_rate": 0.0001,
+        "workers": 0,
+        "device": "cuda",
+        "gpus": 2,
+        "progress": "tqdm"
+      },
+      "sha256": "c7d4377818eda432da8f26cbfff9a2fa582f0106fdebe39092bd1b56c486e748"
+    },
+    {
+      "config": "structure2hessian/Hi_ks1000k_r5.yaml",
+      "family": "structure2hessian",
+      "modality": "3d",
+      "targets": [
+        "Hi"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "Hi-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "c1bae4b7e976a102ec1517eb2a296a0316ed910fe049df49f1a20448ac972035"
+    },
+    {
+      "config": "structure2hessian/Hi_ks200k.yaml",
+      "family": "structure2hessian",
+      "modality": "3d",
+      "targets": [
+        "Hi"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks200k",
+      "variant": "Hi-direct",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "35a1439181ae4bf61e03da6c774f9c9b7ea4e58dae23c8e9c1be142ba78aaf23"
+    },
+    {
+      "config": "structure2hessian/Hi_ks200k_r5.yaml",
+      "family": "structure2hessian",
+      "modality": "3d",
+      "targets": [
+        "Hi"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks200k",
+      "variant": "Hi-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "b437de9b8262168c7800b4c2e1e6d2b8c1399c395b8e9ad910d834bcb104866d"
+    },
+    {
+      "config": "structure2hessian/Hi_ks200k_r5_ddp2.yaml",
+      "family": "structure2hessian",
+      "modality": "3d",
+      "targets": [
+        "Hi"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks200k",
+      "variant": "Hi-direct-r5-ddp2",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "485998f311e5f917293a2d7519b9f6e6570527118d3edf988975be5dce27b00b"
+    },
+    {
+      "config": "structure2hessian/Hi_ks200k_r8.yaml",
+      "family": "structure2hessian",
+      "modality": "3d",
+      "targets": [
+        "Hi"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks200k",
+      "variant": "Hi-direct-r8",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "e628f6b5403ede13f4cb7210a9fae0233deff855ee22645dec8b3f0a0381e214"
+    },
+    {
+      "config": "structure2hessian/Hi_ks400k_r5.yaml",
+      "family": "structure2hessian",
+      "modality": "3d",
+      "targets": [
+        "Hi"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks400k",
+      "variant": "Hi-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "f759d1cbddbecf1cd270a3ca8440bf9e0417ca58f458c516c639bcfcc3bb80bf"
+    },
+    {
+      "config": "structure2hessian/Hi_ks600k_r5.yaml",
+      "family": "structure2hessian",
+      "modality": "3d",
+      "targets": [
+        "Hi"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks600k",
+      "variant": "Hi-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "e4b2c50bbf933f075aa49086196a181a295d52db59c68ed02d2b99a6e0326d20"
+    },
+    {
+      "config": "structure2hessian/Hi_ks800k_r5.yaml",
+      "family": "structure2hessian",
+      "modality": "3d",
+      "targets": [
+        "Hi"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks800k",
+      "variant": "Hi-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "e0790f0688916aab70a7fe8b074bd6eba8792f40e6e1633706960df799f90e54"
+    },
+    {
+      "config": "structure2hessian/Hij_ks1000k_r5.yaml",
+      "family": "structure2hessian",
+      "modality": "3d",
+      "targets": [
+        "Hij"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "Hij-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "d9ac3a6ebd133e1bf3f095256c61a594291a94a7ed1a98cd4da26cc8005ed7e1"
+    },
+    {
+      "config": "structure2hessian/Hij_ks200k.yaml",
+      "family": "structure2hessian",
+      "modality": "3d",
+      "targets": [
+        "Hij"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks200k",
+      "variant": "Hij-direct",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "70bd78e5e49b033643e50d1d82bf111c4fe963c8c6421541d5a063f1fc95ae8f"
+    },
+    {
+      "config": "structure2hessian/Hij_ks200k_r5.yaml",
+      "family": "structure2hessian",
+      "modality": "3d",
+      "targets": [
+        "Hij"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks200k",
+      "variant": "Hij-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "03726cb0981c95d511acb9b9a2716f2e19f7ebe50e11418c32c00d59aa1a9946"
+    },
+    {
+      "config": "structure2hessian/Hij_ks200k_r8.yaml",
+      "family": "structure2hessian",
+      "modality": "3d",
+      "targets": [
+        "Hij"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks200k",
+      "variant": "Hij-direct-r8",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "3045353b4682126b1f6e07f514d20d1e930cfc3ee1d08b2ee7f58cbdfc0182b0"
+    },
+    {
+      "config": "structure2hessian/Hij_ks400k_r5.yaml",
+      "family": "structure2hessian",
+      "modality": "3d",
+      "targets": [
+        "Hij"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks400k",
+      "variant": "Hij-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "883468b364d1df4b47f963effab006fd113cc63abeec3478c835fa4ba2105066"
+    },
+    {
+      "config": "structure2hessian/Hij_ks600k_r5.yaml",
+      "family": "structure2hessian",
+      "modality": "3d",
+      "targets": [
+        "Hij"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks600k",
+      "variant": "Hij-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "19c98275faa5ac7d7ec22158fbff6a440bf985b0c336b90424240169490ba671"
+    },
+    {
+      "config": "structure2hessian/Hij_ks800k_r5.yaml",
+      "family": "structure2hessian",
+      "modality": "3d",
+      "targets": [
+        "Hij"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks800k",
+      "variant": "Hij-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "aa40e8cd99822e06976415e4f3e991883f666bc39db357bc4bd0ffe8456d12e7"
+    },
+    {
+      "config": "structure2nmr/hc_ks1000k_r5.yaml",
+      "family": "structure2nmr",
+      "modality": "3d",
+      "targets": [
+        "H",
+        "C"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "hc-shifts-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "195b2a2bfeee84cd25535c501e0c221117a1390223946ab0c7d3d4eae5f0ff8b"
+    },
+    {
+      "config": "structure2nmr/hc_ks200k_r5.yaml",
+      "family": "structure2nmr",
+      "modality": "3d",
+      "targets": [
+        "H",
+        "C"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks200k",
+      "variant": "hc-shifts-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "23aa884759028ac18115a325597be925d0f8b0f2681c64a9e34e403522945903"
+    },
+    {
+      "config": "structure2observables/equiformer_v3.yaml",
+      "family": "structure2observables",
+      "modality": "3d",
+      "targets": [
+        "energy",
+        "homo",
+        "lumo",
+        "gap",
+        "dipole_total",
+        "zpve",
+        "ir_spectrum",
+        "raman_spectrum"
+      ],
+      "model": "equiformer_v3",
+      "release": "demo-10k",
+      "variant": "properties-ir-raman",
+      "seed": 624,
+      "training": {
+        "epochs": 2,
+        "batch_size": 16,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "device": "cuda:0",
+        "gpus": 1
+      },
+      "sha256": "dd0f984729bae18c3af46cf985578ac73f137eae60eeaa65694574837abff6fa"
+    },
+    {
+      "config": "structure2property/dipole.yaml",
+      "family": "structure2property",
+      "modality": "3d",
+      "targets": [
+        "dipole_total"
+      ],
+      "model": "equiformer_v3",
+      "release": "demo-10k",
+      "variant": "dipole",
+      "seed": 624,
+      "training": {
+        "epochs": 20,
+        "batch_size": 16,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "progress_interval_seconds": 30,
+        "device": "cuda:0",
+        "gpus": 1
+      },
+      "sha256": "f0cd78cbdf59d637b460999b4297c1cf980ece7e895ff989a9eca373c93af6dc"
+    },
+    {
+      "config": "structure2property/dipole_ks200k.yaml",
+      "family": "structure2property",
+      "modality": "3d",
+      "targets": [
+        "dipole_total"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks200k",
+      "variant": "dipole",
+      "seed": 624,
+      "training": {
+        "epochs": 20,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "progress_interval_seconds": 30,
+        "device": "cuda:0",
+        "gpus": 1
+      },
+      "sha256": "16d31c34a21bdea9709933e9fc2999193f71334c27cbc17ff1a123108ecec6ce"
+    },
+    {
+      "config": "structure2property/equiformer_v3.yaml",
+      "family": "structure2property",
+      "modality": "3d",
+      "targets": [
+        "energy",
+        "homo",
+        "lumo",
+        "gap",
+        "dipole_total",
+        "zpve"
+      ],
+      "model": "equiformer_v3",
+      "release": "demo-10k",
+      "variant": "energy-homo-lumo-gap-dipole-zpve",
+      "seed": 624,
+      "training": {
+        "epochs": 2,
+        "batch_size": 16,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "device": "cuda:0",
+        "gpus": 1
+      },
+      "sha256": "c4747daeba7bb054e3a6c7fa2978811ccf1cad75b371f4c83fdf82c0e1ced861"
+    },
+    {
+      "config": "structure2response/dedipole_ks1000k_r5.yaml",
+      "family": "structure2response",
+      "modality": "3d",
+      "targets": [
+        "dedipole"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "dedipole-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "16375074a6e18b6d6f2d54bcdc7d46adf90d9daf66c38f53c6d765e45de8dc7d"
+    },
+    {
+      "config": "structure2response/dedipole_ks200k_r5.yaml",
+      "family": "structure2response",
+      "modality": "3d",
+      "targets": [
+        "dedipole"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks200k",
+      "variant": "dedipole-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "7f26791f597e1ceb8d4f7037748d4d9a5b5a29b28adf2cb7f40c02a0f3ffc9ef"
+    },
+    {
+      "config": "structure2response/dedipole_ks400k_r5.yaml",
+      "family": "structure2response",
+      "modality": "3d",
+      "targets": [
+        "dedipole"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks400k",
+      "variant": "dedipole-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "915fa238daa80942618de33163ac6bcdbb0664a916b9aa83898d551852d36b15"
+    },
+    {
+      "config": "structure2response/dedipole_ks600k_r5.yaml",
+      "family": "structure2response",
+      "modality": "3d",
+      "targets": [
+        "dedipole"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks600k",
+      "variant": "dedipole-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "7059d4665fdab51ec4b1b029c528f5a032fafad1e8d9c11e91f722ee67dbddf6"
+    },
+    {
+      "config": "structure2response/dedipole_ks800k_r5.yaml",
+      "family": "structure2response",
+      "modality": "3d",
+      "targets": [
+        "dedipole"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks800k",
+      "variant": "dedipole-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "e92dc95861cf3243fac2c4163c63591813016c0287398d3b6c53db72cf6956fb"
+    },
+    {
+      "config": "structure2response/depolar_ks1000k_r5.yaml",
+      "family": "structure2response",
+      "modality": "3d",
+      "targets": [
+        "depolar"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks1000k",
+      "variant": "depolar-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "1a4412b3c6d92fc46c52b29d3f359e21ccaa6f3e76e6d54ea706979f58ee0c65"
+    },
+    {
+      "config": "structure2response/depolar_ks200k_r5.yaml",
+      "family": "structure2response",
+      "modality": "3d",
+      "targets": [
+        "depolar"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks200k",
+      "variant": "depolar-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "ea5fc67724102976c3bc095a96d11adc34183f7c3592e98550cbce627d5581b1"
+    },
+    {
+      "config": "structure2response/depolar_ks400k_r5.yaml",
+      "family": "structure2response",
+      "modality": "3d",
+      "targets": [
+        "depolar"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks400k",
+      "variant": "depolar-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "b8d75ff401126ca81707dda0c062b24569a045978d14b2ccb7382aebdb9b10a4"
+    },
+    {
+      "config": "structure2response/depolar_ks600k_r5.yaml",
+      "family": "structure2response",
+      "modality": "3d",
+      "targets": [
+        "depolar"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks600k",
+      "variant": "depolar-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "b30d9a3b5aaf7d4f06fbf0385317ae886cad205f49c987ff86069dd218044847"
+    },
+    {
+      "config": "structure2response/depolar_ks800k_r5.yaml",
+      "family": "structure2response",
+      "modality": "3d",
+      "targets": [
+        "depolar"
+      ],
+      "model": "equiformer_v3",
+      "release": "openmolspec-v1-ks800k",
+      "variant": "depolar-direct-r5",
+      "seed": 624,
+      "training": {
+        "max_steps": 312500,
+        "eval_every_steps": 2500,
+        "batch_size": 64,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "progress": "tqdm",
+        "device": "cuda:0",
+        "gpus": 2
+      },
+      "sha256": "431add368bd1dab91f0dc75d4e51cc6a5ca40d3443e8a6cddc70382bbd2a0c42"
+    },
+    {
+      "config": "structure2spectrum/equiformer_v3.yaml",
+      "family": "structure2spectrum",
+      "modality": "3d",
+      "targets": [
+        "ir_spectrum",
+        "raman_spectrum"
+      ],
+      "model": "equiformer_v3",
+      "release": "demo-10k",
+      "variant": "ir-raman",
+      "seed": 624,
+      "training": {
+        "epochs": 2,
+        "batch_size": 16,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "workers": 4,
+        "device": "cuda:0",
+        "gpus": 1
+      },
+      "sha256": "97612d1d3183979e52457142aec6716505c5891e1ad97e154e3f1b4cb3086f15"
+    }
+  ]
+}

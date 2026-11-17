@@ -1,0 +1,4495 @@
+{
+  "nmr.forward.1H": [
+    {
+      "dataset": "nmrspec_test",
+      "status": "passed",
+      "metrics": {},
+      "models": [
+        {
+          "model": "nmrnet",
+          "metrics": {
+            "matched_peak_mae_ppm": 0.13414263433412102,
+            "matched_peak_rmse_ppm": 0.23681643380742615,
+            "peak_count_mae": 10.21875,
+            "matched_fraction": 0.5192430632770222,
+            "examples": 32,
+            "scored_examples": 32,
+            "aggregation": "equal_weight_per_molecule",
+            "assignment": "minimum_absolute_error_without_atom_labels"
+          },
+          "inference_mode": "score_existing_predictions",
+          "selected_references": 32,
+          "covered_references": 32,
+          "sample_ids": [
+            "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+            "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+            "COc1ccccc1-n1nnc2ccccc21",
+            "CCCCCCOc1cc2ccccc2c(B(O)O)c1OCCCCCC",
+            "CCOP(=O)(CC(CP(=O)(OCC)OCC)C(=O)c1ccc(C)cc1C)OCC",
+            "CC[C@H]1c2c(n(Cc3ccccc3)c3c(C)cccc23)CC[C@@H]1C=O",
+            "CCN(CC)c1nc2ccccc2c2ccccc12",
+            "CC1=C2CCCCCCCCCCC2OC1=O",
+            "C=CCC(C(=O)OC)(c1cccc(Cl)c1)c1cn(C)c2ccccc12",
+            "Cc1cc(C[C@H](C(=O)c2nccn2C(C)C)c2ccc(F)cc2)cc(C)c1O",
+            "O=C1C[C@@H](c2cccc([N+](=O)[O-])c2)SC(c2ccccc2)=N1",
+            "COc1cccc(N[C@H](C(=O)O)C(C)C)c1",
+            "COC(=O)[C@@]12N=NC[C@@H]1CN(Cc1ccccc1)[C@@H]2C",
+            "Fc1ccc2c(ccn2Cc2ccc(C3COC(c4c(F)cccc4F)=N3)cc2)c1",
+            "Cc1cnn(C2CCc3ccccc32)c1",
+            "Cc1ccc(-c2nn(-c3ccccc3)cc2C(Cc2onc(C)c2[N+](=O)[O-])C[N+](=O)[O-])cc1",
+            "C[C@H]1CCc2ccccc2N1",
+            "Cc1c(/C=C/[N+](=O)[O-])cc([N+](=O)[O-])c(Cl)c1[N+](=O)[O-]",
+            "O=C(c1ccccc1)c1cn(Cc2ccccc2)c2cc(Br)cc([N+](=O)[O-])c12",
+            "Nc1cccc(C(=O)c2ccccc2)c1",
+            "CC(C)(C)OC(=O)N[C@H](CCC(=O)c1ccccc1)c1c[nH]c2cc(Cl)ccc12",
+            "CCOC(=O)C(OS(=O)(=O)c1ccc2ccccc2c1)c1ccc(F)cc1",
+            "CC(C)CC(/C=C/c1ccccc1)CO",
+            "CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O",
+            "Cc1ccc(S(=O)(=O)N2C[C@@H](O)[C@@H](C(=O)c3ccc(F)cc3)[C@@H]3CC(=O)C=C[C@]32C)cc1",
+            "COC(=O)C[C@@H]1C[C@@H]([N+](=O)[O-])[C@@H](c2ccc(C)cc2)[C@H]1C=O",
+            "Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1",
+            "O=C1/C(=C(/c2ccccc2)c2c(OC3CCCCC3)ccc3ccccc23)Cc2ccccc21",
+            "Cc1c(C(=O)OCc2ccccc2)c2ccccc2n1-c1ccccn1",
+            "FC(F)(F)C1(C#Cc2ccsc2)CNCC1c1ccccc1",
+            "COC(=O)c1cc(-c2ccccc2)n(N)c1C",
+            "O=C1c2sccc2[C@H]2[C@H]([C@H]3O[C@@H]2c2cc(Br)c(Br)cc23)N1c1cccc2cccnc12"
+          ],
+          "folds": 5,
+          "examples": [
+            {
+              "smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+              "reference_ppm": [
+                7.34,
+                7.265,
+                7.165,
+                5.26,
+                5.01,
+                2.61,
+                2.53,
+                1.665,
+                1.52,
+                1.33
+              ],
+              "prediction_ppm": [
+                5.080643653869629,
+                5.033477783203125,
+                2.49700927734375,
+                2.570378065109253,
+                1.5851383209228516,
+                1.6113414764404297,
+                1.6742292642593384,
+                1.6585071086883545,
+                2.6280250549316406,
+                2.5913405418395996,
+                7.166417121887207,
+                7.245026588439941,
+                7.182138919830322,
+                7.239785671234131,
+                7.166417121887207,
+                7.318396091461182,
+                7.313154697418213,
+                1.302143931388855,
+                1.2864220142364502,
+                1.296903371810913,
+                1.2759407758712769,
+                1.2864220142364502,
+                1.302143931388855,
+                1.2864220142364502,
+                1.2759407758712769,
+                1.3073846101760864,
+                7.30267333984375,
+                7.292191982269287
+              ]
+            },
+            {
+              "smiles": "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+              "reference_ppm": [
+                7.55,
+                7.415,
+                7.32,
+                5.67,
+                5.04,
+                4.115,
+                3.66,
+                2.36,
+                1.25
+              ],
+              "prediction_ppm": [
+                1.1134809255599976,
+                1.1029996871948242,
+                1.129202961921692,
+                4.042997360229492,
+                4.027275562286377,
+                2.250699281692505,
+                2.250699281692505,
+                2.2087740898132324,
+                7.507058620452881,
+                4.147809982299805,
+                1.197331190109253,
+                1.228775143623352,
+                1.2182937860488892,
+                1.3073846101760864,
+                1.270700216293335,
+                1.234015703201294,
+                4.420322895050049,
+                7.323636054992676,
+                7.47561502456665,
+                7.507058620452881,
+                7.349839687347412,
+                7.2712297439575195,
+                7.349839687347412,
+                7.507058620452881,
+                7.491335868835449,
+                7.260748386383057
+              ]
+            },
+            {
+              "smiles": "COc1ccccc1-n1nnc2ccccc21",
+              "reference_ppm": [
+                8.13,
+                7.52,
+                7.47,
+                7.395,
+                7.16,
+                3.8
+              ],
+              "prediction_ppm": [
+                3.8176498413085938,
+                3.843852996826172,
+                3.822890520095825,
+                7.1611762046813965,
+                7.423208713531494,
+                7.250267028808594,
+                7.947271823883057,
+                8.05732536315918,
+                7.4808549880981445,
+                7.564704895019531,
+                7.947272300720215
+              ]
+            }
+          ],
+          "prediction_files": [
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrspec_test_H/fold_0/cv_seed_42_fold_0_valid.out.pkl",
+              "sha256": "7d8318124c159bade3d7e00e5487f102090fad0712810ea58ae044eb52a7d2a1"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrspec_test_H/fold_1/cv_seed_42_fold_1_valid.out.pkl",
+              "sha256": "9ac0101ab5aa9f6519566161fcf105fa26122cef5733361f90749155f87e1ef1"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrspec_test_H/fold_2/cv_seed_42_fold_2_valid.out.pkl",
+              "sha256": "53eeda79475d98ac9b119806c4ca61d36d274bbd65d251e20b6d64b33db527bf"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrspec_test_H/fold_3/cv_seed_42_fold_3_valid.out.pkl",
+              "sha256": "c45641aa9a2d03633020fdb46c8b5abc6ad8f815178f727ddfc3ea6c12e611a5"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrspec_test_H/fold_4/cv_seed_42_fold_4_valid.out.pkl",
+              "sha256": "781af1f99605246cbf83dc9df8a03508a8b76a96b1b654fe6e70235564d5d307"
+            }
+          ],
+          "metadata": {
+            "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/data_ours/nmrspec_test_H/valid.lmdb",
+            "sha256": "ee06e5ac0007428d0adef210beed56707b7f15fe8e0a75286ec772eb02b08415"
+          }
+        },
+        {
+          "model": "nmrnetpp",
+          "metrics": {
+            "matched_peak_mae_ppm": 0.07699339577171921,
+            "matched_peak_rmse_ppm": 0.1638748144986357,
+            "peak_count_mae": 10.21875,
+            "matched_fraction": 0.5192430632770222,
+            "examples": 32,
+            "scored_examples": 32,
+            "aggregation": "equal_weight_per_molecule",
+            "assignment": "minimum_absolute_error_without_atom_labels"
+          },
+          "inference_mode": "score_existing_predictions",
+          "selected_references": 32,
+          "covered_references": 32,
+          "sample_ids": [
+            "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+            "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+            "COc1ccccc1-n1nnc2ccccc21",
+            "CCCCCCOc1cc2ccccc2c(B(O)O)c1OCCCCCC",
+            "CCOP(=O)(CC(CP(=O)(OCC)OCC)C(=O)c1ccc(C)cc1C)OCC",
+            "CC[C@H]1c2c(n(Cc3ccccc3)c3c(C)cccc23)CC[C@@H]1C=O",
+            "CCN(CC)c1nc2ccccc2c2ccccc12",
+            "CC1=C2CCCCCCCCCCC2OC1=O",
+            "C=CCC(C(=O)OC)(c1cccc(Cl)c1)c1cn(C)c2ccccc12",
+            "Cc1cc(C[C@H](C(=O)c2nccn2C(C)C)c2ccc(F)cc2)cc(C)c1O",
+            "O=C1C[C@@H](c2cccc([N+](=O)[O-])c2)SC(c2ccccc2)=N1",
+            "COc1cccc(N[C@H](C(=O)O)C(C)C)c1",
+            "COC(=O)[C@@]12N=NC[C@@H]1CN(Cc1ccccc1)[C@@H]2C",
+            "Fc1ccc2c(ccn2Cc2ccc(C3COC(c4c(F)cccc4F)=N3)cc2)c1",
+            "Cc1cnn(C2CCc3ccccc32)c1",
+            "Cc1ccc(-c2nn(-c3ccccc3)cc2C(Cc2onc(C)c2[N+](=O)[O-])C[N+](=O)[O-])cc1",
+            "C[C@H]1CCc2ccccc2N1",
+            "Cc1c(/C=C/[N+](=O)[O-])cc([N+](=O)[O-])c(Cl)c1[N+](=O)[O-]",
+            "O=C(c1ccccc1)c1cn(Cc2ccccc2)c2cc(Br)cc([N+](=O)[O-])c12",
+            "Nc1cccc(C(=O)c2ccccc2)c1",
+            "CC(C)(C)OC(=O)N[C@H](CCC(=O)c1ccccc1)c1c[nH]c2cc(Cl)ccc12",
+            "CCOC(=O)C(OS(=O)(=O)c1ccc2ccccc2c1)c1ccc(F)cc1",
+            "CC(C)CC(/C=C/c1ccccc1)CO",
+            "CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O",
+            "Cc1ccc(S(=O)(=O)N2C[C@@H](O)[C@@H](C(=O)c3ccc(F)cc3)[C@@H]3CC(=O)C=C[C@]32C)cc1",
+            "COC(=O)C[C@@H]1C[C@@H]([N+](=O)[O-])[C@@H](c2ccc(C)cc2)[C@H]1C=O",
+            "Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1",
+            "O=C1/C(=C(/c2ccccc2)c2c(OC3CCCCC3)ccc3ccccc23)Cc2ccccc21",
+            "Cc1c(C(=O)OCc2ccccc2)c2ccccc2n1-c1ccccn1",
+            "FC(F)(F)C1(C#Cc2ccsc2)CNCC1c1ccccc1",
+            "COC(=O)c1cc(-c2ccccc2)n(N)c1C",
+            "O=C1c2sccc2[C@H]2[C@H]([C@H]3O[C@@H]2c2cc(Br)c(Br)cc23)N1c1cccc2cccnc12"
+          ],
+          "folds": 5,
+          "examples": [
+            {
+              "smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+              "reference_ppm": [
+                7.34,
+                7.265,
+                7.165,
+                5.26,
+                5.01,
+                2.61,
+                2.53,
+                1.665,
+                1.52,
+                1.33
+              ],
+              "prediction_ppm": [
+                5.247396469116211,
+                4.99329137802124,
+                2.5179619789123535,
+                2.518220901489258,
+                1.5067112445831299,
+                1.5103302001953125,
+                1.654056191444397,
+                1.6561241149902344,
+                2.609471321105957,
+                2.6151580810546875,
+                7.170182704925537,
+                7.271772861480713,
+                7.173801422119141,
+                7.271772861480713,
+                7.166821479797363,
+                7.34622049331665,
+                7.3420844078063965,
+                1.3319652080535889,
+                1.3329994678497314,
+                1.3319652080535889,
+                1.3314483165740967,
+                1.3319652080535889,
+                1.3314483165740967,
+                1.3335163593292236,
+                1.3319652080535889,
+                1.3319652080535889,
+                7.339499473571777,
+                7.343119144439697
+              ]
+            },
+            {
+              "smiles": "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+              "reference_ppm": [
+                7.55,
+                7.415,
+                7.32,
+                5.67,
+                5.04,
+                4.115,
+                3.66,
+                2.36,
+                1.25
+              ],
+              "prediction_ppm": [
+                1.0993155241012573,
+                1.1034514904022217,
+                1.1070706844329834,
+                4.011509418487549,
+                4.0100226402282715,
+                2.3897461891174316,
+                2.392589807510376,
+                2.394657611846924,
+                5.07993745803833,
+                3.7912025451660156,
+                1.3066322803497314,
+                1.314387321472168,
+                1.3097343444824219,
+                1.0279695987701416,
+                1.0233166217803955,
+                1.0321056842803955,
+                4.365039825439453,
+                7.21671199798584,
+                7.470300197601318,
+                7.542680263519287,
+                7.410845756530762,
+                7.320629119873047,
+                7.411362648010254,
+                7.5431976318359375,
+                7.466164588928223,
+                7.220848083496094
+              ]
+            },
+            {
+              "smiles": "COc1ccccc1-n1nnc2ccccc21",
+              "reference_ppm": [
+                8.13,
+                7.52,
+                7.47,
+                7.395,
+                7.16,
+                3.8
+              ],
+              "prediction_ppm": [
+                3.7992165088653564,
+                3.798440933227539,
+                3.801025867462158,
+                7.158032417297363,
+                7.536477088928223,
+                7.159842491149902,
+                7.558190822601318,
+                8.139815330505371,
+                7.394301414489746,
+                7.475987434387207,
+                7.420151710510254
+              ]
+            }
+          ],
+          "prediction_files": [
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrspec_test_H/cv_seed_42_fold_0/cv_seed_42_fold_0_valid.out.pkl",
+              "sha256": "5398702fdce4224456404aeb04cfa8024ea93cc11b4b5fbbf4a9d39c2805c9a6"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrspec_test_H/cv_seed_42_fold_1/cv_seed_42_fold_1_valid.out.pkl",
+              "sha256": "dabc9c92bdcb23da21cfb146e22a834dac84de1b3b06a3e68f96888453e64322"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrspec_test_H/cv_seed_42_fold_2/cv_seed_42_fold_2_valid.out.pkl",
+              "sha256": "02f2c781c4fcaff5dcbf6956437529c64d9717c3b4c9e795c702770454c3809c"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrspec_test_H/cv_seed_42_fold_3/cv_seed_42_fold_3_valid.out.pkl",
+              "sha256": "549c7ba08afa8cc3e9dbd3e51976705b16a11270f8e9c7c1a3fbf83de6d752ea"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrspec_test_H/cv_seed_42_fold_4/cv_seed_42_fold_4_valid.out.pkl",
+              "sha256": "385de21875409a3f73e706293495904c284c5a708e433e900cd39904dac54b3f"
+            }
+          ],
+          "metadata": {
+            "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/data_ours/nmrspec_test_H/valid.lmdb",
+            "sha256": "ee06e5ac0007428d0adef210beed56707b7f15fe8e0a75286ec772eb02b08415"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "patent_test_10k",
+      "status": "passed",
+      "metrics": {},
+      "models": [
+        {
+          "model": "nmrnet",
+          "metrics": {
+            "matched_peak_mae_ppm": 0.2691200683990773,
+            "matched_peak_rmse_ppm": 0.5308687779393774,
+            "peak_count_mae": 24.75862068965517,
+            "matched_fraction": 0.2947374416128153,
+            "examples": 29,
+            "scored_examples": 29,
+            "aggregation": "equal_weight_per_molecule",
+            "assignment": "minimum_absolute_error_without_atom_labels"
+          },
+          "inference_mode": "score_existing_predictions",
+          "selected_references": 32,
+          "covered_references": 29,
+          "sample_ids": [
+            "C#CCN[C@H](C)CCCCC.C#CCN[C@H](C)CCCCC.Cl",
+            "CC1=Cc2ccccc2[CH]1[Zr+2]([CH]1C(C)=Cc2ccccc21)=[Si](C)C.[Cl-].[Cl-]",
+            "CC1=Cc2ccccc2[CH]1[Zr+2]([CH]1C(C)=Cc2ccccc21)=[Si](C)C.Cc1ccc([O-])c(C)c1.[Cl-]",
+            "COc1cc2c(cc1OC)[CH]([Zr+2]([CH]1C=Cc3cc(OC)c(OC)cc31)=[Si](C)C)C=C2.[Cl-].[Cl-]",
+            "CC1(COc2cnccc2C#N)CCO1.CC1(COc2cnccc2C#N)CCO1",
+            "CCCCCCCCOCC1CO1.CCCCCCCCOCC1CO1",
+            "CC1=C[CH]([Zr+]([CH]2C=C(C(C)C)c3ccccc32)[SiH](C)C)c2ccccc21.CC1=C[CH]([Zr+]([CH]2C=C(C(C)C)c3ccccc32)[SiH](C)C)c2ccccc21.[Cl-].[Cl-]",
+            "CC(C)C1=C[CH]([Zr+]([CH]2C=Cc3ccccc32)[SiH](C)C)c2ccccc21.CC(C)C1=C[CH]([Zr+]([CH]2C=Cc3ccccc32)[SiH](C)C)c2ccccc21.[Cl-].[Cl-]",
+            "CC1=Cc2c(C)cc(C)cc2[CH]1[Zr+2]([CH]1C(C)=Cc2c(C)cc(C)cc21)=[Si](C)C.[Cl-].[Cl-]",
+            "CC1=Cc2cc(C)c(C)cc2[CH]1[Zr+2]([CH]1C(C)=Cc2cc(C)c(C)cc21)=[Si](C)C.[Cl-].[Cl-]",
+            "CC(C)C1=Cc2ccccc2[CH]1[Zr+2]([CH]1C(C(C)C)=Cc2ccccc21)=[Si](C)C.[Cl-].[Cl-]",
+            "CC(C)c1cccc(C(C)C)c1[O][Nb-]([Cl])([Cl])([Cl])[O]c1c(C(C)C)cccc1C(C)C",
+            "CCCCCCCCCCCC(=O)O.CCCCCCCCCCCC(=O)O.OCC1CCC(CO)O1",
+            "O=S(=O)([O-])[O-].O=[N+]([O-])c1ccc2c(c1)[I+]c1ccccc1-2.O=[N+]([O-])c1ccc2c(c1)[I+]c1ccccc1-2",
+            "Oc1ccccc1C=C1C=CC=CC1[NH][Ti+]([NH]C1C=CC=CC1=Cc1ccccc1O)[CH]1C=CC=C1.[Cl-]",
+            "O=C([O-])CSC1CCN(c2ccc(Cl)c(C(F)(F)F)c2)C1.O=C([O-])CSC1CCN(c2ccc(Cl)c(C(F)(F)F)c2)C1.[Ca+2]",
+            "O=C([O-])COC1CCN(c2ccc(Cl)c(C(F)(F)F)c2)C1.O=C([O-])COC1CCN(c2ccc(Cl)c(C(F)(F)F)c2)C1.[Ca+2]",
+            "O=C([O-])COC1CCN(c2cc(C(F)(F)F)ccc2F)C1.O=C([O-])COC1CCN(c2cc(C(F)(F)F)ccc2F)C1.[Ca+2]",
+            "O=C([O-])COC1CCN(c2ccccc2C(F)(F)F)C1.O=C([O-])COC1CCN(c2ccccc2C(F)(F)F)C1.[Ca+2]",
+            "O=C([O-])COC1CCN(c2cccc(C(F)(F)F)c2)C1.O=C([O-])COC1CCN(c2cccc(C(F)(F)F)c2)C1.[Ca+2]",
+            "OB1OCc2cc(Oc3ccc(-c4nnn[nH]4)cc3)ccc21.OB1OCc2cc(Oc3ccc(-n4cnnn4)cc3)ccc21",
+            "COc1cc2c(CBr)nc(OC(C)=O)c([N+](=O)[O-])c2cc1OC.COc1cc2c(CBr)nc(OC(C)=O)c([N+](=O)[O-])c2cc1OC.O",
+            "O=C([O-])CSC1CCN(c2ccc(C(F)(F)F)cc2C(F)(F)F)C1.O=C([O-])CSC1CCN(c2ccc(C(F)(F)F)cc2C(F)(F)F)C1.[Ca+2]",
+            "O=C([O-])COC1CCN(c2ccc(C(F)(F)F)cc2C(F)(F)F)C1.O=C([O-])COC1CCN(c2ccc(C(F)(F)F)cc2C(F)(F)F)C1.[Ca+2]",
+            "COc1cc2c(C)nc(O)c(NC(C)=O)c2cc1OC.COc1cc2c(C)nc(O)c(NC(C)=O)c2cc1OC.O",
+            "CCCC(C)C1=C[CH]([Zr+]([CH]2C=C(C)c3ccccc32)[SiH](C)C)c2ccccc21.CCCC(C)C1=C[CH]([Zr+]([CH]2C=C(C)c3ccccc32)[SiH](C)C)c2ccccc21.[Cl-].[Cl-]",
+            "CCCC(C)C1=C[CH]([Zr+]([CH]2C=Cc3ccccc32)[SiH](C)C)c2ccccc21.CCCC(C)C1=C[CH]([Zr+]([CH]2C=Cc3ccccc32)[SiH](C)C)c2ccccc21.[Cl-].[Cl-]",
+            "CC1=Cc2cc(CC(C)C)ccc2[CH]1[Zr+2]([CH]1C(C)=Cc2cc(CC(C)C)ccc21)=[Si](C)C.[Cl-].[Cl-]",
+            "CC1=Cc2cc(C(C)(C)C)ccc2[CH]1[Zr+2]([CH]1C(C)=Cc2cc(C(C)(C)C)ccc21)=[Si](C)C.[Cl-].[Cl-]"
+          ],
+          "folds": 5,
+          "examples": [
+            {
+              "smiles": "C#CCN[C@H](C)CCCCC.C#CCN[C@H](C)CCCCC.Cl",
+              "reference_ppm": [
+                0.73,
+                1.17,
+                1.2000000000000002,
+                1.43,
+                1.59,
+                2.82,
+                3.32,
+                3.79
+              ],
+              "prediction_ppm": [
+                2.26642107963562,
+                3.566099166870117,
+                3.6709117889404297,
+                1.7109136581420898,
+                2.89005708694458,
+                1.1029996871948242,
+                1.0820372104644775,
+                1.1344435214996338,
+                2.041073799133301,
+                1.9362609386444092,
+                2.6542282104492188,
+                2.6647095680236816,
+                1.5589351654052734,
+                1.5432132482528687,
+                1.3912347555160522,
+                1.406956672668457,
+                0.9300586581230164,
+                0.9405400156974792,
+                0.9405400156974792,
+                2.26642107963562,
+                3.566099166870117,
+                3.6709117889404297,
+                1.7109136581420898,
+                2.89005708694458,
+                1.1029996871948242,
+                1.0820372104644775,
+                1.1344435214996338,
+                2.041073799133301,
+                1.9362609386444092,
+                2.6542282104492188,
+                2.6647095680236816,
+                1.5589351654052734,
+                1.5432132482528687,
+                1.3912347555160522,
+                1.406956672668457,
+                0.9300586581230164,
+                0.9405400156974792,
+                0.9405400156974792,
+                2.8114476203918457
+              ]
+            },
+            {
+              "smiles": "CC1=Cc2ccccc2[CH]1[Zr+2]([CH]1C(C)=Cc2ccccc21)=[Si](C)C.[Cl-].[Cl-]",
+              "reference_ppm": [
+                7.67,
+                7.37,
+                7.09,
+                6.75,
+                6.65,
+                2.44,
+                1.43,
+                1.23
+              ],
+              "prediction_ppm": [
+                2.339790105819702,
+                2.360752582550049,
+                2.360752582550049,
+                6.7576470375061035,
+                7.716683864593506,
+                7.3288774490356445,
+                7.339357852935791,
+                7.873902797698975,
+                7.276470184326172,
+                7.045882225036621,
+                2.3555121421813965,
+                2.3659932613372803,
+                2.3921964168548584,
+                6.825775146484375,
+                7.706202507019043,
+                7.292191982269287,
+                7.30267333984375,
+                7.873902797698975,
+                0.33786672353744507,
+                0.35358861088752747,
+                0.3064228892326355,
+                0.41123563051223755,
+                0.38503244519233704,
+                0.34310734272003174
+              ]
+            },
+            {
+              "smiles": "CC1=Cc2ccccc2[CH]1[Zr+2]([CH]1C(C)=Cc2ccccc21)=[Si](C)C.Cc1ccc([O-])c(C)c1.[Cl-]",
+              "reference_ppm": [
+                7.96,
+                7.6,
+                7.36,
+                7.31,
+                7.29,
+                7.1,
+                6.99,
+                6.94,
+                6.88,
+                6.75,
+                6.65,
+                6.06,
+                5.93,
+                2.4,
+                2.24,
+                2.18,
+                1.85,
+                1.35,
+                1.24
+              ],
+              "prediction_ppm": [
+                1.763319969177246,
+                1.7947638034820557,
+                1.7423574924468994,
+                5.248343467712402,
+                5.667594909667969,
+                5.819573402404785,
+                5.594225883483887,
+                2.313586711883545,
+                3.7180774211883545,
+                3.587062120437622,
+                0.9877057075500488,
+                1.0663152933120728,
+                1.0086681842803955,
+                2.5127310752868652,
+                6.3017120361328125,
+                6.621390342712402,
+                6.427487373352051,
+                4.897221088409424,
+                0.19112886488437653,
+                0.24353525042533875,
+                0.17016631364822388,
+                0.26973843574523926,
+                0.39551371335983276,
+                0.23305396735668182,
+                2.753800392150879,
+                2.9686665534973145,
+                2.863853931427002,
+                2.9424633979797363,
+                4.278825759887695,
+                2.717115879058838,
+                1.6742292642593384,
+                2.8114473819732666,
+                6.396042823791504
+              ]
+            }
+          ],
+          "prediction_files": [
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/patent_test_10k_H/fold_0/cv_seed_42_fold_0_valid.out.pkl",
+              "sha256": "00dd532d5dacffbfb46b65ed6dc161a5143e4a128551a820f5aee8b6bbdf959d"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/patent_test_10k_H/fold_1/cv_seed_42_fold_1_valid.out.pkl",
+              "sha256": "7b07572905863b4257a28b2536b7b3642a6ac1dae3a1c068397422f6954accd2"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/patent_test_10k_H/fold_2/cv_seed_42_fold_2_valid.out.pkl",
+              "sha256": "d4dbe6d12c55d43cc4c22de6da123276bb8d2a55d43b3b82569ab7e071e44158"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/patent_test_10k_H/fold_3/cv_seed_42_fold_3_valid.out.pkl",
+              "sha256": "9be14252d27d7a6729ea93aa836ec641f87684c3c4788db76cd04fcd21729aad"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/patent_test_10k_H/fold_4/cv_seed_42_fold_4_valid.out.pkl",
+              "sha256": "dd5c36c45f755993ffc054b7a6cf2704371c9ae3e97a729b49a6c42a8b3108b8"
+            }
+          ],
+          "metadata": {
+            "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/data_ours/patent_test_10k_H/valid.lmdb",
+            "sha256": "9e9d547ee0fcfede4d766f7090b1b425bd500db367a058fb4cdd202a702b8fe8"
+          }
+        },
+        {
+          "model": "nmrnetpp",
+          "metrics": {
+            "matched_peak_mae_ppm": 0.22784231065252586,
+            "matched_peak_rmse_ppm": 0.4845488263627234,
+            "peak_count_mae": 24.75862068965517,
+            "matched_fraction": 0.2947374416128153,
+            "examples": 29,
+            "scored_examples": 29,
+            "aggregation": "equal_weight_per_molecule",
+            "assignment": "minimum_absolute_error_without_atom_labels"
+          },
+          "inference_mode": "score_existing_predictions",
+          "selected_references": 32,
+          "covered_references": 29,
+          "sample_ids": [
+            "C#CCN[C@H](C)CCCCC.C#CCN[C@H](C)CCCCC.Cl",
+            "CC1=Cc2ccccc2[CH]1[Zr+2]([CH]1C(C)=Cc2ccccc21)=[Si](C)C.[Cl-].[Cl-]",
+            "CC1=Cc2ccccc2[CH]1[Zr+2]([CH]1C(C)=Cc2ccccc21)=[Si](C)C.Cc1ccc([O-])c(C)c1.[Cl-]",
+            "COc1cc2c(cc1OC)[CH]([Zr+2]([CH]1C=Cc3cc(OC)c(OC)cc31)=[Si](C)C)C=C2.[Cl-].[Cl-]",
+            "CC1(COc2cnccc2C#N)CCO1.CC1(COc2cnccc2C#N)CCO1",
+            "CCCCCCCCOCC1CO1.CCCCCCCCOCC1CO1",
+            "CC1=C[CH]([Zr+]([CH]2C=C(C(C)C)c3ccccc32)[SiH](C)C)c2ccccc21.CC1=C[CH]([Zr+]([CH]2C=C(C(C)C)c3ccccc32)[SiH](C)C)c2ccccc21.[Cl-].[Cl-]",
+            "CC(C)C1=C[CH]([Zr+]([CH]2C=Cc3ccccc32)[SiH](C)C)c2ccccc21.CC(C)C1=C[CH]([Zr+]([CH]2C=Cc3ccccc32)[SiH](C)C)c2ccccc21.[Cl-].[Cl-]",
+            "CC1=Cc2c(C)cc(C)cc2[CH]1[Zr+2]([CH]1C(C)=Cc2c(C)cc(C)cc21)=[Si](C)C.[Cl-].[Cl-]",
+            "CC1=Cc2cc(C)c(C)cc2[CH]1[Zr+2]([CH]1C(C)=Cc2cc(C)c(C)cc21)=[Si](C)C.[Cl-].[Cl-]",
+            "CC(C)C1=Cc2ccccc2[CH]1[Zr+2]([CH]1C(C(C)C)=Cc2ccccc21)=[Si](C)C.[Cl-].[Cl-]",
+            "CC(C)c1cccc(C(C)C)c1[O][Nb-]([Cl])([Cl])([Cl])[O]c1c(C(C)C)cccc1C(C)C",
+            "CCCCCCCCCCCC(=O)O.CCCCCCCCCCCC(=O)O.OCC1CCC(CO)O1",
+            "O=S(=O)([O-])[O-].O=[N+]([O-])c1ccc2c(c1)[I+]c1ccccc1-2.O=[N+]([O-])c1ccc2c(c1)[I+]c1ccccc1-2",
+            "Oc1ccccc1C=C1C=CC=CC1[NH][Ti+]([NH]C1C=CC=CC1=Cc1ccccc1O)[CH]1C=CC=C1.[Cl-]",
+            "O=C([O-])CSC1CCN(c2ccc(Cl)c(C(F)(F)F)c2)C1.O=C([O-])CSC1CCN(c2ccc(Cl)c(C(F)(F)F)c2)C1.[Ca+2]",
+            "O=C([O-])COC1CCN(c2ccc(Cl)c(C(F)(F)F)c2)C1.O=C([O-])COC1CCN(c2ccc(Cl)c(C(F)(F)F)c2)C1.[Ca+2]",
+            "O=C([O-])COC1CCN(c2cc(C(F)(F)F)ccc2F)C1.O=C([O-])COC1CCN(c2cc(C(F)(F)F)ccc2F)C1.[Ca+2]",
+            "O=C([O-])COC1CCN(c2ccccc2C(F)(F)F)C1.O=C([O-])COC1CCN(c2ccccc2C(F)(F)F)C1.[Ca+2]",
+            "O=C([O-])COC1CCN(c2cccc(C(F)(F)F)c2)C1.O=C([O-])COC1CCN(c2cccc(C(F)(F)F)c2)C1.[Ca+2]",
+            "OB1OCc2cc(Oc3ccc(-c4nnn[nH]4)cc3)ccc21.OB1OCc2cc(Oc3ccc(-n4cnnn4)cc3)ccc21",
+            "COc1cc2c(CBr)nc(OC(C)=O)c([N+](=O)[O-])c2cc1OC.COc1cc2c(CBr)nc(OC(C)=O)c([N+](=O)[O-])c2cc1OC.O",
+            "O=C([O-])CSC1CCN(c2ccc(C(F)(F)F)cc2C(F)(F)F)C1.O=C([O-])CSC1CCN(c2ccc(C(F)(F)F)cc2C(F)(F)F)C1.[Ca+2]",
+            "O=C([O-])COC1CCN(c2ccc(C(F)(F)F)cc2C(F)(F)F)C1.O=C([O-])COC1CCN(c2ccc(C(F)(F)F)cc2C(F)(F)F)C1.[Ca+2]",
+            "COc1cc2c(C)nc(O)c(NC(C)=O)c2cc1OC.COc1cc2c(C)nc(O)c(NC(C)=O)c2cc1OC.O",
+            "CCCC(C)C1=C[CH]([Zr+]([CH]2C=C(C)c3ccccc32)[SiH](C)C)c2ccccc21.CCCC(C)C1=C[CH]([Zr+]([CH]2C=C(C)c3ccccc32)[SiH](C)C)c2ccccc21.[Cl-].[Cl-]",
+            "CCCC(C)C1=C[CH]([Zr+]([CH]2C=Cc3ccccc32)[SiH](C)C)c2ccccc21.CCCC(C)C1=C[CH]([Zr+]([CH]2C=Cc3ccccc32)[SiH](C)C)c2ccccc21.[Cl-].[Cl-]",
+            "CC1=Cc2cc(CC(C)C)ccc2[CH]1[Zr+2]([CH]1C(C)=Cc2cc(CC(C)C)ccc21)=[Si](C)C.[Cl-].[Cl-]",
+            "CC1=Cc2cc(C(C)(C)C)ccc2[CH]1[Zr+2]([CH]1C(C)=Cc2cc(C(C)(C)C)ccc21)=[Si](C)C.[Cl-].[Cl-]"
+          ],
+          "folds": 5,
+          "examples": [
+            {
+              "smiles": "C#CCN[C@H](C)CCCCC.C#CCN[C@H](C)CCCCC.Cl",
+              "reference_ppm": [
+                0.73,
+                1.17,
+                1.2000000000000002,
+                1.43,
+                1.59,
+                2.82,
+                3.32,
+                3.79
+              ],
+              "prediction_ppm": [
+                2.191218614578247,
+                3.4945740699768066,
+                3.524430751800537,
+                1.59666907787323,
+                2.9395751953125,
+                1.1370564699172974,
+                1.156185507774353,
+                1.1520495414733887,
+                1.8817943334579468,
+                1.8498694896697998,
+                1.6488860845565796,
+                1.6163151264190674,
+                1.7888637781143188,
+                1.7942922115325928,
+                1.4343311786651611,
+                1.4265763759613037,
+                0.9457667469978333,
+                0.9436987042427063,
+                0.9436987042427063,
+                2.191218614578247,
+                3.4945740699768066,
+                3.524430751800537,
+                1.59666907787323,
+                2.9395751953125,
+                1.1370564699172974,
+                1.156185507774353,
+                1.1520495414733887,
+                1.8817943334579468,
+                1.8498694896697998,
+                1.6488860845565796,
+                1.6163151264190674,
+                1.7888637781143188,
+                1.7942922115325928,
+                1.4343311786651611,
+                1.4265763759613037,
+                0.9457667469978333,
+                0.9436987042427063,
+                0.9436987042427063,
+                2.158130407333374
+              ]
+            },
+            {
+              "smiles": "CC1=Cc2ccccc2[CH]1[Zr+2]([CH]1C(C)=Cc2ccccc21)=[Si](C)C.[Cl-].[Cl-]",
+              "reference_ppm": [
+                7.67,
+                7.37,
+                7.09,
+                6.75,
+                6.65,
+                2.44,
+                1.43,
+                1.23
+              ],
+              "prediction_ppm": [
+                2.210606098175049,
+                2.212932586669922,
+                2.213191270828247,
+                6.45620584487915,
+                7.206372261047363,
+                7.186468601226807,
+                7.154672145843506,
+                7.635223388671875,
+                6.100252151489258,
+                5.965573310852051,
+                2.208538055419922,
+                2.2147421836853027,
+                2.2100892066955566,
+                6.454655647277832,
+                7.212834358215332,
+                7.1448493003845215,
+                7.125720977783203,
+                7.639876365661621,
+                3.0110504627227783,
+                2.948235034942627,
+                2.954826831817627,
+                3.0707640647888184,
+                3.1357767581939697,
+                2.9488813877105713
+              ]
+            },
+            {
+              "smiles": "CC1=Cc2ccccc2[CH]1[Zr+2]([CH]1C(C)=Cc2ccccc21)=[Si](C)C.Cc1ccc([O-])c(C)c1.[Cl-]",
+              "reference_ppm": [
+                7.96,
+                7.6,
+                7.36,
+                7.31,
+                7.29,
+                7.1,
+                6.99,
+                6.94,
+                6.88,
+                6.75,
+                6.65,
+                6.06,
+                5.93,
+                2.4,
+                2.24,
+                2.18,
+                1.85,
+                1.35,
+                1.24
+              ],
+              "prediction_ppm": [
+                1.9557253122329712,
+                1.9665822982788086,
+                1.9683917760849,
+                6.022185325622559,
+                7.169665336608887,
+                6.99078369140625,
+                7.0383477210998535,
+                5.220060348510742,
+                4.190358638763428,
+                4.498134613037109,
+                1.894460916519165,
+                1.8784339427947998,
+                1.9151408672332764,
+                3.541821241378784,
+                7.120291709899902,
+                7.123652458190918,
+                6.978375434875488,
+                6.622292518615723,
+                1.8580124378204346,
+                1.6514711380004883,
+                1.8140674829483032,
+                2.0128536224365234,
+                1.814842939376831,
+                2.064553737640381,
+                3.3880724906921387,
+                3.300182342529297,
+                3.2832508087158203,
+                4.776345252990723,
+                5.502713203430176,
+                5.214761257171631,
+                2.2250819206237793,
+                5.048610210418701,
+                6.541769504547119
+              ]
+            }
+          ],
+          "prediction_files": [
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/patent_test_10k_H/cv_seed_42_fold_0/cv_seed_42_fold_0_valid.out.pkl",
+              "sha256": "4fed49c07d3affe6af3c2f828ee69de70327c4968e9548cc80095fdabb867c02"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/patent_test_10k_H/cv_seed_42_fold_1/cv_seed_42_fold_1_valid.out.pkl",
+              "sha256": "5cea75aa89f571dacf44cfffa67c9cf35b564e130dd6e323dfaac2fb591117de"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/patent_test_10k_H/cv_seed_42_fold_2/cv_seed_42_fold_2_valid.out.pkl",
+              "sha256": "6c91e3cb0b66e24b111ca581517859395eeddee69b132aa9919b516a2b2987c5"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/patent_test_10k_H/cv_seed_42_fold_3/cv_seed_42_fold_3_valid.out.pkl",
+              "sha256": "b79d79f2b92c03d3b21bb4e8bbec2a553b6c549f0b526d602a1d75e9dc445afe"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/patent_test_10k_H/cv_seed_42_fold_4/cv_seed_42_fold_4_valid.out.pkl",
+              "sha256": "e7e442d0520b526e0d9e86ffc2a26f89a6b32bdd8123156b21cb4a21e5369e05"
+            }
+          ],
+          "metadata": {
+            "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/data_ours/patent_test_10k_H/valid.lmdb",
+            "sha256": "9e9d547ee0fcfede4d766f7090b1b425bd500db367a058fb4cdd202a702b8fe8"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "nmrexp_exp_10k",
+      "status": "passed",
+      "metrics": {},
+      "models": [
+        {
+          "model": "nmrnet",
+          "metrics": {
+            "matched_peak_mae_ppm": 0.04858252130873491,
+            "matched_peak_rmse_ppm": 0.07973883212249766,
+            "peak_count_mae": 8.09375,
+            "matched_fraction": 0.5308309470320394,
+            "examples": 32,
+            "scored_examples": 32,
+            "aggregation": "equal_weight_per_molecule",
+            "assignment": "minimum_absolute_error_without_atom_labels"
+          },
+          "inference_mode": "score_existing_predictions",
+          "selected_references": 32,
+          "covered_references": 32,
+          "sample_ids": [
+            "CC[Si](CC)(CC)/C(F)=C(\\Cc1ccccc1)C(=O)OC(C)(C)C",
+            "CCOC(=O)/C(CCc1ccccc1)=C(/F)[Si](CC)(CC)CC",
+            "CCOC(=O)/C(CCCOc1ccc(OC)cc1)=C(\\F)[Si](CC)(CC)CC",
+            "CCCCCCCC/C(C(=O)OCC)=C(/F)[Si](CC)(CC)CC",
+            "Cc1ccccc1/C=C/CCn1cnc2ccccc2c1=O",
+            "COc1cccc(/C=C/CCn2cnc3ccccc3c2=O)c1",
+            "COc1ccc(/C=C/CCn2cnc3ccccc3c2=O)cc1",
+            "O=c1c2ccccc2ncn1CC/C=C/c1ccc(Br)cc1",
+            "O=c1c2ccccc2ncn1CC/C=C/c1ccc2c(c1)OCO2",
+            "O=c1c2ccccc2ncn1CCC=C(c1ccccc1)c1ccccc1",
+            "Cn1c(/C=C/CCn2cnc3ccccc3c2=O)cc2ccccc21",
+            "O=c1c2ccccc2ncn1CC/C=C/c1csc2ccccc12",
+            "O=c1c2ccc(Br)cc2ncn1CC/C=C/c1ccccc1",
+            "O=c1c2cc(Br)ccc2ncn1CC/C=C/c1ccccc1",
+            "O=c1c2ccc(F)cc2ncn1CC/C=C/c1ccccc1",
+            "COc1cc2ncn(CC/C=C/c3ccccc3)c(=O)c2cc1OC",
+            "C#CCCCOC(=O)c1ccccc1",
+            "O=C(c1ccccc1)c1ccccc1",
+            "O=C(c1ccccc1)c1ccc(F)cc1",
+            "O=C(c1ccccc1)c1ccc(Cl)cc1",
+            "O=C(c1ccccc1)c1ccc(Br)cc1",
+            "O=C(c1ccccc1)c1ccc(C(F)(F)F)cc1",
+            "N#Cc1ccc(C(=O)c2ccccc2)cc1",
+            "O=C(c1ccccc1)c1ccc([N+](=O)[O-])cc1",
+            "O=C(c1ccccc1)c1ccc(-c2ccccc2)cc1",
+            "CCCCCc1ccc(C(=O)c2ccccc2)cc1",
+            "O=C(c1ccccc1)c1cccc(F)c1",
+            "O=C(c1ccccc1)c1cccc(Cl)c1",
+            "O=C(c1ccccc1)c1cccc([N+](=O)[O-])c1",
+            "Cc1cccc(C(=O)c2ccccc2)c1",
+            "O=C(c1ccccc1)c1ccccc1F",
+            "O=C(c1ccccc1)c1ccc2ccccc2c1"
+          ],
+          "folds": 5,
+          "examples": [
+            {
+              "smiles": "CC[Si](CC)(CC)/C(F)=C(\\Cc1ccccc1)C(=O)OC(C)(C)C",
+              "reference_ppm": [
+                7.255,
+                7.17,
+                3.68,
+                1.33,
+                0.98,
+                0.81
+              ],
+              "prediction_ppm": [
+                0.8514491319656372,
+                0.8619304895401001,
+                0.8304865956306458,
+                0.6470643281936646,
+                0.6208610534667969,
+                0.6889894008636475,
+                0.668026864528656,
+                0.8566897511482239,
+                0.8776523470878601,
+                0.8828929662704468,
+                0.6365829706192017,
+                0.615620493888855,
+                0.9038555026054382,
+                0.8619303703308105,
+                0.8986148834228516,
+                3.5923023223876953,
+                3.5923023223876953,
+                7.224063873291016,
+                7.1978607177734375,
+                7.166417121887207,
+                7.192620277404785,
+                7.224063873291016,
+                1.4121973514556885,
+                1.4017159938812256,
+                1.4017159938812256,
+                1.41743803024292,
+                1.4174379110336304,
+                1.406956672668457,
+                1.4384005069732666,
+                1.4017159938812256,
+                1.4226785898208618
+              ]
+            },
+            {
+              "smiles": "CCOC(=O)/C(CCc1ccccc1)=C(/F)[Si](CC)(CC)CC",
+              "reference_ppm": [
+                7.28,
+                7.1899999999999995,
+                4.19,
+                2.715,
+                1.31,
+                0.95,
+                0.77
+              ],
+              "prediction_ppm": [
+                1.270700216293335,
+                1.270700216293335,
+                1.270700216293335,
+                4.100644111633301,
+                4.121606826782227,
+                2.853372573852539,
+                2.7852444648742676,
+                2.916260242462158,
+                2.9215006828308105,
+                7.1611762046813965,
+                7.1978607177734375,
+                7.1978607177734375,
+                7.229304313659668,
+                7.182138919830322,
+                0.7256738543510437,
+                0.6470643281936646,
+                0.8881336450576782,
+                0.8566897511482239,
+                0.882892906665802,
+                0.6208611130714417,
+                0.6261017322540283,
+                0.8776523470878601,
+                0.8881336450576782,
+                0.8881336450576782,
+                0.6732674837112427,
+                0.6418236494064331,
+                0.9090961217880249,
+                0.8933742642402649,
+                0.919577419757843
+              ]
+            },
+            {
+              "smiles": "CCOC(=O)/C(CCCOc1ccc(OC)cc1)=C(\\F)[Si](CC)(CC)CC",
+              "reference_ppm": [
+                6.82,
+                4.18,
+                3.89,
+                3.76,
+                2.54,
+                1.9,
+                1.28,
+                0.95,
+                0.77
+              ],
+              "prediction_ppm": [
+                1.2759407758712769,
+                1.2759407758712769,
+                1.2759407758712769,
+                4.147809982299805,
+                4.174013137817383,
+                2.4760468006134033,
+                2.4183998107910156,
+                1.8419296741485596,
+                1.8733733892440796,
+                3.980109691619873,
+                3.9591472148895264,
+                6.778609275817871,
+                6.7943315505981445,
+                3.733799695968628,
+                3.733799695968628,
+                3.733799695968628,
+                6.7943315505981445,
+                6.799571990966797,
+                0.6680268049240112,
+                0.6523049473762512,
+                0.919577419757843,
+                0.8933742642402649,
+                0.9143368005752563,
+                0.6837487816810608,
+                0.6680268049240112,
+                0.9510211944580078,
+                0.9038555026054382,
+                0.9510213136672974,
+                0.6313424110412598,
+                0.6470643281936646,
+                0.9143368005752563,
+                0.8986148834228516,
+                0.9248180389404297
+              ]
+            }
+          ],
+          "prediction_files": [
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrexp_exp_10k_H/fold_0/cv_seed_42_fold_0_valid.out.pkl",
+              "sha256": "9aa00f8378cf18d6ee58005d527bd480cb6c565e54910868329b78cf2f12415b"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrexp_exp_10k_H/fold_1/cv_seed_42_fold_1_valid.out.pkl",
+              "sha256": "d5f5713f186246251bd0c06548ace8bc204f4086fa2ee18ba91e7af5d79b5038"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrexp_exp_10k_H/fold_2/cv_seed_42_fold_2_valid.out.pkl",
+              "sha256": "14642386865dbb12b4db6549d4fc4ea35cee106c4b2d353e112da66724ea2f64"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrexp_exp_10k_H/fold_3/cv_seed_42_fold_3_valid.out.pkl",
+              "sha256": "9e858ba947ec5ece0e23c8ec0feb76de4b353ee3a4a6c57632bf18d6f848177e"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrexp_exp_10k_H/fold_4/cv_seed_42_fold_4_valid.out.pkl",
+              "sha256": "6eb6d59293e088b3e20dc3bd3a0206c4558c48a5b2139a75acaf761655562fe4"
+            }
+          ],
+          "metadata": {
+            "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/data_ours/nmrexp_exp_10k_H/valid.lmdb",
+            "sha256": "a9b3422f165f69df1d5c697ac58bbafc78bcc7e81235dc1e1fb8c6b512bccb5b"
+          }
+        },
+        {
+          "model": "nmrnetpp",
+          "metrics": {
+            "matched_peak_mae_ppm": 0.03063703681651138,
+            "matched_peak_rmse_ppm": 0.06262486667216845,
+            "peak_count_mae": 8.09375,
+            "matched_fraction": 0.5308309470320394,
+            "examples": 32,
+            "scored_examples": 32,
+            "aggregation": "equal_weight_per_molecule",
+            "assignment": "minimum_absolute_error_without_atom_labels"
+          },
+          "inference_mode": "score_existing_predictions",
+          "selected_references": 32,
+          "covered_references": 32,
+          "sample_ids": [
+            "CC[Si](CC)(CC)/C(F)=C(\\Cc1ccccc1)C(=O)OC(C)(C)C",
+            "CCOC(=O)/C(CCc1ccccc1)=C(/F)[Si](CC)(CC)CC",
+            "CCOC(=O)/C(CCCOc1ccc(OC)cc1)=C(\\F)[Si](CC)(CC)CC",
+            "CCCCCCCC/C(C(=O)OCC)=C(/F)[Si](CC)(CC)CC",
+            "Cc1ccccc1/C=C/CCn1cnc2ccccc2c1=O",
+            "COc1cccc(/C=C/CCn2cnc3ccccc3c2=O)c1",
+            "COc1ccc(/C=C/CCn2cnc3ccccc3c2=O)cc1",
+            "O=c1c2ccccc2ncn1CC/C=C/c1ccc(Br)cc1",
+            "O=c1c2ccccc2ncn1CC/C=C/c1ccc2c(c1)OCO2",
+            "O=c1c2ccccc2ncn1CCC=C(c1ccccc1)c1ccccc1",
+            "Cn1c(/C=C/CCn2cnc3ccccc3c2=O)cc2ccccc21",
+            "O=c1c2ccccc2ncn1CC/C=C/c1csc2ccccc12",
+            "O=c1c2ccc(Br)cc2ncn1CC/C=C/c1ccccc1",
+            "O=c1c2cc(Br)ccc2ncn1CC/C=C/c1ccccc1",
+            "O=c1c2ccc(F)cc2ncn1CC/C=C/c1ccccc1",
+            "COc1cc2ncn(CC/C=C/c3ccccc3)c(=O)c2cc1OC",
+            "C#CCCCOC(=O)c1ccccc1",
+            "O=C(c1ccccc1)c1ccccc1",
+            "O=C(c1ccccc1)c1ccc(F)cc1",
+            "O=C(c1ccccc1)c1ccc(Cl)cc1",
+            "O=C(c1ccccc1)c1ccc(Br)cc1",
+            "O=C(c1ccccc1)c1ccc(C(F)(F)F)cc1",
+            "N#Cc1ccc(C(=O)c2ccccc2)cc1",
+            "O=C(c1ccccc1)c1ccc([N+](=O)[O-])cc1",
+            "O=C(c1ccccc1)c1ccc(-c2ccccc2)cc1",
+            "CCCCCc1ccc(C(=O)c2ccccc2)cc1",
+            "O=C(c1ccccc1)c1cccc(F)c1",
+            "O=C(c1ccccc1)c1cccc(Cl)c1",
+            "O=C(c1ccccc1)c1cccc([N+](=O)[O-])c1",
+            "Cc1cccc(C(=O)c2ccccc2)c1",
+            "O=C(c1ccccc1)c1ccccc1F",
+            "O=C(c1ccccc1)c1ccc2ccccc2c1"
+          ],
+          "folds": 5,
+          "examples": [
+            {
+              "smiles": "CC[Si](CC)(CC)/C(F)=C(\\Cc1ccccc1)C(=O)OC(C)(C)C",
+              "reference_ppm": [
+                7.255,
+                7.17,
+                3.68,
+                1.33,
+                0.98,
+                0.81
+              ],
+              "prediction_ppm": [
+                1.1427435874938965,
+                1.1448115110397339,
+                1.137056589126587,
+                2.7480270862579346,
+                2.824025869369507,
+                2.7296736240386963,
+                2.7416939735412598,
+                1.1499814987182617,
+                1.1525665521621704,
+                1.1556684970855713,
+                2.6746132373809814,
+                2.6799123287200928,
+                1.1691105365753174,
+                1.15825355052948,
+                1.1634235382080078,
+                3.635327100753784,
+                3.6451504230499268,
+                7.216453552246094,
+                7.250058650970459,
+                7.183365821838379,
+                7.251092433929443,
+                7.228603363037109,
+                1.3547133207321167,
+                1.3567813634872437,
+                1.351094365119934,
+                1.355230450630188,
+                1.3583323955535889,
+                1.3526452779769897,
+                1.3516113758087158,
+                1.3495433330535889,
+                1.3536794185638428
+              ]
+            },
+            {
+              "smiles": "CCOC(=O)/C(CCc1ccccc1)=C(/F)[Si](CC)(CC)CC",
+              "reference_ppm": [
+                7.28,
+                7.1899999999999995,
+                4.19,
+                2.715,
+                1.31,
+                0.95,
+                0.77
+              ],
+              "prediction_ppm": [
+                1.281299352645874,
+                1.2802654504776,
+                1.2828503847122192,
+                4.1879353523254395,
+                4.1869659423828125,
+                2.633511781692505,
+                2.6298928260803223,
+                2.746993064880371,
+                2.7475101947784424,
+                7.181039333343506,
+                7.252385139465332,
+                7.18646764755249,
+                7.2580718994140625,
+                7.183366298675537,
+                2.5776755809783936,
+                2.5947365760803223,
+                1.1536004543304443,
+                1.1530835628509521,
+                1.157219648361206,
+                2.61619234085083,
+                2.594478130340576,
+                1.147396445274353,
+                1.1525665521621704,
+                1.1515324115753174,
+                2.7263131141662598,
+                2.8098087310791016,
+                1.1510155200958252,
+                1.1530835628509521,
+                1.1530835628509521
+              ]
+            },
+            {
+              "smiles": "CCOC(=O)/C(CCCOc1ccc(OC)cc1)=C(\\F)[Si](CC)(CC)CC",
+              "reference_ppm": [
+                6.82,
+                4.18,
+                3.89,
+                3.76,
+                2.54,
+                1.9,
+                1.28,
+                0.95,
+                0.77
+              ],
+              "prediction_ppm": [
+                1.285435438156128,
+                1.2859523296356201,
+                1.285435438156128,
+                4.203122138977051,
+                4.203897476196289,
+                2.5264925956726074,
+                2.5288190841674805,
+                1.9290997982025146,
+                1.9389228820800781,
+                3.9066226482391357,
+                3.9102416038513184,
+                6.812676906585693,
+                6.814486503601074,
+                3.76289701461792,
+                3.762767791748047,
+                3.760958433151245,
+                6.814228057861328,
+                6.808541297912598,
+                2.8958888053894043,
+                2.8984737396240234,
+                1.1872055530548096,
+                1.1887565851211548,
+                1.1861714124679565,
+                2.7418227195739746,
+                2.7546188831329346,
+                1.1784164905548096,
+                1.1815184354782104,
+                1.1810014247894287,
+                2.9421603679656982,
+                2.974989891052246,
+                1.1934094429016113,
+                1.1965115070343018,
+                1.1934095621109009
+              ]
+            }
+          ],
+          "prediction_files": [
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrexp_exp_10k_H/cv_seed_42_fold_0/cv_seed_42_fold_0_valid.out.pkl",
+              "sha256": "2d80eea640e3ec4dcfa8f51bbd2623c86dedc2d1d52dedef7ccec139c8e7f289"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrexp_exp_10k_H/cv_seed_42_fold_1/cv_seed_42_fold_1_valid.out.pkl",
+              "sha256": "1096ef0940992c69c89aa5a6f75fc9d7cc158035217050767fdbb6dfd4a086f6"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrexp_exp_10k_H/cv_seed_42_fold_2/cv_seed_42_fold_2_valid.out.pkl",
+              "sha256": "8936524c7039a41fe1189c6a468ad7ed114ccf8f73bc2a7d3ee9fa04cc864dc7"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrexp_exp_10k_H/cv_seed_42_fold_3/cv_seed_42_fold_3_valid.out.pkl",
+              "sha256": "4dc31ad88a5681b2f6a20a6577e65394edc6fc77483ae8e2fee0fabc788117c4"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrexp_exp_10k_H/cv_seed_42_fold_4/cv_seed_42_fold_4_valid.out.pkl",
+              "sha256": "3d0f694058101b41ee0908c40e2dba252eaf8db3821a3be3d7405a03a8bb46f7"
+            }
+          ],
+          "metadata": {
+            "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/data_ours/nmrexp_exp_10k_H/valid.lmdb",
+            "sha256": "a9b3422f165f69df1d5c697ac58bbafc78bcc7e81235dc1e1fb8c6b512bccb5b"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "nmrgym_test",
+      "status": "passed",
+      "metrics": {},
+      "models": [
+        {
+          "model": "nmrnet",
+          "metrics": {
+            "matched_peak_mae_ppm": 0.1968244606377943,
+            "matched_peak_rmse_ppm": 0.39348758699328934,
+            "peak_count_mae": 15.84375,
+            "matched_fraction": 0.5291027660402658,
+            "examples": 32,
+            "scored_examples": 32,
+            "aggregation": "equal_weight_per_molecule",
+            "assignment": "minimum_absolute_error_without_atom_labels"
+          },
+          "inference_mode": "score_existing_predictions",
+          "selected_references": 32,
+          "covered_references": 32,
+          "sample_ids": [
+            "N#Cc1c(N)n[nH]c1-c1c(N)sc2c(-c3ccccc3)nn(-c3ccccc3)c12",
+            "COC(=O)[C@@]1(OC)C(OC)=C(OC)C(=O)/C1=C(O)/C=C/c1ccccc1",
+            "CC[C@@H](O)C[C@@H](O)[C@@]1(C)C[C@@H](C)[C@@H]2CC[C@H](CC/C=C(/C)C(=O)[C@@H](C)CC/C=C\\C(=O)N3CCCC[C@H]3C(=O)O1)O2",
+            "CC(O)(CCOc1ccc2ccc(=O)oc2c1)CCC1C(C)(O)CCC(=O)C1(C)C",
+            "CC(C)C[C@@H]1NC(=O)[C@H](C(C)C)NC(=O)[C@@H](CC(C)C)NC(=O)[C@H](Cc2ccccc2)NC(=O)[C@@H]2CCCN2C(=O)[C@@H](Cc2ccccc2)NC1=O",
+            "[O-][N+]12CCC[C@@H]3[C@@H](O)C[C@@H]4C[C@H]5CO[C@]1(C5)[C@@]43CCC2",
+            "COc1ccc([C@@H](CN=C(O)/C=C\\c2ccccc2)O[C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)cc1",
+            "Cc1ccc2c(c1)C(C)(C)CCCC2=NCc1ccccc1",
+            "CC(C)C(O)=N[C@H]1CC[C@]2(O)CC3=CC[C@]4(C)[C@@H]([C@H](C)N(C)C)CC[C@@]4(C)[C@@H]3CC[C@H]2C1(C)C",
+            "C=C1CC[C@@]23CC[C@]4(C)[C@@](OC2=O)([C@@H]3C1)[C@H]1O[C@H]1[C@@H]1[C@@]2(C)CC[C@@H]3OC(C)(C)OC[C@@]3(O)[C@@H]2CC[C@]14C",
+            "O=C(NCCc1c[nH]cn1)c1cnc[nH]1",
+            "CC(=O)Oc1cc(OC(C)=O)cc(Oc2c(OC(C)=O)cc(OC(C)=O)c3c2Oc2c(cc(OC(C)=O)c4c2oc2cc(OC(C)=O)cc(OC(C)=O)c24)O3)c1",
+            "COC(=O)[C@@H](C)[C@H]1CC[C@](C)(CCC/C(C)=C/CC2=C(C)CCCC2(C)C)OO1",
+            "Cc1ccc(C2=NCC(=O)N(C)c3ccccc32)c(I)c1",
+            "C=C1C[C@]23C[C@@]4(O)[C@@H]5[C@]6(C)C[N@@+]4(C)[C@@H]4[C@H]2[C@@H](O)[C@H]1C[C@H]3[C@]54C[C@@H](O)[C@H]6O",
+            "O=c1c(-c2ccc(O)c(O)c2)c(OCC2OC(O)C(O)C(O)C2O)oc2c(O)cc(O)cc12",
+            "CC(C)(O)C1CCC(C)(C2CCC3(C)C2C(O)CC2C4(C)CCC(O)C(C)(C)C4C(OC4OC(COC5OC(CO)C(O)C(O)C5O)C(O)C(O)C4OC4OCC(O)C(O)C4O)CC23C)O1",
+            "COC1CC(=O)N2c3cc(O)cc4c3OC(/C=C\\C=C\\CC(OC(=O)C(C)N=C(O)CC(C)C)C(C)C(O)/C(C)=C/CC4)C12",
+            "Cc1ncc(COP(=O)(O)O)c(=N)[nH]1",
+            "CC(C)C[C@H](N=C(O)[C@@H]1CCCN1C(=O)[C@@H](N=C(O)[C@@H](N)Cc1ccc(O)cc1)C(C)C)C(=O)O",
+            "C=C1OC(=O)c2c(O[C@@H]3O[C@@H](CO)[C@H](O)[C@@H](O)[C@@H]3O)cc(OC)c(C)c2[C@@H]1C",
+            "CN1C(=O)/C(=C/c2ccc3c(c2)OCO3)N=C1N",
+            "CN1C=NC(C(=O)O)CC1(C)COC(=O)c1ccc[nH]1",
+            "O=C1C=C(c2cc3nc(O)[nH]c3nc2O)C(O)=NC1=O",
+            "CC1=CC(=O)[C@@H](O)[C@]2(C)[C@H]3[C@@]4(O)OC[C@]35[C@H]([C@@H](CO)[C@H]4O)[C@@H](O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)C(=O)O[C@@H]5C[C@@H]12",
+            "O=C1CCC2=C1N1CCCC1OC2",
+            "C=C(C)C1OC2CCC3(C)C(CCC4(OC)OC5OC(C)(C)C6CC7C(=C)Cc8ccc9[nH]c(c5c9c8C76O)C43C)C23OC3C1O",
+            "CC(=CC1CC(O)(C2CCC3(C)C2CCC2C4(C)CCC(OC5OCC(O)C(OC6OC(CO)C(O)C(O)C6O)C5OC5OC(C)C(O)C(O)C5O)C(C)(C)C4CCC23C)C(O)O1)CO",
+            "COc1cc2c(cc1C(C)(O)CC(C)c1cc3cc(C(C)=O)c(O)cc3o1)C=CC(C)(C)O2",
+            "COc1cc(C)cc2c3ccccc3n(Cc3cc4c([nH]c5ccccc54)c4c3OC(C)(C)C=C4)c12",
+            "c1ccn2c(NCCN3CCOCC3)c(-c3ccc4c(c3)OCO4)nc2c1",
+            "CC(=O)OCC=CC1=CC2=C(CO1)C(=O)C(C)(OC(=O)c1c(C)cc(O)cc1O)C(=O)C2=CC=CC1=CC2=C(CO1)C(=O)C(C)(O)C(OC(=O)c1c(C)cc(O)cc1O)C2"
+          ],
+          "folds": 5,
+          "examples": [
+            {
+              "smiles": "N#Cc1c(N)n[nH]c1-c1c(N)sc2c(-c3ccccc3)nn(-c3ccccc3)c12",
+              "reference_ppm": [
+                6.0,
+                6.0,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95
+              ],
+              "prediction_ppm": [
+                6.663315773010254,
+                6.532299995422363,
+                10.122136116027832,
+                7.114010810852051,
+                6.904384613037109,
+                8.004919052124023,
+                7.496577262878418,
+                7.438929557800293,
+                7.512298583984375,
+                8.114973068237305,
+                7.638073921203613,
+                7.4808549880981445,
+                7.328876495361328,
+                7.470373630523682,
+                7.659037113189697
+              ]
+            },
+            {
+              "smiles": "COC(=O)[C@@]1(OC)C(OC)=C(OC)C(=O)/C1=C(O)/C=C/c1ccccc1",
+              "reference_ppm": [
+                3.81,
+                3.31,
+                3.74,
+                7.4,
+                7.29,
+                7.5,
+                7.35,
+                7.31
+              ],
+              "prediction_ppm": [
+                3.8019280433654785,
+                3.7757248878479004,
+                3.8019280433654785,
+                3.403639316558838,
+                3.393157958984375,
+                3.3617141246795654,
+                3.822890520095825,
+                3.796687364578247,
+                3.807168483734131,
+                3.8176498413085938,
+                3.833371639251709,
+                3.8281311988830566,
+                11.78865909576416,
+                7.580427646636963,
+                7.4651336669921875,
+                7.517539978027344,
+                7.386523246765137,
+                7.376042366027832,
+                7.3917646408081055,
+                7.522779941558838
+              ]
+            },
+            {
+              "smiles": "CC[C@@H](O)C[C@@H](O)[C@@]1(C)C[C@@H](C)[C@@H]2CC[C@H](CC/C=C(/C)C(=O)[C@@H](C)CC/C=C\\C(=O)N3CCCC[C@H]3C(=O)O1)O2",
+              "reference_ppm": [
+                0.88,
+                2.52,
+                1.54,
+                3.98,
+                2.23,
+                1.78,
+                3.5,
+                1.3,
+                2.99,
+                1.59,
+                1.31,
+                0.97,
+                2.09,
+                1.7,
+                2.0,
+                2.86,
+                3.89,
+                2.17,
+                6.65,
+                1.92,
+                2.16,
+                1.75,
+                5.97,
+                3.2,
+                1.47,
+                1.87,
+                1.39,
+                1.68,
+                3.85
+              ],
+              "prediction_ppm": [
+                0.9667431712150574,
+                0.9615025520324707,
+                0.9562618136405945,
+                1.4331599473953247,
+                1.4541224241256714,
+                3.760002613067627,
+                4.2054572105407715,
+                1.5694165229797363,
+                1.6165822744369507,
+                4.03775691986084,
+                3.8176498413085938,
+                1.4488818645477295,
+                1.4121973514556885,
+                1.4017161130905151,
+                2.0358331203460693,
+                2.0515549182891846,
+                1.9991487264633179,
+                0.9615025520324707,
+                0.9615025520324707,
+                0.971983790397644,
+                3.550377368927002,
+                1.7161543369293213,
+                1.7213948965072632,
+                1.8995765447616577,
+                1.7213948965072632,
+                4.042997360229492,
+                1.6375446319580078,
+                1.6585073471069336,
+                2.3555121421813965,
+                2.3031058311462402,
+                6.09732723236084,
+                1.8157262802124023,
+                1.8314483165740967,
+                1.7790418863296509,
+                2.9581854343414307,
+                1.0820372104644775,
+                1.0715558528900146,
+                1.0663152933120728,
+                1.7685606479644775,
+                1.668988585472107,
+                2.3083462715148926,
+                2.2716619968414307,
+                6.265027046203613,
+                5.8248138427734375,
+                3.539896011352539,
+                3.513692855834961,
+                1.5641758441925049,
+                1.6061007976531982,
+                1.6375446319580078,
+                1.5484539270401,
+                1.7266355752944946,
+                1.7056729793548584,
+                4.305028915405273
+              ]
+            }
+          ],
+          "prediction_files": [
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrgym_test_H/fold_0/cv_seed_42_fold_0_valid.out.pkl",
+              "sha256": "99002f1294f1faa8141d9260010131a7db04da3f1bd9309681646174cbd412d8"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrgym_test_H/fold_1/cv_seed_42_fold_1_valid.out.pkl",
+              "sha256": "93cbd0b4ddd04068dc03d5aaa27b01ccd7d2dcdc1be4b2da9629c23408577d33"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrgym_test_H/fold_2/cv_seed_42_fold_2_valid.out.pkl",
+              "sha256": "6f2d58349068e3ef7bb2c889dbd2707e03e1fa8d6bd2dddc27a872ba7c51ebdf"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrgym_test_H/fold_3/cv_seed_42_fold_3_valid.out.pkl",
+              "sha256": "9dacb6d6ad5a281b8096433ecc412e12743f68cd77c69348e6be7812f7a56a5d"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrgym_test_H/fold_4/cv_seed_42_fold_4_valid.out.pkl",
+              "sha256": "1e0c1a1d2bc74c3f3d4be08fe3cbe952fe7242ea8529873ae92773ce36d83196"
+            }
+          ],
+          "metadata": {
+            "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/data_ours/nmrgym_test_H/valid.lmdb",
+            "sha256": "eadbc8ef1521d5060c42ac479bd404dc6595a5f12c63b253520447573c72f05e"
+          }
+        },
+        {
+          "model": "nmrnetpp",
+          "metrics": {
+            "matched_peak_mae_ppm": 0.19821629074817518,
+            "matched_peak_rmse_ppm": 0.40631559148803237,
+            "peak_count_mae": 15.84375,
+            "matched_fraction": 0.5291027660402658,
+            "examples": 32,
+            "scored_examples": 32,
+            "aggregation": "equal_weight_per_molecule",
+            "assignment": "minimum_absolute_error_without_atom_labels"
+          },
+          "inference_mode": "score_existing_predictions",
+          "selected_references": 32,
+          "covered_references": 32,
+          "sample_ids": [
+            "N#Cc1c(N)n[nH]c1-c1c(N)sc2c(-c3ccccc3)nn(-c3ccccc3)c12",
+            "COC(=O)[C@@]1(OC)C(OC)=C(OC)C(=O)/C1=C(O)/C=C/c1ccccc1",
+            "CC[C@@H](O)C[C@@H](O)[C@@]1(C)C[C@@H](C)[C@@H]2CC[C@H](CC/C=C(/C)C(=O)[C@@H](C)CC/C=C\\C(=O)N3CCCC[C@H]3C(=O)O1)O2",
+            "CC(O)(CCOc1ccc2ccc(=O)oc2c1)CCC1C(C)(O)CCC(=O)C1(C)C",
+            "CC(C)C[C@@H]1NC(=O)[C@H](C(C)C)NC(=O)[C@@H](CC(C)C)NC(=O)[C@H](Cc2ccccc2)NC(=O)[C@@H]2CCCN2C(=O)[C@@H](Cc2ccccc2)NC1=O",
+            "[O-][N+]12CCC[C@@H]3[C@@H](O)C[C@@H]4C[C@H]5CO[C@]1(C5)[C@@]43CCC2",
+            "COc1ccc([C@@H](CN=C(O)/C=C\\c2ccccc2)O[C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)cc1",
+            "Cc1ccc2c(c1)C(C)(C)CCCC2=NCc1ccccc1",
+            "CC(C)C(O)=N[C@H]1CC[C@]2(O)CC3=CC[C@]4(C)[C@@H]([C@H](C)N(C)C)CC[C@@]4(C)[C@@H]3CC[C@H]2C1(C)C",
+            "C=C1CC[C@@]23CC[C@]4(C)[C@@](OC2=O)([C@@H]3C1)[C@H]1O[C@H]1[C@@H]1[C@@]2(C)CC[C@@H]3OC(C)(C)OC[C@@]3(O)[C@@H]2CC[C@]14C",
+            "O=C(NCCc1c[nH]cn1)c1cnc[nH]1",
+            "CC(=O)Oc1cc(OC(C)=O)cc(Oc2c(OC(C)=O)cc(OC(C)=O)c3c2Oc2c(cc(OC(C)=O)c4c2oc2cc(OC(C)=O)cc(OC(C)=O)c24)O3)c1",
+            "COC(=O)[C@@H](C)[C@H]1CC[C@](C)(CCC/C(C)=C/CC2=C(C)CCCC2(C)C)OO1",
+            "Cc1ccc(C2=NCC(=O)N(C)c3ccccc32)c(I)c1",
+            "C=C1C[C@]23C[C@@]4(O)[C@@H]5[C@]6(C)C[N@@+]4(C)[C@@H]4[C@H]2[C@@H](O)[C@H]1C[C@H]3[C@]54C[C@@H](O)[C@H]6O",
+            "O=c1c(-c2ccc(O)c(O)c2)c(OCC2OC(O)C(O)C(O)C2O)oc2c(O)cc(O)cc12",
+            "CC(C)(O)C1CCC(C)(C2CCC3(C)C2C(O)CC2C4(C)CCC(O)C(C)(C)C4C(OC4OC(COC5OC(CO)C(O)C(O)C5O)C(O)C(O)C4OC4OCC(O)C(O)C4O)CC23C)O1",
+            "COC1CC(=O)N2c3cc(O)cc4c3OC(/C=C\\C=C\\CC(OC(=O)C(C)N=C(O)CC(C)C)C(C)C(O)/C(C)=C/CC4)C12",
+            "Cc1ncc(COP(=O)(O)O)c(=N)[nH]1",
+            "CC(C)C[C@H](N=C(O)[C@@H]1CCCN1C(=O)[C@@H](N=C(O)[C@@H](N)Cc1ccc(O)cc1)C(C)C)C(=O)O",
+            "C=C1OC(=O)c2c(O[C@@H]3O[C@@H](CO)[C@H](O)[C@@H](O)[C@@H]3O)cc(OC)c(C)c2[C@@H]1C",
+            "CN1C(=O)/C(=C/c2ccc3c(c2)OCO3)N=C1N",
+            "CN1C=NC(C(=O)O)CC1(C)COC(=O)c1ccc[nH]1",
+            "O=C1C=C(c2cc3nc(O)[nH]c3nc2O)C(O)=NC1=O",
+            "CC1=CC(=O)[C@@H](O)[C@]2(C)[C@H]3[C@@]4(O)OC[C@]35[C@H]([C@@H](CO)[C@H]4O)[C@@H](O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)C(=O)O[C@@H]5C[C@@H]12",
+            "O=C1CCC2=C1N1CCCC1OC2",
+            "C=C(C)C1OC2CCC3(C)C(CCC4(OC)OC5OC(C)(C)C6CC7C(=C)Cc8ccc9[nH]c(c5c9c8C76O)C43C)C23OC3C1O",
+            "CC(=CC1CC(O)(C2CCC3(C)C2CCC2C4(C)CCC(OC5OCC(O)C(OC6OC(CO)C(O)C(O)C6O)C5OC5OC(C)C(O)C(O)C5O)C(C)(C)C4CCC23C)C(O)O1)CO",
+            "COc1cc2c(cc1C(C)(O)CC(C)c1cc3cc(C(C)=O)c(O)cc3o1)C=CC(C)(C)O2",
+            "COc1cc(C)cc2c3ccccc3n(Cc3cc4c([nH]c5ccccc54)c4c3OC(C)(C)C=C4)c12",
+            "c1ccn2c(NCCN3CCOCC3)c(-c3ccc4c(c3)OCO4)nc2c1",
+            "CC(=O)OCC=CC1=CC2=C(CO1)C(=O)C(C)(OC(=O)c1c(C)cc(O)cc1O)C(=O)C2=CC=CC1=CC2=C(CO1)C(=O)C(C)(O)C(OC(=O)c1c(C)cc(O)cc1O)C2"
+          ],
+          "folds": 5,
+          "examples": [
+            {
+              "smiles": "N#Cc1c(N)n[nH]c1-c1c(N)sc2c(-c3ccccc3)nn(-c3ccccc3)c12",
+              "reference_ppm": [
+                6.0,
+                6.0,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95,
+                7.95
+              ],
+              "prediction_ppm": [
+                6.463702201843262,
+                6.424151420593262,
+                10.845273971557617,
+                6.755031585693359,
+                6.845765113830566,
+                7.909750461578369,
+                7.488395690917969,
+                7.388614654541016,
+                7.485293388366699,
+                7.891654968261719,
+                7.416532039642334,
+                7.441349029541016,
+                7.387580871582031,
+                7.434627532958984,
+                7.435661315917969
+              ]
+            },
+            {
+              "smiles": "COC(=O)[C@@]1(OC)C(OC)=C(OC)C(=O)/C1=C(O)/C=C/c1ccccc1",
+              "reference_ppm": [
+                3.81,
+                3.31,
+                3.74,
+                7.4,
+                7.29,
+                7.5,
+                7.35,
+                7.31
+              ],
+              "prediction_ppm": [
+                3.774400234222412,
+                3.778148651123047,
+                3.7747883796691895,
+                3.3358559608459473,
+                3.3492977619171143,
+                3.331590175628662,
+                4.16757869720459,
+                4.1717143058776855,
+                4.167448997497559,
+                4.012736797332764,
+                4.016291618347168,
+                4.01461124420166,
+                12.687342643737793,
+                7.401022434234619,
+                7.625400543212891,
+                7.553537845611572,
+                7.382927894592285,
+                7.3689680099487305,
+                7.384478569030762,
+                7.553020477294922
+              ]
+            },
+            {
+              "smiles": "CC[C@@H](O)C[C@@H](O)[C@@]1(C)C[C@@H](C)[C@@H]2CC[C@H](CC/C=C(/C)C(=O)[C@@H](C)CC/C=C\\C(=O)N3CCCC[C@H]3C(=O)O1)O2",
+              "reference_ppm": [
+                0.88,
+                2.52,
+                1.54,
+                3.98,
+                2.23,
+                1.78,
+                3.5,
+                1.3,
+                2.99,
+                1.59,
+                1.31,
+                0.97,
+                2.09,
+                1.7,
+                2.0,
+                2.86,
+                3.89,
+                2.17,
+                6.65,
+                1.92,
+                2.16,
+                1.75,
+                5.97,
+                3.2,
+                1.47,
+                1.87,
+                1.39,
+                1.68,
+                3.85
+              ],
+              "prediction_ppm": [
+                0.9188827276229858,
+                0.9188827276229858,
+                0.9178487658500671,
+                1.4446712732315063,
+                1.4286441802978516,
+                3.7367889881134033,
+                2.724503517150879,
+                1.4984391927719116,
+                1.584778070449829,
+                4.017002582550049,
+                3.422452926635742,
+                1.4234743118286133,
+                1.4089982509613037,
+                1.4136513471603394,
+                1.739619493484497,
+                1.877658486366272,
+                1.7833058834075928,
+                0.8878628015518188,
+                0.8852777481079102,
+                0.8909648060798645,
+                3.592416286468506,
+                1.731605887413025,
+                1.6080430746078491,
+                1.7347080707550049,
+                1.6132131814956665,
+                3.8922760486602783,
+                1.6349270343780518,
+                1.606492280960083,
+                2.324087619781494,
+                2.2966861724853516,
+                6.411227226257324,
+                1.8008838891983032,
+                1.7988159656524658,
+                1.7941629886627197,
+                3.2464146614074707,
+                1.0724315643310547,
+                1.0755336284637451,
+                1.0693296194076538,
+                1.588914155960083,
+                1.6995519399642944,
+                2.1922526359558105,
+                2.184497356414795,
+                6.306017875671387,
+                6.087327003479004,
+                3.6951701641082764,
+                3.2456390857696533,
+                1.5961520671844482,
+                1.6209681034088135,
+                1.6013219356536865,
+                1.6406141519546509,
+                1.9577932357788086,
+                1.876882791519165,
+                4.856569290161133
+              ]
+            }
+          ],
+          "prediction_files": [
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrgym_test_H/cv_seed_42_fold_0/cv_seed_42_fold_0_valid.out.pkl",
+              "sha256": "2ed76c0c3ba9e9eb5d0ba072e7bdd745fbfa09b30d6a2bbd558894cd05f35826"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrgym_test_H/cv_seed_42_fold_1/cv_seed_42_fold_1_valid.out.pkl",
+              "sha256": "0735cfe8a9e545dd2eab1251a7e72461c91ddeaab5360ffe7c68bfa10910d6fe"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrgym_test_H/cv_seed_42_fold_2/cv_seed_42_fold_2_valid.out.pkl",
+              "sha256": "f2e7efa0fcd471b64a29acce86933eaeefa2e71d930448d54c27f6fa0d118e17"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrgym_test_H/cv_seed_42_fold_3/cv_seed_42_fold_3_valid.out.pkl",
+              "sha256": "dc64d4072f4454430e34b00f044cd794100c45a242c58b9faf8359cb8dc170a4"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrgym_test_H/cv_seed_42_fold_4/cv_seed_42_fold_4_valid.out.pkl",
+              "sha256": "4e7ff2d79acd9bbb060b0da6ab3f14a226ce58dc967893b68c9a57107842982a"
+            }
+          ],
+          "metadata": {
+            "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/data_ours/nmrgym_test_H/valid.lmdb",
+            "sha256": "eadbc8ef1521d5060c42ac479bd404dc6595a5f12c63b253520447573c72f05e"
+          }
+        }
+      ]
+    }
+  ],
+  "nmr.forward.13C": [
+    {
+      "dataset": "nmrspec_test",
+      "status": "passed",
+      "metrics": {},
+      "models": [
+        {
+          "model": "nmrnet",
+          "metrics": {
+            "matched_peak_mae_ppm": 1.166839493503614,
+            "matched_peak_rmse_ppm": 2.3898515362116135,
+            "peak_count_mae": 2.65625,
+            "matched_fraction": 0.8683153839313926,
+            "examples": 32,
+            "scored_examples": 32,
+            "aggregation": "equal_weight_per_molecule",
+            "assignment": "minimum_absolute_error_without_atom_labels"
+          },
+          "inference_mode": "score_existing_predictions",
+          "selected_references": 32,
+          "covered_references": 32,
+          "sample_ids": [
+            "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+            "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+            "COc1ccccc1-n1nnc2ccccc21",
+            "CCCCCCOc1cc2ccccc2c(B(O)O)c1OCCCCCC",
+            "CCOP(=O)(CC(CP(=O)(OCC)OCC)C(=O)c1ccc(C)cc1C)OCC",
+            "CC[C@H]1c2c(n(Cc3ccccc3)c3c(C)cccc23)CC[C@@H]1C=O",
+            "CCN(CC)c1nc2ccccc2c2ccccc12",
+            "CC1=C2CCCCCCCCCCC2OC1=O",
+            "C=CCC(C(=O)OC)(c1cccc(Cl)c1)c1cn(C)c2ccccc12",
+            "Cc1cc(C[C@H](C(=O)c2nccn2C(C)C)c2ccc(F)cc2)cc(C)c1O",
+            "O=C1C[C@@H](c2cccc([N+](=O)[O-])c2)SC(c2ccccc2)=N1",
+            "COc1cccc(N[C@H](C(=O)O)C(C)C)c1",
+            "COC(=O)[C@@]12N=NC[C@@H]1CN(Cc1ccccc1)[C@@H]2C",
+            "Fc1ccc2c(ccn2Cc2ccc(C3COC(c4c(F)cccc4F)=N3)cc2)c1",
+            "Cc1cnn(C2CCc3ccccc32)c1",
+            "Cc1ccc(-c2nn(-c3ccccc3)cc2C(Cc2onc(C)c2[N+](=O)[O-])C[N+](=O)[O-])cc1",
+            "C[C@H]1CCc2ccccc2N1",
+            "Cc1c(/C=C/[N+](=O)[O-])cc([N+](=O)[O-])c(Cl)c1[N+](=O)[O-]",
+            "O=C(c1ccccc1)c1cn(Cc2ccccc2)c2cc(Br)cc([N+](=O)[O-])c12",
+            "Nc1cccc(C(=O)c2ccccc2)c1",
+            "CC(C)(C)OC(=O)N[C@H](CCC(=O)c1ccccc1)c1c[nH]c2cc(Cl)ccc12",
+            "CCOC(=O)C(OS(=O)(=O)c1ccc2ccccc2c1)c1ccc(F)cc1",
+            "CC(C)CC(/C=C/c1ccccc1)CO",
+            "CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O",
+            "Cc1ccc(S(=O)(=O)N2C[C@@H](O)[C@@H](C(=O)c3ccc(F)cc3)[C@@H]3CC(=O)C=C[C@]32C)cc1",
+            "COC(=O)C[C@@H]1C[C@@H]([N+](=O)[O-])[C@@H](c2ccc(C)cc2)[C@H]1C=O",
+            "Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1",
+            "O=C1/C(=C(/c2ccccc2)c2c(OC3CCCCC3)ccc3ccccc23)Cc2ccccc21",
+            "Cc1c(C(=O)OCc2ccccc2)c2ccccc2n1-c1ccccn1",
+            "FC(F)(F)C1(C#Cc2ccsc2)CNCC1c1ccccc1",
+            "COC(=O)c1cc(-c2ccccc2)n(N)c1C",
+            "O=C1c2sccc2[C@H]2[C@H]([C@H]3O[C@@H]2c2cc(Br)c(Br)cc23)N1c1cccc2cccnc12"
+          ],
+          "folds": 5,
+          "examples": [
+            {
+              "smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+              "reference_ppm": [
+                150.22,
+                148.03,
+                142.68,
+                138.28,
+                128.36,
+                128.22,
+                125.68,
+                125.58,
+                125.12,
+                111.51,
+                35.72,
+                35.03,
+                34.46,
+                31.32,
+                31.11,
+                27.93
+              ],
+              "prediction_ppm": [
+                111.90728759765625,
+                148.55685424804688,
+                34.887306213378906,
+                28.467559814453125,
+                31.03658676147461,
+                36.06736373901367,
+                142.75253295898438,
+                128.5297393798828,
+                128.46762084960938,
+                125.96635437011719,
+                128.45632934570312,
+                128.53536987304688,
+                139.26318359375,
+                126.04541015625,
+                125.58805847167969,
+                150.00228881835938,
+                34.36785125732422,
+                31.38665199279785,
+                31.471343994140625,
+                31.476993560791016,
+                125.50337219238281,
+                126.04541015625
+              ]
+            },
+            {
+              "smiles": "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+              "reference_ppm": [
+                168.1,
+                167.6,
+                146.7,
+                144.3,
+                144.0,
+                141.2,
+                139.0,
+                128.7,
+                128.2,
+                127.0,
+                126.9,
+                126.8,
+                104.2,
+                103.8,
+                59.9,
+                51.1,
+                39.2,
+                19.8,
+                19.7,
+                14.3
+              ],
+              "prediction_ppm": [
+                14.312505722045898,
+                59.56972122192383,
+                169.45913696289062,
+                95.82969665527344,
+                154.078857421875,
+                20.433000564575195,
+                52.619232177734375,
+                15.046513557434082,
+                50.069969177246094,
+                19.05532455444336,
+                179.531982421875,
+                44.00593185424805,
+                141.99595642089844,
+                128.9080352783203,
+                126.96573638916016,
+                139.64149475097656,
+                140.94577026367188,
+                126.7624740600586,
+                128.936279296875,
+                127.24806213378906,
+                128.9249725341797,
+                126.74552917480469,
+                126.90364074707031,
+                128.66525268554688
+              ]
+            },
+            {
+              "smiles": "COc1ccccc1-n1nnc2ccccc21",
+              "reference_ppm": [
+                153.75,
+                145.7,
+                134.13,
+                131.02,
+                128.17,
+                127.52,
+                125.38,
+                123.83,
+                121.12,
+                119.88,
+                112.43,
+                111.17,
+                55.85
+              ],
+              "prediction_ppm": [
+                56.289268493652344,
+                153.09640502929688,
+                112.51707458496094,
+                130.12762451171875,
+                121.34211730957031,
+                124.95003509521484,
+                126.4632339477539,
+                146.06121826171875,
+                119.98702239990234,
+                124.4701156616211,
+                127.9368896484375,
+                111.2240982055664,
+                132.93377685546875
+              ]
+            }
+          ],
+          "prediction_files": [
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrspec_test_C/fold_0/cv_seed_42_fold_0_valid.out.pkl",
+              "sha256": "ff8be665b97813c6218741a871b1863e575e03f3fe1967fab0601eb51e0ae4a5"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrspec_test_C/fold_1/cv_seed_42_fold_1_valid.out.pkl",
+              "sha256": "f5786b57c8e9761fc06e4dca51113320c0800e1a88b970eeb97709cad798d7ca"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrspec_test_C/fold_2/cv_seed_42_fold_2_valid.out.pkl",
+              "sha256": "663c3ae04aab4124f7fe30000a86e901137c246344c14f3fbd04b8cce707d3d9"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrspec_test_C/fold_3/cv_seed_42_fold_3_valid.out.pkl",
+              "sha256": "d0d729c284ec143df94b0c4449c624cf93fafefbccaa5b15a22234e3f9beb68f"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrspec_test_C/fold_4/cv_seed_42_fold_4_valid.out.pkl",
+              "sha256": "011807a527d6b2781d5a845a22cd77b0f707a0bbe833d200652602d932928a1e"
+            }
+          ],
+          "metadata": {
+            "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/data_ours/nmrspec_test_C/valid.lmdb",
+            "sha256": "af9b3347e8375e4aaedec3866ad116ab6da548224dc80637a0c7d9f1d1395a67"
+          }
+        },
+        {
+          "model": "nmrnetpp",
+          "metrics": {
+            "matched_peak_mae_ppm": 0.8163807039222384,
+            "matched_peak_rmse_ppm": 2.0137184870551987,
+            "peak_count_mae": 2.65625,
+            "matched_fraction": 0.8683153839313926,
+            "examples": 32,
+            "scored_examples": 32,
+            "aggregation": "equal_weight_per_molecule",
+            "assignment": "minimum_absolute_error_without_atom_labels"
+          },
+          "inference_mode": "score_existing_predictions",
+          "selected_references": 32,
+          "covered_references": 32,
+          "sample_ids": [
+            "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+            "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+            "COc1ccccc1-n1nnc2ccccc21",
+            "CCCCCCOc1cc2ccccc2c(B(O)O)c1OCCCCCC",
+            "CCOP(=O)(CC(CP(=O)(OCC)OCC)C(=O)c1ccc(C)cc1C)OCC",
+            "CC[C@H]1c2c(n(Cc3ccccc3)c3c(C)cccc23)CC[C@@H]1C=O",
+            "CCN(CC)c1nc2ccccc2c2ccccc12",
+            "CC1=C2CCCCCCCCCCC2OC1=O",
+            "C=CCC(C(=O)OC)(c1cccc(Cl)c1)c1cn(C)c2ccccc12",
+            "Cc1cc(C[C@H](C(=O)c2nccn2C(C)C)c2ccc(F)cc2)cc(C)c1O",
+            "O=C1C[C@@H](c2cccc([N+](=O)[O-])c2)SC(c2ccccc2)=N1",
+            "COc1cccc(N[C@H](C(=O)O)C(C)C)c1",
+            "COC(=O)[C@@]12N=NC[C@@H]1CN(Cc1ccccc1)[C@@H]2C",
+            "Fc1ccc2c(ccn2Cc2ccc(C3COC(c4c(F)cccc4F)=N3)cc2)c1",
+            "Cc1cnn(C2CCc3ccccc32)c1",
+            "Cc1ccc(-c2nn(-c3ccccc3)cc2C(Cc2onc(C)c2[N+](=O)[O-])C[N+](=O)[O-])cc1",
+            "C[C@H]1CCc2ccccc2N1",
+            "Cc1c(/C=C/[N+](=O)[O-])cc([N+](=O)[O-])c(Cl)c1[N+](=O)[O-]",
+            "O=C(c1ccccc1)c1cn(Cc2ccccc2)c2cc(Br)cc([N+](=O)[O-])c12",
+            "Nc1cccc(C(=O)c2ccccc2)c1",
+            "CC(C)(C)OC(=O)N[C@H](CCC(=O)c1ccccc1)c1c[nH]c2cc(Cl)ccc12",
+            "CCOC(=O)C(OS(=O)(=O)c1ccc2ccccc2c1)c1ccc(F)cc1",
+            "CC(C)CC(/C=C/c1ccccc1)CO",
+            "CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O",
+            "Cc1ccc(S(=O)(=O)N2C[C@@H](O)[C@@H](C(=O)c3ccc(F)cc3)[C@@H]3CC(=O)C=C[C@]32C)cc1",
+            "COC(=O)C[C@@H]1C[C@@H]([N+](=O)[O-])[C@@H](c2ccc(C)cc2)[C@H]1C=O",
+            "Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1",
+            "O=C1/C(=C(/c2ccccc2)c2c(OC3CCCCC3)ccc3ccccc23)Cc2ccccc21",
+            "Cc1c(C(=O)OCc2ccccc2)c2ccccc2n1-c1ccccn1",
+            "FC(F)(F)C1(C#Cc2ccsc2)CNCC1c1ccccc1",
+            "COC(=O)c1cc(-c2ccccc2)n(N)c1C",
+            "O=C1c2sccc2[C@H]2[C@H]([C@H]3O[C@@H]2c2cc(Br)c(Br)cc23)N1c1cccc2cccnc12"
+          ],
+          "folds": 5,
+          "examples": [
+            {
+              "smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+              "reference_ppm": [
+                150.22,
+                148.03,
+                142.68,
+                138.28,
+                128.36,
+                128.22,
+                125.68,
+                125.58,
+                125.12,
+                111.51,
+                35.72,
+                35.03,
+                34.46,
+                31.32,
+                31.11,
+                27.93
+              ],
+              "prediction_ppm": [
+                111.45237731933594,
+                148.40550231933594,
+                35.36800003051758,
+                28.039037704467773,
+                31.147079467773438,
+                35.95953369140625,
+                142.84109497070312,
+                128.4739227294922,
+                128.31350708007812,
+                125.6566390991211,
+                128.31350708007812,
+                128.4839630126953,
+                138.42970275878906,
+                125.76692199707031,
+                125.1904296875,
+                150.54605102539062,
+                34.575950622558594,
+                31.43783187866211,
+                31.417781829833984,
+                31.417781829833984,
+                125.21549987792969,
+                125.76692199707031
+              ]
+            },
+            {
+              "smiles": "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+              "reference_ppm": [
+                168.1,
+                167.6,
+                146.7,
+                144.3,
+                144.0,
+                141.2,
+                139.0,
+                128.7,
+                128.2,
+                127.0,
+                126.9,
+                126.8,
+                104.2,
+                103.8,
+                59.9,
+                51.1,
+                39.2,
+                19.8,
+                19.7,
+                14.3
+              ],
+              "prediction_ppm": [
+                14.29346752166748,
+                59.33000564575195,
+                168.1916961669922,
+                94.94905090332031,
+                151.5686798095703,
+                20.5697078704834,
+                51.35938262939453,
+                16.469097137451172,
+                48.06084442138672,
+                15.79736042022705,
+                177.3453826904297,
+                42.556602478027344,
+                142.12423706054688,
+                129.0704803466797,
+                126.43867492675781,
+                139.1515655517578,
+                140.8810272216797,
+                126.96000671386719,
+                128.83486938476562,
+                127.3209457397461,
+                128.83486938476562,
+                126.97505187988281,
+                126.3384017944336,
+                129.06045532226562
+              ]
+            },
+            {
+              "smiles": "COc1ccccc1-n1nnc2ccccc21",
+              "reference_ppm": [
+                153.75,
+                145.7,
+                134.13,
+                131.02,
+                128.17,
+                127.52,
+                125.38,
+                123.83,
+                121.12,
+                119.88,
+                112.43,
+                111.17,
+                55.85
+              ],
+              "prediction_ppm": [
+                55.9011344909668,
+                153.6641082763672,
+                112.45999908447266,
+                131.15084838867188,
+                121.0472183227539,
+                127.9275131225586,
+                125.265625,
+                145.67343139648438,
+                119.80650329589844,
+                123.8319091796875,
+                127.6969223022461,
+                110.6026840209961,
+                134.29397583007812
+              ]
+            }
+          ],
+          "prediction_files": [
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrspec_test_C/cv_seed_42_fold_0/cv_seed_42_fold_0_valid.out.pkl",
+              "sha256": "dbba172609bd6a6f903486044e2560c709fc8ddf763b72ed3961ebb03a6f212d"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrspec_test_C/cv_seed_42_fold_1/cv_seed_42_fold_1_valid.out.pkl",
+              "sha256": "e64b371393e7f073becffb5b59700a797705d05f394154250cbf52e689dac900"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrspec_test_C/cv_seed_42_fold_2/cv_seed_42_fold_2_valid.out.pkl",
+              "sha256": "0248c26b7c3b87283ab022c5d058a80179d8276f23553d3f3338acb3f7cbe974"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrspec_test_C/cv_seed_42_fold_3/cv_seed_42_fold_3_valid.out.pkl",
+              "sha256": "2f7bd6142eae9ef9b908f5b6c163f43ee2534291a673e6e5f61ffd01b9706167"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrspec_test_C/cv_seed_42_fold_4/cv_seed_42_fold_4_valid.out.pkl",
+              "sha256": "217a5e97e1667e3ed24b22034809b09d79fef5d1e13d9acef7e27b89a85912e6"
+            }
+          ],
+          "metadata": {
+            "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/data_ours/nmrspec_test_C/valid.lmdb",
+            "sha256": "af9b3347e8375e4aaedec3866ad116ab6da548224dc80637a0c7d9f1d1395a67"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "patent_test_10k",
+      "status": "passed",
+      "metrics": {},
+      "models": [
+        {
+          "model": "nmrnet",
+          "metrics": {
+            "matched_peak_mae_ppm": 8.041924852126245,
+            "matched_peak_rmse_ppm": 24.297510376653264,
+            "peak_count_mae": 18.193548387096776,
+            "matched_fraction": 0.43315070786510484,
+            "examples": 31,
+            "scored_examples": 31,
+            "aggregation": "equal_weight_per_molecule",
+            "assignment": "minimum_absolute_error_without_atom_labels"
+          },
+          "inference_mode": "score_existing_predictions",
+          "selected_references": 32,
+          "covered_references": 31,
+          "sample_ids": [
+            "CC1=Cc2cc(C)c(C)cc2[CH]1[Zr+2]([CH]1C(C)=Cc2cc(C)c(C)cc21)=[Si](C)C.[Cl-].[Cl-]",
+            "CC(C)c1cccc(C(C)C)c1[O][Nb-]([Cl])([Cl])([Cl])[O]c1c(C(C)C)cccc1C(C)C",
+            "CCCCCCCCCCCC(=O)O.CCCCCCCCCCCC(=O)O.OCC1CCC(CO)O1",
+            "C[C@H]1CN(Cc2ccccc2)[C@]12CCNC2.C[C@H]1CN(Cc2ccccc2)[C@]12CCNC2.O=C(O)C(=O)O",
+            "N#CC(OC(=O)c1ccccc1)c1ccc([N+](=O)[O-])cc1.N#Cc1cccc(C(=O)O)c1Cc1ccc([N+](=O)[O-])cc1",
+            "CC(C)N(C1=C(N(C(C)C)C(C)C)[CH]1[Mg]([Br])([Br])[CH]1C(N(C(C)C)C(C)C)=C1N(C(C)C)C(C)C)C(C)C",
+            "CCCCCCCCCCCCCCCC(=O)O.CCCCCCCCCCCCCCCC(=O)O.OCC1CCC(CO)O1",
+            "Cc1cc(C)c(N2[CH]([Ru]([Cl])([Cl])(=[C]3C=C(c4ccccc4)c4ccccc43)[CH]3N(c4c(C)cc(C)cc4C)C(C)(C)CC3(C)C)C(C)(C)CC2(C)C)c(C)c1",
+            "CCc1cccc(C)c1N1[CH]([Ru]([Cl])([Cl])(=[C]2C=C(c3ccccc3)c3ccccc32)[CH]2N(c3c(C)cccc3CC)C(C)(C)CC2(C)C)C(C)(C)CC1(C)C",
+            "CC1=[N+](CCC[N+](C)(C)C)c2ccc(S(=O)(=O)[O-])cc2C1(C)C.CC1=[N+](CCC[N+](C)(C)C)c2ccc(S(=O)(=O)[O-])cc2C1(C)C.[Br-].[Br-]",
+            "CC(C)(C)C1[O][Ru]2([PH](c3ccccc3)(c3ccccc3)c3ccccc3)([PH](c3ccccc3)(c3ccccc3)c3ccccc3)([O]1)[O]C(C(C)(C)C)[O]2",
+            "CC(=O)[O][Ru]1([O]C(C)=O)([PH](c2ccccc2)(c2ccccc2)c2ccccc2)([PH](c2ccccc2)(c2ccccc2)c2ccccc2)[CH2]CC[NH]1",
+            "Cc1cccc(C(C)C)c1N1[CH]([Ru]([Cl])([Cl])(=[C]2C=C(c3ccccc3)c3ccccc32)[CH]2N(c3c(C)cccc3C(C)C)C(C)(C)CC2(C)C)C(C)(C)CC1(C)C",
+            "CCc1cccc(CC)c1N1[CH]([Ru]([Cl])([Cl])(=[C]2C=C(c3ccccc3)c3ccccc32)[CH]2N(c3c(CC)cccc3CC)C(C)(C)CC2(C)C)C(C)(C)CC1(C)C",
+            "CC(C)[C@@H]1CC[C@@H](C)C[C@H]1C(=O)NCCc1ccccn1.CC1CCC(C(C)C)C(C(=O)NCCc2ccccn2)C1",
+            "C=[C]=[Ru]([Cl])([Cl])([PH](C1CCCCC1)(C1CCCCC1)C1CCCCC1)[PH](C1CCCCC1)(C1CCCCC1)C1CCCCC1",
+            "[CH2]=[Ru]([Cl])([Cl])([PH](C1CCCCC1)(C1CCCCC1)C1CCCCC1)[PH](C1CCCCC1)(C1CCCCC1)C1CCCCC1",
+            "CC(C)=CCC/C(C)=C/CC/C(C)=C/CCCC(P(=O)(O)CO)S(=O)(=O)[O-].CC(C)=CCC/C(C)=C/CC/C(C)=C/CCCC(P(=O)(O)CO)S(=O)(=O)[O-].[K+].[K+]",
+            "CC(C)[N]1C(P(C2CCCCC2)C2CCCCC2)[N](C(C)C)[Zr]12([CH3])([CH3])[N](C(C)C)C(P(C1CCCCC1)C1CCCCC1)[N]2C(C)C",
+            "O=C(CCCCCCNCCc1c[nH]c2ccccc12)Nc1ccccc1.O=C(CCCCCCNCCc1c[nH]c2ccccc12)Nc1ccccc1.O=C(O)/C=C/C(=O)O",
+            "CC(C)CN(CCCN1CCN(CCCNc2nc3ccccc3[nH]2)CC1)CC(C)C.CC(C)CN(CCCN1CCN(CCCNc2nc3ccccc3[nH]2)CC1)CC(C)C.O=C(O)CCC(=O)O.O=C(O)CCC(=O)O.O=C(O)CCC(=O)O",
+            "O=c1cc(-c2ccccc2)oc2cc(N(c3ccccc3)c3ccccc3)ccc12.O=c1cc(-c2ccccc2)oc2cc(N(c3ccccc3)c3ccccc3)ccc12",
+            "[K].[K].[N-]=[N+]=Nc1[nH]nnc1N[N+](=O)[O-].[N-]=[N+]=Nc1n[nH]c(N[N+](=O)[O-])n1",
+            "[K].[N-]=[N+]=Nc1[nH]nnc1N[N+](=O)[O-].[N-]=[N+]=Nc1n[nH]c(N[N+](=O)[O-])n1",
+            "[N-]=[N+]=Nc1[nH]nnc1N[N+](=O)[O-].[N-]=[N+]=Nc1n[nH]c(N[N+](=O)[O-])n1",
+            "[CH2+][Au-]12[SH](CCO)[Au-]1([CH2+])[Au+]1([P-](C)(C)C)[SH](CCO)[Au+]12[P-](C)(C)C",
+            "CC[N](CC)[Zr]([CH3])([CH3])[N](CC)CC",
+            "O=C(O)[N]1CC[N](C(=O)O)[Fe]12([Cl])([Cl])[N](C(=O)O)CC[N]2C(=O)O",
+            "O=C([O-])C[C@@H]1CO1.O=C([O-])C[C@@H]1CO1.[Ca+2]",
+            "CCC[CH2][Sn]1([CH2]CCC)[O]CC[O]1",
+            "CCC[CH2][Sn]([CH2]CCC)([N]=C=O)[O]C"
+          ],
+          "folds": 5,
+          "examples": [
+            {
+              "smiles": "CC1=Cc2cc(C)c(C)cc2[CH]1[Zr+2]([CH]1C(C)=Cc2cc(C)c(C)cc21)=[Si](C)C.[Cl-].[Cl-]",
+              "reference_ppm": [
+                199.76,
+                141.83,
+                136.4,
+                134.5,
+                129.37,
+                128.91,
+                125.36,
+                31.23,
+                19.53,
+                19.4,
+                7.99
+              ],
+              "prediction_ppm": [
+                15.475625991821289,
+                144.4351043701172,
+                125.94377136230469,
+                139.83909606933594,
+                124.01277160644531,
+                135.6213836669922,
+                20.376537322998047,
+                135.09063720703125,
+                19.39409637451172,
+                125.93247985839844,
+                140.5392303466797,
+                77.3468246459961,
+                106.21308898925781,
+                144.5706329345703,
+                17.23724365234375,
+                121.951904296875,
+                137.14585876464844,
+                122.98515319824219,
+                134.65023803710938,
+                20.15069007873535,
+                133.40805053710938,
+                18.885936737060547,
+                119.36311340332031,
+                132.6966552734375,
+                -0.6386650800704956,
+                -0.7515893578529358
+              ]
+            },
+            {
+              "smiles": "CC(C)c1cccc(C(C)C)c1[O][Nb-]([Cl])([Cl])([Cl])[O]c1c(C(C)C)cccc1C(C)C",
+              "reference_ppm": [
+                24.34,
+                27.03,
+                123.96,
+                127.07,
+                128.33,
+                141.24
+              ],
+              "prediction_ppm": [
+                23.70780372619629,
+                30.951894760131836,
+                23.61746597290039,
+                140.77072143554688,
+                125.17024230957031,
+                124.25555419921875,
+                124.6169204711914,
+                141.4200439453125,
+                30.325164794921875,
+                23.402908325195312,
+                23.425491333007812,
+                150.04745483398438,
+                153.18673706054688,
+                141.38616943359375,
+                31.301959991455078,
+                23.606170654296875,
+                23.177059173583984,
+                125.9607162475586,
+                124.13134765625,
+                124.98956298828125,
+                141.86044311523438,
+                30.488906860351562,
+                22.78182601928711,
+                23.131887435913086
+              ]
+            },
+            {
+              "smiles": "CCCCCCCCCCCC(=O)O.CCCCCCCCCCCC(=O)O.OCC1CCC(CO)O1",
+              "reference_ppm": [
+                173.2,
+                65.9,
+                33.8,
+                31.7,
+                29.4,
+                29.3,
+                29.1,
+                29.1,
+                28.9,
+                27.5,
+                24.7,
+                22.5,
+                22.3,
+                13.9
+              ],
+              "prediction_ppm": [
+                13.872100830078125,
+                22.48822021484375,
+                33.83146286010742,
+                27.21974754333496,
+                29.619388580322266,
+                32.899837493896484,
+                30.40985679626465,
+                27.931171417236328,
+                27.6601505279541,
+                28.326406478881836,
+                53.66096115112305,
+                178.1430206298828,
+                13.872100830078125,
+                22.48822021484375,
+                33.83146286010742,
+                27.21974754333496,
+                29.625036239624023,
+                32.92806625366211,
+                30.40985679626465,
+                27.931171417236328,
+                27.654504776000977,
+                28.315113067626953,
+                53.09916305541992,
+                178.1430206298828,
+                65.32038879394531,
+                70.17754364013672,
+                31.098697662353516,
+                29.788776397705078,
+                67.80330657958984,
+                65.31756591796875
+              ]
+            }
+          ],
+          "prediction_files": [
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/patent_test_10k_C/fold_0/cv_seed_42_fold_0_valid.out.pkl",
+              "sha256": "68ccf1c87e2e83ddc74c0e3d9e2d8e51dae4741f67dbf2a56454f4191ccef54c"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/patent_test_10k_C/fold_1/cv_seed_42_fold_1_valid.out.pkl",
+              "sha256": "9b029e5e9f8b815dadd322e41e4f74b72b9ba3600b4295e8f21c5f6803a8f34a"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/patent_test_10k_C/fold_2/cv_seed_42_fold_2_valid.out.pkl",
+              "sha256": "00412227d457b7ea992ace2ec6fe8453f59c36bef909f46a8b0792e956835496"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/patent_test_10k_C/fold_3/cv_seed_42_fold_3_valid.out.pkl",
+              "sha256": "9ff483d6139bc2d00aa45eea4fd78a6426499a78d0c122cfc1d9644c90bcbdfd"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/patent_test_10k_C/fold_4/cv_seed_42_fold_4_valid.out.pkl",
+              "sha256": "da71440f67859ae914a11ec888c758986c74133c466130764fb47e9a16aa0cac"
+            }
+          ],
+          "metadata": {
+            "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/data_ours/patent_test_10k_C/valid.lmdb",
+            "sha256": "36c2d5bfff146ddada5a7d6a5a2259bcf0a0c5eef70f65fcce8d518c268b7006"
+          }
+        },
+        {
+          "model": "nmrnetpp",
+          "metrics": {
+            "matched_peak_mae_ppm": 7.5615217252266795,
+            "matched_peak_rmse_ppm": 22.917821121262513,
+            "peak_count_mae": 18.193548387096776,
+            "matched_fraction": 0.43315070786510484,
+            "examples": 31,
+            "scored_examples": 31,
+            "aggregation": "equal_weight_per_molecule",
+            "assignment": "minimum_absolute_error_without_atom_labels"
+          },
+          "inference_mode": "score_existing_predictions",
+          "selected_references": 32,
+          "covered_references": 31,
+          "sample_ids": [
+            "CC1=Cc2cc(C)c(C)cc2[CH]1[Zr+2]([CH]1C(C)=Cc2cc(C)c(C)cc21)=[Si](C)C.[Cl-].[Cl-]",
+            "CC(C)c1cccc(C(C)C)c1[O][Nb-]([Cl])([Cl])([Cl])[O]c1c(C(C)C)cccc1C(C)C",
+            "CCCCCCCCCCCC(=O)O.CCCCCCCCCCCC(=O)O.OCC1CCC(CO)O1",
+            "C[C@H]1CN(Cc2ccccc2)[C@]12CCNC2.C[C@H]1CN(Cc2ccccc2)[C@]12CCNC2.O=C(O)C(=O)O",
+            "N#CC(OC(=O)c1ccccc1)c1ccc([N+](=O)[O-])cc1.N#Cc1cccc(C(=O)O)c1Cc1ccc([N+](=O)[O-])cc1",
+            "CC(C)N(C1=C(N(C(C)C)C(C)C)[CH]1[Mg]([Br])([Br])[CH]1C(N(C(C)C)C(C)C)=C1N(C(C)C)C(C)C)C(C)C",
+            "CCCCCCCCCCCCCCCC(=O)O.CCCCCCCCCCCCCCCC(=O)O.OCC1CCC(CO)O1",
+            "Cc1cc(C)c(N2[CH]([Ru]([Cl])([Cl])(=[C]3C=C(c4ccccc4)c4ccccc43)[CH]3N(c4c(C)cc(C)cc4C)C(C)(C)CC3(C)C)C(C)(C)CC2(C)C)c(C)c1",
+            "CCc1cccc(C)c1N1[CH]([Ru]([Cl])([Cl])(=[C]2C=C(c3ccccc3)c3ccccc32)[CH]2N(c3c(C)cccc3CC)C(C)(C)CC2(C)C)C(C)(C)CC1(C)C",
+            "CC1=[N+](CCC[N+](C)(C)C)c2ccc(S(=O)(=O)[O-])cc2C1(C)C.CC1=[N+](CCC[N+](C)(C)C)c2ccc(S(=O)(=O)[O-])cc2C1(C)C.[Br-].[Br-]",
+            "CC(C)(C)C1[O][Ru]2([PH](c3ccccc3)(c3ccccc3)c3ccccc3)([PH](c3ccccc3)(c3ccccc3)c3ccccc3)([O]1)[O]C(C(C)(C)C)[O]2",
+            "CC(=O)[O][Ru]1([O]C(C)=O)([PH](c2ccccc2)(c2ccccc2)c2ccccc2)([PH](c2ccccc2)(c2ccccc2)c2ccccc2)[CH2]CC[NH]1",
+            "Cc1cccc(C(C)C)c1N1[CH]([Ru]([Cl])([Cl])(=[C]2C=C(c3ccccc3)c3ccccc32)[CH]2N(c3c(C)cccc3C(C)C)C(C)(C)CC2(C)C)C(C)(C)CC1(C)C",
+            "CCc1cccc(CC)c1N1[CH]([Ru]([Cl])([Cl])(=[C]2C=C(c3ccccc3)c3ccccc32)[CH]2N(c3c(CC)cccc3CC)C(C)(C)CC2(C)C)C(C)(C)CC1(C)C",
+            "CC(C)[C@@H]1CC[C@@H](C)C[C@H]1C(=O)NCCc1ccccn1.CC1CCC(C(C)C)C(C(=O)NCCc2ccccn2)C1",
+            "C=[C]=[Ru]([Cl])([Cl])([PH](C1CCCCC1)(C1CCCCC1)C1CCCCC1)[PH](C1CCCCC1)(C1CCCCC1)C1CCCCC1",
+            "[CH2]=[Ru]([Cl])([Cl])([PH](C1CCCCC1)(C1CCCCC1)C1CCCCC1)[PH](C1CCCCC1)(C1CCCCC1)C1CCCCC1",
+            "CC(C)=CCC/C(C)=C/CC/C(C)=C/CCCC(P(=O)(O)CO)S(=O)(=O)[O-].CC(C)=CCC/C(C)=C/CC/C(C)=C/CCCC(P(=O)(O)CO)S(=O)(=O)[O-].[K+].[K+]",
+            "CC(C)[N]1C(P(C2CCCCC2)C2CCCCC2)[N](C(C)C)[Zr]12([CH3])([CH3])[N](C(C)C)C(P(C1CCCCC1)C1CCCCC1)[N]2C(C)C",
+            "O=C(CCCCCCNCCc1c[nH]c2ccccc12)Nc1ccccc1.O=C(CCCCCCNCCc1c[nH]c2ccccc12)Nc1ccccc1.O=C(O)/C=C/C(=O)O",
+            "CC(C)CN(CCCN1CCN(CCCNc2nc3ccccc3[nH]2)CC1)CC(C)C.CC(C)CN(CCCN1CCN(CCCNc2nc3ccccc3[nH]2)CC1)CC(C)C.O=C(O)CCC(=O)O.O=C(O)CCC(=O)O.O=C(O)CCC(=O)O",
+            "O=c1cc(-c2ccccc2)oc2cc(N(c3ccccc3)c3ccccc3)ccc12.O=c1cc(-c2ccccc2)oc2cc(N(c3ccccc3)c3ccccc3)ccc12",
+            "[K].[K].[N-]=[N+]=Nc1[nH]nnc1N[N+](=O)[O-].[N-]=[N+]=Nc1n[nH]c(N[N+](=O)[O-])n1",
+            "[K].[N-]=[N+]=Nc1[nH]nnc1N[N+](=O)[O-].[N-]=[N+]=Nc1n[nH]c(N[N+](=O)[O-])n1",
+            "[N-]=[N+]=Nc1[nH]nnc1N[N+](=O)[O-].[N-]=[N+]=Nc1n[nH]c(N[N+](=O)[O-])n1",
+            "[CH2+][Au-]12[SH](CCO)[Au-]1([CH2+])[Au+]1([P-](C)(C)C)[SH](CCO)[Au+]12[P-](C)(C)C",
+            "CC[N](CC)[Zr]([CH3])([CH3])[N](CC)CC",
+            "O=C(O)[N]1CC[N](C(=O)O)[Fe]12([Cl])([Cl])[N](C(=O)O)CC[N]2C(=O)O",
+            "O=C([O-])C[C@@H]1CO1.O=C([O-])C[C@@H]1CO1.[Ca+2]",
+            "CCC[CH2][Sn]1([CH2]CCC)[O]CC[O]1",
+            "CCC[CH2][Sn]([CH2]CCC)([N]=C=O)[O]C"
+          ],
+          "folds": 5,
+          "examples": [
+            {
+              "smiles": "CC1=Cc2cc(C)c(C)cc2[CH]1[Zr+2]([CH]1C(C)=Cc2cc(C)c(C)cc21)=[Si](C)C.[Cl-].[Cl-]",
+              "reference_ppm": [
+                199.76,
+                141.83,
+                136.4,
+                134.5,
+                129.37,
+                128.91,
+                125.36,
+                31.23,
+                19.53,
+                19.4,
+                7.99
+              ],
+              "prediction_ppm": [
+                14.734609603881836,
+                143.8487091064453,
+                132.13841247558594,
+                142.50523376464844,
+                122.05482482910156,
+                136.1888885498047,
+                20.118541717529297,
+                132.5946044921875,
+                18.484312057495117,
+                127.50141906738281,
+                138.64022827148438,
+                56.22196578979492,
+                123.87703704833984,
+                144.84628295898438,
+                15.125622749328613,
+                122.73658752441406,
+                137.91336059570312,
+                122.25032043457031,
+                134.32406616210938,
+                20.008256912231445,
+                132.7900848388672,
+                17.50177001953125,
+                126.6441879272461,
+                131.65716552734375,
+                15.897619247436523,
+                14.574193954467773
+              ]
+            },
+            {
+              "smiles": "CC(C)c1cccc(C(C)C)c1[O][Nb-]([Cl])([Cl])([Cl])[O]c1c(C(C)C)cccc1C(C)C",
+              "reference_ppm": [
+                24.34,
+                27.03,
+                123.96,
+                127.07,
+                128.33,
+                141.24
+              ],
+              "prediction_ppm": [
+                22.193912506103516,
+                30.294872283935547,
+                22.093652725219727,
+                138.5098876953125,
+                124.85456848144531,
+                123.89207458496094,
+                124.4861068725586,
+                139.40219116210938,
+                29.69331932067871,
+                22.25406837463379,
+                22.324249267578125,
+                151.27793884277344,
+                153.0725860595703,
+                138.06875610351562,
+                31.006717681884766,
+                22.464611053466797,
+                21.59235382080078,
+                125.18540954589844,
+                122.97469329833984,
+                124.4560317993164,
+                139.13650512695312,
+                30.15451431274414,
+                22.244041442871094,
+                22.615001678466797
+              ]
+            },
+            {
+              "smiles": "CCCCCCCCCCCC(=O)O.CCCCCCCCCCCC(=O)O.OCC1CCC(CO)O1",
+              "reference_ppm": [
+                173.2,
+                65.9,
+                33.8,
+                31.7,
+                29.4,
+                29.3,
+                29.1,
+                29.1,
+                28.9,
+                27.5,
+                24.7,
+                22.5,
+                22.3,
+                13.9
+              ],
+              "prediction_ppm": [
+                13.922508239746094,
+                22.57489776611328,
+                31.838871002197266,
+                25.7130184173584,
+                29.38251304626465,
+                30.204641342163086,
+                28.540334701538086,
+                28.2094783782959,
+                26.234365463256836,
+                24.930994033813477,
+                49.33915710449219,
+                178.3279266357422,
+                13.922508239746094,
+                22.57489776611328,
+                31.838871002197266,
+                25.69296646118164,
+                29.38251304626465,
+                30.254770278930664,
+                28.540334701538086,
+                28.229528427124023,
+                26.244394302368164,
+                24.930994033813477,
+                48.70250701904297,
+                178.3279266357422,
+                62.13727569580078,
+                75.63469696044922,
+                32.01933670043945,
+                26.505069732666016,
+                68.11775207519531,
+                60.61333084106445
+              ]
+            }
+          ],
+          "prediction_files": [
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/patent_test_10k_C/cv_seed_42_fold_0/cv_seed_42_fold_0_valid.out.pkl",
+              "sha256": "4e8242ce41761a0d6f678eda74bb9b04171a4c7bbe39187f4b759451656bc35f"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/patent_test_10k_C/cv_seed_42_fold_1/cv_seed_42_fold_1_valid.out.pkl",
+              "sha256": "d4302cca17d1b11f1ebb7afcce3d90a263865e532e6e188db6c825f8441a96d6"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/patent_test_10k_C/cv_seed_42_fold_2/cv_seed_42_fold_2_valid.out.pkl",
+              "sha256": "3a80f31e87cd210e767201e100c27efc76372aa4463c3dd31cdb7f45eef6002c"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/patent_test_10k_C/cv_seed_42_fold_3/cv_seed_42_fold_3_valid.out.pkl",
+              "sha256": "601fba2ea2eb5716504cac7a25016f9fda2737f74e1a39fd9ca4374df0dda6b4"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/patent_test_10k_C/cv_seed_42_fold_4/cv_seed_42_fold_4_valid.out.pkl",
+              "sha256": "153c3bc207cccd0ce47035fd04746a989ed309fc291c8183283209ad887c5805"
+            }
+          ],
+          "metadata": {
+            "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/data_ours/patent_test_10k_C/valid.lmdb",
+            "sha256": "36c2d5bfff146ddada5a7d6a5a2259bcf0a0c5eef70f65fcce8d518c268b7006"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "nmrexp_exp_10k",
+      "status": "passed",
+      "metrics": {},
+      "models": [
+        {
+          "model": "nmrnet",
+          "metrics": {
+            "matched_peak_mae_ppm": 1.3063837598230228,
+            "matched_peak_rmse_ppm": 7.498559532565537,
+            "peak_count_mae": 3.90625,
+            "matched_fraction": 0.7535539713423682,
+            "examples": 32,
+            "scored_examples": 32,
+            "aggregation": "equal_weight_per_molecule",
+            "assignment": "minimum_absolute_error_without_atom_labels"
+          },
+          "inference_mode": "score_existing_predictions",
+          "selected_references": 32,
+          "covered_references": 32,
+          "sample_ids": [
+            "CC[Si](CC)(CC)/C(F)=C(\\Cc1ccccc1)C(=O)OC(C)(C)C",
+            "CCOC(=O)/C(CCc1ccccc1)=C(/F)[Si](CC)(CC)CC",
+            "CCOC(=O)/C(CCCOc1ccc(OC)cc1)=C(\\F)[Si](CC)(CC)CC",
+            "CCCCCCCC/C(C(=O)OCC)=C(/F)[Si](CC)(CC)CC",
+            "O=C(c1ccccc1)c1ccccc1",
+            "O=C(c1ccccc1)c1ccc(Cl)cc1",
+            "O=C(c1ccccc1)c1ccc(Br)cc1",
+            "N#Cc1ccc(C(=O)c2ccccc2)cc1",
+            "O=C(c1ccccc1)c1ccc([N+](=O)[O-])cc1",
+            "O=C(c1ccccc1)c1ccc(-c2ccccc2)cc1",
+            "CCCCCc1ccc(C(=O)c2ccccc2)cc1",
+            "O=C(c1ccccc1)c1cccc(Cl)c1",
+            "O=C(c1ccccc1)c1cccc([N+](=O)[O-])c1",
+            "Cc1cccc(C(=O)c2ccccc2)c1",
+            "O=C(c1ccccc1)c1ccccc1F",
+            "O=C(c1ccccc1)c1ccc2ccccc2c1",
+            "O=C(c1ccccc1)c1cccs1",
+            "O=C(c1ccccc1)c1cccnc1",
+            "O=C(CCc1ccccc1)c1ccccc1",
+            "CCCCC(=O)c1ccccc1",
+            "CCCCCCC(=O)c1ccccc1",
+            "CCCCCCCCCCC(=O)c1ccccc1",
+            "CC(C)CCC(=O)c1ccccc1",
+            "C#CCCCC(=O)c1ccccc1",
+            "O=C(CCCC(=O)c1ccccc1)c1ccccc1",
+            "CC(=O)OCCCC(=O)c1ccccc1",
+            "O=C(CCCOC(=O)c1ccccc1)c1ccccc1",
+            "CCCC(=O)c1ccccc1",
+            "CC(C)(C)OC(C=O)(c1ccccc1)c1ccccc1",
+            "CC(C)(C)OC(=O)N1C(=O)CS[C@@]12C(=O)N(Cc1ccccc1)c1ccccc12",
+            "COc1ccc2c(c1)[C@@]1(SCC(=O)N1C(=O)OC(C)(C)C)C(=O)N2Cc1ccccc1",
+            "Cc1ccc2c(c1)[C@@]1(SCC(=O)N1C(=O)OC(C)(C)C)C(=O)N2Cc1ccccc1"
+          ],
+          "folds": 5,
+          "examples": [
+            {
+              "smiles": "CC[Si](CC)(CC)/C(F)=C(\\Cc1ccccc1)C(=O)OC(C)(C)C",
+              "reference_ppm": [
+                178.1,
+                166.9,
+                139.8,
+                131.3,
+                128.7,
+                128.3,
+                126.0,
+                81.1,
+                31.4,
+                28.0,
+                7.7,
+                3.0
+              ],
+              "prediction_ppm": [
+                7.412834167480469,
+                4.16061544418335,
+                4.375171661376953,
+                7.491880893707275,
+                4.510680198669434,
+                7.7516069412231445,
+                165.60842895507812,
+                119.0553970336914,
+                30.793798446655273,
+                138.7945556640625,
+                128.82333374023438,
+                128.45632934570312,
+                126.42935943603516,
+                128.39987182617188,
+                128.72171020507812,
+                165.81167602539062,
+                80.81977844238281,
+                28.06667709350586,
+                28.275588989257812,
+                28.303821563720703
+              ]
+            },
+            {
+              "smiles": "CCOC(=O)/C(CCc1ccccc1)=C(/F)[Si](CC)(CC)CC",
+              "reference_ppm": [
+                179.9,
+                168.0,
+                141.7,
+                130.0,
+                128.7,
+                128.3,
+                126.0,
+                60.7,
+                35.4,
+                27.4,
+                14.4,
+                7.6,
+                3.0
+              ],
+              "prediction_ppm": [
+                14.35767650604248,
+                60.360191345214844,
+                167.53941345214844,
+                117.6325454711914,
+                27.061655044555664,
+                34.130714416503906,
+                141.20547485351562,
+                128.51280212402344,
+                128.49586486816406,
+                126.44063568115234,
+                128.45069885253906,
+                128.3490447998047,
+                165.2357635498047,
+                4.296124458312988,
+                7.299910068511963,
+                4.296124458312988,
+                7.480588436126709,
+                4.45421838760376,
+                7.559635162353516
+              ]
+            },
+            {
+              "smiles": "CCOC(=O)/C(CCCOc1ccc(OC)cc1)=C(\\F)[Si](CC)(CC)CC",
+              "reference_ppm": [
+                179.8,
+                168.0,
+                153.8,
+                153.3,
+                130.2,
+                115.5,
+                114.7,
+                68.1,
+                60.8,
+                55.9,
+                28.7,
+                22.1,
+                14.3,
+                7.6,
+                3.0
+              ],
+              "prediction_ppm": [
+                14.312505722045898,
+                60.71308135986328,
+                166.62472534179688,
+                119.40547180175781,
+                22.002647399902344,
+                28.0158634185791,
+                67.60993194580078,
+                152.83670043945312,
+                115.30631256103516,
+                114.71345520019531,
+                153.86428833007812,
+                55.479042053222656,
+                114.8150863647461,
+                115.47005462646484,
+                165.15670776367188,
+                3.8670125007629395,
+                7.401541709899902,
+                4.149323463439941,
+                7.7177300453186035,
+                3.8670125007629395,
+                7.2660322189331055
+              ]
+            }
+          ],
+          "prediction_files": [
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrexp_exp_10k_C/fold_0/cv_seed_42_fold_0_valid.out.pkl",
+              "sha256": "624420df347a95de9c4ab9c55bd9d3d58e077ab62fdf3a5295d15500efa88d41"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrexp_exp_10k_C/fold_1/cv_seed_42_fold_1_valid.out.pkl",
+              "sha256": "f2da0f6c17065ba7898a3d651b957492138bada1b1211b819ca24556110a7b55"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrexp_exp_10k_C/fold_2/cv_seed_42_fold_2_valid.out.pkl",
+              "sha256": "8ce0f79260ad800c781ce19261ef7ce48bdc4abe6459c0ab3c58d85641482ea8"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrexp_exp_10k_C/fold_3/cv_seed_42_fold_3_valid.out.pkl",
+              "sha256": "f443fd3774f6676549823c774edc56e16ef59fe9ed6cbf29ea7af0566b9367e0"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrexp_exp_10k_C/fold_4/cv_seed_42_fold_4_valid.out.pkl",
+              "sha256": "b4324b2a31524aba999e0a74cf6135875ad315ca946897c46bb0bc2b8a5a4fc2"
+            }
+          ],
+          "metadata": {
+            "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/data_ours/nmrexp_exp_10k_C/valid.lmdb",
+            "sha256": "d9cf43362937ab92bc78e0573f7c0c7e6107ebb2999e38de24fe4c615bb18bdc"
+          }
+        },
+        {
+          "model": "nmrnetpp",
+          "metrics": {
+            "matched_peak_mae_ppm": 1.2925194849511477,
+            "matched_peak_rmse_ppm": 8.097448280861592,
+            "peak_count_mae": 3.90625,
+            "matched_fraction": 0.7535539713423682,
+            "examples": 32,
+            "scored_examples": 32,
+            "aggregation": "equal_weight_per_molecule",
+            "assignment": "minimum_absolute_error_without_atom_labels"
+          },
+          "inference_mode": "score_existing_predictions",
+          "selected_references": 32,
+          "covered_references": 32,
+          "sample_ids": [
+            "CC[Si](CC)(CC)/C(F)=C(\\Cc1ccccc1)C(=O)OC(C)(C)C",
+            "CCOC(=O)/C(CCc1ccccc1)=C(/F)[Si](CC)(CC)CC",
+            "CCOC(=O)/C(CCCOc1ccc(OC)cc1)=C(\\F)[Si](CC)(CC)CC",
+            "CCCCCCCC/C(C(=O)OCC)=C(/F)[Si](CC)(CC)CC",
+            "O=C(c1ccccc1)c1ccccc1",
+            "O=C(c1ccccc1)c1ccc(Cl)cc1",
+            "O=C(c1ccccc1)c1ccc(Br)cc1",
+            "N#Cc1ccc(C(=O)c2ccccc2)cc1",
+            "O=C(c1ccccc1)c1ccc([N+](=O)[O-])cc1",
+            "O=C(c1ccccc1)c1ccc(-c2ccccc2)cc1",
+            "CCCCCc1ccc(C(=O)c2ccccc2)cc1",
+            "O=C(c1ccccc1)c1cccc(Cl)c1",
+            "O=C(c1ccccc1)c1cccc([N+](=O)[O-])c1",
+            "Cc1cccc(C(=O)c2ccccc2)c1",
+            "O=C(c1ccccc1)c1ccccc1F",
+            "O=C(c1ccccc1)c1ccc2ccccc2c1",
+            "O=C(c1ccccc1)c1cccs1",
+            "O=C(c1ccccc1)c1cccnc1",
+            "O=C(CCc1ccccc1)c1ccccc1",
+            "CCCCC(=O)c1ccccc1",
+            "CCCCCCC(=O)c1ccccc1",
+            "CCCCCCCCCCC(=O)c1ccccc1",
+            "CC(C)CCC(=O)c1ccccc1",
+            "C#CCCCC(=O)c1ccccc1",
+            "O=C(CCCC(=O)c1ccccc1)c1ccccc1",
+            "CC(=O)OCCCC(=O)c1ccccc1",
+            "O=C(CCCOC(=O)c1ccccc1)c1ccccc1",
+            "CCCC(=O)c1ccccc1",
+            "CC(C)(C)OC(C=O)(c1ccccc1)c1ccccc1",
+            "CC(C)(C)OC(=O)N1C(=O)CS[C@@]12C(=O)N(Cc1ccccc1)c1ccccc12",
+            "COc1ccc2c(c1)[C@@]1(SCC(=O)N1C(=O)OC(C)(C)C)C(=O)N2Cc1ccccc1",
+            "Cc1ccc2c(c1)[C@@]1(SCC(=O)N1C(=O)OC(C)(C)C)C(=O)N2Cc1ccccc1"
+          ],
+          "folds": 5,
+          "examples": [
+            {
+              "smiles": "CC[Si](CC)(CC)/C(F)=C(\\Cc1ccccc1)C(=O)OC(C)(C)C",
+              "reference_ppm": [
+                178.1,
+                166.9,
+                139.8,
+                131.3,
+                128.7,
+                128.3,
+                126.0,
+                81.1,
+                31.4,
+                28.0,
+                7.7,
+                3.0
+              ],
+              "prediction_ppm": [
+                11.58646297454834,
+                21.7026424407959,
+                21.712665557861328,
+                11.756904602050781,
+                21.612407684326172,
+                11.63659381866455,
+                160.4817657470703,
+                115.9189453125,
+                33.11216354370117,
+                137.76797485351562,
+                128.61428833007812,
+                128.33355712890625,
+                126.49881744384766,
+                128.30349731445312,
+                129.14566040039062,
+                165.37442016601562,
+                82.04377746582031,
+                27.9788818359375,
+                27.988910675048828,
+                27.998931884765625
+              ]
+            },
+            {
+              "smiles": "CCOC(=O)/C(CCc1ccccc1)=C(/F)[Si](CC)(CC)CC",
+              "reference_ppm": [
+                179.9,
+                168.0,
+                141.7,
+                130.0,
+                128.7,
+                128.3,
+                126.0,
+                60.7,
+                35.4,
+                27.4,
+                14.4,
+                7.6,
+                3.0
+              ],
+              "prediction_ppm": [
+                14.203234672546387,
+                60.78377151489258,
+                166.7680206298828,
+                113.49015808105469,
+                28.309738159179688,
+                34.044578552246094,
+                140.90609741210938,
+                128.46389770507812,
+                128.21826171875,
+                126.1128158569336,
+                128.34860229492188,
+                128.79977416992188,
+                161.8452911376953,
+                21.0910587310791,
+                11.546360969543457,
+                21.42191505432129,
+                11.345841407775879,
+                21.231420516967773,
+                11.596489906311035
+              ]
+            },
+            {
+              "smiles": "CCOC(=O)/C(CCCOc1ccc(OC)cc1)=C(\\F)[Si](CC)(CC)CC",
+              "reference_ppm": [
+                179.8,
+                168.0,
+                153.8,
+                153.3,
+                130.2,
+                115.5,
+                114.7,
+                68.1,
+                60.8,
+                55.9,
+                28.7,
+                22.1,
+                14.3,
+                7.6,
+                3.0
+              ],
+              "prediction_ppm": [
+                14.233312606811523,
+                61.06950759887695,
+                166.2366485595703,
+                115.27226257324219,
+                23.818117141723633,
+                26.75571632385254,
+                67.7868881225586,
+                153.08261108398438,
+                115.49283599853516,
+                114.6155776977539,
+                153.74432373046875,
+                55.685585021972656,
+                114.59552001953125,
+                115.42765808105469,
+                160.88279724121094,
+                22.454586029052734,
+                11.3759183883667,
+                22.745338439941406,
+                11.426048278808594,
+                23.156402587890625,
+                11.45612621307373
+              ]
+            }
+          ],
+          "prediction_files": [
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrexp_exp_10k_C/cv_seed_42_fold_0/cv_seed_42_fold_0_valid.out.pkl",
+              "sha256": "25628ad1372776fef019ea606acf61be82e1ac5ce628c78016d11756132d459c"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrexp_exp_10k_C/cv_seed_42_fold_1/cv_seed_42_fold_1_valid.out.pkl",
+              "sha256": "d9e21d850ba883aefc896f5124273ff58b4b098d73da0bbebb5e09f965b48c6f"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrexp_exp_10k_C/cv_seed_42_fold_2/cv_seed_42_fold_2_valid.out.pkl",
+              "sha256": "2745c884325ff7f89599bc5f8265d27b0b321c749d0abba5330842adde9010d9"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrexp_exp_10k_C/cv_seed_42_fold_3/cv_seed_42_fold_3_valid.out.pkl",
+              "sha256": "2386a25f92ba4268a51dc40afde33aa50f7b39d2b697edbcba4333338976c2a8"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrexp_exp_10k_C/cv_seed_42_fold_4/cv_seed_42_fold_4_valid.out.pkl",
+              "sha256": "cf0b51a4c4adbed23854caa6b20c7e768daba2bd92c54cd3b5f53bd0acf20fb8"
+            }
+          ],
+          "metadata": {
+            "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/data_ours/nmrexp_exp_10k_C/valid.lmdb",
+            "sha256": "d9cf43362937ab92bc78e0573f7c0c7e6107ebb2999e38de24fe4c615bb18bdc"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "nmrgym_test",
+      "status": "passed",
+      "metrics": {},
+      "models": [
+        {
+          "model": "nmrnet",
+          "metrics": {
+            "matched_peak_mae_ppm": 2.2765265164740645,
+            "matched_peak_rmse_ppm": 3.99253565138379,
+            "peak_count_mae": 2.625,
+            "matched_fraction": 0.9080126647199663,
+            "examples": 32,
+            "scored_examples": 32,
+            "aggregation": "equal_weight_per_molecule",
+            "assignment": "minimum_absolute_error_without_atom_labels"
+          },
+          "inference_mode": "score_existing_predictions",
+          "selected_references": 32,
+          "covered_references": 32,
+          "sample_ids": [
+            "N#Cc1c(N)n[nH]c1-c1c(N)sc2c(-c3ccccc3)nn(-c3ccccc3)c12",
+            "COC(=O)[C@@]1(OC)C(OC)=C(OC)C(=O)/C1=C(O)/C=C/c1ccccc1",
+            "CC[C@@H](O)C[C@@H](O)[C@@]1(C)C[C@@H](C)[C@@H]2CC[C@H](CC/C=C(/C)C(=O)[C@@H](C)CC/C=C\\C(=O)N3CCCC[C@H]3C(=O)O1)O2",
+            "CC(O)(CCOc1ccc2ccc(=O)oc2c1)CCC1C(C)(O)CCC(=O)C1(C)C",
+            "CC(C)C[C@@H]1NC(=O)[C@H](C(C)C)NC(=O)[C@@H](CC(C)C)NC(=O)[C@H](Cc2ccccc2)NC(=O)[C@@H]2CCCN2C(=O)[C@@H](Cc2ccccc2)NC1=O",
+            "[O-][N+]12CCC[C@@H]3[C@@H](O)C[C@@H]4C[C@H]5CO[C@]1(C5)[C@@]43CCC2",
+            "COc1ccc([C@@H](CN=C(O)/C=C\\c2ccccc2)O[C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)cc1",
+            "Cc1ccc2c(c1)C(C)(C)CCCC2=NCc1ccccc1",
+            "CC(C)C(O)=N[C@H]1CC[C@]2(O)CC3=CC[C@]4(C)[C@@H]([C@H](C)N(C)C)CC[C@@]4(C)[C@@H]3CC[C@H]2C1(C)C",
+            "C=C1CC[C@@]23CC[C@]4(C)[C@@](OC2=O)([C@@H]3C1)[C@H]1O[C@H]1[C@@H]1[C@@]2(C)CC[C@@H]3OC(C)(C)OC[C@@]3(O)[C@@H]2CC[C@]14C",
+            "O=C(NCCc1c[nH]cn1)c1cnc[nH]1",
+            "CC(=O)Oc1cc(OC(C)=O)cc(Oc2c(OC(C)=O)cc(OC(C)=O)c3c2Oc2c(cc(OC(C)=O)c4c2oc2cc(OC(C)=O)cc(OC(C)=O)c24)O3)c1",
+            "COC(=O)[C@@H](C)[C@H]1CC[C@](C)(CCC/C(C)=C/CC2=C(C)CCCC2(C)C)OO1",
+            "Cc1ccc(C2=NCC(=O)N(C)c3ccccc32)c(I)c1",
+            "C=C1C[C@]23C[C@@]4(O)[C@@H]5[C@]6(C)C[N@@+]4(C)[C@@H]4[C@H]2[C@@H](O)[C@H]1C[C@H]3[C@]54C[C@@H](O)[C@H]6O",
+            "O=c1c(-c2ccc(O)c(O)c2)c(OCC2OC(O)C(O)C(O)C2O)oc2c(O)cc(O)cc12",
+            "CC(C)(O)C1CCC(C)(C2CCC3(C)C2C(O)CC2C4(C)CCC(O)C(C)(C)C4C(OC4OC(COC5OC(CO)C(O)C(O)C5O)C(O)C(O)C4OC4OCC(O)C(O)C4O)CC23C)O1",
+            "COC1CC(=O)N2c3cc(O)cc4c3OC(/C=C\\C=C\\CC(OC(=O)C(C)N=C(O)CC(C)C)C(C)C(O)/C(C)=C/CC4)C12",
+            "Cc1ncc(COP(=O)(O)O)c(=N)[nH]1",
+            "CC(C)C[C@H](N=C(O)[C@@H]1CCCN1C(=O)[C@@H](N=C(O)[C@@H](N)Cc1ccc(O)cc1)C(C)C)C(=O)O",
+            "C=C1OC(=O)c2c(O[C@@H]3O[C@@H](CO)[C@H](O)[C@@H](O)[C@@H]3O)cc(OC)c(C)c2[C@@H]1C",
+            "CN1C(=O)/C(=C/c2ccc3c(c2)OCO3)N=C1N",
+            "CN1C=NC(C(=O)O)CC1(C)COC(=O)c1ccc[nH]1",
+            "O=C1C=C(c2cc3nc(O)[nH]c3nc2O)C(O)=NC1=O",
+            "CC1=CC(=O)[C@@H](O)[C@]2(C)[C@H]3[C@@]4(O)OC[C@]35[C@H]([C@@H](CO)[C@H]4O)[C@@H](O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)C(=O)O[C@@H]5C[C@@H]12",
+            "O=C1CCC2=C1N1CCCC1OC2",
+            "C=C(C)C1OC2CCC3(C)C(CCC4(OC)OC5OC(C)(C)C6CC7C(=C)Cc8ccc9[nH]c(c5c9c8C76O)C43C)C23OC3C1O",
+            "CC(=CC1CC(O)(C2CCC3(C)C2CCC2C4(C)CCC(OC5OCC(O)C(OC6OC(CO)C(O)C(O)C6O)C5OC5OC(C)C(O)C(O)C5O)C(C)(C)C4CCC23C)C(O)O1)CO",
+            "COc1cc2c(cc1C(C)(O)CC(C)c1cc3cc(C(C)=O)c(O)cc3o1)C=CC(C)(C)O2",
+            "COc1cc(C)cc2c3ccccc3n(Cc3cc4c([nH]c5ccccc54)c4c3OC(C)(C)C=C4)c12",
+            "c1ccn2c(NCCN3CCOCC3)c(-c3ccc4c(c3)OCO4)nc2c1",
+            "CC(=O)OCC=CC1=CC2=C(CO1)C(=O)C(C)(OC(=O)c1c(C)cc(O)cc1O)C(=O)C2=CC=CC1=CC2=C(CO1)C(=O)C(C)(O)C(OC(=O)c1c(C)cc(O)cc1O)C2"
+          ],
+          "folds": 5,
+          "examples": [
+            {
+              "smiles": "N#Cc1c(N)n[nH]c1-c1c(N)sc2c(-c3ccccc3)nn(-c3ccccc3)c12",
+              "reference_ppm": [
+                104.8,
+                113.9,
+                120.7,
+                123.4,
+                123.4,
+                125.6,
+                126.1,
+                126.1,
+                126.2,
+                128.1,
+                128.1,
+                128.9,
+                128.9,
+                128.9,
+                129.3,
+                134.2,
+                140.1,
+                141.2,
+                153.8,
+                167.2
+              ],
+              "prediction_ppm": [
+                117.03404235839844,
+                68.9819564819336,
+                154.50796508789062,
+                144.55934143066406,
+                97.87786865234375,
+                155.7162628173828,
+                108.08763122558594,
+                146.8065185546875,
+                131.51657104492188,
+                126.89798736572266,
+                128.60313415527344,
+                128.11190795898438,
+                128.6144256591797,
+                126.9375,
+                139.44387817382812,
+                123.03033447265625,
+                129.18470764160156,
+                127.01091003417969,
+                129.16212463378906,
+                123.47637939453125,
+                137.2587890625
+              ]
+            },
+            {
+              "smiles": "COC(=O)[C@@]1(OC)C(OC)=C(OC)C(=O)/C1=C(O)/C=C/c1ccccc1",
+              "reference_ppm": [
+                53.1,
+                172.75,
+                77.48,
+                51.75,
+                157.9,
+                59.4,
+                139.69,
+                60.22,
+                180.09,
+                109.05,
+                170.73,
+                123.17,
+                139.36,
+                134.85,
+                128.37,
+                129.03,
+                128.93
+              ],
+              "prediction_ppm": [
+                52.92695236206055,
+                169.51559448242188,
+                82.25856018066406,
+                54.01384735107422,
+                161.5205535888672,
+                60.789306640625,
+                138.26382446289062,
+                59.538665771484375,
+                183.4617462158203,
+                104.2256088256836,
+                174.9133758544922,
+                121.69783020019531,
+                141.90560913085938,
+                135.05111694335938,
+                128.02157592773438,
+                128.91932678222656,
+                130.18972778320312,
+                128.9023895263672,
+                128.15708923339844
+              ]
+            },
+            {
+              "smiles": "CC[C@@H](O)C[C@@H](O)[C@@]1(C)C[C@@H](C)[C@@H]2CC[C@H](CC/C=C(/C)C(=O)[C@@H](C)CC/C=C\\C(=O)N3CCCC[C@H]3C(=O)O1)O2",
+              "reference_ppm": [
+                9.91,
+                30.08,
+                68.77,
+                36.79,
+                74.36,
+                80.53,
+                23.64,
+                37.71,
+                35.64,
+                15.25,
+                77.08,
+                29.2,
+                31.17,
+                74.22,
+                33.6,
+                23.6,
+                143.78,
+                139.7,
+                19.5,
+                43.68,
+                15.6,
+                32.45,
+                23.9,
+                148.7,
+                122.55,
+                166.4,
+                45.15,
+                25.28,
+                20.3,
+                26.36,
+                50.59,
+                170.48
+              ],
+              "prediction_ppm": [
+                9.806827545166016,
+                29.862173080444336,
+                70.64900207519531,
+                36.067359924316406,
+                73.36624908447266,
+                84.32139587402344,
+                17.1807804107666,
+                38.280677795410156,
+                34.83648681640625,
+                17.406631469726562,
+                83.81351470947266,
+                29.105581283569336,
+                32.103721618652344,
+                80.51959991455078,
+                35.3164176940918,
+                26.017105102539062,
+                138.24122619628906,
+                136.27069091796875,
+                19.608652114868164,
+                206.54345703125,
+                41.4086799621582,
+                16.266094207763672,
+                30.2630558013916,
+                27.524642944335938,
+                142.39683532714844,
+                123.98454284667969,
+                167.0199737548828,
+                44.429405212402344,
+                25.19840431213379,
+                23.803789138793945,
+                27.880352020263672,
+                57.97748947143555,
+                171.94346618652344
+              ]
+            }
+          ],
+          "prediction_files": [
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrgym_test_C/fold_0/cv_seed_42_fold_0_valid.out.pkl",
+              "sha256": "48702d165bde7eb4c6e6d857590db8253490fb7860aebc209a187786f4798709"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrgym_test_C/fold_1/cv_seed_42_fold_1_valid.out.pkl",
+              "sha256": "a2ea028e98fc122bb9bc18db9dbea1ff024d5c35c9ae3504da9328c3b4f1ad10"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrgym_test_C/fold_2/cv_seed_42_fold_2_valid.out.pkl",
+              "sha256": "ca9baa19a1dcedc6943681055275cc036b532aac82e6073ca00720c001998c05"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrgym_test_C/fold_3/cv_seed_42_fold_3_valid.out.pkl",
+              "sha256": "54f56526bb5a88536c6d282fbdd22b0bf519afe0f2c5fc615bf6e4423cebfa13"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnet/results/nmrgym_test_C/fold_4/cv_seed_42_fold_4_valid.out.pkl",
+              "sha256": "ac84289c03b6daa55ecaea1cfa86c3b6e5bdc98c50bf1a37b5532eb8d0ebc992"
+            }
+          ],
+          "metadata": {
+            "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/data_ours/nmrgym_test_C/valid.lmdb",
+            "sha256": "338d75001a0c028dd4eacba5c97f47b80460a485f0e6507b0f8eb459898f8d70"
+          }
+        },
+        {
+          "model": "nmrnetpp",
+          "metrics": {
+            "matched_peak_mae_ppm": 2.4534173733134828,
+            "matched_peak_rmse_ppm": 4.157696167382544,
+            "peak_count_mae": 2.625,
+            "matched_fraction": 0.9080126647199663,
+            "examples": 32,
+            "scored_examples": 32,
+            "aggregation": "equal_weight_per_molecule",
+            "assignment": "minimum_absolute_error_without_atom_labels"
+          },
+          "inference_mode": "score_existing_predictions",
+          "selected_references": 32,
+          "covered_references": 32,
+          "sample_ids": [
+            "N#Cc1c(N)n[nH]c1-c1c(N)sc2c(-c3ccccc3)nn(-c3ccccc3)c12",
+            "COC(=O)[C@@]1(OC)C(OC)=C(OC)C(=O)/C1=C(O)/C=C/c1ccccc1",
+            "CC[C@@H](O)C[C@@H](O)[C@@]1(C)C[C@@H](C)[C@@H]2CC[C@H](CC/C=C(/C)C(=O)[C@@H](C)CC/C=C\\C(=O)N3CCCC[C@H]3C(=O)O1)O2",
+            "CC(O)(CCOc1ccc2ccc(=O)oc2c1)CCC1C(C)(O)CCC(=O)C1(C)C",
+            "CC(C)C[C@@H]1NC(=O)[C@H](C(C)C)NC(=O)[C@@H](CC(C)C)NC(=O)[C@H](Cc2ccccc2)NC(=O)[C@@H]2CCCN2C(=O)[C@@H](Cc2ccccc2)NC1=O",
+            "[O-][N+]12CCC[C@@H]3[C@@H](O)C[C@@H]4C[C@H]5CO[C@]1(C5)[C@@]43CCC2",
+            "COc1ccc([C@@H](CN=C(O)/C=C\\c2ccccc2)O[C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)cc1",
+            "Cc1ccc2c(c1)C(C)(C)CCCC2=NCc1ccccc1",
+            "CC(C)C(O)=N[C@H]1CC[C@]2(O)CC3=CC[C@]4(C)[C@@H]([C@H](C)N(C)C)CC[C@@]4(C)[C@@H]3CC[C@H]2C1(C)C",
+            "C=C1CC[C@@]23CC[C@]4(C)[C@@](OC2=O)([C@@H]3C1)[C@H]1O[C@H]1[C@@H]1[C@@]2(C)CC[C@@H]3OC(C)(C)OC[C@@]3(O)[C@@H]2CC[C@]14C",
+            "O=C(NCCc1c[nH]cn1)c1cnc[nH]1",
+            "CC(=O)Oc1cc(OC(C)=O)cc(Oc2c(OC(C)=O)cc(OC(C)=O)c3c2Oc2c(cc(OC(C)=O)c4c2oc2cc(OC(C)=O)cc(OC(C)=O)c24)O3)c1",
+            "COC(=O)[C@@H](C)[C@H]1CC[C@](C)(CCC/C(C)=C/CC2=C(C)CCCC2(C)C)OO1",
+            "Cc1ccc(C2=NCC(=O)N(C)c3ccccc32)c(I)c1",
+            "C=C1C[C@]23C[C@@]4(O)[C@@H]5[C@]6(C)C[N@@+]4(C)[C@@H]4[C@H]2[C@@H](O)[C@H]1C[C@H]3[C@]54C[C@@H](O)[C@H]6O",
+            "O=c1c(-c2ccc(O)c(O)c2)c(OCC2OC(O)C(O)C(O)C2O)oc2c(O)cc(O)cc12",
+            "CC(C)(O)C1CCC(C)(C2CCC3(C)C2C(O)CC2C4(C)CCC(O)C(C)(C)C4C(OC4OC(COC5OC(CO)C(O)C(O)C5O)C(O)C(O)C4OC4OCC(O)C(O)C4O)CC23C)O1",
+            "COC1CC(=O)N2c3cc(O)cc4c3OC(/C=C\\C=C\\CC(OC(=O)C(C)N=C(O)CC(C)C)C(C)C(O)/C(C)=C/CC4)C12",
+            "Cc1ncc(COP(=O)(O)O)c(=N)[nH]1",
+            "CC(C)C[C@H](N=C(O)[C@@H]1CCCN1C(=O)[C@@H](N=C(O)[C@@H](N)Cc1ccc(O)cc1)C(C)C)C(=O)O",
+            "C=C1OC(=O)c2c(O[C@@H]3O[C@@H](CO)[C@H](O)[C@@H](O)[C@@H]3O)cc(OC)c(C)c2[C@@H]1C",
+            "CN1C(=O)/C(=C/c2ccc3c(c2)OCO3)N=C1N",
+            "CN1C=NC(C(=O)O)CC1(C)COC(=O)c1ccc[nH]1",
+            "O=C1C=C(c2cc3nc(O)[nH]c3nc2O)C(O)=NC1=O",
+            "CC1=CC(=O)[C@@H](O)[C@]2(C)[C@H]3[C@@]4(O)OC[C@]35[C@H]([C@@H](CO)[C@H]4O)[C@@H](O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)C(=O)O[C@@H]5C[C@@H]12",
+            "O=C1CCC2=C1N1CCCC1OC2",
+            "C=C(C)C1OC2CCC3(C)C(CCC4(OC)OC5OC(C)(C)C6CC7C(=C)Cc8ccc9[nH]c(c5c9c8C76O)C43C)C23OC3C1O",
+            "CC(=CC1CC(O)(C2CCC3(C)C2CCC2C4(C)CCC(OC5OCC(O)C(OC6OC(CO)C(O)C(O)C6O)C5OC5OC(C)C(O)C(O)C5O)C(C)(C)C4CCC23C)C(O)O1)CO",
+            "COc1cc2c(cc1C(C)(O)CC(C)c1cc3cc(C(C)=O)c(O)cc3o1)C=CC(C)(C)O2",
+            "COc1cc(C)cc2c3ccccc3n(Cc3cc4c([nH]c5ccccc54)c4c3OC(C)(C)C=C4)c12",
+            "c1ccn2c(NCCN3CCOCC3)c(-c3ccc4c(c3)OCO4)nc2c1",
+            "CC(=O)OCC=CC1=CC2=C(CO1)C(=O)C(C)(OC(=O)c1c(C)cc(O)cc1O)C(=O)C2=CC=CC1=CC2=C(CO1)C(=O)C(C)(O)C(OC(=O)c1c(C)cc(O)cc1O)C2"
+          ],
+          "folds": 5,
+          "examples": [
+            {
+              "smiles": "N#Cc1c(N)n[nH]c1-c1c(N)sc2c(-c3ccccc3)nn(-c3ccccc3)c12",
+              "reference_ppm": [
+                104.8,
+                113.9,
+                120.7,
+                123.4,
+                123.4,
+                125.6,
+                126.1,
+                126.1,
+                126.2,
+                128.1,
+                128.1,
+                128.9,
+                128.9,
+                128.9,
+                129.3,
+                134.2,
+                140.1,
+                141.2,
+                153.8,
+                167.2
+              ],
+              "prediction_ppm": [
+                116.10191345214844,
+                69.05516815185547,
+                156.34103393554688,
+                141.74325561523438,
+                92.78533172607422,
+                159.00794982910156,
+                108.87446594238281,
+                145.8438720703125,
+                131.6671905517578,
+                125.92232513427734,
+                129.03036499023438,
+                128.55914306640625,
+                128.98526000976562,
+                125.88221740722656,
+                139.58267211914062,
+                123.07496643066406,
+                129.3261260986328,
+                127.2156753540039,
+                129.29605102539062,
+                123.2052993774414,
+                138.52993774414062
+              ]
+            },
+            {
+              "smiles": "COC(=O)[C@@]1(OC)C(OC)=C(OC)C(=O)/C1=C(O)/C=C/c1ccccc1",
+              "reference_ppm": [
+                53.1,
+                172.75,
+                77.48,
+                51.75,
+                157.9,
+                59.4,
+                139.69,
+                60.22,
+                180.09,
+                109.05,
+                170.73,
+                123.17,
+                139.36,
+                134.85,
+                128.37,
+                129.03,
+                128.93
+              ],
+              "prediction_ppm": [
+                53.32447052001953,
+                169.23440551757812,
+                81.93600463867188,
+                52.7830696105957,
+                162.56715393066406,
+                60.55818557739258,
+                135.5071258544922,
+                60.23234939575195,
+                188.56442260742188,
+                105.970703125,
+                173.9365692138672,
+                119.04703521728516,
+                141.7081756591797,
+                135.11611938476562,
+                128.29345703125,
+                129.0754852294922,
+                130.47909545898438,
+                129.10055541992188,
+                128.37869262695312
+              ]
+            },
+            {
+              "smiles": "CC[C@@H](O)C[C@@H](O)[C@@]1(C)C[C@@H](C)[C@@H]2CC[C@H](CC/C=C(/C)C(=O)[C@@H](C)CC/C=C\\C(=O)N3CCCC[C@H]3C(=O)O1)O2",
+              "reference_ppm": [
+                9.91,
+                30.08,
+                68.77,
+                36.79,
+                74.36,
+                80.53,
+                23.64,
+                37.71,
+                35.64,
+                15.25,
+                77.08,
+                29.2,
+                31.17,
+                74.22,
+                33.6,
+                23.6,
+                143.78,
+                139.7,
+                19.5,
+                43.68,
+                15.6,
+                32.45,
+                23.9,
+                148.7,
+                122.55,
+                166.4,
+                45.15,
+                25.28,
+                20.3,
+                26.36,
+                50.59,
+                170.48
+              ],
+              "prediction_ppm": [
+                10.082571983337402,
+                30.81622314453125,
+                71.50901794433594,
+                36.80171203613281,
+                73.22345733642578,
+                85.96894836425781,
+                18.183534622192383,
+                38.03490447998047,
+                33.01190948486328,
+                17.571950912475586,
+                82.79823303222656,
+                28.189428329467773,
+                30.956584930419922,
+                78.35673522949219,
+                34.746395111083984,
+                26.073949813842773,
+                142.49520874023438,
+                136.15380859375,
+                14.213261604309082,
+                206.80160522460938,
+                39.578895568847656,
+                17.491744995117188,
+                32.2900390625,
+                29.121841430664062,
+                144.52044677734375,
+                120.4782485961914,
+                167.27932739257812,
+                41.6041374206543,
+                25.281902313232422,
+                20.35916519165039,
+                27.35727310180664,
+                53.374595642089844,
+                170.70822143554688
+              ]
+            }
+          ],
+          "prediction_files": [
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrgym_test_C/cv_seed_42_fold_0/cv_seed_42_fold_0_valid.out.pkl",
+              "sha256": "0faa36ab353442e1d3c0519a7b309721abfe57289dc1b3e9450f6bf2aab12591"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrgym_test_C/cv_seed_42_fold_1/cv_seed_42_fold_1_valid.out.pkl",
+              "sha256": "6b29125add86bda481e30aa02896e6a29dc7983b6beaca8f16330c7f0abd0720"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrgym_test_C/cv_seed_42_fold_2/cv_seed_42_fold_2_valid.out.pkl",
+              "sha256": "779124f5eedc1d38ae050543480722098a0741bb58e577f547f548018ee653b8"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrgym_test_C/cv_seed_42_fold_3/cv_seed_42_fold_3_valid.out.pkl",
+              "sha256": "f319a60d7c4efa91e9c01fd38fd1d8660709238121ce96c4a0041a20c4a2c101"
+            },
+            {
+              "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/results/nmrgym_test_C/cv_seed_42_fold_4/cv_seed_42_fold_4_valid.out.pkl",
+              "sha256": "2d923b70782fb919285bac59751b2a738ca12f606e933c691fea1a526326ab5c"
+            }
+          ],
+          "metadata": {
+            "path": "/mnt/shared-storage-user/xiejiaqing/models/nmrnetpp/data_ours/nmrgym_test_C/valid.lmdb",
+            "sha256": "338d75001a0c028dd4eacba5c97f47b80460a485f0e6507b0f8eb459898f8d70"
+          }
+        }
+      ]
+    }
+  ],
+  "nmr.forward.19F": [
+    {
+      "dataset": "recorded evaluation",
+      "status": "diagnostic_only",
+      "metrics": {
+        "mae_ppm": 356.34472942352295,
+        "rmse_ppm": 364.3964033616038,
+        "examples": 32
+      }
+    }
+  ],
+  "nmr.forward.31P": [
+    {
+      "dataset": "recorded evaluation",
+      "status": "diagnostic_only",
+      "metrics": {
+        "mae_ppm": 226.44937086105347,
+        "rmse_ppm": 237.25195210549927,
+        "examples": 32
+      }
+    }
+  ],
+  "nmr.forward.11B": [
+    {
+      "dataset": "recorded evaluation",
+      "status": "diagnostic_only",
+      "metrics": {
+        "mae_ppm": 8.684532299637794,
+        "rmse_ppm": 12.436461034675611,
+        "molecules": 32,
+        "atoms": 32
+      }
+    }
+  ],
+  "nmr.forward.29Si": [
+    {
+      "dataset": "recorded evaluation",
+      "status": "diagnostic_only",
+      "metrics": {
+        "mae_ppm": 56.13358532078564,
+        "rmse_ppm": 58.105817484466186,
+        "molecules": 32,
+        "atoms": 32
+      }
+    }
+  ],
+  "nmr.retrieval.h.s2m": [
+    {
+      "dataset": "nmrspec_test",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 1.0,
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "mrr": 1.0,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "patent_test_10k",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.6875,
+        "recall_at_5": 0.96875,
+        "recall_at_10": 1.0,
+        "mrr": 0.8195684523809523,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "nmrexp_exp_10k",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.875,
+        "recall_at_5": 0.96875,
+        "recall_at_10": 1.0,
+        "mrr": 0.9177083333333333,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "nmrgym_test",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.6875,
+        "recall_at_5": 0.875,
+        "recall_at_10": 0.9375,
+        "mrr": 0.7686395202020202,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    }
+  ],
+  "nmr.retrieval.h.m2s": [
+    {
+      "dataset": "nmrspec_test",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 1.0,
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "mrr": 1.0,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "patent_test_10k",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.625,
+        "recall_at_5": 0.9375,
+        "recall_at_10": 0.96875,
+        "mrr": 0.7752976190476191,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "nmrexp_exp_10k",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.84375,
+        "recall_at_5": 0.96875,
+        "recall_at_10": 1.0,
+        "mrr": 0.8877604166666666,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "nmrgym_test",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.65625,
+        "recall_at_5": 0.90625,
+        "recall_at_10": 0.90625,
+        "mrr": 0.7492974473443224,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    }
+  ],
+  "nmr.generation.h": [
+    {
+      "dataset": "nmrspec_test",
+      "status": "passed",
+      "metrics": {
+        "modality": "available",
+        "examples": 32,
+        "skipped_missing_modality": 0,
+        "valid": 32,
+        "formula_match": 27,
+        "exact": 3,
+        "valid_rate": 1.0,
+        "formula_match_rate": 0.84375,
+        "exact_rate": 0.09375
+      },
+      "given_formula": true,
+      "sampling": "first_distinct_canonical_structures_in_file_order",
+      "beam_size": 5
+    },
+    {
+      "dataset": "patent_test_10k",
+      "status": "passed",
+      "metrics": {
+        "modality": "available",
+        "examples": 32,
+        "skipped_missing_modality": 0,
+        "valid": 23,
+        "formula_match": 5,
+        "exact": 0,
+        "valid_rate": 0.71875,
+        "formula_match_rate": 0.15625,
+        "exact_rate": 0.0
+      },
+      "given_formula": true,
+      "sampling": "first_distinct_canonical_structures_in_file_order",
+      "beam_size": 5
+    },
+    {
+      "dataset": "nmrexp_exp_10k",
+      "status": "passed",
+      "metrics": {
+        "modality": "available",
+        "examples": 32,
+        "skipped_missing_modality": 0,
+        "valid": 32,
+        "formula_match": 27,
+        "exact": 15,
+        "valid_rate": 1.0,
+        "formula_match_rate": 0.84375,
+        "exact_rate": 0.46875
+      },
+      "given_formula": true,
+      "sampling": "first_distinct_canonical_structures_in_file_order",
+      "beam_size": 5
+    },
+    {
+      "dataset": "nmrgym_test",
+      "status": "passed",
+      "metrics": {
+        "modality": "available",
+        "examples": 32,
+        "skipped_missing_modality": 0,
+        "valid": 30,
+        "formula_match": 15,
+        "exact": 0,
+        "valid_rate": 0.9375,
+        "formula_match_rate": 0.46875,
+        "exact_rate": 0.0
+      },
+      "given_formula": true,
+      "sampling": "first_distinct_canonical_structures_in_file_order",
+      "beam_size": 5
+    }
+  ],
+  "nmr.retrieval.c.s2m": [
+    {
+      "dataset": "nmrspec_test",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.90625,
+        "recall_at_5": 0.9375,
+        "recall_at_10": 0.96875,
+        "mrr": 0.9291666666666667,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "patent_test_10k",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.53125,
+        "recall_at_5": 0.8125,
+        "recall_at_10": 0.9375,
+        "mrr": 0.6624236874236874,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "nmrexp_exp_10k",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.625,
+        "recall_at_5": 0.9375,
+        "recall_at_10": 0.96875,
+        "mrr": 0.7745535714285714,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "nmrgym_test",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.78125,
+        "recall_at_5": 0.96875,
+        "recall_at_10": 1.0,
+        "mrr": 0.8706597222222222,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    }
+  ],
+  "nmr.retrieval.c.m2s": [
+    {
+      "dataset": "nmrspec_test",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.9375,
+        "recall_at_5": 0.96875,
+        "recall_at_10": 0.96875,
+        "mrr": 0.9503205128205128,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "patent_test_10k",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.5625,
+        "recall_at_5": 0.8125,
+        "recall_at_10": 0.875,
+        "mrr": 0.6944010416666666,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "nmrexp_exp_10k",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.65625,
+        "recall_at_5": 0.9375,
+        "recall_at_10": 0.96875,
+        "mrr": 0.7745949074074074,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "nmrgym_test",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.78125,
+        "recall_at_5": 0.9375,
+        "recall_at_10": 1.0,
+        "mrr": 0.8611111111111112,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    }
+  ],
+  "nmr.generation.c": [
+    {
+      "dataset": "nmrspec_test",
+      "status": "passed",
+      "metrics": {
+        "modality": "available",
+        "examples": 32,
+        "skipped_missing_modality": 0,
+        "valid": 31,
+        "formula_match": 23,
+        "exact": 3,
+        "valid_rate": 0.96875,
+        "formula_match_rate": 0.71875,
+        "exact_rate": 0.09375
+      },
+      "given_formula": true,
+      "sampling": "first_distinct_canonical_structures_in_file_order",
+      "beam_size": 5
+    },
+    {
+      "dataset": "patent_test_10k",
+      "status": "passed",
+      "metrics": {
+        "modality": "available",
+        "examples": 32,
+        "skipped_missing_modality": 0,
+        "valid": 28,
+        "formula_match": 3,
+        "exact": 0,
+        "valid_rate": 0.875,
+        "formula_match_rate": 0.09375,
+        "exact_rate": 0.0
+      },
+      "given_formula": true,
+      "sampling": "first_distinct_canonical_structures_in_file_order",
+      "beam_size": 5
+    },
+    {
+      "dataset": "nmrexp_exp_10k",
+      "status": "passed",
+      "metrics": {
+        "modality": "available",
+        "examples": 32,
+        "skipped_missing_modality": 0,
+        "valid": 32,
+        "formula_match": 30,
+        "exact": 19,
+        "valid_rate": 1.0,
+        "formula_match_rate": 0.9375,
+        "exact_rate": 0.59375
+      },
+      "given_formula": true,
+      "sampling": "first_distinct_canonical_structures_in_file_order",
+      "beam_size": 5
+    },
+    {
+      "dataset": "nmrgym_test",
+      "status": "passed",
+      "metrics": {
+        "modality": "available",
+        "examples": 32,
+        "skipped_missing_modality": 0,
+        "valid": 30,
+        "formula_match": 16,
+        "exact": 0,
+        "valid_rate": 0.9375,
+        "formula_match_rate": 0.5,
+        "exact_rate": 0.0
+      },
+      "given_formula": true,
+      "sampling": "first_distinct_canonical_structures_in_file_order",
+      "beam_size": 5
+    }
+  ],
+  "nmr.retrieval.hc.s2m": [
+    {
+      "dataset": "nmrspec_test",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 1.0,
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "mrr": 1.0,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "patent_test_10k",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.65625,
+        "recall_at_5": 0.9375,
+        "recall_at_10": 0.9375,
+        "mrr": 0.7762166501976284,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "nmrexp_exp_10k",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.90625,
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "mrr": 0.9375,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "nmrgym_test",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.8125,
+        "recall_at_5": 0.96875,
+        "recall_at_10": 0.96875,
+        "mrr": 0.8869791666666667,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    }
+  ],
+  "nmr.retrieval.hc.m2s": [
+    {
+      "dataset": "nmrspec_test",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 1.0,
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "mrr": 1.0,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "patent_test_10k",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.625,
+        "recall_at_5": 0.90625,
+        "recall_at_10": 0.90625,
+        "mrr": 0.7388174019607843,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "nmrexp_exp_10k",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.875,
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "mrr": 0.9244791666666666,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    },
+    {
+      "dataset": "nmrgym_test",
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.84375,
+        "recall_at_5": 0.96875,
+        "recall_at_10": 0.96875,
+        "mrr": 0.8972537878787878,
+        "queries": 32,
+        "candidate_pool": 32,
+        "unique_candidates": 32,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "sampling": "first_distinct_canonical_structures_in_file_order"
+    }
+  ],
+  "nmr.generation.hc": [
+    {
+      "dataset": "nmrspec_test",
+      "status": "passed",
+      "metrics": {
+        "modality": "available",
+        "examples": 32,
+        "skipped_missing_modality": 0,
+        "valid": 32,
+        "formula_match": 29,
+        "exact": 4,
+        "valid_rate": 1.0,
+        "formula_match_rate": 0.90625,
+        "exact_rate": 0.125
+      },
+      "given_formula": true,
+      "sampling": "first_distinct_canonical_structures_in_file_order",
+      "beam_size": 5
+    },
+    {
+      "dataset": "patent_test_10k",
+      "status": "passed",
+      "metrics": {
+        "modality": "available",
+        "examples": 32,
+        "skipped_missing_modality": 0,
+        "valid": 24,
+        "formula_match": 1,
+        "exact": 0,
+        "valid_rate": 0.75,
+        "formula_match_rate": 0.03125,
+        "exact_rate": 0.0
+      },
+      "given_formula": true,
+      "sampling": "first_distinct_canonical_structures_in_file_order",
+      "beam_size": 5
+    },
+    {
+      "dataset": "nmrexp_exp_10k",
+      "status": "passed",
+      "metrics": {
+        "modality": "available",
+        "examples": 32,
+        "skipped_missing_modality": 0,
+        "valid": 32,
+        "formula_match": 29,
+        "exact": 22,
+        "valid_rate": 1.0,
+        "formula_match_rate": 0.90625,
+        "exact_rate": 0.6875
+      },
+      "given_formula": true,
+      "sampling": "first_distinct_canonical_structures_in_file_order",
+      "beam_size": 5
+    },
+    {
+      "dataset": "nmrgym_test",
+      "status": "passed",
+      "metrics": {
+        "modality": "available",
+        "examples": 32,
+        "skipped_missing_modality": 0,
+        "valid": 25,
+        "formula_match": 15,
+        "exact": 0,
+        "valid_rate": 0.78125,
+        "formula_match_rate": 0.46875,
+        "exact_rate": 0.0
+      },
+      "given_formula": true,
+      "sampling": "first_distinct_canonical_structures_in_file_order",
+      "beam_size": 5
+    }
+  ],
+  "vibrational.gap.ir": [
+    {
+      "dataset": null,
+      "status": "passed",
+      "metrics": {
+        "mae_ev": 1.1777104695762848,
+        "rmse_ev": 1.4748687542942966,
+        "examples": 128
+      },
+      "training_mean_baseline": {
+        "constant_ev": 5.645122750946045,
+        "mae_ev": 0.8999401965027582,
+        "rmse_ev": 1.0696170714220543,
+        "examples": 128
+      },
+      "given_nmr": false,
+      "sampling": "reservoir",
+      "seed": 42
+    }
+  ],
+  "vibrational.gap.raman": [
+    {
+      "dataset": null,
+      "status": "passed",
+      "metrics": {
+        "mae_ev": 2.9781784993717197,
+        "rmse_ev": 3.156612886408973,
+        "examples": 128
+      },
+      "training_mean_baseline": {
+        "constant_ev": 5.645122750946045,
+        "mae_ev": 0.8999401965027582,
+        "rmse_ev": 1.0696170714220543,
+        "examples": 128
+      },
+      "given_nmr": false,
+      "sampling": "reservoir",
+      "seed": 42
+    }
+  ],
+  "vibrational.gap.ir_raman": [
+    {
+      "dataset": null,
+      "status": "passed",
+      "metrics": {
+        "mae_ev": 1.2776368534375264,
+        "rmse_ev": 1.4789026993553864,
+        "examples": 128
+      },
+      "training_mean_baseline": {
+        "constant_ev": 5.645122750946045,
+        "mae_ev": 0.8999401965027582,
+        "rmse_ev": 1.0696170714220543,
+        "examples": 128
+      },
+      "given_nmr": false,
+      "sampling": "reservoir",
+      "seed": 42
+    }
+  ],
+  "vibrational.gap.ir_raman_hc": [
+    {
+      "dataset": null,
+      "status": "passed",
+      "metrics": {
+        "mae_ev": 0.1314457535089349,
+        "rmse_ev": 0.20596364382966384,
+        "examples": 128
+      },
+      "training_mean_baseline": {
+        "constant_ev": 5.645122750946045,
+        "mae_ev": 0.8999401965027582,
+        "rmse_ev": 1.0696170714220543,
+        "examples": 128
+      },
+      "given_nmr": true,
+      "sampling": "reservoir",
+      "seed": 42
+    }
+  ],
+  "vibrational.forward": [
+    {
+      "dataset": null,
+      "status": "passed",
+      "metrics": {
+        "ir_cosine_similarity": 0.9775025844573975,
+        "ir_mae": 0.005194379133172333,
+        "raman_cosine_similarity": 0.9901942908763885,
+        "raman_mae": 0.0016446748340968043
+      }
+    }
+  ],
+  "vibrational.retrieval": [
+    {
+      "dataset": null,
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.0625,
+        "recall_at_5": 0.5625,
+        "recall_at_10": 0.875,
+        "mrr": 0.2570684523809524,
+        "queries": 16,
+        "candidate_pool": 16,
+        "unique_candidates": 16,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "given_nmr": false,
+      "sampling": "reservoir",
+      "seed": 42
+    }
+  ],
+  "vibrational.generation": [
+    {
+      "dataset": null,
+      "status": "passed",
+      "metrics": {
+        "valid_rate": 1.0,
+        "exact_rate": 0.0,
+        "examples": 4
+      },
+      "given_formula": false,
+      "given_nmr": false,
+      "sampling": "first_distinct_canonical_structures_in_lmdb_order",
+      "beam_size": 3
+    }
+  ],
+  "nmr.assignment": [
+    {
+      "dataset": "recorded evaluation",
+      "status": "passed",
+      "metrics": {
+        "molecules": 32,
+        "matched_peaks": 488,
+        "matched_peak_fraction_macro": 0.9392376720501721,
+        "matched_residual_mae_ppm": 0.8991307922920895,
+        "assignment_accuracy": null
+      }
+    }
+  ],
+  "nmr.solvent_transfer": [
+    {
+      "dataset": "recorded evaluation",
+      "status": "passed",
+      "metrics": {
+        "13C": {
+          "atoms": 140,
+          "molecules": 13,
+          "mae_ppm": 1.0942857142857159,
+          "unchanged_shift_mae_ppm": 1.1637142857142861,
+          "rmse_ppm": 1.9093510490665238
+        },
+        "1H": {
+          "atoms": 156,
+          "molecules": 19,
+          "mae_ppm": 0.13762820512820512,
+          "unchanged_shift_mae_ppm": 0.13538461538461527,
+          "rmse_ppm": 0.3761793421174233
+        }
+      },
+      "counts": {
+        "distinct_molecules": 32,
+        "paired_atoms": 296,
+        "skipped_pairs": 3
+      },
+      "seed": 42
+    }
+  ],
+  "nmr.formula": [],
+  "spectroscopy.qa": [],
+  "spectroscopy.reranking": [
+    {
+      "dataset": null,
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 0.0625,
+        "recall_at_5": 0.375,
+        "recall_at_10": 0.6875,
+        "mrr": 0.23847203144078144,
+        "queries": 16,
+        "candidate_pool": 16,
+        "unique_candidates": 16,
+        "tie_policy": "stable_candidate_order",
+        "top_1_hit_rate": 0.0625
+      },
+      "given_formula": false,
+      "given_nmr": false,
+      "sampling": "reservoir",
+      "seed": 42
+    }
+  ],
+  "vibrational.retrieval.hc": [
+    {
+      "dataset": null,
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 1.0,
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "mrr": 1.0,
+        "queries": 16,
+        "candidate_pool": 16,
+        "unique_candidates": 16,
+        "tie_policy": "stable_candidate_order"
+      },
+      "given_formula": false,
+      "given_nmr": true,
+      "sampling": "reservoir",
+      "seed": 42
+    }
+  ],
+  "vibrational.generation.hc": [
+    {
+      "dataset": null,
+      "status": "passed",
+      "metrics": {
+        "exact_canonical_top1": 0.75,
+        "exact_canonical_top3": 0.890625,
+        "exact_canonical_top5": 0.890625,
+        "exact_canonical_top10": 0.890625,
+        "valid_smiles_fraction": 0.959375,
+        "duplicate_valid_beams": 455,
+        "examples": 64
+      },
+      "reranked_metrics": {
+        "exact_canonical_top1": 0.6875,
+        "exact_canonical_top3": 0.84375,
+        "exact_canonical_top5": 0.890625,
+        "exact_canonical_top10": 0.890625
+      },
+      "given_formula": false,
+      "given_nmr": true,
+      "sampling": "reservoir",
+      "seed": 42,
+      "beam_size": 10
+    }
+  ],
+  "spectroscopy.reranking.hc": [
+    {
+      "dataset": null,
+      "status": "passed",
+      "metrics": {
+        "recall_at_1": 1.0,
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "mrr": 1.0,
+        "queries": 16,
+        "candidate_pool": 16,
+        "unique_candidates": 16,
+        "tie_policy": "stable_candidate_order",
+        "top_1_hit_rate": 1.0
+      },
+      "given_formula": false,
+      "given_nmr": true,
+      "sampling": "reservoir",
+      "seed": 42
+    }
+  ],
+  "ms.forward.glacier": [
+    {
+      "dataset": "recorded evaluation",
+      "status": "completed",
+      "metrics": {
+        "cosine_similarity": 0.48571684784228214,
+        "entropy_similarity": 0.41328016795498823
+      },
+      "counts": {
+        "passed": 31,
+        "skipped": 1
+      },
+      "sampling": "first_real_test_records_with_at_most_40_heavy_atoms"
+    }
+  ],
+  "ms.forward.iceberg": [
+    {
+      "dataset": "recorded evaluation",
+      "status": "completed",
+      "metrics": {
+        "cosine_similarity": 0.4624995623966228,
+        "entropy_similarity": 0.3698472199736009
+      },
+      "counts": {
+        "passed": 31,
+        "skipped": 1
+      },
+      "sampling": "first_real_test_records_with_at_most_40_heavy_atoms"
+    }
+  ],
+  "ms.annotation.magma": [
+    {
+      "dataset": "recorded evaluation",
+      "status": "completed",
+      "metrics": {
+        "matched_peak_fraction": 0.5681818181818182,
+        "annotated_spectra": 2,
+        "checked_fragments": 1534
+      },
+      "counts": {
+        "passed": 2
+      }
+    }
+  ],
+  "multispectral.spectrallm.generation": []
+}

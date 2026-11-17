@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>峰到原子的指认 &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/tasks/nmr-assignment.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script>window.MathJax = {"chtml": {"displayAlign": "left"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="跨溶剂化学位移迁移" href="nmr-solvent_transfer.html" />
+    <link rel="prev" title="从 ¹H + ¹³C NMR 解析结构" href="nmr-generation-hc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../../tasks/nmr-assignment.html" hreflang="en" aria-label="Switch language">English</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">按谱型浏览任务</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#nmr"><span class="xref myst">核磁共振 NMR</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ms"><span class="xref myst">质谱 MS</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman"><span class="xref myst">红外 / 拉曼 IR / Raman</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id2"><span class="xref myst">多谱联合</span></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#id3"><span class="xref myst">暂不推进</span></a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="nmr.html">核磁共振 NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms.html">质谱 MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational.html">红外 / 拉曼 IR / Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multimodal.html">多谱联合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deferred.html">暂不推进</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion：NMR 数值反演</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">图集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">基准评测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">参与贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">引用来源</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">按谱型浏览任务</a></li>
+          <li class="breadcrumb-item"><a href="nmr.html">核磁共振 NMR</a></li>
+      <li class="breadcrumb-item active">峰到原子的指认</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tasks/nmr-assignment.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>峰到原子的指认<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>将实测 NMR 峰与已知分子结构中的原子对应起来。</p>
+<section id="id2">
+<h2>输入是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">smiles</span></code></p></td>
+<td><p>已知分子结构。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nucleus</span> <span class="pre">/</span> <span class="pre">peaks_ppm</span></code></p></td>
+<td><p>1H 或 13C，以及实测一维峰位置（ppm）。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tolerance_ppm</span></code></p></td>
+<td><p>峰与预测位点的最大允许残差，默认 H 0.5、C 5 ppm。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h2>输出是什么<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">assignments</span></code></p></td>
+<td><p>峰编号 → 候选原子编号、预测位移、残差与备选位点。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">unmatched</span></code></p></td>
+<td><p>未匹配峰与预测位点的编号。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h2>真实运行案例<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>下面展示示例的输入、预测与参考。下载 JSON 可获取完整数值数组及更多示例。</p>
+<p><img alt="nmr.assignment actual results" src="../_images/nmr-assignment.png" /></p>
+<p><a class="reference download internal" download="" href="../_downloads/16c8ac198e364a6cf51ca17e0c3736da/nmr-assignment.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/760b7e71497aa126fe450677a123bee7/nmr-assignment.png"><span class="xref download myst">PNG</span></a> · <a class="reference download internal" download="" href="../_downloads/ec70670ac0d381b4476925ce03d0e34e/nmr-assignment.json"><span class="xref download myst">Full input/output JSON</span></a></p>
+<details><summary>展开查看实际输入与输出字段</summary>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"nucleus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13C"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"peaks_ppm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="mf">150.22</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">148.03</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">142.68</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">138.28</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Assigned observed peaks; unmatched indices retained in output"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"mapped_smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[C:1](=[C:2]([C:3]([C:4]([C:5]([C:6]([c:7]1[c:8]([H:33])[c:9]([H:34])[c:10]([H:35])[c:11]([H:36])[c:12]1[H:37])([H:31])[H:32])([H:29])[H:30])([H:27])[H:28])([H:25])[H:26])[c:13]1[c:14]([H:38])[c:15]([H:39])[c:16]([C:17]([C:18]([H:40])([H:41])[H:42])([C:19]([H:43])([H:44])[H:45])[C:20]([H:46])([H:47])[H:48])[c:21]([H:49])[c:22]1[H:50])([H:23])[H:24]"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"atom_index_basis"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zero-based RDKit AddHs(input_smiles); atom-map numbers = index + 1"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"equivalence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topological symmetry including chirality; not proof of magnetic equivalence"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"assignments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"peak_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"observed_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">150.22</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"atom_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="mi">15</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">"predicted_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">150.09881591796875</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"absolute_error_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.12118408203124886</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"other_sites_within_tolerance"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="mi">1</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"peak_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"observed_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">148.03</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"atom_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="mi">1</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">"predicted_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">148.56301879882812</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"absolute_error_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5330187988281239</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"other_sites_within_tolerance"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="mi">13</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"peak_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"observed_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">142.68</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"atom_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="mi">6</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">"predicted_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">142.5129852294922</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"absolute_error_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.16701477050781932</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"other_sites_within_tolerance"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="mi">10</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"peak_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"observed_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">138.28</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"atom_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="mi">12</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">"predicted_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">139.7798614501953</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"absolute_error_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.4998614501953114</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"other_sites_within_tolerance"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="mi">6</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"unmatched_peak_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="nt">"unmatched_sites"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="nt">"sites"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"atom_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="mi">0</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">"predicted_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">111.92984008789062</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"atom_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="mi">1</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">"predicted_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">148.56301879882812</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"atom_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="mi">2</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">"predicted_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">34.59314727783203</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"atom_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="mi">3</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">"predicted_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">27.1068172454834</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"tolerance_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"matched_fraction"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"assignment_accuracy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"accuracy_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Predicted assignments; experimental atom labels are not supplied."</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</details>
+</section>
+<section id="id5">
+<h2>实际评测结果<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>molecules</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>matched_peaks</p></td>
+<td class="text-right"><p>488</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>matched_peak_fraction_macro</p></td>
+<td class="text-right"><p>0.939238</p></td>
+</tr>
+<tr class="row-odd"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>matched_residual_mae_ppm</p></td>
+<td class="text-right"><p>0.899131</p></td>
+</tr>
+<tr class="row-even"><td><p>recorded evaluation</p></td>
+<td><p>recorded model</p></td>
+<td><p>assignment_accuracy</p></td>
+<td class="text-right"><p>not measured</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h2>模型与方法<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>先用 NMRNet 预测逐原子化学位移，再合并对称相关位点，通过最小代价匹配把实测峰与预测位点对应。输出包含原子编号、预测位移、匹配残差和备选指认。</p>
+<p>用峰覆盖率和匹配峰 MAE 汇总指认结果。</p>
+</section>
+<section id="id7">
+<h2>复现方式<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../notebooks/nmr-assignment.html"><span class="std std-doc">Notebook with executed figures</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick Start</span></a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tasks<span class="w"> </span>nmr.assignment<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/nmr-assignment-new.json
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h2>调用模型与微调<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">NMRNet</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">NMRNet</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">'/path/to/models'</span><span class="p">,</span> <span class="n">nucleus</span><span class="o">=</span><span class="s1">'13C'</span><span class="p">,</span>
+    <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/nmr-env/bin/python'</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">smiles</span><span class="p">,</span> <span class="n">measured_peaks_ppm</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>微调使用 <a class="reference external" href="https://github.com/Colin-Jay/NMRNet">NMRNet 作者训练实现</a>：准备对应核种的逐原子标签、结构／坐标、目标掩码及 train/val LMDB。实现提供 <code class="docutils literal notranslate"><span class="pre">atom_regloss_mae</span></code> 与 <code class="docutils literal notranslate"><span class="pre">atom_regloss_mse</span></code>，在有标签的原子上计算目标。保留 scaler 和参考标准，在验证集选择 checkpoint。该训练流程通过作者实现运行。 峰指认再按容差最小化匹配代价；匹配本身不会产生实验逐原子真值。</p>
+<div class="math notranslate nohighlight">
+\[L_{\rm MAE}=\frac{1}{N_{\rm labelled}}\sum_{i\in\mathcal M}|\hat\delta_i-\delta_i|,\qquad L_{\rm MSE}=\frac{1}{N_{\rm labelled}}\sum_{i\in\mathcal M}(\hat\delta_i-\delta_i)^2.\]</div>
+<details><summary>来源报告与 SHA-256 指纹</summary>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/assignment_carbon32_20261116.json">assignment_carbon32_20261116.json</a> — SHA-256 <code class="docutils literal notranslate"><span class="pre">c3d25150e5811b8987060e147f43d9add4f729e340da420b94425766e1e76540</span></code></p></li>
+</ul>
+</details>
+<p><a class="reference external" href="https://github.com/Colin-Jay/NMRNet">Model implementation / 模型实现</a> · <a class="reference internal" href="../model-audit.html"><span class="std std-doc">Model review / 模型检查</span></a></p>
+</section>
+<section id="id9">
+<h2>参考文献<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. <a class="reference external" href="https://doi.org/10.1038/s43588-025-00783-z">Source</a></p></li>
+<li><p>OpenDataLab. WanJuan MolSpectra, version 1.0.3. Experimental molecular spectroscopy dataset. <a class="reference external" href="https://opendatalab.com/">Source</a></p></li>
+</ul>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="nmr-generation-hc.html" class="btn btn-neutral float-left" title="从 ¹H + ¹³C NMR 解析结构" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="nmr-solvent_transfer.html" class="btn btn-neutral float-right" title="跨溶剂化学位移迁移" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026, OpenMolSpec contributors。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

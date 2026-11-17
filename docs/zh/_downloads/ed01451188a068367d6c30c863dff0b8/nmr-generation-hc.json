@@ -1,0 +1,275 @@
+{
+  "task": "nmr.generation.hc",
+  "enabled": true,
+  "source_files": [
+    "nmr_documented_examples_20261117_v2.json"
+  ],
+  "runs": [
+    {
+      "dataset": "nmrspec_test",
+      "status": "passed",
+      "metrics": {
+        "modality": "available",
+        "examples": 32,
+        "skipped_missing_modality": 0,
+        "valid": 32,
+        "formula_match": 29,
+        "exact": 4,
+        "valid_rate": 1.0,
+        "formula_match_rate": 0.90625,
+        "exact_rate": 0.125
+      },
+      "given_formula": true,
+      "sampling": "first_distinct_canonical_structures_in_file_order",
+      "beam_size": 5
+    },
+    {
+      "dataset": "patent_test_10k",
+      "status": "passed",
+      "metrics": {
+        "modality": "available",
+        "examples": 32,
+        "skipped_missing_modality": 0,
+        "valid": 24,
+        "formula_match": 1,
+        "exact": 0,
+        "valid_rate": 0.75,
+        "formula_match_rate": 0.03125,
+        "exact_rate": 0.0
+      },
+      "given_formula": true,
+      "sampling": "first_distinct_canonical_structures_in_file_order",
+      "beam_size": 5
+    },
+    {
+      "dataset": "nmrexp_exp_10k",
+      "status": "passed",
+      "metrics": {
+        "modality": "available",
+        "examples": 32,
+        "skipped_missing_modality": 0,
+        "valid": 32,
+        "formula_match": 29,
+        "exact": 22,
+        "valid_rate": 1.0,
+        "formula_match_rate": 0.90625,
+        "exact_rate": 0.6875
+      },
+      "given_formula": true,
+      "sampling": "first_distinct_canonical_structures_in_file_order",
+      "beam_size": 5
+    },
+    {
+      "dataset": "nmrgym_test",
+      "status": "passed",
+      "metrics": {
+        "modality": "available",
+        "examples": 32,
+        "skipped_missing_modality": 0,
+        "valid": 25,
+        "formula_match": 15,
+        "exact": 0,
+        "valid_rate": 0.78125,
+        "formula_match_rate": 0.46875,
+        "exact_rate": 0.0
+      },
+      "given_formula": true,
+      "sampling": "first_distinct_canonical_structures_in_file_order",
+      "beam_size": 5
+    }
+  ],
+  "examples": [
+    {
+      "input": {
+        "formula": "C22H28",
+        "h_nmr": [
+          {
+            "type": "1H NMR",
+            "chemical_shift": "7.34 (s, 4H), 7.265 (m, 2H), 7.165 (m, 3H), 5.26 (d, J=1.6 Hz, 1H), 5.01 (t, J=1.4 Hz, 1H), 2.61 (t, J=7.8 Hz, 2H), 2.53 (t, J=7.6 Hz, 2H), 1.665 (m, 2H), 1.52 (d, J=7.7 Hz, 2H), 1.33 (s, 9H)"
+          }
+        ],
+        "c_nmr": [
+          {
+            "type": "13C NMR",
+            "chemical_shift": "150.22, 148.03, 142.68, 138.28, 128.36, 128.22, 125.68, 125.58, 125.12, 111.51, 35.72, 35.03, 34.46, 31.32, 31.11, 27.93"
+          }
+        ],
+        "modality_mask": [
+          1,
+          1
+        ]
+      },
+      "reference_smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+      "candidates": [
+        {
+          "smiles": "C=C(CCCCc1ccc(C(C)(C)C)cc1)c1ccccc1",
+          "canonical_smiles": "C=C(CCCCc1ccc(C(C)(C)C)cc1)c1ccccc1",
+          "score": -1.4133434984593123,
+          "valid": true,
+          "formula_match": true
+        },
+        {
+          "smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+          "canonical_smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+          "score": -1.5937606929851142,
+          "valid": true,
+          "formula_match": true
+        },
+        {
+          "smiles": "C=C(CCCc1ccc(C(C)(C)C)cc1)Cc1ccccc1",
+          "canonical_smiles": "C=C(CCCc1ccc(C(C)(C)C)cc1)Cc1ccccc1",
+          "score": -3.3677357960558183,
+          "valid": true,
+          "formula_match": true
+        },
+        {
+          "smiles": "C=C(CCCCc1ccccc1)CCCc1ccccc1",
+          "canonical_smiles": "C=C(CCCCc1ccccc1)CCCc1ccccc1",
+          "score": -2.710929739130215,
+          "valid": true,
+          "formula_match": false
+        },
+        {
+          "smiles": "C=C(CCCc1ccc(C(C)(C)C)cc1)c1ccccc1",
+          "canonical_smiles": "C=C(CCCc1ccc(C(C)(C)C)cc1)c1ccccc1",
+          "score": -2.9440054651058105,
+          "valid": true,
+          "formula_match": false
+        }
+      ],
+      "exact_match": false
+    },
+    {
+      "input": {
+        "formula": "C24H26NO4-",
+        "h_nmr": [
+          {
+            "type": "1H NMR",
+            "chemical_shift": "7.55 (m, 2H), 7.415 (m, 4H), 7.32 (m, 3H), 5.67 (s, 1H), 5.04 (s, 1H), 4.115 (m, 2H), 3.66 (s, 3H), 2.36 (d, J=1.6 Hz, 6H), 1.25 (t, J=7.2 Hz, 3H)"
+          }
+        ],
+        "c_nmr": [
+          {
+            "type": "13C NMR",
+            "chemical_shift": "168.1, 167.6, 146.7, 144.3, 144, 141.2, 139, 128.7, 128.2, 127, 126.9, 126.8, 104.2, 103.8, 59.9, 51.1, 39.2, 19.8, 19.7, 14.3"
+          }
+        ],
+        "modality_mask": [
+          1,
+          1
+        ]
+      },
+      "reference_smiles": "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+      "candidates": [
+        {
+          "smiles": "CCOC(=O)C1=C(C)NC(c2ccccc2)=C(C(=O)OC)C1c1ccc(C)cc1",
+          "canonical_smiles": "CCOC(=O)C1=C(C)NC(c2ccccc2)=C(C(=O)OC)C1c1ccc(C)cc1",
+          "score": -7.663298234397928,
+          "valid": true,
+          "formula_match": false
+        },
+        {
+          "smiles": "CCOC(=O)C1=C(C)N(c2ccccc2)C(c2ccccc2)C1(C(=O)OC)C",
+          "canonical_smiles": "CCOC(=O)C1=C(C)N(c2ccccc2)C(c2ccccc2)C1(C)C(=O)OC",
+          "score": -7.694826430120315,
+          "valid": true,
+          "formula_match": false
+        },
+        {
+          "smiles": "CCOC(=O)C1=C(C)NC(c2ccccc2)(c2ccccc2)C1(C(=O)OC)C",
+          "canonical_smiles": "CCOC(=O)C1=C(C)NC(c2ccccc2)(c2ccccc2)C1(C)C(=O)OC",
+          "score": -7.841949662781644,
+          "valid": true,
+          "formula_match": false
+        },
+        {
+          "smiles": "CCOC(=O)C1=C(C)N(c2ccccc2)C(c2ccccc2)C(C(=O)OC)=C1C",
+          "canonical_smiles": "CCOC(=O)C1=C(C)N(c2ccccc2)C(c2ccccc2)C(C(=O)OC)=C1C",
+          "score": -8.46621718940321,
+          "valid": true,
+          "formula_match": false
+        },
+        {
+          "smiles": "CCOC(=O)C1=C(C)N(c2ccccc2)C(c2ccccc2)=C(C)C1(C)C(=O)[O-]",
+          "canonical_smiles": "CCOC(=O)C1=C(C)N(c2ccccc2)C(c2ccccc2)=C(C)C1(C)C(=O)[O-]",
+          "score": -8.747392728403042,
+          "valid": true,
+          "formula_match": false
+        }
+      ],
+      "exact_match": false
+    },
+    {
+      "input": {
+        "formula": "C13H11N3O",
+        "h_nmr": [
+          {
+            "type": "1H NMR",
+            "chemical_shift": "8.13 (d, J=8.2 Hz, 1H), 7.52 (m, 1H), 7.47 (m, 1H), 7.395 (m, 2H), 7.16 (m, 2H), 3.8 (s, 3H)"
+          }
+        ],
+        "c_nmr": [
+          {
+            "type": "13C NMR",
+            "chemical_shift": "153.75, 145.7, 134.13, 131.02, 128.17, 127.52, 125.38, 123.83, 121.12, 119.88, 112.43, 111.17, 55.85"
+          }
+        ],
+        "modality_mask": [
+          1,
+          1
+        ]
+      },
+      "reference_smiles": "COc1ccccc1-n1nnc2ccccc21",
+      "candidates": [
+        {
+          "smiles": "COc1ccccc1-n1nnc2ccccc21",
+          "canonical_smiles": "COc1ccccc1-n1nnc2ccccc21",
+          "score": -1.1338406825806828,
+          "valid": true,
+          "formula_match": true
+        },
+        {
+          "smiles": "COc1ccccc1-c1nnn2ccccc12",
+          "canonical_smiles": "COc1ccccc1-c1nnn2ccccc12",
+          "score": -1.6589541644720214,
+          "valid": true,
+          "formula_match": true
+        },
+        {
+          "smiles": "COc1ccc(-n2nnc3ccccc32)cc1",
+          "canonical_smiles": "COc1ccc(-n2nnc3ccccc32)cc1",
+          "score": -3.3182191402798367,
+          "valid": true,
+          "formula_match": true
+        },
+        {
+          "smiles": "COc1ccccc1-c1nc2ccccc2[nH]1",
+          "canonical_smiles": "COc1ccccc1-c1nc2ccccc2[nH]1",
+          "score": -3.1824993170265827,
+          "valid": true,
+          "formula_match": false
+        },
+        {
+          "smiles": "COc1ccccc1-c1nnc2ccccc2n1",
+          "canonical_smiles": "COc1ccccc1-c1nnc2ccccc2n1",
+          "score": -3.589863628328118,
+          "valid": true,
+          "formula_match": false
+        }
+      ],
+      "exact_match": true
+    }
+  ],
+  "selection_policy": "First recorded example in the cited run; not selected by prediction quality.",
+  "training_performed": false,
+  "plot": {
+    "kind": "molecules",
+    "reference": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+    "predicted": "C=C(CCCCc1ccc(C(C)(C)C)cc1)c1ccccc1",
+    "label": "Formula-conditioned NMR generation; first record"
+  },
+  "source_hashes": {
+    "nmr_documented_examples_20261117_v2.json": "669413d6fc0939bdb6826782d41fc13cf12926a672418ecb46303f0b8ba05b99"
+  },
+  "status": "recorded_results"
+}

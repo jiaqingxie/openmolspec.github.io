@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent Harness &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="_static/mark.svg"/>
+    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/harness.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script defer="defer" src="_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quick start" href="harness/quickstart.html" />
+    <link rel="prev" title="Gallery" href="gallery.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="zh/harness.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks/index.html">Tasks by spectroscopy family</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Python SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Agent Harness</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#workflow">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#guides">Guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="harness/quickstart.html">Quick start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harness/python.html">Python interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harness/cli.html">Command line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harness/mcp.html">MCP tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harness/nmr.html">NMR Spectra Harness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harness/ms.html">MS Spectra Harness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harness/vibrational.html">Vibrational Spectra Harness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harness/examples.html">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference/index.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Agent Harness</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/harness.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="agent-harness">
+<h1>Agent Harness<a class="headerlink" href="#agent-harness" title="Link to this heading"></a></h1>
+<p>Spectra Harness gives an agent a common interface to NMR, MS and vibrational models. A request identifies the task, supplies molecular or spectral inputs, and selects a model environment. The response contains the prediction and a record of the calls. The same request can be used from Python, the command line or MCP.</p>
+<section id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Discover available tasks with <code class="docutils literal notranslate"><span class="pre">catalog()</span></code> or <code class="docutils literal notranslate"><span class="pre">spectra_tasks</span></code>.</p></li>
+<li><p>Prepare the fields for your task and configure model paths.</p></li>
+<li><p>Check the request with <code class="docutils literal notranslate"><span class="pre">validate()</span></code> or <code class="docutils literal notranslate"><span class="pre">spectra_validate</span></code>.</p></li>
+<li><p>Run the model with <code class="docutils literal notranslate"><span class="pre">run()</span></code> or <code class="docutils literal notranslate"><span class="pre">spectra_predict</span></code>.</p></li>
+<li><p>Read <code class="docutils literal notranslate"><span class="pre">result</span></code>; inspect <code class="docutils literal notranslate"><span class="pre">calls</span></code> when measuring latency or repeating a prediction.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.harness</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpectraHarness</span>
+
+<span class="n">harness</span> <span class="o">=</span> <span class="n">SpectraHarness</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">harness</span><span class="o">.</span><span class="n">catalog</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="s1">'task'</span><span class="p">],</span> <span class="n">task</span><span class="p">[</span><span class="s1">'harness'</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="guides">
+<h2>Guides<a class="headerlink" href="#guides" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="harness/quickstart.html"><span class="std std-doc">Quick start</span></a>: Make an NMR request and read its output.</p></li>
+<li><p><a class="reference internal" href="harness/python.html"><span class="std std-doc">Python interface</span></a>: Configure a Harness and call it from a script.</p></li>
+<li><p><a class="reference internal" href="harness/cli.html"><span class="std std-doc">Command line</span></a>: Run reusable JSON request files.</p></li>
+<li><p><a class="reference internal" href="harness/mcp.html"><span class="std std-doc">MCP tools</span></a>: Connect an agent and use discovery, validation and prediction tools.</p></li>
+<li><p><a class="reference internal" href="harness/nmr.html"><span class="std std-doc">NMR Spectra Harness</span></a>: Predict shifts, assign peaks and identify structures.</p></li>
+<li><p><a class="reference internal" href="harness/ms.html"><span class="std std-doc">MS Spectra Harness</span></a>: Predict MS/MS spectra with acquisition conditions.</p></li>
+<li><p><a class="reference internal" href="harness/vibrational.html"><span class="std std-doc">Vibrational Spectra Harness</span></a>: Predict gaps and identify structures from multiple spectral channels.</p></li>
+<li><p><a class="reference internal" href="harness/examples.html"><span class="std std-doc">Examples</span></a>: Inspect inputs and outputs for three model families.</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>DeepSeek-AI. DeepSeek Harness: modular agent tools and execution infrastructure. Software repository. Accessed 18 November 2026. <a class="reference external" href="https://github.com/deepseek-ai/deepseek-harness">Source</a></p></li>
+<li><p>Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. <a class="reference external" href="https://doi.org/10.1038/s43588-025-00783-z">Source</a></p></li>
+<li><p>Wang, R.-X., Wang, R. &amp; Coley, C. W. GLACIER: Rethinking Mass Spectrum Prediction as an Object Detection Problem. NeurIPS 2026. arXiv:2606.29161 (2026). <a class="reference external" href="https://arxiv.org/abs/2606.29161">Source</a></p></li>
+<li><p>Wang, R., Manjrekar, M., Mahjour, B., Avila-Pacheco, J., et al. Neural Spectral Prediction for Structure Elucidation with Tandem Mass Spectrometry. bioRxiv (2025). doi:10.1101/2025.05.28.656653. <a class="reference external" href="https://doi.org/10.1101/2025.05.28.656653">Source</a></p></li>
+<li><p>OpenMolSpec contributors. openSpec models and benchmark training workflows. Source archive, v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">Source</a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gallery.html" class="btn btn-neutral float-left" title="Gallery" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="harness/quickstart.html" class="btn btn-neutral float-right" title="Quick start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,969 @@
+{
+  "training_performed": false,
+  "calibration_fitted": false,
+  "source_result": "bsi_frozen_diagnostic_20261116.json",
+  "nuclei": {
+    "B": {
+      "pool": {
+        "train": {
+          "records": 11471,
+          "unique_molecules": 11139,
+          "target_ppm": {
+            "count": 11471,
+            "min": -119.0999984741211,
+            "median": 30.739999771118164,
+            "mean": 26.638218817680816,
+            "max": 3085.0
+          },
+          "blank_solvent_records": 11471,
+          "multiple_selected_atoms": 0
+        },
+        "valid": {
+          "records": 2869,
+          "unique_molecules": 2854,
+          "target_ppm": {
+            "count": 2869,
+            "min": -43.400001525878906,
+            "median": 30.719999313354492,
+            "mean": 26.16547472861395,
+            "max": 131.60000610351562
+          },
+          "blank_solvent_records": 2869,
+          "multiple_selected_atoms": 0
+        }
+      },
+      "valid_source_records": {
+        "nmrexp": 2706,
+        "wanjuan": 163
+      },
+      "source_pool_version": "data_hetero3",
+      "source_pool_contents_verified": true,
+      "pool_train_valid_structure_overlap": 121,
+      "evaluated_molecules": 32,
+      "mae_ppm": 8.684532299637794,
+      "rmse_ppm": 12.436461034675611,
+      "mean_signed_error_ppm": 2.366751804947853,
+      "median_absolute_error_ppm": 6.078239440917969,
+      "reference_ppm": {
+        "count": 32,
+        "min": -16.600000381469727,
+        "median": 30.825000762939453,
+        "mean": 26.114062771201134,
+        "max": 39.79999923706055
+      },
+      "prediction_ppm": {
+        "count": 32,
+        "min": 20.27203369140625,
+        "median": 27.617717742919922,
+        "mean": 28.480814576148987,
+        "max": 40.2117919921875
+      },
+      "correlation": 0.21740045100592192,
+      "r_squared": -0.006767027174752194,
+      "errors_within_5ppm": 14,
+      "labels_rechecked_against_current_pool": true,
+      "single_nucleus_atom_per_evaluated_molecule": true,
+      "assessment": "diagnostic_only; not validated for accurate solution prediction",
+      "provenance_limit": "Prepared source records omit original spectrum IDs and solvent; assigning the sole nucleus is unambiguous but original experimental conditions are not preserved.",
+      "records": [
+        {
+          "source_key": "0000",
+          "smiles": "Cc1cnc([B-]23OC(=O)C[C+]2CC(=O)O3)o1",
+          "atom_indices": [
+            5
+          ],
+          "reference_ppm": [
+            7.5
+          ],
+          "prediction_ppm": [
+            26.116743087768555
+          ]
+        },
+        {
+          "source_key": "0001",
+          "smiles": "CCCCN(CCCC)c1ccnc(B2OC(C)(C)C(C)(C)O2)c1",
+          "atom_indices": [
+            14
+          ],
+          "reference_ppm": [
+            4.599999904632568
+          ],
+          "prediction_ppm": [
+            24.91009521484375
+          ]
+        },
+        {
+          "source_key": "0002",
+          "smiles": "COc1ccc(NC(=O)C(CB2OC(C)(C)C(C)(C)O2)c2ccccc2C)cc1",
+          "atom_indices": [
+            11
+          ],
+          "reference_ppm": [
+            33.20000076293945
+          ],
+          "prediction_ppm": [
+            29.00136375427246
+          ]
+        },
+        {
+          "source_key": "0003",
+          "smiles": "C=C(B1OC(C)(C)C(C)(C)O1)[C@H]1c2ccc3ccccc3c2N(c2ccc(OC)cc2)[C@@H]1c1ccccc1",
+          "atom_indices": [
+            2
+          ],
+          "reference_ppm": [
+            29.899999618530273
+          ],
+          "prediction_ppm": [
+            22.04559898376465
+          ]
+        },
+        {
+          "source_key": "0004",
+          "smiles": "N(CC)(CC)C(C1C=C2B(C3C(OC2=CC=1)=CC=CC=3)O)=O",
+          "atom_indices": [
+            9
+          ],
+          "reference_ppm": [
+            37.400001525878906
+          ],
+          "prediction_ppm": [
+            29.046831130981445
+          ]
+        },
+        {
+          "source_key": "0005",
+          "smiles": "CCOP(OCC)(CC(C)(B1OC(C)(C)C(C)(C)O1)c1ccccc1)=O",
+          "atom_indices": [
+            10
+          ],
+          "reference_ppm": [
+            34.0
+          ],
+          "prediction_ppm": [
+            26.26922607421875
+          ]
+        },
+        {
+          "source_key": "0006",
+          "smiles": "CC1(C)C=CC(CCCBr)(B2OC(C)(C)C(C)(C)O2)CC1",
+          "atom_indices": [
+            10
+          ],
+          "reference_ppm": [
+            34.11000061035156
+          ],
+          "prediction_ppm": [
+            26.752338409423828
+          ]
+        },
+        {
+          "source_key": "0007",
+          "smiles": "CC(C)(C)[Si](C)(C)N1BC(c2ccc(F)cc2)=CC=C1",
+          "atom_indices": [
+            8
+          ],
+          "reference_ppm": [
+            34.20000076293945
+          ],
+          "prediction_ppm": [
+            36.388145446777344
+          ]
+        },
+        {
+          "source_key": "0008",
+          "smiles": "C(=C[B-](F)(F)F)C(F)(F)F.[K+]",
+          "atom_indices": [
+            2
+          ],
+          "reference_ppm": [
+            5.5
+          ],
+          "prediction_ppm": [
+            20.27203369140625
+          ]
+        },
+        {
+          "source_key": "0009",
+          "smiles": "[Si](C)(C)(C)C(Sc1ccc(C)cc1)B1OC(C)(C)C(C)(C)O1",
+          "atom_indices": [
+            13
+          ],
+          "reference_ppm": [
+            34.29999923706055
+          ],
+          "prediction_ppm": [
+            34.91402816772461
+          ]
+        },
+        {
+          "source_key": "0010",
+          "smiles": "O(c1ccccc1C(=O)CC(B1OC(C)(C)C(C)(C)O1)c1ccccc1)CC",
+          "atom_indices": [
+            11
+          ],
+          "reference_ppm": [
+            33.20000076293945
+          ],
+          "prediction_ppm": [
+            29.769371032714844
+          ]
+        },
+        {
+          "source_key": "0011",
+          "smiles": "c1ccc([C@]2([C@H](C)B3OC(C)(C)C(C)(C)O3)NS(=O)(=O)Oc3ccc(F)cc32)cc1",
+          "atom_indices": [
+            7
+          ],
+          "reference_ppm": [
+            32.70000076293945
+          ],
+          "prediction_ppm": [
+            27.481721878051758
+          ]
+        },
+        {
+          "source_key": "0012",
+          "smiles": "C(C#CCCOCc1ccc(C#N)cc1)(NS(=O)(=O)c1ccc([N+](=O)[O-])cc1)B1CN(C)CC(=O)O1",
+          "atom_indices": [
+            28
+          ],
+          "reference_ppm": [
+            9.800000190734863
+          ],
+          "prediction_ppm": [
+            30.142730712890625
+          ]
+        },
+        {
+          "source_key": "0013",
+          "smiles": "COC(=O)C(C(C)=O)C(C)/C=C/B1OC(C)(C)C(C)(C)O1",
+          "atom_indices": [
+            12
+          ],
+          "reference_ppm": [
+            28.899999618530273
+          ],
+          "prediction_ppm": [
+            27.66194725036621
+          ]
+        },
+        {
+          "source_key": "0014",
+          "smiles": "C(F)(F)(F)c1ccc(C2=C(Cl)C(=O)C2B2OC(C)(C)C(C)(C)O2)cc1",
+          "atom_indices": [
+            14
+          ],
+          "reference_ppm": [
+            31.799999237060547
+          ],
+          "prediction_ppm": [
+            27.23760414123535
+          ]
+        },
+        {
+          "source_key": "0015",
+          "smiles": "CC1(C)OB(C=C(c2ccc(Br)cc2)[C@H](c2ccccc2)/C=C\\Cl)OC1(C)C",
+          "atom_indices": [
+            4
+          ],
+          "reference_ppm": [
+            31.200000762939453
+          ],
+          "prediction_ppm": [
+            25.50301742553711
+          ]
+        },
+        {
+          "source_key": "0016",
+          "smiles": "C(#N)C(CB1OC(C)(C)C(C)(C)O1)c1ccc2ccc3cccc4ccc1c2c34",
+          "atom_indices": [
+            4
+          ],
+          "reference_ppm": [
+            32.52000045776367
+          ],
+          "prediction_ppm": [
+            23.999549865722656
+          ]
+        },
+        {
+          "source_key": "0017",
+          "smiles": "CC1(C)OB(C(C(Cc2ccc(OC)cc2)=O)c2ccccc2)OC1(C)C",
+          "atom_indices": [
+            4
+          ],
+          "reference_ppm": [
+            22.520000457763672
+          ],
+          "prediction_ppm": [
+            28.979496002197266
+          ]
+        },
+        {
+          "source_key": "0018",
+          "smiles": "O=C(c1ccccc1)O[B-](c1n(C)cc[n+]1C)C#N",
+          "atom_indices": [
+            9
+          ],
+          "reference_ppm": [
+            -16.600000381469727
+          ],
+          "prediction_ppm": [
+            25.17302894592285
+          ]
+        },
+        {
+          "source_key": "0019",
+          "smiles": "O([C@@H](C)[C@@H](O)C/C=C(\\C)B1OC(C)(C)C(C)(C)O1)[Si](C)(C)C(C)(C)C",
+          "atom_indices": [
+            9
+          ],
+          "reference_ppm": [
+            29.850000381469727
+          ],
+          "prediction_ppm": [
+            28.725820541381836
+          ]
+        },
+        {
+          "source_key": "0020",
+          "smiles": "CN1CC(=O)C[B-]2(C(O)CC3CCCC3)OC(=O)C1O2",
+          "atom_indices": [
+            6
+          ],
+          "reference_ppm": [
+            11.130000114440918
+          ],
+          "prediction_ppm": [
+            37.00425338745117
+          ]
+        },
+        {
+          "source_key": "0021",
+          "smiles": "CC1(C)OB(c2c(OC)ccc(N(C)C)c2)OC1(C)C",
+          "atom_indices": [
+            4
+          ],
+          "reference_ppm": [
+            30.450000762939453
+          ],
+          "prediction_ppm": [
+            26.49537467956543
+          ]
+        },
+        {
+          "source_key": "0022",
+          "smiles": "CC1(C)OB(/C=C/C2CCCCC2)OC1(C)C",
+          "atom_indices": [
+            4
+          ],
+          "reference_ppm": [
+            29.5
+          ],
+          "prediction_ppm": [
+            31.509479522705078
+          ]
+        },
+        {
+          "source_key": "0023",
+          "smiles": "CON(C)C(=O)C(F)=C(C)B1OC(C)(C)C(C)(C)O1",
+          "atom_indices": [
+            10
+          ],
+          "reference_ppm": [
+            29.739999771118164
+          ],
+          "prediction_ppm": [
+            21.95543670654297
+          ]
+        },
+        {
+          "source_key": "0024",
+          "smiles": "CC1(C)OB(CC(c2ccc(N3C(=O)c4c(cccc4)C3=O)cc2)=C(F)F)OC1(C)C",
+          "atom_indices": [
+            4
+          ],
+          "reference_ppm": [
+            32.20000076293945
+          ],
+          "prediction_ppm": [
+            27.573488235473633
+          ]
+        },
+        {
+          "source_key": "0025",
+          "smiles": "CC(C)(C)OC(=O)N(C(=O)OC(C)(C)C)C(c1ccc(B2OC(C)(C)C(C)(C)O2)c(F)c1)=O",
+          "atom_indices": [
+            20
+          ],
+          "reference_ppm": [
+            29.700000762939453
+          ],
+          "prediction_ppm": [
+            25.408620834350586
+          ]
+        },
+        {
+          "source_key": "0026",
+          "smiles": "C1(C=CC=CC=1)C1C=CC(CB2OC(=O)CN(C)C2)=CC=1",
+          "atom_indices": [
+            11
+          ],
+          "reference_ppm": [
+            11.930000305175781
+          ],
+          "prediction_ppm": [
+            32.97304153442383
+          ]
+        },
+        {
+          "source_key": "0027",
+          "smiles": "CC1(C)OB(C(C(c2ccccc2)CC)(C)C)OC1(C)C",
+          "atom_indices": [
+            4
+          ],
+          "reference_ppm": [
+            34.70000076293945
+          ],
+          "prediction_ppm": [
+            28.171064376831055
+          ]
+        },
+        {
+          "source_key": "0028",
+          "smiles": "CC(C)(C)[Si](C)(C)OCCCCCCC(B1OC(C)(C)C(C)(C)O1)c1ccccc1",
+          "atom_indices": [
+            15
+          ],
+          "reference_ppm": [
+            33.70000076293945
+          ],
+          "prediction_ppm": [
+            32.358367919921875
+          ]
+        },
+        {
+          "source_key": "0029",
+          "smiles": "O(c1ccc(N2B(c3c(C)cc(C)cc3C)C=CC=C2c2ccccc2)cc1)C",
+          "atom_indices": [
+            6
+          ],
+          "reference_ppm": [
+            39.79999923706055
+          ],
+          "prediction_ppm": [
+            40.2117919921875
+          ]
+        },
+        {
+          "source_key": "0030",
+          "smiles": "CC(C)c1ccc2c(c1)CC[C@H]1[C@](C)(CC(C)(C)B3OC(C)(C)C(C)(C)O3)CCC[C@]21C",
+          "atom_indices": [
+            18
+          ],
+          "reference_ppm": [
+            34.70000076293945
+          ],
+          "prediction_ppm": [
+            27.42877769470215
+          ]
+        },
+        {
+          "source_key": "0031",
+          "smiles": "CCCCCC/C=C/B1Nc2cccc3cccc(c23)N1",
+          "atom_indices": [
+            8
+          ],
+          "reference_ppm": [
+            27.5
+          ],
+          "prediction_ppm": [
+            29.905677795410156
+          ]
+        }
+      ]
+    },
+    "Si": {
+      "pool": {
+        "train": {
+          "records": 1777,
+          "unique_molecules": 1747,
+          "target_ppm": {
+            "count": 1777,
+            "min": -106.69999694824219,
+            "median": -6.03000020980835,
+            "mean": -7.997556108077825,
+            "max": 55.70000076293945
+          },
+          "blank_solvent_records": 1777,
+          "multiple_selected_atoms": 0
+        },
+        "valid": {
+          "records": 445,
+          "unique_molecules": 445,
+          "target_ppm": {
+            "count": 445,
+            "min": -83.0999984741211,
+            "median": -5.099999904632568,
+            "mean": -6.859724016228084,
+            "max": 87.69999694824219
+          },
+          "blank_solvent_records": 445,
+          "multiple_selected_atoms": 0
+        }
+      },
+      "valid_source_records": {
+        "nmrexp": 374,
+        "wanjuan": 71
+      },
+      "source_pool_version": "data_hetero3",
+      "source_pool_contents_verified": true,
+      "pool_train_valid_structure_overlap": 10,
+      "evaluated_molecules": 32,
+      "mae_ppm": 56.13358532078564,
+      "rmse_ppm": 58.105817484466186,
+      "mean_signed_error_ppm": 56.13358532078564,
+      "median_absolute_error_ppm": 54.26912832260132,
+      "reference_ppm": {
+        "count": 32,
+        "min": -45.29999923706055,
+        "median": -4.680000066757202,
+        "mean": -5.277099953964353,
+        "max": 18.780000686645508
+      },
+      "prediction_ppm": {
+        "count": 32,
+        "min": 35.624961853027344,
+        "median": 51.15987014770508,
+        "mean": 50.85648536682129,
+        "max": 64.21329498291016
+      },
+      "correlation": 0.23853880573589625,
+      "r_squared": -13.616666667289806,
+      "errors_within_5ppm": 0,
+      "labels_rechecked_against_current_pool": true,
+      "single_nucleus_atom_per_evaluated_molecule": true,
+      "assessment": "diagnostic_only; not validated for accurate solution prediction",
+      "provenance_limit": "Prepared source records omit original spectrum IDs and solvent; assigning the sole nucleus is unambiguous but original experimental conditions are not preserved.",
+      "records": [
+        {
+          "source_key": "0000",
+          "smiles": "CCCCCC/C(=C(/C=O)N1CCOC1=O)[Si](C)(C)c1cc(OC)cc(OC)c1",
+          "atom_indices": [
+            16
+          ],
+          "reference_ppm": [
+            -6.480000019073486
+          ],
+          "prediction_ppm": [
+            54.781612396240234
+          ]
+        },
+        {
+          "source_key": "0001",
+          "smiles": "CCCCCCCC[SiH](CCCCCc1cccs1)c1ccccc1",
+          "atom_indices": [
+            8
+          ],
+          "reference_ppm": [
+            9.380000114440918
+          ],
+          "prediction_ppm": [
+            64.21329498291016
+          ]
+        },
+        {
+          "source_key": "0002",
+          "smiles": "CCCCCCC=C(CCCCCC)[Si](C)(C)c1ccc(C)o1",
+          "atom_indices": [
+            14
+          ],
+          "reference_ppm": [
+            -17.0
+          ],
+          "prediction_ppm": [
+            47.50899124145508
+          ]
+        },
+        {
+          "source_key": "0003",
+          "smiles": "C(=C(C#Cc1ccc(C(=O)OC)cc1)c1ccc(C(=O)OC)cc1)[Si](C)(C)C",
+          "atom_indices": [
+            24
+          ],
+          "reference_ppm": [
+            -7.5
+          ],
+          "prediction_ppm": [
+            46.10859680175781
+          ]
+        },
+        {
+          "source_key": "0004",
+          "smiles": "BrC([Si](C)(C)c1ccccc1)C1CCCCC1",
+          "atom_indices": [
+            2
+          ],
+          "reference_ppm": [
+            1.2599999904632568
+          ],
+          "prediction_ppm": [
+            60.70288848876953
+          ]
+        },
+        {
+          "source_key": "0005",
+          "smiles": "C[Si]1(C)C(c2ccccc2F)=CC(=O)c2ccccc21",
+          "atom_indices": [
+            1
+          ],
+          "reference_ppm": [
+            -25.170000076293945
+          ],
+          "prediction_ppm": [
+            47.72933578491211
+          ]
+        },
+        {
+          "source_key": "0006",
+          "smiles": "c1ccc([Si@H]2[C@@H](c3cc(I)ccc3)CCC2)cc1",
+          "atom_indices": [
+            4
+          ],
+          "reference_ppm": [
+            6.610000133514404
+          ],
+          "prediction_ppm": [
+            51.79599380493164
+          ]
+        },
+        {
+          "source_key": "0007",
+          "smiles": "C[Si](C)(NS(=O)(=O)c1ccc(C)cc1)c1ccccc1",
+          "atom_indices": [
+            1
+          ],
+          "reference_ppm": [
+            1.0199999809265137
+          ],
+          "prediction_ppm": [
+            46.63459014892578
+          ]
+        },
+        {
+          "source_key": "0008",
+          "smiles": "c1([Si](O)(c2ccccc2)CC2CC2)ccccc1",
+          "atom_indices": [
+            1
+          ],
+          "reference_ppm": [
+            -4.800000190734863
+          ],
+          "prediction_ppm": [
+            46.71039962768555
+          ]
+        },
+        {
+          "source_key": "0009",
+          "smiles": "C=C1CCC(=C)[Si]1(c1ccccc1)c1ccccc1",
+          "atom_indices": [
+            6
+          ],
+          "reference_ppm": [
+            -21.799999237060547
+          ],
+          "prediction_ppm": [
+            59.26625061035156
+          ]
+        },
+        {
+          "source_key": "0010",
+          "smiles": "CCCCCCCCCC[Si](C)([H])c1ccc(Cl)cc1",
+          "atom_indices": [
+            10
+          ],
+          "reference_ppm": [
+            -13.359999656677246
+          ],
+          "prediction_ppm": [
+            57.24696350097656
+          ]
+        },
+        {
+          "source_key": "0011",
+          "smiles": "c1(CNC(=O)NCCC[Si](OCC)(OCC)OCC)ccccc1",
+          "atom_indices": [
+            9
+          ],
+          "reference_ppm": [
+            -45.29999923706055
+          ],
+          "prediction_ppm": [
+            42.0697135925293
+          ]
+        },
+        {
+          "source_key": "0012",
+          "smiles": "CCCCCCCCCC[SiH](C)c1cccc2ccccc12",
+          "atom_indices": [
+            10
+          ],
+          "reference_ppm": [
+            -15.630000114440918
+          ],
+          "prediction_ppm": [
+            55.08787155151367
+          ]
+        },
+        {
+          "source_key": "0013",
+          "smiles": "[Si](CCCc1ccc(OCCCC=C)c(OC)c1)(OCC)(OCC)OCC",
+          "atom_indices": [
+            0
+          ],
+          "reference_ppm": [
+            -45.0
+          ],
+          "prediction_ppm": [
+            43.89414596557617
+          ]
+        },
+        {
+          "source_key": "0014",
+          "smiles": "CC(C)(C)[Si](C)(C)OCCCC(CC=C)c1ccncc1",
+          "atom_indices": [
+            4
+          ],
+          "reference_ppm": [
+            18.780000686645508
+          ],
+          "prediction_ppm": [
+            49.872161865234375
+          ]
+        },
+        {
+          "source_key": "0015",
+          "smiles": "c1([Si](C)(C)[C@@H](CCC2OCCO2)Cc2ccccc2)ccccc1",
+          "atom_indices": [
+            1
+          ],
+          "reference_ppm": [
+            -0.30000001192092896
+          ],
+          "prediction_ppm": [
+            57.049251556396484
+          ]
+        },
+        {
+          "source_key": "0016",
+          "smiles": "C(C1=C(c2c(OC)ccc3ccccc23)c2ccccc2C[Si]1(C)C)(Oc1ccccc1)=O",
+          "atom_indices": [
+            22
+          ],
+          "reference_ppm": [
+            -5.300000190734863
+          ],
+          "prediction_ppm": [
+            51.63644790649414
+          ]
+        },
+        {
+          "source_key": "0017",
+          "smiles": "[Si](C)(C)(C)C#CCC1C(I)=C2C(C=CC=C2)=CC=1",
+          "atom_indices": [
+            0
+          ],
+          "reference_ppm": [
+            -18.079999923706055
+          ],
+          "prediction_ppm": [
+            35.624961853027344
+          ]
+        },
+        {
+          "source_key": "0018",
+          "smiles": "COc1ccc2c(c1)C1(C[Si](C)(C)c3ccc4ccccc4c31)C(=O)N2Cc1ccccc1",
+          "atom_indices": [
+            10
+          ],
+          "reference_ppm": [
+            16.010000228881836
+          ],
+          "prediction_ppm": [
+            47.37247085571289
+          ]
+        },
+        {
+          "source_key": "0019",
+          "smiles": "CC(C)(C)[Si](C)(C)O[C@@]1(C)C[C@H]1c1ccccn1",
+          "atom_indices": [
+            4
+          ],
+          "reference_ppm": [
+            18.0
+          ],
+          "prediction_ppm": [
+            51.2197151184082
+          ]
+        },
+        {
+          "source_key": "0020",
+          "smiles": "CCCCCCCCCC[SiH](C)c1cc2ccccc2c2ccccc12",
+          "atom_indices": [
+            10
+          ],
+          "reference_ppm": [
+            -14.3100004196167
+          ],
+          "prediction_ppm": [
+            53.38241195678711
+          ]
+        },
+        {
+          "source_key": "0021",
+          "smiles": "C[Si](C)(C)c1ccc(F)cc1N",
+          "atom_indices": [
+            1
+          ],
+          "reference_ppm": [
+            -5.659999847412109
+          ],
+          "prediction_ppm": [
+            45.880836486816406
+          ]
+        },
+        {
+          "source_key": "0022",
+          "smiles": "CCO[Si](C)(CCCc1ccc(OC)c(OC)c1)OCC",
+          "atom_indices": [
+            3
+          ],
+          "reference_ppm": [
+            4.639999866485596
+          ],
+          "prediction_ppm": [
+            43.734642028808594
+          ]
+        },
+        {
+          "source_key": "0023",
+          "smiles": "c1([Si](C)(C)CCc2ccccc2)ccccc1",
+          "atom_indices": [
+            1
+          ],
+          "reference_ppm": [
+            -2.799999952316284
+          ],
+          "prediction_ppm": [
+            60.16090393066406
+          ]
+        },
+        {
+          "source_key": "0024",
+          "smiles": "CC1(C)CCC[Si]2(CCCC(C)(C)O2)O1",
+          "atom_indices": [
+            6
+          ],
+          "reference_ppm": [
+            14.40999984741211
+          ],
+          "prediction_ppm": [
+            47.55857849121094
+          ]
+        },
+        {
+          "source_key": "0025",
+          "smiles": "C[C@@H](C1C([Si](C2C=CC=CC=2)(C)OC)=CC=CC=1)N(C)C",
+          "atom_indices": [
+            4
+          ],
+          "reference_ppm": [
+            -6.300000190734863
+          ],
+          "prediction_ppm": [
+            42.64867401123047
+          ]
+        },
+        {
+          "source_key": "0026",
+          "smiles": "S(N[C@H](c1ccc(OC)cc1)[Si](c1ccccc1)(C)C)(c1ccc(C)cc1)(=O)=O",
+          "atom_indices": [
+            11
+          ],
+          "reference_ppm": [
+            -1.7372000217437744
+          ],
+          "prediction_ppm": [
+            51.10002517700195
+          ]
+        },
+        {
+          "source_key": "0027",
+          "smiles": "CC1(C)OB(C(C)c2ccc([Si](C)(C)C)cc2)OC1(C)C",
+          "atom_indices": [
+            11
+          ],
+          "reference_ppm": [
+            -4.559999942779541
+          ],
+          "prediction_ppm": [
+            54.47249984741211
+          ]
+        },
+        {
+          "source_key": "0028",
+          "smiles": "C/C=C\\C(CC)O[Si](C)(C)c1ccccc1",
+          "atom_indices": [
+            7
+          ],
+          "reference_ppm": [
+            5.849999904632568
+          ],
+          "prediction_ppm": [
+            44.886871337890625
+          ]
+        },
+        {
+          "source_key": "0029",
+          "smiles": "C=C(C)CC(Sc1ccccc1)[Si](C)(C)C",
+          "atom_indices": [
+            12
+          ],
+          "reference_ppm": [
+            5.099999904632568
+          ],
+          "prediction_ppm": [
+            58.37520980834961
+          ]
+        },
+        {
+          "source_key": "0030",
+          "smiles": "O(C/C=C(\\C)[Si](c1ccccc1)(C)[H])C(C)=O",
+          "atom_indices": [
+            5
+          ],
+          "reference_ppm": [
+            -14.539999961853027
+          ],
+          "prediction_ppm": [
+            56.257232666015625
+          ]
+        },
+        {
+          "source_key": "0031",
+          "smiles": "c1(-c2ccc([C@@H]3CCC[Si]3([H])c3ccc(C(C)(C)C)cc3)cc2)ccccc1",
+          "atom_indices": [
+            9
+          ],
+          "reference_ppm": [
+            5.699999809265137
+          ],
+          "prediction_ppm": [
+            52.423988342285156
+          ]
+        }
+      ]
+    }
+  }
+}
