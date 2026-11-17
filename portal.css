@@ -245,6 +245,7 @@ html:has(body.oms-portal){scroll-behavior:smooth;scroll-padding-top:100px}
 .oms-portal .tool-field>input,.oms-portal .tool-field>textarea,.oms-portal .tool-field>select{display:block;margin-top:7px}
 .oms-portal .ms-acquisition .tool-field{margin-bottom:16px}
 .oms-portal .ms-acquisition .tool-note{margin:12px 0 18px}
+@media(max-width:600px){.oms-portal .tool-shell .tool-tabs{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;overflow:visible}.oms-portal .tool-shell .tool-tabs button{white-space:normal;text-align:left;justify-content:flex-start}}
 .oms-portal .tool-panel>.button-primary,.oms-portal .tool-panel>.button-secondary{margin-top:4px;margin-bottom:8px}
 .oms-portal .button-primary,.oms-portal .button-secondary{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:11px 17px;border:1px solid #2f6746;border-radius:4px;background:#2f6746;color:#fff;font-size:12px;line-height:1.5;font-weight:500;text-decoration:none;transition:background .15s,border-color .15s}
 .oms-portal .button-primary:hover{background:#417d52;border-color:#417d52}
