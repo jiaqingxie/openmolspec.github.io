@@ -1,5 +1,19 @@
 # Agent Harness
 
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+harness/quickstart
+harness/python
+harness/cli
+harness/mcp
+harness/nmr
+harness/ms
+harness/vibrational
+harness/examples
+```
+
 Spectra Harness 为 Agent 提供统一的 NMR、MS 和振动谱模型接口。一个请求包含任务名称、分子或谱学输入，以及模型运行环境；响应返回预测结果和调用记录。同一份请求可以通过 Python、命令行或 MCP 使用。
 
 ## 使用流程
@@ -36,18 +50,3 @@ for task in harness.catalog():
 - Wang, R.-X., Wang, R. & Coley, C. W. GLACIER: Rethinking Mass Spectrum Prediction as an Object Detection Problem. NeurIPS 2026. arXiv:2606.29161 (2026). [Source](https://arxiv.org/abs/2606.29161)
 - Wang, R., Manjrekar, M., Mahjour, B., Avila-Pacheco, J., et al. Neural Spectral Prediction for Structure Elucidation with Tandem Mass Spectrometry. bioRxiv (2025). doi:10.1101/2025.05.28.656653. [Source](https://doi.org/10.1101/2025.05.28.656653)
 - OpenMolSpec contributors. openSpec models and benchmark training workflows. Source archive, v1.0 (2026). [Source](https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks)
-
-
-```{toctree}
-:hidden:
-:maxdepth: 2
-
-harness/quickstart
-harness/python
-harness/cli
-harness/mcp
-harness/nmr
-harness/ms
-harness/vibrational
-harness/examples
-```

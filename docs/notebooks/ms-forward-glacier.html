@@ -14,7 +14,7 @@
 
   
     <link rel="shortcut icon" href="../_static/mark.svg"/>
-    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/notebooks/ms-forward-glacier.html" />
+    <link rel="canonical" href="https://openmolspec.readthedocs.io/en/latest/notebooks/ms-forward-glacier.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=f2a433a1"></script>
@@ -60,55 +60,60 @@
 <li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="datasets-overview.html">Exploring the spectroscopy datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-annotation-magma.html">MS/MS fragment annotation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MS/MS prediction with GLACIER</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#inputs-and-outputs">Inputs and outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate-the-predictions">Evaluate the predictions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualize-the-result">Visualize the result</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-model">Run the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ms-forward-iceberg.html">MS/MS prediction with ICEBERG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-assignment.html">Peak-to-atom assignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-11B.html">11B chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-13C.html">13C chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-19F.html">19F chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-1H.html">1H chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-29Si.html">29Si chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-31P.html">31P chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-generation-c.html">Structure elucidation from ¹³C NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-generation-h.html">Structure elucidation from ¹H NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-generation-hc.html">Structure elucidation from ¹H + ¹³C NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-c-m2s.html">Structure-to-spectrum retrieval: ¹³C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-c-s2m.html">Spectrum-to-structure retrieval: ¹³C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-h-m2s.html">Structure-to-spectrum retrieval: ¹H</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-h-s2m.html">Spectrum-to-structure retrieval: ¹H</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-hc-m2s.html">Structure-to-spectrum retrieval: ¹H + ¹³C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-hc-s2m.html">Spectrum-to-structure retrieval: ¹H + ¹³C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-solvent_transfer.html">Cross-solvent chemical shift transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk-inference.html">Python SDK: real NMR inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk-training-preflight.html">Training data preparation and preflight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking.html">Candidate reranking: IR + Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking-hc.html">Candidate reranking: IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory-ms-isotopes.html">Mass spectrometry: isotope envelopes and resolving power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory-nmr-fourier.html">NMR: from a free induction decay to a spectrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory-nmr-inversion.html">NMR inversion: recovering a relaxation distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory-vibrational-broadening.html">IR and Raman: normal modes and spectral broadening</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-forward.html">IR and Raman from a molecular geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-gap-ir.html">HOMO–LUMO gap from IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-gap-ir_raman.html">HOMO–LUMO gap from IR + Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-gap-ir_raman_hc.html">HOMO–LUMO gap from IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-gap-raman.html">HOMO–LUMO gap from Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-generation.html">Structure generation: IR + Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-generation-hc.html">Structure generation: IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval.html">Structure retrieval: IR + Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-hc.html">Structure retrieval: IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#theory-simulations">Theory simulations / 理论模拟</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#nmr">NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#mass-spectrometry">Mass spectrometry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman">IR / Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#multimodal-spectroscopy">Multimodal spectroscopy</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#deferred-tasks">Deferred tasks</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="datasets-overview.html">Exploring the spectroscopy datasets</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ms-annotation-magma.html">MS/MS fragment annotation</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">MS/MS prediction with GLACIER</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ms-forward-iceberg.html">MS/MS prediction with ICEBERG</a></li>
-<li class="toctree-l3"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-assignment.html">Peak-to-atom assignment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-generation-c.html">Structure elucidation from ¹³C NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">Structure elucidation from ¹H NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-generation-hc.html">Structure elucidation from ¹H + ¹³C NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-m2s.html">Structure-to-spectrum retrieval: ¹³C</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-s2m.html">Spectrum-to-structure retrieval: ¹³C</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">Structure-to-spectrum retrieval: ¹H</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">Spectrum-to-structure retrieval: ¹H</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-m2s.html">Structure-to-spectrum retrieval: ¹H + ¹³C</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-s2m.html">Spectrum-to-structure retrieval: ¹H + ¹³C</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-solvent_transfer.html">Cross-solvent chemical shift transfer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sdk-inference.html">Python SDK: real NMR inference</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sdk-training-preflight.html">Training data preparation and preflight</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking.html">Candidate reranking: IR + Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking-hc.html">Candidate reranking: IR + Raman + NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="theory-ms-isotopes.html">Mass spectrometry: isotope envelopes and resolving power</a></li>
-<li class="toctree-l3"><a class="reference internal" href="theory-nmr-fourier.html">NMR: from a free induction decay to a spectrum</a></li>
-<li class="toctree-l3"><a class="reference internal" href="theory-nmr-inversion.html">NMR inversion: recovering a relaxation distribution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="theory-vibrational-broadening.html">IR and Raman: normal modes and spectral broadening</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-forward.html">IR and Raman from a molecular geometry</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir.html">HOMO–LUMO gap from IR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman.html">HOMO–LUMO gap from IR + Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman_hc.html">HOMO–LUMO gap from IR + Raman + NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-raman.html">HOMO–LUMO gap from Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-generation.html">Structure generation: IR + Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-generation-hc.html">Structure generation: IR + Raman + NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval.html">Structure retrieval: IR + Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-hc.html">Structure retrieval: IR + Raman + NMR</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#deferred-tasks">Deferred tasks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Spectroscopy theory</a></li>
@@ -225,6 +230,100 @@ Examples: 3
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+  "input": {
+    "smiles": "CC(C)(C)c1ccc(C(=O)CCCN2CCC(OC(c3ccccc3)c3ccccc3)CC2)cc1",
+    "adduct": "[M+H]+",
+    "collision_energy": "40.0",
+    "instrument": "QTOF",
+    "precursor_mz": 470.3054
+  },
+  "sample_id": "MassSpecGymID0028855",
+  "output": {
+    "predicted_peaks_top100": {
+      "length": 100,
+      "first_values": [
+        [
+          55.05422667404919,
+          0.0020994183141738176
+        ],
+        [
+          57.069876707999995,
+          0.008048541843891144
+        ],
+        [
+          70.065125676,
+          0.0050727734342217445
+        ],
+        [
+          82.06512569102459,
+          0.0035072911996394396
+        ],
+        [
+          84.0807757249754,
+          0.006053834222257137
+        ],
+        [
+          84.08077573999999,
+          0.004439487587660551
+        ],
+        [
+          84.08077573999999,
+          0.019418761134147644
+        ],
+        [
+          91.05422683833227,
+          0.0017777407774701715
+        ]
+      ]
+    }
+  },
+  "reference": {
+    "observed_peaks": {
+      "length": 14,
+      "first_values": [
+        [
+          152.0611,
+          0.036036036036036036
+        ],
+        [
+          161.0953,
+          0.1831831831831832
+        ],
+        [
+          162.0985,
+          0.021021021021021023
+        ],
+        [
+          165.069,
+          0.04104104104104104
+        ],
+        [
+          166.0754,
+          0.015015015015015015
+        ],
+        [
+          167.0848,
+          0.95995995995996
+        ],
+        [
+          168.0881,
+          0.12112112112112113
+        ],
+        [
+          169.0912,
+          0.005005005005005005
+        ]
+      ]
+    }
+  },
+  "metrics": {
+    "cosine_similarity": 0.8689625892568168,
+    "entropy_similarity": 0.7960058641892032,
+    "predicted_nonzero_bins": 100,
+    "reference_nonzero_bins": 14
+  }
+}
+{
   "input": {
     "smiles": "C/C1=C\\[C@@H](C)C/C=C/[C@H]2[C@@H]3O[C@]3(C)[C@@H](C)[C@H]3[C@H](Cc4c[nH]c5ccccc45)NC(=O)[C@]32C(=O)/C=C/C(=O)[C@@H]1O",
     "adduct": "[M+Na]+",
@@ -389,100 +488,6 @@ Examples: 3
     "reference_nonzero_bins": 3
   }
 }
-{
-  "input": {
-    "smiles": "COc1c(O)c2c(=O)cc3c4c5c(cc(=O)c6c(O)c(OC)c(C[C@@H](C)O)c(c(c1C[C@@H](C)O)c24)c65)OCO3",
-    "adduct": "[M+H]+",
-    "collision_energy": "35.0",
-    "instrument": "Orbitrap",
-    "precursor_mz": 535.1593
-  },
-  "sample_id": "MassSpecGymID0000781",
-  "output": {
-    "predicted_peaks_top100": {
-      "length": 100,
-      "first_values": [
-        [
-          399.04992912702465,
-          0.06394311040639877
-        ],
-        [
-          399.0499291420492,
-          0.0220443457365036
-        ],
-        [
-          399.0499291420492,
-          0.03012482449412346
-        ],
-        [
-          400.05775414400006,
-          0.04363333061337471
-        ],
-        [
-          400.0577541740492,
-          0.018726380541920662
-        ],
-        [
-          401.06557916097546,
-          0.022427868098020554
-        ],
-        [
-          401.065579176,
-          0.024171996861696243
-        ],
-        [
-          401.065579176,
-          0.047077931463718414
-        ]
-      ]
-    }
-  },
-  "reference": {
-    "observed_peaks": {
-      "length": 37,
-      "first_values": [
-        [
-          355.0601,
-          0.04904904904904905
-        ],
-        [
-          368.0679,
-          0.03403403403403404
-        ],
-        [
-          369.0757,
-          0.037037037037037035
-        ],
-        [
-          373.0707,
-          0.03903903903903904
-        ],
-        [
-          381.0757,
-          0.03303303303303303
-        ],
-        [
-          383.055,
-          0.1981981981981982
-        ],
-        [
-          384.0628,
-          0.08208208208208208
-        ],
-        [
-          385.0707,
-          0.05105105105105105
-        ]
-      ]
-    }
-  },
-  "metrics": {
-    "cosine_similarity": 0.2484445228341168,
-    "entropy_similarity": 0.2924039550989269,
-    "predicted_nonzero_bins": 100,
-    "reference_nonzero_bins": 37
-  }
-}
 </pre></div>
 </div>
 </div>
@@ -531,9 +536,9 @@ Examples: 3
 </div>
 </div>
 <div class="cell_output docutils container">
+<img alt="../_images/c28ceda0640a8c1dd848fa83ba041bd4ee0a31cee9e3f9c5f33522ac9eb13efd.svg" src="../_images/c28ceda0640a8c1dd848fa83ba041bd4ee0a31cee9e3f9c5f33522ac9eb13efd.svg" />
 <img alt="../_images/00bddca472c5fdcb01011ac1a0368e8cc9aa911d11ba13f4a5746b9ef30711a5.svg" src="../_images/00bddca472c5fdcb01011ac1a0368e8cc9aa911d11ba13f4a5746b9ef30711a5.svg" />
 <img alt="../_images/9201e4b4270892162d5cde5aeb73b752938ab3f432cb4fa975442838015ad4dc.svg" src="../_images/9201e4b4270892162d5cde5aeb73b752938ab3f432cb4fa975442838015ad4dc.svg" />
-<img alt="../_images/e1fbe09e09e0aa3dbee885bb2d548ab484f0522e76decc7bc4d2ad9d654a6937.svg" src="../_images/e1fbe09e09e0aa3dbee885bb2d548ab484f0522e76decc7bc4d2ad9d654a6937.svg" />
 </div>
 </div>
 </section>

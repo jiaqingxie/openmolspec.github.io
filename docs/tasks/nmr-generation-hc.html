@@ -14,7 +14,7 @@
 
   
     <link rel="shortcut icon" href="../_static/mark.svg"/>
-    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/tasks/nmr-generation-hc.html" />
+    <link rel="canonical" href="https://openmolspec.readthedocs.io/en/latest/tasks/nmr-generation-hc.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=f2a433a1"></script>
@@ -59,18 +59,35 @@
 <li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tasks by spectroscopy family</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="nmr.html">NMR</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">Spectrum-to-structure retrieval: ¹H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">Structure-to-spectrum retrieval: ¹H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">Structure elucidation from ¹H NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-s2m.html">Spectrum-to-structure retrieval: ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-m2s.html">Structure-to-spectrum retrieval: ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-c.html">Structure elucidation from ¹³C NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-s2m.html">Spectrum-to-structure retrieval: ¹H + ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-m2s.html">Structure-to-spectrum retrieval: ¹H + ¹³C</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Structure elucidation from ¹H + ¹³C NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-assignment.html">Peak-to-atom assignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-solvent_transfer.html">Cross-solvent chemical shift transfer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ms.html">Mass spectrometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational.html">IR / Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multimodal.html">Multimodal spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deferred.html">Deferred tasks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#nmr"><span class="xref myst">NMR</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#mass-spectrometry"><span class="xref myst">Mass spectrometry</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman"><span class="xref myst">IR / Raman</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#multimodal-spectroscopy"><span class="xref myst">Multimodal spectroscopy</span></a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#deferred-tasks"><span class="xref myst">Deferred tasks</span></a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="nmr.html">NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ms.html">Mass spectrometry</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational.html">IR / Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="multimodal.html">Multimodal spectroscopy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="deferred.html">Deferred tasks</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#deferred-tasks"><span class="xref myst">Deferred tasks</span></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
@@ -172,17 +189,17 @@
 <details><summary>Inspect the actual input and output fields</summary>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"formula"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C22H28"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"formula"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C13H11N3O"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"h_nmr"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1H NMR"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"chemical_shift"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.34 (s, 4H), 7.265 (m, 2H), 7.165 (m, 3H), 5.26 (d, J=1.6 Hz, 1H), 5.01 (t, J=1.4 Hz, 1H), 2.61 (t, J=7.8 Hz, 2H), 2.53 (t, J=7.6 Hz, 2H), 1.665 (m, 2H), 1.52 (d, J=7.7 Hz, 2H), 1.33 (s, 9H)"</span>
+<span class="w">        </span><span class="nt">"chemical_shift"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.13 (d, J=8.2 Hz, 1H), 7.52 (m, 1H), 7.47 (m, 1H), 7.395 (m, 2H), 7.16 (m, 2H), 3.8 (s, 3H)"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">"c_nmr"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13C NMR"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"chemical_shift"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150.22, 148.03, 142.68, 138.28, 128.36, 128.22, 125.68, 125.58, 125.12, 111.51, 35.72, 35.03, 34.46, 31.32, 31.11, 27.93"</span>
+<span class="w">        </span><span class="nt">"chemical_shift"</span><span class="p">:</span><span class="w"> </span><span class="s2">"153.75, 145.7, 134.13, 131.02, 128.17, 127.52, 125.38, 123.83, 121.12, 119.88, 112.43, 111.17, 55.85"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">"modality_mask"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -190,41 +207,41 @@
 <span class="w">      </span><span class="mi">1</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">"reference_smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"reference_smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COc1ccccc1-n1nnc2ccccc21"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"candidates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCCc1ccc(C(C)(C)C)cc1)c1ccccc1"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"canonical_smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCCc1ccc(C(C)(C)C)cc1)c1ccccc1"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.4133434984593123</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COc1ccccc1-n1nnc2ccccc21"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"canonical_smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COc1ccccc1-n1nnc2ccccc21"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.1338406825806828</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">"valid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">"formula_match"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"canonical_smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.5937606929851142</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COc1ccccc1-c1nnn2ccccc12"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"canonical_smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COc1ccccc1-c1nnn2ccccc12"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.6589541644720214</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">"valid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">"formula_match"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCc1ccc(C(C)(C)C)cc1)Cc1ccccc1"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"canonical_smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCc1ccc(C(C)(C)C)cc1)Cc1ccccc1"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">-3.3677357960558183</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COc1ccc(-n2nnc3ccccc32)cc1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"canonical_smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COc1ccc(-n2nnc3ccccc32)cc1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">-3.3182191402798367</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">"valid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">"formula_match"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCCc1ccccc1)CCCc1ccccc1"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"canonical_smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C=C(CCCCc1ccccc1)CCCc1ccccc1"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">-2.710929739130215</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COc1ccccc1-c1nc2ccccc2[nH]1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"canonical_smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COc1ccccc1-c1nc2ccccc2[nH]1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">-3.1824993170265827</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">"valid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">"formula_match"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">"exact_match"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="nt">"exact_match"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 </pre></div>
 </div>

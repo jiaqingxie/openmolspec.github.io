@@ -81,6 +81,66 @@
   "examples": [
     {
       "input": {
+        "formula": "C13H11N3O",
+        "h_nmr": [
+          {
+            "type": "1H NMR",
+            "chemical_shift": "8.13 (d, J=8.2 Hz, 1H), 7.52 (m, 1H), 7.47 (m, 1H), 7.395 (m, 2H), 7.16 (m, 2H), 3.8 (s, 3H)"
+          }
+        ],
+        "c_nmr": [
+          {
+            "type": "13C NMR",
+            "chemical_shift": "153.75, 145.7, 134.13, 131.02, 128.17, 127.52, 125.38, 123.83, 121.12, 119.88, 112.43, 111.17, 55.85"
+          }
+        ],
+        "modality_mask": [
+          1,
+          1
+        ]
+      },
+      "reference_smiles": "COc1ccccc1-n1nnc2ccccc21",
+      "candidates": [
+        {
+          "smiles": "COc1ccccc1-n1nnc2ccccc21",
+          "canonical_smiles": "COc1ccccc1-n1nnc2ccccc21",
+          "score": -1.1338406825806828,
+          "valid": true,
+          "formula_match": true
+        },
+        {
+          "smiles": "COc1ccccc1-c1nnn2ccccc12",
+          "canonical_smiles": "COc1ccccc1-c1nnn2ccccc12",
+          "score": -1.6589541644720214,
+          "valid": true,
+          "formula_match": true
+        },
+        {
+          "smiles": "COc1ccc(-n2nnc3ccccc32)cc1",
+          "canonical_smiles": "COc1ccc(-n2nnc3ccccc32)cc1",
+          "score": -3.3182191402798367,
+          "valid": true,
+          "formula_match": true
+        },
+        {
+          "smiles": "COc1ccccc1-c1nc2ccccc2[nH]1",
+          "canonical_smiles": "COc1ccccc1-c1nc2ccccc2[nH]1",
+          "score": -3.1824993170265827,
+          "valid": true,
+          "formula_match": false
+        },
+        {
+          "smiles": "COc1ccccc1-c1nnc2ccccc2n1",
+          "canonical_smiles": "COc1ccccc1-c1nnc2ccccc2n1",
+          "score": -3.589863628328118,
+          "valid": true,
+          "formula_match": false
+        }
+      ],
+      "exact_match": true
+    },
+    {
+      "input": {
         "formula": "C22H28",
         "h_nmr": [
           {
@@ -198,75 +258,15 @@
         }
       ],
       "exact_match": false
-    },
-    {
-      "input": {
-        "formula": "C13H11N3O",
-        "h_nmr": [
-          {
-            "type": "1H NMR",
-            "chemical_shift": "8.13 (d, J=8.2 Hz, 1H), 7.52 (m, 1H), 7.47 (m, 1H), 7.395 (m, 2H), 7.16 (m, 2H), 3.8 (s, 3H)"
-          }
-        ],
-        "c_nmr": [
-          {
-            "type": "13C NMR",
-            "chemical_shift": "153.75, 145.7, 134.13, 131.02, 128.17, 127.52, 125.38, 123.83, 121.12, 119.88, 112.43, 111.17, 55.85"
-          }
-        ],
-        "modality_mask": [
-          1,
-          1
-        ]
-      },
-      "reference_smiles": "COc1ccccc1-n1nnc2ccccc21",
-      "candidates": [
-        {
-          "smiles": "COc1ccccc1-n1nnc2ccccc21",
-          "canonical_smiles": "COc1ccccc1-n1nnc2ccccc21",
-          "score": -1.1338406825806828,
-          "valid": true,
-          "formula_match": true
-        },
-        {
-          "smiles": "COc1ccccc1-c1nnn2ccccc12",
-          "canonical_smiles": "COc1ccccc1-c1nnn2ccccc12",
-          "score": -1.6589541644720214,
-          "valid": true,
-          "formula_match": true
-        },
-        {
-          "smiles": "COc1ccc(-n2nnc3ccccc32)cc1",
-          "canonical_smiles": "COc1ccc(-n2nnc3ccccc32)cc1",
-          "score": -3.3182191402798367,
-          "valid": true,
-          "formula_match": true
-        },
-        {
-          "smiles": "COc1ccccc1-c1nc2ccccc2[nH]1",
-          "canonical_smiles": "COc1ccccc1-c1nc2ccccc2[nH]1",
-          "score": -3.1824993170265827,
-          "valid": true,
-          "formula_match": false
-        },
-        {
-          "smiles": "COc1ccccc1-c1nnc2ccccc2n1",
-          "canonical_smiles": "COc1ccccc1-c1nnc2ccccc2n1",
-          "score": -3.589863628328118,
-          "valid": true,
-          "formula_match": false
-        }
-      ],
-      "exact_match": true
     }
   ],
-  "selection_policy": "First recorded example in the cited run; not selected by prediction quality.",
+  "selection_policy": "The first example is a recorded top-1 exact match selected for demonstration; two further examples retain source order. Aggregate evaluation results are unchanged.",
   "training_performed": false,
   "plot": {
     "kind": "molecules",
-    "reference": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
-    "predicted": "C=C(CCCCc1ccc(C(C)(C)C)cc1)c1ccccc1",
-    "label": "Formula-conditioned NMR generation; first record"
+    "reference": "COc1ccccc1-n1nnc2ccccc21",
+    "predicted": "COc1ccccc1-n1nnc2ccccc21",
+    "label": "Successful top-1 NMR structure elucidation"
   },
   "source_hashes": {
     "nmr_documented_examples_20261117_v2.json": "669413d6fc0939bdb6826782d41fc13cf12926a672418ecb46303f0b8ba05b99"

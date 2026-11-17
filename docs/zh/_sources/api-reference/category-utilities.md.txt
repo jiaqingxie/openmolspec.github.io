@@ -1,28 +1,5 @@
 # 工具函数
 
-| Module | Description |
-| --- | --- |
-| [openmolspec.analysis.analyze_dataset_comparison](module-analysis-analyze_dataset_comparison.md) | Build statistical analyses comparing OpenMolSpec with reference datasets. |
-| [openmolspec.analysis.plot_align_chemical_distribution](module-analysis-plot_align_chemical_distribution.md) | Visualize the chemical distribution of the molecule-unique align catalog. |
-| [openmolspec.analysis.plot_align_overview](module-analysis-plot_align_overview.md) | Draw the main OpenMolSpec Align overview figure. |
-| [openmolspec.analysis.plot_benchmark_overview](module-analysis-plot_benchmark_overview.md) | Draw the OpenMolSpec benchmark-utility overview figure. |
-| [openmolspec.analysis.plot_dataset_statistics](module-analysis-plot_dataset_statistics.md) | Compare OpenMolSpec with established QM and spectroscopy datasets. |
-| [openmolspec.analysis.plot_element_coverage](module-analysis-plot_element_coverage.md) | Plot documented element coverage of OpenMolSpec and public reference sets. |
-| [openmolspec.analysis.plot_openmolspec_overview](module-analysis-plot_openmolspec_overview.md) | Create a publication-style overview figure for OpenMolSpec. |
-| [openmolspec.analysis.visualize_opt_trajectory](module-analysis-visualize_opt_trajectory.md) | Visualize one molecular optimization trajectory as an animated GIF. |
-| [openmolspec.cli](module-cli.md) | OpenMolSpec staged data-production entry point. |
-| [openmolspec.core.processing](module-core-processing.md) | Shared structured processing results for the extraction CLIs. |
-| [openmolspec.core.progress](module-core-progress.md) | Progress reporting that stays readable in terminals and log files. |
-| [openmolspec.legacy.extract_nmr](module-legacy-extract_nmr.md) |  |
-| [openmolspec.legacy.extract_properties](module-legacy-extract_properties.md) | Extract structures and quantum-chemical properties from Gaussian logs. |
-| [openmolspec.legacy.extract_properties_backup](module-legacy-extract_properties_backup.md) | Compatibility backup entry point for the shared Gaussian parser. |
-| [openmolspec.legacy.extract_spectra](module-legacy-extract_spectra.md) | Extract structures, quantum properties, IR and Raman data from Gaussian logs. |
-| [openmolspec.legacy.function](module-legacy-function.md) |  |
-| [openmolspec.maintenance.parse_zinc_v2_nmr](module-maintenance-parse_zinc_v2_nmr.md) | Parse only the ZINCV2 NMR Gaussian logs. |
-| [openmolspec.plotting](module-plotting.md) | Shared Arial typography for scientific figures and molecular drawings. |
-| [openmolspec](module-openmolspec.md) | OpenMolSpec spectroscopy datasets, model interfaces and learning workflows. |
-
-
 ```{toctree}
 :hidden:
 :maxdepth: 2
@@ -47,3 +24,25 @@ module-maintenance-parse_zinc_v2_nmr
 module-plotting
 module-openmolspec
 ```
+
+| Module | Description |
+| --- | --- |
+| [openmolspec.analysis.analyze_dataset_comparison](module-analysis-analyze_dataset_comparison.md) | Build statistical analyses comparing OpenMolSpec with reference datasets. |
+| [openmolspec.analysis.plot_align_chemical_distribution](module-analysis-plot_align_chemical_distribution.md) | Visualize the chemical distribution of the molecule-unique align catalog. |
+| [openmolspec.analysis.plot_align_overview](module-analysis-plot_align_overview.md) | Draw the main OpenMolSpec Align overview figure. |
+| [openmolspec.analysis.plot_benchmark_overview](module-analysis-plot_benchmark_overview.md) | Draw the OpenMolSpec benchmark-utility overview figure. |
+| [openmolspec.analysis.plot_dataset_statistics](module-analysis-plot_dataset_statistics.md) | Compare OpenMolSpec with established QM and spectroscopy datasets. |
+| [openmolspec.analysis.plot_element_coverage](module-analysis-plot_element_coverage.md) | Plot documented element coverage of OpenMolSpec and public reference sets. |
+| [openmolspec.analysis.plot_openmolspec_overview](module-analysis-plot_openmolspec_overview.md) | Create a publication-style overview figure for OpenMolSpec. |
+| [openmolspec.analysis.visualize_opt_trajectory](module-analysis-visualize_opt_trajectory.md) | Visualize one molecular optimization trajectory as an animated GIF. |
+| [openmolspec.cli](module-cli.md) | OpenMolSpec staged data-production entry point. |
+| [openmolspec.core.processing](module-core-processing.md) | Shared structured processing results for the extraction CLIs. |
+| [openmolspec.core.progress](module-core-progress.md) | Progress reporting that stays readable in terminals and log files. |
+| [openmolspec.legacy.extract_nmr](module-legacy-extract_nmr.md) |  |
+| [openmolspec.legacy.extract_properties](module-legacy-extract_properties.md) | Extract structures and quantum-chemical properties from Gaussian logs. |
+| [openmolspec.legacy.extract_properties_backup](module-legacy-extract_properties_backup.md) | Compatibility backup entry point for the shared Gaussian parser. |
+| [openmolspec.legacy.extract_spectra](module-legacy-extract_spectra.md) | Extract structures, quantum properties, IR and Raman data from Gaussian logs. |
+| [openmolspec.legacy.function](module-legacy-function.md) |  |
+| [openmolspec.maintenance.parse_zinc_v2_nmr](module-maintenance-parse_zinc_v2_nmr.md) | Parse only the ZINCV2 NMR Gaussian logs. |
+| [openmolspec.plotting](module-plotting.md) | Shared Arial typography for scientific figures and molecular drawings. |
+| [openmolspec](module-openmolspec.md) | OpenMolSpec spectroscopy datasets, model interfaces and learning workflows. |

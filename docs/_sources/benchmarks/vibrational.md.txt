@@ -78,7 +78,7 @@ Compare IR and Raman separately using cosine similarity and intensity MAE.
 
 [Task guide](../tasks/vibrational-forward.md) · [Tutorial](../notebooks/vibrational-forward.ipynb) · [Predictions](../assets/examples/vibrational-forward.json)
 
-Run settings: 
+Run settings:
 
 | Dataset / scope | Model / variant | Metric | Value |
 | --- | --- | --- | ---: |

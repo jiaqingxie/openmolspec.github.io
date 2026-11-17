@@ -1,0 +1,100 @@
+{
+  "completed": true,
+  "datasets": {
+    "nmrspec_test": {
+      "spectra": 20000,
+      "molecules": 10000,
+      "identity_basis": "canonical isomeric SMILES",
+      "channels": [
+        "1H",
+        "13C"
+      ]
+    },
+    "nmrgym_test": {
+      "spectra": 20000,
+      "molecules": 10000,
+      "identity_basis": "canonical isomeric SMILES",
+      "channels": [
+        "1H",
+        "13C"
+      ]
+    },
+    "openspec_test": {
+      "spectra": 40780,
+      "molecules": 16728,
+      "identity_basis": "canonical isomeric SMILES",
+      "channels": [
+        "IR",
+        "Raman"
+      ]
+    },
+    "massspecgym_1_5": {
+      "spectra": 119029,
+      "molecules": 16974,
+      "identity_basis": "dataset InChIKey",
+      "channels": [
+        "MS/MS"
+      ]
+    },
+    "massbank_ms2": {
+      "spectra": 120512,
+      "molecules": 11699,
+      "identity_basis": "standard InChIKey",
+      "channels": [
+        "MS/MS"
+      ]
+    },
+    "nmrexp_hc": {
+      "spectra": 3091126,
+      "molecules": 1492268,
+      "identity_basis": "standard InChIKey",
+      "channels": [
+        "1H",
+        "13C"
+      ]
+    },
+    "qme14s_paired": {
+      "spectra": 368504,
+      "paired_records": 184252,
+      "molecules": 180073,
+      "identity_basis": "standard InChIKey",
+      "channels": [
+        "IR",
+        "Raman"
+      ]
+    }
+  },
+  "nmrexp_nuclei": {
+    "1H": {
+      "spectra": 1651798,
+      "molecules": 1417274
+    },
+    "13C": {
+      "spectra": 1439328,
+      "molecules": 1265481
+    },
+    "11B": {
+      "spectra": 16871,
+      "molecules": 15242
+    },
+    "19F": {
+      "spectra": 195070,
+      "molecules": 179277
+    },
+    "29Si": {
+      "spectra": 2384,
+      "molecules": 2310
+    },
+    "31P": {
+      "spectra": 32889,
+      "molecules": 30031
+    }
+  },
+  "counting": "Each spectral channel is counted separately; molecules are deduplicated within exactly the same selected records.",
+  "source_reports": {
+    "documentation/assets/dataset_audit.json": "1f2b07814c07f336763c17468fae9698c7b7c5e2f2e9b220f049d395b8aae9bc",
+    "results/external_data_census_20261117.json": "54946511a75f157e9b2198486df0d67ac5e16226e1e5fe245f1b73636a7004bf",
+    "results/massbank_spectrum_qualification_20261117.json": "68e3976357f714d56c916624c29468311dfc7d7051355fbed51022dc3060cd84",
+    "results/qme14s_alignment_20261117.json": "f89d9507057b54d7d216e9369eb52188bb5d193518cacaae69a4bc9882fa3d4c"
+  }
+}

@@ -14,7 +14,7 @@
 
   
     <link rel="shortcut icon" href="../_static/mark.svg"/>
-    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/notebooks/nmr-retrieval-h-m2s.html" />
+    <link rel="canonical" href="https://openmolspec.readthedocs.io/en/latest/notebooks/nmr-retrieval-h-m2s.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=f2a433a1"></script>
@@ -60,55 +60,60 @@
 <li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="datasets-overview.html">Exploring the spectroscopy datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-annotation-magma.html">MS/MS fragment annotation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-forward-glacier.html">MS/MS prediction with GLACIER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-forward-iceberg.html">MS/MS prediction with ICEBERG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-assignment.html">Peak-to-atom assignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-11B.html">11B chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-13C.html">13C chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-19F.html">19F chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-1H.html">1H chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-29Si.html">29Si chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-31P.html">31P chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-generation-c.html">Structure elucidation from ¹³C NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-generation-h.html">Structure elucidation from ¹H NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-generation-hc.html">Structure elucidation from ¹H + ¹³C NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-c-m2s.html">Structure-to-spectrum retrieval: ¹³C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-c-s2m.html">Spectrum-to-structure retrieval: ¹³C</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Structure-to-spectrum retrieval: ¹H</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#inputs-and-outputs">Inputs and outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate-the-predictions">Evaluate the predictions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualize-the-result">Visualize the result</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-model">Run the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-h-s2m.html">Spectrum-to-structure retrieval: ¹H</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-hc-m2s.html">Structure-to-spectrum retrieval: ¹H + ¹³C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-hc-s2m.html">Spectrum-to-structure retrieval: ¹H + ¹³C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-solvent_transfer.html">Cross-solvent chemical shift transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk-inference.html">Python SDK: real NMR inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk-training-preflight.html">Training data preparation and preflight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking.html">Candidate reranking: IR + Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking-hc.html">Candidate reranking: IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory-ms-isotopes.html">Mass spectrometry: isotope envelopes and resolving power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory-nmr-fourier.html">NMR: from a free induction decay to a spectrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory-nmr-inversion.html">NMR inversion: recovering a relaxation distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory-vibrational-broadening.html">IR and Raman: normal modes and spectral broadening</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-forward.html">IR and Raman from a molecular geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-gap-ir.html">HOMO–LUMO gap from IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-gap-ir_raman.html">HOMO–LUMO gap from IR + Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-gap-ir_raman_hc.html">HOMO–LUMO gap from IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-gap-raman.html">HOMO–LUMO gap from Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-generation.html">Structure generation: IR + Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-generation-hc.html">Structure generation: IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval.html">Structure retrieval: IR + Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-hc.html">Structure retrieval: IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#theory-simulations">Theory simulations / 理论模拟</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#nmr">NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#mass-spectrometry">Mass spectrometry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman">IR / Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#multimodal-spectroscopy">Multimodal spectroscopy</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#deferred-tasks">Deferred tasks</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="datasets-overview.html">Exploring the spectroscopy datasets</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ms-annotation-magma.html">MS/MS fragment annotation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ms-forward-glacier.html">MS/MS prediction with GLACIER</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ms-forward-iceberg.html">MS/MS prediction with ICEBERG</a></li>
-<li class="toctree-l3"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-assignment.html">Peak-to-atom assignment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-generation-c.html">Structure elucidation from ¹³C NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">Structure elucidation from ¹H NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-generation-hc.html">Structure elucidation from ¹H + ¹³C NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-m2s.html">Structure-to-spectrum retrieval: ¹³C</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-s2m.html">Spectrum-to-structure retrieval: ¹³C</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Structure-to-spectrum retrieval: ¹H</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">Spectrum-to-structure retrieval: ¹H</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-m2s.html">Structure-to-spectrum retrieval: ¹H + ¹³C</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-s2m.html">Spectrum-to-structure retrieval: ¹H + ¹³C</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-solvent_transfer.html">Cross-solvent chemical shift transfer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sdk-inference.html">Python SDK: real NMR inference</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sdk-training-preflight.html">Training data preparation and preflight</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking.html">Candidate reranking: IR + Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking-hc.html">Candidate reranking: IR + Raman + NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="theory-ms-isotopes.html">Mass spectrometry: isotope envelopes and resolving power</a></li>
-<li class="toctree-l3"><a class="reference internal" href="theory-nmr-fourier.html">NMR: from a free induction decay to a spectrum</a></li>
-<li class="toctree-l3"><a class="reference internal" href="theory-nmr-inversion.html">NMR inversion: recovering a relaxation distribution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="theory-vibrational-broadening.html">IR and Raman: normal modes and spectral broadening</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-forward.html">IR and Raman from a molecular geometry</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir.html">HOMO–LUMO gap from IR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman.html">HOMO–LUMO gap from IR + Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman_hc.html">HOMO–LUMO gap from IR + Raman + NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-raman.html">HOMO–LUMO gap from Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-generation.html">Structure generation: IR + Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-generation-hc.html">Structure generation: IR + Raman + NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval.html">Structure retrieval: IR + Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-hc.html">Structure retrieval: IR + Raman + NMR</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#deferred-tasks">Deferred tasks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Spectroscopy theory</a></li>

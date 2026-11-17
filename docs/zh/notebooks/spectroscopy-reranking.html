@@ -14,7 +14,7 @@
 
   
     <link rel="shortcut icon" href="../_static/mark.svg"/>
-    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/notebooks/spectroscopy-reranking.html" />
+    <link rel="canonical" href="https://openmolspec.readthedocs.io/en/latest/zh/notebooks/spectroscopy-reranking.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=f115507d"></script>
@@ -61,55 +61,60 @@
 <li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="datasets-overview.html">探索谱学数据集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-annotation-magma.html">MS/MS 碎片指认</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-forward-glacier.html">使用 GLACIER 预测 MS/MS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-forward-iceberg.html">使用 ICEBERG 预测 MS/MS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-assignment.html">峰到原子的指认</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-11B.html">11B 化学位移预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-13C.html">13C 化学位移预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-19F.html">19F 化学位移预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-1H.html">1H 化学位移预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-29Si.html">29Si 化学位移预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-31P.html">31P 化学位移预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-generation-c.html">从 ¹³C NMR 解析结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-generation-h.html">从 ¹H NMR 解析结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-generation-hc.html">从 ¹H + ¹³C NMR 解析结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-c-m2s.html">结构到谱检索：¹³C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-c-s2m.html">谱到结构检索：¹³C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-h-m2s.html">结构到谱检索：¹H</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-h-s2m.html">谱到结构检索：¹H</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-hc-m2s.html">结构到谱检索：¹H + ¹³C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-hc-s2m.html">谱到结构检索：¹H + ¹³C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-solvent_transfer.html">跨溶剂化学位移迁移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk-inference.html">Python SDK：真实 NMR 推理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk-training-preflight.html">训练数据准备与启动前检查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">候选重排：IR + Raman</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">输入与输出</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">评估预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">查看结果图</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">运行模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking-hc.html">候选重排：IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory-ms-isotopes.html">质谱：同位素包络与分辨率</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory-nmr-fourier.html">NMR：从自由感应衰减到频谱</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory-nmr-inversion.html">NMR 反演：恢复弛豫时间分布</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory-vibrational-broadening.html">IR 与 Raman：简正模式和谱线展宽</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-forward.html">从分子构象预测 IR 与 Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-gap-ir.html">由 IR 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-gap-ir_raman.html">由 IR + Raman 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-gap-ir_raman_hc.html">由 IR + Raman + NMR 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-gap-raman.html">由 Raman 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-generation.html">结构生成：IR + Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-generation-hc.html">结构生成：IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval.html">结构检索：IR + Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-hc.html">结构检索：IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#theory-simulations">Theory simulations / 理论模拟</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#nmr">核磁共振 NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ms">质谱 MS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman">红外 / 拉曼 IR / Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#id2">多谱联合</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#id3">暂不推进</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="datasets-overview.html">探索谱学数据集</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ms-annotation-magma.html">MS/MS 碎片指认</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ms-forward-glacier.html">使用 GLACIER 预测 MS/MS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ms-forward-iceberg.html">使用 ICEBERG 预测 MS/MS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-assignment.html">峰到原子的指认</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-generation-c.html">从 ¹³C NMR 解析结构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">从 ¹H NMR 解析结构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-generation-hc.html">从 ¹H + ¹³C NMR 解析结构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-m2s.html">结构到谱检索：¹³C</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-s2m.html">谱到结构检索：¹³C</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">结构到谱检索：¹H</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">谱到结构检索：¹H</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-m2s.html">结构到谱检索：¹H + ¹³C</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-s2m.html">谱到结构检索：¹H + ¹³C</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-solvent_transfer.html">跨溶剂化学位移迁移</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sdk-inference.html">Python SDK：真实 NMR 推理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sdk-training-preflight.html">训练数据准备与启动前检查</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">候选重排：IR + Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking-hc.html">候选重排：IR + Raman + NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="theory-ms-isotopes.html">质谱：同位素包络与分辨率</a></li>
-<li class="toctree-l3"><a class="reference internal" href="theory-nmr-fourier.html">NMR：从自由感应衰减到频谱</a></li>
-<li class="toctree-l3"><a class="reference internal" href="theory-nmr-inversion.html">NMR 反演：恢复弛豫时间分布</a></li>
-<li class="toctree-l3"><a class="reference internal" href="theory-vibrational-broadening.html">IR 与 Raman：简正模式和谱线展宽</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-forward.html">从分子构象预测 IR 与 Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir.html">由 IR 预测 HOMO–LUMO 能隙</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman.html">由 IR + Raman 预测 HOMO–LUMO 能隙</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman_hc.html">由 IR + Raman + NMR 预测 HOMO–LUMO 能隙</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-raman.html">由 Raman 预测 HOMO–LUMO 能隙</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-generation.html">结构生成：IR + Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-generation-hc.html">结构生成：IR + Raman + NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval.html">结构检索：IR + Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-hc.html">结构检索：IR + Raman + NMR</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id3">暂不推进</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../theory/index.html">谱学理论</a></li>

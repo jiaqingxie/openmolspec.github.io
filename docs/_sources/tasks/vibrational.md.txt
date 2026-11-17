@@ -1,18 +1,5 @@
 # IR / Raman
 
-Choose a task to see its purpose, inputs, outputs, model call and examples.
-
-| Task / input → output | Task ID |
-| --- | --- |
-| [HOMO–LUMO gap from IR](vibrational-gap-ir.md) | `vibrational.gap.ir` |
-| [HOMO–LUMO gap from Raman](vibrational-gap-raman.md) | `vibrational.gap.raman` |
-| [HOMO–LUMO gap from IR + Raman](vibrational-gap-ir_raman.md) | `vibrational.gap.ir_raman` |
-| [IR and Raman from a molecular geometry](vibrational-forward.md) | `vibrational.forward` |
-| [Structure retrieval: IR + Raman](vibrational-retrieval.md) | `vibrational.retrieval` |
-| [Structure generation: IR + Raman](vibrational-generation.md) | `vibrational.generation` |
-| [Candidate reranking: IR + Raman](spectroscopy-reranking.md) | `spectroscopy.reranking` |
-
-
 ```{toctree}
 :hidden:
 :maxdepth: 2
@@ -25,3 +12,15 @@ vibrational-retrieval
 vibrational-generation
 spectroscopy-reranking
 ```
+
+Choose a task to see its purpose, inputs, outputs, model call and examples.
+
+| Task / input → output | Task ID |
+| --- | --- |
+| [HOMO–LUMO gap from IR](vibrational-gap-ir.md) | `vibrational.gap.ir` |
+| [HOMO–LUMO gap from Raman](vibrational-gap-raman.md) | `vibrational.gap.raman` |
+| [HOMO–LUMO gap from IR + Raman](vibrational-gap-ir_raman.md) | `vibrational.gap.ir_raman` |
+| [IR and Raman from a molecular geometry](vibrational-forward.md) | `vibrational.forward` |
+| [Structure retrieval: IR + Raman](vibrational-retrieval.md) | `vibrational.retrieval` |
+| [Structure generation: IR + Raman](vibrational-generation.md) | `vibrational.generation` |
+| [Candidate reranking: IR + Raman](spectroscopy-reranking.md) | `spectroscopy.reranking` |

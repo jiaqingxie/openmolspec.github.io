@@ -38,64 +38,64 @@
 ```json
 {
   "input": {
-    "smiles": "C/C1=C\\[C@@H](C)C/C=C/[C@H]2[C@@H]3O[C@]3(C)[C@@H](C)[C@H]3[C@H](Cc4c[nH]c5ccccc45)NC(=O)[C@]32C(=O)/C=C/C(=O)[C@@H]1O",
-    "adduct": "[M+Na]+",
-    "collision_energy": "35.0",
-    "instrument": "Orbitrap",
-    "precursor_mz": 551.2511
+    "smiles": "CC(C)(C)c1ccc(C(=O)CCCN2CCC(OC(c3ccccc3)c3ccccc3)CC2)cc1",
+    "adduct": "[M+H]+",
+    "collision_energy": "40.0",
+    "instrument": "QTOF",
+    "precursor_mz": 470.3054
   },
-  "sample_id": "MassSpecGymID0000403",
+  "sample_id": "MassSpecGymID0028855",
   "output": {
     "predicted_peaks_top100": {
       "length": 100,
       "first_values": [
         [
-          67.0542266590246,
-          0.011822191998362541
+          55.05422667404919,
+          0.0020994183141738176
         ],
         [
-          81.06987672302459,
-          0.16171321272850037
+          57.069876707999995,
+          0.008048541843891144
         ],
         [
-          83.0491412790246,
-          0.008260359987616539
+          70.065125676,
+          0.0050727734342217445
         ],
         [
-          83.0855267569754,
-          0.0016736892284825444
+          82.06512569102459,
+          0.0035072911996394396
         ]
       ]
     }
   },
   "reference": {
     "observed_peaks": {
-      "length": 12,
+      "length": 14,
       "first_values": [
         [
-          160.0366,
-          0.03803803803803804
+          152.0611,
+          0.036036036036036036
         ],
         [
-          240.0992,
-          0.03803803803803804
+          161.0953,
+          0.1831831831831832
         ],
         [
-          287.1152,
-          0.04704704704704705
+          162.0985,
+          0.021021021021021023
         ],
         [
-          289.0945,
-          0.042042042042042045
+          165.069,
+          0.04104104104104104
         ]
       ]
     }
   },
   "metrics": {
-    "cosine_similarity": 0.029863639020685673,
-    "entropy_similarity": 0.03731316551570296,
+    "cosine_similarity": 0.8689625892568168,
+    "entropy_similarity": 0.7960058641892032,
     "predicted_nonzero_bins": 100,
-    "reference_nonzero_bins": 12
+    "reference_nonzero_bins": 14
   }
 }
 ```

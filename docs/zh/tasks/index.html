@@ -14,7 +14,7 @@
 
   
     <link rel="shortcut icon" href="../_static/mark.svg"/>
-    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/tasks/index.html" />
+    <link rel="canonical" href="https://openmolspec.readthedocs.io/en/latest/zh/tasks/index.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=f115507d"></script>
@@ -58,18 +58,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">按谱型浏览任务</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nmr.html">核磁共振 NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms.html">质谱 MS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational.html">红外 / 拉曼 IR / Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multimodal.html">多谱联合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deferred.html">暂不推进</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nmr"><span class="xref myst">核磁共振 NMR</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ms"><span class="xref myst">质谱 MS</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ir-raman"><span class="xref myst">红外 / 拉曼 IR / Raman</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2"><span class="xref myst">多谱联合</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3"><span class="xref myst">暂不推进</span></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="nmr.html">核磁共振 NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ms.html">质谱 MS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational.html">红外 / 拉曼 IR / Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="multimodal.html">多谱联合</a></li>
-<li class="toctree-l3"><a class="reference internal" href="deferred.html">暂不推进</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#id3"><span class="xref myst">暂不推进</span></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
@@ -114,6 +112,8 @@
   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>按谱型浏览任务<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p>先按手头的信息选择：NMR 峰、MS/MS 峰、分子构象，或多种谱联合。每个任务页面说明解决什么问题、输入字段、输出字段，并展示真实运行案例。</p>
 <section id="nmr">
 <h2><a class="reference internal" href="nmr.html"><span class="std std-doc">核磁共振 NMR</span></a><a class="headerlink" href="#nmr" title="Link to this heading"></a></h2>
@@ -127,71 +127,71 @@
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.forward.1H</span></code></p></td>
 <td><p>1H</p></td>
-<td><p><a class="reference internal" href="nmr-forward-1H.html"><span class="std std-doc">结构 → 1H 峰列表</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-forward-1H.html"><span class="std std-doc">1H 化学位移预测</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.forward.13C</span></code></p></td>
 <td><p>13C</p></td>
-<td><p><a class="reference internal" href="nmr-forward-13C.html"><span class="std std-doc">结构 → 13C 峰列表</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-forward-13C.html"><span class="std std-doc">13C 化学位移预测</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.forward.19F</span></code></p></td>
 <td><p>19F</p></td>
-<td><p><a class="reference internal" href="nmr-forward-19F.html"><span class="std std-doc">结构 → 19F 峰列表</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-forward-19F.html"><span class="std std-doc">19F 化学位移预测</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.forward.31P</span></code></p></td>
 <td><p>31P</p></td>
-<td><p><a class="reference internal" href="nmr-forward-31P.html"><span class="std std-doc">结构 → 31P 峰列表</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-forward-31P.html"><span class="std std-doc">31P 化学位移预测</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.forward.11B</span></code></p></td>
 <td><p>11B</p></td>
-<td><p><a class="reference internal" href="nmr-forward-11B.html"><span class="std std-doc">结构 → 11B 峰列表</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-forward-11B.html"><span class="std std-doc">11B 化学位移预测</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.forward.29Si</span></code></p></td>
 <td><p>29Si</p></td>
-<td><p><a class="reference internal" href="nmr-forward-29Si.html"><span class="std std-doc">结构 → 29Si 峰列表</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-forward-29Si.html"><span class="std std-doc">29Si 化学位移预测</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.h.s2m</span></code></p></td>
 <td><p>1H</p></td>
-<td><p><a class="reference internal" href="nmr-retrieval-h-s2m.html"><span class="std std-doc">谱图 → 结构检索 · H</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-retrieval-h-s2m.html"><span class="std std-doc">谱到结构检索：¹H</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.h.m2s</span></code></p></td>
 <td><p>1H</p></td>
-<td><p><a class="reference internal" href="nmr-retrieval-h-m2s.html"><span class="std std-doc">结构 → 谱图检索 · H</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-retrieval-h-m2s.html"><span class="std std-doc">结构到谱检索：¹H</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.generation.h</span></code></p></td>
 <td><p>1H</p></td>
-<td><p><a class="reference internal" href="nmr-generation-h.html"><span class="std std-doc">谱图 → SMILES · H</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-generation-h.html"><span class="std std-doc">从 ¹H NMR 解析结构</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.c.s2m</span></code></p></td>
 <td><p>13C</p></td>
-<td><p><a class="reference internal" href="nmr-retrieval-c-s2m.html"><span class="std std-doc">谱图 → 结构检索 · C</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-retrieval-c-s2m.html"><span class="std std-doc">谱到结构检索：¹³C</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.c.m2s</span></code></p></td>
 <td><p>13C</p></td>
-<td><p><a class="reference internal" href="nmr-retrieval-c-m2s.html"><span class="std std-doc">结构 → 谱图检索 · C</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-retrieval-c-m2s.html"><span class="std std-doc">结构到谱检索：¹³C</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.generation.c</span></code></p></td>
 <td><p>13C</p></td>
-<td><p><a class="reference internal" href="nmr-generation-c.html"><span class="std std-doc">谱图 → SMILES · C</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-generation-c.html"><span class="std std-doc">从 ¹³C NMR 解析结构</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.hc.s2m</span></code></p></td>
 <td><p>1H, 13C</p></td>
-<td><p><a class="reference internal" href="nmr-retrieval-hc-s2m.html"><span class="std std-doc">谱图 → 结构检索 · HC</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-retrieval-hc-s2m.html"><span class="std std-doc">谱到结构检索：¹H + ¹³C</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.hc.m2s</span></code></p></td>
 <td><p>1H, 13C</p></td>
-<td><p><a class="reference internal" href="nmr-retrieval-hc-m2s.html"><span class="std std-doc">结构 → 谱图检索 · HC</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-retrieval-hc-m2s.html"><span class="std std-doc">结构到谱检索：¹H + ¹³C</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.generation.hc</span></code></p></td>
 <td><p>1H, 13C</p></td>
-<td><p><a class="reference internal" href="nmr-generation-hc.html"><span class="std std-doc">谱图 → SMILES · HC</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-generation-hc.html"><span class="std std-doc">从 ¹H + ¹³C NMR 解析结构</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.assignment</span></code></p></td>
 <td><p>1H, 13C</p></td>
-<td><p><a class="reference internal" href="nmr-assignment.html"><span class="std std-doc">H/C 峰 → 原子指认</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-assignment.html"><span class="std std-doc">峰到原子的指认</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.solvent_transfer</span></code></p></td>
 <td><p>1H, 13C</p></td>
-<td><p><a class="reference internal" href="nmr-solvent_transfer.html"><span class="std std-doc">H/C 跨溶剂位移 · 参考检索基线</span></a></p></td>
+<td><p><a class="reference internal" href="nmr-solvent_transfer.html"><span class="std std-doc">跨溶剂化学位移迁移</span></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -208,15 +208,15 @@
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ms.forward.glacier</span></code></p></td>
 <td><p>MS/MS</p></td>
-<td><p><a class="reference internal" href="ms-forward-glacier.html"><span class="std std-doc">分子 → MS/MS（GLACIER）</span></a></p></td>
+<td><p><a class="reference internal" href="ms-forward-glacier.html"><span class="std std-doc">使用 GLACIER 预测 MS/MS</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ms.forward.iceberg</span></code></p></td>
 <td><p>MS/MS</p></td>
-<td><p><a class="reference internal" href="ms-forward-iceberg.html"><span class="std std-doc">分子 → MS/MS（ICEBERG）</span></a></p></td>
+<td><p><a class="reference internal" href="ms-forward-iceberg.html"><span class="std std-doc">使用 ICEBERG 预测 MS/MS</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ms.annotation.magma</span></code></p></td>
 <td><p>MS/MS</p></td>
-<td><p><a class="reference internal" href="ms-annotation-magma.html"><span class="std std-doc">MS/MS 峰 → MAGMa 候选碎片标注</span></a></p></td>
+<td><p><a class="reference internal" href="ms-annotation-magma.html"><span class="std std-doc">MS/MS 碎片指认</span></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -233,31 +233,31 @@
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vibrational.gap.ir</span></code></p></td>
 <td><p>IR</p></td>
-<td><p><a class="reference internal" href="vibrational-gap-ir.html"><span class="std std-doc">IR → HOMO–LUMO gap</span></a></p></td>
+<td><p><a class="reference internal" href="vibrational-gap-ir.html"><span class="std std-doc">由 IR 预测 HOMO–LUMO 能隙</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vibrational.gap.raman</span></code></p></td>
 <td><p>RAMAN</p></td>
-<td><p><a class="reference internal" href="vibrational-gap-raman.html"><span class="std std-doc">RAMAN → HOMO–LUMO gap</span></a></p></td>
+<td><p><a class="reference internal" href="vibrational-gap-raman.html"><span class="std std-doc">由 Raman 预测 HOMO–LUMO 能隙</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vibrational.gap.ir_raman</span></code></p></td>
 <td><p>IR, RAMAN</p></td>
-<td><p><a class="reference internal" href="vibrational-gap-ir_raman.html"><span class="std std-doc">IR_RAMAN → HOMO–LUMO gap</span></a></p></td>
+<td><p><a class="reference internal" href="vibrational-gap-ir_raman.html"><span class="std std-doc">由 IR + Raman 预测 HOMO–LUMO 能隙</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vibrational.forward</span></code></p></td>
 <td><p>IR, Raman</p></td>
-<td><p><a class="reference internal" href="vibrational-forward.html"><span class="std std-doc">构象 → IR / Raman</span></a></p></td>
+<td><p><a class="reference internal" href="vibrational-forward.html"><span class="std std-doc">从分子构象预测 IR 与 Raman</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vibrational.retrieval</span></code></p></td>
 <td><p>IR, Raman</p></td>
-<td><p><a class="reference internal" href="vibrational-retrieval.html"><span class="std std-doc">IR / Raman → 结构检索</span></a></p></td>
+<td><p><a class="reference internal" href="vibrational-retrieval.html"><span class="std std-doc">结构检索：IR + Raman</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vibrational.generation</span></code></p></td>
 <td><p>IR, Raman</p></td>
-<td><p><a class="reference internal" href="vibrational-generation.html"><span class="std std-doc">IR / Raman → SMILES</span></a></p></td>
+<td><p><a class="reference internal" href="vibrational-generation.html"><span class="std std-doc">结构生成：IR + Raman</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spectroscopy.reranking</span></code></p></td>
 <td><p>IR, Raman</p></td>
-<td><p><a class="reference internal" href="spectroscopy-reranking.html"><span class="std std-doc">谱图 + 候选结构 → 重排</span></a></p></td>
+<td><p><a class="reference internal" href="spectroscopy-reranking.html"><span class="std std-doc">候选重排：IR + Raman</span></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -274,19 +274,19 @@
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vibrational.gap.ir_raman_hc</span></code></p></td>
 <td><p>IR, Raman, 1H, 13C</p></td>
-<td><p><a class="reference internal" href="vibrational-gap-ir_raman_hc.html"><span class="std std-doc">IR + Raman + H/C NMR → HOMO–LUMO gap</span></a></p></td>
+<td><p><a class="reference internal" href="vibrational-gap-ir_raman_hc.html"><span class="std std-doc">由 IR + Raman + NMR 预测 HOMO–LUMO 能隙</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vibrational.retrieval.hc</span></code></p></td>
 <td><p>IR, Raman, 1H, 13C</p></td>
-<td><p><a class="reference internal" href="vibrational-retrieval-hc.html"><span class="std std-doc">IR + Raman + H/C → 结构检索</span></a></p></td>
+<td><p><a class="reference internal" href="vibrational-retrieval-hc.html"><span class="std std-doc">结构检索：IR + Raman + NMR</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vibrational.generation.hc</span></code></p></td>
 <td><p>IR, Raman, 1H, 13C</p></td>
-<td><p><a class="reference internal" href="vibrational-generation-hc.html"><span class="std std-doc">IR + Raman + H/C → SMILES（Xinyu 协议）</span></a></p></td>
+<td><p><a class="reference internal" href="vibrational-generation-hc.html"><span class="std std-doc">结构生成：IR + Raman + NMR</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spectroscopy.reranking.hc</span></code></p></td>
 <td><p>IR, Raman, 1H, 13C</p></td>
-<td><p><a class="reference internal" href="spectroscopy-reranking-hc.html"><span class="std std-doc">IR + Raman + H/C + 候选 → ITM 重排</span></a></p></td>
+<td><p><a class="reference internal" href="spectroscopy-reranking-hc.html"><span class="std std-doc">候选重排：IR + Raman + NMR</span></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -315,8 +315,6 @@
 </tr>
 </tbody>
 </table>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 </section>
 

@@ -1,19 +1,31 @@
 # 数据
 
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+nmr
+ms
+vibrational
+multimodal
+splits
+comparison
+```
+
 通过统一的数据接口加载实验测量与计算光谱。本节介绍清洗后可用的数据、字段、实验条件，以及训练、验证和测试文件。
 
 ## OpenMolSpec 实验数据集
 
-| 数据集 | 分类 | 内容描述 | 清洗后可用数量 |
-| --- | --- | --- | --- |
-| [H/C NMR](nmr.md) | 实验 NMR | 氢碳化学位移、结构、分子式、谱文本与采集信息。 | 2,678,511 个分子 |
-| [11B](nmr.md) | 实验 | 硼化学位移及含硼分子结构。 | 1,140 条谱; 1,017 个分子 |
-| [19F](nmr.md) | 实验 | 氟化学位移及含氟分子结构。 | 56,679 条谱; 50,402 个分子 |
-| [29Si](nmr.md) | 实验 | 硅化学位移及含硅分子结构。 | 726 条谱; 636 个分子 |
-| [31P](nmr.md) | 实验 | 磷化学位移及含磷分子结构。 | 21,662 条谱; 18,238 个分子 |
-| [MS](ms.md) | 实验 | 数值化 m/z–强度峰表及对应分子结构。 | 5,233 条谱; 4,980 个分子 |
-| [IR](vibrational.md) | 实验 | 实验红外峰位置及对应分子结构。 | 177,759 条谱; 168,197 个分子 |
-| [Raman](vibrational.md) | 实验 | 实验拉曼峰位置及对应分子结构。 | 42 条谱; 39 个分子 |
+| 数据集 | 分类 | 内容描述 | 谱数量 | 分子数量 |
+| --- | --- | --- | --- | --- |
+| [H/C NMR](nmr.md) | 实验 NMR | 氢碳化学位移、结构、分子式、谱文本与采集信息。 | 2,972,843 | 2,678,511 |
+| [11B](nmr.md) | 实验 | 硼化学位移及含硼分子结构。 | 1,140 | 1,017 |
+| [19F](nmr.md) | 实验 | 氟化学位移及含氟分子结构。 | 56,679 | 50,402 |
+| [29Si](nmr.md) | 实验 | 硅化学位移及含硅分子结构。 | 726 | 636 |
+| [31P](nmr.md) | 实验 | 磷化学位移及含磷分子结构。 | 21,662 | 18,238 |
+| [MS](ms.md) | 实验 | 数值化 m/z–强度峰表及对应分子结构。 | 5,233 | 4,980 |
+| [IR](vibrational.md) | 实验 | 实验红外峰位置及对应分子结构。 | 177,759 | 168,197 |
+| [Raman](vibrational.md) | 实验 | 实验拉曼峰位置及对应分子结构。 | 42 | 39 |
 
 本数据集由 OpenDataLab / WanJuan MolSpectra v1.0.3 清洗整理。H/C 按标准分子身份组织，其他视图保留去重后的数值谱及实验条件。
 
@@ -25,20 +37,22 @@
 
 ## 外部实验资源
 
-| 数据集／视图 | 分类 | 内容描述 | 可用条目 |
-| --- | --- | --- | --- |
-| NMRexp v2 | NMR | 按核种整理的实验 NMR Parquet 视图，数量见核种表。 | [NMR](nmr.md) |
-| NMRSpec / NMRTrans | NMR | 用于谱结构检索、结构生成的 H/C 谱与目标结构。 | 10,000 |
-| NMRGym | NMR | 实验 NMR 分子结构解析测试视图。 | 10,000 |
-| MassSpecGym v1.5 | MS/MS | 具有结构和采集字段、可用于前向预测的数值串联质谱。 | 119,029 |
-| MassBank | MS/MS | 含有效分子结构的数值 MS2 谱。 | 120,512 |
+| 数据集 | 分类 | 内容描述 | 谱数量 | 分子数量 |
+| --- | --- | --- | --- | --- |
+| [NMRexp v2 · H/C](nmr.md) | NMR | 具有有效分子结构的实验氢谱与碳谱。 | 3,091,126 | 1,492,268 |
+| NMRSpec / NMRTrans | NMR | 用于谱结构检索、结构生成的 H/C 谱与目标结构。 | 20,000 | 10,000 |
+| NMRGym | NMR | 实验 NMR 分子结构解析测试视图。 | 20,000 | 10,000 |
+| MassSpecGym v1.5 | MS/MS | 具有结构和采集字段、可用于前向预测的数值串联质谱。 | 119,029 | 16,974 |
+| MassBank | MS/MS | 含有效分子结构的数值 MS2 谱。 | 120,512 | 11,699 |
 
 ## 计算光谱
 
-| 数据集／视图 | 分类 | 内容描述 | 可用条目 |
-| --- | --- | --- | --- |
-| OpenMolSpec / openSpec test | IR / Raman / NMR | 配对光谱、分子结构和量子化学性质，用于多模态学习。 | 20,390 |
-| QMe14S | IR / Raman | 覆盖 14 种元素、两通道均为有限且非常数值的 IR/Raman 配对数组。 | 184,252 |
+| 数据集 | 分类 | 内容描述 | 谱数量 | 分子数量 |
+| --- | --- | --- | --- | --- |
+| OpenMolSpec / openSpec test | IR / Raman / NMR | 20,390 条计算记录对应的 IR/Raman 谱，附 H/C 位移及分子性质。 | 40,780 | 16,728 |
+| QMe14S | IR / Raman | 覆盖 14 种元素的 184,252 对有限、非常数 IR/Raman 谱。 | 368,504 | 180,073 |
+
+IR 与 Raman 每个通道分别计为一条谱，分子数量按同一视图的结构身份去重统计。[下载分列计数](../assets/dataset-counts.json)。
 
 ## 加载数据
 
@@ -64,16 +78,3 @@ paired = data["train"].select(modalities=["1H", "13C"])
 - Horai, H., Arita, M., Kanaya, S., et al. MassBank: a public repository for sharing mass spectral data for life sciences. Journal of Mass Spectrometry 45, 703–714 (2010). doi:10.1002/jms.1777. [Source](https://doi.org/10.1002/jms.1777)
 - Yuan, M., Zou, Z. & Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). [Source](https://arxiv.org/abs/2501.18876)
 - OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). [Source](https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0)
-
-
-```{toctree}
-:hidden:
-:maxdepth: 2
-
-nmr
-ms
-vibrational
-multimodal
-splits
-comparison
-```

@@ -14,7 +14,7 @@
 
   
     <link rel="shortcut icon" href="../_static/mark.svg"/>
-    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/data/index.html" />
+    <link rel="canonical" href="https://openmolspec.readthedocs.io/en/latest/zh/data/index.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=f115507d"></script>
@@ -57,19 +57,17 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nmr.html">NMR 数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms.html">质谱数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational.html">IR 与 Raman 数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multimodal.html">多模态数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splits.html">数据集划分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comparison.html">实验数据集比较</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#openmolspec">OpenMolSpec 实验数据集</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">外部实验资源</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">计算光谱</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">加载数据</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">参考文献</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="nmr.html">NMR 数据</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ms.html">质谱数据</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational.html">IR 与 Raman 数据</a></li>
-<li class="toctree-l3"><a class="reference internal" href="multimodal.html">多模态数据</a></li>
-<li class="toctree-l3"><a class="reference internal" href="splits.html">数据集划分</a></li>
-<li class="toctree-l3"><a class="reference internal" href="comparison.html">实验数据集比较</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">参考文献</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">按谱型浏览任务</a></li>
@@ -115,6 +113,8 @@
   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>数据<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p>通过统一的数据接口加载实验测量与计算光谱。本节介绍清洗后可用的数据、字段、实验条件，以及训练、验证和测试文件。</p>
 <section id="openmolspec">
 <h2>OpenMolSpec 实验数据集<a class="headerlink" href="#openmolspec" title="Link to this heading"></a></h2>
@@ -123,49 +123,58 @@
 <tr class="row-odd"><th class="head"><p>数据集</p></th>
 <th class="head"><p>分类</p></th>
 <th class="head"><p>内容描述</p></th>
-<th class="head"><p>清洗后可用数量</p></th>
+<th class="head"><p>谱数量</p></th>
+<th class="head"><p>分子数量</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">H/C NMR</span></a></p></td>
 <td><p>实验 NMR</p></td>
 <td><p>氢碳化学位移、结构、分子式、谱文本与采集信息。</p></td>
-<td><p>2,678,511 个分子</p></td>
+<td><p>2,972,843</p></td>
+<td><p>2,678,511</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">11B</span></a></p></td>
 <td><p>实验</p></td>
 <td><p>硼化学位移及含硼分子结构。</p></td>
-<td><p>1,140 条谱; 1,017 个分子</p></td>
+<td><p>1,140</p></td>
+<td><p>1,017</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">19F</span></a></p></td>
 <td><p>实验</p></td>
 <td><p>氟化学位移及含氟分子结构。</p></td>
-<td><p>56,679 条谱; 50,402 个分子</p></td>
+<td><p>56,679</p></td>
+<td><p>50,402</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">29Si</span></a></p></td>
 <td><p>实验</p></td>
 <td><p>硅化学位移及含硅分子结构。</p></td>
-<td><p>726 条谱; 636 个分子</p></td>
+<td><p>726</p></td>
+<td><p>636</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">31P</span></a></p></td>
 <td><p>实验</p></td>
 <td><p>磷化学位移及含磷分子结构。</p></td>
-<td><p>21,662 条谱; 18,238 个分子</p></td>
+<td><p>21,662</p></td>
+<td><p>18,238</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="ms.html"><span class="std std-doc">MS</span></a></p></td>
 <td><p>实验</p></td>
 <td><p>数值化 m/z–强度峰表及对应分子结构。</p></td>
-<td><p>5,233 条谱; 4,980 个分子</p></td>
+<td><p>5,233</p></td>
+<td><p>4,980</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="vibrational.html"><span class="std std-doc">IR</span></a></p></td>
 <td><p>实验</p></td>
 <td><p>实验红外峰位置及对应分子结构。</p></td>
-<td><p>177,759 条谱; 168,197 个分子</p></td>
+<td><p>177,759</p></td>
+<td><p>168,197</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="vibrational.html"><span class="std std-doc">Raman</span></a></p></td>
 <td><p>实验</p></td>
 <td><p>实验拉曼峰位置及对应分子结构。</p></td>
-<td><p>42 条谱; 39 个分子</p></td>
+<td><p>42</p></td>
+<td><p>39</p></td>
 </tr>
 </tbody>
 </table>
@@ -178,37 +187,43 @@
 <h2>外部实验资源<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>数据集／视图</p></th>
+<tr class="row-odd"><th class="head"><p>数据集</p></th>
 <th class="head"><p>分类</p></th>
 <th class="head"><p>内容描述</p></th>
-<th class="head"><p>可用条目</p></th>
+<th class="head"><p>谱数量</p></th>
+<th class="head"><p>分子数量</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>NMRexp v2</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">NMRexp v2 · H/C</span></a></p></td>
 <td><p>NMR</p></td>
-<td><p>按核种整理的实验 NMR Parquet 视图，数量见核种表。</p></td>
-<td><p><a class="reference internal" href="nmr.html"><span class="std std-doc">NMR</span></a></p></td>
+<td><p>具有有效分子结构的实验氢谱与碳谱。</p></td>
+<td><p>3,091,126</p></td>
+<td><p>1,492,268</p></td>
 </tr>
 <tr class="row-odd"><td><p>NMRSpec / NMRTrans</p></td>
 <td><p>NMR</p></td>
 <td><p>用于谱结构检索、结构生成的 H/C 谱与目标结构。</p></td>
+<td><p>20,000</p></td>
 <td><p>10,000</p></td>
 </tr>
 <tr class="row-even"><td><p>NMRGym</p></td>
 <td><p>NMR</p></td>
 <td><p>实验 NMR 分子结构解析测试视图。</p></td>
+<td><p>20,000</p></td>
 <td><p>10,000</p></td>
 </tr>
 <tr class="row-odd"><td><p>MassSpecGym v1.5</p></td>
 <td><p>MS/MS</p></td>
 <td><p>具有结构和采集字段、可用于前向预测的数值串联质谱。</p></td>
 <td><p>119,029</p></td>
+<td><p>16,974</p></td>
 </tr>
 <tr class="row-even"><td><p>MassBank</p></td>
 <td><p>MS/MS</p></td>
 <td><p>含有效分子结构的数值 MS2 谱。</p></td>
 <td><p>120,512</p></td>
+<td><p>11,699</p></td>
 </tr>
 </tbody>
 </table>
@@ -217,25 +232,29 @@
 <h2>计算光谱<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>数据集／视图</p></th>
+<tr class="row-odd"><th class="head"><p>数据集</p></th>
 <th class="head"><p>分类</p></th>
 <th class="head"><p>内容描述</p></th>
-<th class="head"><p>可用条目</p></th>
+<th class="head"><p>谱数量</p></th>
+<th class="head"><p>分子数量</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>OpenMolSpec / openSpec test</p></td>
 <td><p>IR / Raman / NMR</p></td>
-<td><p>配对光谱、分子结构和量子化学性质，用于多模态学习。</p></td>
-<td><p>20,390</p></td>
+<td><p>20,390 条计算记录对应的 IR/Raman 谱，附 H/C 位移及分子性质。</p></td>
+<td><p>40,780</p></td>
+<td><p>16,728</p></td>
 </tr>
 <tr class="row-odd"><td><p>QMe14S</p></td>
 <td><p>IR / Raman</p></td>
-<td><p>覆盖 14 种元素、两通道均为有限且非常数值的 IR/Raman 配对数组。</p></td>
-<td><p>184,252</p></td>
+<td><p>覆盖 14 种元素的 184,252 对有限、非常数 IR/Raman 谱。</p></td>
+<td><p>368,504</p></td>
+<td><p>180,073</p></td>
 </tr>
 </tbody>
 </table>
+<p>IR 与 Raman 每个通道分别计为一条谱，分子数量按同一视图的结构身份去重统计。<a class="reference download internal" download="" href="../_downloads/a7c533f438a487e4a20ca1d1d7738c7a/dataset-counts.json"><span class="xref download myst">下载分列计数</span></a>。</p>
 </section>
 <section id="id4">
 <h2>加载数据<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
@@ -262,8 +281,6 @@
 <li><p>Yuan, M., Zou, Z. &amp; Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). <a class="reference external" href="https://arxiv.org/abs/2501.18876">Source</a></p></li>
 <li><p>OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">Source</a></p></li>
 </ul>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 </section>
 

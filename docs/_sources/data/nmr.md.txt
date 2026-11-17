@@ -52,14 +52,14 @@ print(record["smiles"], record["peaks_ppm"])
 
 NMRexp provides experimental shifts extracted from the chemical literature in per-nucleus Parquet files. The filtered local views contain the following spectral records.
 
-| Nucleus | Spectral records |
-| --- | --- |
-| 1H | 1,651,821 |
-| 13C | 1,439,344 |
-| 19F | 195,077 |
-| 31P | 32,890 |
-| 11B | 16,871 |
-| 29Si | 2,385 |
+| Nucleus | Spectra | Molecules |
+| --- | --- | --- |
+| 1H | 1,651,798 | 1,417,274 |
+| 13C | 1,439,328 | 1,265,481 |
+| 19F | 195,070 | 179,277 |
+| 31P | 32,889 | 30,031 |
+| 11B | 16,871 | 15,242 |
+| 29Si | 2,384 | 2,310 |
 
 NMRSpec and NMRGym provide complementary test sets for spectral retrieval and structure elucidation. Load their prepared H/C JSONL views with `molspectra("nmrspec_test", root=...)` and `molspectra("nmrgym_test", root=...)`.
 

@@ -38,17 +38,17 @@ Inspect the input, prediction and reference for the example below. Download the 
 ```json
 {
   "input": {
-    "formula": "C22H28",
+    "formula": "C13H11N3O",
     "h_nmr": [
       {
         "type": "1H NMR",
-        "chemical_shift": "7.34 (s, 4H), 7.265 (m, 2H), 7.165 (m, 3H), 5.26 (d, J=1.6 Hz, 1H), 5.01 (t, J=1.4 Hz, 1H), 2.61 (t, J=7.8 Hz, 2H), 2.53 (t, J=7.6 Hz, 2H), 1.665 (m, 2H), 1.52 (d, J=7.7 Hz, 2H), 1.33 (s, 9H)"
+        "chemical_shift": "8.13 (d, J=8.2 Hz, 1H), 7.52 (m, 1H), 7.47 (m, 1H), 7.395 (m, 2H), 7.16 (m, 2H), 3.8 (s, 3H)"
       }
     ],
     "c_nmr": [
       {
         "type": "13C NMR",
-        "chemical_shift": "150.22, 148.03, 142.68, 138.28, 128.36, 128.22, 125.68, 125.58, 125.12, 111.51, 35.72, 35.03, 34.46, 31.32, 31.11, 27.93"
+        "chemical_shift": "153.75, 145.7, 134.13, 131.02, 128.17, 127.52, 125.38, 123.83, 121.12, 119.88, 112.43, 111.17, 55.85"
       }
     ],
     "modality_mask": [
@@ -56,41 +56,41 @@ Inspect the input, prediction and reference for the example below. Download the 
       1
     ]
   },
-  "reference_smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+  "reference_smiles": "COc1ccccc1-n1nnc2ccccc21",
   "candidates": {
     "length": 5,
     "first_values": [
       {
-        "smiles": "C=C(CCCCc1ccc(C(C)(C)C)cc1)c1ccccc1",
-        "canonical_smiles": "C=C(CCCCc1ccc(C(C)(C)C)cc1)c1ccccc1",
-        "score": -1.4133434984593123,
+        "smiles": "COc1ccccc1-n1nnc2ccccc21",
+        "canonical_smiles": "COc1ccccc1-n1nnc2ccccc21",
+        "score": -1.1338406825806828,
         "valid": true,
         "formula_match": true
       },
       {
-        "smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
-        "canonical_smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
-        "score": -1.5937606929851142,
+        "smiles": "COc1ccccc1-c1nnn2ccccc12",
+        "canonical_smiles": "COc1ccccc1-c1nnn2ccccc12",
+        "score": -1.6589541644720214,
         "valid": true,
         "formula_match": true
       },
       {
-        "smiles": "C=C(CCCc1ccc(C(C)(C)C)cc1)Cc1ccccc1",
-        "canonical_smiles": "C=C(CCCc1ccc(C(C)(C)C)cc1)Cc1ccccc1",
-        "score": -3.3677357960558183,
+        "smiles": "COc1ccc(-n2nnc3ccccc32)cc1",
+        "canonical_smiles": "COc1ccc(-n2nnc3ccccc32)cc1",
+        "score": -3.3182191402798367,
         "valid": true,
         "formula_match": true
       },
       {
-        "smiles": "C=C(CCCCc1ccccc1)CCCc1ccccc1",
-        "canonical_smiles": "C=C(CCCCc1ccccc1)CCCc1ccccc1",
-        "score": -2.710929739130215,
+        "smiles": "COc1ccccc1-c1nc2ccccc2[nH]1",
+        "canonical_smiles": "COc1ccccc1-c1nc2ccccc2[nH]1",
+        "score": -3.1824993170265827,
         "valid": true,
         "formula_match": false
       }
     ]
   },
-  "exact_match": false
+  "exact_match": true
 }
 ```
 

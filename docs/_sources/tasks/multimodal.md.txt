@@ -1,15 +1,5 @@
 # Multimodal spectroscopy
 
-Choose a task to see its purpose, inputs, outputs, model call and examples.
-
-| Task / input → output | Task ID |
-| --- | --- |
-| [HOMO–LUMO gap from IR + Raman + NMR](vibrational-gap-ir_raman_hc.md) | `vibrational.gap.ir_raman_hc` |
-| [Structure retrieval: IR + Raman + NMR](vibrational-retrieval-hc.md) | `vibrational.retrieval.hc` |
-| [Structure generation: IR + Raman + NMR](vibrational-generation-hc.md) | `vibrational.generation.hc` |
-| [Candidate reranking: IR + Raman + NMR](spectroscopy-reranking-hc.md) | `spectroscopy.reranking.hc` |
-
-
 ```{toctree}
 :hidden:
 :maxdepth: 2
@@ -19,3 +9,12 @@ vibrational-retrieval-hc
 vibrational-generation-hc
 spectroscopy-reranking-hc
 ```
+
+Choose a task to see its purpose, inputs, outputs, model call and examples.
+
+| Task / input → output | Task ID |
+| --- | --- |
+| [HOMO–LUMO gap from IR + Raman + NMR](vibrational-gap-ir_raman_hc.md) | `vibrational.gap.ir_raman_hc` |
+| [Structure retrieval: IR + Raman + NMR](vibrational-retrieval-hc.md) | `vibrational.retrieval.hc` |
+| [Structure generation: IR + Raman + NMR](vibrational-generation-hc.md) | `vibrational.generation.hc` |
+| [Candidate reranking: IR + Raman + NMR](spectroscopy-reranking-hc.md) | `spectroscopy.reranking.hc` |

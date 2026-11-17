@@ -1,5 +1,26 @@
 # OpenMolSpec
 
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+quickstart
+data/index
+tasks/index
+model-audit
+api
+notebooks/index
+theory/index
+inversion/index
+gallery
+harness
+api-reference/index
+benchmarks
+faq
+contributing
+citations
+```
+
 Chemical spectroscopy and deep learning
 
 OpenMolSpec is a Python library for working with molecular spectra. Load experimental and computed datasets, predict spectra and molecular properties, identify structures, and train models with your own data. It supports NMR, mass spectrometry, infrared and Raman spectroscopy.
@@ -27,13 +48,13 @@ Explore spectrum prediction, structure elucidation and property prediction in th
 
 ### [Structure elucidation from NMR](notebooks/nmr-generation-hc.ipynb)
 
-Generate molecular structures from proton and carbon NMR peaks.
+The top-ranked structure matches the reference molecule in this H/C NMR example.
 
 [![Structure elucidation from NMR](assets/gallery/nmr-generation-hc.png)](notebooks/nmr-generation-hc.ipynb)
 
 ### [Predicting tandem mass spectra](notebooks/ms-forward-glacier.ipynb)
 
-Predict fragment peaks and intensities from a molecule and its acquisition conditions.
+Compare GLACIER predictions with 14 measured peaks: cosine similarity 0.869 and entropy similarity 0.796.
 
 [![Predicting tandem mass spectra](assets/gallery/ms-forward-glacier.png)](notebooks/ms-forward-glacier.ipynb)
 
@@ -68,25 +89,3 @@ Explore the molecular structure in 3D alongside the dataset orbital energies and
 - [API reference](api-reference/index.md): Classes, functions, arguments, return values and examples.
 - [Benchmarks](benchmarks.md): Benchmark datasets, protocols, metrics and results.
 - [Agent Harness](harness.md): Use spectroscopy tools from Python, the command line or an agent.
-
-
-```{toctree}
-:hidden:
-:maxdepth: 2
-
-quickstart
-data/index
-tasks/index
-model-audit
-api
-notebooks/index
-theory/index
-inversion/index
-gallery
-harness
-api-reference/index
-benchmarks
-faq
-contributing
-citations
-```

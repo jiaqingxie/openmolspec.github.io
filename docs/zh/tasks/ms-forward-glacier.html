@@ -14,7 +14,7 @@
 
   
     <link rel="shortcut icon" href="../_static/mark.svg"/>
-    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/tasks/ms-forward-glacier.html" />
+    <link rel="canonical" href="https://openmolspec.readthedocs.io/en/latest/zh/tasks/ms-forward-glacier.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=f115507d"></script>
@@ -60,18 +60,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">按谱型浏览任务</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="nmr.html">核磁共振 NMR</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="ms.html">质谱 MS</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">使用 GLACIER 预测 MS/MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-forward-iceberg.html">使用 ICEBERG 预测 MS/MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-annotation-magma.html">MS/MS 碎片指认</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational.html">红外 / 拉曼 IR / Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multimodal.html">多谱联合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deferred.html">暂不推进</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#nmr"><span class="xref myst">核磁共振 NMR</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ms"><span class="xref myst">质谱 MS</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman"><span class="xref myst">红外 / 拉曼 IR / Raman</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#id2"><span class="xref myst">多谱联合</span></a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#id3"><span class="xref myst">暂不推进</span></a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="nmr.html">核磁共振 NMR</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="ms.html">质谱 MS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational.html">红外 / 拉曼 IR / Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="multimodal.html">多谱联合</a></li>
-<li class="toctree-l3"><a class="reference internal" href="deferred.html">暂不推进</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id3"><span class="xref myst">暂不推进</span></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
@@ -173,64 +176,64 @@
 <details><summary>展开查看实际输入与输出字段</summary>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C/C1=C\\[C@@H](C)C/C=C/[C@H]2[C@@H]3O[C@]3(C)[C@@H](C)[C@H]3[C@H](Cc4c[nH]c5ccccc45)NC(=O)[C@]32C(=O)/C=C/C(=O)[C@@H]1O"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"adduct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[M+Na]+"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"collision_energy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35.0"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Orbitrap"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"precursor_mz"</span><span class="p">:</span><span class="w"> </span><span class="mf">551.2511</span>
+<span class="w">    </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CC(C)(C)c1ccc(C(=O)CCCN2CCC(OC(c3ccccc3)c3ccccc3)CC2)cc1"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"adduct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[M+H]+"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"collision_energy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QTOF"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"precursor_mz"</span><span class="p">:</span><span class="w"> </span><span class="mf">470.3054</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">"sample_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MassSpecGymID0000403"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"sample_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MassSpecGymID0028855"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">"predicted_peaks_top100"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">[</span>
-<span class="w">          </span><span class="mf">67.0542266590246</span><span class="p">,</span>
-<span class="w">          </span><span class="mf">0.011822191998362541</span>
+<span class="w">          </span><span class="mf">55.05422667404919</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">0.0020994183141738176</span>
 <span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="p">[</span>
-<span class="w">          </span><span class="mf">81.06987672302459</span><span class="p">,</span>
-<span class="w">          </span><span class="mf">0.16171321272850037</span>
+<span class="w">          </span><span class="mf">57.069876707999995</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">0.008048541843891144</span>
 <span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="p">[</span>
-<span class="w">          </span><span class="mf">83.0491412790246</span><span class="p">,</span>
-<span class="w">          </span><span class="mf">0.008260359987616539</span>
+<span class="w">          </span><span class="mf">70.065125676</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">0.0050727734342217445</span>
 <span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="p">[</span>
-<span class="w">          </span><span class="mf">83.0855267569754</span><span class="p">,</span>
-<span class="w">          </span><span class="mf">0.0016736892284825444</span>
+<span class="w">          </span><span class="mf">82.06512569102459</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">0.0035072911996394396</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">"observed_peaks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"first_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">[</span>
-<span class="w">          </span><span class="mf">160.0366</span><span class="p">,</span>
-<span class="w">          </span><span class="mf">0.03803803803803804</span>
+<span class="w">          </span><span class="mf">152.0611</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">0.036036036036036036</span>
 <span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="p">[</span>
-<span class="w">          </span><span class="mf">240.0992</span><span class="p">,</span>
-<span class="w">          </span><span class="mf">0.03803803803803804</span>
+<span class="w">          </span><span class="mf">161.0953</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">0.1831831831831832</span>
 <span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="p">[</span>
-<span class="w">          </span><span class="mf">287.1152</span><span class="p">,</span>
-<span class="w">          </span><span class="mf">0.04704704704704705</span>
+<span class="w">          </span><span class="mf">162.0985</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">0.021021021021021023</span>
 <span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="p">[</span>
-<span class="w">          </span><span class="mf">289.0945</span><span class="p">,</span>
-<span class="w">          </span><span class="mf">0.042042042042042045</span>
+<span class="w">          </span><span class="mf">165.069</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">0.04104104104104104</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">"metrics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"cosine_similarity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.029863639020685673</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"entropy_similarity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.03731316551570296</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"cosine_similarity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8689625892568168</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"entropy_similarity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7960058641892032</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"predicted_nonzero_bins"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"reference_nonzero_bins"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span>
+<span class="w">    </span><span class="nt">"reference_nonzero_bins"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>

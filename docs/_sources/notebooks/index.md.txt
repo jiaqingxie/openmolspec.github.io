@@ -1,5 +1,52 @@
 # Tutorials
 
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+datasets-overview
+ms-annotation-magma
+ms-forward-glacier
+ms-forward-iceberg
+multispectral-spectrallm-generation
+nmr-assignment
+nmr-formula
+nmr-forward-11B
+nmr-forward-13C
+nmr-forward-19F
+nmr-forward-1H
+nmr-forward-29Si
+nmr-forward-31P
+nmr-generation-c
+nmr-generation-h
+nmr-generation-hc
+nmr-retrieval-c-m2s
+nmr-retrieval-c-s2m
+nmr-retrieval-h-m2s
+nmr-retrieval-h-s2m
+nmr-retrieval-hc-m2s
+nmr-retrieval-hc-s2m
+nmr-solvent_transfer
+sdk-inference
+sdk-training-preflight
+spectroscopy-qa
+spectroscopy-reranking
+spectroscopy-reranking-hc
+theory-ms-isotopes
+theory-nmr-fourier
+theory-nmr-inversion
+theory-vibrational-broadening
+vibrational-forward
+vibrational-gap-ir
+vibrational-gap-ir_raman
+vibrational-gap-ir_raman_hc
+vibrational-gap-raman
+vibrational-generation
+vibrational-generation-hc
+vibrational-retrieval
+vibrational-retrieval-hc
+```
+
 Follow the tutorials to learn how to load spectra, call models, interpret their outputs and evaluate predictions. Each task includes explanatory text, code, saved results and figures.
 
 [SDK: actual NMR inference](sdk-inference.ipynb) · [SDK: training preflight](sdk-training-preflight.ipynb)
@@ -61,51 +108,3 @@ Follow the tutorials to learn how to load spectra, call models, interpret their 
 - [谱图 → 分子式](nmr-formula.ipynb)
 - [谱学问答 / 推理](spectroscopy-qa.ipynb)
 - [多谱 → 结构（SpectraLLM）](multispectral-spectrallm-generation.ipynb)
-
-
-```{toctree}
-:hidden:
-:maxdepth: 2
-
-datasets-overview
-ms-annotation-magma
-ms-forward-glacier
-ms-forward-iceberg
-multispectral-spectrallm-generation
-nmr-assignment
-nmr-formula
-nmr-forward-11B
-nmr-forward-13C
-nmr-forward-19F
-nmr-forward-1H
-nmr-forward-29Si
-nmr-forward-31P
-nmr-generation-c
-nmr-generation-h
-nmr-generation-hc
-nmr-retrieval-c-m2s
-nmr-retrieval-c-s2m
-nmr-retrieval-h-m2s
-nmr-retrieval-h-s2m
-nmr-retrieval-hc-m2s
-nmr-retrieval-hc-s2m
-nmr-solvent_transfer
-sdk-inference
-sdk-training-preflight
-spectroscopy-qa
-spectroscopy-reranking
-spectroscopy-reranking-hc
-theory-ms-isotopes
-theory-nmr-fourier
-theory-nmr-inversion
-theory-vibrational-broadening
-vibrational-forward
-vibrational-gap-ir
-vibrational-gap-ir_raman
-vibrational-gap-ir_raman_hc
-vibrational-gap-raman
-vibrational-generation
-vibrational-generation-hc
-vibrational-retrieval
-vibrational-retrieval-hc
-```

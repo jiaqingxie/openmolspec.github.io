@@ -1,5 +1,16 @@
 # Tasks by spectroscopy family
 
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+nmr
+ms
+vibrational
+multimodal
+deferred
+```
+
 Choose the kind of evidence you have: NMR peaks, MS/MS peaks, a molecular geometry, or several spectral modalities together. Each task page explains the question, input fields, output fields and a real recorded example.
 
 ## [NMR](nmr.md)
@@ -60,15 +71,3 @@ Choose the kind of evidence you have: NMR peaks, MS/MS peaks, a molecular geomet
 | `nmr.formula` | 1H, 13C | [谱图 → 分子式](nmr-formula.md) |
 | `spectroscopy.qa` | NMR, IR, Raman | [谱学问答 / 推理](spectroscopy-qa.md) |
 | `multispectral.spectrallm.generation` | IR, Raman, NMR, MS/MS | [多谱 → 结构（SpectraLLM）](multispectral-spectrallm-generation.md) |
-
-
-```{toctree}
-:hidden:
-:maxdepth: 2
-
-nmr
-ms
-vibrational
-multimodal
-deferred
-```

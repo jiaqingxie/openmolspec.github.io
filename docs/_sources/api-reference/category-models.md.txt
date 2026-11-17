@@ -1,13 +1,12 @@
 # Models
 
-| Module | Description |
-| --- | --- |
-| [openmolspec.model](module-models.md) | Public model facades. Heavy dependencies load only inside the selected runtime. |
-
-
 ```{toctree}
 :hidden:
 :maxdepth: 2
 
 module-models
 ```
+
+| Module | Description |
+| --- | --- |
+| [openmolspec.model](module-models.md) | Public model facades. Heavy dependencies load only inside the selected runtime. |

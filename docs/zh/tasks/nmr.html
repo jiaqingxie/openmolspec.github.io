@@ -14,7 +14,7 @@
 
   
     <link rel="shortcut icon" href="../_static/mark.svg"/>
-    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/tasks/nmr.html" />
+    <link rel="canonical" href="https://openmolspec.readthedocs.io/en/latest/zh/tasks/nmr.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=f115507d"></script>
@@ -58,18 +58,35 @@
 <li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速开始</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">按谱型浏览任务</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">核磁共振 NMR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">谱到结构检索：¹H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">结构到谱检索：¹H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">从 ¹H NMR 解析结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-s2m.html">谱到结构检索：¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-c-m2s.html">结构到谱检索：¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-c.html">从 ¹³C NMR 解析结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-s2m.html">谱到结构检索：¹H + ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-hc-m2s.html">结构到谱检索：¹H + ¹³C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-generation-hc.html">从 ¹H + ¹³C NMR 解析结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-assignment.html">峰到原子的指认</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-solvent_transfer.html">跨溶剂化学位移迁移</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ms.html">质谱 MS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational.html">红外 / 拉曼 IR / Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multimodal.html">多谱联合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deferred.html">暂不推进</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#nmr"><span class="xref myst">核磁共振 NMR</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ms"><span class="xref myst">质谱 MS</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman"><span class="xref myst">红外 / 拉曼 IR / Raman</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#id2"><span class="xref myst">多谱联合</span></a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#id3"><span class="xref myst">暂不推进</span></a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">核磁共振 NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ms.html">质谱 MS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vibrational.html">红外 / 拉曼 IR / Raman</a></li>
-<li class="toctree-l3"><a class="reference internal" href="multimodal.html">多谱联合</a></li>
-<li class="toctree-l3"><a class="reference internal" href="deferred.html">暂不推进</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#id3"><span class="xref myst">暂不推进</span></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../model-audit.html">模型与训练</a></li>
@@ -115,6 +132,8 @@
   
   <section class="tex2jax_ignore mathjax_ignore" id="nmr">
 <h1>核磁共振 NMR<a class="headerlink" href="#nmr" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p>选择任务，查看用途、输入输出、模型调用与示例。</p>
 <table class="docutils align-default">
 <thead>
@@ -123,61 +142,59 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="nmr-forward-1H.html"><span class="std std-doc">结构 → 1H 峰列表</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="nmr-forward-1H.html"><span class="std std-doc">1H 化学位移预测</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.forward.1H</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="nmr-forward-13C.html"><span class="std std-doc">结构 → 13C 峰列表</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="nmr-forward-13C.html"><span class="std std-doc">13C 化学位移预测</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.forward.13C</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="nmr-forward-19F.html"><span class="std std-doc">结构 → 19F 峰列表</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="nmr-forward-19F.html"><span class="std std-doc">19F 化学位移预测</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.forward.19F</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="nmr-forward-31P.html"><span class="std std-doc">结构 → 31P 峰列表</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="nmr-forward-31P.html"><span class="std std-doc">31P 化学位移预测</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.forward.31P</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="nmr-forward-11B.html"><span class="std std-doc">结构 → 11B 峰列表</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="nmr-forward-11B.html"><span class="std std-doc">11B 化学位移预测</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.forward.11B</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="nmr-forward-29Si.html"><span class="std std-doc">结构 → 29Si 峰列表</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="nmr-forward-29Si.html"><span class="std std-doc">29Si 化学位移预测</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.forward.29Si</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="nmr-retrieval-h-s2m.html"><span class="std std-doc">谱图 → 结构检索 · H</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="nmr-retrieval-h-s2m.html"><span class="std std-doc">谱到结构检索：¹H</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.h.s2m</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="nmr-retrieval-h-m2s.html"><span class="std std-doc">结构 → 谱图检索 · H</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="nmr-retrieval-h-m2s.html"><span class="std std-doc">结构到谱检索：¹H</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.h.m2s</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="nmr-generation-h.html"><span class="std std-doc">谱图 → SMILES · H</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="nmr-generation-h.html"><span class="std std-doc">从 ¹H NMR 解析结构</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.generation.h</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="nmr-retrieval-c-s2m.html"><span class="std std-doc">谱图 → 结构检索 · C</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="nmr-retrieval-c-s2m.html"><span class="std std-doc">谱到结构检索：¹³C</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.c.s2m</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="nmr-retrieval-c-m2s.html"><span class="std std-doc">结构 → 谱图检索 · C</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="nmr-retrieval-c-m2s.html"><span class="std std-doc">结构到谱检索：¹³C</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.c.m2s</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="nmr-generation-c.html"><span class="std std-doc">谱图 → SMILES · C</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="nmr-generation-c.html"><span class="std std-doc">从 ¹³C NMR 解析结构</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.generation.c</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="nmr-retrieval-hc-s2m.html"><span class="std std-doc">谱图 → 结构检索 · HC</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="nmr-retrieval-hc-s2m.html"><span class="std std-doc">谱到结构检索：¹H + ¹³C</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.hc.s2m</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="nmr-retrieval-hc-m2s.html"><span class="std std-doc">结构 → 谱图检索 · HC</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="nmr-retrieval-hc-m2s.html"><span class="std std-doc">结构到谱检索：¹H + ¹³C</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.retrieval.hc.m2s</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="nmr-generation-hc.html"><span class="std std-doc">谱图 → SMILES · HC</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="nmr-generation-hc.html"><span class="std std-doc">从 ¹H + ¹³C NMR 解析结构</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.generation.hc</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="nmr-assignment.html"><span class="std std-doc">H/C 峰 → 原子指认</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="nmr-assignment.html"><span class="std std-doc">峰到原子的指认</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.assignment</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="nmr-solvent_transfer.html"><span class="std std-doc">H/C 跨溶剂位移 · 参考检索基线</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="nmr-solvent_transfer.html"><span class="std std-doc">跨溶剂化学位移迁移</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nmr.solvent_transfer</span></code></p></td>
 </tr>
 </tbody>
 </table>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 
 

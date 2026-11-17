@@ -14,7 +14,7 @@
 
   
     <link rel="shortcut icon" href="_static/mark.svg"/>
-    <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/docs/zh/index.html" />
+    <link rel="canonical" href="https://openmolspec.readthedocs.io/en/latest/zh/index.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=f115507d"></script>
@@ -99,6 +99,8 @@
   
   <section class="tex2jax_ignore mathjax_ignore" id="openmolspec">
 <h1><img src="assets/brand/mark.svg" class="oms-home-logo" alt=""> OpenMolSpec<a class="headerlink" href="#openmolspec" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p>Chemical spectroscopy and deep learning</p>
 <p>OpenMolSpec 是面向分子谱学的 Python 工具包。你可以加载实验与计算数据集，预测谱图和分子性质，通过谱图解析结构，也可以用自己的数据训练模型。支持 NMR、质谱、红外与拉曼光谱。</p>
 <section id="id1">
@@ -122,12 +124,12 @@
 <p>下面的例子展示如何预测谱图、解析分子结构，以及预测分子性质。</p>
 <section id="nmr">
 <h3><a class="reference internal" href="notebooks/nmr-generation-hc.html"><span class="std std-doc">从 NMR 解析结构</span></a><a class="headerlink" href="#nmr" title="Link to this heading"></a></h3>
-<p>输入氢谱、碳谱和分子式，生成候选结构。</p>
+<p>输入氢谱、碳谱和分子式，首选候选结构与参考分子一致。</p>
 <p><a class="reference internal" href="notebooks/nmr-generation-hc.html"><span class="std std-doc"><img alt="Structure elucidation from NMR" src="_images/nmr-generation-hc.png" /></span></a></p>
 </section>
 <section id="id2">
 <h3><a class="reference internal" href="notebooks/ms-forward-glacier.html"><span class="std std-doc">预测串联质谱</span></a><a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
-<p>输入分子结构、加合物和碰撞能，预测碎片峰及其强度。</p>
+<p>GLACIER 预测与 14 个实测峰对比：余弦相似度 0.869，熵相似度 0.796。</p>
 <p><a class="reference internal" href="notebooks/ms-forward-glacier.html"><span class="std std-doc"><img alt="Predicting tandem mass spectra" src="_images/ms-forward-glacier.png" /></span></a></p>
 </section>
 <section id="id3">
@@ -160,8 +162,6 @@
 <li><p><a class="reference internal" href="benchmarks.html"><span class="std std-doc">基准评测</span></a>: 基准数据、评测流程、指标与结果。</p></li>
 <li><p><a class="reference internal" href="harness.html"><span class="std std-doc">Agent Harness</span></a>: 通过 Python、命令行或 Agent 调用谱学工具。</p></li>
 </ul>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 </section>
 

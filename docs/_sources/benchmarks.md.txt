@@ -1,5 +1,17 @@
 # Benchmarks
 
+```{toctree}
+:hidden:
+:maxdepth: 2
+
+benchmarks/nmr
+benchmarks/ms
+benchmarks/vibrational
+benchmarks/multimodal
+benchmarks/production
+benchmarks/training
+```
+
 OpenMolSpec defines benchmark tasks for NMR, MS, vibrational and multimodal spectroscopy. This catalogue includes every active task, its saved evaluation results and the configured training experiments.
 
 ## Task benchmarks
@@ -63,16 +75,3 @@ Molecular formula prediction, spectroscopy QA and SpectraLLM generation are list
 - Bushuiev, R., Bushuiev, A., de Jonge, N. F., Young, A., et al. MassSpecGym: A benchmark for the discovery and identification of molecules. Advances in Neural Information Processing Systems 37, Datasets and Benchmarks Track (2024). arXiv:2410.23326. [Source](https://arxiv.org/abs/2410.23326)
 - Yuan, M., Zou, Z. & Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). [Source](https://arxiv.org/abs/2501.18876)
 - Zou, Z., Zhang, Y., Liang, L., Wei, M., Leng, J., Jiang, J., Luo, Y. & Hu, W. A deep learning model for predicting selected organic molecular spectra. Nature Computational Science 3, 957–964 (2023). doi:10.1038/s43588-023-00550-y. [Source](https://www.nature.com/articles/s43588-023-00550-y)
-
-
-```{toctree}
-:hidden:
-:maxdepth: 2
-
-benchmarks/nmr
-benchmarks/ms
-benchmarks/vibrational
-benchmarks/multimodal
-benchmarks/production
-benchmarks/training
-```
