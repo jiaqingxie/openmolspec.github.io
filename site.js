@@ -21,7 +21,7 @@ dialog.querySelector('.close-dialog').addEventListener('click',function(){dialog
           var row=data.examples[Number(select.value)];viewer.removeAllModels();
           viewer.addModel(row.molblock,'mol');
           viewer.setStyle({},{stick:{radius:.16},sphere:{scale:.25}});viewer.zoomTo();viewer.render();
-          document.querySelector('#conformer-result').textContent='Predicted gap: '+row.predicted_gap_ev.toFixed(3)+' eV · Reference gap: '+row.reference_gap_ev.toFixed(3)+' eV · Reference HOMO: '+row.reference_homo_ev.toFixed(3)+' eV · Reference LUMO: '+row.reference_lumo_ev.toFixed(3)+' eV. 3D conformer: RDKit ETKDGv3 / MMFF94.';
+          document.querySelector('#conformer-result').textContent='Predicted gap: '+row.predicted_gap_ev.toFixed(3)+' eV · Reference gap: '+row.reference_gap_ev.toFixed(3)+' eV · Reference HOMO: '+row.reference_homo_ev.toFixed(3)+' eV · Reference LUMO: '+row.reference_lumo_ev.toFixed(3)+' eV. 3D conformer: '+row.coordinate_method+'.';
           container.dataset.ready='true';container.dataset.sampleId=row.sample_id;
         };
         select.addEventListener('change',show);show();
