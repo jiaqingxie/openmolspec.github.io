@@ -25,7 +25,7 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
    :returns: The 64-character hexadecimal digest.
    :rtype: str
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L20>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L23>`__
 
 .. py:function:: list_datasets()
 
@@ -41,7 +41,7 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
    >>> 'opendatalab_nmr' in names
    True
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L40>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L43>`__
 
 .. py:function:: dataset_info(name)
 
@@ -60,13 +60,13 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
    >>> dataset_info('opendatalab_nmr')['domain']
    'experimental'
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L58>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L61>`__
 
 .. py:class:: SpectraSplit(path: Path, role: str, dataset: str, domain: str, format: str = 'nmr_jsonl', trusted: bool = False, modalities: tuple[str, ...] = (), limit: int | None = None)
 
    A streaming view of one spectroscopy dataset split.
 
-   :param path: JSONL, MassSpecGym CSV/TSV, or openSpec LMDB file.
+   :param path: JSONL, MassSpecGym CSV/TSV, openSpec LMDB, or TransPeakNet test ZIP file.
    :type path: str or pathlib.Path
    :param role: Split to read. ``'valid'`` and ``'validation'`` are aliases for ``'val'``.
    :type role: {'train', 'val', 'test'}
@@ -75,13 +75,13 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
    :param domain: Origin of the spectral measurements.
    :type domain: {'experimental', 'computed'}
    :param format: Reader format: ``'nmr_jsonl'``, ``'jsonl'``, ``'massspecgym_csv'``,
-                  ``'massspecgym_tsv'`` or ``'openspec_lmdb'``.
+                  ``'massspecgym_tsv'``, ``'openspec_lmdb'`` or ``'transpeaknet_hsqc_zip'``.
    :type format: str, default 'nmr_jsonl'
    :param trusted: Set to ``True`` when opening a trusted pickle-based LMDB.
    :type trusted: bool, default False
    :param modalities: Channels required in each selected record: ``'1H'``, ``'13C'``,
                       ``'11B'``, ``'19F'``, ``'29Si'``, ``'31P'``, ``'IR'``, ``'Raman'``,
-                      ``'MS'`` or ``'MS/MS'``.
+                      ``'MS'``, ``'MS/MS'`` or ``'HSQC'``.
    :type modalities: tuple of str, default ()
    :param limit: Maximum number of selected records.
    :type limit: int or None, default None
@@ -95,7 +95,7 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
    >>> first_three = split.head(3)
    >>> hc = split.select(modalities=['1H', '13C'], limit=32)
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L114>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L147>`__
 
    .. py:method:: __iter__()
 
@@ -107,7 +107,7 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
           Original spectral fields plus normalized ``smiles`` and
           ``_openmolspec`` dataset, role, locator and channel metadata.
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L208>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L243>`__
 
    .. py:method:: head(n=3)
 
@@ -119,7 +119,7 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
       :returns: Up to ``n`` records in source-file order.
       :rtype: list of dict
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L248>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L285>`__
 
    .. py:method:: select(*, modalities=(), limit=None)
 
@@ -138,7 +138,7 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
       >>> paired = split.select(modalities=['1H', '13C'])
       >>> examples = paired.head(5)
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L265>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L302>`__
 
    .. py:method:: fingerprint()
 
@@ -147,7 +147,7 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
       :returns: Path, SHA-256, role, dataset, domain, channel filters and row limit.
       :rtype: dict
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L291>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L328>`__
 
    .. py:attribute:: path
       :type: Path
@@ -205,7 +205,7 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
    >>> record = test.head(1)[0]
    >>> print(record['smiles'])
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L304>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L341>`__
 
    .. py:method:: get_split()
 
@@ -214,7 +214,7 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
       :returns: Mapping from split names to streaming readers.
       :rtype: dict of str to SpectraSplit
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L325>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L362>`__
 
    .. py:method:: __getitem__(split)
 
@@ -228,7 +228,7 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
 
       :raises KeyError: If the dataset has no file for the requested role.
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L335>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L372>`__
 
    .. py:method:: summary()
 
@@ -237,7 +237,7 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
       :returns: Dataset card and each split's local path and file size.
       :rtype: dict
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L355>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L392>`__
 
    .. py:method:: verify()
 
@@ -248,7 +248,7 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
 
       :raises ValueError: If a reference checksum is missing or a local file differs.
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L367>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L404>`__
 
    .. py:method:: from_jsonl(*, splits, name, domain, format='nmr_jsonl')
       :classmethod:
@@ -275,7 +275,7 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
       ...     splits={'train': 'train.jsonl', 'val': 'val.jsonl'},
       ...     name='my_measurements', domain='experimental')
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L392>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L429>`__
 
 .. py:function:: molspectra(name, *, root, trusted=False)
 
@@ -300,7 +300,7 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
    >>> data = molspectra('opendatalab_nmr', root='data/nmr')
    >>> records = data['test'].select(modalities=['1H', '13C']).head(3)
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L433>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L470>`__
 
 .. py:function:: audit_splits(splits, *, identity='connectivity', check_nmr=False)
 
@@ -323,7 +323,7 @@ Versioned dataset descriptions and lazy local spectroscopy readers.
 
    >>> report = audit_splits(data.get_split(), identity='connectivity')
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L475>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L512>`__
 ```
 
 ## References

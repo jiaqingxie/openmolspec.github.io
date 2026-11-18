@@ -20,6 +20,7 @@ print(data.verify())
 
 | 注册名称 | Format | 说明 |
 | --- | --- | --- |
+| `transpeaknet_hsqc_test` | `transpeaknet_hsqc_zip` | 作者发布的 HSQC 测试 ZIP，含 479 张实验谱及专家碳原子指认。 |
 | `opendatalab_nmr` | `nmr_jsonl` | 清洗后的实验 H/C NMR。 |
 | `nmrspec_test` | `nmr_jsonl` | NMRSpec / NMRTrans |
 | `patent_test_10k` | `nmr_jsonl` | OpenDataLab H/C 评测子集。 |
@@ -36,6 +37,15 @@ print(data.verify())
 | `opendatalab_11b` | `jsonl` | 清洗后的实验 11B |
 | `opendatalab_raman` | `jsonl` | 清洗后的实验 RAMAN |
 | `opendatalab_29si` | `jsonl` | 清洗后的实验 29SI |
+
+从作者仓库下载 [TransPeakNet 测试 ZIP](https://github.com/siriusxiao62/2dNMR/tree/main/data_annotation)。读取器保留原始 SMILES 顺序，`hsqc_peaks` 是 [¹³C ppm, ¹H ppm] 坐标对，`hsqc_assignments` 是按碳原子整理的指认。完整训练谱和验证谱需向作者申请。
+
+```python
+hsqc = molspectra("transpeaknet_hsqc_test", root="HSQC_Annotation_TestData.zip")
+print(hsqc.verify())
+record = hsqc["test"].select(modalities=["HSQC"]).head(1)[0]
+print(record["smiles"], record["hsqc_peaks"])
+```
 
 每条记录保留来源字段，`_openmolspec` 补充数据集、数据域、划分、文件位置与通道。数值字段、单位、采集条件及清洗后数量见[数据指南](data/index.md)。
 

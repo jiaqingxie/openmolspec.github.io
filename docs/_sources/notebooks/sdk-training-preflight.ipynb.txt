@@ -22,10 +22,10 @@
    "id": "6ed9965eeb4b",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-11-17T20:15:36.635651Z",
-     "iopub.status.busy": "2026-11-17T20:15:36.635443Z",
-     "iopub.status.idle": "2026-11-17T20:15:37.767959Z",
-     "shell.execute_reply": "2026-11-17T20:15:37.766513Z"
+     "iopub.execute_input": "2026-11-18T13:32:17.951533Z",
+     "iopub.status.busy": "2026-11-18T13:32:17.951329Z",
+     "iopub.status.idle": "2026-11-18T13:32:17.990193Z",
+     "shell.execute_reply": "2026-11-18T13:32:17.989149Z"
     }
    },
    "outputs": [
@@ -33,7 +33,7 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Registered datasets: ['opendatalab_nmr', 'nmrspec_test', 'patent_test_10k', 'nmrexp_exp_10k', 'nmrgym_test', 'openspec_test', 'massspecgym_test', 'massspecgym_1_5']\n"
+      "Registered datasets: ['transpeaknet_hsqc_test', 'opendatalab_nmr', 'nmrspec_test', 'patent_test_10k', 'nmrexp_exp_10k', 'nmrgym_test', 'openspec_test', 'massspecgym_test', 'massspecgym_1_5', 'opendatalab_nmr_prepared', 'opendatalab_ir', 'opendatalab_19f', 'opendatalab_31p', 'opendatalab_ms', 'opendatalab_11b', 'opendatalab_raman', 'opendatalab_29si']\n"
      ]
     }
    ],
@@ -62,10 +62,10 @@
    "id": "93d8235c4177",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-11-17T20:15:37.770073Z",
-     "iopub.status.busy": "2026-11-17T20:15:37.769857Z",
-     "iopub.status.idle": "2026-11-17T20:15:37.786215Z",
-     "shell.execute_reply": "2026-11-17T20:15:37.784878Z"
+     "iopub.execute_input": "2026-11-18T13:32:17.992040Z",
+     "iopub.status.busy": "2026-11-18T13:32:17.991802Z",
+     "iopub.status.idle": "2026-11-18T13:32:18.005453Z",
+     "shell.execute_reply": "2026-11-18T13:32:18.004666Z"
     }
    },
    "outputs": [
@@ -100,10 +100,10 @@
    "id": "8261704084dc",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-11-17T20:15:37.788091Z",
-     "iopub.status.busy": "2026-11-17T20:15:37.787867Z",
-     "iopub.status.idle": "2026-11-17T20:15:38.531285Z",
-     "shell.execute_reply": "2026-11-17T20:15:38.529863Z"
+     "iopub.execute_input": "2026-11-18T13:32:18.007172Z",
+     "iopub.status.busy": "2026-11-18T13:32:18.006871Z",
+     "iopub.status.idle": "2026-11-18T13:32:18.687280Z",
+     "shell.execute_reply": "2026-11-18T13:32:18.686327Z"
     }
    },
    "outputs": [
@@ -144,9 +144,9 @@
       "    \"spec2struct_fork.train\",\n",
       "    \"align\",\n",
       "    \"--data-dir\",\n",
-      "    \"/tmp/openmolspec-training-tutorial-6cmw5knt/data\",\n",
+      "    \"/tmp/openmolspec-training-tutorial-mmirisvq/data\",\n",
       "    \"--run-dir\",\n",
-      "    \"/tmp/openmolspec-training-tutorial-6cmw5knt/run\",\n",
+      "    \"/tmp/openmolspec-training-tutorial-mmirisvq/run\",\n",
       "    \"--epochs\",\n",
       "    \"1\",\n",
       "    \"--batch-size\",\n",
@@ -210,10 +210,10 @@
    "id": "47ac897131e2",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-11-17T20:15:38.533592Z",
-     "iopub.status.busy": "2026-11-17T20:15:38.533255Z",
-     "iopub.status.idle": "2026-11-17T20:15:38.542552Z",
-     "shell.execute_reply": "2026-11-17T20:15:38.539802Z"
+     "iopub.execute_input": "2026-11-18T13:32:18.689435Z",
+     "iopub.status.busy": "2026-11-18T13:32:18.689011Z",
+     "iopub.status.idle": "2026-11-18T13:32:18.694955Z",
+     "shell.execute_reply": "2026-11-18T13:32:18.694139Z"
     }
    },
    "outputs": [
@@ -290,7 +290,7 @@
   "openmolspec_execution": {
    "engine": "jupyter",
    "evaluation_index_sha256": "8302e777ace15736883697b46976a838791c48a1c92583fee806aa011163cb7f",
-   "evidence_sha256": "84b8498db17394de83611ab990912f9d2c7de562d4427a7135a20022a386c142",
+   "evidence_sha256": "0d57a978fc3bde5d6071c886d095fc8f196a3c64338fbf2388bb2b3da28d6856",
    "model_execution_enabled": false,
    "scope": "real_input_output_recomputed_diagnostics_and_scientific_figures",
    "source_sha256": "e21d895a1638444ba5e866792fbf453704743a2f931d70d83adfcfd8df75ce4a",

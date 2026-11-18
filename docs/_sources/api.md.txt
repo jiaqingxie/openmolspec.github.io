@@ -20,6 +20,7 @@ print(data.verify())
 
 | Registered name | Format | Description |
 | --- | --- | --- |
+| `transpeaknet_hsqc_test` | `transpeaknet_hsqc_zip` | Author HSQC test ZIP with 479 experimental spectra and expert carbon assignments. |
 | `opendatalab_nmr` | `nmr_jsonl` | Cleaned experimental H/C NMR. |
 | `nmrspec_test` | `nmr_jsonl` | NMRSpec / NMRTrans |
 | `patent_test_10k` | `nmr_jsonl` | OpenDataLab H/C evaluation subset. |
@@ -36,6 +37,15 @@ print(data.verify())
 | `opendatalab_11b` | `jsonl` | Cleaned experimental 11B |
 | `opendatalab_raman` | `jsonl` | Cleaned experimental RAMAN |
 | `opendatalab_29si` | `jsonl` | Cleaned experimental 29SI |
+
+Download the [TransPeakNet test ZIP](https://github.com/siriusxiao62/2dNMR/tree/main/data_annotation) from the authors. The reader preserves the original SMILES order and exposes the measured `hsqc_peaks` as [¹³C ppm, ¹H ppm] pairs and `hsqc_assignments` as per-carbon annotations. The full training and validation spectra are available on request from the authors.
+
+```python
+hsqc = molspectra("transpeaknet_hsqc_test", root="HSQC_Annotation_TestData.zip")
+print(hsqc.verify())
+record = hsqc["test"].select(modalities=["HSQC"]).head(1)[0]
+print(record["smiles"], record["hsqc_peaks"])
+```
 
 Each record retains its source fields. `_openmolspec` adds the dataset, domain, split, file locator and detected channels. The [Data guide](data/index.md) describes numerical fields, units, acquisition conditions and cleaned counts.
 

@@ -8,15 +8,15 @@
  const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
  const configuration=await fetch('assets/service-config.json').then(r=>r.json()).catch(()=>({}));
  const local=['127.0.0.1','localhost'].includes(location.hostname);
- const api=configuration.api_base||(local?'http://127.0.0.1:8721':null);
- let connected=false,active='structure',busy=false,lastRun=null;
+ const api=local?'http://127.0.0.1:8721':configuration.api_base;
+ let connected=false,active='structure',busy=false,lastRun=null, availableTools=null;
  const workspace=$('#tool-workspace');
  async function request(path,body){
   if(!api)throw Error('The model service is not configured.');
   const response=await fetch(api+path,{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:undefined,body:body?JSON.stringify(body):undefined,signal:AbortSignal.timeout(20000)});
   const result=await response.json();if(!response.ok)throw Error(result.error||'The service could not complete this request');return result;
  }
- async function status(){try{const s=await request('/api/status');connected=s.connected;$('#service-status').textContent=connected?'Model service connected':'Connecting model service…';$('#service-status').dataset.ready=String(connected);}catch{$('#service-status').textContent='Model service is reconnecting';}}
+ async function status(){try{const s=await request('/api/status');connected=s.connected;availableTools=new Set(s.tools);$('#service-status').textContent=connected?'Model service connected':'Connecting model service…';$('#service-status').dataset.ready=String(connected);}catch{$('#service-status').textContent='Model service is reconnecting';$('#service-status').dataset.ready='false';availableTools=null;}}
  status();setInterval(status,30000);
  const preview=await fetch('assets/dataset-preview.json').then(r=>r.json());
  const dataFilter=$('#dataset-filter'),search=$('#dataset-search'),recordList=$('#dataset-records'),detail=$('#dataset-detail');
@@ -73,6 +73,13 @@
 
  function field(label,id,value,type='text'){const holder=el('label','tool-field',label);const input=el(type==='textarea'?'textarea':'input');input.id=id;if(type!=='textarea')input.type=type;input.value=value;holder.append(input);return holder;}
  function button(text,cls='button-primary'){const b=el('button',cls,text);b.type='button';return b;}
+ function selectField(label,id,choices){
+  const holder=el('label','tool-field',label), select=el('select');
+  select.id=id;
+  choices.forEach(([value,text])=>select.add(new Option(text,value)));
+  holder.append(select);
+  return holder;
+ }
  function error(text,parent=workspace){let box=$('.tool-error',parent);if(!box){box=el('p','tool-error');box.setAttribute('role','alert');parent.prepend(box);}box.textContent=text;}
  function resultsBox(){const box=el('section','tool-results');box.id='tool-results';box.setAttribute('aria-live','polite');box.append(el('p','empty-state','Your model output will appear here.'));return box;}
  // Render the small Markdown subset used by model answers using DOM text nodes.
@@ -102,6 +109,23 @@
  function renderResult(result,target){
   target.replaceChildren();const value=result?.result||result;
   if(result?.answer){target.append(answerView(result.answer));return;}
+  if(value?.hsqc_measured){renderHsqc(value,target);return;}
+  if(typeof value?.predicted_target_ppm==='number'){
+   target.append(el('h3','','Cross-solvent reference estimate'),el('p','gap-number',value.predicted_target_ppm.toFixed(3)+' ppm'),
+    el('p','result-label',value.source_solvent+' → '+value.target_solvent+' · '+value.nucleus),
+    el('p','tool-note','Shift change '+value.predicted_delta_ppm.toFixed(3)+' ppm. Nearest paired experimental reference with a different molecular connectivity.'),
+    el('p','tool-note','Reference: '+value.reference.identity+' · similarity '+value.tanimoto_similarity.toFixed(3)));
+   return;
+  }
+  const candidates=value?.candidates||value?.records?.[0]?.candidates;
+  if(Array.isArray(candidates)){
+   target.append(el('h3','','Molecular candidates'));
+   const rows=candidates.map((v,i)=>[i+1,v.smiles||'(empty)',typeof v.score==='number'?v.score.toFixed(5):'—']);
+   target.append(resultTable(['Rank','SMILES','Model score'],rows),el('p','tool-note',result.task==='nmr.retrieval.hc.s2m'
+    ?'Ranking uses only the submitted candidates. If none is a convincing match, add more candidates or check the input spectra.'
+    :'Scores rank candidates within this request. Verify candidates against the experimental spectra.'));
+   return;
+  }
   if(value?.assignment){
    const a=value.assignment;target.append(el('h3','','Candidate peak-to-atom assignments'));
    const wrap=el('div','answer-table'),table=el('table','prediction-table'),head=el('tr');
@@ -112,21 +136,66 @@
   if(value?.records){
    value.records.forEach(record=>{target.append(el('h3','',record.nucleus+' chemical shifts'));const table=el('table','prediction-table');const header=el('tr');['Atom index','Predicted shift / ppm'].forEach(t=>header.append(el('th','',t)));table.append(header);record.prediction_ppm.forEach((v,i)=>{const row=el('tr');row.append(el('td','',String(record.atom_indices[i])),el('td','',Number(v).toFixed(4)));table.append(row);});target.append(table,plot(record.prediction_ppm,null,record.nucleus,'ppm',true));});
   }else if(typeof value?.gap_ev==='number'){target.append(el('p','result-label','Predicted HOMO–LUMO gap'),el('p','gap-number',value.gap_ev.toFixed(4)+' eV'));
-  }else if(value?.predicted_peaks){target.append(el('h3','','GLACIER · predicted MS/MS'),plot(value.predicted_peaks.map(p=>p[0]),value.predicted_peaks.map(p=>p[1]),'MS/MS','m/z'),el('p','tool-note',value.instrument+' · '+value.adduct+' · collision energy '+value.collision_energy));
+  }else if(value?.predicted_peaks){target.append(el('h3','',(value.model||'Model').toUpperCase()+' · predicted MS/MS'),plot(value.predicted_peaks.map(p=>p[0]),value.predicted_peaks.map(p=>p[1]),'MS/MS','m/z'),el('p','tool-note',value.instrument+' · '+value.adduct+' · collision energy '+value.collision_energy));
   }else if(value?.ir&&value?.raman){target.append(plot(value.wavenumber,value.ir,'IR','cm⁻¹'),plot(value.wavenumber,value.raman,'Raman','cm⁻¹'));
-  }else if(Array.isArray(value?.candidates)){
-   target.append(el('h3','','Molecular candidates'));const table=el('table','prediction-table'),head=el('tr');['Rank','SMILES','Model score'].forEach(v=>head.append(el('th','',v)));table.append(head);
-   value.candidates.forEach((v,i)=>{const row=el('tr');row.append(el('td','',String(i+1)),el('td','',v.smiles),el('td','',typeof v.score==='number'?v.score.toFixed(5):'—'));table.append(row);});target.append(table,el('p','tool-note','Scores rank candidates within this request; they are not calibrated probabilities of structural correctness.'));
   }else{target.append(el('pre','numerical-result',JSON.stringify(value,null,2)));}
+ }
+ function resultTable(columns,rows){
+  const wrap=el('div','answer-table'),table=el('table','prediction-table'),header=el('tr');
+  columns.forEach(column=>header.append(el('th','',column)));
+  table.append(header);
+  rows.forEach(values=>{const row=el('tr');values.forEach(v=>row.append(el('td','',String(v))));table.append(row);});
+  wrap.append(table);
+  return wrap;
+ }
+ function renderHsqc(value,target){
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('viewBox','0 0 620 285');svg.setAttribute('class','hsqc-plot');
+  svg.setAttribute('role','img');svg.setAttribute('aria-label','HSQC cross-peaks, observed and predicted');
+  function draw(tag,attributes,text){
+   const node=document.createElementNS(svg.namespaceURI,tag);
+   Object.entries(attributes).forEach(([k,v])=>node.setAttribute(k,v));
+   if(text!==undefined)node.textContent=text;
+   svg.append(node);
+  }
+  const points=[...value.hsqc_measured,...value.hsqc_predicted.map(p=>p.ppm)];
+  const carbon=points.map(p=>p[0]), hydrogen=points.map(p=>p[1]);
+  const cMax=Math.ceil(Math.max(...carbon)+2),cMin=Math.floor(Math.min(...carbon)-2);
+  const hMax=Math.ceil((Math.max(...hydrogen)+.1)*10)/10,hMin=Math.floor((Math.min(...hydrogen)-.1)*10)/10;
+  const x=h=>65+500*(hMax-h)/(hMax-hMin),y=c=>26+205*(cMax-c)/(cMax-cMin);
+  const color='#517464';
+  for(let i=0;i<=4;i++){
+   const h=hMax-(hMax-hMin)*i/4,c=cMax-(cMax-cMin)*i/4;
+   draw('line',{x1:x(h),x2:x(h),y1:26,y2:231,stroke:'#deebe3'});
+   draw('line',{x1:65,x2:565,y1:y(c),y2:y(c),stroke:'#deebe3'});
+   draw('text',{x:x(h),y:248,'text-anchor':'middle',fill:color,'font-size':11},h.toFixed(2));
+   draw('text',{x:55,y:y(c)+4,'text-anchor':'end',fill:color,'font-size':11},c.toFixed(1));
+  }
+  draw('text',{x:315,y:272,'text-anchor':'middle',fill:color,'font-size':12},'¹H chemical shift / ppm');
+  draw('text',{x:17,y:125,transform:'rotate(-90 17 125)','text-anchor':'middle',fill:color,'font-size':12},'¹³C chemical shift / ppm');
+  value.hsqc_measured.forEach(([c,h])=>draw('circle',{cx:x(h),cy:y(c),r:4,fill:'#168c7c'}));
+  value.hsqc_predicted.forEach(({ppm:[c,h]})=>draw('circle',{cx:x(h),cy:y(c),r:6,fill:'none',stroke:'#bc5b27','stroke-width':2}));
+  const rows=value.hsqc_assignments.map(row=>[row.peak_index+1,row.carbon_atom_index,...row.measured_ppm.map(x=>x.toFixed(3)),...row.predicted_ppm.map(x=>x.toFixed(3))]);
+  target.append(el('h3','','TransPeakNet HSQC peak assignment'),svg,el('p','tool-note','Filled dots: measured. Outlined dots: predicted.'),
+   resultTable(['Peak','C atom index','Observed C','Observed H','Predicted C','Predicted H'],rows),
+   el('p','tool-note',value.unmatched_peak_indices.length+' unmatched peaks. Carbon indices are zero based; SMILES map labels are index + 1.'),
+   el('p','tool-note',value.matcher),
+   el('code','sample-smiles',value.mapped_smiles));
  }
  async function run(payload,output,trace){
   if(busy)return;busy=true;output.dataset.complete='false';workspace.querySelectorAll('button[data-run]').forEach(b=>b.disabled=true);
+  const started=performance.now();
   const stage=el('p','run-status','Submitting your request…');output.replaceChildren(stage);
   try{
+   if(payload.task&&availableTools&&!availableTools.has(payload.task))throw Error('This workflow is temporarily unavailable on the model service.');
    const submitted=await request('/api/runs',payload);let job;
    for(let tick=0;tick<900;tick++){
     job=await request('/api/runs/'+submitted.id);lastRun={...job,request:payload};if(trace)renderEvents(job.events,trace);
-    const latest=job.events.filter(e=>e.type==='status').at(-1);stage.textContent=job.status==='queued'?'Waiting for the model worker…':latest?.data.label||'The spectroscopy model is running…';
+    const latest=job.events.filter(e=>['tool_start','tool_end','status'].includes(e.type)).at(-1);
+    const elapsed=Math.round((performance.now()-started)/1000)+' s elapsed';
+    const toolStages={spectra_tasks:'Reading available tools',spectra_validate:'Validating inputs',spectra_predict:'Running the spectroscopy model','vibrational.forward':'Predicting vibrational spectra','nmr.solvent_transfer':'Finding an experimental reference','nmr.hsqc.transpeaknet':'Predicting and assigning HSQC cross-peaks'};
+    const label=job.status==='queued'?'Waiting for the model worker':latest?.type==='tool_start'?(toolStages[latest.data.name]||'Running a spectroscopy tool'):latest?.data.label||'Processing your request';
+    stage.textContent=label+' · '+elapsed;
     if(job.status==='completed'){renderResult(job.result,output);const save=button('Download result and trace','button-secondary');save.onclick=()=>download(lastRun,'openmolspec-'+job.id+'.json');output.append(save);output.dataset.complete='true';break;}
     if(job.status==='failed')throw Error(job.error||'Model execution failed');
     await new Promise(resolve=>setTimeout(resolve,1200));
@@ -135,16 +204,118 @@
   }catch(e){error(e.message||'The model service could not be reached.',output);}
   finally{busy=false;workspace.querySelectorAll('button[data-run]').forEach(b=>b.disabled=false);}
  }
+ function runButton(form,label,payload,output,trace){
+  const go=button(label);
+  go.dataset.run='true';
+  go.onclick=()=>{try{run(payload(),output,trace);}catch(e){error(e.message,form);}};
+  form.append(go);
+ }
+ function nmrStructureForm(form,output,trace){
+  form.append(el('h3','','Search or generate a structure from NMR'));
+  form.append(selectField('Workflow','nmr-mode',[['retrieve','Rank candidate structures'],['generate','Generate from a known formula']]));
+  const h=field('¹H chemical shifts / ppm','nmr-h','','textarea');
+  const c=field('¹³C chemical shifts / ppm','nmr-c','','textarea');
+  const formula=field('Molecular formula','nmr-formula','');
+  const pool=field('Candidate SMILES, one per line (2–32)','nmr-candidates','','textarea');
+  const read=id=>$('#'+id,form).value.trim();
+  const mode=$('#nmr-mode',form);
+  const load=button('Load a measured example','button-secondary');
+  let example=null;
+  load.onclick=async()=>{
+   try{
+    const samples=await fetch('assets/nmr-workspace-examples.json').then(r=>r.json());
+    example=samples[mode.value].query;
+    for(const nucleus of ['h','c'])$('#nmr-'+nucleus,form).value=example[nucleus+'_nmr'][0].chemical_shift;
+    $('#nmr-formula',form).value=example.formula||'';
+    $('#nmr-candidates',form).value=(samples[mode.value].candidates||[]).join('\n');
+   }catch(e){error(e.message,form);}
+  };
+  form.append(load,h,c,formula,pool);
+  mode.onchange=()=>{formula.hidden=mode.value!=='generate';pool.hidden=mode.value==='generate';};
+  mode.onchange();
+  runButton(form,'Run NMR model',()=>{
+   const input={query:{}};
+   for(const nucleus of ['h','c']){
+    const text=read('nmr-'+nucleus), key=nucleus+'_nmr';
+    if(!text)throw Error('Enter measured shifts for both nuclei.');
+    const original=example?.[key]?.[0];
+    input.query[key]=[original?.chemical_shift===text?original:{type:nucleus==='h'?'1H NMR':'13C NMR',chemical_shift:text}];
+   }
+   if(mode.value==='generate'){
+    input.query.formula=read('nmr-formula');
+    if(!input.query.formula)throw Error('Structure generation requires a molecular formula.');
+   }else{
+    input.candidates=read('nmr-candidates').split('\n').map(v=>v.trim()).filter(Boolean);
+    if(input.candidates.length<2||input.candidates.length>32)throw Error('Enter 2–32 candidate SMILES.');
+   }
+   return {kind:'tool',task:mode.value==='generate'?'nmr.generation.hc':'nmr.retrieval.hc.s2m',inputs:input};
+  },output,trace);
+ }
+ function parseHsqc(text){
+  if(!text.trim())throw Error('Enter measured carbon–proton shift pairs.');
+  if(text.trim().startsWith('['))return JSON.parse(text);
+  const rows=text.trim().split(/\r?\n/).filter(line=>line.trim());
+  const header=rows[0].split(',').map(value=>value.replace(/[\s"]/g,''));
+  const c=header.indexOf('C'), h1=header.indexOf('H1'), h2=header.indexOf('H2');
+  if(c>=0&&h1>=0){
+   return rows.slice(1).flatMap(line=>{
+    const values=line.split(',').map(value=>value.trim().replace(/^"|"$/g,''));
+    const first=values[h1] ? Number(values[h1]) : NaN;
+    const carbon=values[c] ? Number(values[c]) : NaN;
+    const peak=[[carbon,first]];
+    if(h2>=0&&values[h2]&&Number(values[h2])!==first)peak.push([carbon,Number(values[h2])]);
+    return peak;
+   });
+  }
+  return rows.map(line=>line.trim().split(/[,\s]+/).filter(Boolean).map(Number));
+ }
+ function hsqcForm(form,output,trace){
+  form.append(el('h3','','Assign HSQC cross-peaks'),field('Known molecular SMILES','hsqc-smiles',''),
+   selectField('Solvent class','hsqc-solvent',['CDCl3','DMSO-d6','acetone-d6','acid','C6D6','CD3OD','pyridine-d5','D2O','unknown'].map(x=>[x,x])),
+   field('Measured peaks, ¹³C ppm then ¹H ppm','hsqc-peaks','','textarea'));
+  $('#hsqc-peaks',form).placeholder='Enter one C,H pair per line, or load an annotation CSV';
+  const file=el('input');file.type='file';file.accept='.csv,.json,.txt';file.setAttribute('aria-label','Import HSQC peak list');
+  file.onchange=async()=>{if(file.files[0])$('#hsqc-peaks',form).value=await file.files[0].text();};
+  const source=el('a','','Author test data ↗');source.href='#dataset-hsqc';
+  const note=el('p','tool-note','Use your own peak list or a CSV from the ');note.append(source,'. To try the author example, import Annotation/32869.csv and enter CCCC#N in CDCl3.');
+  form.append(file,note);
+  runButton(form,'Assign cross-peaks',()=>{
+   const smiles=$('#hsqc-smiles',form).value.trim();
+   if(!smiles)throw Error('Enter the known molecular SMILES.');
+   const hsqc_peaks=parseHsqc($('#hsqc-peaks',form).value);
+   if(!Array.isArray(hsqc_peaks)||!hsqc_peaks.length||hsqc_peaks.some(p=>!Array.isArray(p)||p.length!==2||!p.every(Number.isFinite)))throw Error('Enter measured ¹³C and ¹H ppm pairs.');
+   return {kind:'tool',task:'nmr.hsqc.transpeaknet',inputs:{smiles,hsqc_peaks,solvent:$('#hsqc-solvent',form).value}};
+  },output,trace);
+ }
+ function solventForm(form,output,trace){
+  form.append(el('h3','','Estimate shifts across solvents'),field('SMILES','transfer-smiles','C1CCCCC1'),
+   selectField('Nucleus','transfer-nucleus',[['1H','¹H'],['13C','¹³C']]),
+   field('Source solvent','source-solvent','CD3OD'),field('Target solvent','target-solvent','acetone-d6'),
+   field('Observed shift in the source solvent / ppm','source-ppm','1.45','number'),
+   el('p','tool-note','This reference baseline uses an independently measured shift change for the selected solvent pair.'));
+  runButton(form,'Estimate target shift',()=>{
+   const read=id=>$('#'+id,form).value.trim();
+   if(!read('source-ppm'))throw Error('Enter an observed shift.');
+   return {kind:'tool',task:'nmr.solvent_transfer',inputs:{smiles:read('transfer-smiles'),nucleus:read('transfer-nucleus'),
+    source_solvent:read('source-solvent'),target_solvent:read('target-solvent'),source_ppm:Number(read('source-ppm'))}};
+  },output,trace);
+ }
  function switchTab(name){
   if(busy)return;active=name;document.querySelectorAll('[data-tool-tab]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.toolTab===name)));workspace.replaceChildren();
   const form=el('div','tool-panel');const output=resultsBox();const trace=el('div','tool-progress');trace.id='live-tool-progress';
   if(name==='structure'){
    form.append(el('h3','','Start with a molecular structure'),field('SMILES','tool-smiles','CCO'));
-   const select=el('select');select.id='tool-task';[['nmr.forward.13C','Predict ¹³C NMR'],['nmr.forward.1H','Predict ¹H NMR'],['nmr.assignment','Assign measured NMR peaks'],['ms.forward.glacier','Predict MS/MS · GLACIER'],['vibrational.forward','Predict IR and Raman from a conformer']].forEach(([v,t])=>select.add(new Option(t,v)));const label=el('label','tool-field','Task');label.append(select);form.append(label);
+   const select=el('select');select.id='tool-task';[['nmr.forward.13C','Predict ¹³C NMR'],['nmr.forward.1H','Predict ¹H NMR'],['nmr.assignment','Assign measured ¹³C peaks'],['ms.forward.glacier','Predict MS/MS · GLACIER'],['ms.forward.iceberg','Predict MS/MS · ICEBERG'],['vibrational.forward','Predict IR and Raman from a conformer']].forEach(([v,t])=>select.add(new Option(t,v)));const label=el('label','tool-field','Task');label.append(select);form.append(label);
    const observed=field('Observed ¹³C peaks / ppm','tool-peaks','18.2, 58.3');observed.hidden=true;form.append(observed);
    const acquisition=el('div','ms-acquisition');acquisition.hidden=true;acquisition.append(field('Adduct','ms-adduct','[M+H]+'),field('Collision energy (checkpoint convention)','ms-energy','40','number'),field('Instrument category','ms-instrument','QTOF'),el('p','tool-note','Specify the acquisition conditions for your spectrum. The defaults are an example, and are not inferred from SMILES.'));form.append(acquisition);
-   select.onchange=()=>{observed.hidden=select.value!=='nmr.assignment';acquisition.hidden=select.value!=='ms.forward.glacier';};
-   const go=button('Run model');go.dataset.run='true';go.onclick=()=>{const inputs={smiles:$('#tool-smiles').value.trim()};if(select.value==='nmr.assignment'){inputs.nucleus='13C';inputs.peaks_ppm=$('#tool-peaks').value.split(/[,\s]+/).filter(Boolean).map(Number);}if(select.value==='ms.forward.glacier'){inputs.adduct=$('#ms-adduct').value.trim();inputs.collision_energy=Number($('#ms-energy').value);inputs.instrument=$('#ms-instrument').value.trim();}run({kind:'tool',task:select.value,inputs},output,trace);};form.append(go,el('p','tool-note','Chemical shifts are returned in ppm with atom indices. MS/MS returns m/z and relative intensity. IR/Raman use the generated molecular conformer.'));
+   select.onchange=()=>{observed.hidden=select.value!=='nmr.assignment';acquisition.hidden=!select.value.startsWith('ms.forward.');};
+   const go=button('Run model');go.dataset.run='true';go.onclick=()=>{const inputs={smiles:$('#tool-smiles').value.trim()};if(select.value==='nmr.assignment'){inputs.nucleus='13C';inputs.peaks_ppm=$('#tool-peaks').value.split(/[,\s]+/).filter(Boolean).map(Number);}if(select.value.startsWith('ms.forward.')){inputs.adduct=$('#ms-adduct').value.trim();inputs.collision_energy=Number($('#ms-energy').value);inputs.instrument=$('#ms-instrument').value.trim();}run({kind:'tool',task:select.value,inputs},output,trace);};form.append(go,el('p','tool-note','Chemical shifts are returned in ppm with atom indices. MS/MS returns m/z and relative intensity. IR/Raman use the generated molecular conformer.'));
+  }else if(name==='nmr'){
+   nmrStructureForm(form,output,trace);
+  }else if(name==='hsqc'){
+   hsqcForm(form,output,trace);
+  }else if(name==='solvent'){
+   solventForm(form,output,trace);
   }else if(name==='gap'||name==='generate'){
    form.append(el('h3','',name==='gap'?'Predict a molecular energy gap':'Generate or rank molecular structures'),el('p','','Use IR, Raman and H/C NMR together. Load the recorded four-channel example or import your own JSON.'));
    const input=el('textarea','spectral-json');input.id='tool-spectral-input';input.rows=8;input.setAttribute('aria-label','Four-channel spectral input JSON');
@@ -165,6 +336,14 @@
   const response=el('div','tool-response');response.append(trace,output);workspace.append(form,response);
  }
  document.querySelectorAll('[data-tool-tab]').forEach(b=>b.onclick=()=>switchTab(b.dataset.toolTab));switchTab('structure');
+ document.querySelectorAll('[data-open-workflow]').forEach(b=>b.onclick=()=>{switchTab(b.dataset.openWorkflow);location.hash='tool';});
+ document.addEventListener('openmolspec:structure',event=>{
+  if(busy)return;
+  switchTab('structure');
+  $('#tool-smiles').value=event.detail;
+  location.hash='tool';
+  $('#tool-smiles').focus({preventScroll:true});
+ });
  async function replay(){
   const host=$('#agent-demo-player');if(!host)return;
   try{

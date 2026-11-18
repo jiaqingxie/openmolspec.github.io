@@ -1,0 +1,90 @@
+.oms-portal .portal-header {
+  background: #0a1d24f5;
+  border-color: #aacdc31f;
+}
+.oms-portal .portal-header .brand, .oms-portal .portal-header #nav a { color: #e5f2ec; }
+.oms-portal .portal-header .brand small { color: #a3bbb5; }
+.oms-portal .portal-header .brand img { background: #eef5ee; border-radius: 7px; padding: 4px; }
+.oms-portal .portal-header .menu-toggle { background: #0a1d24; border-color: #426057; }
+.oms-portal .portal-header .menu-toggle span { background: #e5f2ec; }
+.oms-portal .portal-hero {
+  background: radial-gradient(ellipse at 74% 36%, #174b46 0, transparent 46%), #0c232c;
+  background-size: cover;
+}
+.oms-portal .portal-hero::before {
+  inset: 0;
+  width: auto;
+  aspect-ratio: auto;
+  border: 0;
+  border-radius: 0;
+  background-image: linear-gradient(#99d9c20b 1px, transparent 1px), linear-gradient(90deg, #99d9c20b 1px, transparent 1px);
+  background-size: 53px 53px;
+  mask-image: linear-gradient(90deg, transparent 12%, #000 75%);
+}
+.oms-portal .hero-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.16fr); gap: clamp(38px, 6vw, 95px); }
+.oms-portal .hero-copy h1 {
+  display: block;
+  white-space: normal;
+  font-size: clamp(44px, 5.15vw, 79px);
+  font-weight: 560;
+  line-height: 1.04;
+  letter-spacing: -.064em;
+}
+.oms-portal .hero-copy h1 em { color: #a4e5b9; font-style: normal; }
+.oms-portal .hero-eyebrow { text-transform: uppercase; letter-spacing: .16em; }
+.oms-portal .hero-description { font-size: 16px; max-width: 462px; }
+.oms-portal .hero-channels { margin-top: 34px; }
+.oms-portal .hero-bottom { padding: 0; }
+.oms-portal .launch-metrics { margin: 0; padding: 20px 0 24px; width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); }
+.oms-portal .launch-metrics > div { display: flex; flex-direction: column-reverse; padding: 4px 18px 4px 24px; border-left: 1px solid #aacdc32c; }
+.oms-portal .launch-metrics > div:first-child { padding-left: 0; border-left: none; }
+.oms-portal .launch-metrics dd { margin: 0; color: #e7f5ed; font-size: clamp(23px, 3.1vw, 43px); font-weight: 560; line-height: 1.12; letter-spacing: -.05em; }
+.oms-portal .launch-metrics dt { color: #acc7bf; font-size: 12px; margin-top: 5px; letter-spacing: .01em; }
+
+.oms-portal .molecule-playground { min-width: 0; border: 1px solid #8ed1b448; border-radius: 16px; background: #0b252cbd; padding: 21px; }
+.oms-portal .playground-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.oms-portal .playground-heading h2 { color: #e8f5ef; font-size: clamp(16px, 2vw, 22px); letter-spacing: -.025em; }
+.oms-portal .playground-formula { color: #b2e5bb; font: 14px ui-monospace, monospace; }
+.oms-portal .molecule-stage { position: relative; margin: 10px 0 13px; border-radius: 10px; overflow: hidden; background: radial-gradient(ellipse at 50% 48%, #22514d 0, #102b35 60%, #0b222c 100%); }
+.oms-portal #molecule-canvas { display: block; width: 100%; height: auto; aspect-ratio: 660/390; touch-action: none; }
+.oms-portal #molecule-canvas.dragging { cursor: grabbing; }
+.oms-portal .atom-legend { position: absolute; bottom: 8px; left: 11px; display: flex; flex-wrap: wrap; gap: 9px; color: #c7ddd8; font-size: 10px; pointer-events: none; }
+.oms-portal .atom-legend span { display: inline-flex; align-items: center; gap: 4px; }
+.oms-portal .atom-legend i { display: inline-block; width: 6px; height: 6px; border-radius: 50%; }
+.oms-portal .atom-carbon { background: #65c7a2; }
+.oms-portal .atom-oxygen { background: #ffa66c; }
+.oms-portal .atom-hydrogen { background: #e4eff1; }
+.oms-portal .playground-controls { display: flex; flex-wrap: wrap; gap: 6px; }
+.oms-portal .playground-controls button { padding: 7px 11px; color: #daeae4; background: #19333a; border: 1px solid #49655e; border-radius: 5px; font-size: 12px; }
+.oms-portal .playground-controls button[aria-pressed=true] { color: #112e26; background: #b1e5bc; border-color: #b1e5bc; }
+.oms-portal .playground-controls .playground-use { margin-left: auto; background: transparent; border-color: transparent; text-decoration: underline; text-underline-offset: 4px; }
+.oms-portal #molecule-caption { color: #b4ceca; font-size: 12px; padding-top: 10px; }
+.oms-portal .external-dataset { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 18px 24px; margin: 32px 0; padding: 24px; border-radius: 9px; border: 1px solid #cbded3; background: #f4faf6; }
+.oms-portal .external-dataset h3 { margin: 6px 0 8px; font-size: 25px; }
+.oms-portal .external-dataset p { color: #425f58; font-size: 14px; }
+.oms-portal .external-dataset p.external-type { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; }
+.oms-portal .external-dataset dl { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; margin: 0; align-items: center; }
+.oms-portal .external-dataset dt { color: #4e695e; font-size: 11px; }
+.oms-portal .external-dataset dd { margin: 3px 0 0; font-size: 25px; font-weight: 650; letter-spacing: -.03em; }
+.oms-portal .external-dataset-actions { display: flex; flex-wrap: wrap; gap: 15px; align-items: baseline; font-size: 14px; grid-column: 1 / -1; }
+.oms-portal .external-dataset-actions button { background: transparent; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 4px; color: var(--portal-teal); }
+.oms-portal .hsqc-plot { width: 100%; margin: 8px 0; }
+.oms-portal .tool-shell .tool-tabs { display: flex; flex-wrap: wrap; gap: 0 13px; }
+.oms-portal .tool-shell .tool-tabs button { font-size: 13px; }
+
+@media (max-width: 880px) {
+  .oms-portal .hero-layout { grid-template-columns: 1fr; gap: 32px; padding-top: 42px; }
+  .oms-portal .hero-copy h1 { font-size: clamp(42px, 8vw, 69px); }
+  .oms-portal .portal-header #nav { background: #0a1d24; }
+  .oms-portal .molecule-playground { width: min(640px, 100%); }
+}
+@media (max-width: 600px) {
+  .oms-portal .launch-metrics { grid-template-columns: 1fr 1fr; gap: 12px 9px; }
+  .oms-portal .launch-metrics > div { padding: 4px 6px 4px 12px; }
+  .oms-portal .launch-metrics > div:nth-child(odd) { border-left: 0; padding-left: 0; }
+  .oms-portal .molecule-playground { padding: 13px; }
+  .oms-portal .playground-controls button { font-size: 11px; padding: 6px 8px; }
+  .oms-portal .external-dataset { grid-template-columns: 1fr; padding: 17px; }
+  .oms-portal .tool-shell .tool-tabs { display: grid; grid-template-columns: 1fr 1fr; }
+  .oms-portal .tool-shell .tool-tabs button { white-space: normal; font-size: 12px; }
+}

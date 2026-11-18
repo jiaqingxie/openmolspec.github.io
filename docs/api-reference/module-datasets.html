@@ -161,7 +161,7 @@
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L20">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L23">Source code</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -183,7 +183,7 @@ split filenames, source references and dataset statistics.</p>
 <span class="go">True</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L40">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L43">Source code</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -209,7 +209,7 @@ split filenames, source references and dataset statistics.</p>
 <span class="go">'experimental'</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L58">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L61">Source code</a></p>
 </dd></dl>
 
 <dl class="py class">
@@ -219,16 +219,16 @@ split filenames, source references and dataset statistics.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – JSONL, MassSpecGym CSV/TSV, or openSpec LMDB file.</p></li>
+<li><p><strong>path</strong> (<em>str</em><em> or </em><em>pathlib.Path</em>) – JSONL, MassSpecGym CSV/TSV, openSpec LMDB, or TransPeakNet test ZIP file.</p></li>
 <li><p><strong>role</strong> (<em>{'train'</em><em>, </em><em>'val'</em><em>, </em><em>'test'}</em>) – Split to read. <code class="docutils literal notranslate"><span class="pre">'valid'</span></code> and <code class="docutils literal notranslate"><span class="pre">'validation'</span></code> are aliases for <code class="docutils literal notranslate"><span class="pre">'val'</span></code>.</p></li>
 <li><p><strong>dataset</strong> (<em>str</em>) – Dataset name attached to each returned record.</p></li>
 <li><p><strong>domain</strong> (<em>{'experimental'</em><em>, </em><em>'computed'}</em>) – Origin of the spectral measurements.</p></li>
 <li><p><strong>format</strong> (<em>str</em><em>, </em><em>default 'nmr_jsonl'</em>) – Reader format: <code class="docutils literal notranslate"><span class="pre">'nmr_jsonl'</span></code>, <code class="docutils literal notranslate"><span class="pre">'jsonl'</span></code>, <code class="docutils literal notranslate"><span class="pre">'massspecgym_csv'</span></code>,
-<code class="docutils literal notranslate"><span class="pre">'massspecgym_tsv'</span></code> or <code class="docutils literal notranslate"><span class="pre">'openspec_lmdb'</span></code>.</p></li>
+<code class="docutils literal notranslate"><span class="pre">'massspecgym_tsv'</span></code>, <code class="docutils literal notranslate"><span class="pre">'openspec_lmdb'</span></code> or <code class="docutils literal notranslate"><span class="pre">'transpeaknet_hsqc_zip'</span></code>.</p></li>
 <li><p><strong>trusted</strong> (<em>bool</em><em>, </em><em>default False</em>) – Set to <code class="docutils literal notranslate"><span class="pre">True</span></code> when opening a trusted pickle-based LMDB.</p></li>
 <li><p><strong>modalities</strong> (<em>tuple</em><em> of </em><em>str</em><em>, </em><em>default</em><em> (</em><em>)</em>) – Channels required in each selected record: <code class="docutils literal notranslate"><span class="pre">'1H'</span></code>, <code class="docutils literal notranslate"><span class="pre">'13C'</span></code>,
 <code class="docutils literal notranslate"><span class="pre">'11B'</span></code>, <code class="docutils literal notranslate"><span class="pre">'19F'</span></code>, <code class="docutils literal notranslate"><span class="pre">'29Si'</span></code>, <code class="docutils literal notranslate"><span class="pre">'31P'</span></code>, <code class="docutils literal notranslate"><span class="pre">'IR'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Raman'</span></code>,
-<code class="docutils literal notranslate"><span class="pre">'MS'</span></code> or <code class="docutils literal notranslate"><span class="pre">'MS/MS'</span></code>.</p></li>
+<code class="docutils literal notranslate"><span class="pre">'MS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MS/MS'</span></code> or <code class="docutils literal notranslate"><span class="pre">'HSQC'</span></code>.</p></li>
 <li><p><strong>limit</strong> (<em>int</em><em> or </em><em>None</em><em>, </em><em>default None</em>) – Maximum number of selected records.</p></li>
 </ul>
 </dd>
@@ -243,7 +243,7 @@ the split, dataset, domain, record locator and available channels.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hc</span> <span class="o">=</span> <span class="n">split</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">modalities</span><span class="o">=</span><span class="p">[</span><span class="s1">'1H'</span><span class="p">,</span> <span class="s1">'13C'</span><span class="p">],</span> <span class="n">limit</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L114">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L147">Source code</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="openmolspec.dataset.SpectraSplit.__iter__">
 <span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.dataset.SpectraSplit.__iter__" title="Link to this definition"></a></dt>
@@ -255,7 +255,7 @@ the split, dataset, domain, record locator and available channels.</p>
 <code class="docutils literal notranslate"><span class="pre">_openmolspec</span></code> dataset, role, locator and channel metadata.</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L208">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L243">Source code</a></p>
 </section>
 </dd></dl>
 
@@ -274,7 +274,7 @@ the split, dataset, domain, record locator and available channels.</p>
 <dd class="field-odd"><p>list of dict</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L248">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L285">Source code</a></p>
 </dd></dl>
 
 <dl class="py method">
@@ -300,7 +300,7 @@ the split, dataset, domain, record locator and available channels.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">examples</span> <span class="o">=</span> <span class="n">paired</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L265">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L302">Source code</a></p>
 </dd></dl>
 
 <dl class="py method">
@@ -315,7 +315,7 @@ the split, dataset, domain, record locator and available channels.</p>
 <dd class="field-even"><p>dict</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L291">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L328">Source code</a></p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -387,7 +387,7 @@ the split, dataset, domain, record locator and available channels.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s1">'smiles'</span><span class="p">])</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L304">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L341">Source code</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="openmolspec.dataset.MolecularSpectra.get_split">
 <span class="sig-name descname"><span class="pre">get_split</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.dataset.MolecularSpectra.get_split" title="Link to this definition"></a></dt>
@@ -400,7 +400,7 @@ the split, dataset, domain, record locator and available channels.</p>
 <dd class="field-even"><p>dict of str to SpectraSplit</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L325">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L362">Source code</a></p>
 </dd></dl>
 
 <dl class="py method">
@@ -421,7 +421,7 @@ the split, dataset, domain, record locator and available channels.</p>
 <dd class="field-even"><p><strong>KeyError</strong> – If the dataset has no file for the requested role.</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L335">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L372">Source code</a></p>
 </dd></dl>
 
 <dl class="py method">
@@ -436,7 +436,7 @@ the split, dataset, domain, record locator and available channels.</p>
 <dd class="field-even"><p>dict</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L355">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L392">Source code</a></p>
 </dd></dl>
 
 <dl class="py method">
@@ -454,7 +454,7 @@ the split, dataset, domain, record locator and available channels.</p>
 <dd class="field-odd"><p><strong>ValueError</strong> – If a reference checksum is missing or a local file differs.</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L367">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L404">Source code</a></p>
 </dd></dl>
 
 <dl class="py method">
@@ -485,7 +485,7 @@ general molecular/spectral dictionaries.</p></li>
 <span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">'my_measurements'</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s1">'experimental'</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L392">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L429">Source code</a></p>
 </dd></dl>
 
 </dd></dl>
@@ -521,7 +521,7 @@ datasets also accept the file path directly.</p></li>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">records</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'test'</span><span class="p">]</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">modalities</span><span class="o">=</span><span class="p">[</span><span class="s1">'1H'</span><span class="p">,</span> <span class="s1">'13C'</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L433">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L470">Source code</a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -550,7 +550,7 @@ recomputed from SMILES.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">report</span> <span class="o">=</span> <span class="n">audit_splits</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get_split</span><span class="p">(),</span> <span class="n">identity</span><span class="o">=</span><span class="s1">'connectivity'</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L475">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/dataset.py#L512">Source code</a></p>
 </dd></dl>
 
 <section id="references">

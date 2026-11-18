@@ -1,6 +1,6 @@
 {
   "completed": true,
-  "scope": "Live execution checks for the eight online workflows; these checks do not measure prediction accuracy.",
+  "scope": "Verified recorded execution of public model workflows. Execution checks do not measure scientific accuracy.",
   "tasks": {
     "nmr.forward.13C": {
       "status": "completed",
@@ -57,6 +57,41 @@
       "run_id": "6b843b58-3fca-47cf-9b5f-6a8003c805fc",
       "created_at": 1794957465.5726767,
       "result_sha256": "50a108eecec657862c791013d38af7b322d394a74780ea350f9de59ae50689e7"
+    },
+    "nmr.generation.hc": {
+      "status": "completed",
+      "elapsed_seconds": 15.01,
+      "run_id": "d95345a8-c507-473d-ade1-cd752e7945fc",
+      "created_at": 1795008459.7079356,
+      "result_sha256": "35f956e1886e064c09cd4c9463af91fd037a508acf08604ac138b1f752d778c3"
+    },
+    "nmr.retrieval.hc.s2m": {
+      "status": "completed",
+      "elapsed_seconds": 12.082,
+      "run_id": "90554f3f-ae75-479a-87f5-8afbd7ad6588",
+      "created_at": 1795008474.8984504,
+      "result_sha256": "1664426fb66868382dcf5a2b15f8f123adc0388130c61579792862c655a2ca0b"
+    },
+    "nmr.solvent_transfer": {
+      "status": "completed",
+      "elapsed_seconds": 0.754,
+      "run_id": "16e214a4-aeaf-4a71-bc95-a4e35c496806",
+      "created_at": 1795008487.1290343,
+      "result_sha256": "78aecb5865409268c262a39a1d0373da6d3bc317a7e0360303650c03d1463ff5"
+    },
+    "nmr.hsqc.transpeaknet": {
+      "status": "completed",
+      "elapsed_seconds": 51.941,
+      "run_id": "d196b625-1454-44ee-beb7-09c9f1ebb453",
+      "created_at": 1795008488.1590765,
+      "result_sha256": "5cd15e5b4ab0b7dedb67089355dc28a90a34e09a8543eb4388563bf226c1ad1f"
+    },
+    "ms.forward.iceberg": {
+      "status": "completed",
+      "elapsed_seconds": 81.602,
+      "run_id": "2870ae89-0233-4acd-8a75-589e0a6b6ac4",
+      "created_at": 1795008540.8562593,
+      "result_sha256": "55bf0bc162e7fa52afb629e622db7f5c8f8f66d04404107ec189ab498a31e661"
     }
   }
 }

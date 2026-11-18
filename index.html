@@ -8,8 +8,10 @@
   <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/">
   <link rel="icon" href="assets/brand/mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="portal.css">
+  <link rel="stylesheet" href="launch.css">
   <script src="site.js" defer></script>
   <script src="portal.js" defer></script>
+  <script src="molecule-playground.js" defer></script>
 </head>
 <body class="oms-portal">
   <a class="skip" href="#main">Skip to content</a>
@@ -35,10 +37,9 @@
     <section id="introduction" class="portal-hero" aria-labelledby="portal-title">
       <div class="portal-wrap hero-layout">
         <div class="hero-copy">
-          <p class="eyebrow hero-eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Molecular spectroscopy, connected</p>
-          <h1 id="portal-title"><img src="assets/brand/mark.svg" alt="" width="62" height="62">OpenMolSpec</h1>
-          <p class="hero-headline">Explore the data.<br><span>Work with the spectra.</span></p>
-          <p class="hero-description">Molecular spectroscopy datasets and tools for NMR, mass spectrometry, infrared and Raman. Browse real records, call a model, and take the result into your own workflow.</p>
+          <p class="eyebrow hero-eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> OpenMolSpec</p>
+          <h1 id="portal-title">Molecular spectra.<br><em>Open to explore.</em></h1>
+          <p class="hero-description">A million-scale dataset and platform for chemical spectroscopic deep learning. Explore experimental records and run models for NMR, MS/MS, IR and Raman.</p>
           <div class="hero-actions">
             <a class="portal-button portal-button-mint" href="#tool">Open the tool <span aria-hidden="true">↗</span></a>
             <a class="hero-text-link" href="#dataset">Explore datasets <span aria-hidden="true">→</span></a>
@@ -48,24 +49,25 @@
           </div>
         </div>
 
-        <figure class="hero-molecule">
-          <div class="molecule-heading">
-            <div><span class="micro-label">A molecular example</span><h2>Structure meets spectra.</h2></div>
-            <span class="viewer-badge"><span aria-hidden="true"></span>3D</span>
+        <section id="molecule-playground" class="molecule-playground" aria-labelledby="playground-title">
+          <div class="playground-heading">
+            <h2 id="playground-title">Same formula, different bonds</h2>
+            <span class="playground-formula">C₂H₆O</span>
           </div>
-          <label class="molecule-select-label" for="conformer-select">Explore a molecule</label>
-          <select id="conformer-select" aria-label="Select a molecular example"></select>
-          <div id="conformer-viewer" role="img" aria-label="Interactive molecular conformer. Drag to rotate and scroll to zoom."></div>
-          <figcaption>
-            <p class="viewer-hint"><span aria-hidden="true">↔</span> Drag to rotate <span class="hint-divider" aria-hidden="true">·</span> Scroll to zoom</p>
-            <p id="conformer-result" aria-live="polite">Loading the molecular example…</p>
-            <a href="https://openmolspec.readthedocs.io/en/latest/tasks/vibrational-gap-ir_raman_hc.html" target="_blank" rel="noopener">View the gap prediction example <span aria-hidden="true">↗</span></a>
-          </figcaption>
-        </figure>
+          <div class="molecule-stage">
+            <canvas id="molecule-canvas" width="660" height="390" role="img" aria-label="Interactive ball-and-stick structure. Drag the orange oxygen to reconnect the atoms."></canvas>
+            <div class="atom-legend"><span><i class="atom-carbon"></i> Carbon</span><span><i class="atom-oxygen"></i> Oxygen</span><span><i class="atom-hydrogen"></i> Hydrogen</span></div>
+          </div>
+          <div class="playground-controls" aria-label="Choose an isomer">
+            <button type="button" data-isomer="ethanol" aria-pressed="true">Ethanol</button>
+            <button type="button" data-isomer="ether" aria-pressed="false">Dimethyl ether</button>
+            <button type="button" id="use-hero-structure" class="playground-use">Use SMILES ↗</button>
+          </div>
+          <p id="molecule-caption" aria-live="polite">Drag the orange oxygen to the outlined bond position.</p>
+        </section>
       </div>
       <div class="portal-wrap hero-bottom">
-        <p>2,972,843 H/C spectra <span aria-hidden="true">/</span> 31 tasks <span aria-hidden="true">/</span> 82 executed tutorials</p>
-        <a href="#tool">Explore the platform <span aria-hidden="true">↓</span></a>
+        <dl class="launch-metrics"><div><dt>Experimental H/C spectra</dt><dd>2.97M</dd></div><div><dt>Unique H/C molecules</dt><dd>2.68M</dd></div><div><dt>Online workflows</dt><dd>13</dd></div><div><dt>Executed tutorials</dt><dd>82</dd></div></dl>
       </div>
     </section>
 
@@ -73,8 +75,7 @@
       <div class="portal-wrap">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">01 <span aria-hidden="true">/</span> Tool</p>
-            <h2 id="tool-title">Your spectroscopy workspace.</h2>
+            <h2 id="tool-title">Spectroscopy workspace</h2>
           </div>
           <p>Start with an example or provide your own input. Choose a workflow, inspect its output, and keep the numerical result.</p>
         </div>
@@ -88,13 +89,16 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 3 8 0 4 7-4 7H8l-4-7Zm8 14v4M4 10H1m19 0h3"/></svg>
               Structure → spectra
             </button>
+            <button id="tool-tab-nmr" type="button" role="tab" aria-selected="false" aria-controls="tool-workspace" data-tool-tab="nmr">NMR → structure</button>
+            <button id="tool-tab-hsqc" type="button" role="tab" aria-selected="false" aria-controls="tool-workspace" data-tool-tab="hsqc">HSQC assignment</button>
+            <button id="tool-tab-solvent" type="button" role="tab" aria-selected="false" aria-controls="tool-workspace" data-tool-tab="solvent">Solvent transfer</button>
             <button id="tool-tab-gap" type="button" role="tab" aria-selected="false" aria-controls="tool-workspace" data-tool-tab="gap">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M3 6h18M12 9v6m-3-3 3 3 3-3"/></svg>
               Spectra → gap
             </button>
             <button id="tool-tab-generate" type="button" role="tab" aria-selected="false" aria-controls="tool-workspace" data-tool-tab="generate">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 18h3l2-12 3 12 3-7 2 7h2m2-13v5m-2-2 2 2 2-2"/></svg>
-              Structure generation
+              Multimodal → structure
             </button>
             <button id="tool-tab-agent" type="button" role="tab" aria-selected="false" aria-controls="tool-workspace" data-tool-tab="agent">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14v12H5zm7-5v5M9 12v3m6-3v3m-6 3h6M2 12h3m14 0h3"/></svg>
@@ -118,6 +122,10 @@
           </div>
         </div>
         <p class="section-footnote">Learn the input fields and model settings in the <a href="https://openmolspec.readthedocs.io/en/latest/tasks/index.html" target="_blank" rel="noopener">task guides <span aria-hidden="true">↗</span></a>.</p>
+        <details class="dataset-summary" id="task-catalog">
+          <summary><span>Browse the full task catalog</span><span class="disclosure-arrow" aria-hidden="true">+</span></summary>
+          <div class="table-scroll"><table class="data-table"><thead><tr><th>Task guide</th><th>Input</th><th>Output</th></tr></thead><tbody><tr data-family="nmr"><td><a href="docs/tasks/nmr-forward-1H.html">1H chemical shift prediction</a><small>nmr.forward.1H</small></td><td>Molecular structure; nucleus</td><td>Atom-indexed shifts (ppm)</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-forward-13C.html">13C chemical shift prediction</a><small>nmr.forward.13C</small></td><td>Molecular structure; nucleus</td><td>Atom-indexed shifts (ppm)</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-forward-19F.html">19F chemical shift prediction</a><small>nmr.forward.19F</small></td><td>Molecular structure; nucleus</td><td>Atom-indexed shifts (ppm)</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-forward-31P.html">31P chemical shift prediction</a><small>nmr.forward.31P</small></td><td>Molecular structure; nucleus</td><td>Atom-indexed shifts (ppm)</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-forward-11B.html">11B chemical shift prediction</a><small>nmr.forward.11B</small></td><td>Molecular structure; nucleus</td><td>Atom-indexed shifts (ppm)</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-forward-29Si.html">29Si chemical shift prediction</a><small>nmr.forward.29Si</small></td><td>Molecular structure; nucleus</td><td>Atom-indexed shifts (ppm)</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-retrieval-h-s2m.html">Spectrum-to-structure retrieval: ¹H</a><small>nmr.retrieval.h.s2m</small></td><td>NMR peaks; candidate structures</td><td>Ranked molecular structures</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-retrieval-h-m2s.html">Structure-to-spectrum retrieval: ¹H</a><small>nmr.retrieval.h.m2s</small></td><td>Molecular structure; candidate spectra</td><td>Ranked spectra</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-generation-h.html">Structure elucidation from ¹H NMR</a><small>nmr.generation.h</small></td><td>NMR peaks; supplied molecular formula</td><td>SMILES candidates</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-retrieval-c-s2m.html">Spectrum-to-structure retrieval: ¹³C</a><small>nmr.retrieval.c.s2m</small></td><td>NMR peaks; candidate structures</td><td>Ranked molecular structures</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-retrieval-c-m2s.html">Structure-to-spectrum retrieval: ¹³C</a><small>nmr.retrieval.c.m2s</small></td><td>Molecular structure; candidate spectra</td><td>Ranked spectra</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-generation-c.html">Structure elucidation from ¹³C NMR</a><small>nmr.generation.c</small></td><td>NMR peaks; supplied molecular formula</td><td>SMILES candidates</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-retrieval-hc-s2m.html">Spectrum-to-structure retrieval: ¹H + ¹³C</a><small>nmr.retrieval.hc.s2m</small></td><td>NMR peaks; candidate structures</td><td>Ranked molecular structures</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-retrieval-hc-m2s.html">Structure-to-spectrum retrieval: ¹H + ¹³C</a><small>nmr.retrieval.hc.m2s</small></td><td>Molecular structure; candidate spectra</td><td>Ranked spectra</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-generation-hc.html">Structure elucidation from ¹H + ¹³C NMR</a><small>nmr.generation.hc</small></td><td>NMR peaks; supplied molecular formula</td><td>SMILES candidates</td></tr><tr data-family="vibrational"><td><a href="docs/tasks/vibrational-gap-ir.html">HOMO–LUMO gap from IR</a><small>vibrational.gap.ir</small></td><td>IR</td><td>HOMO–LUMO gap (eV)</td></tr><tr data-family="vibrational"><td><a href="docs/tasks/vibrational-gap-raman.html">HOMO–LUMO gap from Raman</a><small>vibrational.gap.raman</small></td><td>RAMAN</td><td>HOMO–LUMO gap (eV)</td></tr><tr data-family="vibrational"><td><a href="docs/tasks/vibrational-gap-ir_raman.html">HOMO–LUMO gap from IR + Raman</a><small>vibrational.gap.ir_raman</small></td><td>IR, RAMAN</td><td>HOMO–LUMO gap (eV)</td></tr><tr data-family="multimodal"><td><a href="docs/tasks/vibrational-gap-ir_raman_hc.html">HOMO–LUMO gap from IR + Raman + NMR</a><small>vibrational.gap.ir_raman_hc</small></td><td>IR, Raman, 1H, 13C</td><td>HOMO–LUMO gap (eV)</td></tr><tr data-family="vibrational"><td><a href="docs/tasks/vibrational-forward.html">IR and Raman from a molecular geometry</a><small>vibrational.forward</small></td><td>Elements and 3D Cartesian coordinates</td><td>IR and Raman spectra</td></tr><tr data-family="vibrational"><td><a href="docs/tasks/vibrational-retrieval.html">Structure retrieval: IR + Raman</a><small>vibrational.retrieval</small></td><td>IR, Raman; candidate structures</td><td>Ranked molecular structures</td></tr><tr data-family="vibrational"><td><a href="docs/tasks/vibrational-generation.html">Structure generation: IR + Raman</a><small>vibrational.generation</small></td><td>IR, Raman</td><td>SMILES candidates</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-assignment.html">Peak-to-atom assignment</a><small>nmr.assignment</small></td><td>Known structure; observed H/C peaks</td><td>Candidate peak-to-atom assignments</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-solvent_transfer.html">Cross-solvent chemical shift transfer</a><small>nmr.solvent_transfer</small></td><td>Structure; source shifts; solvent pair</td><td>Target shifts and reference provenance</td></tr><tr data-family="vibrational"><td><a href="docs/tasks/spectroscopy-reranking.html">Candidate reranking: IR + Raman</a><small>spectroscopy.reranking</small></td><td>IR, Raman; candidate structures</td><td>Ranked molecular structures</td></tr><tr data-family="multimodal"><td><a href="docs/tasks/vibrational-retrieval-hc.html">Structure retrieval: IR + Raman + NMR</a><small>vibrational.retrieval.hc</small></td><td>IR, Raman, 1H, 13C; candidate structures</td><td>Ranked molecular structures</td></tr><tr data-family="multimodal"><td><a href="docs/tasks/vibrational-generation-hc.html">Structure generation: IR + Raman + NMR</a><small>vibrational.generation.hc</small></td><td>IR, Raman, 1H, 13C</td><td>SMILES candidates</td></tr><tr data-family="multimodal"><td><a href="docs/tasks/spectroscopy-reranking-hc.html">Candidate reranking: IR + Raman + NMR</a><small>spectroscopy.reranking.hc</small></td><td>IR, Raman, 1H, 13C; candidate structures</td><td>Ranked molecular structures</td></tr><tr data-family="ms"><td><a href="docs/tasks/ms-forward-glacier.html">MS/MS prediction with GLACIER</a><small>ms.forward.glacier</small></td><td>Structure; adduct; collision energy; instrument</td><td>MS/MS m/z–intensity peaks</td></tr><tr data-family="ms"><td><a href="docs/tasks/ms-forward-iceberg.html">MS/MS prediction with ICEBERG</a><small>ms.forward.iceberg</small></td><td>Structure; adduct; collision energy; instrument</td><td>MS/MS m/z–intensity peaks</td></tr><tr data-family="ms"><td><a href="docs/tasks/ms-annotation-magma.html">MS/MS fragment annotation</a><small>ms.annotation.magma</small></td><td>Structure; MS/MS peaks; precursor conditions</td><td>Candidate fragment annotations</td></tr></tbody></table></div>
+        </details>
       </div>
     </section>
 
@@ -159,8 +167,7 @@
       <div class="portal-wrap">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">02 <span aria-hidden="true">/</span> Dataset</p>
-            <h2 id="dataset-title">Get to know a spectrum.</h2>
+            <h2 id="dataset-title">Explore experimental spectra</h2>
           </div>
           <p>Preview molecular structures, peak lists and acquisition fields. Explore a record before choosing a dataset for your analysis.</p>
         </div>
@@ -182,9 +189,14 @@
             <div class="empty-preview"><img src="assets/brand/mark.svg" alt="" width="72" height="72"><h3>A molecule and its spectrum.</h3><p>Select a record to view its structure, spectrum and experimental metadata.</p></div>
           </aside>
         </div>
+        <article id="dataset-hsqc" class="external-dataset">
+          <div><p class="external-type">Experimental · External dataset</p><h3>TransPeakNet HSQC</h3><p>Expert-annotated C–H cross-peaks with original molecular structures and atom indices.</p></div>
+          <dl><div><dt>Test spectra</dt><dd>479</dd></div><div><dt>Distinct molecules</dt><dd>478</dd></div><div><dt>Assigned carbon rows</dt><dd>7,310</dd></div></dl>
+          <div class="external-dataset-actions"><a href="https://drive.google.com/drive/folders/1wQxk7mnIwi5aAGaF34_hk7xo6IeEh-IE" target="_blank" rel="noopener">Author test data ↗</a><button type="button" data-open-workflow="hsqc">Assign HSQC peaks ↗</button></div>
+        </article>
         <details class="dataset-summary">
           <summary><span>Dataset sizes and sources</span><span class="summary-note">Spectra and molecules, counted separately</span><span class="disclosure-arrow" aria-hidden="true">+</span></summary>
-          <div class="table-scroll"><table class="data-table"><thead><tr><th>Dataset / view</th><th>Category</th><th>Description</th><th>Spectra</th><th>Molecules</th></tr></thead><tbody><tr><td><a href="docs/data/nmr.html">OpenDataLab · cleaned H/C NMR</a></td><td>Experimental · OpenMolSpec collection</td><td>Proton and carbon chemical shifts, molecular structures, formulas and experimental conditions; predefined train/validation/test files.</td><td>2,972,843</td><td>2,678,511</td></tr><tr><td><a href="docs/data/index.html">OpenDataLab · 29Si</a></td><td>Experimental · OpenMolSpec collection</td><td>Silicon chemical shifts in ppm with silicon-containing molecular structures.</td><td>726</td><td>636</td></tr><tr><td><a href="docs/data/index.html">OpenDataLab · Raman</a></td><td>Experimental · OpenMolSpec collection</td><td>Measured Raman peak positions in cm⁻¹ and source experimental metadata.</td><td>42</td><td>39</td></tr><tr><td><a href="docs/data/index.html">OpenDataLab · 11B</a></td><td>Experimental · OpenMolSpec collection</td><td>Boron chemical shifts in ppm with boron-containing molecular structures.</td><td>1,140</td><td>1,017</td></tr><tr><td><a href="docs/data/index.html">OpenDataLab · MS</a></td><td>Experimental · OpenMolSpec collection</td><td>Measured m/z–intensity peak lists paired with standardized molecular structures.</td><td>5,233</td><td>4,980</td></tr><tr><td><a href="docs/data/index.html">OpenDataLab · 31P</a></td><td>Experimental · OpenMolSpec collection</td><td>Phosphorus chemical shifts in ppm with phosphorus-containing molecular structures.</td><td>21,662</td><td>18,238</td></tr><tr><td><a href="docs/data/index.html">OpenDataLab · 19F</a></td><td>Experimental · OpenMolSpec collection</td><td>Fluorine chemical shifts in ppm with fluorine-containing molecular structures.</td><td>56,679</td><td>50,402</td></tr><tr><td><a href="docs/data/index.html">OpenDataLab · IR</a></td><td>Experimental · OpenMolSpec collection</td><td>Measured infrared peak positions in cm⁻¹, paired with standardized molecular structures.</td><td>177,759</td><td>168,197</td></tr><tr><td><a href="https://zenodo.org/records/17296666">NMRexp v2 · H/C view</a></td><td>Experimental · external</td><td>Literature-derived proton and carbon spectra paired with valid molecular structures.</td><td>3,091,126</td><td>1,492,268</td></tr><tr><td><a href="docs/data/vibrational.html">OpenMolSpec · computed test view</a></td><td>Computed · OpenMolSpec benchmark</td><td>IR/Raman spectra for 20,390 calculation records, with H/C shifts, structures and electronic properties.</td><td>40,780</td><td>16,728</td></tr><tr><td><a href="https://huggingface.co/datasets/roman-bushuiev/MassSpecGym">MassSpecGym v1.5 · prediction view</a></td><td>Experimental · external</td><td>Tandem mass spectra paired with molecular structures and acquisition conditions for forward prediction.</td><td>119,029</td><td>16,974</td></tr><tr><td><a href="https://github.com/MassBank/MassBank-data">MassBank · MS2 view</a></td><td>Experimental · external</td><td>Numerical tandem mass spectra with parseable molecular structures and repository acquisition metadata.</td><td>120,512</td><td>11,699</td></tr><tr><td><a href="https://arxiv.org/abs/2501.18876">QMe14S · paired IR/Raman view</a></td><td>Computed · external</td><td>184,252 finite, nonconstant infrared/Raman pairs across 14 elements; each channel counts as one spectrum.</td><td>368,504</td><td>180,073</td></tr></tbody></table></div>
+          <div class="table-scroll"><table class="data-table"><thead><tr><th>Dataset / view</th><th>Category</th><th>Description</th><th>Spectra</th><th>Molecules</th></tr></thead><tbody><tr><td><a href="docs/data/nmr.html">OpenDataLab · cleaned H/C NMR</a></td><td>Experimental · OpenMolSpec collection</td><td>Proton and carbon chemical shifts, molecular structures, formulas and experimental conditions; predefined train/validation/test files.</td><td>2,972,843</td><td>2,678,511</td></tr><tr><td><a href="docs/data/index.html">OpenDataLab · 29Si</a></td><td>Experimental · OpenMolSpec collection</td><td>Silicon chemical shifts in ppm with silicon-containing molecular structures.</td><td>726</td><td>636</td></tr><tr><td><a href="docs/data/index.html">OpenDataLab · Raman</a></td><td>Experimental · OpenMolSpec collection</td><td>Measured Raman peak positions in cm⁻¹ and source experimental metadata.</td><td>42</td><td>39</td></tr><tr><td><a href="docs/data/index.html">OpenDataLab · 11B</a></td><td>Experimental · OpenMolSpec collection</td><td>Boron chemical shifts in ppm with boron-containing molecular structures.</td><td>1,140</td><td>1,017</td></tr><tr><td><a href="docs/data/index.html">OpenDataLab · MS</a></td><td>Experimental · OpenMolSpec collection</td><td>Measured m/z–intensity peak lists paired with standardized molecular structures.</td><td>5,233</td><td>4,980</td></tr><tr><td><a href="docs/data/index.html">OpenDataLab · 31P</a></td><td>Experimental · OpenMolSpec collection</td><td>Phosphorus chemical shifts in ppm with phosphorus-containing molecular structures.</td><td>21,662</td><td>18,238</td></tr><tr><td><a href="docs/data/index.html">OpenDataLab · 19F</a></td><td>Experimental · OpenMolSpec collection</td><td>Fluorine chemical shifts in ppm with fluorine-containing molecular structures.</td><td>56,679</td><td>50,402</td></tr><tr><td><a href="docs/data/index.html">OpenDataLab · IR</a></td><td>Experimental · OpenMolSpec collection</td><td>Measured infrared peak positions in cm⁻¹, paired with standardized molecular structures.</td><td>177,759</td><td>168,197</td></tr><tr><td><a href="https://zenodo.org/records/17296666">NMRexp v2 · H/C view</a></td><td>Experimental · external</td><td>Literature-derived proton and carbon spectra paired with valid molecular structures.</td><td>3,091,126</td><td>1,492,268</td></tr><tr><td><a href="https://github.com/siriusxiao62/2dNMR/blob/2e93db82a9d627ac01109474e9b6e594065e3d56/data_annotation/HSQC_Annotation_TestData.zip">TransPeakNet · HSQC test set</a></td><td>Experimental · external</td><td>Expert-annotated 2D C–H cross-peaks. The authors provide training and validation spectra upon request.</td><td>479</td><td>478</td></tr><tr><td><a href="docs/data/vibrational.html">OpenMolSpec · computed test view</a></td><td>Computed · OpenMolSpec benchmark</td><td>IR/Raman spectra for 20,390 calculation records, with H/C shifts, structures and electronic properties.</td><td>40,780</td><td>16,728</td></tr><tr><td><a href="https://huggingface.co/datasets/roman-bushuiev/MassSpecGym">MassSpecGym v1.5 · prediction view</a></td><td>Experimental · external</td><td>Tandem mass spectra paired with molecular structures and acquisition conditions for forward prediction.</td><td>119,029</td><td>16,974</td></tr><tr><td><a href="https://github.com/MassBank/MassBank-data">MassBank · MS2 view</a></td><td>Experimental · external</td><td>Numerical tandem mass spectra with parseable molecular structures and repository acquisition metadata.</td><td>120,512</td><td>11,699</td></tr><tr><td><a href="https://arxiv.org/abs/2501.18876">QMe14S · paired IR/Raman view</a></td><td>Computed · external</td><td>184,252 finite, nonconstant infrared/Raman pairs across 14 elements; each channel counts as one spectrum.</td><td>368,504</td><td>180,073</td></tr></tbody></table></div>
           <p class="table-note">Counts describe each selected dataset view. See the data guide for source information, fields and train/test splits.</p>
         </details>
         <p class="section-footnote"><a href="https://openmolspec.readthedocs.io/en/latest/data/index.html" target="_blank" rel="noopener">Explore dataset fields and access <span aria-hidden="true">↗</span></a></p>
@@ -195,7 +207,6 @@
       <div class="portal-wrap">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">03 <span aria-hidden="true">/</span> Documentation</p>
             <h2 id="documentation-title">Take the next step.</h2>
           </div>
           <p>Follow an executed tutorial, explore a dataset schema, or bring OpenMolSpec into your Python and agent workflows.</p>
