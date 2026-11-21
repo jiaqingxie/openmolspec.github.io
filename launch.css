@@ -137,10 +137,17 @@
 .oms-portal .agent-demo-player:has(>.recorded-trace) { border-color:var(--portal-line); }
 .oms-portal .replay-step { background:white; border-color:#d4d1df; color:#58526f; }
 .oms-portal .replay-step[aria-pressed=true] { background:#37314c; color:white; border-color:#37314c; }
-.oms-portal .documentation-links a { border-color:#cac7d9; }
-.oms-portal .documentation-links h3 { color:#3d3555; font-size:21px; }
-.oms-portal .documentation-links p { color:#67677a; }
-.oms-portal .portal-footer { background:#151629; color:#e5e3f3; }
+.oms-portal .documentation-section { background: #1b1b32; border-top: 0; }
+.oms-portal .documentation-section .section-heading h2 { color: #f6f3ff; }
+.oms-portal .documentation-section .section-heading p { color: #c5c5d9; }
+.oms-portal .documentation-links a { border-color:#64617e; }
+.oms-portal .documentation-links a:hover { border-color:var(--gold); }
+.oms-portal .documentation-links h3 span { color: var(--gold); }
+.oms-portal .documentation-section .portal-button { background:var(--gold); color:#252035; border-color:var(--gold); }
+.oms-portal .documentation-section .section-footnote a { color:#e5dffa; }
+.oms-portal .documentation-links h3 { color:#faf8ff; font-size:21px; }
+.oms-portal .documentation-links p { color:#cac6db; }
+.oms-portal .portal-footer { background:#151629; border-color:#444259; color:#e5e3f3; }
 .oms-portal .portal-footer .brand, .oms-portal .footer-links a { color:#f3f0fb; }
 .oms-portal .footer-layout p { color:#c9c5df; }
 @media(max-width:1050px) {
