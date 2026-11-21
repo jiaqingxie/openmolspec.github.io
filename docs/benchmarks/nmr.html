@@ -84,6 +84,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#structure-elucidation-from-1h-13c-nmr">Structure elucidation from ¹H + ¹³C NMR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#peak-to-atom-assignment">Peak-to-atom assignment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cross-solvent-chemical-shift-transfer">Cross-solvent chemical shift transfer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hsqc-cross-peak-prediction">HSQC cross-peak prediction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
@@ -3135,6 +3136,57 @@
 <td><p>1H</p></td>
 <td><p>rmse_ppm</p></td>
 <td class="text-right"><p>0.376179</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hsqc-cross-peak-prediction">
+<h2>HSQC cross-peak prediction<a class="headerlink" href="#hsqc-cross-peak-prediction" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nmr.hsqc.transpeaknet</span></code></p>
+<p>Predict C–H cross-peaks from a known structure and solvent.</p>
+<p>The full ZIP gives one vote to each of 479 spectra. The author notebook gives one vote to each of 511 metadata rows covering 472 spectra. The full-ZIP run uses the unknown class for 38 conflicting and seven missing solvent labels.</p>
+<p><a class="reference internal" href="../tasks/nmr-hsqc-transpeaknet.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-hsqc-transpeaknet.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/b2ce9eb99ca3fbfee6ca31dafad2353f/nmr-hsqc-transpeaknet.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;479</span> <span class="pre">expert</span> <span class="pre">spectra&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>479 expert spectra</p></td>
+<td><p>recorded model</p></td>
+<td><p>carbon_mae_ppm</p></td>
+<td class="text-right"><p>2.02753</p></td>
+</tr>
+<tr class="row-odd"><td><p>479 expert spectra</p></td>
+<td><p>recorded model</p></td>
+<td><p>proton_mae_ppm</p></td>
+<td class="text-right"><p>0.165891</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;Author</span> <span class="pre">notebook</span> <span class="pre">(511</span> <span class="pre">solvent</span> <span class="pre">rows)&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Author notebook (511 solvent rows)</p></td>
+<td><p>recorded model</p></td>
+<td><p>carbon_mae_ppm</p></td>
+<td class="text-right"><p>2.02487</p></td>
+</tr>
+<tr class="row-odd"><td><p>Author notebook (511 solvent rows)</p></td>
+<td><p>recorded model</p></td>
+<td><p>proton_mae_ppm</p></td>
+<td class="text-right"><p>0.165062</p></td>
 </tr>
 </tbody>
 </table>

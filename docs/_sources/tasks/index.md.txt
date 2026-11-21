@@ -34,6 +34,7 @@ Choose the kind of evidence you have: NMR peaks, MS/MS peaks, a molecular geomet
 | `nmr.generation.hc` | 1H, 13C | [Structure elucidation from ¹H + ¹³C NMR](nmr-generation-hc.md) |
 | `nmr.assignment` | 1H, 13C | [Peak-to-atom assignment](nmr-assignment.md) |
 | `nmr.solvent_transfer` | 1H, 13C | [Cross-solvent chemical shift transfer](nmr-solvent_transfer.md) |
+| `nmr.hsqc.transpeaknet` | HSQC | [HSQC cross-peak prediction](nmr-hsqc-transpeaknet.md) |
 
 ## [Mass spectrometry](ms.md)
 

@@ -20,6 +20,7 @@ nmr-forward-31P
 nmr-generation-c
 nmr-generation-h
 nmr-generation-hc
+nmr-hsqc-transpeaknet
 nmr-retrieval-c-m2s
 nmr-retrieval-c-s2m
 nmr-retrieval-h-m2s
@@ -79,6 +80,7 @@ Follow the tutorials to learn how to load spectra, call models, interpret their 
 - [Structure elucidation from ¹H + ¹³C NMR](nmr-generation-hc.ipynb)
 - [Peak-to-atom assignment](nmr-assignment.ipynb)
 - [Cross-solvent chemical shift transfer](nmr-solvent_transfer.ipynb)
+- [HSQC cross-peak prediction](nmr-hsqc-transpeaknet.ipynb)
 
 ## Mass spectrometry
 

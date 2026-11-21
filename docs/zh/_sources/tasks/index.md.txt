@@ -34,6 +34,7 @@ deferred
 | `nmr.generation.hc` | 1H, 13C | [从 ¹H + ¹³C NMR 解析结构](nmr-generation-hc.md) |
 | `nmr.assignment` | 1H, 13C | [峰到原子的指认](nmr-assignment.md) |
 | `nmr.solvent_transfer` | 1H, 13C | [跨溶剂化学位移迁移](nmr-solvent_transfer.md) |
+| `nmr.hsqc.transpeaknet` | HSQC | [HSQC 交叉峰预测](nmr-hsqc-transpeaknet.md) |
 
 ## [质谱 MS](ms.md)
 

@@ -879,6 +879,30 @@ MAE 和 RMSE 的单位均为 ppm。
 | recorded evaluation | 1H | unchanged_shift_mae_ppm | 0.135385 |
 | recorded evaluation | 1H | rmse_ppm | 0.376179 |
 
+## HSQC 交叉峰预测
+
+`nmr.hsqc.transpeaknet`
+
+根据已知分子结构与溶剂预测碳氢交叉峰。
+
+全量评测对 479 张谱等权平均。作者笔记本对溶剂表中的 511 行等权平均，覆盖 472 张谱。全量评测将 38 张有多种溶剂类别和 7 张缺溶剂记录的谱设为 unknown。
+
+[Task guide](../tasks/nmr-hsqc-transpeaknet.md) · [Tutorial](../notebooks/nmr-hsqc-transpeaknet.ipynb) · [Predictions](../assets/examples/nmr-hsqc-transpeaknet.json)
+
+运行设置：`dataset="479 expert spectra"`
+
+| Dataset / scope | Model / variant | Metric | Value |
+| --- | --- | --- | ---: |
+| 479 expert spectra | recorded model | carbon_mae_ppm | 2.02753 |
+| 479 expert spectra | recorded model | proton_mae_ppm | 0.165891 |
+
+运行设置：`dataset="Author notebook (511 solvent rows)"`
+
+| Dataset / scope | Model / variant | Metric | Value |
+| --- | --- | --- | ---: |
+| Author notebook (511 solvent rows) | recorded model | carbon_mae_ppm | 2.02487 |
+| Author notebook (511 solvent rows) | recorded model | proton_mae_ppm | 0.165062 |
+
 
 ## 参考文献
 

@@ -20,6 +20,7 @@ nmr-forward-31P
 nmr-generation-c
 nmr-generation-h
 nmr-generation-hc
+nmr-hsqc-transpeaknet
 nmr-retrieval-c-m2s
 nmr-retrieval-c-s2m
 nmr-retrieval-h-m2s
@@ -79,6 +80,7 @@ vibrational-retrieval-hc
 - [从 ¹H + ¹³C NMR 解析结构](nmr-generation-hc.ipynb)
 - [峰到原子的指认](nmr-assignment.ipynb)
 - [跨溶剂化学位移迁移](nmr-solvent_transfer.ipynb)
+- [HSQC 交叉峰预测](nmr-hsqc-transpeaknet.ipynb)
 
 ## 质谱 MS
 

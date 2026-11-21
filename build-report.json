@@ -1,11 +1,11 @@
 {
   "completed": true,
-  "active_tasks": 31,
-  "scientific_figures": 42,
-  "executed_tutorials": 82,
+  "active_tasks": 32,
+  "scientific_figures": 43,
+  "executed_tutorials": 84,
   "cleaned_nmr_molecular_identities": 2678511,
   "interactive_molecular_isomers": 2,
-  "manual_html_pages": 382,
+  "manual_html_pages": 386,
   "manual_languages": [
     "en",
     "zh"

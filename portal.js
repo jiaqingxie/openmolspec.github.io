@@ -9,14 +9,14 @@
  const configuration=await fetch('assets/service-config.json').then(r=>r.json()).catch(()=>({}));
  const local=['127.0.0.1','localhost'].includes(location.hostname);
  const api=local?'http://127.0.0.1:8721':configuration.api_base;
- let connected=false,active='structure',busy=false,lastRun=null, availableTools=null;
+ let connected=false,agentAvailable=true,active='structure',busy=false,lastRun=null, availableTools=null;
  const workspace=$('#tool-workspace');
  async function request(path,body){
   if(!api)throw Error('The model service is not configured.');
   const response=await fetch(api+path,{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:undefined,body:body?JSON.stringify(body):undefined,signal:AbortSignal.timeout(20000)});
   const result=await response.json();if(!response.ok)throw Error(result.error||'The service could not complete this request');return result;
  }
- async function status(){try{const s=await request('/api/status');connected=s.connected;availableTools=new Set(s.tools);$('#service-status').textContent=connected?'Model service connected':'Connecting model service…';$('#service-status').dataset.ready=String(connected);}catch{$('#service-status').textContent='Model service is reconnecting';$('#service-status').dataset.ready='false';availableTools=null;}}
+ async function status(){try{const s=await request('/api/status');connected=s.connected;availableTools=new Set(s.tools);agentAvailable=s.agent_available!==false;$('#service-status').textContent=connected?'Model service connected':'Connecting model service…';$('#service-status').dataset.ready=String(connected);}catch{$('#service-status').textContent='Model service is reconnecting';$('#service-status').dataset.ready='false';availableTools=null;}}
  status();setInterval(status,30000);
  const preview=await fetch('assets/dataset-preview.json').then(r=>r.json());
  const dataFilter=$('#dataset-filter'),search=$('#dataset-search'),recordList=$('#dataset-records'),detail=$('#dataset-detail');
@@ -162,7 +162,7 @@
   const carbon=points.map(p=>p[0]), hydrogen=points.map(p=>p[1]);
   const cMax=Math.ceil(Math.max(...carbon)+2),cMin=Math.floor(Math.min(...carbon)-2);
   const hMax=Math.ceil((Math.max(...hydrogen)+.1)*10)/10,hMin=Math.floor((Math.min(...hydrogen)-.1)*10)/10;
-  const x=h=>65+500*(hMax-h)/(hMax-hMin),y=c=>26+205*(cMax-c)/(cMax-cMin);
+  const x=h=>65+500*(hMax-h)/(hMax-hMin),y=c=>26+205*(c-cMin)/(cMax-cMin);
   const color='#517464';
   for(let i=0;i<=4;i++){
    const h=hMax-(hMax-hMin)*i/4,c=cMax-(cMax-cMin)*i/4;
@@ -175,6 +175,12 @@
   draw('text',{x:17,y:125,transform:'rotate(-90 17 125)','text-anchor':'middle',fill:color,'font-size':12},'¹³C chemical shift / ppm');
   value.hsqc_measured.forEach(([c,h])=>draw('circle',{cx:x(h),cy:y(c),r:4,fill:'#168c7c'}));
   value.hsqc_predicted.forEach(({ppm:[c,h]})=>draw('circle',{cx:x(h),cy:y(c),r:6,fill:'none',stroke:'#bc5b27','stroke-width':2}));
+  if(!value.hsqc_measured.length){
+   const peaks=value.hsqc_predicted.map(p=>[p.carbon_atom_index,...p.ppm.map(x=>x.toFixed(3))]);
+   target.append(el('h3','','Predicted HSQC cross-peaks'),svg,
+    resultTable(['C atom index (zero based)','¹³C (ppm)','¹H (ppm)'],peaks),el('code','sample-smiles',value.mapped_smiles));
+   return;
+  }
   const rows=value.hsqc_assignments.map(row=>[row.peak_index+1,row.carbon_atom_index,...row.measured_ppm.map(x=>x.toFixed(3)),...row.predicted_ppm.map(x=>x.toFixed(3))]);
   target.append(el('h3','','TransPeakNet HSQC peak assignment'),svg,el('p','tool-note','Filled dots: measured. Outlined dots: predicted.'),
    resultTable(['Peak','C atom index','Observed C','Observed H','Predicted C','Predicted H'],rows),
@@ -187,6 +193,7 @@
   const started=performance.now();
   const stage=el('p','run-status','Submitting your request…');output.replaceChildren(stage);
   try{
+   if(payload.kind==='agent'&&!agentAvailable)throw Error('The agent is offline. The spectroscopy tools are available.');
    if(payload.task&&availableTools&&!availableTools.has(payload.task))throw Error('This workflow is temporarily unavailable on the model service.');
    const submitted=await request('/api/runs',payload);let job;
    for(let tick=0;tick<900;tick++){
@@ -270,21 +277,33 @@
   return rows.map(line=>line.trim().split(/[,\s]+/).filter(Boolean).map(Number));
  }
  function hsqcForm(form,output,trace){
-  form.append(el('h3','','Assign HSQC cross-peaks'),field('Known molecular SMILES','hsqc-smiles',''),
+  form.append(el('h3','','Predict HSQC cross-peaks'),field('Known molecular SMILES','hsqc-smiles',''),
    selectField('Solvent class','hsqc-solvent',['CDCl3','DMSO-d6','acetone-d6','acid','C6D6','CD3OD','pyridine-d5','D2O','unknown'].map(x=>[x,x])),
-   field('Measured peaks, ¹³C ppm then ¹H ppm','hsqc-peaks','','textarea'));
+   field('Measured peaks for assignment (optional), ¹³C ppm then ¹H ppm','hsqc-peaks','','textarea'));
   $('#hsqc-peaks',form).placeholder='Enter one C,H pair per line, or load an annotation CSV';
   const file=el('input');file.type='file';file.accept='.csv,.json,.txt';file.setAttribute('aria-label','Import HSQC peak list');
   file.onchange=async()=>{if(file.files[0])$('#hsqc-peaks',form).value=await file.files[0].text();};
   const source=el('a','','Author test data ↗');source.href='#dataset-hsqc';
-  const note=el('p','tool-note','Use your own peak list or a CSV from the ');note.append(source,'. To try the author example, import Annotation/32869.csv and enter CCCC#N in CDCl3.');
-  form.append(file,note);
-  runButton(form,'Assign cross-peaks',()=>{
+  const example=el('button','','Load butanenitrile example');example.type='button';
+  example.onclick=()=>{
+   $('#hsqc-smiles',form).value='CCCC#N';$('#hsqc-solvent',form).value='CDCl3';
+   $('#hsqc-peaks',form).value='13.3, 1.081\n19.04, 1.699\n19.26, 2.339';file.value='';
+  };
+  const note=el('p','tool-note','Butanenitrile in CDCl3, spectrum 32869. ');note.append(source);
+  const guide=el('a','','HSQC task guide');guide.href='docs/tasks/nmr-hsqc-transpeaknet.html';
+  const zhGuide=el('a','','中文指南');zhGuide.href='docs/zh/tasks/nmr-hsqc-transpeaknet.html';zhGuide.lang='zh';
+  const simple=el('a','','simpleNMR worked assignment');simple.href='https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/README.md#simplenmr-归属样例';
+  note.append(' · ',guide,' · ',zhGuide,' · ',simple);
+  form.append(file,example,note);
+  runButton(form,'Run TransPeakNet',()=>{
    const smiles=$('#hsqc-smiles',form).value.trim();
    if(!smiles)throw Error('Enter the known molecular SMILES.');
-   const hsqc_peaks=parseHsqc($('#hsqc-peaks',form).value);
-   if(!Array.isArray(hsqc_peaks)||!hsqc_peaks.length||hsqc_peaks.some(p=>!Array.isArray(p)||p.length!==2||!p.every(Number.isFinite)))throw Error('Enter measured ¹³C and ¹H ppm pairs.');
-   return {kind:'tool',task:'nmr.hsqc.transpeaknet',inputs:{smiles,hsqc_peaks,solvent:$('#hsqc-solvent',form).value}};
+   const inputs={smiles,solvent:$('#hsqc-solvent',form).value};
+   if($('#hsqc-peaks',form).value.trim()){
+    inputs.hsqc_peaks=parseHsqc($('#hsqc-peaks',form).value);
+    if(!Array.isArray(inputs.hsqc_peaks)||!inputs.hsqc_peaks.length||inputs.hsqc_peaks.some(p=>!Array.isArray(p)||p.length!==2||!p.every(Number.isFinite)))throw Error('Enter measured ¹³C and ¹H ppm pairs.');
+   }
+   return {kind:'tool',task:'nmr.hsqc.transpeaknet',inputs};
   },output,trace);
  }
  function solventForm(form,output,trace){

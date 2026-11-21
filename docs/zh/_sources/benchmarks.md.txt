@@ -18,7 +18,7 @@ OpenMolSpec 为 NMR、质谱、振动光谱与多谱联合定义了基准任务�
 
 | 类别 | 任务数 | 内容 |
 | --- | --- | --- |
-| [核磁共振 NMR](benchmarks/nmr.md) | 17 | 任务定义、输入、指标与运行结果。 |
+| [核磁共振 NMR](benchmarks/nmr.md) | 18 | 任务定义、输入、指标与运行结果。 |
 | [质谱 MS](benchmarks/ms.md) | 3 | 任务定义、输入、指标与运行结果。 |
 | [红外 / 拉曼 IR / Raman](benchmarks/vibrational.md) | 7 | 任务定义、输入、指标与运行结果。 |
 | [多谱联合](benchmarks/multimodal.md) | 4 | 任务定义、输入、指标与运行结果。 |

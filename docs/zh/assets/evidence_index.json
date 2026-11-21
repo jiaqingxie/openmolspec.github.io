@@ -261,5 +261,13 @@
     "status": "deferred_by_user",
     "sources": [],
     "example_count": 0
+  },
+  "nmr.hsqc.transpeaknet": {
+    "status": "recorded_results",
+    "sources": [
+      "transpeaknet_hsqc_479.json"
+    ],
+    "example_count": 1,
+    "figure": "gallery/nmr-hsqc-transpeaknet.png"
   }
 }

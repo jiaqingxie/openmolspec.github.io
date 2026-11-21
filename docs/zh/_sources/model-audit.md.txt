@@ -32,6 +32,7 @@
 | `vibrational.retrieval.hc` | IR, Raman, 1H, 13C | [IR + Raman + H/C → 结构检索](tasks/vibrational-retrieval-hc.md) |
 | `vibrational.generation.hc` | IR, Raman, 1H, 13C | [IR + Raman + H/C → SMILES（Xinyu 协议）](tasks/vibrational-generation-hc.md) |
 | `spectroscopy.reranking.hc` | IR, Raman, 1H, 13C | [IR + Raman + H/C + 候选 → ITM 重排](tasks/spectroscopy-reranking-hc.md) |
+| `nmr.hsqc.transpeaknet` | HSQC | [结构与溶剂 → HSQC 交叉峰](tasks/nmr-hsqc-transpeaknet.md) |
 | `ms.forward.glacier` | MS/MS | [分子 → MS/MS（GLACIER）](tasks/ms-forward-glacier.md) |
 | `ms.forward.iceberg` | MS/MS | [分子 → MS/MS（ICEBERG）](tasks/ms-forward-iceberg.md) |
 | `ms.annotation.magma` | MS/MS | [MS/MS 峰 → MAGMa 候选碎片标注](tasks/ms-annotation-magma.md) |

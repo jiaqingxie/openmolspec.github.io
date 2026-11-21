@@ -20,7 +20,7 @@ Run existing benchmark adapters through the same public Python package.
    :type python: str or None, default None
    :param \*\*assets: Model/data locations accepted by the benchmark CLI: ``models_root``,
                       ``portable_root``, ``alignment_checkpoint``, ``generation_checkpoint``,
-                      ``nmr_python``, ``ms_python``, ``solvent_library``, ``ms_source``,
+                      ``transpeaknet_source``, ``nmr_python``, ``ms_python``, ``solvent_library``, ``ms_source``,
                       ``ms_weights``, ``ms_input_csv``, ``ms_metadata_tsv``, ``magma_source``,
                       ``gap_lmdb`` and ``fp_inference_root``.
 

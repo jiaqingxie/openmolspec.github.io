@@ -22,10 +22,10 @@
    "id": "da77abff7a9f",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-11-18T13:32:18.191986Z",
-     "iopub.status.busy": "2026-11-18T13:32:18.191230Z",
-     "iopub.status.idle": "2026-11-18T13:32:18.228380Z",
-     "shell.execute_reply": "2026-11-18T13:32:18.227274Z"
+     "iopub.execute_input": "2026-11-21T10:47:59.337884Z",
+     "iopub.status.busy": "2026-11-21T10:47:59.337085Z",
+     "iopub.status.idle": "2026-11-21T10:47:59.402659Z",
+     "shell.execute_reply": "2026-11-21T10:47:59.401283Z"
     }
    },
    "outputs": [
@@ -62,10 +62,10 @@
    "id": "07168eb61289",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-11-18T13:32:18.230774Z",
-     "iopub.status.busy": "2026-11-18T13:32:18.229997Z",
-     "iopub.status.idle": "2026-11-18T13:32:18.246046Z",
-     "shell.execute_reply": "2026-11-18T13:32:18.244823Z"
+     "iopub.execute_input": "2026-11-21T10:47:59.405447Z",
+     "iopub.status.busy": "2026-11-21T10:47:59.404966Z",
+     "iopub.status.idle": "2026-11-21T10:47:59.446149Z",
+     "shell.execute_reply": "2026-11-21T10:47:59.445204Z"
     }
    },
    "outputs": [
@@ -100,10 +100,10 @@
    "id": "c6b2dfad4311",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-11-18T13:32:18.248800Z",
-     "iopub.status.busy": "2026-11-18T13:32:18.247904Z",
-     "iopub.status.idle": "2026-11-18T13:32:18.924484Z",
-     "shell.execute_reply": "2026-11-18T13:32:18.923098Z"
+     "iopub.execute_input": "2026-11-21T10:47:59.448499Z",
+     "iopub.status.busy": "2026-11-21T10:47:59.448205Z",
+     "iopub.status.idle": "2026-11-21T10:48:00.710119Z",
+     "shell.execute_reply": "2026-11-21T10:48:00.707306Z"
     }
    },
    "outputs": [
@@ -144,9 +144,9 @@
       "    \"spec2struct_fork.train\",\n",
       "    \"align\",\n",
       "    \"--data-dir\",\n",
-      "    \"/tmp/openmolspec-training-tutorial-1bl_60e_/data\",\n",
+      "    \"/tmp/openmolspec-training-tutorial-0yz7qkir/data\",\n",
       "    \"--run-dir\",\n",
-      "    \"/tmp/openmolspec-training-tutorial-1bl_60e_/run\",\n",
+      "    \"/tmp/openmolspec-training-tutorial-0yz7qkir/run\",\n",
       "    \"--epochs\",\n",
       "    \"1\",\n",
       "    \"--batch-size\",\n",
@@ -210,10 +210,10 @@
    "id": "7fc7912e878a",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-11-18T13:32:18.926598Z",
-     "iopub.status.busy": "2026-11-18T13:32:18.926321Z",
-     "iopub.status.idle": "2026-11-18T13:32:18.931912Z",
-     "shell.execute_reply": "2026-11-18T13:32:18.930931Z"
+     "iopub.execute_input": "2026-11-21T10:48:00.718239Z",
+     "iopub.status.busy": "2026-11-21T10:48:00.714615Z",
+     "iopub.status.idle": "2026-11-21T10:48:00.745836Z",
+     "shell.execute_reply": "2026-11-21T10:48:00.743314Z"
     }
    },
    "outputs": [
@@ -289,8 +289,8 @@
   ],
   "openmolspec_execution": {
    "engine": "jupyter",
-   "evaluation_index_sha256": "8302e777ace15736883697b46976a838791c48a1c92583fee806aa011163cb7f",
-   "evidence_sha256": "0d57a978fc3bde5d6071c886d095fc8f196a3c64338fbf2388bb2b3da28d6856",
+   "evaluation_index_sha256": "9e6e757d145143791db0d1a97b2677e88f3b30b31606b9904cb4c479a028b057",
+   "evidence_sha256": "193a4a630d6358866ffc1f12b9e0542d01caa551900ef0ff5581817f2415219f",
    "model_execution_enabled": false,
    "scope": "real_input_output_recomputed_diagnostics_and_scientific_figures",
    "source_sha256": "4e32d71506ce4ea445ff31bfe0cfafa8195bf22dc2fe2d3bc43f8e06cca0a4c2",

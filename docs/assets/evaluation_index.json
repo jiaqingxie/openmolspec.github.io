@@ -4447,6 +4447,24 @@
       "seed": 42
     }
   ],
+  "nmr.hsqc.transpeaknet": [
+    {
+      "dataset": "479 expert spectra",
+      "status": "passed",
+      "metrics": {
+        "carbon_mae_ppm": 2.027531039775951,
+        "proton_mae_ppm": 0.165891167268924
+      }
+    },
+    {
+      "dataset": "Author notebook (511 solvent rows)",
+      "status": "passed",
+      "metrics": {
+        "carbon_mae_ppm": 2.024873948844989,
+        "proton_mae_ppm": 0.1650616067044304
+      }
+    }
+  ],
   "ms.forward.glacier": [
     {
       "dataset": "recorded evaluation",

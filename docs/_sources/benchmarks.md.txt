@@ -18,7 +18,7 @@ OpenMolSpec defines benchmark tasks for NMR, MS, vibrational and multimodal spec
 
 | Family | Tasks | Contents |
 | --- | --- | --- |
-| [NMR](benchmarks/nmr.md) | 17 | Definitions, inputs, metrics and recorded results. |
+| [NMR](benchmarks/nmr.md) | 18 | Definitions, inputs, metrics and recorded results. |
 | [Mass spectrometry](benchmarks/ms.md) | 3 | Definitions, inputs, metrics and recorded results. |
 | [IR / Raman](benchmarks/vibrational.md) | 7 | Definitions, inputs, metrics and recorded results. |
 | [Multimodal spectroscopy](benchmarks/multimodal.md) | 4 | Definitions, inputs, metrics and recorded results. |

@@ -1,0 +1,81 @@
+{
+  "task": "nmr.hsqc.transpeaknet",
+  "enabled": true,
+  "status": "recorded_results",
+  "training_performed": false,
+  "source_files": [
+    "transpeaknet_hsqc_479.json"
+  ],
+  "source_hashes": {
+    "transpeaknet_hsqc_479.json": "e65c1fe4a0966a72e446c4a8d2e656848d8262170676fe7b9d3449bdff8b1844"
+  },
+  "runs": [
+    {
+      "dataset": "479 expert spectra",
+      "status": "passed",
+      "metrics": {
+        "carbon_mae_ppm": 2.027531039775951,
+        "proton_mae_ppm": 0.165891167268924
+      }
+    },
+    {
+      "dataset": "Author notebook (511 solvent rows)",
+      "status": "passed",
+      "metrics": {
+        "carbon_mae_ppm": 2.024873948844989,
+        "proton_mae_ppm": 0.1650616067044304
+      }
+    }
+  ],
+  "examples": [
+    {
+      "sample_id": "32869.csv",
+      "input": {
+        "smiles": "CCCC#N",
+        "solvent": "CDCl3"
+      },
+      "output": {
+        "peaks_c_h_ppm": [
+          [
+            12.845844268798828,
+            0.962708592414856
+          ],
+          [
+            18.62872314453125,
+            1.6068708896636963
+          ],
+          [
+            19.271541595458984,
+            2.4061617851257324
+          ]
+        ],
+        "carbon_atom_index": [
+          0,
+          1,
+          2
+        ]
+      },
+      "reference": {
+        "peaks_c_h_ppm": [
+          [
+            13.3,
+            1.081
+          ],
+          [
+            19.04,
+            1.699
+          ],
+          [
+            19.26,
+            2.339
+          ]
+        ]
+      }
+    }
+  ],
+  "plot": {
+    "kind": "hsqc",
+    "label": "32869.csv"
+  },
+  "selection_policy": "Butanenitrile, the existing website example (32869.csv)."
+}

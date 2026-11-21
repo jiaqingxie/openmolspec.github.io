@@ -879,6 +879,30 @@ Run settings: `dataset="recorded evaluation"`; `counts={"distinct_molecules": 32
 | recorded evaluation | 1H | unchanged_shift_mae_ppm | 0.135385 |
 | recorded evaluation | 1H | rmse_ppm | 0.376179 |
 
+## HSQC cross-peak prediction
+
+`nmr.hsqc.transpeaknet`
+
+Predict C–H cross-peaks from a known structure and solvent.
+
+The full ZIP gives one vote to each of 479 spectra. The author notebook gives one vote to each of 511 metadata rows covering 472 spectra. The full-ZIP run uses the unknown class for 38 conflicting and seven missing solvent labels.
+
+[Task guide](../tasks/nmr-hsqc-transpeaknet.md) · [Tutorial](../notebooks/nmr-hsqc-transpeaknet.ipynb) · [Predictions](../assets/examples/nmr-hsqc-transpeaknet.json)
+
+Run settings: `dataset="479 expert spectra"`
+
+| Dataset / scope | Model / variant | Metric | Value |
+| --- | --- | --- | ---: |
+| 479 expert spectra | recorded model | carbon_mae_ppm | 2.02753 |
+| 479 expert spectra | recorded model | proton_mae_ppm | 0.165891 |
+
+Run settings: `dataset="Author notebook (511 solvent rows)"`
+
+| Dataset / scope | Model / variant | Metric | Value |
+| --- | --- | --- | ---: |
+| Author notebook (511 solvent rows) | recorded model | carbon_mae_ppm | 2.02487 |
+| Author notebook (511 solvent rows) | recorded model | proton_mae_ppm | 0.165062 |
+
 
 ## References
 
