@@ -124,9 +124,9 @@
     el('p','tool-note','Atom indices start at zero in the input SMILES. Each row groups equivalent atoms of the selected nucleus.'));
    return;
   }
-  if(value?.model==='peak_spectrum'&&value.records?.[0]?.peaks){
+  if(['peak_spectrum','NMRNet++'].includes(value?.model)&&value.records?.[0]?.peaks){
    const r=value.records[0],label=r.nucleus==='1H'?'¹H':'¹³C';
-   target.append(el('h3','',label+' chemical shifts'),resultTable([r.nucleus==='1H'?'Attached heavy-atom indices':'Carbon atom indices','Predicted peak / ppm'],r.peaks.map(p=>[p.atom_indices.join(', '),p.shift_ppm.toFixed(3)])),plot(r.prediction_ppm,null,r.nucleus,'ppm',true),el('p','tool-note','Indices start at zero in the input SMILES. Sites predicted to give an unresolved peak share one row.'));
+   target.append(el('h3','',label+' chemical shifts'),resultTable([r.nucleus==='1H'?'Attached heavy-atom indices':'Carbon atom indices','Predicted peak / ppm'],r.peaks.map(p=>[p.atom_indices.join(', '),p.shift_ppm.toFixed(3)])),plot(r.prediction_ppm,null,r.nucleus,'ppm',true),el('p','tool-note',value.model==='NMRNet++'?'NMRNet++ · five folds. Each row groups symmetry-equivalent carbons. Indices start at zero in the input SMILES.':'Indices start at zero in the input SMILES. Sites predicted to give an unresolved peak share one row.'));
    return;
   }
   if(value?.hsqc_measured){renderHsqc(value,target);return;}
