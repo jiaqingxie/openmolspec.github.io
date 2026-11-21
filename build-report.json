@@ -15,10 +15,10 @@
   "verified_online_workflows": 13,
   "agent_demo": "recorded real API and MCP execution",
   "navigation": [
-    "Introduction",
-    "Tool",
-    "Dataset",
-    "Documentation"
+    "Workspace",
+    "Datasets",
+    "Documentation",
+    "GitHub"
   ],
   "cdn_dependencies": false,
   "online_inference_requires_api": true,

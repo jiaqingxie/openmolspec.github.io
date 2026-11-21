@@ -7,11 +7,14 @@
   <meta name="description" content="Explore molecular spectroscopy data, run spectroscopy tools, and follow an agent from a scientific request to model results. NMR, mass spectrometry, IR and Raman.">
   <link rel="canonical" href="https://jiaqingxie.github.io/openmolspec.github.io/">
   <link rel="icon" href="assets/brand/mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="portal.css">
-  <link rel="stylesheet" href="launch.css">
-  <script src="site.js" defer></script>
-  <script src="portal.js" defer></script>
-  <script src="molecule-playground.js" defer></script>
+  <meta name="theme-color" content="#101226">
+  <link rel="preload" href="assets/type/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="portal.css?v=b403ea492e14">
+  <link rel="stylesheet" href="launch.css?v=617b9306a146">
+  <script src="site.js?v=932bb7d8c32e" defer></script>
+  <script src="portal.js?v=604602c5b8f4" defer></script>
+  <script src="molecule-playground.js?v=5108743f7389" defer></script>
+  <script src="hsqc-figure.js?v=0f64fe8df444" defer></script>
 </head>
 <body class="oms-portal">
   <a class="skip" href="#main">Skip to content</a>
@@ -19,16 +22,16 @@
     <div class="portal-wrap header-row">
       <a class="brand" href="#introduction" aria-label="OpenMolSpec home">
         <img src="assets/brand/mark.svg" alt="" width="34" height="34">
-        <span>OpenMolSpec <small>v1.0</small></span>
+        <span>OpenMolSpec</span>
       </a>
       <button class="menu-toggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="Open navigation">
         <span></span><span></span><span></span>
       </button>
       <nav id="nav" aria-label="Main navigation">
-        <a href="#introduction">Introduction</a>
-        <a href="#tool">Tool</a>
-        <a href="#dataset">Dataset</a>
+        <a href="#tool">Workspace</a>
+        <a href="#dataset">Datasets</a>
         <a href="docs/index.html" target="_blank" rel="noopener">Documentation <span aria-hidden="true">↗</span></a>
+        <a class="nav-repo" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1">GitHub <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
   </header>
@@ -37,34 +40,25 @@
     <section id="introduction" class="portal-hero" aria-labelledby="portal-title">
       <div class="portal-wrap hero-layout">
         <div class="hero-copy">
-          <p class="eyebrow hero-eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> OpenMolSpec</p>
-          <h1 id="portal-title">Molecular spectra.<br><em>Open to explore.</em></h1>
-          <p class="hero-description">A million-scale dataset and platform for chemical spectroscopic deep learning. Explore experimental records and run models for NMR, MS/MS, IR and Raman.</p>
+          <p class="modalities">NMR <span>/</span> MS/MS <span>/</span> IR <span>/</span> RAMAN</p>
+          <h1 id="portal-title">From structure<br>to <em>spectra.</em></h1>
+          <p class="hero-description">Predict molecular spectra, assign experimental peaks and explore the data behind each model.</p>
           <div class="hero-actions">
-            <a class="portal-button portal-button-mint" href="#tool">Open the tool <span aria-hidden="true">↗</span></a>
-            <a class="hero-text-link" href="#dataset">Explore datasets <span aria-hidden="true">→</span></a>
-          </div>
-          <div class="hero-channels" aria-label="Supported spectroscopy families">
-            <span>NMR</span><span>MS</span><span>IR</span><span>Raman</span>
+            <a class="portal-button portal-button-mint" href="#tool">Open workspace <span aria-hidden="true">↓</span></a>
+            <a class="hero-text-link" href="#tool-hsqc">Try HSQC example <span aria-hidden="true">↗</span></a>
           </div>
         </div>
-
-        <section id="molecule-playground" class="molecule-playground" aria-labelledby="playground-title">
-          <div class="playground-heading">
-            <h2 id="playground-title">Same formula, different bonds</h2>
-            <span class="playground-formula">C₂H₆O</span>
+        <figure class="hero-spectrum" aria-labelledby="spectrum-title">
+          <div class="spectrum-bar">
+            <div id="spectrum-title"><span class="plot-key" aria-hidden="true"></span> Butanenitrile <span>¹H–¹³C HSQC</span></div>
+            <div class="spectrum-modes" role="group" aria-label="Spectrum view">
+              <button type="button" data-spectrum-mode="surface" aria-pressed="true">Surface</button>
+              <button type="button" data-spectrum-mode="contours" aria-pressed="false">Contours</button>
+            </div>
           </div>
-          <div class="molecule-stage">
-            <canvas id="molecule-canvas" width="660" height="390" role="img" aria-label="Interactive ball-and-stick structure. Drag the orange oxygen to reconnect the atoms."></canvas>
-            <div class="atom-legend"><span><i class="atom-carbon"></i> Carbon</span><span><i class="atom-oxygen"></i> Oxygen</span><span><i class="atom-hydrogen"></i> Hydrogen</span></div>
-          </div>
-          <div class="playground-controls" aria-label="Choose an isomer">
-            <button type="button" data-isomer="ethanol" aria-pressed="true">Ethanol</button>
-            <button type="button" data-isomer="ether" aria-pressed="false">Dimethyl ether</button>
-            <button type="button" id="use-hero-structure" class="playground-use">Use SMILES ↗</button>
-          </div>
-          <p id="molecule-caption" aria-live="polite">Drag the orange oxygen to the outlined bond position.</p>
-        </section>
+          <canvas id="hero-hsqc" data-peaks='[[13.3, 1.081], [19.04, 1.699], [19.26, 2.339]]' width="760" height="430" role="img" aria-label="Three measured HSQC cross-peaks of butanenitrile in chloroform-d. Surface height illustrates peak position."></canvas>
+          <figcaption class="spectrum-caption"><span>CDCl₃ · Measured peak positions</span><span id="spectrum-scale">Illustrative height</span></figcaption>
+        </figure>
       </div>
       <div class="portal-wrap hero-bottom">
         <dl class="launch-metrics"><div><dt>Experimental H/C spectra</dt><dd>2.97M</dd></div><div><dt>Unique H/C molecules</dt><dd>2.68M</dd></div><div><dt>Online workflows</dt><dd>13</dd></div><div><dt>Executed tutorials</dt><dd>84</dd></div></dl>
@@ -72,40 +66,37 @@
     </section>
 
     <section id="tool" class="portal-section tool-section" aria-labelledby="tool-title">
+      <span id="tool-hsqc" aria-hidden="true"></span>
       <div class="portal-wrap">
         <div class="section-heading">
           <div>
             <h2 id="tool-title">Spectroscopy workspace</h2>
           </div>
-          <p>Start with an example or provide your own input. Choose a workflow, inspect its output, and keep the numerical result.</p>
+          <p>Choose a workflow to run a model with your own data or a worked example.</p>
         </div>
         <div class="tool-shell">
           <div class="tool-shell-heading">
-            <span class="workspace-label"><span class="workspace-mark" aria-hidden="true">⌁</span> OpenMolSpec tools</span>
+            <span class="workspace-label">Model tools</span>
             <span id="service-status" class="service-status" role="status"><span class="status-dot" aria-hidden="true"></span>Checking service…</span>
           </div>
           <div class="tool-tabs" role="tablist" aria-label="Choose a spectroscopy workflow">
             <button id="tool-tab-structure" type="button" role="tab" aria-selected="true" aria-controls="tool-workspace" data-tool-tab="structure">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 3 8 0 4 7-4 7H8l-4-7Zm8 14v4M4 10H1m19 0h3"/></svg>
               Structure → spectra
             </button>
             <button id="tool-tab-nmr" type="button" role="tab" aria-selected="false" aria-controls="tool-workspace" data-tool-tab="nmr">NMR → structure</button>
             <button id="tool-tab-hsqc" type="button" role="tab" aria-selected="false" aria-controls="tool-workspace" data-tool-tab="hsqc">HSQC prediction / assignment</button>
             <button id="tool-tab-solvent" type="button" role="tab" aria-selected="false" aria-controls="tool-workspace" data-tool-tab="solvent">Solvent transfer</button>
             <button id="tool-tab-gap" type="button" role="tab" aria-selected="false" aria-controls="tool-workspace" data-tool-tab="gap">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M3 6h18M12 9v6m-3-3 3 3 3-3"/></svg>
               Spectra → gap
             </button>
             <button id="tool-tab-generate" type="button" role="tab" aria-selected="false" aria-controls="tool-workspace" data-tool-tab="generate">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 18h3l2-12 3 12 3-7 2 7h2m2-13v5m-2-2 2 2 2-2"/></svg>
               Multimodal → structure
             </button>
             <button id="tool-tab-agent" type="button" role="tab" aria-selected="false" aria-controls="tool-workspace" data-tool-tab="agent">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14v12H5zm7-5v5M9 12v3m6-3v3m-6 3h6M2 12h3m14 0h3"/></svg>
               Agent Harness
             </button>
           </div>
-          <div id="tool-workspace" class="tool-workspace" role="tabpanel" aria-label="Scientific tool workspace">
+          <div id="tool-workspace" data-example-shifts='[17.774131774902344, 57.77375793457031]' class="tool-workspace" role="tabpanel" aria-label="Scientific tool workspace">
             <div class="workspace-grid workspace-placeholder">
               <div class="workspace-input">
                 <p class="micro-label">Molecular input</p>
@@ -126,40 +117,25 @@
           <summary><span>Browse the full task catalog</span><span class="disclosure-arrow" aria-hidden="true">+</span></summary>
           <div class="table-scroll"><table class="data-table"><thead><tr><th>Task guide</th><th>Input</th><th>Output</th></tr></thead><tbody><tr data-family="nmr"><td><a href="docs/tasks/nmr-forward-1H.html">1H chemical shift prediction</a><small>nmr.forward.1H</small></td><td>Molecular structure; nucleus</td><td>Atom-indexed shifts (ppm)</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-forward-13C.html">13C chemical shift prediction</a><small>nmr.forward.13C</small></td><td>Molecular structure; nucleus</td><td>Atom-indexed shifts (ppm)</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-forward-19F.html">19F chemical shift prediction</a><small>nmr.forward.19F</small></td><td>Molecular structure; nucleus</td><td>Atom-indexed shifts (ppm)</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-forward-31P.html">31P chemical shift prediction</a><small>nmr.forward.31P</small></td><td>Molecular structure; nucleus</td><td>Atom-indexed shifts (ppm)</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-forward-11B.html">11B chemical shift prediction</a><small>nmr.forward.11B</small></td><td>Molecular structure; nucleus</td><td>Atom-indexed shifts (ppm)</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-forward-29Si.html">29Si chemical shift prediction</a><small>nmr.forward.29Si</small></td><td>Molecular structure; nucleus</td><td>Atom-indexed shifts (ppm)</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-retrieval-h-s2m.html">Spectrum-to-structure retrieval: ¹H</a><small>nmr.retrieval.h.s2m</small></td><td>NMR peaks; candidate structures</td><td>Ranked molecular structures</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-retrieval-h-m2s.html">Structure-to-spectrum retrieval: ¹H</a><small>nmr.retrieval.h.m2s</small></td><td>Molecular structure; candidate spectra</td><td>Ranked spectra</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-generation-h.html">Structure elucidation from ¹H NMR</a><small>nmr.generation.h</small></td><td>NMR peaks; supplied molecular formula</td><td>SMILES candidates</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-retrieval-c-s2m.html">Spectrum-to-structure retrieval: ¹³C</a><small>nmr.retrieval.c.s2m</small></td><td>NMR peaks; candidate structures</td><td>Ranked molecular structures</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-retrieval-c-m2s.html">Structure-to-spectrum retrieval: ¹³C</a><small>nmr.retrieval.c.m2s</small></td><td>Molecular structure; candidate spectra</td><td>Ranked spectra</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-generation-c.html">Structure elucidation from ¹³C NMR</a><small>nmr.generation.c</small></td><td>NMR peaks; supplied molecular formula</td><td>SMILES candidates</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-retrieval-hc-s2m.html">Spectrum-to-structure retrieval: ¹H + ¹³C</a><small>nmr.retrieval.hc.s2m</small></td><td>NMR peaks; candidate structures</td><td>Ranked molecular structures</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-retrieval-hc-m2s.html">Structure-to-spectrum retrieval: ¹H + ¹³C</a><small>nmr.retrieval.hc.m2s</small></td><td>Molecular structure; candidate spectra</td><td>Ranked spectra</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-generation-hc.html">Structure elucidation from ¹H + ¹³C NMR</a><small>nmr.generation.hc</small></td><td>NMR peaks; supplied molecular formula</td><td>SMILES candidates</td></tr><tr data-family="vibrational"><td><a href="docs/tasks/vibrational-gap-ir.html">HOMO–LUMO gap from IR</a><small>vibrational.gap.ir</small></td><td>IR</td><td>HOMO–LUMO gap (eV)</td></tr><tr data-family="vibrational"><td><a href="docs/tasks/vibrational-gap-raman.html">HOMO–LUMO gap from Raman</a><small>vibrational.gap.raman</small></td><td>RAMAN</td><td>HOMO–LUMO gap (eV)</td></tr><tr data-family="vibrational"><td><a href="docs/tasks/vibrational-gap-ir_raman.html">HOMO–LUMO gap from IR + Raman</a><small>vibrational.gap.ir_raman</small></td><td>IR, RAMAN</td><td>HOMO–LUMO gap (eV)</td></tr><tr data-family="multimodal"><td><a href="docs/tasks/vibrational-gap-ir_raman_hc.html">HOMO–LUMO gap from IR + Raman + NMR</a><small>vibrational.gap.ir_raman_hc</small></td><td>IR, Raman, 1H, 13C</td><td>HOMO–LUMO gap (eV)</td></tr><tr data-family="vibrational"><td><a href="docs/tasks/vibrational-forward.html">IR and Raman from a molecular geometry</a><small>vibrational.forward</small></td><td>Elements and 3D Cartesian coordinates</td><td>IR and Raman spectra</td></tr><tr data-family="vibrational"><td><a href="docs/tasks/vibrational-retrieval.html">Structure retrieval: IR + Raman</a><small>vibrational.retrieval</small></td><td>IR, Raman; candidate structures</td><td>Ranked molecular structures</td></tr><tr data-family="vibrational"><td><a href="docs/tasks/vibrational-generation.html">Structure generation: IR + Raman</a><small>vibrational.generation</small></td><td>IR, Raman</td><td>SMILES candidates</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-assignment.html">Peak-to-atom assignment</a><small>nmr.assignment</small></td><td>Known structure; observed H/C peaks</td><td>Candidate peak-to-atom assignments</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-solvent_transfer.html">Cross-solvent chemical shift transfer</a><small>nmr.solvent_transfer</small></td><td>Structure; source shifts; solvent pair</td><td>Target shifts and reference provenance</td></tr><tr data-family="vibrational"><td><a href="docs/tasks/spectroscopy-reranking.html">Candidate reranking: IR + Raman</a><small>spectroscopy.reranking</small></td><td>IR, Raman; candidate structures</td><td>Ranked molecular structures</td></tr><tr data-family="multimodal"><td><a href="docs/tasks/vibrational-retrieval-hc.html">Structure retrieval: IR + Raman + NMR</a><small>vibrational.retrieval.hc</small></td><td>IR, Raman, 1H, 13C; candidate structures</td><td>Ranked molecular structures</td></tr><tr data-family="multimodal"><td><a href="docs/tasks/vibrational-generation-hc.html">Structure generation: IR + Raman + NMR</a><small>vibrational.generation.hc</small></td><td>IR, Raman, 1H, 13C</td><td>SMILES candidates</td></tr><tr data-family="multimodal"><td><a href="docs/tasks/spectroscopy-reranking-hc.html">Candidate reranking: IR + Raman + NMR</a><small>spectroscopy.reranking.hc</small></td><td>IR, Raman, 1H, 13C; candidate structures</td><td>Ranked molecular structures</td></tr><tr data-family="nmr"><td><a href="docs/tasks/nmr-hsqc-transpeaknet.html">HSQC cross-peak prediction</a><small>nmr.hsqc.transpeaknet</small></td><td>Known structure and solvent</td><td>Carbon-indexed HSQC cross-peaks (ppm)</td></tr><tr data-family="ms"><td><a href="docs/tasks/ms-forward-glacier.html">MS/MS prediction with GLACIER</a><small>ms.forward.glacier</small></td><td>Structure; adduct; collision energy; instrument</td><td>MS/MS m/z–intensity peaks</td></tr><tr data-family="ms"><td><a href="docs/tasks/ms-forward-iceberg.html">MS/MS prediction with ICEBERG</a><small>ms.forward.iceberg</small></td><td>Structure; adduct; collision energy; instrument</td><td>MS/MS m/z–intensity peaks</td></tr><tr data-family="ms"><td><a href="docs/tasks/ms-annotation-magma.html">MS/MS fragment annotation</a><small>ms.annotation.magma</small></td><td>Structure; MS/MS peaks; precursor conditions</td><td>Candidate fragment annotations</td></tr></tbody></table></div>
         </details>
-      </div>
-    </section>
-
-    <section id="agent-demo" class="portal-section agent-demo-section" aria-labelledby="agent-demo-title">
-      <div class="portal-wrap">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Inside the Agent Harness</p>
-            <h2 id="agent-demo-title">Follow the tools, step by step.</h2>
+        <details class="dataset-summary isomer-example">
+          <summary><span>Compare ethanol and dimethyl ether</span><span class="disclosure-arrow" aria-hidden="true">+</span></summary>
+        <section id="molecule-playground" class="molecule-playground" aria-labelledby="playground-title">
+          <div class="playground-heading">
+            <h3 id="playground-title">Compare isomers</h3>
+            <span class="playground-formula">C₂H₆O</span>
           </div>
-          <p>A captured API → MCP run shows the request, tool calls and returned result. Inspect the intermediate steps alongside the live Agent Harness workflow above.</p>
-        </div>
-        <div id="agent-demo-player" class="agent-demo-player" aria-label="Replay a real API and MCP demonstration"><p class="preview-loading">Loading the recorded tool sequence…</p></div>
-        <details class="agent-captures">
-          <summary><span>View the captured interface</span><span class="summary-note">The request, intermediate tool calls and final result</span><span class="disclosure-arrow" aria-hidden="true">+</span></summary>
-          <div class="agent-demo-captures" aria-label="Screenshots from the real API and MCP demonstration">
-          <figure class="demo-frame">
-            <div class="demo-frame-heading"><span>01</span><h3>The request</h3></div>
-            <a href="assets/agent-demo/01-plan.png" target="_blank" rel="noopener"><img src="assets/agent-demo/01-plan.png" alt="The user request and initial task plan in the recorded Agent Harness run" loading="lazy" width="1280" height="800"></a>
-            <figcaption>The molecular question and the actions selected for it.</figcaption>
-          </figure>
-          <figure class="demo-frame">
-            <div class="demo-frame-heading"><span>02</span><h3>The tool calls</h3></div>
-            <a href="assets/agent-demo/02-tools.png" target="_blank" rel="noopener"><img src="assets/agent-demo/02-tools.png" alt="MCP tool calls, input parameters and execution status in the recorded run" loading="lazy" width="1280" height="800"></a>
-            <figcaption>The selected tools, their inputs and execution status.</figcaption>
-          </figure>
-          <figure class="demo-frame">
-            <div class="demo-frame-heading"><span>03</span><h3>The result</h3></div>
-            <a href="assets/agent-demo/03-result.png" target="_blank" rel="noopener"><img src="assets/agent-demo/03-result.png" alt="The returned spectroscopy result and final response from the recorded run" loading="lazy" width="1280" height="800"></a>
-            <figcaption>The returned spectroscopy data and the final response.</figcaption>
-          </figure>
+          <div class="molecule-stage">
+            <canvas id="molecule-canvas" width="660" height="390" role="img" aria-label="Interactive ball-and-stick structure. Drag the orange oxygen to reconnect the atoms."></canvas>
+            <div class="atom-legend"><span><i class="atom-carbon"></i> Carbon</span><span><i class="atom-oxygen"></i> Oxygen</span><span><i class="atom-hydrogen"></i> Hydrogen</span></div>
           </div>
+          <div class="playground-controls" aria-label="Choose an isomer">
+            <button type="button" data-isomer="ethanol" aria-pressed="true">Ethanol</button>
+            <button type="button" data-isomer="ether" aria-pressed="false">Dimethyl ether</button>
+            <button type="button" id="use-hero-structure" class="playground-use">Use SMILES ↗</button>
+          </div>
+          <p id="molecule-caption" aria-live="polite">Drag the orange oxygen to the outlined bond position.</p>
+        </section>
         </details>
-        <p class="section-footnote">Connect the same tools to your own agent with the <a href="docs/harness.html" target="_blank" rel="noopener">Agent Harness guide <span aria-hidden="true">↗</span></a>.</p>
       </div>
     </section>
 
@@ -169,7 +145,7 @@
           <div>
             <h2 id="dataset-title">Explore experimental spectra</h2>
           </div>
-          <p>Preview molecular structures, peak lists and acquisition fields. Explore a record before choosing a dataset for your analysis.</p>
+          <p>Inspect measured peaks, molecular structures and acquisition conditions from eight dataset views.</p>
         </div>
         <div class="dataset-controls">
           <label class="dataset-filter-label" for="dataset-filter"><span>Dataset</span>
@@ -203,19 +179,52 @@
       </div>
     </section>
 
+    <section id="agent-demo" class="portal-section agent-demo-section" aria-labelledby="agent-demo-title">
+      <div class="portal-wrap">
+        <div class="section-heading">
+          <div>
+            <h2 id="agent-demo-title">Inside the Agent Harness</h2>
+          </div>
+          <p>Replay a recorded ethanol analysis, from the first tool call to the predicted carbon shifts.</p>
+        </div>
+        <div id="agent-demo-player" class="agent-demo-player" aria-label="Replay a real API and MCP demonstration"><p class="preview-loading">Loading the recorded tool sequence…</p></div>
+        <details class="agent-captures">
+          <summary><span>View the captured interface</span><span class="summary-note">The request, intermediate tool calls and final result</span><span class="disclosure-arrow" aria-hidden="true">+</span></summary>
+          <div class="agent-demo-captures" aria-label="Screenshots from the real API and MCP demonstration">
+          <figure class="demo-frame">
+            <div class="demo-frame-heading"><h3>The request</h3></div>
+            <a href="assets/agent-demo/01-plan.png" target="_blank" rel="noopener"><img src="assets/agent-demo/01-plan.png" alt="The user request and initial task plan in the recorded Agent Harness run" loading="lazy" width="1280" height="800"></a>
+            <figcaption>The molecular question and the actions selected for it.</figcaption>
+          </figure>
+          <figure class="demo-frame">
+            <div class="demo-frame-heading"><h3>The tool calls</h3></div>
+            <a href="assets/agent-demo/02-tools.png" target="_blank" rel="noopener"><img src="assets/agent-demo/02-tools.png" alt="MCP tool calls, input parameters and execution status in the recorded run" loading="lazy" width="1280" height="800"></a>
+            <figcaption>The selected tools, their inputs and execution status.</figcaption>
+          </figure>
+          <figure class="demo-frame">
+            <div class="demo-frame-heading"><h3>The result</h3></div>
+            <a href="assets/agent-demo/03-result.png" target="_blank" rel="noopener"><img src="assets/agent-demo/03-result.png" alt="The returned spectroscopy result and final response from the recorded run" loading="lazy" width="1280" height="800"></a>
+            <figcaption>The returned spectroscopy data and the final response.</figcaption>
+          </figure>
+          </div>
+        </details>
+        <p class="section-footnote">Connect the same tools to your own agent with the <a href="docs/harness.html" target="_blank" rel="noopener">Agent Harness guide <span aria-hidden="true">↗</span></a>.</p>
+      </div>
+    </section>
+
     <section id="documentation" class="portal-section documentation-section" aria-labelledby="documentation-title">
       <div class="portal-wrap">
         <div class="section-heading">
           <div>
-            <h2 id="documentation-title">Take the next step.</h2>
+            <h2 id="documentation-title">Documentation</h2>
           </div>
           <p>Follow an executed tutorial, explore a dataset schema, or bring OpenMolSpec into your Python and agent workflows.</p>
         </div>
         <div class="documentation-links">
-          <a href="docs/quickstart.html" target="_blank" rel="noopener"><span class="documentation-number">01</span><h3>Quick start <span aria-hidden="true">↗</span></h3><p>Installation, your first spectrum and model calls.</p></a>
-          <a href="docs/data/index.html" target="_blank" rel="noopener"><span class="documentation-number">02</span><h3>Data guide <span aria-hidden="true">↗</span></h3><p>Fields, sources, distributions and dataset splits.</p></a>
-          <a href="docs/api-reference/index.html" target="_blank" rel="noopener"><span class="documentation-number">03</span><h3>Python API <span aria-hidden="true">↗</span></h3><p>Dataset readers, model interfaces and training.</p></a>
-          <a href="docs/harness.html" target="_blank" rel="noopener"><span class="documentation-number">04</span><h3>Agent Harness <span aria-hidden="true">↗</span></h3><p>Python, CLI and MCP tools for scientific agents.</p></a>
+          <a href="docs/quickstart.html" target="_blank" rel="noopener"><h3>Quick start <span aria-hidden="true">↗</span></h3><p>Installation, your first spectrum and model calls.</p></a>
+          <a href="docs/data/index.html" target="_blank" rel="noopener"><h3>Data guide <span aria-hidden="true">↗</span></h3><p>Fields, sources, distributions and dataset splits.</p></a>
+          <a href="docs/api-reference/index.html" target="_blank" rel="noopener"><h3>Python API <span aria-hidden="true">↗</span></h3><p>Dataset readers, model interfaces and training.</p></a>
+          <a href="docs/harness.html" target="_blank" rel="noopener"><h3>Agent Harness <span aria-hidden="true">↗</span></h3><p>Python, CLI and MCP tools for scientific agents.</p></a>
         </div>
         <a class="portal-button portal-button-dark" href="docs/index.html" target="_blank" rel="noopener">Read the full documentation <span aria-hidden="true">↗</span></a>
         <p class="section-footnote"><a href="docs/zh/index.html" lang="zh">中文手册</a> · <a href="https://openmolspec.readthedocs.io/" target="_blank" rel="noopener">Read the Docs</a></p>
@@ -238,7 +247,7 @@
 
   <footer class="portal-footer">
     <div class="portal-wrap footer-layout">
-      <a class="brand footer-brand" href="#introduction"><img src="assets/brand/mark.svg" alt="" width="34" height="34"><span>OpenMolSpec <small>v1.0</small></span></a>
+      <a class="brand footer-brand" href="#introduction"><img src="assets/brand/mark.svg" alt="" width="34" height="34"><span>OpenMolSpec</span></a>
       <p>Data and tools for molecular spectroscopy.</p>
       <div class="footer-links"><a href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a><a href="docs/index.html" target="_blank" rel="noopener">Documentation <span aria-hidden="true">↗</span></a><a href="docs/zh/index.html" target="_blank" rel="noopener" lang="zh">中文手册 <span aria-hidden="true">↗</span></a></div>
     </div>
