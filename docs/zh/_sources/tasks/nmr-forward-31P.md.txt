@@ -8,6 +8,8 @@
 
 在同一批测试分子上，上一版的逐观测 MAE 为 4.32 ppm，分子等权 MAE 为 5.60 ppm。按分子配对重采样，新版相对上一版的分子等权 MAE 差值的 95% 区间为 [-0.125, -0.005] ppm。[上一版模型](https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/solution-nmr-v2)
 
+SMILES 先转成以原子为节点、化学键为边的二维图。模型沿化学键传递四轮信息，再结合分子描述符和溶剂特征预测磷位移。相同的局部原子环境共享计算。最宽的网络有 189,025 个参数，在第 69 轮取得最低验证误差，第 87 轮早停。从图数据准备完毕算起，训练和验证共 10 分 18 秒。[三套模型的训练记录](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/phosphorus_gnn_training_runs.json)
+
 解压 ZIP，在解压目录中安装 SDK 并运行预测。
 
 ```bash

@@ -8,6 +8,8 @@ The independent test contains 4,248 connectivities and 6,693 measured single-env
 
 On the same molecules, the previous release scored 4.32 ppm per observation and 5.60 ppm per molecule. The paired 95% bootstrap interval for the change in molecule-weighted MAE is [-0.125, -0.005] ppm. [Previous release](https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/solution-nmr-v2)
 
+SMILES is converted to a 2D graph of atoms and bonds. Four message-passing layers build the phosphorus-site representation, with molecular descriptors and a solvent embedding at readout. Equivalent local environments share computations. The widest network has 189,025 parameters. It reached its lowest validation error at epoch 69 and stopped at epoch 87. Training and validation took 10 min 18 s after graph preparation. [Training records for all components](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/phosphorus_gnn_training_runs.json)
+
 Extract the ZIP and run the following commands in its directory.
 
 ```bash
