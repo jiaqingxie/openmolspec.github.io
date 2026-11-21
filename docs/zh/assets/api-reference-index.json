@@ -337,6 +337,20 @@
     "openmolspec.parsing.trajectory": [
       "openmolspec.parsing.trajectory.parse_gaussian_trajectory"
     ],
+    "openmolspec.phosphorus_gnn": [
+      "openmolspec.phosphorus_gnn.GraphIndex",
+      "openmolspec.phosphorus_gnn.GraphIndex.add",
+      "openmolspec.phosphorus_gnn.GraphIndex.arrays",
+      "openmolspec.phosphorus_gnn.index_tensor",
+      "openmolspec.phosphorus_gnn.graph_batch",
+      "openmolspec.phosphorus_gnn.PhosphorusGNN",
+      "openmolspec.phosphorus_gnn.PhosphorusGNN.forward",
+      "openmolspec.phosphorus_gnn.PhosphorusGNNPredictor",
+      "openmolspec.phosphorus_gnn.PhosphorusGNNPredictor.predict",
+      "openmolspec.phosphorus_gnn.DEPTH",
+      "openmolspec.phosphorus_gnn.ATOM_DIMS",
+      "openmolspec.phosphorus_gnn.BOND_DIM"
+    ],
     "openmolspec.plotting": [
       "openmolspec.plotting.arial_path",
       "openmolspec.plotting.figure_style"
@@ -424,6 +438,20 @@
     "openmolspec.release.validation": [
       "openmolspec.release.validation.validate_release",
       "openmolspec.release.validation.VALIDATION_VERSION"
+    ],
+    "openmolspec.solution_shifts": [
+      "openmolspec.solution_shifts.solvent_id",
+      "openmolspec.solution_shifts.analyte",
+      "openmolspec.solution_shifts.site_features",
+      "openmolspec.solution_shifts.root_estimate",
+      "openmolspec.solution_shifts.feature_matrix",
+      "openmolspec.solution_shifts.SolutionShiftPredictor",
+      "openmolspec.solution_shifts.SolutionShiftPredictor.predict",
+      "openmolspec.solution_shifts.main",
+      "openmolspec.solution_shifts.NUCLEI",
+      "openmolspec.solution_shifts.BINS",
+      "openmolspec.solution_shifts.SOLVENTS",
+      "openmolspec.solution_shifts.N_FEATURES"
     ],
     "openmolspec.split": [
       "openmolspec.split.scaffold_group_id",
@@ -513,6 +541,6 @@
       "openmolspec.release.build_splits"
     ]
   },
-  "module_count": 52,
-  "object_count": 408
+  "module_count": 54,
+  "object_count": 432
 }

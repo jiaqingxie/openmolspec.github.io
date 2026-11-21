@@ -22,7 +22,7 @@ Run existing benchmark adapters through the same public Python package.
                       ``portable_root``, ``alignment_checkpoint``, ``generation_checkpoint``,
                       ``transpeaknet_source``, ``nmr_python``, ``ms_python``, ``solvent_library``, ``ms_source``,
                       ``ms_weights``, ``ms_input_csv``, ``ms_metadata_tsv``, ``magma_source``,
-                      ``gap_lmdb`` and ``fp_inference_root``.
+                      ``gap_lmdb``, ``fp_inference_root`` and ``solution_shift_root``.
 
    .. rubric:: Examples
 
@@ -32,7 +32,7 @@ Run existing benchmark adapters through the same public Python package.
 
    `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/benchmark.py#L10>`__
 
-   .. py:method:: run(tasks, *, output, datasets=None, limit=32, seed=42, sampling='reservoir', device='cpu', allow_cross_domain_diagnostic=False)
+   .. py:method:: run(tasks, *, output, datasets=None, limit=32, seed=42, sampling='reservoir', device='cpu', allow_cross_domain_diagnostic=False, solution_reference='test')
 
       Evaluate selected tasks and save their predictions and metrics.
 
@@ -53,6 +53,8 @@ Run existing benchmark adapters through the same public Python package.
       :param allow_cross_domain_diagnostic: Enable the F/P comparison of solid-state model predictions with
                                             solution-reference records. The result retains both domain labels.
       :type allow_cross_domain_diagnostic: bool, default False
+      :param solution_reference: Reference set for the fitted 19F and 31P solution models.
+      :type solution_reference: {"test", "historical-pool"}, default "test"
 
       :returns: Saved result object with task IDs, metrics, sample information,
                 predictions and model/data fingerprints.
@@ -75,5 +77,5 @@ Run existing benchmark adapters through the same public Python package.
    :returns: Peak-matching MAE/RMSE, matched coverage and peak-count statistics.
    :rtype: dict
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/benchmark.py#L102>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/benchmark.py#L107>`__
 ```

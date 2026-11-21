@@ -20,14 +20,12 @@
       <script src="../_static/documentation_options.js?v=f2a433a1"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script>window.MathJax = {"chtml": {"displayAlign": "left"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-      <script defer="defer" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
       <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="11B chemical shift prediction" href="nmr-forward-11B.html" />
-    <link rel="prev" title="19F chemical shift prediction" href="nmr-forward-19F.html" /> 
+    <link rel="prev" title="19F solution chemical shifts from SMILES" href="nmr-forward-19F.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -62,7 +60,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="nmr.html">NMR</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H chemical shift prediction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F solution chemical shifts from SMILES</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">31P chemical shift prediction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B chemical shift prediction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si chemical shift prediction</a></li>
@@ -135,158 +133,113 @@
   
   <section class="tex2jax_ignore mathjax_ignore" id="p-chemical-shift-prediction">
 <h1>31P chemical shift prediction<a class="headerlink" href="#p-chemical-shift-prediction" title="Link to this heading"></a></h1>
-<p>Predict the 31P chemical shifts of a molecule from its structure. Use the atom indices to display predictions on the molecular graph or compare them with measured peaks.</p>
-<section id="what-goes-in">
-<h2>What goes in<a class="headerlink" href="#what-goes-in" title="Link to this heading"></a></h2>
+<p>Predict solution-state phosphorus chemical shifts in ppm from a SMILES and an optional NMR solvent. The online tool runs the validation-selected GNN checkpoint. Equivalent sites share a shift. Atom indices follow the input SMILES and start at zero.</p>
+<p><a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/#tool-31p">Run a ³¹P prediction</a> · <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/phosphorus31-v2/openmolspec-31P.zip">Download model and Python wheel</a></p>
+<section id="model-selection">
+<h2>Model selection<a class="headerlink" href="#model-selection" title="Link to this heading"></a></h2>
+<p>The four-layer graph neural network passes bond-conditioned messages between connected atoms and reads out the target phosphorus site. Training used 35,696 molecular connectivities. We selected epoch 90 and a local-environment median weight of 0.75 on validation. The tree baseline uses 5,960 boosting rounds. Both candidates have access to the same training-only local shift medians. The criterion was validation MAE with equal weight per molecular connectivity. Test records were scored after freezing the choice.</p>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Meaning</p></th>
+<tr class="row-odd"><th class="head"><p>Split / model</p></th>
+<th class="head text-right"><p>Molecules</p></th>
+<th class="head text-right"><p>Observations</p></th>
+<th class="head text-right"><p>MAE / ppm</p></th>
+<th class="head text-right"><p>MAE per molecule / ppm</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">smiles</span> <span class="pre">/</span> <span class="pre">geometry</span></code></p></td>
-<td><p>A valid molecular graph and a compatible 3D conformer; atom order must be preserved.</p></td>
+<tr class="row-even"><td><p>validation · LightGBM</p></td>
+<td class="text-right"><p>4,372</p></td>
+<td class="text-right"><p>6,813</p></td>
+<td class="text-right"><p>5.42</p></td>
+<td class="text-right"><p>7.17</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nucleus</span></code></p></td>
-<td><p>31P; the checkpoint must cover this nucleus.</p></td>
+<tr class="row-odd"><td><p>validation · GNN alone</p></td>
+<td class="text-right"><p>4,372</p></td>
+<td class="text-right"><p>6,813</p></td>
+<td class="text-right"><p>4.21</p></td>
+<td class="text-right"><p>5.40</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reference</span> <span class="pre">peaks</span></code></p></td>
-<td><p>Optional measured ppm values for evaluation; not an inference input.</p></td>
+<tr class="row-even"><td><p>validation · GNN + local median</p></td>
+<td class="text-right"><p>4,372</p></td>
+<td class="text-right"><p>6,813</p></td>
+<td class="text-right"><p>4.07</p></td>
+<td class="text-right"><p>5.28</p></td>
+</tr>
+<tr class="row-odd"><td><p>test · LightGBM</p></td>
+<td class="text-right"><p>4,248</p></td>
+<td class="text-right"><p>6,693</p></td>
+<td class="text-right"><p>5.94</p></td>
+<td class="text-right"><p>7.77</p></td>
+</tr>
+<tr class="row-even"><td><p>test · GNN alone</p></td>
+<td class="text-right"><p>4,248</p></td>
+<td class="text-right"><p>6,693</p></td>
+<td class="text-right"><p>4.74</p></td>
+<td class="text-right"><p>6.12</p></td>
+</tr>
+<tr class="row-odd"><td><p>test · GNN + local median</p></td>
+<td class="text-right"><p>4,248</p></td>
+<td class="text-right"><p>6,693</p></td>
+<td class="text-right"><p>4.56</p></td>
+<td class="text-right"><p>5.95</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="what-comes-out">
-<h2>What comes out<a class="headerlink" href="#what-comes-out" title="Link to this heading"></a></h2>
+<section id="test-groups">
+<h2>Test groups<a class="headerlink" href="#test-groups" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Meaning</p></th>
+<tr class="row-odd"><th class="head"><p>Subset</p></th>
+<th class="head text-right"><p>Molecules</p></th>
+<th class="head text-right"><p>LightGBM MAE / ppm</p></th>
+<th class="head text-right"><p>GNN with local median MAE / ppm</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">prediction_ppm</span></code></p></td>
-<td><p>Per-atom chemical shifts in ppm, with atom indices or a peak list.</p></td>
+<tr class="row-even"><td><p>unseen scaffold</p></td>
+<td class="text-right"><p>1,225</p></td>
+<td class="text-right"><p>10.80</p></td>
+<td class="text-right"><p>9.18</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">error</span> <span class="pre">/</span> <span class="pre">coverage</span></code></p></td>
-<td><p>Reference-matched errors and peak coverage.</p></td>
+<tr class="row-odd"><td><p>P=O</p></td>
+<td class="text-right"><p>2,735</p></td>
+<td class="text-right"><p>3.99</p></td>
+<td class="text-right"><p>3.62</p></td>
+</tr>
+<tr class="row-even"><td><p>P=S</p></td>
+<td class="text-right"><p>243</p></td>
+<td class="text-right"><p>6.70</p></td>
+<td class="text-right"><p>6.17</p></td>
+</tr>
+<tr class="row-odd"><td><p>neutral P, three neighbours including a heteroatom</p></td>
+<td class="text-right"><p>311</p></td>
+<td class="text-right"><p>16.98</p></td>
+<td class="text-right"><p>11.66</p></td>
+</tr>
+<tr class="row-even"><td><p>other P environments</p></td>
+<td class="text-right"><p>495</p></td>
+<td class="text-right"><p>21.81</p></td>
+<td class="text-right"><p>13.74</p></td>
 </tr>
 </tbody>
 </table>
+<p>Subset MAEs weight each molecular connectivity equally. Evaluation uses one observed shift and one graph-equivalence class per spectrum. Site assignments in multisite spectra, intensities, couplings and line shapes need separate validation. This comparison uses one GNN training seed.</p>
 </section>
-<section id="a-real-recorded-example">
-<h2>A real recorded example<a class="headerlink" href="#a-real-recorded-example" title="Link to this heading"></a></h2>
-<p>Inspect the input, prediction and reference for the example below. Download the JSON for the complete numerical arrays and additional examples.</p>
-<p><img alt="nmr.forward.31P actual results" src="../_images/nmr-forward-31P.png" /></p>
-<p><a class="reference download internal" download="" href="../_downloads/8aaf540cbe238741e8256d6ee183b991/nmr-forward-31P.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/afd425668bdbdba93ab154aec8bb7234/nmr-forward-31P.png"><span class="xref download myst">PNG</span></a> · <a class="reference download internal" download="" href="../_downloads/6ea4cf694dbfef25d35ee371dcd995a9/nmr-forward-31P.json"><span class="xref download myst">Full input/output JSON</span></a></p>
-<details><summary>Inspect the actual input and output fields</summary>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COc1ccc(P(=O)(CCCc2ccccc2)OCC)cc1"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"nucleus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"atom_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="mi">6</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"prediction_ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">246.23046875</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"ppm"</span><span class="p">:</span><span class="w"> </span><span class="mf">44.90999984741211</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<section id="local-inference">
+<h2>Local inference<a class="headerlink" href="#local-inference" title="Link to this heading"></a></h2>
+<p>Unzip the download and run these commands inside the extracted directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"./openmolspec-1.0.0-py3-none-any.whl[phosphorus-gnn]"</span>
+openmolspec-solution-shift<span class="w"> </span>--model-dir<span class="w"> </span>model<span class="w"> </span>--smiles<span class="w"> </span><span class="s2">"CCOP(=O)(OCC)OCC"</span><span class="w"> </span>--solvent<span class="w"> </span>CDCl3
 </pre></div>
 </div>
-</details>
-</section>
-<section id="actual-evaluation-results">
-<h2>Actual evaluation results<a class="headerlink" href="#actual-evaluation-results" title="Link to this heading"></a></h2>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
-<th class="head"><p>Model / variant</p></th>
-<th class="head"><p>Metric</p></th>
-<th class="head text-right"><p>Value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>recorded evaluation</p></td>
-<td><p>recorded model</p></td>
-<td><p>mae_ppm</p></td>
-<td class="text-right"><p>226.449</p></td>
-</tr>
-<tr class="row-odd"><td><p>recorded evaluation</p></td>
-<td><p>recorded model</p></td>
-<td><p>rmse_ppm</p></td>
-<td class="text-right"><p>237.252</p></td>
-</tr>
-<tr class="row-even"><td><p>recorded evaluation</p></td>
-<td><p>recorded model</p></td>
-<td><p>examples</p></td>
-<td class="text-right"><p>32</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="model-and-method">
-<h2>Model and method<a class="headerlink" href="#model-and-method" title="Link to this heading"></a></h2>
-<p>Use the solid-state NMRNet checkpoint to generate atomwise F/P predictions for the prepared molecular geometries. The benchmark scores the saved predictions against the exact paired LMDB references. Supply the frozen-inference directory and select the cross-domain comparison option.</p>
-<p>MAE and RMSE are reported in ppm.</p>
-</section>
-<section id="reproduce">
-<h2>Reproduce<a class="headerlink" href="#reproduce" title="Link to this heading"></a></h2>
-<p><a class="reference internal" href="../notebooks/nmr-forward-31P.html"><span class="std std-doc">Notebook with executed figures</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick Start</span></a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--tasks<span class="w"> </span>nmr.forward.31P<span class="w"> </span>--fp-inference-root<span class="w"> </span>/path/to/frozen-fp<span class="w"> </span>--allow-cross-domain-diagnostic<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/nmr-forward-31P-new.json
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">SolutionShiftPredictor</span>
+
+<span class="n">predictor</span> <span class="o">=</span> <span class="n">SolutionShiftPredictor</span><span class="p">(</span><span class="s2">"model"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">predictor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">"CCOP(=O)(OCC)OCC"</span><span class="p">,</span> <span class="s2">"CDCl3"</span><span class="p">)[</span><span class="s2">"environments"</span><span class="p">])</span>
 </pre></div>
 </div>
-</section>
-<section id="call-and-adapt-this-model">
-<h2>Call and adapt this model<a class="headerlink" href="#call-and-adapt-this-model" title="Link to this heading"></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.benchmark</span><span class="w"> </span><span class="kn">import</span> <span class="n">Benchmark</span>
-<span class="n">benchmark</span> <span class="o">=</span> <span class="n">Benchmark</span><span class="p">(</span><span class="n">workspace</span><span class="o">=</span><span class="s1">'/path/to/workspace'</span><span class="p">,</span>
-    <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/sdk-env/bin/python'</span><span class="p">,</span>
-    <span class="n">models_root</span><span class="o">=</span><span class="s1">'/path/to/models'</span><span class="p">,</span>
-    <span class="n">nmr_python</span><span class="o">=</span><span class="s1">'/path/to/nmr-env/bin/python'</span><span class="p">,</span>
-    <span class="n">fp_inference_root</span><span class="o">=</span><span class="s1">'/path/to/frozen-fp'</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">benchmark</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">'nmr.forward.31P'</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s1">'31P-results.json'</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">allow_cross_domain_diagnostic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>For fine-tuning, use the <a class="reference external" href="https://github.com/Colin-Jay/NMRNet">NMRNet author training implementation</a>, preparing atom-labelled structures/coordinates, target masks and train/validation LMDBs for the selected nucleus. Its <code class="docutils literal notranslate"><span class="pre">atom_regloss_mae</span></code> and <code class="docutils literal notranslate"><span class="pre">atom_regloss_mse</span></code> criteria operate on supervised target atoms. Retain the scaler/reference convention and select the checkpoint on validation data. This author training route is separate from the SDK inference facade.</p>
-<div class="math notranslate nohighlight">
-\[L_{\rm MAE}=\frac{1}{N_{\rm labelled}}\sum_{i\in\mathcal M}|\hat\delta_i-\delta_i|,\qquad L_{\rm MSE}=\frac{1}{N_{\rm labelled}}\sum_{i\in\mathcal M}(\hat\delta_i-\delta_i)^2.\]</div>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Model setting</p></th>
-<th class="head"><p>Value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Checkpoint</p></td>
-<td><p>NMRNet 31P checkpoint</p></td>
-</tr>
-<tr class="row-odd"><td><p>Training domain</p></td>
-<td><p>solid-state</p></td>
-</tr>
-<tr class="row-even"><td><p>Shift unit</p></td>
-<td><p>ppm</p></td>
-</tr>
-</tbody>
-</table>
-<details><summary>Source reports and SHA-256 fingerprints</summary>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/fp_frozen_fresh_diagnostic_20261115.json">fp_frozen_fresh_diagnostic_20261115.json</a> — SHA-256 <code class="docutils literal notranslate"><span class="pre">7a44203bd5826e778a9006edd92dee0ec71e47930c2a980f6082313974c68475</span></code></p></li>
-</ul>
-</details>
-<p><a class="reference external" href="https://github.com/Colin-Jay/NMRNet">Model implementation / 模型实现</a> · <a class="reference internal" href="../model-audit.html"><span class="std std-doc">Model review / 模型检查</span></a></p>
-</section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. <a class="reference external" href="https://doi.org/10.1038/s43588-025-00783-z">Source</a></p></li>
-<li><p>OpenDataLab. WanJuan MolSpectra, version 1.0.3. Experimental molecular spectroscopy dataset. <a class="reference external" href="https://opendatalab.com/">Source</a></p></li>
-</ul>
 </section>
 </section>
 
@@ -295,7 +248,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="nmr-forward-19F.html" class="btn btn-neutral float-left" title="19F chemical shift prediction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nmr-forward-19F.html" class="btn btn-neutral float-left" title="19F solution chemical shifts from SMILES" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="nmr-forward-11B.html" class="btn btn-neutral float-right" title="11B chemical shift prediction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

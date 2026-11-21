@@ -36,7 +36,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
 
    Atom indices follow the zero-based RDKit ``AddHs`` graph of the input SMILES.
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L54>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L55>`__
 
    .. py:method:: from_pretrained(models_root, **kwargs)
       :classmethod:
@@ -50,7 +50,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
       :returns: Configured chemical-shift predictor.
       :rtype: NMRNet
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L90>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L91>`__
 
    .. py:method:: predict(smiles)
 
@@ -64,7 +64,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
                 checkpoint information is returned in ``provenance``.
       :rtype: dict
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L107>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L108>`__
 
    .. py:method:: assign(smiles, peaks_ppm, *, tolerance_ppm=None)
 
@@ -82,7 +82,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
                 shifts, residuals and unmatched peaks/sites.
       :rtype: dict
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L129>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L130>`__
 
    .. py:method:: save_config(path)
 
@@ -94,7 +94,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
 
       :raises FileExistsError: If the destination already exists.
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L12>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L13>`__
 
    .. py:method:: from_config(path, **overrides)
       :classmethod:
@@ -108,7 +108,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
       :returns: Configured instance of the requested model class.
       :rtype: model instance
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L30>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L31>`__
 
    .. py:attribute:: capabilities
       :type: dict
@@ -134,7 +134,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
    >>> model = NMRTransformer.from_pretrained('alignment.pt', stage='align')
    >>> ranking = model.retrieve(query, ['CCO', 'COC'], top_k=2)
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L152>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L153>`__
 
    .. py:method:: from_pretrained(checkpoint, **kwargs)
       :classmethod:
@@ -148,7 +148,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
       :returns: Model configured for the requested stage.
       :rtype: NMRTransformer
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L182>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L183>`__
 
    .. py:method:: predict(records, *, beam_size=5)
 
@@ -165,7 +165,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
                 molecular-formula agreement.
       :rtype: dict
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L199>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L200>`__
 
    .. py:method:: retrieve(query, candidates, *, top_k=10)
 
@@ -181,7 +181,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
       :returns: Candidate identities and embedding similarity scores in rank order.
       :rtype: dict
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L226>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L227>`__
 
    .. py:method:: training_plan(data_dir, *, run_dir, **kwargs)
 
@@ -197,7 +197,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
       :returns: Plan that can be inspected, validated and passed to :meth:`fit`.
       :rtype: openmolspec.training.TrainingPlan
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L249>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L250>`__
 
    .. py:method:: fit(plan)
 
@@ -210,7 +210,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
                 updated to use the newly trained checkpoint.
       :rtype: dict
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L272>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L273>`__
 
    .. py:method:: save_config(path)
 
@@ -222,7 +222,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
 
       :raises FileExistsError: If the destination already exists.
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L12>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L13>`__
 
    .. py:method:: from_config(path, **overrides)
       :classmethod:
@@ -236,7 +236,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
       :returns: Configured instance of the requested model class.
       :rtype: model instance
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L30>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L31>`__
 
    .. py:attribute:: capabilities
       :type: dict
@@ -260,7 +260,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
    >>> result = model.predict(inputs)
    >>> gap_ev = result['gap_ev']
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L294>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L295>`__
 
    .. py:method:: predict(inputs, *, allow_missing_modalities=False)
 
@@ -275,7 +275,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
       :returns: Predicted ``gap_ev``, checkpoint information and channel settings.
       :rtype: dict
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L318>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L319>`__
 
    .. py:method:: save_config(path)
 
@@ -287,7 +287,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
 
       :raises FileExistsError: If the destination already exists.
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L12>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L13>`__
 
    .. py:method:: from_config(path, **overrides)
       :classmethod:
@@ -301,7 +301,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
       :returns: Configured instance of the requested model class.
       :rtype: model instance
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L30>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L31>`__
 
    .. py:attribute:: capabilities
       :type: dict
@@ -320,7 +320,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
    :param device: Torch inference device.
    :type device: str, default 'cpu'
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L337>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L338>`__
 
    .. py:method:: predict(inputs, *, top_k=10, allow_missing_modalities=False)
 
@@ -338,7 +338,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
                 checkpoint metadata, using beam size 10 and ITM reranking.
       :rtype: dict
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L352>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L353>`__
 
    .. py:method:: retrieve(inputs, candidates, *, top_k=10, rerank=False, allow_missing_modalities=False)
 
@@ -360,7 +360,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
                 and their scores in descending order.
       :rtype: dict
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L376>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L377>`__
 
    .. py:method:: save_config(path)
 
@@ -372,7 +372,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
 
       :raises FileExistsError: If the destination already exists.
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L12>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L13>`__
 
    .. py:method:: from_config(path, **overrides)
       :classmethod:
@@ -386,7 +386,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
       :returns: Configured instance of the requested model class.
       :rtype: model instance
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L30>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L31>`__
 
    .. py:attribute:: capabilities
       :type: dict
@@ -408,7 +408,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
    :param device: Inference device.
    :type device: str, default 'cpu'
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L405>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L406>`__
 
    .. py:method:: predict(*, smiles, adduct, collision_energy, instrument, precursor_mz=None)
 
@@ -428,7 +428,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
       :returns: Numerical predicted MS/MS peaks and the acquisition/model metadata.
       :rtype: dict
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L430>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L431>`__
 
    .. py:method:: save_config(path)
 
@@ -440,7 +440,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
 
       :raises FileExistsError: If the destination already exists.
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L12>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L13>`__
 
    .. py:method:: from_config(path, **overrides)
       :classmethod:
@@ -454,7 +454,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
       :returns: Configured instance of the requested model class.
       :rtype: model instance
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L30>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L31>`__
 
    .. py:attribute:: capabilities
       :type: dict

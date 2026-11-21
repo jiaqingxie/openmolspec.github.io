@@ -109,6 +109,15 @@
  function renderResult(result,target){
   target.replaceChildren();const value=result?.result||result;
   if(result?.answer){target.append(answerView(result.answer));return;}
+  if(value?.records?.[0]?.nucleus==='31P'&&value.records[0].environments){
+   const record=value.records[0],environments=record.environments;
+   target.append(el('h3','','³¹P solution chemical shifts'),
+    el('p','result-label',(value.model==='phosphorus_gnn'?'Graph neural network':'LightGBM')+' · '+(record.solvent||'Unspecified solvent')),
+    resultTable(['P atom indices','Predicted shift / ppm'],environments.map(e=>[e.atom_indices.join(', '),e.prediction_ppm.toFixed(3)])),
+    plot(environments.map(e=>e.prediction_ppm),null,'³¹P','ppm',true),
+    el('p','tool-note','Atom indices start at zero in the input SMILES. Each row groups equivalent phosphorus atoms.'));
+   return;
+  }
   if(value?.hsqc_measured){renderHsqc(value,target);return;}
   if(typeof value?.predicted_target_ppm==='number'){
    target.append(el('h3','','Cross-solvent reference estimate'),el('p','gap-number',value.predicted_target_ppm.toFixed(3)+' ppm'),
@@ -200,7 +209,7 @@
     job=await request('/api/runs/'+submitted.id);lastRun={...job,request:payload};if(trace)renderEvents(job.events,trace);
     const latest=job.events.filter(e=>['tool_start','tool_end','status'].includes(e.type)).at(-1);
     const elapsed=Math.round((performance.now()-started)/1000)+' s elapsed';
-    const toolStages={spectra_tasks:'Reading available tools',spectra_validate:'Validating inputs',spectra_predict:'Running the spectroscopy model','vibrational.forward':'Predicting vibrational spectra','nmr.solvent_transfer':'Finding an experimental reference','nmr.hsqc.transpeaknet':'Predicting and assigning HSQC cross-peaks'};
+    const toolStages={spectra_tasks:'Reading available tools',spectra_validate:'Validating inputs',spectra_predict:'Running the spectroscopy model','vibrational.forward':'Predicting vibrational spectra','nmr.solvent_transfer':'Finding an experimental reference','nmr.hsqc.transpeaknet':'Predicting and assigning HSQC cross-peaks','nmr.forward.31P':'Predicting phosphorus chemical shifts'};
     const label=job.status==='queued'?'Waiting for the model worker':latest?.type==='tool_start'?(toolStages[latest.data.name]||'Running a spectroscopy tool'):latest?.data.label||'Processing your request';
     stage.textContent=label+' · '+elapsed;
     if(job.status==='completed'){renderResult(job.result,output);const save=button('Download result and trace','button-secondary');save.onclick=()=>download(lastRun,'openmolspec-'+job.id+'.json');output.append(save);output.dataset.complete='true';break;}
@@ -330,11 +339,18 @@
     el('p','preview-spectrum-values',shifts.map(shift=>shift.toFixed(2)).join('  /  ')+' ppm'));
    }
    form.append(el('h3','','Start with a molecular structure'),field('SMILES','tool-smiles','CCO'));
-   const select=el('select');select.id='tool-task';[['nmr.forward.13C','Predict ¹³C NMR'],['nmr.forward.1H','Predict ¹H NMR'],['nmr.assignment','Assign measured ¹³C peaks'],['ms.forward.glacier','Predict MS/MS · GLACIER'],['ms.forward.iceberg','Predict MS/MS · ICEBERG'],['vibrational.forward','Predict IR and Raman from a conformer']].forEach(([v,t])=>select.add(new Option(t,v)));const label=el('label','tool-field','Task');label.append(select);form.append(label);
+   const select=el('select');select.id='tool-task';[['nmr.forward.13C','Predict ¹³C NMR'],['nmr.forward.1H','Predict ¹H NMR'],['nmr.forward.31P','Predict ³¹P solution NMR'],['nmr.assignment','Assign measured ¹³C peaks'],['ms.forward.glacier','Predict MS/MS · GLACIER'],['ms.forward.iceberg','Predict MS/MS · ICEBERG'],['vibrational.forward','Predict IR and Raman from a conformer']].forEach(([v,t])=>select.add(new Option(t,v)));const label=el('label','tool-field','Task');label.append(select);form.append(label);
    const observed=field('Observed ¹³C peaks / ppm','tool-peaks','18.2, 58.3');observed.hidden=true;form.append(observed);
+   const phosphorus=el('div','phosphorus-inputs');phosphorus.hidden=true;
+   const solvent=field('NMR solvent (optional)','phosphorus-solvent','');
+   const example=button('Use triethyl phosphate example','button-secondary');
+   example.onclick=()=>{$('#tool-smiles').value='CCOP(=O)(OCC)OCC';$('#phosphorus-solvent').value='CDCl3';};
+   const guide=el('a','', '³¹P model and accuracy');guide.href='docs/tasks/nmr-forward-31P.html';
+   phosphorus.append(solvent,example,el('p','tool-note','Use a phosphorus-containing SMILES. Equivalent sites share a predicted shift.'),guide);form.append(phosphorus);
    const acquisition=el('div','ms-acquisition');acquisition.hidden=true;acquisition.append(field('Adduct','ms-adduct','[M+H]+'),field('Collision energy (checkpoint convention)','ms-energy','40','number'),field('Instrument category','ms-instrument','QTOF'),el('p','tool-note','Specify the acquisition conditions for your spectrum. The defaults are an example, and are not inferred from SMILES.'));form.append(acquisition);
-   select.onchange=()=>{if(output.querySelector('.preview-spectrum-label'))output.replaceChildren(el('p','empty-state','Your model output will appear here.'));observed.hidden=select.value!=='nmr.assignment';acquisition.hidden=!select.value.startsWith('ms.forward.');};
-   const go=button('Run model');go.dataset.run='true';go.onclick=()=>{const inputs={smiles:$('#tool-smiles').value.trim()};if(select.value==='nmr.assignment'){inputs.nucleus='13C';inputs.peaks_ppm=$('#tool-peaks').value.split(/[,\s]+/).filter(Boolean).map(Number);}if(select.value.startsWith('ms.forward.')){inputs.adduct=$('#ms-adduct').value.trim();inputs.collision_energy=Number($('#ms-energy').value);inputs.instrument=$('#ms-instrument').value.trim();}run({kind:'tool',task:select.value,inputs},output,trace);};form.append(go,el('p','tool-note','Chemical shifts are returned in ppm with atom indices. MS/MS returns m/z and relative intensity. IR/Raman use the generated molecular conformer.'));
+   select.onchange=()=>{if(output.querySelector('.preview-spectrum-label'))output.replaceChildren(el('p','empty-state','Your model output will appear here.'));phosphorus.hidden=select.value!=='nmr.forward.31P';
+    const smiles=$('#tool-smiles');if(!phosphorus.hidden&&smiles.value==='CCO')smiles.value='CCOP(=O)(OCC)OCC';observed.hidden=select.value!=='nmr.assignment';acquisition.hidden=!select.value.startsWith('ms.forward.');};
+   const go=button('Run model');go.dataset.run='true';go.onclick=()=>{const inputs={smiles:$('#tool-smiles').value.trim()};if(select.value==='nmr.forward.31P'&&$('#phosphorus-solvent').value.trim())inputs.solvent=$('#phosphorus-solvent').value.trim();if(select.value==='nmr.assignment'){inputs.nucleus='13C';inputs.peaks_ppm=$('#tool-peaks').value.split(/[,\s]+/).filter(Boolean).map(Number);}if(select.value.startsWith('ms.forward.')){inputs.adduct=$('#ms-adduct').value.trim();inputs.collision_energy=Number($('#ms-energy').value);inputs.instrument=$('#ms-instrument').value.trim();}run({kind:'tool',task:select.value,inputs},output,trace);};form.append(go,el('p','tool-note','Chemical shifts are returned in ppm with atom indices. MS/MS returns m/z and relative intensity. IR/Raman use the generated molecular conformer.'));
   }else if(name==='nmr'){
    nmrStructureForm(form,output,trace);
   }else if(name==='hsqc'){
@@ -362,7 +378,12 @@
  }
  document.querySelectorAll('[data-tool-tab]').forEach(b=>b.onclick=()=>switchTab(b.dataset.toolTab));switchTab('structure');
  function loadLinkedExample(){
-  if(location.hash!=='#tool-hsqc'||busy)return;
+  if(busy)return;
+  if(location.hash==='#tool-31p'){
+   switchTab('structure');const task=$('#tool-task');task.value='nmr.forward.31P';task.onchange();
+   $('.phosphorus-inputs button').click();$('#tool-workspace').scrollIntoView();return;
+  }
+  if(location.hash!=='#tool-hsqc')return;
   switchTab('hsqc');
   $('#hsqc-example').click();
  }

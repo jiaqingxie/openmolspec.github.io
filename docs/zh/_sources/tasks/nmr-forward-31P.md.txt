@@ -1,108 +1,46 @@
 # 31P 化学位移预测
 
-根据分子结构预测 31P 化学位移。利用返回的原子编号，可以把预测值标到分子结构上，也可以与实测峰比较。
+输入含磷分子的 SMILES 和可选溶剂，在线工具使用通过验证集选出的 GNN 权重预测溶液化学位移。等价磷位点共享一个峰位，原子编号按输入 SMILES 从零开始。
 
-## 输入是什么
+[在线预测 ³¹P](https://jiaqingxie.github.io/openmolspec.github.io/#tool-31p) · [下载模型和 Python 安装包](https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/phosphorus31-v2/openmolspec-31P.zip)
 
-| Field | Meaning |
-| --- | --- |
-| `smiles / geometry` | 有效分子结构及相容的三维构象，必须保留原子顺序。 |
-| `nucleus` | 31P，权重必须覆盖该核种。 |
-| `reference peaks` | 评测时提供实测 ppm 标签；标签不作为模型推理输入。 |
+## 模型选择
 
-## 输出是什么
+四层图神经网络沿化学键在相邻原子间传递信息，并预测目标磷位点的化学位移。共用 35,696 种分子连通结构训练。验证集选出的 GNN 轮次为 90，局部环境中位数权重为 0.75。对照模型使用 5,960 轮 LightGBM。两个模型均可利用相同的训练集局部环境中位数。选型依据是验证集按分子等权计算的 MAE。模型选定后再对留出测试集评分。
 
-| Field | Meaning |
-| --- | --- |
-| `prediction_ppm` | 逐原子化学位移（ppm）及原子编号，或整理后的峰列表。 |
-| `error / coverage` | 与参考谱匹配后的误差及峰覆盖率。 |
+| 划分及模型 | 分子数 | 观测数 | 观测 MAE / ppm | 分子等权 MAE / ppm |
+| --- | ---: | ---: | ---: | ---: |
+| 验证 · LightGBM | 4,372 | 6,813 | 5.42 | 7.17 |
+| 验证 · 纯 GNN | 4,372 | 6,813 | 4.21 | 5.40 |
+| 验证 · GNN + 局部中位数 | 4,372 | 6,813 | 4.07 | 5.28 |
+| 测试 · LightGBM | 4,248 | 6,693 | 5.94 | 7.77 |
+| 测试 · 纯 GNN | 4,248 | 6,693 | 4.74 | 6.12 |
+| 测试 · GNN + 局部中位数 | 4,248 | 6,693 | 4.56 | 5.95 |
 
-## 真实运行案例
+## 测试子集
 
-下面展示示例的输入、预测与参考。下载 JSON 可获取完整数值数组及更多示例。
+| 子集 | 分子数 | LightGBM 分子等权 MAE / ppm | GNN + 局部中位数分子等权 MAE / ppm |
+| --- | ---: | ---: | ---: |
+| 训练未见的非空 Murcko 骨架 | 1,225 | 10.80 | 9.18 |
+| P=O | 2,735 | 3.99 | 3.62 |
+| P=S | 243 | 6.70 | 6.17 |
+| 中性三配位 P，邻位含杂原子 | 311 | 16.98 | 11.66 |
+| 其他磷环境 | 495 | 21.81 | 13.74 |
 
-![nmr.forward.31P actual results](../assets/gallery/nmr-forward-31P.png)
+子集 MAE 对每种分子连通性等权。正式比较使用具有一个实测峰和一个图对称环境的谱。此次 GNN 对照使用一个训练随机种子。多环境分子的峰归属、强度、耦合和线形仍需单独评测。
 
-[SVG](../assets/gallery/nmr-forward-31P.svg) · [PNG](../assets/gallery/nmr-forward-31P.png) · [Full input/output JSON](../assets/examples/nmr-forward-31P.json)
+## 本地调用
 
-<details><summary>展开查看实际输入与输出字段</summary>
-
-```json
-{
-  "input": {
-    "smiles": "COc1ccc(P(=O)(CCCc2ccccc2)OCC)cc1",
-    "nucleus": "P",
-    "atom_indices": [
-      6
-    ]
-  },
-  "output": {
-    "prediction_ppm": 246.23046875
-  },
-  "reference": {
-    "ppm": 44.90999984741211
-  }
-}
-```
-
-</details>
-
-## 实际评测结果
-
-| Dataset / scope | Model / variant | Metric | Value |
-| --- | --- | --- | ---: |
-| recorded evaluation | recorded model | mae_ppm | 226.449 |
-| recorded evaluation | recorded model | rmse_ppm | 237.252 |
-| recorded evaluation | recorded model | examples | 32 |
-
-## 模型与方法
-
-使用固态 NMRNet 权重，为准备好的分子构象生成逐原子 F/P 预测。基准将保存的预测与严格配对的 LMDB 标签计分；调用时指定冻结推理目录，并选择跨数据域比较选项。
-
-MAE 和 RMSE 的单位均为 ppm。
-
-## 复现方式
-
-[Notebook with executed figures](../notebooks/nmr-forward-31P.ipynb) · [Quick Start](../quickstart.md)
+解压下载包，在解压后的目录中运行以下命令。
 
 ```bash
-python -m openmolspec_bench run --workspace /path/to/OpenMolSpec \
-  --tasks nmr.forward.31P --fp-inference-root /path/to/frozen-fp --allow-cross-domain-diagnostic --limit 8 --output results/nmr-forward-31P-new.json
+python -m pip install "./openmolspec-1.0.0-py3-none-any.whl[phosphorus-gnn]"
+openmolspec-solution-shift --model-dir model --smiles "CCOP(=O)(OCC)OCC" --solvent CDCl3
 ```
-
-## 调用模型与微调
 
 ```python
-from openmolspec.benchmark import Benchmark
-benchmark = Benchmark(workspace='/path/to/workspace',
-    python='/path/to/sdk-env/bin/python',
-    models_root='/path/to/models',
-    nmr_python='/path/to/nmr-env/bin/python',
-    fp_inference_root='/path/to/frozen-fp')
-result = benchmark.run('nmr.forward.31P', output='31P-results.json', limit=32, allow_cross_domain_diagnostic=True)
+from openmolspec.model import SolutionShiftPredictor
+
+predictor = SolutionShiftPredictor("model")
+print(predictor.predict("CCOP(=O)(OCC)OCC", "CDCl3")["environments"])
 ```
-
-微调使用 [NMRNet 作者训练实现](https://github.com/Colin-Jay/NMRNet)：准备对应核种的逐原子标签、结构／坐标、目标掩码及 train/val LMDB。实现提供 `atom_regloss_mae` 与 `atom_regloss_mse`，在有标签的原子上计算目标。保留 scaler 和参考标准，在验证集选择 checkpoint。该训练流程通过作者实现运行。
-
-$$L_{\rm MAE}=\frac{1}{N_{\rm labelled}}\sum_{i\in\mathcal M}|\hat\delta_i-\delta_i|,\qquad L_{\rm MSE}=\frac{1}{N_{\rm labelled}}\sum_{i\in\mathcal M}(\hat\delta_i-\delta_i)^2.$$
-
-
-| 模型设置 | 值 |
-| --- | --- |
-| Checkpoint | NMRNet 31P checkpoint |
-| Training domain | solid-state |
-| Shift unit | ppm |
-
-<details><summary>来源报告与 SHA-256 指纹</summary>
-
-- [fp_frozen_fresh_diagnostic_20261115.json](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/fp_frozen_fresh_diagnostic_20261115.json) — SHA-256 `7a44203bd5826e778a9006edd92dee0ec71e47930c2a980f6082313974c68475`
-
-</details>
-
-
-[Model implementation / 模型实现](https://github.com/Colin-Jay/NMRNet) · [Model review / 模型检查](../model-audit.md)
-
-## 参考文献
-
-- Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. [Source](https://doi.org/10.1038/s43588-025-00783-z)
-- OpenDataLab. WanJuan MolSpectra, version 1.0.3. Experimental molecular spectroscopy dataset. [Source](https://opendatalab.com/)

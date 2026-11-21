@@ -1,108 +1,46 @@
 # 31P chemical shift prediction
 
-Predict the 31P chemical shifts of a molecule from its structure. Use the atom indices to display predictions on the molecular graph or compare them with measured peaks.
+Predict solution-state phosphorus chemical shifts in ppm from a SMILES and an optional NMR solvent. The online tool runs the validation-selected GNN checkpoint. Equivalent sites share a shift. Atom indices follow the input SMILES and start at zero.
 
-## What goes in
+[Run a ³¹P prediction](https://jiaqingxie.github.io/openmolspec.github.io/#tool-31p) · [Download model and Python wheel](https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/phosphorus31-v2/openmolspec-31P.zip)
 
-| Field | Meaning |
-| --- | --- |
-| `smiles / geometry` | A valid molecular graph and a compatible 3D conformer; atom order must be preserved. |
-| `nucleus` | 31P; the checkpoint must cover this nucleus. |
-| `reference peaks` | Optional measured ppm values for evaluation; not an inference input. |
+## Model selection
 
-## What comes out
+The four-layer graph neural network passes bond-conditioned messages between connected atoms and reads out the target phosphorus site. Training used 35,696 molecular connectivities. We selected epoch 90 and a local-environment median weight of 0.75 on validation. The tree baseline uses 5,960 boosting rounds. Both candidates have access to the same training-only local shift medians. The criterion was validation MAE with equal weight per molecular connectivity. Test records were scored after freezing the choice.
 
-| Field | Meaning |
-| --- | --- |
-| `prediction_ppm` | Per-atom chemical shifts in ppm, with atom indices or a peak list. |
-| `error / coverage` | Reference-matched errors and peak coverage. |
+| Split / model | Molecules | Observations | MAE / ppm | MAE per molecule / ppm |
+| --- | ---: | ---: | ---: | ---: |
+| validation · LightGBM | 4,372 | 6,813 | 5.42 | 7.17 |
+| validation · GNN alone | 4,372 | 6,813 | 4.21 | 5.40 |
+| validation · GNN + local median | 4,372 | 6,813 | 4.07 | 5.28 |
+| test · LightGBM | 4,248 | 6,693 | 5.94 | 7.77 |
+| test · GNN alone | 4,248 | 6,693 | 4.74 | 6.12 |
+| test · GNN + local median | 4,248 | 6,693 | 4.56 | 5.95 |
 
-## A real recorded example
+## Test groups
 
-Inspect the input, prediction and reference for the example below. Download the JSON for the complete numerical arrays and additional examples.
+| Subset | Molecules | LightGBM MAE / ppm | GNN with local median MAE / ppm |
+| --- | ---: | ---: | ---: |
+| unseen scaffold | 1,225 | 10.80 | 9.18 |
+| P=O | 2,735 | 3.99 | 3.62 |
+| P=S | 243 | 6.70 | 6.17 |
+| neutral P, three neighbours including a heteroatom | 311 | 16.98 | 11.66 |
+| other P environments | 495 | 21.81 | 13.74 |
 
-![nmr.forward.31P actual results](../assets/gallery/nmr-forward-31P.png)
+Subset MAEs weight each molecular connectivity equally. Evaluation uses one observed shift and one graph-equivalence class per spectrum. Site assignments in multisite spectra, intensities, couplings and line shapes need separate validation. This comparison uses one GNN training seed.
 
-[SVG](../assets/gallery/nmr-forward-31P.svg) · [PNG](../assets/gallery/nmr-forward-31P.png) · [Full input/output JSON](../assets/examples/nmr-forward-31P.json)
+## Local inference
 
-<details><summary>Inspect the actual input and output fields</summary>
-
-```json
-{
-  "input": {
-    "smiles": "COc1ccc(P(=O)(CCCc2ccccc2)OCC)cc1",
-    "nucleus": "P",
-    "atom_indices": [
-      6
-    ]
-  },
-  "output": {
-    "prediction_ppm": 246.23046875
-  },
-  "reference": {
-    "ppm": 44.90999984741211
-  }
-}
-```
-
-</details>
-
-## Actual evaluation results
-
-| Dataset / scope | Model / variant | Metric | Value |
-| --- | --- | --- | ---: |
-| recorded evaluation | recorded model | mae_ppm | 226.449 |
-| recorded evaluation | recorded model | rmse_ppm | 237.252 |
-| recorded evaluation | recorded model | examples | 32 |
-
-## Model and method
-
-Use the solid-state NMRNet checkpoint to generate atomwise F/P predictions for the prepared molecular geometries. The benchmark scores the saved predictions against the exact paired LMDB references. Supply the frozen-inference directory and select the cross-domain comparison option.
-
-MAE and RMSE are reported in ppm.
-
-## Reproduce
-
-[Notebook with executed figures](../notebooks/nmr-forward-31P.ipynb) · [Quick Start](../quickstart.md)
+Unzip the download and run these commands inside the extracted directory.
 
 ```bash
-python -m openmolspec_bench run --workspace /path/to/OpenMolSpec \
-  --tasks nmr.forward.31P --fp-inference-root /path/to/frozen-fp --allow-cross-domain-diagnostic --limit 8 --output results/nmr-forward-31P-new.json
+python -m pip install "./openmolspec-1.0.0-py3-none-any.whl[phosphorus-gnn]"
+openmolspec-solution-shift --model-dir model --smiles "CCOP(=O)(OCC)OCC" --solvent CDCl3
 ```
-
-## Call and adapt this model
 
 ```python
-from openmolspec.benchmark import Benchmark
-benchmark = Benchmark(workspace='/path/to/workspace',
-    python='/path/to/sdk-env/bin/python',
-    models_root='/path/to/models',
-    nmr_python='/path/to/nmr-env/bin/python',
-    fp_inference_root='/path/to/frozen-fp')
-result = benchmark.run('nmr.forward.31P', output='31P-results.json', limit=32, allow_cross_domain_diagnostic=True)
+from openmolspec.model import SolutionShiftPredictor
+
+predictor = SolutionShiftPredictor("model")
+print(predictor.predict("CCOP(=O)(OCC)OCC", "CDCl3")["environments"])
 ```
-
-For fine-tuning, use the [NMRNet author training implementation](https://github.com/Colin-Jay/NMRNet), preparing atom-labelled structures/coordinates, target masks and train/validation LMDBs for the selected nucleus. Its `atom_regloss_mae` and `atom_regloss_mse` criteria operate on supervised target atoms. Retain the scaler/reference convention and select the checkpoint on validation data. This author training route is separate from the SDK inference facade.
-
-$$L_{\rm MAE}=\frac{1}{N_{\rm labelled}}\sum_{i\in\mathcal M}|\hat\delta_i-\delta_i|,\qquad L_{\rm MSE}=\frac{1}{N_{\rm labelled}}\sum_{i\in\mathcal M}(\hat\delta_i-\delta_i)^2.$$
-
-
-| Model setting | Value |
-| --- | --- |
-| Checkpoint | NMRNet 31P checkpoint |
-| Training domain | solid-state |
-| Shift unit | ppm |
-
-<details><summary>Source reports and SHA-256 fingerprints</summary>
-
-- [fp_frozen_fresh_diagnostic_20261115.json](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/fp_frozen_fresh_diagnostic_20261115.json) — SHA-256 `7a44203bd5826e778a9006edd92dee0ec71e47930c2a980f6082313974c68475`
-
-</details>
-
-
-[Model implementation / 模型实现](https://github.com/Colin-Jay/NMRNet) · [Model review / 模型检查](../model-audit.md)
-
-## References
-
-- Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. [Source](https://doi.org/10.1038/s43588-025-00783-z)
-- OpenDataLab. WanJuan MolSpectra, version 1.0.3. Experimental molecular spectroscopy dataset. [Source](https://opendatalab.com/)
