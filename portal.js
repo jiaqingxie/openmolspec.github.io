@@ -20,7 +20,10 @@
  async function request(path,body){
   if(!api)throw Error('The model service is not configured.');
   const response=await fetch(api+path,{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:undefined,body:body?JSON.stringify(body):undefined,signal:AbortSignal.timeout(20000)});
-  const result=await response.json();if(!response.ok)throw Error(result.error||'The service could not complete this request');return result;
+  let result;
+  try{result=await response.json();}catch(e){if(response.ok)throw e;}
+  if(!response.ok){const failure=Error(result?.error||'The service could not complete this request');failure.retryable=response.status>=500;throw failure;}
+  return result;
  }
  async function status(){try{const s=await request('/api/status');connected=s.connected;availableTools=new Set(s.tools);agentAvailable=s.agent_available!==false;$('#service-status').textContent=connected?'Model service connected':'Connecting model service…';$('#service-status').dataset.ready=String(connected);}catch{$('#service-status').textContent='Model service is reconnecting';$('#service-status').dataset.ready='false';availableTools=null;}}
  status();setInterval(status,30000);
@@ -208,22 +211,31 @@
    el('p','tool-note',value.matcher),
    el('code','sample-smiles',value.mapped_smiles));
  }
- async function run(payload,output,trace){
+ async function run(payload,output,trace,existingId=null){
   if(busy)return;busy=true;output.dataset.complete='false';workspace.querySelectorAll('button[data-run]').forEach(b=>b.disabled=true);
   const started=performance.now();
   const stage=el('p','run-status','Submitting your request…');output.replaceChildren(stage);
   try{
    if(payload.kind==='agent'&&!agentAvailable)throw Error('The agent is offline. The spectroscopy tools are available.');
    if(payload.task&&availableTools&&!availableTools.has(payload.task))throw Error('This workflow is temporarily unavailable on the model service.');
-   const submitted=await request('/api/runs',payload);let job;
+   const id=existingId||(await request('/api/runs',payload)).id;
+   const permalink=el('a','tool-note','Open this run');permalink.href='#run-'+id;permalink.target='_blank';permalink.rel='noopener';output.append(permalink);
+   let job,consecutiveErrors=0;
    for(let tick=0;tick<900;tick++){
-    job=await request('/api/runs/'+submitted.id);lastRun={...job,request:payload};if(trace)renderEvents(job.events,trace);
+    try{
+     job=await request('/api/runs/'+id+'?poll='+Date.now());consecutiveErrors=0;
+    }catch(e){
+     if(!(e.retryable||['TimeoutError','AbortError','TypeError'].includes(e.name))||++consecutiveErrors>6)throw e;
+     stage.textContent='Reconnecting to the submitted run…';
+     await new Promise(resolve=>setTimeout(resolve,Math.min(1000*2**consecutiveErrors,8000)));continue;
+    }
+    lastRun=existingId?job:{...job,request:payload};if(trace)renderEvents(job.events,trace);
     const latest=job.events.filter(e=>['tool_start','tool_end','status'].includes(e.type)).at(-1);
     const elapsed=Math.round((performance.now()-started)/1000)+' s elapsed';
     const toolStages={spectra_tasks:'Reading available tools',spectra_validate:'Validating inputs',spectra_predict:'Running the spectroscopy model','vibrational.forward':'Predicting vibrational spectra','nmr.solvent_transfer':'Finding an experimental reference','nmr.hsqc.transpeaknet':'Predicting and assigning HSQC cross-peaks','nmr.forward.31P':'Predicting phosphorus chemical shifts'};
     const label=job.status==='queued'?'Waiting for the model worker':latest?.type==='tool_start'?(toolStages[latest.data.name]||'Running a spectroscopy tool'):latest?.data.label||'Processing your request';
     stage.textContent=label+' · '+elapsed;
-    if(job.status==='completed'){renderResult(job.result,output);const save=button('Download result and trace','button-secondary');save.onclick=()=>download(lastRun,'openmolspec-'+job.id+'.json');output.append(save);output.dataset.complete='true';break;}
+    if(job.status==='completed'){renderResult(job.result,output);const save=button('Download result and trace','button-secondary');save.onclick=()=>download(lastRun,'openmolspec-'+job.id+'.json');output.append(save,permalink);output.dataset.complete='true';break;}
     if(job.status==='failed')throw Error(job.error||'Model execution failed');
     await new Promise(resolve=>setTimeout(resolve,1200));
    }
@@ -395,6 +407,8 @@
  document.querySelectorAll('[data-tool-tab]').forEach(b=>b.onclick=()=>switchTab(b.dataset.toolTab));switchTab('structure');
  function loadLinkedExample(){
   if(busy)return;
+  const saved=location.hash.match(/^#run-([0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12})$/i);
+  if(saved){switchTab('structure');run({},$('#tool-results'),$('#live-tool-progress'),saved[1]);$('#tool-workspace').scrollIntoView();return;}
   const nucleus=Object.keys(solutionNuclei).find(key=>location.hash==='#tool-'+key.toLowerCase());
   if(nucleus){
    switchTab('structure');const task=$('#tool-task');task.value='nmr.forward.'+nucleus;task.onchange();
