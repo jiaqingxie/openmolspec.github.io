@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>19F solution chemical shifts from SMILES &mdash; OpenMolSpec v1.0</title>
+  <title>19F solution chemical shifts &mdash; OpenMolSpec v1.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
@@ -60,10 +60,10 @@
 <li class="toctree-l2 current"><a class="reference internal" href="nmr.html">NMR</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H chemical shift prediction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C chemical shift prediction</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">19F solution chemical shifts from SMILES</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">19F solution chemical shifts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B solution chemical shifts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si solution chemical shifts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">Spectrum-to-structure retrieval: ¹H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">Structure-to-spectrum retrieval: ¹H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">Structure elucidation from ¹H NMR</a></li>
@@ -119,7 +119,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Tasks by spectroscopy family</a></li>
           <li class="breadcrumb-item"><a href="nmr.html">NMR</a></li>
-      <li class="breadcrumb-item active">19F solution chemical shifts from SMILES</li>
+      <li class="breadcrumb-item active">19F solution chemical shifts</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/tasks/nmr-forward-19F.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -131,22 +131,21 @@
              
   
   
-  <section class="tex2jax_ignore mathjax_ignore" id="f-solution-chemical-shifts-from-smiles">
-<h1>19F solution chemical shifts from SMILES<a class="headerlink" href="#f-solution-chemical-shifts-from-smiles" title="Link to this heading"></a></h1>
-<p>Predict shifts in ppm from a molecular structure and optional NMR solvent. Each environment includes its zero-based input atom indices. Symmetry-equivalent atoms share one predicted peak.</p>
-<p>The held-out single-environment test contains 15,803 observations across 14,330 connectivities. MAE is 6.10 ppm and median absolute error is 0.52 ppm. MAE is 7.06 ppm on the subset with nonempty scaffolds absent from training.</p>
-<p>Training uses experimental records with one observed signal and one graph-equivalence class. On multisite spectra, validation compares sorted peak lists when the observed count matches. Chemical shifts do not determine coupling constants, line shapes or intensities.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="f-solution-chemical-shifts">
+<h1>19F solution chemical shifts<a class="headerlink" href="#f-solution-chemical-shifts" title="Link to this heading"></a></h1>
+<p>The validation-selected model predicts chemical shifts in ppm from a SMILES string and an optional solvent. The training partition contains 116,126 molecular connectivities. Models were selected by giving each of 13,962 validation connectivities equal weight. The selected combination (60% 19F-gnn-refined, 40% 19F-tree-r2) achieved 5.66 ppm validation MAE.</p>
+<p>The independent test contains 14,330 connectivities and 15,803 measured single-environment observations. Observation MAE is <strong>5.92 ppm</strong>, molecule-weighted MAE is <strong>5.62 ppm</strong>, and the 90th percentile absolute error is 4.73 ppm. Each prediction lists the input atom indices belonging to that symmetry class. Multi-environment site assignments require separate validation.</p>
+<p><a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/#tool-19f">Run a structure online</a> · <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/solution-nmr-v2/openmolspec-19F.zip">Download the model and SDK</a></p>
+<p>Extract the ZIP and run the following commands in its directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"./openmolspec-1.0.0-py3-none-any.whl[phosphorus-gnn,solution-nmr]"</span>
+</pre></div>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">SolutionShiftPredictor</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">SolutionShiftPredictor</span><span class="p">(</span><span class="s2">"/path/to/OpenMolSpec/runs/solution-shifts-v1/19F"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">"Fc1ccccc1"</span><span class="p">,</span> <span class="n">solvent</span><span class="o">=</span><span class="s2">"CDCl3"</span><span class="p">)[</span><span class="s2">"environments"</span><span class="p">])</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">SolutionShiftPredictor</span><span class="p">(</span><span class="s2">"model"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">"Fc1ccccc1"</span><span class="p">,</span> <span class="s2">"CDCl3"</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[solution-nmr]"</span>
-python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span>--tasks<span class="w"> </span>nmr.forward.19F<span class="w"> </span>--limit<span class="w"> </span><span class="m">100000</span><span class="w"> </span>--output<span class="w"> </span>results/nmr-forward-19F-test.json
-</pre></div>
-</div>
-<p>The archived solid-state diagnostic is available in the original notebook. <a class="reference internal" href="../notebooks/nmr-forward-19F.html"><span class="std std-doc">Notebook</span></a></p>
 </section>
 
 

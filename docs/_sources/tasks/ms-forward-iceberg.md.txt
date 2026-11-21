@@ -2,6 +2,10 @@
 
 Predict the fragment masses and intensities of a molecule under specified acquisition conditions.
 
+## Validation and held-out comparison
+
+ICEBERG was evaluated with 189 combinations of intensity scaling, precursor weighting and retained peak count. Of 384 sampled structures per MassSpecGym split, 280 validation and 327 test structures produced a scored prediction. On those same 327 test structures, mean cosine was 0.5050 for the default and 0.5112 for the validation-selected setting. The paired 95% interval for the difference was [-0.0004, 0.0127]. The website therefore uses the original model output.
+
 ## What goes in
 
 | Field | Meaning |

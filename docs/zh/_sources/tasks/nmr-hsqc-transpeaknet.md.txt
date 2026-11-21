@@ -2,6 +2,10 @@
 
 根据已知分子结构与溶剂预测碳氢交叉峰。
 
+## 验证与独立测试
+
+使用 16,311 种分子的银标准谱拟合校正量，再在 3,968 种独立验证分子上选定参数。两个集合均已排除专家测试分子的连通结构。在 479 张专家指认谱上，碳 MAE 从 2.028 降至 **2.005 ppm**，氢 MAE 从 0.1659 降至 **0.1642 ppm**。同一批 7,926 个实测交叉峰中，网页正确指认的峰从 5,141 个增至 5,214 个。下方的示例来自原作者权重，可通过 `--hsqc-author-baseline` 复现。 [TransPeakNet](https://www.nature.com/articles/s42004-025-01455-9) · [2DNMRGym (CC BY-NC 4.0)](https://huggingface.co/datasets/siriusxiao/2DNMRGym)
+
 ## 输入是什么
 
 | Field | Meaning |

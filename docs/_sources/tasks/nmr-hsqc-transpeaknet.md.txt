@@ -2,6 +2,10 @@
 
 Predict C–H cross-peaks from a known structure and solvent.
 
+## Validation and held-out comparison
+
+The fitted correction uses 16,311 silver training structures and 3,968 separate validation structures. All expert test connectivities were excluded from both. On 479 expert spectra, carbon MAE moved from 2.028 to **2.005 ppm** and proton MAE from 0.1659 to **0.1642 ppm**. Correct website assignments rose from 5,141 to 5,214 of the same 7,926 observed cross-peaks. The example below records the original author checkpoint. Pass `--hsqc-author-baseline` to reproduce it. [TransPeakNet](https://www.nature.com/articles/s42004-025-01455-9) · [2DNMRGym (CC BY-NC 4.0)](https://huggingface.co/datasets/siriusxiao/2DNMRGym)
+
 ## What goes in
 
 | Field | Meaning |

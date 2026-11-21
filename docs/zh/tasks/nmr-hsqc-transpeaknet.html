@@ -61,10 +61,10 @@
 <li class="toctree-l2 current"><a class="reference internal" href="nmr.html">核磁共振 NMR</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H 化学位移预测</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F 溶液化学位移预测</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 溶液化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si 溶液化学位移预测</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">谱到结构检索：¹H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">结构到谱检索：¹H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">从 ¹H NMR 解析结构</a></li>
@@ -136,7 +136,11 @@
 <h1>HSQC 交叉峰预测<a class="headerlink" href="#hsqc" title="Link to this heading"></a></h1>
 <p>根据已知分子结构与溶剂预测碳氢交叉峰。</p>
 <section id="id1">
-<h2>输入是什么<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<h2>验证与独立测试<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>使用 16,311 种分子的银标准谱拟合校正量，再在 3,968 种独立验证分子上选定参数。两个集合均已排除专家测试分子的连通结构。在 479 张专家指认谱上，碳 MAE 从 2.028 降至 <strong>2.005 ppm</strong>，氢 MAE 从 0.1659 降至 <strong>0.1642 ppm</strong>。同一批 7,926 个实测交叉峰中，网页正确指认的峰从 5,141 个增至 5,214 个。下方的示例来自原作者权重，可通过 <code class="docutils literal notranslate"><span class="pre">--hsqc-author-baseline</span></code> 复现。 <a class="reference external" href="https://www.nature.com/articles/s42004-025-01455-9">TransPeakNet</a> · <a class="reference external" href="https://huggingface.co/datasets/siriusxiao/2DNMRGym">2DNMRGym (CC BY-NC 4.0)</a></p>
+</section>
+<section id="id2">
+<h2>输入是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -153,8 +157,8 @@
 </tbody>
 </table>
 </section>
-<section id="id2">
-<h2>输出是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="id3">
+<h2>输出是什么<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -171,8 +175,8 @@
 </tbody>
 </table>
 </section>
-<section id="id3">
-<h2>真实运行案例<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="id4">
+<h2>真实运行案例<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <p>下面展示示例的输入、预测与参考。下载 JSON 可获取完整数值数组及更多示例。</p>
 <p><img alt="nmr.hsqc.transpeaknet actual results" src="../_images/nmr-hsqc-transpeaknet.png" /></p>
 <p><a class="reference download internal" download="" href="../_downloads/b95a7a014ac2688ee573b5905f31e994/nmr-hsqc-transpeaknet.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/2226ef1fdcaaa448ff12512eaaa5ff4d/nmr-hsqc-transpeaknet.png"><span class="xref download myst">PNG</span></a> · <a class="reference download internal" download="" href="../_downloads/b2ce9eb99ca3fbfee6ca31dafad2353f/nmr-hsqc-transpeaknet.json"><span class="xref download myst">Full input/output JSON</span></a></p>
@@ -225,8 +229,8 @@
 </div>
 </details>
 </section>
-<section id="id4">
-<h2>实际评测结果<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id5">
+<h2>实际评测结果<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
@@ -259,21 +263,21 @@
 </tbody>
 </table>
 </section>
-<section id="id5">
-<h2>模型与方法<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="id6">
+<h2>模型与方法<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
 <p>加载 TransPeakNet 作者权重，按输入 SMILES 的顺序补氢建图。对每个碳位点，按原子编号将模型的碳输出和两个有序氢输出与专家标注配对。</p>
 <p>全量评测对 479 张谱等权平均。作者笔记本对溶剂表中的 511 行等权平均，覆盖 472 张谱。全量评测将 38 张有多种溶剂类别和 7 张缺溶剂记录的谱设为 unknown。</p>
 </section>
-<section id="id6">
-<h2>复现方式<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<section id="id7">
+<h2>复现方式<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <p><a class="reference internal" href="../notebooks/nmr-hsqc-transpeaknet.html"><span class="std std-doc">Notebook with executed figures</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick Start</span></a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tasks<span class="w"> </span>nmr.hsqc.transpeaknet<span class="w"> </span>--transpeaknet-source<span class="w"> </span>/path/to/2dNMR<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/nmr-hsqc-transpeaknet-new.json
 </pre></div>
 </div>
 </section>
-<section id="id7">
-<h2>调用模型与微调<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<section id="id8">
+<h2>调用模型与微调<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
 <p>在 OpenMolSpec 源码目录中安装 HSQC 依赖，并下载作者发布的代码、权重和测试集。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">'.[hsqc]'</span>
 git<span class="w"> </span>clone<span class="w"> </span>https://github.com/siriusxiao62/2dNMR.git
@@ -288,8 +292,8 @@ python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span c
 </details>
 <p><a class="reference external" href="https://github.com/siriusxiao62/2dNMR/tree/2e93db82a9d627ac01109474e9b6e594065e3d56">Model implementation / 模型实现</a> · <a class="reference internal" href="../model-audit.html"><span class="std std-doc">Model review / 模型检查</span></a></p>
 </section>
-<section id="id8">
-<h2>参考文献<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<section id="id9">
+<h2>参考文献<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Li, Y., Xu, H., et al. TransPeakNet for solvent-aware 2D NMR prediction via multi-task pre-training and unsupervised learning. Communications Chemistry (2025). <a class="reference external" href="https://doi.org/10.1038/s42004-025-01455-9">Source</a></p></li>
 </ul>

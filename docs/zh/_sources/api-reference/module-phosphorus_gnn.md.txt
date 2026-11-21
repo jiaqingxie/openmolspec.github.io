@@ -1,6 +1,6 @@
 # openmolspec.phosphorus_gnn
 
-Bond-conditioned message passing from a molecular graph to a phosphorus shift.
+Bond-conditioned message passing from a molecular graph to a solution NMR chemical shift.
 
 | Name | Description |
 | --- | --- |

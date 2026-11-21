@@ -121,6 +121,10 @@
   <section class="tex2jax_ignore mathjax_ignore" id="ms-ms-prediction-with-iceberg">
 <h1>MS/MS prediction with ICEBERG<a class="headerlink" href="#ms-ms-prediction-with-iceberg" title="Link to this heading"></a></h1>
 <p>Predict the fragment masses and intensities of a molecule under specified acquisition conditions.</p>
+<section id="validation-and-held-out-comparison">
+<h2>Validation and held-out comparison<a class="headerlink" href="#validation-and-held-out-comparison" title="Link to this heading"></a></h2>
+<p>ICEBERG was evaluated with 189 combinations of intensity scaling, precursor weighting and retained peak count. Of 384 sampled structures per MassSpecGym split, 280 validation and 327 test structures produced a scored prediction. On those same 327 test structures, mean cosine was 0.5050 for the default and 0.5112 for the validation-selected setting. The paired 95% interval for the difference was [-0.0004, 0.0127]. The website therefore uses the original model output.</p>
+</section>
 <section id="what-goes-in">
 <h2>What goes in<a class="headerlink" href="#what-goes-in" title="Link to this heading"></a></h2>
 <table class="docutils align-default">

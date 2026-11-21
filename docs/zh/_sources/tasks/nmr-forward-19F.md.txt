@@ -1,21 +1,20 @@
-# 从 SMILES 预测 19F 溶液化学位移
+# 19F 溶液化学位移预测
 
-输入分子结构和可选的核磁溶剂，输出各化学环境的预测位移（ppm）以及输入 SMILES 中从零开始的原子编号。对称等价的原子共享一个预测峰。
+输入 SMILES 和可选溶剂，预测各等价原子组的位移（ppm）。训练集含 116,126 种分子连通结构。在 13,962 种验证分子上按分子等权选型。最终组合（60% 19F-gnn-refined, 40% 19F-tree-r2）的验证 MAE 为 5.66 ppm。
 
-单一环境测试集含 14,330 种留出分子和 15,803 条观测。MAE 为 6.10 ppm，中位绝对误差为 0.52 ppm。训练中未出现的非空骨架子集 MAE 为 7.06 ppm。
+独立测试集含 14,330 种分子和 15,803 条单环境实测记录。逐观测 MAE 为 **5.92 ppm**，分子等权 MAE 为 **5.62 ppm**，绝对误差的第 90 百分位为 4.73 ppm。输出保留输入 SMILES 中从零起算的原子编号。多环境的逐峰归属需另行评测。
 
-训练使用只含一个观测峰且只有一类图对称位点的实验记录。多环境分子的评测仅在峰数匹配时比较排序后的峰列表。输出覆盖峰位置，逐峰归属、耦合常数、强度和线形仍需额外证据。
+[在线预测](https://jiaqingxie.github.io/openmolspec.github.io/#tool-19f) · [下载模型与 SDK](https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/solution-nmr-v2/openmolspec-19F.zip)
+
+解压 ZIP，在解压目录中安装 SDK 并运行预测。
+
+```bash
+python -m pip install "./openmolspec-1.0.0-py3-none-any.whl[phosphorus-gnn,solution-nmr]"
+```
 
 ```python
 from openmolspec.model import SolutionShiftPredictor
 
-model = SolutionShiftPredictor("/path/to/OpenMolSpec/runs/solution-shifts-v1/19F")
-print(model.predict("Fc1ccccc1", solvent="CDCl3")["environments"])
+model = SolutionShiftPredictor("model")
+print(model.predict("Fc1ccccc1", "CDCl3"))
 ```
-
-```bash
-python -m pip install -e ".[solution-nmr]"
-python -m openmolspec_bench run --workspace /path/to/OpenMolSpec --tasks nmr.forward.19F --limit 100000 --output results/nmr-forward-19F-test.json
-```
-
-原固态权重的历史诊断保存在旧版笔记本中。 [Notebook](../notebooks/nmr-forward-19F.ipynb)

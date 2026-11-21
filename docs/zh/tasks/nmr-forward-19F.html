@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>从 SMILES 预测 19F 溶液化学位移 &mdash; OpenMolSpec v1.0</title>
+  <title>19F 溶液化学位移预测 &mdash; OpenMolSpec v1.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
@@ -61,10 +61,10 @@
 <li class="toctree-l2 current"><a class="reference internal" href="nmr.html">核磁共振 NMR</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H 化学位移预测</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C 化学位移预测</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">从 SMILES 预测 19F 溶液化学位移</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">19F 溶液化学位移预测</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 溶液化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si 溶液化学位移预测</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">谱到结构检索：¹H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">结构到谱检索：¹H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">从 ¹H NMR 解析结构</a></li>
@@ -120,7 +120,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">按谱型浏览任务</a></li>
           <li class="breadcrumb-item"><a href="nmr.html">核磁共振 NMR</a></li>
-      <li class="breadcrumb-item active">从 SMILES 预测 19F 溶液化学位移</li>
+      <li class="breadcrumb-item active">19F 溶液化学位移预测</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/tasks/nmr-forward-19F.md.txt" rel="nofollow"> 查看页面源码</a>
       </li>
@@ -132,22 +132,21 @@
              
   
   
-  <section class="tex2jax_ignore mathjax_ignore" id="smiles-19f">
-<h1>从 SMILES 预测 19F 溶液化学位移<a class="headerlink" href="#smiles-19f" title="Link to this heading"></a></h1>
-<p>输入分子结构和可选的核磁溶剂，输出各化学环境的预测位移（ppm）以及输入 SMILES 中从零开始的原子编号。对称等价的原子共享一个预测峰。</p>
-<p>单一环境测试集含 14,330 种留出分子和 15,803 条观测。MAE 为 6.10 ppm，中位绝对误差为 0.52 ppm。训练中未出现的非空骨架子集 MAE 为 7.06 ppm。</p>
-<p>训练使用只含一个观测峰且只有一类图对称位点的实验记录。多环境分子的评测仅在峰数匹配时比较排序后的峰列表。输出覆盖峰位置，逐峰归属、耦合常数、强度和线形仍需额外证据。</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="f">
+<h1>19F 溶液化学位移预测<a class="headerlink" href="#f" title="Link to this heading"></a></h1>
+<p>输入 SMILES 和可选溶剂，预测各等价原子组的位移（ppm）。训练集含 116,126 种分子连通结构。在 13,962 种验证分子上按分子等权选型。最终组合（60% 19F-gnn-refined, 40% 19F-tree-r2）的验证 MAE 为 5.66 ppm。</p>
+<p>独立测试集含 14,330 种分子和 15,803 条单环境实测记录。逐观测 MAE 为 <strong>5.92 ppm</strong>，分子等权 MAE 为 <strong>5.62 ppm</strong>，绝对误差的第 90 百分位为 4.73 ppm。输出保留输入 SMILES 中从零起算的原子编号。多环境的逐峰归属需另行评测。</p>
+<p><a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/#tool-19f">在线预测</a> · <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/solution-nmr-v2/openmolspec-19F.zip">下载模型与 SDK</a></p>
+<p>解压 ZIP，在解压目录中安装 SDK 并运行预测。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"./openmolspec-1.0.0-py3-none-any.whl[phosphorus-gnn,solution-nmr]"</span>
+</pre></div>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">SolutionShiftPredictor</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">SolutionShiftPredictor</span><span class="p">(</span><span class="s2">"/path/to/OpenMolSpec/runs/solution-shifts-v1/19F"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">"Fc1ccccc1"</span><span class="p">,</span> <span class="n">solvent</span><span class="o">=</span><span class="s2">"CDCl3"</span><span class="p">)[</span><span class="s2">"environments"</span><span class="p">])</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">SolutionShiftPredictor</span><span class="p">(</span><span class="s2">"model"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">"Fc1ccccc1"</span><span class="p">,</span> <span class="s2">"CDCl3"</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[solution-nmr]"</span>
-python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span>--tasks<span class="w"> </span>nmr.forward.19F<span class="w"> </span>--limit<span class="w"> </span><span class="m">100000</span><span class="w"> </span>--output<span class="w"> </span>results/nmr-forward-19F-test.json
-</pre></div>
-</div>
-<p>原固态权重的历史诊断保存在旧版笔记本中。 <a class="reference internal" href="../notebooks/nmr-forward-19F.html"><span class="std std-doc">Notebook</span></a></p>
 </section>
 
 

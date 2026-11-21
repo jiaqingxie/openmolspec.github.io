@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>29Si 化学位移预测 &mdash; OpenMolSpec v1.0</title>
+  <title>29Si 溶液化学位移预测 &mdash; OpenMolSpec v1.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
@@ -21,14 +21,12 @@
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/translations.js?v=beaddf03"></script>
-      <script>window.MathJax = {"chtml": {"displayAlign": "left"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-      <script defer="defer" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
       <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="谱到结构检索：¹H" href="nmr-retrieval-h-s2m.html" />
-    <link rel="prev" title="11B 化学位移预测" href="nmr-forward-11B.html" /> 
+    <link rel="prev" title="11B 溶液化学位移预测" href="nmr-forward-11B.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -63,10 +61,10 @@
 <li class="toctree-l2 current"><a class="reference internal" href="nmr.html">核磁共振 NMR</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H 化学位移预测</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F 溶液化学位移预测</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 化学位移预测</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">29Si 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 溶液化学位移预测</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">29Si 溶液化学位移预测</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">谱到结构检索：¹H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">结构到谱检索：¹H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">从 ¹H NMR 解析结构</a></li>
@@ -122,7 +120,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">按谱型浏览任务</a></li>
           <li class="breadcrumb-item"><a href="nmr.html">核磁共振 NMR</a></li>
-      <li class="breadcrumb-item active">29Si 化学位移预测</li>
+      <li class="breadcrumb-item active">29Si 溶液化学位移预测</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/tasks/nmr-forward-29Si.md.txt" rel="nofollow"> 查看页面源码</a>
       </li>
@@ -135,167 +133,20 @@
   
   
   <section class="tex2jax_ignore mathjax_ignore" id="si">
-<h1>29Si 化学位移预测<a class="headerlink" href="#si" title="Link to this heading"></a></h1>
-<p>根据分子结构预测 29Si 化学位移。利用返回的原子编号，可以把预测值标到分子结构上，也可以与实测峰比较。</p>
-<section id="id1">
-<h2>输入是什么<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Meaning</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">smiles</span> <span class="pre">/</span> <span class="pre">geometry</span></code></p></td>
-<td><p>有效分子结构及相容的三维构象，必须保留原子顺序。</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nucleus</span></code></p></td>
-<td><p>29Si，权重必须覆盖该核种。</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reference</span> <span class="pre">peaks</span></code></p></td>
-<td><p>评测时提供实测 ppm 标签；标签不作为模型推理输入。</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="id2">
-<h2>输出是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Meaning</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">prediction_ppm</span></code></p></td>
-<td><p>逐原子化学位移（ppm）及原子编号，或整理后的峰列表。</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">error</span> <span class="pre">/</span> <span class="pre">coverage</span></code></p></td>
-<td><p>与参考谱匹配后的误差及峰覆盖率。</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="id3">
-<h2>真实运行案例<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
-<p>下面展示示例的输入、预测与参考。下载 JSON 可获取完整数值数组及更多示例。</p>
-<p><img alt="nmr.forward.29Si actual results" src="../_images/nmr-forward-29Si.png" /></p>
-<p><a class="reference download internal" download="" href="../_downloads/d8c98836ad6c1880b0a9ba5dc861bb0b/nmr-forward-29Si.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/170959b1ff6ea1077a95c2fc3ce7b623/nmr-forward-29Si.png"><span class="xref download myst">PNG</span></a> · <a class="reference download internal" download="" href="../_downloads/419127e71f8e40fd8222b219c8dc7440/nmr-forward-29Si.json"><span class="xref download myst">Full input/output JSON</span></a></p>
-<details><summary>展开查看实际输入与输出字段</summary>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"smiles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CCCCCC/C(=C(/C=O)N1CCOC1=O)[Si](C)(C)c1cc(OC)cc(OC)c1"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"atom_indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="mi">16</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"prediction_ppm"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="mf">54.781612396240234</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"ppm"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="mf">-6.480000019073486</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<h1>29Si 溶液化学位移预测<a class="headerlink" href="#si" title="Link to this heading"></a></h1>
+<p>输入 SMILES 和可选溶剂，预测各等价原子组的位移（ppm）。训练集含 1,543 种分子连通结构。在 171 种验证分子上按分子等权选型。最终组合（80% 29Si-gnn, 20% 29Si-tree-r2）的验证 MAE 为 2.91 ppm。</p>
+<p>独立测试集含 177 种分子和 187 条单环境实测记录。逐观测 MAE 为 <strong>1.96 ppm</strong>，分子等权 MAE 为 <strong>2.03 ppm</strong>，绝对误差的第 90 百分位为 3.90 ppm。输出保留输入 SMILES 中从零起算的原子编号。多环境的逐峰归属需另行评测。</p>
+<p><a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/#tool-29si">在线预测</a> · <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/solution-nmr-v2/openmolspec-29Si.zip">下载模型与 SDK</a></p>
+<p>解压 ZIP，在解压目录中安装 SDK 并运行预测。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"./openmolspec-1.0.0-py3-none-any.whl[phosphorus-gnn,solution-nmr]"</span>
 </pre></div>
 </div>
-</details>
-</section>
-<section id="id4">
-<h2>实际评测结果<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
-<th class="head"><p>Model / variant</p></th>
-<th class="head"><p>Metric</p></th>
-<th class="head text-right"><p>Value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>recorded evaluation</p></td>
-<td><p>recorded model</p></td>
-<td><p>mae_ppm</p></td>
-<td class="text-right"><p>56.1336</p></td>
-</tr>
-<tr class="row-odd"><td><p>recorded evaluation</p></td>
-<td><p>recorded model</p></td>
-<td><p>rmse_ppm</p></td>
-<td class="text-right"><p>58.1058</p></td>
-</tr>
-<tr class="row-even"><td><p>recorded evaluation</p></td>
-<td><p>recorded model</p></td>
-<td><p>molecules</p></td>
-<td class="text-right"><p>32</p></td>
-</tr>
-<tr class="row-odd"><td><p>recorded evaluation</p></td>
-<td><p>recorded model</p></td>
-<td><p>atoms</p></td>
-<td class="text-right"><p>32</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="id5">
-<h2>模型与方法<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
-<p>NMRNet 编码分子构象，并预测所选原子的化学位移。接口负责准备构象、加载相应核种的权重，并应用模型的位移缩放参数。</p>
-<p>MAE 和 RMSE 的单位均为 ppm。</p>
-</section>
-<section id="id6">
-<h2>复现方式<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
-<p><a class="reference internal" href="../notebooks/nmr-forward-29Si.html"><span class="std std-doc">Notebook with executed figures</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick Start</span></a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--tasks<span class="w"> </span>nmr.forward.29Si<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/nmr-forward-29Si-new.json
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">SolutionShiftPredictor</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">SolutionShiftPredictor</span><span class="p">(</span><span class="s2">"model"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">"C[Si](C)(C)C"</span><span class="p">,</span> <span class="s2">"CDCl3"</span><span class="p">))</span>
 </pre></div>
 </div>
-</section>
-<section id="id7">
-<h2>调用模型与微调<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.benchmark</span><span class="w"> </span><span class="kn">import</span> <span class="n">Benchmark</span>
-<span class="n">benchmark</span> <span class="o">=</span> <span class="n">Benchmark</span><span class="p">(</span><span class="n">workspace</span><span class="o">=</span><span class="s1">'/path/to/workspace'</span><span class="p">,</span>
-    <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/sdk-env/bin/python'</span><span class="p">,</span>
-    <span class="n">models_root</span><span class="o">=</span><span class="s1">'/path/to/models'</span><span class="p">,</span>
-    <span class="n">nmr_python</span><span class="o">=</span><span class="s1">'/path/to/nmr-env/bin/python'</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">benchmark</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">'nmr.forward.29Si'</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s1">'29Si-results.json'</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>微调使用 <a class="reference external" href="https://github.com/Colin-Jay/NMRNet">NMRNet 作者训练实现</a>：准备对应核种的逐原子标签、结构／坐标、目标掩码及 train/val LMDB。实现提供 <code class="docutils literal notranslate"><span class="pre">atom_regloss_mae</span></code> 与 <code class="docutils literal notranslate"><span class="pre">atom_regloss_mse</span></code>，在有标签的原子上计算目标。保留 scaler 和参考标准，在验证集选择 checkpoint。该训练流程通过作者实现运行。</p>
-<div class="math notranslate nohighlight">
-\[L_{\rm MAE}=\frac{1}{N_{\rm labelled}}\sum_{i\in\mathcal M}|\hat\delta_i-\delta_i|,\qquad L_{\rm MSE}=\frac{1}{N_{\rm labelled}}\sum_{i\in\mathcal M}(\hat\delta_i-\delta_i)^2.\]</div>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>模型设置</p></th>
-<th class="head"><p>值</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Checkpoint</p></td>
-<td><p>NMRNet All-nucleus fold 0</p></td>
-</tr>
-<tr class="row-odd"><td><p>Training domain</p></td>
-<td><p>liquid</p></td>
-</tr>
-<tr class="row-even"><td><p>Shift unit</p></td>
-<td><p>ppm</p></td>
-</tr>
-</tbody>
-</table>
-<details><summary>来源报告与 SHA-256 指纹</summary>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/bsi_frozen_diagnostic_20261116.json">bsi_frozen_diagnostic_20261116.json</a> — SHA-256 <code class="docutils literal notranslate"><span class="pre">0f7c1f6c9eae12e644753581f785d76b1824f8311d5fccc7ae4afb98d19c65e6</span></code></p></li>
-</ul>
-</details>
-<p><a class="reference external" href="https://github.com/Colin-Jay/NMRNet">Model implementation / 模型实现</a> · <a class="reference internal" href="../model-audit.html"><span class="std std-doc">Model review / 模型检查</span></a></p>
-</section>
-<section id="id8">
-<h2>参考文献<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. <a class="reference external" href="https://doi.org/10.1038/s43588-025-00783-z">Source</a></p></li>
-<li><p>OpenDataLab. WanJuan MolSpectra, version 1.0.3. Experimental molecular spectroscopy dataset. <a class="reference external" href="https://opendatalab.com/">Source</a></p></li>
-</ul>
-</section>
 </section>
 
 
@@ -303,7 +154,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
-        <a href="nmr-forward-11B.html" class="btn btn-neutral float-left" title="11B 化学位移预测" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="nmr-forward-11B.html" class="btn btn-neutral float-left" title="11B 溶液化学位移预测" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="nmr-retrieval-h-s2m.html" class="btn btn-neutral float-right" title="谱到结构检索：¹H" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -1,6 +1,6 @@
 # openmolspec.solution_shifts
 
-Atom-centred chemical-shift prediction for experimental phosphorus and fluorine NMR.
+Atom-centred chemical-shift prediction for experimental solution NMR.
 
 | Name | Description |
 | --- | --- |
@@ -31,7 +31,7 @@ Atom-centred chemical-shift prediction for experimental phosphorus and fluorine 
 
    `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/solution_shifts.py#L64>`__
 
-.. py:function:: site_features(mol, nucleus)
+.. py:function:: site_features(mol, nucleus, target_atoms=None)
 
    Return symmetry classes, nested rooted environments and sparse shell descriptors.
 
@@ -59,19 +59,19 @@ Atom-centred chemical-shift prediction for experimental phosphorus and fluorine 
 
       Predict ppm for every target atom of one connected molecule, optionally in a named solvent.
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/solution_shifts.py#L224>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/solution_shifts.py#L245>`__
 
 .. py:function:: main(argv=None)
 
    Predict experimental chemical shifts from a SMILES and an optional solvent.
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/solution_shifts.py#L257>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/solution_shifts.py#L290>`__
 
 .. py:data:: NUCLEI
 
    ::
 
-      {'31P': 15, '19F': 9}
+      {'31P': 15, '19F': 9, '11B': 5, '29Si': 14}
 
    `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/solution_shifts.py#L9>`__
 

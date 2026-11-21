@@ -133,7 +133,7 @@
   
   <section class="tex2jax_ignore mathjax_ignore" id="openmolspec-solution-shifts">
 <h1>openmolspec.solution_shifts<a class="headerlink" href="#openmolspec-solution-shifts" title="Link to this heading"></a></h1>
-<p>Atom-centred chemical-shift prediction for experimental phosphorus and fluorine NMR.</p>
+<p>Atom-centred chemical-shift prediction for experimental solution NMR.</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -192,7 +192,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="openmolspec.solution_shifts.site_features">
-<span class="sig-prename descclassname"><span class="pre">openmolspec.solution_shifts.</span></span><span class="sig-name descname"><span class="pre">site_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nucleus</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.solution_shifts.site_features" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">openmolspec.solution_shifts.</span></span><span class="sig-name descname"><span class="pre">site_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nucleus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_atoms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.solution_shifts.site_features" title="Link to this definition"></a></dt>
 <dd><p>Return symmetry classes, nested rooted environments and sparse shell descriptors.</p>
 <p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/solution_shifts.py#L101">Source code</a></p>
 </dd></dl>
@@ -220,7 +220,7 @@
 <dt class="sig sig-object py" id="openmolspec.solution_shifts.SolutionShiftPredictor.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smiles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solvent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.solution_shifts.SolutionShiftPredictor.predict" title="Link to this definition"></a></dt>
 <dd><p>Predict ppm for every target atom of one connected molecule, optionally in a named solvent.</p>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/solution_shifts.py#L224">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/solution_shifts.py#L245">Source code</a></p>
 </dd></dl>
 
 </dd></dl>
@@ -229,13 +229,13 @@
 <dt class="sig sig-object py" id="openmolspec.solution_shifts.main">
 <span class="sig-prename descclassname"><span class="pre">openmolspec.solution_shifts.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">argv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.solution_shifts.main" title="Link to this definition"></a></dt>
 <dd><p>Predict experimental chemical shifts from a SMILES and an optional solvent.</p>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/solution_shifts.py#L257">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/solution_shifts.py#L290">Source code</a></p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="openmolspec.solution_shifts.NUCLEI">
 <span class="sig-prename descclassname"><span class="pre">openmolspec.solution_shifts.</span></span><span class="sig-name descname"><span class="pre">NUCLEI</span></span><a class="headerlink" href="#openmolspec.solution_shifts.NUCLEI" title="Link to this definition"></a></dt>
-<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">'31P'</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">'19F'</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">'31P'</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">'19F'</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">'11B'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">'29Si'</span><span class="p">:</span> <span class="mi">14</span><span class="p">}</span>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/solution_shifts.py#L9">Source code</a></p>
