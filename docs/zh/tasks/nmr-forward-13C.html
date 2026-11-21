@@ -27,8 +27,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="19F 化学位移预测" href="nmr-forward-19F.html" />
-    <link rel="prev" title="1H 化学位移预测" href="nmr-forward-1H.html" /> 
+    <link rel="next" title="19F 溶液化学位移预测" href="nmr-forward-19F.html" />
+    <link rel="prev" title="1H 实验峰列表预测" href="nmr-forward-1H.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -61,12 +61,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">按谱型浏览任务</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="nmr.html">核磁共振 NMR</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H 实验峰列表预测</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">13C 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F 溶液化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P 溶液化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 溶液化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si 溶液化学位移预测</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">谱到结构检索：¹H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">结构到谱检索：¹H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">从 ¹H NMR 解析结构</a></li>
@@ -138,7 +138,49 @@
 <h1>13C 化学位移预测<a class="headerlink" href="#c" title="Link to this heading"></a></h1>
 <p>根据分子结构预测 13C 化学位移。利用返回的原子编号，可以把预测值标到分子结构上，也可以与实测峰比较。</p>
 <section id="id1">
-<h2>输入是什么<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<h2>当前上线的液相碳谱模型<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>模型先对五个 NMRNet++ 检查点的逐碳原子预测取平均，再对分子中拓扑对称的碳原子取平均，每组输出一个峰和对应原子编号。两个结构环境不同但预测位移相近的碳仍然分别输出。我们在 108 个专利验证分子上比较了 60 种折数、实验数据模型权重及峰合并设置。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>独立评测集</p></th>
+<th class="head text-right"><p>分子数</p></th>
+<th class="head text-right"><p>每个碳原子一个峰</p></th>
+<th class="head text-right"><p>每组对称碳一个峰</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NMRSpec</p></td>
+<td class="text-right"><p>1,000</p></td>
+<td class="text-right"><p>2.31</p></td>
+<td class="text-right"><p>1.22</p></td>
+</tr>
+<tr class="row-odd"><td><p>NMRExp</p></td>
+<td class="text-right"><p>748</p></td>
+<td class="text-right"><p>2.45</p></td>
+<td class="text-right"><p>1.14</p></td>
+</tr>
+<tr class="row-even"><td><p>NMRGym</p></td>
+<td class="text-right"><p>980</p></td>
+<td class="text-right"><p>3.20</p></td>
+<td class="text-right"><p>2.77</p></td>
+</tr>
+</tbody>
+</table>
+<p>表中单位为 ppm，按分子等权。预测峰与实测峰以最小误差匹配，匹配误差上限为 20 ppm，每多报或漏报一个峰计 10 ppm。三个测试集合并后，新旧误差差值的配对 95% 区间为 −0.95 至 −0.87 ppm。验证集和三个测试集之间按分子连通结构去重。上游预训练集与这些测试结构的重叠情况尚未核实。</p>
+<p><a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/#tool-13c">在线预测碳谱</a> · <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_carbon_folds.json">选型结果</a> · <a class="reference external" href="https://zenodo.org/records/18232165">原作者发布的权重</a></p>
+<p>在模型目录下安装 NMRNet++ 源码及五折权重后，可以在 SDK 中运行。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.harness</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpectraHarness</span>
+
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">SpectraHarness</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="s2">"nmr.forward.13C"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"smiles"</span><span class="p">:</span> <span class="s2">"CC(C)O"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"root"</span><span class="p">:</span> <span class="s2">"models"</span><span class="p">,</span> <span class="s2">"backend"</span><span class="p">:</span> <span class="s2">"nmrnetpp"</span><span class="p">,</span> <span class="s2">"python"</span><span class="p">:</span> <span class="s2">"/path/to/nmr-env/bin/python"</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="s2">"result"</span><span class="p">][</span><span class="s2">"records"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"peaks"</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2>输入是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -158,8 +200,8 @@
 </tbody>
 </table>
 </section>
-<section id="id2">
-<h2>输出是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="id3">
+<h2>输出是什么<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -176,8 +218,8 @@
 </tbody>
 </table>
 </section>
-<section id="id3">
-<h2>真实运行案例<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="id4">
+<h2>先前逐原子模型的运行案例<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <p>下面展示示例的输入、预测与参考。下载 JSON 可获取完整数值数组及更多示例。</p>
 <p><img alt="nmr.forward.13C actual results" src="../_images/nmr-forward-13C.png" /></p>
 <p><a class="reference download internal" download="" href="../_downloads/137fa440745a2524332a955f39af0d5d/nmr-forward-13C.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/3a263e39e2c426f96ea91e828006a766/nmr-forward-13C.png"><span class="xref download myst">PNG</span></a> · <a class="reference download internal" download="" href="../_downloads/3ac98d5b9e5fe9f623a05349be0a45c8/nmr-forward-13C.json"><span class="xref download myst">Full input/output JSON</span></a></p>
@@ -214,8 +256,8 @@
 </div>
 </details>
 </section>
-<section id="id4">
-<h2>实际评测结果<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id5">
+<h2>先前逐原子模型的评测结果<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
@@ -548,21 +590,21 @@
 </tbody>
 </table>
 </section>
-<section id="id5">
-<h2>模型与方法<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="id6">
+<h2>模型与方法<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
 <p>NMRNet 编码分子构象，并预测所选原子的化学位移。接口负责准备构象、加载相应核种的权重，并应用模型的位移缩放参数。</p>
 <p>MAE 和 RMSE 的单位均为 ppm。</p>
 </section>
-<section id="id6">
-<h2>复现方式<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<section id="id7">
+<h2>复现方式<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <p><a class="reference internal" href="../notebooks/nmr-forward-13C.html"><span class="std std-doc">Notebook with executed figures</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick Start</span></a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tasks<span class="w"> </span>nmr.forward.13C<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/nmr-forward-13C-new.json
 </pre></div>
 </div>
 </section>
-<section id="id7">
-<h2>调用模型与微调<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<section id="id8">
+<h2>调用模型与微调<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">NMRNet</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">NMRNet</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">'/path/to/models'</span><span class="p">,</span> <span class="n">nucleus</span><span class="o">=</span><span class="s1">'13C'</span><span class="p">,</span>
     <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/nmr-env/bin/python'</span><span class="p">)</span>
@@ -597,8 +639,8 @@
 </details>
 <p><a class="reference external" href="https://github.com/Colin-Jay/NMRNet">Model implementation / 模型实现</a> · <a class="reference internal" href="../model-audit.html"><span class="std std-doc">Model review / 模型检查</span></a></p>
 </section>
-<section id="id8">
-<h2>参考文献<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<section id="id9">
+<h2>参考文献<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. <a class="reference external" href="https://doi.org/10.1038/s43588-025-00783-z">Source</a></p></li>
 <li><p>OpenDataLab. WanJuan MolSpectra, version 1.0.3. Experimental molecular spectroscopy dataset. <a class="reference external" href="https://opendatalab.com/">Source</a></p></li>
@@ -611,8 +653,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
-        <a href="nmr-forward-1H.html" class="btn btn-neutral float-left" title="1H 化学位移预测" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="nmr-forward-19F.html" class="btn btn-neutral float-right" title="19F 化学位移预测" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="nmr-forward-1H.html" class="btn btn-neutral float-left" title="1H 实验峰列表预测" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="nmr-forward-19F.html" class="btn btn-neutral float-right" title="19F 溶液化学位移预测" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

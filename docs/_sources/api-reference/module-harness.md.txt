@@ -125,7 +125,7 @@ Spectra Harness: validated, observable model calls by spectroscopy family.
    :returns: The three plugin families and their task bindings.
    :rtype: list of HarnessPlugin
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/harness.py#L228>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/harness.py#L235>`__
 
 .. py:function:: main()
 
@@ -135,7 +135,7 @@ Spectra Harness: validated, observable model calls by spectroscopy family.
    ``run --request request.json --output result.json``. Request files contain
    ``task``, ``inputs``, ``model_config`` and optional ``repeats``.
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/harness.py#L245>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/harness.py#L252>`__
 ```
 
 ## References
