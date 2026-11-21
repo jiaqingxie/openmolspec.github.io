@@ -160,7 +160,7 @@
    value.records.forEach(record=>{target.append(el('h3','',record.nucleus+' chemical shifts'));const table=el('table','prediction-table');const header=el('tr');['Atom index','Predicted shift / ppm'].forEach(t=>header.append(el('th','',t)));table.append(header);record.prediction_ppm.forEach((v,i)=>{const row=el('tr');row.append(el('td','',String(record.atom_indices[i])),el('td','',Number(v).toFixed(4)));table.append(row);});target.append(table,plot(record.prediction_ppm,null,record.nucleus,'ppm',true));});
   }else if(typeof value?.gap_ev==='number'){target.append(el('p','result-label','Predicted HOMO–LUMO gap'),el('p','gap-number',value.gap_ev.toFixed(4)+' eV'));
   }else if(value?.predicted_peaks){target.append(el('h3','',(value.model||'Model').toUpperCase()+' · predicted MS/MS'),plot(value.predicted_peaks.map(p=>p[0]),value.predicted_peaks.map(p=>p[1]),'MS/MS','m/z'),el('p','tool-note',value.instrument+' · '+value.adduct+' · collision energy '+value.collision_energy));
-  }else if(value?.ir&&value?.raman){target.append(plot(value.wavenumber,value.ir,'IR','cm⁻¹'),plot(value.wavenumber,value.raman,'Raman','cm⁻¹'));
+  }else if(value?.ir&&value?.raman){if(value.reference_profile==='qm9s')target.append(el('p','result-label','QM9S · Raman 532 nm, 298 K'));target.append(plot(value.wavenumber,value.ir,'IR','cm⁻¹'),plot(value.wavenumber,value.raman,'Raman','cm⁻¹'));
   }else{target.append(el('pre','numerical-result',JSON.stringify(value,null,2)));}
  }
  function resultTable(columns,rows){
@@ -364,6 +364,11 @@
    form.append(el('h3','','Start with a molecular structure'),field('SMILES','tool-smiles','CCO'));
    const select=el('select');select.id='tool-task';[['nmr.forward.13C','Predict ¹³C NMR'],['nmr.forward.1H','Predict ¹H NMR'],...Object.entries(solutionNuclei).map(([key,v])=>['nmr.forward.'+key,'Predict '+v.label+' solution NMR']),['nmr.assignment','Assign measured ¹³C peaks'],['ms.forward.glacier','Predict MS/MS · GLACIER'],['ms.forward.iceberg','Predict MS/MS · ICEBERG'],['vibrational.forward','Predict IR and Raman from a conformer']].forEach(([v,t])=>select.add(new Option(t,v)));const label=el('label','tool-field','Task');label.append(select);form.append(label);
    const observed=field('Observed ¹³C peaks / ppm','tool-peaks','18.2, 58.3');observed.hidden=true;form.append(observed);
+   const convention=el('label','tool-field','IR/Raman reference convention');convention.hidden=true;
+   const profile=el('select');profile.id='vibrational-profile';
+   profile.add(new Option('openSpec · 400–4,000 cm⁻¹','openspec'));
+   profile.add(new Option('QM9S · 500–4,000 cm⁻¹','qm9s'));
+   convention.append(profile);form.append(convention);
    const phosphorus=el('div','phosphorus-inputs');phosphorus.hidden=true;
    const solvent=field('NMR solvent (optional)','phosphorus-solvent','');
    const example=button('Use example','button-secondary');
@@ -372,13 +377,13 @@
    example.onclick=()=>{$('#tool-smiles').value=selectedNucleus().smiles;$('#phosphorus-solvent').value='CDCl3';};
    phosphorus.append(solvent,example,note,guide);form.append(phosphorus);
    const acquisition=el('div','ms-acquisition');acquisition.hidden=true;acquisition.append(field('Adduct','ms-adduct','[M+H]+'),field('Collision energy (checkpoint convention)','ms-energy','40','number'),field('Instrument category','ms-instrument','QTOF'),el('p','tool-note','Specify the acquisition conditions for your spectrum. The defaults are an example, and are not inferred from SMILES.'));form.append(acquisition);
-   select.onchange=()=>{if(output.querySelector('.preview-spectrum-label'))output.replaceChildren(el('p','empty-state','Your model output will appear here.'));const nucleus=selectedNucleus();phosphorus.hidden=!nucleus;
+   select.onchange=()=>{if(output.querySelector('.preview-spectrum-label'))output.replaceChildren(el('p','empty-state','Your model output will appear here.'));const nucleus=selectedNucleus();phosphorus.hidden=!nucleus;convention.hidden=select.value!=='vibrational.forward';
     if(nucleus){
      guide.textContent=nucleus.label+' model and accuracy';guide.href='docs/tasks/nmr-forward-'+select.value.split('.').pop()+'.html';
      example.textContent='Use '+nucleus.example+' example';note.textContent='Enter a SMILES containing '+nucleus.element+'. Equivalent sites share a predicted shift.';
     }
     const smiles=$('#tool-smiles');if(nucleus&&(smiles.value==='CCO'||Object.values(solutionNuclei).some(n=>n.smiles===smiles.value)))smiles.value=nucleus.smiles;observed.hidden=select.value!=='nmr.assignment';acquisition.hidden=!select.value.startsWith('ms.forward.');};
-   const go=button('Run model');go.dataset.run='true';go.onclick=()=>{const inputs={smiles:$('#tool-smiles').value.trim()};if(selectedNucleus()&&$('#phosphorus-solvent').value.trim())inputs.solvent=$('#phosphorus-solvent').value.trim();if(select.value==='nmr.assignment'){inputs.nucleus='13C';inputs.peaks_ppm=$('#tool-peaks').value.split(/[,\s]+/).filter(Boolean).map(Number);}if(select.value.startsWith('ms.forward.')){inputs.adduct=$('#ms-adduct').value.trim();inputs.collision_energy=Number($('#ms-energy').value);inputs.instrument=$('#ms-instrument').value.trim();}run({kind:'tool',task:select.value,inputs},output,trace);};form.append(go,el('p','tool-note','Chemical shifts are returned in ppm with atom indices. MS/MS returns m/z and relative intensity. IR/Raman use the generated molecular conformer.'));
+   const go=button('Run model');go.dataset.run='true';go.onclick=()=>{const inputs={smiles:$('#tool-smiles').value.trim()};if(select.value==='vibrational.forward')inputs.reference_profile=profile.value;if(selectedNucleus()&&$('#phosphorus-solvent').value.trim())inputs.solvent=$('#phosphorus-solvent').value.trim();if(select.value==='nmr.assignment'){inputs.nucleus='13C';inputs.peaks_ppm=$('#tool-peaks').value.split(/[,\s]+/).filter(Boolean).map(Number);}if(select.value.startsWith('ms.forward.')){inputs.adduct=$('#ms-adduct').value.trim();inputs.collision_energy=Number($('#ms-energy').value);inputs.instrument=$('#ms-instrument').value.trim();}run({kind:'tool',task:select.value,inputs},output,trace);};form.append(go,el('p','tool-note','Chemical shifts are returned in ppm with atom indices. MS/MS returns m/z and relative intensity. IR/Raman use the generated molecular conformer.'));
   }else if(name==='nmr'){
    nmrStructureForm(form,output,trace);
   }else if(name==='hsqc'){
@@ -413,6 +418,9 @@
   if(nucleus){
    switchTab('structure');const task=$('#tool-task');task.value='nmr.forward.'+nucleus;task.onchange();
    $('.phosphorus-inputs button').click();$('#tool-workspace').scrollIntoView();return;
+  }
+  if(location.hash==='#tool-ir-raman'){
+   switchTab('structure');const task=$('#tool-task');task.value='vibrational.forward';task.onchange();$('#vibrational-profile').value='qm9s';$('#tool-workspace').scrollIntoView();return;
   }
   if(location.hash==='#tool-1h'||location.hash==='#tool-13c'){
    switchTab('structure');const task=$('#tool-task');task.value=location.hash==='#tool-1h'?'nmr.forward.1H':'nmr.forward.13C';task.onchange();$('#tool-smiles').value='CCO';$('#tool-workspace').scrollIntoView();return;
