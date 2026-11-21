@@ -1,46 +1,22 @@
-# 31P chemical shift prediction
+# 31P solution chemical shifts
 
-Predict solution-state phosphorus chemical shifts in ppm from a SMILES and an optional NMR solvent. The online tool runs the validation-selected GNN checkpoint. Equivalent sites share a shift. Atom indices follow the input SMILES and start at zero.
+The validation-selected model predicts chemical shifts in ppm from a SMILES string and an optional solvent. The training partition contains 35,696 molecular connectivities. Models were selected by giving each of 4,372 validation connectivities equal weight. The selected combination (50% 31P-gnn-r1, 50% 31P-gnn-r2) achieved 5.10 ppm validation MAE.
 
-[Run a ³¹P prediction](https://jiaqingxie.github.io/openmolspec.github.io/#tool-31p) · [Download model and Python wheel](https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/phosphorus31-v2/openmolspec-31P.zip)
+The independent test contains 4,248 connectivities and 6,693 measured single-environment observations. Observation MAE is **4.32 ppm**, molecule-weighted MAE is **5.60 ppm**, and the 90th percentile absolute error is 7.84 ppm. Each prediction lists the input atom indices belonging to that symmetry class. Multi-environment site assignments require separate validation.
 
-## Model selection
+[Run a structure online](https://jiaqingxie.github.io/openmolspec.github.io/#tool-31p) · [Download the model and SDK](https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/solution-nmr-v2/openmolspec-31P.zip)
 
-The four-layer graph neural network passes bond-conditioned messages between connected atoms and reads out the target phosphorus site. Training used 35,696 molecular connectivities. We selected epoch 90 and a local-environment median weight of 0.75 on validation. The tree baseline uses 5,960 boosting rounds. Both candidates have access to the same training-only local shift medians. The criterion was validation MAE with equal weight per molecular connectivity. Test records were scored after freezing the choice.
+An independently initialized four-layer bond-message network was trained with the same 35,696 structures. The previous deployed GNN scored 5.95 ppm per connectivity on the same test. The paired 95% interval for the change is [-0.45, -0.25] ppm. [First release](https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/phosphorus31-v2)
 
-| Split / model | Molecules | Observations | MAE / ppm | MAE per molecule / ppm |
-| --- | ---: | ---: | ---: | ---: |
-| validation · LightGBM | 4,372 | 6,813 | 5.42 | 7.17 |
-| validation · GNN alone | 4,372 | 6,813 | 4.21 | 5.40 |
-| validation · GNN + local median | 4,372 | 6,813 | 4.07 | 5.28 |
-| test · LightGBM | 4,248 | 6,693 | 5.94 | 7.77 |
-| test · GNN alone | 4,248 | 6,693 | 4.74 | 6.12 |
-| test · GNN + local median | 4,248 | 6,693 | 4.56 | 5.95 |
-
-## Test groups
-
-| Subset | Molecules | LightGBM MAE / ppm | GNN with local median MAE / ppm |
-| --- | ---: | ---: | ---: |
-| unseen scaffold | 1,225 | 10.80 | 9.18 |
-| P=O | 2,735 | 3.99 | 3.62 |
-| P=S | 243 | 6.70 | 6.17 |
-| neutral P, three neighbours including a heteroatom | 311 | 16.98 | 11.66 |
-| other P environments | 495 | 21.81 | 13.74 |
-
-Subset MAEs weight each molecular connectivity equally. Evaluation uses one observed shift and one graph-equivalence class per spectrum. Site assignments in multisite spectra, intensities, couplings and line shapes need separate validation. This comparison uses one GNN training seed.
-
-## Local inference
-
-Unzip the download and run these commands inside the extracted directory.
+Extract the ZIP and run the following commands in its directory.
 
 ```bash
-python -m pip install "./openmolspec-1.0.0-py3-none-any.whl[phosphorus-gnn]"
-openmolspec-solution-shift --model-dir model --smiles "CCOP(=O)(OCC)OCC" --solvent CDCl3
+python -m pip install "./openmolspec-1.0.0-py3-none-any.whl[phosphorus-gnn,solution-nmr]"
 ```
 
 ```python
 from openmolspec.model import SolutionShiftPredictor
 
-predictor = SolutionShiftPredictor("model")
-print(predictor.predict("CCOP(=O)(OCC)OCC", "CDCl3")["environments"])
+model = SolutionShiftPredictor("model")
+print(model.predict("CCOP(=O)(OCC)OCC", "CDCl3"))
 ```

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>31P 化学位移预测 &mdash; OpenMolSpec v1.0</title>
+  <title>31P 溶液化学位移预测 &mdash; OpenMolSpec v1.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
@@ -25,8 +25,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="11B 化学位移预测" href="nmr-forward-11B.html" />
-    <link rel="prev" title="从 SMILES 预测 19F 溶液化学位移" href="nmr-forward-19F.html" /> 
+    <link rel="next" title="11B 溶液化学位移预测" href="nmr-forward-11B.html" />
+    <link rel="prev" title="19F 溶液化学位移预测" href="nmr-forward-19F.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,12 +59,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">按谱型浏览任务</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="nmr.html">核磁共振 NMR</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H 实验峰列表预测</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">从 SMILES 预测 19F 溶液化学位移</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">31P 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F 溶液化学位移预测</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">31P 溶液化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 溶液化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si 溶液化学位移预测</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">谱到结构检索：¹H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">结构到谱检索：¹H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">从 ¹H NMR 解析结构</a></li>
@@ -120,7 +120,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">按谱型浏览任务</a></li>
           <li class="breadcrumb-item"><a href="nmr.html">核磁共振 NMR</a></li>
-      <li class="breadcrumb-item active">31P 化学位移预测</li>
+      <li class="breadcrumb-item active">31P 溶液化学位移预测</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/tasks/nmr-forward-31P.md.txt" rel="nofollow"> 查看页面源码</a>
       </li>
@@ -133,115 +133,21 @@
   
   
   <section class="tex2jax_ignore mathjax_ignore" id="p">
-<h1>31P 化学位移预测<a class="headerlink" href="#p" title="Link to this heading"></a></h1>
-<p>输入含磷分子的 SMILES 和可选溶剂，在线工具使用通过验证集选出的 GNN 权重预测溶液化学位移。等价磷位点共享一个峰位，原子编号按输入 SMILES 从零开始。</p>
-<p><a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/#tool-31p">在线预测 ³¹P</a> · <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/phosphorus31-v2/openmolspec-31P.zip">下载模型和 Python 安装包</a></p>
-<section id="id1">
-<h2>模型选择<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
-<p>四层图神经网络沿化学键在相邻原子间传递信息，并预测目标磷位点的化学位移。共用 35,696 种分子连通结构训练。验证集选出的 GNN 轮次为 90，局部环境中位数权重为 0.75。对照模型使用 5,960 轮 LightGBM。两个模型均可利用相同的训练集局部环境中位数。选型依据是验证集按分子等权计算的 MAE。模型选定后再对留出测试集评分。</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>划分及模型</p></th>
-<th class="head text-right"><p>分子数</p></th>
-<th class="head text-right"><p>观测数</p></th>
-<th class="head text-right"><p>观测 MAE / ppm</p></th>
-<th class="head text-right"><p>分子等权 MAE / ppm</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>验证 · LightGBM</p></td>
-<td class="text-right"><p>4,372</p></td>
-<td class="text-right"><p>6,813</p></td>
-<td class="text-right"><p>5.42</p></td>
-<td class="text-right"><p>7.17</p></td>
-</tr>
-<tr class="row-odd"><td><p>验证 · 纯 GNN</p></td>
-<td class="text-right"><p>4,372</p></td>
-<td class="text-right"><p>6,813</p></td>
-<td class="text-right"><p>4.21</p></td>
-<td class="text-right"><p>5.40</p></td>
-</tr>
-<tr class="row-even"><td><p>验证 · GNN + 局部中位数</p></td>
-<td class="text-right"><p>4,372</p></td>
-<td class="text-right"><p>6,813</p></td>
-<td class="text-right"><p>4.07</p></td>
-<td class="text-right"><p>5.28</p></td>
-</tr>
-<tr class="row-odd"><td><p>测试 · LightGBM</p></td>
-<td class="text-right"><p>4,248</p></td>
-<td class="text-right"><p>6,693</p></td>
-<td class="text-right"><p>5.94</p></td>
-<td class="text-right"><p>7.77</p></td>
-</tr>
-<tr class="row-even"><td><p>测试 · 纯 GNN</p></td>
-<td class="text-right"><p>4,248</p></td>
-<td class="text-right"><p>6,693</p></td>
-<td class="text-right"><p>4.74</p></td>
-<td class="text-right"><p>6.12</p></td>
-</tr>
-<tr class="row-odd"><td><p>测试 · GNN + 局部中位数</p></td>
-<td class="text-right"><p>4,248</p></td>
-<td class="text-right"><p>6,693</p></td>
-<td class="text-right"><p>4.56</p></td>
-<td class="text-right"><p>5.95</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="id2">
-<h2>测试子集<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>子集</p></th>
-<th class="head text-right"><p>分子数</p></th>
-<th class="head text-right"><p>LightGBM 分子等权 MAE / ppm</p></th>
-<th class="head text-right"><p>GNN + 局部中位数分子等权 MAE / ppm</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>训练未见的非空 Murcko 骨架</p></td>
-<td class="text-right"><p>1,225</p></td>
-<td class="text-right"><p>10.80</p></td>
-<td class="text-right"><p>9.18</p></td>
-</tr>
-<tr class="row-odd"><td><p>P=O</p></td>
-<td class="text-right"><p>2,735</p></td>
-<td class="text-right"><p>3.99</p></td>
-<td class="text-right"><p>3.62</p></td>
-</tr>
-<tr class="row-even"><td><p>P=S</p></td>
-<td class="text-right"><p>243</p></td>
-<td class="text-right"><p>6.70</p></td>
-<td class="text-right"><p>6.17</p></td>
-</tr>
-<tr class="row-odd"><td><p>中性三配位 P，邻位含杂原子</p></td>
-<td class="text-right"><p>311</p></td>
-<td class="text-right"><p>16.98</p></td>
-<td class="text-right"><p>11.66</p></td>
-</tr>
-<tr class="row-even"><td><p>其他磷环境</p></td>
-<td class="text-right"><p>495</p></td>
-<td class="text-right"><p>21.81</p></td>
-<td class="text-right"><p>13.74</p></td>
-</tr>
-</tbody>
-</table>
-<p>子集 MAE 对每种分子连通性等权。正式比较使用具有一个实测峰和一个图对称环境的谱。此次 GNN 对照使用一个训练随机种子。多环境分子的峰归属、强度、耦合和线形仍需单独评测。</p>
-</section>
-<section id="id3">
-<h2>本地调用<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
-<p>解压下载包，在解压后的目录中运行以下命令。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"./openmolspec-1.0.0-py3-none-any.whl[phosphorus-gnn]"</span>
-openmolspec-solution-shift<span class="w"> </span>--model-dir<span class="w"> </span>model<span class="w"> </span>--smiles<span class="w"> </span><span class="s2">"CCOP(=O)(OCC)OCC"</span><span class="w"> </span>--solvent<span class="w"> </span>CDCl3
+<h1>31P 溶液化学位移预测<a class="headerlink" href="#p" title="Link to this heading"></a></h1>
+<p>输入 SMILES 和可选溶剂，预测各等价原子组的位移（ppm）。训练集含 35,696 种分子连通结构。在 4,372 种验证分子上按分子等权选型。最终组合（50% 31P-gnn-r1, 50% 31P-gnn-r2）的验证 MAE 为 5.10 ppm。</p>
+<p>独立测试集含 4,248 种分子和 6,693 条单环境实测记录。逐观测 MAE 为 <strong>4.32 ppm</strong>，分子等权 MAE 为 <strong>5.60 ppm</strong>，绝对误差的第 90 百分位为 7.84 ppm。输出保留输入 SMILES 中从零起算的原子编号。多环境的逐峰归属需另行评测。</p>
+<p><a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/#tool-31p">在线预测</a> · <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/solution-nmr-v2/openmolspec-31P.zip">下载模型与 SDK</a></p>
+<p>在同一批 35,696 种训练分子上，对四层图网络独立初始化并再次训练。上一版 GNN 在同一测试集上按分子等权的 MAE 为 5.95 ppm。新旧模型误差差值的配对 95% 区间为 [-0.45, -0.25] ppm。<a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/phosphorus31-v2">首次发布的模型与对照</a></p>
+<p>解压 ZIP，在解压目录中安装 SDK 并运行预测。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"./openmolspec-1.0.0-py3-none-any.whl[phosphorus-gnn,solution-nmr]"</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">SolutionShiftPredictor</span>
 
-<span class="n">predictor</span> <span class="o">=</span> <span class="n">SolutionShiftPredictor</span><span class="p">(</span><span class="s2">"model"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">predictor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">"CCOP(=O)(OCC)OCC"</span><span class="p">,</span> <span class="s2">"CDCl3"</span><span class="p">)[</span><span class="s2">"environments"</span><span class="p">])</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">SolutionShiftPredictor</span><span class="p">(</span><span class="s2">"model"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">"CCOP(=O)(OCC)OCC"</span><span class="p">,</span> <span class="s2">"CDCl3"</span><span class="p">))</span>
 </pre></div>
 </div>
-</section>
 </section>
 
 
@@ -249,8 +155,8 @@ openmolspec-solution-shift<span class="w"> </span>--model-dir<span class="w"> </
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
-        <a href="nmr-forward-19F.html" class="btn btn-neutral float-left" title="从 SMILES 预测 19F 溶液化学位移" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="nmr-forward-11B.html" class="btn btn-neutral float-right" title="11B 化学位移预测" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="nmr-forward-19F.html" class="btn btn-neutral float-left" title="19F 溶液化学位移预测" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="nmr-forward-11B.html" class="btn btn-neutral float-right" title="11B 溶液化学位移预测" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
