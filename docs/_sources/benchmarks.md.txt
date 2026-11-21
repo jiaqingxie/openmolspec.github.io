@@ -14,6 +14,27 @@ benchmarks/training
 
 OpenMolSpec defines benchmark tasks for NMR, MS, vibrational and multimodal spectroscopy. This catalogue includes every active task, its saved evaluation results and the configured training experiments.
 
+## Forward prediction results
+
+All 10 enabled forward tasks are listed below. Each task card specifies its reference, selection protocol and available inference routes.
+
+| Task | Held-out coverage | Released model score |
+| --- | --- | --- |
+| [¹H](tasks/nmr-forward-1H.md) | 1,000 / 991 / 980 | 0.350 / 0.339 / 0.417 ppm |
+| [¹³C](tasks/nmr-forward-13C.md) | 1,000 / 748 / 980 | 1.217 / 1.143 / 2.772 ppm |
+| [³¹P](tasks/nmr-forward-31P.md) | 6,693 measurements, 4,248 structures | 4.27 / 5.54 ppm |
+| [¹⁹F](tasks/nmr-forward-19F.md) | 15,803 measurements, 14,330 structures | 5.92 / 5.62 ppm |
+| [¹¹B](tasks/nmr-forward-11B.md) | 1,669 measurements, 1,517 structures | 1.24 / 1.28 ppm |
+| [²⁹Si](tasks/nmr-forward-29Si.md) | 187 measurements, 177 structures | 1.96 / 2.03 ppm |
+| [HSQC](tasks/nmr-hsqc-transpeaknet.md) | 479 spectra, 7,926 cross-peaks | ¹³C 2.005 ppm · ¹H 0.164 ppm |
+| [IR / Raman](tasks/vibrational-forward.md) | 303 optimized geometries | IR 0.9835 · Raman 0.9850 |
+| [MS/MS · GLACIER](tasks/ms-forward-glacier.md) | 875 / 1,024 scored | 0.6039 cosine |
+| [MS/MS · ICEBERG](tasks/ms-forward-iceberg.md) | 875 / 1,024 scored | 0.5175 cosine |
+
+¹H and ¹³C use NMRSpec, NMRExp and NMRGym in that order. Their molecule-weighted error penalizes each unmatched peak by 1 ppm (H) or 10 ppm (C). Other 1D NMR rows give per-observation and per-connectivity MAE on single-environment measurements. The ²⁹Si test comprised 177 structures. The shortlisted NMR models have been compared on these same audit sets in successive releases. Upstream pretraining overlap for imported models has not been independently established.
+
+IR and Raman scores compare to quantum-chemical references on H/C/N/O/F molecules with at most nine heavy atoms. Each MS method was confirmed on a separate set of up to 40-heavy-atom structures with supported acquisition conditions. The reported fraction counts successful paired predictions among 1,024 newly sampled structures per method. [Machine-readable results](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_benchmark_summary.json)
+
 ## Task benchmarks
 
 | Family | Tasks | Contents |

@@ -74,6 +74,7 @@
 <li class="toctree-l2"><a class="reference internal" href="benchmarks/multimodal.html">Multimodal spectroscopy benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="benchmarks/production.html">Production benchmark results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="benchmarks/training.html">Training benchmark configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#forward-prediction-results">Forward prediction results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#task-benchmarks">Task benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#training-benchmark-configurations">Training benchmark configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#metrics">Metrics</a></li>
@@ -118,6 +119,62 @@
 <div class="toctree-wrapper compound">
 </div>
 <p>OpenMolSpec defines benchmark tasks for NMR, MS, vibrational and multimodal spectroscopy. This catalogue includes every active task, its saved evaluation results and the configured training experiments.</p>
+<section id="forward-prediction-results">
+<h2>Forward prediction results<a class="headerlink" href="#forward-prediction-results" title="Link to this heading"></a></h2>
+<p>All 10 enabled forward tasks are listed below. Each task card specifies its reference, selection protocol and available inference routes.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Task</p></th>
+<th class="head"><p>Held-out coverage</p></th>
+<th class="head"><p>Released model score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="tasks/nmr-forward-1H.html"><span class="std std-doc">¹H</span></a></p></td>
+<td><p>1,000 / 991 / 980</p></td>
+<td><p>0.350 / 0.339 / 0.417 ppm</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tasks/nmr-forward-13C.html"><span class="std std-doc">¹³C</span></a></p></td>
+<td><p>1,000 / 748 / 980</p></td>
+<td><p>1.217 / 1.143 / 2.772 ppm</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tasks/nmr-forward-31P.html"><span class="std std-doc">³¹P</span></a></p></td>
+<td><p>6,693 measurements, 4,248 structures</p></td>
+<td><p>4.27 / 5.54 ppm</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tasks/nmr-forward-19F.html"><span class="std std-doc">¹⁹F</span></a></p></td>
+<td><p>15,803 measurements, 14,330 structures</p></td>
+<td><p>5.92 / 5.62 ppm</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tasks/nmr-forward-11B.html"><span class="std std-doc">¹¹B</span></a></p></td>
+<td><p>1,669 measurements, 1,517 structures</p></td>
+<td><p>1.24 / 1.28 ppm</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tasks/nmr-forward-29Si.html"><span class="std std-doc">²⁹Si</span></a></p></td>
+<td><p>187 measurements, 177 structures</p></td>
+<td><p>1.96 / 2.03 ppm</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tasks/nmr-hsqc-transpeaknet.html"><span class="std std-doc">HSQC</span></a></p></td>
+<td><p>479 spectra, 7,926 cross-peaks</p></td>
+<td><p>¹³C 2.005 ppm · ¹H 0.164 ppm</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tasks/vibrational-forward.html"><span class="std std-doc">IR / Raman</span></a></p></td>
+<td><p>303 optimized geometries</p></td>
+<td><p>IR 0.9835 · Raman 0.9850</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tasks/ms-forward-glacier.html"><span class="std std-doc">MS/MS · GLACIER</span></a></p></td>
+<td><p>875 / 1,024 scored</p></td>
+<td><p>0.6039 cosine</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tasks/ms-forward-iceberg.html"><span class="std std-doc">MS/MS · ICEBERG</span></a></p></td>
+<td><p>875 / 1,024 scored</p></td>
+<td><p>0.5175 cosine</p></td>
+</tr>
+</tbody>
+</table>
+<p>¹H and ¹³C use NMRSpec, NMRExp and NMRGym in that order. Their molecule-weighted error penalizes each unmatched peak by 1 ppm (H) or 10 ppm (C). Other 1D NMR rows give per-observation and per-connectivity MAE on single-environment measurements. The ²⁹Si test comprised 177 structures. The shortlisted NMR models have been compared on these same audit sets in successive releases. Upstream pretraining overlap for imported models has not been independently established.</p>
+<p>IR and Raman scores compare to quantum-chemical references on H/C/N/O/F molecules with at most nine heavy atoms. Each MS method was confirmed on a separate set of up to 40-heavy-atom structures with supported acquisition conditions. The reported fraction counts successful paired predictions among 1,024 newly sampled structures per method. <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_benchmark_summary.json">Machine-readable results</a></p>
+</section>
 <section id="task-benchmarks">
 <h2>Task benchmarks<a class="headerlink" href="#task-benchmarks" title="Link to this heading"></a></h2>
 <table class="docutils align-default">

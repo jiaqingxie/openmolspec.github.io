@@ -14,7 +14,7 @@
 
 表中单位为 ppm，按分子等权。预测峰与实测峰以最小误差匹配，匹配误差上限为 20 ppm，每多报或漏报一个峰计 10 ppm。三个测试集合并后，新旧误差差值的配对 95% 区间为 −0.95 至 −0.87 ppm。验证集和三个测试集之间按分子连通结构去重。上游预训练集与这些测试结构的重叠情况尚未核实。
 
-[在线预测碳谱](https://jiaqingxie.github.io/openmolspec.github.io/#tool-13c) · [选型结果](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_carbon_folds.json) · [原作者发布的权重](https://zenodo.org/records/18232165)
+[在线预测碳谱](https://jiaqingxie.github.io/openmolspec.github.io/#tool-13c) · [选型结果](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_carbon_folds.json) · [原作者发布的权重](https://zenodo.org/records/18232165) · [下载 SDK 与碳谱模型配置](https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/peak-nmr-v2/openmolspec-13C.zip)
 
 在模型目录下安装 NMRNet++ 源码及五折权重后，可以在 SDK 中运行。
 

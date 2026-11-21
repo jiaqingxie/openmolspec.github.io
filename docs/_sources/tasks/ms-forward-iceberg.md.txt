@@ -2,9 +2,13 @@
 
 Predict the fragment masses and intensities of a molecule under specified acquisition conditions.
 
+## Independent confirmation
+
+Calibration settings were fixed using five-fold validation on 280 scored molecules. A further 1,024 MassSpecGym test connectivities were sampled, excluding all 384 structures in the first test. 875 had scoreable paired predictions and 149 were skipped. Mean cosine was 0.5118 for the original checkpoint and 0.5175 for the candidate. The paired 95% interval for the change was [+0.0018, +0.0096]. The released predictor applies the selected relative-intensity settings under the evaluated conditions. The SDK can reproduce the original output with `author_baseline=True`. Calibration covers the tested checkpoint and structures with up to 40 heavy atoms. Reproduce the confirmation with one CPU thread (`--threads 1`), as used by the public model. [Paired comparison](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_confirmation_iceberg.json)
+
 ## Validation and held-out comparison
 
-ICEBERG was evaluated with 189 combinations of intensity scaling, precursor weighting and retained peak count. Of 384 sampled structures per MassSpecGym split, 280 validation and 327 test structures produced a scored prediction. On those same 327 test structures, mean cosine was 0.5050 for the default and 0.5112 for the validation-selected setting. The paired 95% interval for the difference was [-0.0004, 0.0127]. The website therefore uses the original model output.
+ICEBERG was evaluated with 189 combinations of intensity scaling, precursor weighting and retained peak count. Of 384 sampled structures per MassSpecGym split, 280 validation and 327 test structures produced a scored prediction. On those same 327 test structures, mean cosine was 0.5050 for the default and 0.5112 for the validation-selected setting. The paired 95% interval for the difference was [-0.0004, 0.0127]. The original model was retained after this first comparison.
 
 ## What goes in
 

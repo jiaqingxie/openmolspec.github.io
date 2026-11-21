@@ -121,9 +121,13 @@
   <section class="tex2jax_ignore mathjax_ignore" id="ms-ms-prediction-with-glacier">
 <h1>MS/MS prediction with GLACIER<a class="headerlink" href="#ms-ms-prediction-with-glacier" title="Link to this heading"></a></h1>
 <p>Predict the fragment masses and intensities of a molecule under specified acquisition conditions.</p>
+<section id="independent-confirmation">
+<h2>Independent confirmation<a class="headerlink" href="#independent-confirmation" title="Link to this heading"></a></h2>
+<p>Calibration settings were fixed using five-fold validation on 280 scored molecules. A further 1,024 MassSpecGym test connectivities were sampled, excluding all 384 structures in the first test. 875 had scoreable paired predictions and 149 were skipped. Mean cosine was 0.6009 for the original checkpoint and 0.6039 for the candidate. The paired 95% interval for the change was [+0.0005, +0.0056]. The released predictor applies the selected relative-intensity settings under the evaluated conditions. The SDK can reproduce the original output with <code class="docutils literal notranslate"><span class="pre">author_baseline=True</span></code>. Calibration covers the tested checkpoint and structures with up to 40 heavy atoms. Reproduce the confirmation with one CPU thread (<code class="docutils literal notranslate"><span class="pre">--threads</span> <span class="pre">1</span></code>), as used by the public model. <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_confirmation_glacier.json">Paired comparison</a></p>
+</section>
 <section id="validation-and-held-out-comparison">
 <h2>Validation and held-out comparison<a class="headerlink" href="#validation-and-held-out-comparison" title="Link to this heading"></a></h2>
-<p>GLACIER was evaluated with 189 combinations of intensity scaling, precursor weighting and retained peak count. Of 384 sampled structures per MassSpecGym split, 280 validation and 327 test structures produced a scored prediction. On those same 327 test structures, mean cosine was 0.5828 for the default and 0.5831 for the validation-selected setting. The paired 95% interval for the difference was [-0.0044, 0.0051]. The website therefore uses the original model output.</p>
+<p>GLACIER was evaluated with 189 combinations of intensity scaling, precursor weighting and retained peak count. Of 384 sampled structures per MassSpecGym split, 280 validation and 327 test structures produced a scored prediction. On those same 327 test structures, mean cosine was 0.5828 for the default and 0.5831 for the validation-selected setting. The paired 95% interval for the difference was [-0.0044, 0.0051]. The original model was retained after this first comparison.</p>
 </section>
 <section id="what-goes-in">
 <h2>What goes in<a class="headerlink" href="#what-goes-in" title="Link to this heading"></a></h2>

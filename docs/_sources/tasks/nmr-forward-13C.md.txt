@@ -14,7 +14,7 @@ The predictor averages the atomic shifts from five NMRNet++ checkpoints and repo
 
 Values are molecule-averaged peak-list errors in ppm. Minimum-cost matching caps paired errors at 20 ppm and charges 10 ppm for each extra or missing peak. Averaging across the three held-out sets, the paired 95% interval for the change was −0.95 to −0.87 ppm. Molecular connectivities are disjoint across development and evaluation sets. Overlap with upstream NMRNet++ pretraining is unverified.
 
-[Use the carbon predictor](https://jiaqingxie.github.io/openmolspec.github.io/#tool-13c) · [Fold comparisons](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_carbon_folds.json) · [Author checkpoints](https://zenodo.org/records/18232165)
+[Use the carbon predictor](https://jiaqingxie.github.io/openmolspec.github.io/#tool-13c) · [Fold comparisons](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_carbon_folds.json) · [Author checkpoints](https://zenodo.org/records/18232165) · [Download the carbon SDK and model profile](https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/peak-nmr-v2/openmolspec-13C.zip)
 
 Run the selected predictor with the NMRNet++ source and five author checkpoints installed under the model root.
 

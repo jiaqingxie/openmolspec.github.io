@@ -6,6 +6,8 @@
 
 [在线预测](https://jiaqingxie.github.io/openmolspec.github.io/#tool-19f) · [下载模型与 SDK](https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/solution-nmr-v2/openmolspec-19F.zip)
 
+在同一划分上追加比较了另一种图网络宽度和三模型组合。候选组合的逐观测 MAE 为 5.91 ppm，分子等权 MAE 为 5.60 ppm。分子等权误差差值的配对 95% 区间为 [-0.044, 0.001] ppm，包含零，因此保留当前模型。[模型宽度比较](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_capacity_19F.json)
+
 解压 ZIP，在解压目录中安装 SDK 并运行预测。
 
 ```bash

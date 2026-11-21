@@ -14,6 +14,27 @@ benchmarks/training
 
 OpenMolSpec 为 NMR、质谱、振动光谱与多谱联合定义了基准任务。本目录列出全部活跃任务、保存的评测结果，以及训练实验配置。
 
+## 正向光谱预测结果
+
+下表涵盖全部 10 个已启用的正向预测任务。各任务页列出参考数据、模型选择方法和推理入口。
+
+| 任务 | 留出数据规模 | 上线模型的分数 |
+| --- | --- | --- |
+| [¹H](tasks/nmr-forward-1H.md) | 1,000 / 991 / 980 | 0.350 / 0.339 / 0.417 ppm |
+| [¹³C](tasks/nmr-forward-13C.md) | 1,000 / 748 / 980 | 1.217 / 1.143 / 2.772 ppm |
+| [³¹P](tasks/nmr-forward-31P.md) | 6,693 条实测，4,248 种结构 | 4.27 / 5.54 ppm |
+| [¹⁹F](tasks/nmr-forward-19F.md) | 15,803 条实测，14,330 种结构 | 5.92 / 5.62 ppm |
+| [¹¹B](tasks/nmr-forward-11B.md) | 1,669 条实测，1,517 种结构 | 1.24 / 1.28 ppm |
+| [²⁹Si](tasks/nmr-forward-29Si.md) | 187 条实测，177 种结构 | 1.96 / 2.03 ppm |
+| [HSQC](tasks/nmr-hsqc-transpeaknet.md) | 479 张谱，7,926 个交叉峰 | ¹³C 2.005 ppm · ¹H 0.164 ppm |
+| [IR / Raman](tasks/vibrational-forward.md) | 303 种优化构型 | IR 0.9835 · Raman 0.9850 |
+| [MS/MS · GLACIER](tasks/ms-forward-glacier.md) | 875 / 1,024 种可评分 | 0.6039 余弦 |
+| [MS/MS · ICEBERG](tasks/ms-forward-iceberg.md) | 875 / 1,024 种可评分 | 0.5175 余弦 |
+
+¹H、¹³C 按 NMRSpec、NMRExp、NMRGym 顺序列出分子等权的峰集误差。漏峰或多峰每个按 1 ppm（H）或 10 ppm（C）计分。其余一维核磁依次列出单环境实测记录的逐观测、逐分子等权 MAE。²⁹Si 留出集只有 177 种结构。历版 NMR 模型沿用了同一批测试分子，导入模型的上游预训练重叠尚未独立核实。
+
+IR 和拉曼以量子化学计算谱为参考，覆盖只含 H/C/N/O/F、至多 9 个重原子的分子。每个 MS 模型另抽取 1,024 种至多 40 个重原子的结构复核。表中分别列出可在支持的采集条件下得到配对预测的分子数与抽样总数。 [逐项结果与评测记录](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_benchmark_summary.json)
+
 ## 任务基准
 
 | 类别 | 任务数 | 内容 |

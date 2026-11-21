@@ -6,6 +6,8 @@ The independent test contains 14,330 connectivities and 15,803 measured single-e
 
 [Run a structure online](https://jiaqingxie.github.io/openmolspec.github.io/#tool-19f) · [Download the model and SDK](https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/solution-nmr-v2/openmolspec-19F.zip)
 
+A second graph width and a three-component mixture were evaluated on the same split. The candidate scored 5.91 ppm per observation and 5.60 ppm per molecule. The paired 95% interval for the change in molecule-weighted MAE was [-0.044, 0.001] ppm and included zero. The current model was retained. [Capacity comparison](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_capacity_19F.json)
+
 Extract the ZIP and run the following commands in its directory.
 
 ```bash

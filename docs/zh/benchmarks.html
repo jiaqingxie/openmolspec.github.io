@@ -75,12 +75,13 @@
 <li class="toctree-l2"><a class="reference internal" href="benchmarks/multimodal.html">多谱联合 benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="benchmarks/production.html">生产基准结果</a></li>
 <li class="toctree-l2"><a class="reference internal" href="benchmarks/training.html">训练基准配置</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">任务基准</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">训练基准配置</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">评测指标</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">运行评测</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">其他任务定义</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">参考文献</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">正向光谱预测结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">任务基准</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">训练基准配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">评测指标</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">运行评测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">其他任务定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">参考文献</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">常用流程</a></li>
@@ -120,7 +121,63 @@
 </div>
 <p>OpenMolSpec 为 NMR、质谱、振动光谱与多谱联合定义了基准任务。本目录列出全部活跃任务、保存的评测结果，以及训练实验配置。</p>
 <section id="id2">
-<h2>任务基准<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<h2>正向光谱预测结果<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>下表涵盖全部 10 个已启用的正向预测任务。各任务页列出参考数据、模型选择方法和推理入口。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>任务</p></th>
+<th class="head"><p>留出数据规模</p></th>
+<th class="head"><p>上线模型的分数</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="tasks/nmr-forward-1H.html"><span class="std std-doc">¹H</span></a></p></td>
+<td><p>1,000 / 991 / 980</p></td>
+<td><p>0.350 / 0.339 / 0.417 ppm</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tasks/nmr-forward-13C.html"><span class="std std-doc">¹³C</span></a></p></td>
+<td><p>1,000 / 748 / 980</p></td>
+<td><p>1.217 / 1.143 / 2.772 ppm</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tasks/nmr-forward-31P.html"><span class="std std-doc">³¹P</span></a></p></td>
+<td><p>6,693 条实测，4,248 种结构</p></td>
+<td><p>4.27 / 5.54 ppm</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tasks/nmr-forward-19F.html"><span class="std std-doc">¹⁹F</span></a></p></td>
+<td><p>15,803 条实测，14,330 种结构</p></td>
+<td><p>5.92 / 5.62 ppm</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tasks/nmr-forward-11B.html"><span class="std std-doc">¹¹B</span></a></p></td>
+<td><p>1,669 条实测，1,517 种结构</p></td>
+<td><p>1.24 / 1.28 ppm</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tasks/nmr-forward-29Si.html"><span class="std std-doc">²⁹Si</span></a></p></td>
+<td><p>187 条实测，177 种结构</p></td>
+<td><p>1.96 / 2.03 ppm</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tasks/nmr-hsqc-transpeaknet.html"><span class="std std-doc">HSQC</span></a></p></td>
+<td><p>479 张谱，7,926 个交叉峰</p></td>
+<td><p>¹³C 2.005 ppm · ¹H 0.164 ppm</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tasks/vibrational-forward.html"><span class="std std-doc">IR / Raman</span></a></p></td>
+<td><p>303 种优化构型</p></td>
+<td><p>IR 0.9835 · Raman 0.9850</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tasks/ms-forward-glacier.html"><span class="std std-doc">MS/MS · GLACIER</span></a></p></td>
+<td><p>875 / 1,024 种可评分</p></td>
+<td><p>0.6039 余弦</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tasks/ms-forward-iceberg.html"><span class="std std-doc">MS/MS · ICEBERG</span></a></p></td>
+<td><p>875 / 1,024 种可评分</p></td>
+<td><p>0.5175 余弦</p></td>
+</tr>
+</tbody>
+</table>
+<p>¹H、¹³C 按 NMRSpec、NMRExp、NMRGym 顺序列出分子等权的峰集误差。漏峰或多峰每个按 1 ppm（H）或 10 ppm（C）计分。其余一维核磁依次列出单环境实测记录的逐观测、逐分子等权 MAE。²⁹Si 留出集只有 177 种结构。历版 NMR 模型沿用了同一批测试分子，导入模型的上游预训练重叠尚未独立核实。</p>
+<p>IR 和拉曼以量子化学计算谱为参考，覆盖只含 H/C/N/O/F、至多 9 个重原子的分子。每个 MS 模型另抽取 1,024 种至多 40 个重原子的结构复核。表中分别列出可在支持的采集条件下得到配对预测的分子数与抽样总数。 <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_benchmark_summary.json">逐项结果与评测记录</a></p>
+</section>
+<section id="id3">
+<h2>任务基准<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>类别</p></th>
@@ -148,8 +205,8 @@
 </tbody>
 </table>
 </section>
-<section id="id3">
-<h2>训练基准配置<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="id4">
+<h2>训练基准配置<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <p><a class="reference internal" href="benchmarks/production.html"><span class="std std-doc">生产基准结果</span></a>列出保存的 200k／1M 实验，包括 Hessian、H/C 位移、响应张量、分子性质与结构生成。</p>
 <p>配置目录包含 53 个 YAML 实验，记录输入通道、目标、架构、数据版本、随机种子和优化器预算。<a class="reference internal" href="benchmarks/training.html"><span class="std std-doc">查看全部配置</span></a>。</p>
 <table class="docutils align-default">
@@ -199,16 +256,16 @@
 </tbody>
 </table>
 </section>
-<section id="id4">
-<h2>评测指标<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id5">
+<h2>评测指标<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <p>回归任务以目标单位报告 MAE 与 RMSE；检索报告给定候选池上的 Recall&#64;k 和平均倒数排名；结构生成报告规范化结构 top-k 准确率及有效 SMILES 比例；谱预测使用余弦和熵相似度比较数值强度。</p>
 <div class="math notranslate nohighlight">
 \[\mathrm{MAE}=\frac1N\sum_{i=1}^{N}|\hat y_i-y_i|,\qquad \mathrm{RMSE}=\sqrt{\frac1N\sum_{i=1}^{N}(\hat y_i-y_i)^2}.\]</div>
 <div class="math notranslate nohighlight">
 \[\mathrm{Recall&#64;}k=\frac1N\sum_i\mathbf{1}[r_i\leq k],\qquad \mathrm{MRR}=\frac1N\sum_i\frac1{r_i}.\]</div>
 </section>
-<section id="id5">
-<h2>运行评测<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="id6">
+<h2>运行评测<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>list
 python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tasks<span class="w"> </span>nmr.retrieval.hc.s2m<span class="w"> </span>nmr.generation.hc<span class="w"> </span><span class="se">\</span>
@@ -219,12 +276,12 @@ python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span c
 </div>
 <p>按任务指南指定所需模型文件。结果 JSON 保存预测、目标值、数据设置、指标与模型指纹。</p>
 </section>
-<section id="id6">
-<h2>其他任务定义<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<section id="id7">
+<h2>其他任务定义<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <p>分子式预测、谱学 QA 与 SpectraLLM 生成在任务注册表中列为暂缓任务。</p>
 </section>
-<section id="id7">
-<h2>参考文献<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<section id="id8">
+<h2>参考文献<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">Source</a></p></li>
 <li><p>Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. <a class="reference external" href="https://doi.org/10.1038/s43588-025-00783-z">Source</a></p></li>

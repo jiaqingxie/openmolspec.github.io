@@ -69,6 +69,7 @@
 <li class="toctree-l2"><a class="reference internal" href="cli.html">Command line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mcp.html">MCP tools</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">NMR Spectra Harness</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#released-solution-shift-predictors">Released solution-shift predictors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#output">Output</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
 </ul>
@@ -131,6 +132,19 @@
 <span class="n">result</span> <span class="o">=</span> <span class="n">report</span><span class="p">[</span><span class="s1">'result'</span><span class="p">]</span>
 </pre></div>
 </div>
+<section id="released-solution-shift-predictors">
+<h2>Released solution-shift predictors<a class="headerlink" href="#released-solution-shift-predictors" title="Link to this heading"></a></h2>
+<p>For ¹H, ¹¹B, ²⁹Si, ³¹P and ¹⁹F, set <code class="docutils literal notranslate"><span class="pre">root</span></code> to the extracted model directory containing <code class="docutils literal notranslate"><span class="pre">model.json</span></code>, or to a registry containing a subdirectory for each nucleus. Set <code class="docutils literal notranslate"><span class="pre">python</span></code> to the environment with the model dependencies. The response includes the checkpoint digest, ppm values and atom indices. With the ¹³C five-fold model, set <code class="docutils literal notranslate"><span class="pre">root</span></code> to the parent of the upstream <code class="docutils literal notranslate"><span class="pre">nmrnetpp</span></code> directory and select <code class="docutils literal notranslate"><span class="pre">backend=&quot;nmrnetpp&quot;</span></code>. The named <code class="docutils literal notranslate"><span class="pre">NMRNet</span></code> SDK class retains the atomwise author baseline.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.harness</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpectraHarness</span>
+
+<span class="n">out</span> <span class="o">=</span> <span class="n">SpectraHarness</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="s2">"nmr.forward.31P"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"smiles"</span><span class="p">:</span> <span class="s2">"CCOP(=O)(OCC)OCC"</span><span class="p">,</span> <span class="s2">"solvent"</span><span class="p">:</span> <span class="s2">"CDCl3"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"root"</span><span class="p">:</span> <span class="s2">"model"</span><span class="p">,</span> <span class="s2">"python"</span><span class="p">:</span> <span class="s2">"/path/to/solution-nmr/bin/python"</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">"result"</span><span class="p">][</span><span class="s2">"records"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"prediction_ppm"</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
 <section id="output">
 <h2>Output<a class="headerlink" href="#output" title="Link to this heading"></a></h2>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>

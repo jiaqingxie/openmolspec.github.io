@@ -126,6 +126,39 @@
   <section class="tex2jax_ignore mathjax_ignore" id="ir-raman">
 <h1>从分子构象预测 IR 与 Raman<a class="headerlink" href="#ir-raman" title="Link to this heading"></a></h1>
 <p>使用 openSpec 模型，从原子坐标预测红外与拉曼光谱。</p>
+<section id="qm9s">
+<h2>QM9S 参考条件<a class="headerlink" href="#qm9s" title="Link to this heading"></a></h2>
+<p>在 337 种验证分子上分别为 IR 和拉曼选择强度计算方式、频率修正系数与展宽。下表在另 303 种分子上评测，每个分子的权重相同。全部 640 种分子来自 OpenMolSpec 为评测留出的 QM9 结构。参考谱由 QM9S 同一优化构型的 Hessian 与响应导数计算。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>通道</p></th>
+<th class="head text-right"><p>原模型 → 入选模型的余弦相似度</p></th>
+<th class="head text-right"><p>余弦提升的配对 95% 区间</p></th>
+<th class="head text-right"><p>原模型 → 入选模型的强度 MAE</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>IR</p></td>
+<td class="text-right"><p>0.9621 → 0.9835</p></td>
+<td class="text-right"><p>[+0.0192, +0.0236]</p></td>
+<td class="text-right"><p>0.0100 → 0.0067</p></td>
+</tr>
+<tr class="row-odd"><td><p>拉曼</p></td>
+<td class="text-right"><p>0.9125 → 0.9850</p></td>
+<td class="text-right"><p>[+0.0682, +0.0764]</p></td>
+<td class="text-right"><p>0.0198 → 0.0070</p></td>
+</tr>
+</tbody>
+</table>
+<p>IR 采用逐振动模式强度，频率系数为 0.9975，高斯展宽 σ 为 2 cm⁻¹。 拉曼 采用逐振动模式强度，频率系数为 0.9975，高斯展宽 σ 为 2 cm⁻¹。</p>
+<p>QM9S 模式适用于仅含 H/C/N/O/F 且至多有 9 个重原子的分子。每个通道输出 500–4,000 cm⁻¹ 区间的 997 个归一化强度。计算参考谱采用 0.965 谐振频率系数和 10 cm⁻¹ 洛伦兹半高半宽，拉曼条件为 532 nm、298 K。基准使用原始优化坐标，网页会从 SMILES 生成坐标。网页也提供原始 openSpec 的 1,024 点模式。</p>
+<p><a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/#tool-ir-raman">在线预测</a> · <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/vibrational-forward-v2/openmolspec-qm9s.zip">下载配对评测集与 SDK</a></p>
+<p>解压后安装包内的 wheel、NumPy 和 SciPy，并在解压目录运行以下命令。安装原始模型运行环境和权重后，可加 <code class="docutils literal notranslate"><span class="pre">--qm9s-fresh</span> <span class="pre">--portable-root</span> <span class="pre">/path/to/openmolspec-studio-portable</span></code>，从存档的坐标重新运行四个网络。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--tasks<span class="w"> </span>vibrational.forward<span class="w"> </span>--qm9s-bundle<span class="w"> </span>benchmark<span class="w"> </span>--limit<span class="w"> </span><span class="m">10000</span><span class="w"> </span>--output<span class="w"> </span>qm9s-result.json
+</pre></div>
+</div>
+<p>压缩包收录 Zou 等人发布的 QM9S 的转换子集，包括优化构型、重建的参考谱及 OpenMolSpec 输出。<a class="reference external" href="https://figshare.com/articles/dataset/QM9S_dataset/24235333">QM9S 数据集</a> · <a class="reference external" href="https://doi.org/10.1038/s43588-023-00550-y">原论文</a> · <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</section>
 <section id="id1">
 <h2>输入是什么<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
