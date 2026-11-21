@@ -76,6 +76,7 @@
 <li class="toctree-l2"><a class="reference internal" href="benchmarks/production.html">生产基准结果</a></li>
 <li class="toctree-l2"><a class="reference internal" href="benchmarks/training.html">训练基准配置</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">正向光谱预测结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nmr">NMR 峰位余弦相似度</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">任务基准</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">训练基准配置</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">评测指标</a></li>
@@ -175,6 +176,73 @@
 </table>
 <p>¹H、¹³C 按 NMRSpec、NMRExp、NMRGym 顺序列出分子等权的峰集误差。漏峰或多峰每个按 1 ppm（H）或 10 ppm（C）计分。其余一维核磁依次列出单环境实测记录的逐观测、逐分子等权 MAE。²⁹Si 留出集只有 177 种结构。历版 NMR 模型沿用了同一批测试分子，导入模型的上游预训练重叠尚未独立核实。</p>
 <p>IR 和拉曼以量子化学计算谱为参考，覆盖只含 H/C/N/O/F、至多 9 个重原子的分子。每个 MS 模型另抽取 1,024 种至多 40 个重原子的结构复核。表中分别列出可在支持的采集条件下得到配对预测的分子数与抽样总数。 <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_benchmark_summary.json">逐项结果与评测记录</a></p>
+</section>
+<section id="nmr">
+<h2>NMR 峰位余弦相似度<a class="headerlink" href="#nmr" title="Link to this heading"></a></h2>
+<p>将预测和参考峰表中的每个峰都表示为单位面积的洛伦兹峰，在整个 ppm 轴上计算两条曲线的余弦相似度。所有峰都参与积分，包括多报或漏报的峰。该分数衡量峰位重合程度。实测峰强、多重峰裂分及线形未纳入评分。HSQC 在碳、氢两个维度同时计算，每张专家标注谱等权。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>任务</p></th>
+<th class="head text-right"><p>留出结构或谱数</p></th>
+<th class="head"><p>基准半高全宽（ppm）</p></th>
+<th class="head text-right"><p>0.5 倍宽度</p></th>
+<th class="head text-right"><p>基准宽度</p></th>
+<th class="head text-right"><p>2 倍宽度</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>¹H</p></td>
+<td class="text-right"><p>2,971</p></td>
+<td><p>0.05</p></td>
+<td class="text-right"><p>0.2775</p></td>
+<td class="text-right"><p><strong>0.4385</strong></p></td>
+<td class="text-right"><p>0.6127</p></td>
+</tr>
+<tr class="row-odd"><td><p>¹³C</p></td>
+<td class="text-right"><p>2,728</p></td>
+<td><p>1</p></td>
+<td class="text-right"><p>0.6499</p></td>
+<td class="text-right"><p><strong>0.7829</strong></p></td>
+<td class="text-right"><p>0.8806</p></td>
+</tr>
+<tr class="row-even"><td><p>³¹P</p></td>
+<td class="text-right"><p>4,248</p></td>
+<td><p>1</p></td>
+<td class="text-right"><p>0.3211</p></td>
+<td class="text-right"><p><strong>0.4623</strong></p></td>
+<td class="text-right"><p>0.6085</p></td>
+</tr>
+<tr class="row-odd"><td><p>¹⁹F</p></td>
+<td class="text-right"><p>14,330</p></td>
+<td><p>1</p></td>
+<td class="text-right"><p>0.5020</p></td>
+<td class="text-right"><p><strong>0.6374</strong></p></td>
+<td class="text-right"><p>0.7590</p></td>
+</tr>
+<tr class="row-even"><td><p>¹¹B</p></td>
+<td class="text-right"><p>1,517</p></td>
+<td><p>1</p></td>
+<td class="text-right"><p>0.5623</p></td>
+<td class="text-right"><p><strong>0.7185</strong></p></td>
+<td class="text-right"><p>0.8358</p></td>
+</tr>
+<tr class="row-odd"><td><p>²⁹Si</p></td>
+<td class="text-right"><p>177</p></td>
+<td><p>1</p></td>
+<td class="text-right"><p>0.3394</p></td>
+<td class="text-right"><p><strong>0.5142</strong></p></td>
+<td class="text-right"><p>0.6960</p></td>
+</tr>
+<tr class="row-even"><td><p>HSQC (¹³C, ¹H)</p></td>
+<td class="text-right"><p>479</p></td>
+<td><p>1 / 0.05</p></td>
+<td class="text-right"><p>0.0822</p></td>
+<td class="text-right"><p><strong>0.2115</strong></p></td>
+<td class="text-right"><p>0.4347</p></td>
+</tr>
+</tbody>
+</table>
+<p>¹H、¹³C 合并三个留出集后按分子等权。按 NMRSpec、NMRExp、NMRGym 单列，¹H 为 0.4417 / 0.4364 / 0.4373，¹³C 为 0.8568 / 0.8716 / 0.6397。³¹P、¹⁹F、¹¹B 和 ²⁹Si 的参考记录各只有一个化学环境。先在同一结构内对各次测量取平均，再对结构取平均。谱宽是本次评测设定，HSQC 两轴的宽度同时缩放。IR、拉曼和 MS/MS 的强度谱余弦见上表。<a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_cosine_similarity.json">完整精度、分数据集结果与来源校验值</a></p>
 </section>
 <section id="id3">
 <h2>任务基准<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>

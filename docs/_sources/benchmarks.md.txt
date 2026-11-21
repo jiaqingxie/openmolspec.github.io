@@ -35,6 +35,22 @@ All 10 enabled forward tasks are listed below. Each task card specifies its refe
 
 IR and Raman scores compare to quantum-chemical references on H/C/N/O/F molecules with at most nine heavy atoms. Each MS method was confirmed on a separate set of up to 40-heavy-atom structures with supported acquisition conditions. The reported fraction counts successful paired predictions among 1,024 newly sampled structures per method. [Machine-readable results](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_benchmark_summary.json)
 
+## NMR peak-position cosine similarity
+
+Each listed predicted and reference peak contributes a unit-area Lorentzian. The cosine integrates all peaks over the full ppm axis, including extra and missing peaks. It measures overlap in peak positions. Experimental intensities, multiplet splitting and measured line shapes are outside its scope. HSQC uses the joint carbon and proton coordinates with equal weight per expert spectrum.
+
+| Task | Held-out structures or spectra | Reference FWHM (ppm) | Cosine at half width | Cosine at reference width | Cosine at double width |
+| --- | ---: | --- | ---: | ---: | ---: |
+| ¹H | 2,971 | 0.05 | 0.2775 | **0.4385** | 0.6127 |
+| ¹³C | 2,728 | 1 | 0.6499 | **0.7829** | 0.8806 |
+| ³¹P | 4,248 | 1 | 0.3211 | **0.4623** | 0.6085 |
+| ¹⁹F | 14,330 | 1 | 0.5020 | **0.6374** | 0.7590 |
+| ¹¹B | 1,517 | 1 | 0.5623 | **0.7185** | 0.8358 |
+| ²⁹Si | 177 | 1 | 0.3394 | **0.5142** | 0.6960 |
+| HSQC (¹³C, ¹H) | 479 | 1 / 0.05 | 0.0822 | **0.2115** | 0.4347 |
+
+¹H and ¹³C pool the three held-out sets with equal weight per molecule. In NMRSpec, NMRExp and NMRGym order, the respective scores are 0.4417 / 0.4364 / 0.4373 for ¹H and 0.8568 / 0.8716 / 0.6397 for ¹³C. Each ³¹P, ¹⁹F, ¹¹B and ²⁹Si record has one distinct chemical environment. Measurements are averaged within each connectivity before averaging over structures. Widths are benchmark settings. Both HSQC widths change together. The forward results table above gives the intensity-spectrum cosine for IR, Raman and MS/MS. [Full precision, split results and source checksums](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_cosine_similarity.json)
+
 ## Task benchmarks
 
 | Family | Tasks | Contents |
