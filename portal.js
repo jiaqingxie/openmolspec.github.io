@@ -124,6 +124,11 @@
     el('p','tool-note','Atom indices start at zero in the input SMILES. Each row groups equivalent atoms of the selected nucleus.'));
    return;
   }
+  if(value?.model==='peak_spectrum'&&value.records?.[0]?.peaks){
+   const r=value.records[0],label=r.nucleus==='1H'?'¹H':'¹³C';
+   target.append(el('h3','',label+' chemical shifts'),resultTable([r.nucleus==='1H'?'Attached heavy-atom indices':'Carbon atom indices','Predicted peak / ppm'],r.peaks.map(p=>[p.atom_indices.join(', '),p.shift_ppm.toFixed(3)])),plot(r.prediction_ppm,null,r.nucleus,'ppm',true),el('p','tool-note','Indices start at zero in the input SMILES. Sites predicted to give an unresolved peak share one row.'));
+   return;
+  }
   if(value?.hsqc_measured){renderHsqc(value,target);return;}
   if(typeof value?.predicted_target_ppm==='number'){
    target.append(el('h3','','Cross-solvent reference estimate'),el('p','gap-number',value.predicted_target_ppm.toFixed(3)+' ppm'),
@@ -394,6 +399,9 @@
   if(nucleus){
    switchTab('structure');const task=$('#tool-task');task.value='nmr.forward.'+nucleus;task.onchange();
    $('.phosphorus-inputs button').click();$('#tool-workspace').scrollIntoView();return;
+  }
+  if(location.hash==='#tool-1h'||location.hash==='#tool-13c'){
+   switchTab('structure');const task=$('#tool-task');task.value=location.hash==='#tool-1h'?'nmr.forward.1H':'nmr.forward.13C';task.onchange();$('#tool-smiles').value='CCO';$('#tool-workspace').scrollIntoView();return;
   }
   if(location.hash!=='#tool-hsqc')return;
   switchTab('hsqc');
