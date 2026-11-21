@@ -345,7 +345,7 @@
   if(name==='structure'){
    if(workspace.dataset.exampleShifts?.startsWith('[')){
     const shifts=JSON.parse(workspace.dataset.exampleShifts);
-    output.replaceChildren(el('p','preview-spectrum-label','Recorded example · NMRNet'),
+    output.replaceChildren(el('p','preview-spectrum-label','Recorded example · NMRNet++ (five folds)'),
     el('h3','','Ethanol ¹³C shifts'),plot(shifts,null,'¹³C','ppm',true),
     el('p','preview-spectrum-values',shifts.map(shift=>shift.toFixed(2)).join('  /  ')+' ppm'));
    }
