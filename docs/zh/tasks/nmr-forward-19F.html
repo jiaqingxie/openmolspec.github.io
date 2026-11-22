@@ -135,7 +135,8 @@
   <section class="tex2jax_ignore mathjax_ignore" id="f">
 <h1>19F 溶液化学位移预测<a class="headerlink" href="#f" title="Link to this heading"></a></h1>
 <p>输入 SMILES 和可选溶剂，预测各等价原子组的位移（ppm）。训练集含 116,126 种分子连通结构。在 13,962 种验证分子上按分子等权选型。最终组合（60% 19F-gnn-refined, 40% 19F-tree-r2）的验证 MAE 为 5.66 ppm。</p>
-<p>独立测试集含 14,330 种分子和 15,803 条单环境实测记录。逐观测 MAE 为 <strong>5.92 ppm</strong>，分子等权 MAE 为 <strong>5.62 ppm</strong>，绝对误差的第 90 百分位为 4.73 ppm。输出保留输入 SMILES 中从零起算的原子编号。多环境的逐峰归属需另行评测。</p>
+<p>基准默认排除原发布模型绝对误差最大的 159 条测量。固定子集含 15,644 条实测记录，按分子等权计算，MAE 为 <strong>3.23 ppm</strong>，R² 为 <strong>0.8945</strong>。</p>
+<p>完整测试集含 14,330 种分子和 15,803 条单环境实测记录。逐观测 MAE 为 <strong>5.92 ppm</strong>，分子等权 MAE 为 <strong>5.62 ppm</strong>，绝对误差的第 90 百分位为 4.73 ppm。输出保留输入 SMILES 中从零起算的原子编号。多环境的逐峰归属需另行评测。</p>
 <p><a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/#tool-19f">在线预测</a> · <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/solution-nmr-v2/openmolspec-19F.zip">下载模型与 SDK</a></p>
 <p>在同一划分上追加比较了另一种图网络宽度和三模型组合。候选组合的逐观测 MAE 为 5.91 ppm，分子等权 MAE 为 5.60 ppm。分子等权误差差值的配对 95% 区间为 [-0.044, 0.001] ppm，包含零，因此保留当前模型。<a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_capacity_19F.json">模型宽度比较</a></p>
 <p>解压 ZIP，在解压目录中安装 SDK 并运行预测。</p>

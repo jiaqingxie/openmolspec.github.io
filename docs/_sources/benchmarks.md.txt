@@ -22,8 +22,8 @@ All 10 enabled forward tasks are listed below. Each task card specifies its refe
 | --- | --- | --- |
 | [¹H](tasks/nmr-forward-1H.md) | 1,000 / 991 / 980 | 0.350 / 0.339 / 0.417 ppm |
 | [¹³C](tasks/nmr-forward-13C.md) | 1,000 / 748 / 980 | 1.217 / 1.143 / 2.772 ppm |
-| [³¹P](tasks/nmr-forward-31P.md) | 6,693 measurements, 4,248 structures | 4.27 / 5.54 ppm |
-| [¹⁹F](tasks/nmr-forward-19F.md) | 15,803 measurements, 14,330 structures | 5.92 / 5.62 ppm |
+| [³¹P](tasks/nmr-forward-31P.md) | 6,626 measurements, 4,198 structures | 2.89 / 3.62 ppm |
+| [¹⁹F](tasks/nmr-forward-19F.md) | 15,644 measurements, 14,225 structures | 3.31 / 3.23 ppm |
 | [¹¹B](tasks/nmr-forward-11B.md) | 1,669 measurements, 1,517 structures | 1.24 / 1.28 ppm |
 | [²⁹Si](tasks/nmr-forward-29Si.md) | 187 measurements, 177 structures | 1.96 / 2.03 ppm |
 | [HSQC](tasks/nmr-hsqc-transpeaknet.md) | 479 spectra, 7,926 cross-peaks | ¹³C 2.005 ppm · ¹H 0.164 ppm |
@@ -35,6 +35,28 @@ All 10 enabled forward tasks are listed below. Each task card specifies its refe
 
 IR and Raman scores compare to quantum-chemical references on H/C/N/O/F molecules with at most nine heavy atoms. Each MS method was confirmed on a separate set of up to 40-heavy-atom structures with supported acquisition conditions. The reported fraction counts successful paired predictions among 1,024 newly sampled structures per method. [Machine-readable results](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_benchmark_summary.json)
 
+## NMR chemical-shift R²
+
+For ³¹P and ¹⁹F the default test excludes the 1% of measurements with the largest absolute shift errors from the original released predictor, rounding up per nucleus. Record IDs are fixed before sampling and reused for every model. This post hoc selection measures performance on the remaining observations. Whether the excluded measurements have annotation errors is unresolved. The table weights each connectivity equally. Use `--solution-reference full-test` in the source benchmark to score the full holdout. [Frozen exclusion list](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/assets/solution-test-exclusions.json)
+
+| Nucleus | Retained / total measurements | Subset MAE (ppm) | Full MAE (ppm) | Subset R² | Full R² |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| ³¹P | 6,626 / 6,693 | 3.625 | 5.538 | 0.9711 | 0.4811 |
+| ¹⁹F | 15,644 / 15,803 | 3.233 | 5.622 | 0.8945 | 0.2132 |
+
+On their complete test sets, the corresponding shift R² is 0.9448 for ¹¹B and 0.9383 for ²⁹Si.
+
+The primary ¹H and ¹³C results use all three complete holdouts. Within each spectrum, one-to-one matching minimizes total absolute shift error. The matched-peak MAE and R² give equal total weight to each molecule, and pooled R² uses one weighted mean over all matched shifts. Coverage averages the ratio of matched peaks to the larger of predicted and observed counts per spectrum. The first table reports the separate error that penalizes missing and extra peaks.
+
+| Corpus | ¹H R² | ¹H matched MAE (ppm) | ¹H coverage | ¹³C R² | ¹³C matched MAE (ppm) | ¹³C coverage |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| NMRSpec | 0.9228 | 0.298 | 86.7% | 0.9903 | 1.103 | 95.8% |
+| NMRExp | 0.9419 | 0.264 | 86.0% | 0.9946 | 0.951 | 96.5% |
+| NMRGym | 0.1537 | 0.731 | 78.6% | 0.9876 | 2.508 | 92.9% |
+| Pooled | 0.3315 | 0.429 | 83.8% | 0.9905 | 1.566 | 94.9% |
+
+The NMRGym ¹H references include peaks at 135.5 and 138.1 ppm. Their large residuals enter R² as squared errors. As a sensitivity check, we ranked complete spectra across all three corpora by within-spectrum matched MAE and removed the worst 1% per nucleus. Removing 30 proton spectra gave R² 0.9433 and MAE 0.274 ppm. Removing 28 carbon spectra gave R² 0.9941 and MAE 1.422 ppm. [Full results and per-corpus statistics](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_cosine_similarity.json)
+
 ## NMR peak-position cosine similarity
 
 Each listed predicted and reference peak contributes a unit-area Lorentzian. The cosine integrates all peaks over the full ppm axis, including extra and missing peaks. It measures overlap in peak positions. Experimental intensities, multiplet splitting and measured line shapes are outside its scope. HSQC uses the joint carbon and proton coordinates with equal weight per expert spectrum.
@@ -43,8 +65,8 @@ Each listed predicted and reference peak contributes a unit-area Lorentzian. The
 | --- | ---: | --- | ---: | ---: | ---: |
 | ¹H | 2,971 | 0.05 | 0.2775 | **0.4385** | 0.6127 |
 | ¹³C | 2,728 | 1 | 0.6499 | **0.7829** | 0.8806 |
-| ³¹P | 4,248 | 1 | 0.3211 | **0.4623** | 0.6085 |
-| ¹⁹F | 14,330 | 1 | 0.5020 | **0.6374** | 0.7590 |
+| ³¹P | 4,198 | 1 | 0.3250 | **0.4679** | 0.6160 |
+| ¹⁹F | 14,225 | 1 | 0.5062 | **0.6428** | 0.7654 |
 | ¹¹B | 1,517 | 1 | 0.5623 | **0.7185** | 0.8358 |
 | ²⁹Si | 177 | 1 | 0.3394 | **0.5142** | 0.6960 |
 | HSQC (¹³C, ¹H) | 479 | 1 / 0.05 | 0.0822 | **0.2115** | 0.4347 |

@@ -75,6 +75,7 @@
 <li class="toctree-l2"><a class="reference internal" href="benchmarks/production.html">Production benchmark results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="benchmarks/training.html">Training benchmark configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#forward-prediction-results">Forward prediction results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nmr-chemical-shift-r2">NMR chemical-shift R²</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nmr-peak-position-cosine-similarity">NMR peak-position cosine similarity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#task-benchmarks">Task benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#training-benchmark-configurations">Training benchmark configurations</a></li>
@@ -140,12 +141,12 @@
 <td><p>1.217 / 1.143 / 2.772 ppm</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="tasks/nmr-forward-31P.html"><span class="std std-doc">³¹P</span></a></p></td>
-<td><p>6,693 measurements, 4,248 structures</p></td>
-<td><p>4.27 / 5.54 ppm</p></td>
+<td><p>6,626 measurements, 4,198 structures</p></td>
+<td><p>2.89 / 3.62 ppm</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="tasks/nmr-forward-19F.html"><span class="std std-doc">¹⁹F</span></a></p></td>
-<td><p>15,803 measurements, 14,330 structures</p></td>
-<td><p>5.92 / 5.62 ppm</p></td>
+<td><p>15,644 measurements, 14,225 structures</p></td>
+<td><p>3.31 / 3.23 ppm</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="tasks/nmr-forward-11B.html"><span class="std std-doc">¹¹B</span></a></p></td>
 <td><p>1,669 measurements, 1,517 structures</p></td>
@@ -176,6 +177,86 @@
 <p>¹H and ¹³C use NMRSpec, NMRExp and NMRGym in that order. Their molecule-weighted error penalizes each unmatched peak by 1 ppm (H) or 10 ppm (C). Other 1D NMR rows give per-observation and per-connectivity MAE on single-environment measurements. The ²⁹Si test comprised 177 structures. The shortlisted NMR models have been compared on these same audit sets in successive releases. Upstream pretraining overlap for imported models has not been independently established.</p>
 <p>IR and Raman scores compare to quantum-chemical references on H/C/N/O/F molecules with at most nine heavy atoms. Each MS method was confirmed on a separate set of up to 40-heavy-atom structures with supported acquisition conditions. The reported fraction counts successful paired predictions among 1,024 newly sampled structures per method. <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_benchmark_summary.json">Machine-readable results</a></p>
 </section>
+<section id="nmr-chemical-shift-r2">
+<h2>NMR chemical-shift R²<a class="headerlink" href="#nmr-chemical-shift-r2" title="Link to this heading"></a></h2>
+<p>For ³¹P and ¹⁹F the default test excludes the 1% of measurements with the largest absolute shift errors from the original released predictor, rounding up per nucleus. Record IDs are fixed before sampling and reused for every model. This post hoc selection measures performance on the remaining observations. Whether the excluded measurements have annotation errors is unresolved. The table weights each connectivity equally. Use <code class="docutils literal notranslate"><span class="pre">--solution-reference</span> <span class="pre">full-test</span></code> in the source benchmark to score the full holdout. <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/assets/solution-test-exclusions.json">Frozen exclusion list</a></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Nucleus</p></th>
+<th class="head text-right"><p>Retained / total measurements</p></th>
+<th class="head text-right"><p>Subset MAE (ppm)</p></th>
+<th class="head text-right"><p>Full MAE (ppm)</p></th>
+<th class="head text-right"><p>Subset R²</p></th>
+<th class="head text-right"><p>Full R²</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>³¹P</p></td>
+<td class="text-right"><p>6,626 / 6,693</p></td>
+<td class="text-right"><p>3.625</p></td>
+<td class="text-right"><p>5.538</p></td>
+<td class="text-right"><p>0.9711</p></td>
+<td class="text-right"><p>0.4811</p></td>
+</tr>
+<tr class="row-odd"><td><p>¹⁹F</p></td>
+<td class="text-right"><p>15,644 / 15,803</p></td>
+<td class="text-right"><p>3.233</p></td>
+<td class="text-right"><p>5.622</p></td>
+<td class="text-right"><p>0.8945</p></td>
+<td class="text-right"><p>0.2132</p></td>
+</tr>
+</tbody>
+</table>
+<p>On their complete test sets, the corresponding shift R² is 0.9448 for ¹¹B and 0.9383 for ²⁹Si.</p>
+<p>The primary ¹H and ¹³C results use all three complete holdouts. Within each spectrum, one-to-one matching minimizes total absolute shift error. The matched-peak MAE and R² give equal total weight to each molecule, and pooled R² uses one weighted mean over all matched shifts. Coverage averages the ratio of matched peaks to the larger of predicted and observed counts per spectrum. The first table reports the separate error that penalizes missing and extra peaks.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Corpus</p></th>
+<th class="head text-right"><p>¹H R²</p></th>
+<th class="head text-right"><p>¹H matched MAE (ppm)</p></th>
+<th class="head text-right"><p>¹H coverage</p></th>
+<th class="head text-right"><p>¹³C R²</p></th>
+<th class="head text-right"><p>¹³C matched MAE (ppm)</p></th>
+<th class="head text-right"><p>¹³C coverage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NMRSpec</p></td>
+<td class="text-right"><p>0.9228</p></td>
+<td class="text-right"><p>0.298</p></td>
+<td class="text-right"><p>86.7%</p></td>
+<td class="text-right"><p>0.9903</p></td>
+<td class="text-right"><p>1.103</p></td>
+<td class="text-right"><p>95.8%</p></td>
+</tr>
+<tr class="row-odd"><td><p>NMRExp</p></td>
+<td class="text-right"><p>0.9419</p></td>
+<td class="text-right"><p>0.264</p></td>
+<td class="text-right"><p>86.0%</p></td>
+<td class="text-right"><p>0.9946</p></td>
+<td class="text-right"><p>0.951</p></td>
+<td class="text-right"><p>96.5%</p></td>
+</tr>
+<tr class="row-even"><td><p>NMRGym</p></td>
+<td class="text-right"><p>0.1537</p></td>
+<td class="text-right"><p>0.731</p></td>
+<td class="text-right"><p>78.6%</p></td>
+<td class="text-right"><p>0.9876</p></td>
+<td class="text-right"><p>2.508</p></td>
+<td class="text-right"><p>92.9%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pooled</p></td>
+<td class="text-right"><p>0.3315</p></td>
+<td class="text-right"><p>0.429</p></td>
+<td class="text-right"><p>83.8%</p></td>
+<td class="text-right"><p>0.9905</p></td>
+<td class="text-right"><p>1.566</p></td>
+<td class="text-right"><p>94.9%</p></td>
+</tr>
+</tbody>
+</table>
+<p>The NMRGym ¹H references include peaks at 135.5 and 138.1 ppm. Their large residuals enter R² as squared errors. As a sensitivity check, we ranked complete spectra across all three corpora by within-spectrum matched MAE and removed the worst 1% per nucleus. Removing 30 proton spectra gave R² 0.9433 and MAE 0.274 ppm. Removing 28 carbon spectra gave R² 0.9941 and MAE 1.422 ppm. <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_cosine_similarity.json">Full results and per-corpus statistics</a></p>
+</section>
 <section id="nmr-peak-position-cosine-similarity">
 <h2>NMR peak-position cosine similarity<a class="headerlink" href="#nmr-peak-position-cosine-similarity" title="Link to this heading"></a></h2>
 <p>Each listed predicted and reference peak contributes a unit-area Lorentzian. The cosine integrates all peaks over the full ppm axis, including extra and missing peaks. It measures overlap in peak positions. Experimental intensities, multiplet splitting and measured line shapes are outside its scope. HSQC uses the joint carbon and proton coordinates with equal weight per expert spectrum.</p>
@@ -205,18 +286,18 @@
 <td class="text-right"><p>0.8806</p></td>
 </tr>
 <tr class="row-even"><td><p>³¹P</p></td>
-<td class="text-right"><p>4,248</p></td>
+<td class="text-right"><p>4,198</p></td>
 <td><p>1</p></td>
-<td class="text-right"><p>0.3211</p></td>
-<td class="text-right"><p><strong>0.4623</strong></p></td>
-<td class="text-right"><p>0.6085</p></td>
+<td class="text-right"><p>0.3250</p></td>
+<td class="text-right"><p><strong>0.4679</strong></p></td>
+<td class="text-right"><p>0.6160</p></td>
 </tr>
 <tr class="row-odd"><td><p>¹⁹F</p></td>
-<td class="text-right"><p>14,330</p></td>
+<td class="text-right"><p>14,225</p></td>
 <td><p>1</p></td>
-<td class="text-right"><p>0.5020</p></td>
-<td class="text-right"><p><strong>0.6374</strong></p></td>
-<td class="text-right"><p>0.7590</p></td>
+<td class="text-right"><p>0.5062</p></td>
+<td class="text-right"><p><strong>0.6428</strong></p></td>
+<td class="text-right"><p>0.7654</p></td>
 </tr>
 <tr class="row-even"><td><p>¹¹B</p></td>
 <td class="text-right"><p>1,517</p></td>

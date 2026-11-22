@@ -2,7 +2,9 @@
 
 The validation-selected model predicts chemical shifts in ppm from a SMILES string and an optional solvent. The training partition contains 35,696 molecular connectivities. Models were selected by giving each of 4,372 validation connectivities equal weight. The selected combination (30% 31P-gnn-r1, 30% 31P-gnn-r2, 40% 31P-gnn-width96) achieved 5.00 ppm validation MAE.
 
-The independent test contains 4,248 connectivities and 6,693 measured single-environment observations. Observation MAE is **4.27 ppm**, molecule-weighted MAE is **5.54 ppm**, and the 90th percentile absolute error is 7.57 ppm. Each prediction lists the input atom indices belonging to that symmetry class. Multi-environment site assignments require separate validation.
+The default benchmark excludes 67 measurements selected by the original release's largest absolute errors. The fixed subset contains 6,626 measurements. With equal weight per connectivity, MAE is **3.62 ppm** and R² is **0.9711**.
+
+The complete test set contains 4,248 connectivities and 6,693 measured single-environment observations. Observation MAE is **4.27 ppm**, molecule-weighted MAE is **5.54 ppm**, and the 90th percentile absolute error is 7.57 ppm. Each prediction lists the input atom indices belonging to that symmetry class. Multi-environment site assignments require separate validation.
 
 [Run a structure online](https://jiaqingxie.github.io/openmolspec.github.io/#tool-31p) · [Download the model and SDK](https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/solution-31p-6f08e5689aa7/openmolspec-31P.zip)
 

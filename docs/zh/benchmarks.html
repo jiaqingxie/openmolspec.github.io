@@ -76,6 +76,7 @@
 <li class="toctree-l2"><a class="reference internal" href="benchmarks/production.html">生产基准结果</a></li>
 <li class="toctree-l2"><a class="reference internal" href="benchmarks/training.html">训练基准配置</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">正向光谱预测结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nmr-r2">NMR 化学位移 R²</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nmr">NMR 峰位余弦相似度</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">任务基准</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">训练基准配置</a></li>
@@ -141,12 +142,12 @@
 <td><p>1.217 / 1.143 / 2.772 ppm</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="tasks/nmr-forward-31P.html"><span class="std std-doc">³¹P</span></a></p></td>
-<td><p>6,693 条实测，4,248 种结构</p></td>
-<td><p>4.27 / 5.54 ppm</p></td>
+<td><p>6,626 条实测，4,198 种结构</p></td>
+<td><p>2.89 / 3.62 ppm</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="tasks/nmr-forward-19F.html"><span class="std std-doc">¹⁹F</span></a></p></td>
-<td><p>15,803 条实测，14,330 种结构</p></td>
-<td><p>5.92 / 5.62 ppm</p></td>
+<td><p>15,644 条实测，14,225 种结构</p></td>
+<td><p>3.31 / 3.23 ppm</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="tasks/nmr-forward-11B.html"><span class="std std-doc">¹¹B</span></a></p></td>
 <td><p>1,669 条实测，1,517 种结构</p></td>
@@ -177,6 +178,86 @@
 <p>¹H、¹³C 按 NMRSpec、NMRExp、NMRGym 顺序列出分子等权的峰集误差。漏峰或多峰每个按 1 ppm（H）或 10 ppm（C）计分。其余一维核磁依次列出单环境实测记录的逐观测、逐分子等权 MAE。²⁹Si 留出集只有 177 种结构。历版 NMR 模型沿用了同一批测试分子，导入模型的上游预训练重叠尚未独立核实。</p>
 <p>IR 和拉曼以量子化学计算谱为参考，覆盖只含 H/C/N/O/F、至多 9 个重原子的分子。每个 MS 模型另抽取 1,024 种至多 40 个重原子的结构复核。表中分别列出可在支持的采集条件下得到配对预测的分子数与抽样总数。 <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_benchmark_summary.json">逐项结果与评测记录</a></p>
 </section>
+<section id="nmr-r2">
+<h2>NMR 化学位移 R²<a class="headerlink" href="#nmr-r2" title="Link to this heading"></a></h2>
+<p>³¹P 和 ¹⁹F 的默认测试集分别排除原发布模型绝对位移误差最大的 1% 实测记录（向上取整）。记录编号在抽样前固定，后续模型沿用同一名单。这种按模型误差事后筛选的子集衡量其余记录上的表现，极端记录是否存在标注问题仍待核实。下表按分子等权；源码评测器支持用 <code class="docutils literal notranslate"><span class="pre">--solution-reference</span> <span class="pre">full-test</span></code> 复现完整集。 <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/assets/solution-test-exclusions.json">固定排除名单</a></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>核种</p></th>
+<th class="head text-right"><p>保留 / 全部测量</p></th>
+<th class="head text-right"><p>固定子集 MAE（ppm）</p></th>
+<th class="head text-right"><p>完整集 MAE（ppm）</p></th>
+<th class="head text-right"><p>固定子集 R²</p></th>
+<th class="head text-right"><p>完整集 R²</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>³¹P</p></td>
+<td class="text-right"><p>6,626 / 6,693</p></td>
+<td class="text-right"><p>3.625</p></td>
+<td class="text-right"><p>5.538</p></td>
+<td class="text-right"><p>0.9711</p></td>
+<td class="text-right"><p>0.4811</p></td>
+</tr>
+<tr class="row-odd"><td><p>¹⁹F</p></td>
+<td class="text-right"><p>15,644 / 15,803</p></td>
+<td class="text-right"><p>3.233</p></td>
+<td class="text-right"><p>5.622</p></td>
+<td class="text-right"><p>0.8945</p></td>
+<td class="text-right"><p>0.2132</p></td>
+</tr>
+</tbody>
+</table>
+<p>同一口径下，完整集 ¹¹B 和 ²⁹Si 的位移 R² 分别为 0.9448、0.9383。</p>
+<p>¹H 和 ¹³C 的主结果使用三个完整留出集。在每张谱内，将预测峰与实测峰一对一配对，使绝对位移误差之和最小。匹配峰的 MAE 和 R² 按分子等权，合并 R² 使用全部配对峰的加权均值。覆盖率为每张谱匹配峰数除以预测与实测峰数中的较大值，再对分子取平均。含漏峰、多峰惩罚的峰集误差单独计分，见首表。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>数据集</p></th>
+<th class="head text-right"><p>¹H R²</p></th>
+<th class="head text-right"><p>¹H 匹配峰 MAE（ppm）</p></th>
+<th class="head text-right"><p>¹H 覆盖率</p></th>
+<th class="head text-right"><p>¹³C R²</p></th>
+<th class="head text-right"><p>¹³C 匹配峰 MAE（ppm）</p></th>
+<th class="head text-right"><p>¹³C 覆盖率</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NMRSpec</p></td>
+<td class="text-right"><p>0.9228</p></td>
+<td class="text-right"><p>0.298</p></td>
+<td class="text-right"><p>86.7%</p></td>
+<td class="text-right"><p>0.9903</p></td>
+<td class="text-right"><p>1.103</p></td>
+<td class="text-right"><p>95.8%</p></td>
+</tr>
+<tr class="row-odd"><td><p>NMRExp</p></td>
+<td class="text-right"><p>0.9419</p></td>
+<td class="text-right"><p>0.264</p></td>
+<td class="text-right"><p>86.0%</p></td>
+<td class="text-right"><p>0.9946</p></td>
+<td class="text-right"><p>0.951</p></td>
+<td class="text-right"><p>96.5%</p></td>
+</tr>
+<tr class="row-even"><td><p>NMRGym</p></td>
+<td class="text-right"><p>0.1537</p></td>
+<td class="text-right"><p>0.731</p></td>
+<td class="text-right"><p>78.6%</p></td>
+<td class="text-right"><p>0.9876</p></td>
+<td class="text-right"><p>2.508</p></td>
+<td class="text-right"><p>92.9%</p></td>
+</tr>
+<tr class="row-odd"><td><p>全部</p></td>
+<td class="text-right"><p>0.3315</p></td>
+<td class="text-right"><p>0.429</p></td>
+<td class="text-right"><p>83.8%</p></td>
+<td class="text-right"><p>0.9905</p></td>
+<td class="text-right"><p>1.566</p></td>
+<td class="text-right"><p>94.9%</p></td>
+</tr>
+</tbody>
+</table>
+<p>NMRGym 的 ¹H 参考峰含 135.5 和 138.1 ppm 两个值，这些大残差在 R² 中按平方计入。作为敏感性分析，合并三个库后按每张谱的匹配峰 MAE 排序，分别去掉最差的 1% 整谱。¹H 去掉 30 张后，R² 为 0.9433、MAE 为 0.274 ppm；¹³C 去掉 28 张后，R² 为 0.9941、MAE 为 1.422 ppm。 <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_cosine_similarity.json">完整结果与分库统计</a></p>
+</section>
 <section id="nmr">
 <h2>NMR 峰位余弦相似度<a class="headerlink" href="#nmr" title="Link to this heading"></a></h2>
 <p>将预测和参考峰表中的每个峰都表示为单位面积的洛伦兹峰，在整个 ppm 轴上计算两条曲线的余弦相似度。所有峰都参与积分，包括多报或漏报的峰。该分数衡量峰位重合程度。实测峰强、多重峰裂分及线形未纳入评分。HSQC 在碳、氢两个维度同时计算，每张专家标注谱等权。</p>
@@ -206,18 +287,18 @@
 <td class="text-right"><p>0.8806</p></td>
 </tr>
 <tr class="row-even"><td><p>³¹P</p></td>
-<td class="text-right"><p>4,248</p></td>
+<td class="text-right"><p>4,198</p></td>
 <td><p>1</p></td>
-<td class="text-right"><p>0.3211</p></td>
-<td class="text-right"><p><strong>0.4623</strong></p></td>
-<td class="text-right"><p>0.6085</p></td>
+<td class="text-right"><p>0.3250</p></td>
+<td class="text-right"><p><strong>0.4679</strong></p></td>
+<td class="text-right"><p>0.6160</p></td>
 </tr>
 <tr class="row-odd"><td><p>¹⁹F</p></td>
-<td class="text-right"><p>14,330</p></td>
+<td class="text-right"><p>14,225</p></td>
 <td><p>1</p></td>
-<td class="text-right"><p>0.5020</p></td>
-<td class="text-right"><p><strong>0.6374</strong></p></td>
-<td class="text-right"><p>0.7590</p></td>
+<td class="text-right"><p>0.5062</p></td>
+<td class="text-right"><p><strong>0.6428</strong></p></td>
+<td class="text-right"><p>0.7654</p></td>
 </tr>
 <tr class="row-even"><td><p>¹¹B</p></td>
 <td class="text-right"><p>1,517</p></td>
