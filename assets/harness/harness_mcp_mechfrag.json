@@ -1,0 +1,366 @@
+{
+  "completed": true,
+  "transport": "stdio",
+  "server": {
+    "name": "OpenMolSpec v1.0",
+    "title": null,
+    "version": "1.0",
+    "description": null,
+    "website_url": null,
+    "icons": null
+  },
+  "tools": [
+    "spectra_tasks",
+    "spectra_datasets",
+    "spectra_validate",
+    "spectra_predict"
+  ],
+  "discovery_call": true,
+  "valid_request_call": true,
+  "invalid_request_rejected": true,
+  "model_inference_performed": true,
+  "inference": {
+    "version": "1.0",
+    "task": "ms.annotation.mechfrag",
+    "harness": "MechFrag-MS",
+    "request_sha256": "f5e413f918a34d1f0721ce07c68b9a4f1770d7d9b4fa299731fdf7cf76cff3a7",
+    "completed": true,
+    "calls": [
+      {
+        "index": 0,
+        "status": "passed",
+        "elapsed_seconds": 20.62247777217999,
+        "output_sha256": "02aad14d36b0905c987238e831961dfd266745a212f7b0166c26f84cb45425fd",
+        "prediction_sha256": "02aad14d36b0905c987238e831961dfd266745a212f7b0166c26f84cb45425fd"
+      }
+    ],
+    "result": {
+      "smiles": "CCC(=NOC/C=C/Cl)C1=C(O)CC(C2CCOCC2)CC1=O",
+      "atom_index_basis": "zero-based RDKit atom order of the input SMILES",
+      "checkpoint_sha256": "4efd945c5eefacc64d6941969a06cfc0f89dd67c87115b1206b1e1805753295c",
+      "peaks": [
+        {
+          "observed_mz": 138.0901,
+          "match": {
+            "atom_indices": [
+              0,
+              1,
+              2,
+              3,
+              9,
+              10,
+              11,
+              12,
+              13,
+              20
+            ],
+            "calculated_mz": 138.091340424,
+            "ppm_error": 8.982714908616542,
+            "h_shift": 1,
+            "ion_mode": "charge_only",
+            "candidate_ions": 6
+          }
+        },
+        {
+          "observed_mz": 164.0692,
+          "match": {
+            "atom_indices": [
+              0,
+              1,
+              2,
+              3,
+              9,
+              10,
+              11,
+              12,
+              13,
+              20,
+              21,
+              22
+            ],
+            "calculated_mz": 164.07060498,
+            "ppm_error": 8.563337908748172,
+            "h_shift": -1,
+            "ion_mode": "charge_only",
+            "candidate_ions": 8
+          }
+        },
+        {
+          "observed_mz": 166.085,
+          "match": {
+            "atom_indices": [
+              0,
+              1,
+              2,
+              3,
+              9,
+              10,
+              11,
+              12,
+              13,
+              20,
+              21,
+              22
+            ],
+            "calculated_mz": 166.086255044,
+            "ppm_error": 7.556636661974837,
+            "h_shift": 1,
+            "ion_mode": "charge_only",
+            "candidate_ions": 8
+          }
+        },
+        {
+          "observed_mz": 167.0882,
+          "match": null
+        },
+        {
+          "observed_mz": 204.1367,
+          "match": {
+            "atom_indices": [
+              0,
+              1,
+              2,
+              3,
+              9,
+              10,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20
+            ],
+            "calculated_mz": 204.138290616,
+            "ppm_error": 7.791915907407357,
+            "h_shift": -1,
+            "ion_mode": "charge_only",
+            "candidate_ions": 10
+          }
+        },
+        {
+          "observed_mz": 208.1321,
+          "match": {
+            "atom_indices": [
+              0,
+              1,
+              2,
+              3,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19
+            ],
+            "calculated_mz": 208.133205236,
+            "ppm_error": 5.310262088360164,
+            "h_shift": 0,
+            "ion_mode": "charge_only",
+            "candidate_ions": 16
+          }
+        },
+        {
+          "observed_mz": 222.1119,
+          "match": {
+            "atom_indices": [
+              2,
+              3,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "calculated_mz": 222.112469792,
+            "ppm_error": 2.565337561929853,
+            "h_shift": 1,
+            "ion_mode": "charge_only",
+            "candidate_ions": 6
+          }
+        },
+        {
+          "observed_mz": 222.1481,
+          "match": {
+            "atom_indices": [
+              0,
+              1,
+              2,
+              3,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20
+            ],
+            "calculated_mz": 222.1488553,
+            "ppm_error": 3.3999840647238218,
+            "h_shift": 0,
+            "ion_mode": "charge_only",
+            "candidate_ions": 20
+          }
+        },
+        {
+          "observed_mz": 223.1525,
+          "match": null
+        },
+        {
+          "observed_mz": 232.1324,
+          "match": {
+            "atom_indices": [
+              0,
+              1,
+              2,
+              3,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "calculated_mz": 232.133205236,
+            "ppm_error": 3.468865182194512,
+            "h_shift": -2,
+            "ion_mode": "charge_only",
+            "candidate_ions": 20
+          }
+        },
+        {
+          "observed_mz": 250.1434,
+          "match": {
+            "atom_indices": [
+              0,
+              1,
+              2,
+              3,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "calculated_mz": 250.14376992,
+            "ppm_error": 1.4788317421012787,
+            "h_shift": -1,
+            "ion_mode": "retained_adduct",
+            "candidate_ions": 14
+          }
+        },
+        {
+          "observed_mz": 251.1489,
+          "match": null
+        },
+        {
+          "observed_mz": 252.1577,
+          "match": {
+            "atom_indices": [
+              0,
+              1,
+              2,
+              3,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "calculated_mz": 252.159419984,
+            "ppm_error": 6.821064754336731,
+            "h_shift": 2,
+            "ion_mode": "charge_only",
+            "candidate_ions": 14
+          }
+        },
+        {
+          "observed_mz": 342.1468,
+          "match": {
+            "atom_indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "calculated_mz": 342.14666237999995,
+            "ppm_error": -0.4022250099438514,
+            "h_shift": 0,
+            "ion_mode": "retained_adduct",
+            "candidate_ions": 2
+          }
+        }
+      ],
+      "matched": 11
+    },
+    "repeat_outputs_equal": null,
+    "repeat_predictions_equal": null,
+    "repeat_results": [],
+    "validation_scope": "request contract, execution and repeated serialized outputs; scientific accuracy requires reference data"
+  }
+}

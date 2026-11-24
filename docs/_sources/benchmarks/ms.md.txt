@@ -2,6 +2,12 @@
 
 The sections below give each task definition and the results from its recorded evaluation runs. Open the task guide for model calls and full input/output examples.
 
+## MS/MS fragment mass coverage
+
+On the same 1,741 observed peaks from 55 MassSpecGym spectra, MechFrag-MS matched 62.26% and MAGMa matched 58.13% within 10 ppm. 9 additional spectra lacked acquisition conditions. Scoring fragment atom identities would require experimental labels.
+
+[Download the metrics and source fingerprints](../assets/benchmarks/heldout-tasks.json)
+
 ## MS/MS prediction with GLACIER
 
 `ms.forward.glacier`
@@ -53,6 +59,25 @@ Run settings: `dataset="recorded evaluation"`; `counts={"passed": 2}`
 | recorded evaluation | recorded model | matched_peak_fraction | 0.568182 |
 | recorded evaluation | recorded model | annotated_spectra | 2 |
 | recorded evaluation | recorded model | checked_fragments | 1534 |
+
+## MS/MS fragment candidates with MechFrag-MS
+
+`ms.annotation.mechfrag`
+
+Find atom-indexed fragments consistent with observed product ion masses.
+
+Report observed-peak mass coverage at 10 ppm. Experimental atom masks would be needed to measure structural accuracy.
+
+[Task guide](../tasks/ms-annotation-mechfrag.md) · [Tutorial](../notebooks/ms-annotation-mechfrag.ipynb) · [Predictions](../assets/examples/ms-annotation-mechfrag.json)
+
+Run settings: `dataset="MassSpecGym / 10 ppm"`
+
+| Dataset / scope | Model / variant | Metric | Value |
+| --- | --- | --- | ---: |
+| MassSpecGym / 10 ppm | recorded model | variant | balanced_neutral_context |
+| MassSpecGym / 10 ppm | recorded model | peaks | 1741 |
+| MassSpecGym / 10 ppm | recorded model | matched_fraction | 0.622631 |
+| MassSpecGym / 10 ppm | recorded model | magma_matched_fraction_same_peaks | 0.581275 |
 
 
 ## References

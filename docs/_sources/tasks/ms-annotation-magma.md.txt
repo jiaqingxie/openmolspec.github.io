@@ -1,6 +1,12 @@
 # MS/MS fragment annotation
 
+[Mass coverage on identical observed peaks](../benchmarks/ms.md) compares MechFrag-MS and MAGMa at 10 ppm.
+
 Find molecular fragments that explain the measured MS/MS peaks.
+
+## Expanded spectrum benchmark
+
+MAGMa annotated 64 MassSpecGym test spectra at 10 ppm with a 24-heavy-atom limit. The benchmark checked 70,498 candidate fragment mappings against the parent structure. At least one candidate matched the mass of 49.80% of observed peaks. Fragment identities require independent labels to score structural correctness.
 
 ## What goes in
 

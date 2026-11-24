@@ -61,12 +61,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../data/index.html">数据</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">按谱型浏览任务</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="nmr.html">核磁共振 NMR</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H 实验峰列表预测</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 化学位移预测</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si 化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F 溶液化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P 溶液化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B 溶液化学位移预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si 溶液化学位移预测</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">谱到结构检索：¹H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">结构到谱检索：¹H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">从 ¹H NMR 解析结构</a></li>
@@ -136,9 +136,14 @@
   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>峰到原子的指认<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="../benchmarks/nmr.html"><span class="std std-doc">扩展 NMR 评测</span></a>收录了全部留出实验位点指认、全部符合条件的跨溶剂配对，以及 2,048 候选检索。</p>
 <p>将实测 NMR 峰与已知分子结构中的原子对应起来。</p>
 <section id="id2">
-<h2>输入是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<h2>实测位点真值<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>在按连通结构划分的 NMRShiftDB 测试数据中，每种核各抽 256 种分子。¹H 的 280 张谱共 2,009 个实测峰，正确指认 1,289 个（64.2%）。¹³C 的 275 张谱共 2,576 个实测峰，正确指认 2,131 个（82.7%）。¹H 按所连重原子计分，接受拓扑对称等价位点；漏配和构象生成失败计入分母。上游 NMRNet 权重的训练集重叠尚未核实。</p>
+</section>
+<section id="id3">
+<h2>输入是什么<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -158,8 +163,8 @@
 </tbody>
 </table>
 </section>
-<section id="id3">
-<h2>输出是什么<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="id4">
+<h2>输出是什么<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -176,8 +181,8 @@
 </tbody>
 </table>
 </section>
-<section id="id4">
-<h2>真实运行案例<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id5">
+<h2>真实运行案例<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <p>下面展示示例的输入、预测与参考。下载 JSON 可获取完整数值数组及更多示例。</p>
 <p><img alt="nmr.assignment actual results" src="../_images/nmr-assignment.png" /></p>
 <p><a class="reference download internal" download="" href="../_downloads/16c8ac198e364a6cf51ca17e0c3736da/nmr-assignment.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/760b7e71497aa126fe450677a123bee7/nmr-assignment.png"><span class="xref download myst">PNG</span></a> · <a class="reference download internal" download="" href="../_downloads/ec70670ac0d381b4476925ce03d0e34e/nmr-assignment.json"><span class="xref download myst">Full input/output JSON</span></a></p>
@@ -297,8 +302,8 @@
 </div>
 </details>
 </section>
-<section id="id5">
-<h2>实际评测结果<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="id6">
+<h2>较早的无原子标签评测<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
@@ -336,21 +341,21 @@
 </tbody>
 </table>
 </section>
-<section id="id6">
-<h2>模型与方法<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
-<p>先用 NMRNet 预测逐原子化学位移，再合并对称相关位点，通过最小代价匹配把实测峰与预测位点对应。输出包含原子编号、预测位移、匹配残差和备选指认。</p>
-<p>用峰覆盖率和匹配峰 MAE 汇总指认结果。</p>
-</section>
 <section id="id7">
-<h2>复现方式<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<h2>模型与方法<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p>先用 NMRNet 预测逐原子化学位移，再合并对称相关位点，通过最小代价匹配把实测峰与预测位点对应。输出包含原子编号、预测位移、匹配残差和备选指认。</p>
+<p>用实验峰到位点的真值计算正确率，未指认峰计错。自有位点模型接受对称等价位点。</p>
+</section>
+<section id="id8">
+<h2>复现方式<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
 <p><a class="reference internal" href="../notebooks/nmr-assignment.html"><span class="std std-doc">Notebook with executed figures</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick Start</span></a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tasks<span class="w"> </span>nmr.assignment<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/nmr-assignment-new.json
 </pre></div>
 </div>
 </section>
-<section id="id8">
-<h2>调用模型与微调<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<section id="id9">
+<h2>调用模型与微调<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">NMRNet</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">NMRNet</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">'/path/to/models'</span><span class="p">,</span> <span class="n">nucleus</span><span class="o">=</span><span class="s1">'13C'</span><span class="p">,</span>
     <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/nmr-env/bin/python'</span><span class="p">)</span>
@@ -367,8 +372,8 @@
 </details>
 <p><a class="reference external" href="https://github.com/Colin-Jay/NMRNet">Model implementation / 模型实现</a> · <a class="reference internal" href="../model-audit.html"><span class="std std-doc">Model review / 模型检查</span></a></p>
 </section>
-<section id="id9">
-<h2>参考文献<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<section id="id10">
+<h2>参考文献<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. <a class="reference external" href="https://doi.org/10.1038/s43588-025-00783-z">Source</a></p></li>
 <li><p>OpenDataLab. WanJuan MolSpectra, version 1.0.3. Experimental molecular spectroscopy dataset. <a class="reference external" href="https://opendatalab.com/">Source</a></p></li>

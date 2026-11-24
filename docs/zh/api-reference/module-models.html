@@ -477,7 +477,8 @@ checkpoint paths, runtime interpreter and device settings.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>inputs</strong> (<em>dict</em>) -- <code class="docutils literal notranslate"><span class="pre">ir</span></code> and <code class="docutils literal notranslate"><span class="pre">raman</span></code> are 1024-point intensity arrays on the
 400–4000 cm⁻¹ grid; <code class="docutils literal notranslate"><span class="pre">nmr_h</span></code> and <code class="docutils literal notranslate"><span class="pre">nmr_c</span></code> contain shifts in ppm.</p></li>
-<li><p><strong>allow_missing_modalities</strong> (<em>bool</em><em>, </em><em>default False</em>) -- Set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to evaluate a selected subset of channels.</p></li>
+<li><p><strong>allow_missing_modalities</strong> (<em>bool</em><em>, </em><em>default False</em>) -- IR alone, Raman alone or both use their dedicated vibrational regressor.
+Set this flag for ablations that include a partial NMR input.</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回<span class="colon">:</span></dt>
@@ -549,10 +550,10 @@ and matching checkpoints.</p></li>
 </ul>
 </dd>
 </dl>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L339">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L340">Source code</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="openmolspec.model.Vib2Mol.predict">
-<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_missing_modalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.Vib2Mol.predict" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_missing_modalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranking</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'beam'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimate_missing_nmr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.Vib2Mol.predict" title="Link to this definition"></a></dt>
 <dd><p>Generate molecular structures from IR, Raman and NMR spectra.</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数<span class="colon">:</span></dt>
@@ -560,23 +561,38 @@ and matching checkpoints.</p></li>
 <li><p><strong>inputs</strong> (<em>dict</em>) -- Spectral arrays with keys <code class="docutils literal notranslate"><span class="pre">ir</span></code>, <code class="docutils literal notranslate"><span class="pre">raman</span></code>, <code class="docutils literal notranslate"><span class="pre">nmr_h</span></code> and <code class="docutils literal notranslate"><span class="pre">nmr_c</span></code>;
 see <a class="reference internal" href="#openmolspec.model.GapModel.predict" title="openmolspec.model.GapModel.predict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GapModel.predict()</span></code></a> for their units and shapes.</p></li>
 <li><p><strong>top_k</strong> (<em>int</em><em>, </em><em>default 10</em>) -- Number of candidates to return, between 1 and 10.</p></li>
-<li><p><strong>allow_missing_modalities</strong> (<em>bool</em><em>, </em><em>default False</em>) -- Enable inference on a subset of spectral channels.</p></li>
+<li><p><strong>allow_missing_modalities</strong> (<em>bool</em><em>, </em><em>default False</em>) -- Permit additional missing-channel ablations.</p></li>
+<li><p><strong>estimate_missing_nmr</strong> (<em>bool</em><em>, </em><em>default True</em>) -- With only IR and Raman, estimate chemical shifts from the two spectra
+before decoding. The result includes the estimated shifts in ppm.
+Combine False with allow_missing_modalities=True for the unadapted decoder.</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回<span class="colon">:</span></dt>
 <dd class="field-even"><p>Canonical candidate structures, decoding/matching scores and
-checkpoint metadata, using beam size 10 and ITM reranking.</p>
+checkpoint metadata. The decoder ranks canonical valid beams by default.
+Pass ranking=&quot;itm&quot; to rank by the matching model instead.</p>
 </dd>
 <dt class="field-odd">返回类型<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L354">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L355">Source code</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="openmolspec.model.Vib2Mol.predict_native">
+<span class="sig-name descname"><span class="pre">predict_native</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.Vib2Mol.predict_native" title="Link to this definition"></a></dt>
+<dd><p>Generate with Xinyu Lu's VB-Mols IR+Raman checkpoint and a supplied formula.</p>
+<p>The checkout must contain the author's model code, tokenizers and released
+MMM generation weights under checkpoints/mols. Supply 1024 points per
+channel on the 400–4000 cm⁻¹ grid. Results include decoded order and
+formula agreement for each valid candidate.</p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L386">Source code</a></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="openmolspec.model.Vib2Mol.retrieve">
-<span class="sig-name descname"><span class="pre">retrieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidates</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rerank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_missing_modalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.Vib2Mol.retrieve" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">retrieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidates</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rerank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_missing_modalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimate_missing_nmr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shortlist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.Vib2Mol.retrieve" title="Link to this definition"></a></dt>
 <dd><p>Rank a supplied molecular library against a spectral query.</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数<span class="colon">:</span></dt>
@@ -587,6 +603,8 @@ checkpoint metadata, using beam size 10 and ITM reranking.</p>
 <li><p><strong>rerank</strong> (<em>bool</em><em>, </em><em>default False</em>) -- Use the ITM matching head when <code class="docutils literal notranslate"><span class="pre">True</span></code>; otherwise use embedding
 cosine similarity.</p></li>
 <li><p><strong>allow_missing_modalities</strong> (<em>bool</em><em>, </em><em>default False</em>) -- Enable inference with selected channels omitted.</p></li>
+<li><p><strong>estimate_missing_nmr</strong> (<em>bool</em><em>, </em><em>default False</em>) -- Estimate H/C shifts from measured IR and Raman with the fitted adapter.</p></li>
+<li><p><strong>shortlist</strong> (<em>int</em><em> or </em><em>None</em>) -- Apply ITM to this many embedding-ranked candidates. With None, score the full supplied library.</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回<span class="colon">:</span></dt>
@@ -597,7 +615,7 @@ and their scores in descending order.</p>
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L378">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L397">Source code</a></p>
 </dd></dl>
 
 <dl class="py method">
@@ -661,7 +679,7 @@ checkpoint paths, runtime interpreter and device settings.</p>
 </ul>
 </dd>
 </dl>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L407">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L434">Source code</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="openmolspec.model.MSPredictor.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">smiles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adduct</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collision_energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instrument</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precursor_mz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openmolspec.model.MSPredictor.predict" title="Link to this definition"></a></dt>
@@ -683,7 +701,7 @@ checkpoint paths, runtime interpreter and device settings.</p>
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L436">Source code</a></p>
+<p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L463">Source code</a></p>
 </dd></dl>
 
 <dl class="py method">

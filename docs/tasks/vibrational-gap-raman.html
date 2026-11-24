@@ -69,6 +69,8 @@
 <li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval.html">Structure retrieval: IR + Raman</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vibrational-generation.html">Structure generation: IR + Raman</a></li>
 <li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking.html">Candidate reranking: IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-ir.html">IR spectrum-to-structure retrieval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-raman.html">Raman spectrum-to-structure retrieval</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="multimodal.html">Multimodal spectroscopy</a></li>
@@ -124,7 +126,12 @@
   
   <section class="tex2jax_ignore mathjax_ignore" id="homolumo-gap-from-raman">
 <h1>HOMO–LUMO gap from Raman<a class="headerlink" href="#homolumo-gap-from-raman" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="../benchmarks/vibrational.html"><span class="std std-doc">Gap benchmark</span></a> with 1,024 four-spectrum examples and 3,381 examples for the partial-input models.</p>
 <p>Estimate the molecular HOMO–LUMO energy gap from spectra.</p>
+<section id="vibrational-only-regression">
+<h2>Vibrational-only regression<a class="headerlink" href="#vibrational-only-regression" title="Link to this heading"></a></h2>
+<p>With Raman and no NMR, the software selects a regressor fitted to these vibrational inputs. A new connectivity-disjoint split of the packaged theoretical spectra contains 11,568 training, 1,651 validation and 3,381 test molecules. Test MAE is 0.318 eV versus 0.749 eV for the training mean. The original 128 queries were separately reserved and give 0.327 eV MAE. The historical figures below show the four-channel checkpoint with inputs masked.</p>
+</section>
 <section id="what-goes-in">
 <h2>What goes in<a class="headerlink" href="#what-goes-in" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
@@ -137,8 +144,8 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IR</span> <span class="pre">/</span> <span class="pre">Raman</span></code></p></td>
 <td><p>1024 intensity samples per visible channel, ordered 400→4000 cm⁻¹, using the checkpoint normalization.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">missing</span> <span class="pre">channels</span></code></p></td>
-<td><p>The input mask selects visible channels from the shared four-modal checkpoint.</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">selection</span></code></p></td>
+<td><p>The observed vibrational channels select the corresponding fitted gap regressor.</p></td>
 </tr>
 </tbody>
 </table>
@@ -191,8 +198,8 @@
 </div>
 </details>
 </section>
-<section id="actual-evaluation-results">
-<h2>Actual evaluation results<a class="headerlink" href="#actual-evaluation-results" title="Link to this heading"></a></h2>
+<section id="earlier-evaluation-of-the-four-channel-model-with-missing-spectra">
+<h2>Earlier evaluation of the four-channel model with missing spectra<a class="headerlink" href="#earlier-evaluation-of-the-four-channel-model-with-missing-spectra" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
@@ -242,7 +249,7 @@
 </section>
 <section id="model-and-method">
 <h2>Model and method<a class="headerlink" href="#model-and-method" title="Link to this heading"></a></h2>
-<p>The openSpec spectral Transformer encodes the selected channels and its regression head predicts the energy gap. The prediction is returned in eV.</p>
+<p>A ridge regressor fits pooled vibrational intensities and similarities to reference spectra. The model for the observed channels predicts the energy gap in eV.</p>
 <p>Report MAE and RMSE in eV.</p>
 </section>
 <section id="reproduce">

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>多谱 → 结构（SpectraLLM） &mdash; OpenMolSpec v1.0</title>
+  <title>Structure generation with SpectraLLM &mdash; OpenMolSpec v1.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
@@ -24,8 +24,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Models and training" href="../model-audit.html" />
-    <link rel="prev" title="谱学问答 / 推理" href="spectroscopy-qa.html" /> 
+    <link rel="next" title="Deferred tasks" href="deferred.html" />
+    <link rel="prev" title="Candidate reranking: IR + Raman + NMR" href="spectroscopy-reranking-hc.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -60,13 +60,16 @@
 <li class="toctree-l2"><a class="reference internal" href="nmr.html">NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms.html">Mass spectrometry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational.html">IR / Raman</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multimodal.html">Multimodal spectroscopy</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="deferred.html">Deferred tasks</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="multimodal.html">Multimodal spectroscopy</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman_hc.html">HOMO–LUMO gap from IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-qa.html">Spectral question answering with SpecMol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-hc.html">Structure retrieval: IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-generation-hc.html">Structure generation: IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking-hc.html">Candidate reranking: IR + Raman + NMR</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Structure generation with SpectraLLM</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="deferred.html">Deferred tasks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#nmr"><span class="xref myst">NMR</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#mass-spectrometry"><span class="xref myst">Mass spectrometry</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman"><span class="xref myst">IR / Raman</span></a></li>
@@ -103,8 +106,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Tasks by spectroscopy family</a></li>
-          <li class="breadcrumb-item"><a href="deferred.html">Deferred tasks</a></li>
-      <li class="breadcrumb-item active">多谱 → 结构（SpectraLLM）</li>
+          <li class="breadcrumb-item"><a href="multimodal.html">Multimodal spectroscopy</a></li>
+      <li class="breadcrumb-item active">Structure generation with SpectraLLM</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/tasks/multispectral-spectrallm-generation.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -116,10 +119,50 @@
              
   
   
-  <section class="tex2jax_ignore mathjax_ignore" id="spectrallm">
-<h1>多谱 → 结构（SpectraLLM）<a class="headerlink" href="#spectrallm" title="Link to this heading"></a></h1>
-<p>Additional spectroscopy task.</p>
-<p>Deferred at the user’s request. No new model result is claimed.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="structure-generation-with-spectrallm">
+<h1>Structure generation with SpectraLLM<a class="headerlink" href="#structure-generation-with-spectrallm" title="Link to this heading"></a></h1>
+<p>The SpectraLLM evaluation was paused in the 24 November snapshot. The optional local checkpoint interface is available.</p>
+<p>Generate a structure from a multispectral text prompt.</p>
+<p>The released 32B model reads the author system message and spectrum prompt. The reference SMILES is used only during scoring.</p>
+<p>Report valid output format and canonical SMILES exact match.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spectrum</span></code></p></td>
+<td><p>Spectrum in the released text format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">model_config.checkpoint</span></code></p></td>
+<td><p>Local merged model directory.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">system</span></code></p></td>
+<td><p>Optional system message from the upstream example.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">answer</span></code></p></td>
+<td><p>Decoded model response.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">prompt_sha256</span> <span class="pre">/</span> <span class="pre">provenance</span></code></p></td>
+<td><p>Exact prompt fingerprint and model information.</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference download internal" download="" href="../_downloads/594953d75e58a0bdd392cf6c8b697b5c/multispectral-spectrallm-generation.json"><span class="xref download myst">Evidence / 运行记录</span></a> · <a class="reference internal" href="../harness/mcp.html"><span class="std std-doc">MCP</span></a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span>--tasks<span class="w"> </span>multispectral.spectrallm.generation<span class="w"> </span>--language-checkpoint<span class="w"> </span>/path/to/SpectraLLM_32B<span class="w"> </span>--language-data<span class="w"> </span>/path/to/QM9S.jsonl<span class="w"> </span>--device<span class="w"> </span>cuda<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/multispectral-spectrallm-generation.json
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/OPilgrim/SpectraLLM">Model / 模型</a></p>
 </section>
 
 
@@ -127,8 +170,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="spectroscopy-qa.html" class="btn btn-neutral float-left" title="谱学问答 / 推理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../model-audit.html" class="btn btn-neutral float-right" title="Models and training" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="spectroscopy-reranking-hc.html" class="btn btn-neutral float-left" title="Candidate reranking: IR + Raman + NMR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deferred.html" class="btn btn-neutral float-right" title="Deferred tasks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

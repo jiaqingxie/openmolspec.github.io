@@ -1,5 +1,7 @@
 # HOMO–LUMO gap from IR + Raman + NMR
 
+[Gap benchmark](../benchmarks/vibrational.md) with 1,024 four-spectrum examples and 3,381 examples for the partial-input models.
+
 Estimate the molecular HOMO–LUMO energy gap from spectra.
 
 ## What goes in

@@ -1,6 +1,12 @@
 # Spectrum-to-structure retrieval: ¹H + ¹³C
 
+[Expanded NMR evaluations](../benchmarks/nmr.md) include all held-out experimental sites, all eligible cross-solvent pairs, and 2,048-candidate retrieval.
+
 Rank the candidates that best match the query molecule or spectrum.
+
+## Generate alternatives after retrieval
+
+When the shortlist has no convincing match, choose **Generate alternatives** below the retrieval results and enter an independently established molecular formula. The generator uses the ¹H and ¹³C records submitted for that search. The original ranked list stays visible alongside the generated candidates.
 
 ## What goes in
 

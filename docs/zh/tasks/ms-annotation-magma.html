@@ -25,7 +25,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="红外 / 拉曼 IR / Raman" href="vibrational.html" />
+    <link rel="next" title="MechFrag-MS 碎片候选指认" href="ms-annotation-mechfrag.html" />
     <link rel="prev" title="使用 ICEBERG 预测 MS/MS" href="ms-forward-iceberg.html" /> 
 </head>
 
@@ -63,6 +63,7 @@
 <li class="toctree-l3"><a class="reference internal" href="ms-forward-glacier.html">使用 GLACIER 预测 MS/MS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ms-forward-iceberg.html">使用 ICEBERG 预测 MS/MS</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">MS/MS 碎片指认</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-annotation-mechfrag.html">MechFrag-MS 碎片候选指认</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational.html">红外 / 拉曼 IR / Raman</a></li>
@@ -119,9 +120,14 @@
   
   <section class="tex2jax_ignore mathjax_ignore" id="ms-ms">
 <h1>MS/MS 碎片指认<a class="headerlink" href="#ms-ms" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="../benchmarks/ms.html"><span class="std std-doc">同批实测峰的质量覆盖率</span></a>在 10 ppm 容差下比较 MechFrag-MS 和 MAGMa。</p>
 <p>为实测 MS/MS 峰寻找对应的分子碎片。</p>
 <section id="id1">
-<h2>输入是什么<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<h2>扩展的谱图评测<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>MAGMa 对 64 张 MassSpecGym 测试谱运行注释，质量容差为 10 ppm，最多 24 个重原子。共核对 70,498 个候选碎片与母体结构的原子和键映射。49.80% 的实测峰有质量匹配的候选，碎片结构正确率仍需独立的碎片标签。</p>
+</section>
+<section id="id2">
+<h2>输入是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -138,8 +144,8 @@
 </tbody>
 </table>
 </section>
-<section id="id2">
-<h2>输出是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="id3">
+<h2>输出是什么<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -156,8 +162,8 @@
 </tbody>
 </table>
 </section>
-<section id="id3">
-<h2>真实运行案例<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="id4">
+<h2>真实运行案例<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <p>下面展示示例的输入、预测与参考。下载 JSON 可获取完整数值数组及更多示例。</p>
 <p><img alt="ms.annotation.magma actual results" src="../_images/ms-annotation-magma.png" /></p>
 <p><a class="reference download internal" download="" href="../_downloads/de95e8126e3866776f44c3e56d24c521/ms-annotation-magma.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/c6dc209bc7fde1b5fff089b5eab5e366/ms-annotation-magma.png"><span class="xref download myst">PNG</span></a> · <a class="reference download internal" download="" href="../_downloads/4a6840e2870aea2444c300ae65fa68e7/ms-annotation-magma.json"><span class="xref download myst">Full input/output JSON</span></a></p>
@@ -418,8 +424,8 @@
 </div>
 </details>
 </section>
-<section id="id4">
-<h2>实际评测结果<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id5">
+<h2>实际评测结果<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
@@ -447,21 +453,21 @@
 </tbody>
 </table>
 </section>
-<section id="id5">
-<h2>模型与方法<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="id6">
+<h2>模型与方法<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
 <p>MAGMa 枚举分子图的碎片，并与实测峰的质量进行匹配。每条指认包含碎片分子式、质量误差及原子／键编号。</p>
 <p>报告峰匹配覆盖率及 ppm 单位的质量误差。</p>
 </section>
-<section id="id6">
-<h2>复现方式<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<section id="id7">
+<h2>复现方式<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <p><a class="reference internal" href="../notebooks/ms-annotation-magma.html"><span class="std std-doc">Notebook with executed figures</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick Start</span></a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tasks<span class="w"> </span>ms.annotation.magma<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/ms-annotation-magma-new.json
 </pre></div>
 </div>
 </section>
-<section id="id7">
-<h2>调用模型与微调<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<section id="id8">
+<h2>调用模型与微调<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.benchmark</span><span class="w"> </span><span class="kn">import</span> <span class="n">Benchmark</span>
 <span class="n">benchmark</span> <span class="o">=</span> <span class="n">Benchmark</span><span class="p">(</span><span class="n">workspace</span><span class="o">=</span><span class="s1">'/path/to/workspace'</span><span class="p">,</span>
     <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/task-env/bin/python'</span><span class="p">,</span>
@@ -479,8 +485,8 @@
 </details>
 <p><a class="reference external" href="https://github.com/Dsadd4/MassSpecGym-MAGMA-annotation">Model implementation / 模型实现</a> · <a class="reference internal" href="../model-audit.html"><span class="std std-doc">Model review / 模型检查</span></a></p>
 </section>
-<section id="id8">
-<h2>参考文献<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<section id="id9">
+<h2>参考文献<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Ridder, L., van der Hooft, J. J. J. &amp; Verhoeven, S. Automatic Compound Annotation from Mass Spectrometry Data Using MAGMa. Mass Spectrometry 3, S0033 (2014). doi:10.5702/massspectrometry.S0033. <a class="reference external" href="https://doi.org/10.5702/massspectrometry.S0033">Source</a></p></li>
 <li><p>Bushuiev, R., Bushuiev, A., de Jonge, N. F., Young, A., et al. MassSpecGym: A benchmark for the discovery and identification of molecules. Advances in Neural Information Processing Systems 37, Datasets and Benchmarks Track (2024). arXiv:2410.23326. <a class="reference external" href="https://arxiv.org/abs/2410.23326">Source</a></p></li>
@@ -494,7 +500,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
         <a href="ms-forward-iceberg.html" class="btn btn-neutral float-left" title="使用 ICEBERG 预测 MS/MS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="vibrational.html" class="btn btn-neutral float-right" title="红外 / 拉曼 IR / Raman" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ms-annotation-mechfrag.html" class="btn btn-neutral float-right" title="MechFrag-MS 碎片候选指认" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

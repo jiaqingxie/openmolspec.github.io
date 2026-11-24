@@ -20,10 +20,10 @@
    "id": "f2c113f3f41a",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-11-21T10:48:30.208751Z",
-     "iopub.status.busy": "2026-11-21T10:48:30.208594Z",
-     "iopub.status.idle": "2026-11-21T10:48:30.246985Z",
-     "shell.execute_reply": "2026-11-21T10:48:30.246018Z"
+     "iopub.execute_input": "2026-11-24T10:07:47.618782Z",
+     "iopub.status.busy": "2026-11-24T10:07:47.618473Z",
+     "iopub.status.idle": "2026-11-24T10:07:47.667795Z",
+     "shell.execute_reply": "2026-11-24T10:07:47.666784Z"
     }
    },
    "outputs": [
@@ -77,10 +77,10 @@
    "id": "77f0a93ab20e",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-11-21T10:48:30.248736Z",
-     "iopub.status.busy": "2026-11-21T10:48:30.248513Z",
-     "iopub.status.idle": "2026-11-21T10:48:30.254295Z",
-     "shell.execute_reply": "2026-11-21T10:48:30.252933Z"
+     "iopub.execute_input": "2026-11-24T10:07:47.671853Z",
+     "iopub.status.busy": "2026-11-24T10:07:47.671547Z",
+     "iopub.status.idle": "2026-11-24T10:07:47.680319Z",
+     "shell.execute_reply": "2026-11-24T10:07:47.679377Z"
     }
    },
    "outputs": [
@@ -306,10 +306,10 @@
    "id": "2b98df122247",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-11-21T10:48:30.256179Z",
-     "iopub.status.busy": "2026-11-21T10:48:30.255833Z",
-     "iopub.status.idle": "2026-11-21T10:48:31.207970Z",
-     "shell.execute_reply": "2026-11-21T10:48:31.206947Z"
+     "iopub.execute_input": "2026-11-24T10:07:47.682360Z",
+     "iopub.status.busy": "2026-11-24T10:07:47.681946Z",
+     "iopub.status.idle": "2026-11-24T10:07:48.257820Z",
+     "shell.execute_reply": "2026-11-24T10:07:48.256851Z"
     }
    },
    "outputs": [
@@ -369,10 +369,10 @@
    "id": "3fd736b7c885",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-11-21T10:48:31.210443Z",
-     "iopub.status.busy": "2026-11-21T10:48:31.210123Z",
-     "iopub.status.idle": "2026-11-21T10:48:33.536816Z",
-     "shell.execute_reply": "2026-11-21T10:48:33.535642Z"
+     "iopub.execute_input": "2026-11-24T10:07:48.260335Z",
+     "iopub.status.busy": "2026-11-24T10:07:48.259756Z",
+     "iopub.status.idle": "2026-11-24T10:07:50.338888Z",
+     "shell.execute_reply": "2026-11-24T10:07:50.338328Z"
     }
    },
    "outputs": [
@@ -982,8 +982,8 @@
   ],
   "openmolspec_execution": {
    "engine": "jupyter",
-   "evaluation_index_sha256": "9e6e757d145143791db0d1a97b2677e88f3b30b31606b9904cb4c479a028b057",
-   "evidence_sha256": "61ed43839b2a1694011c21ecefdac1392709f360dacf8ac65711fdb09bbd90e7",
+   "evaluation_index_sha256": "250e5f79ad07913c972f05b004161fc200b29763e8acc108508a0e92a4ce27b5",
+   "evidence_sha256": "e2f169722beb83ebd4cc831250df0298efde01b4abc69f84424597d6a5747349",
    "model_execution_enabled": false,
    "scope": "real_input_output_recomputed_diagnostics_and_scientific_figures",
    "source_sha256": "f96b8a16d386a0a0e8ccf722bdf79e645ecb576c9ab0a84aa324167846ce9b76",

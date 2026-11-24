@@ -27,14 +27,19 @@ Choose a task to see its model, exact inputs/outputs, direct call, training rout
 | `vibrational.retrieval` | IR, Raman | [IR / Raman → 结构检索](tasks/vibrational-retrieval.md) |
 | `vibrational.generation` | IR, Raman | [IR / Raman → SMILES](tasks/vibrational-generation.md) |
 | `nmr.assignment` | 1H, 13C | [H/C 峰 → 原子指认](tasks/nmr-assignment.md) |
-| `nmr.solvent_transfer` | 1H, 13C | [H/C 跨溶剂位移 · 参考检索基线](tasks/nmr-solvent_transfer.md) |
+| `nmr.solvent_transfer` | 1H, 13C | [H/C 跨溶剂位移](tasks/nmr-solvent_transfer.md) |
+| `spectroscopy.qa` | NMR, IR, Raman | [谱学问答 · SpecMol](tasks/spectroscopy-qa.md) |
 | `spectroscopy.reranking` | IR, Raman | [谱图 + 候选结构 → 重排](tasks/spectroscopy-reranking.md) |
 | `vibrational.retrieval.hc` | IR, Raman, 1H, 13C | [IR + Raman + H/C → 结构检索](tasks/vibrational-retrieval-hc.md) |
 | `vibrational.generation.hc` | IR, Raman, 1H, 13C | [IR + Raman + H/C → SMILES（Xinyu 协议）](tasks/vibrational-generation-hc.md) |
 | `spectroscopy.reranking.hc` | IR, Raman, 1H, 13C | [IR + Raman + H/C + 候选 → ITM 重排](tasks/spectroscopy-reranking-hc.md) |
+| `vibrational.retrieval.ir` | IR | [IR → 结构检索](tasks/vibrational-retrieval-ir.md) |
+| `vibrational.retrieval.raman` | RAMAN | [RAMAN → 结构检索](tasks/vibrational-retrieval-raman.md) |
 | `nmr.hsqc.transpeaknet` | HSQC | [结构与溶剂 → HSQC 交叉峰](tasks/nmr-hsqc-transpeaknet.md) |
 | `ms.forward.glacier` | MS/MS | [分子 → MS/MS（GLACIER）](tasks/ms-forward-glacier.md) |
 | `ms.forward.iceberg` | MS/MS | [分子 → MS/MS（ICEBERG）](tasks/ms-forward-iceberg.md) |
 | `ms.annotation.magma` | MS/MS | [MS/MS 峰 → MAGMa 候选碎片标注](tasks/ms-annotation-magma.md) |
+| `ms.annotation.mechfrag` | MS/MS | [MS/MS 峰 → MechFrag-MS 候选碎片](tasks/ms-annotation-mechfrag.md) |
+| `multispectral.spectrallm.generation` | IR, Raman, NMR, MS/MS | [多谱 → 结构（SpectraLLM）](tasks/multispectral-spectrallm-generation.md) |
 
 [Python SDK](api.md) · [Data splits](data/splits.md) · [Tutorials](notebooks/index.md) · [Spectra Harness](harness.md)

@@ -2,6 +2,10 @@
 
 Generate structures from molecular spectra.
 
+## Ordering generated candidates
+
+The decoder keeps the first occurrence of each valid canonical structure. The SDK returns that order and reports the matching model’s probability, beam rank and ITM rank for each candidate. Pass `ranking="itm"` to reproduce the original matching-head order. On the 64-query replay, the default has 48 first-place and 57 top-three hits. ITM alone gives 44 and 54. On 24 additional structures excluded from the 64-query replay, both orderings achieved 14/24 top-1 and 19/24 top-3.
+
 ## What goes in
 
 | Field | Meaning |
@@ -13,7 +17,7 @@ Generate structures from molecular spectra.
 
 | Field | Meaning |
 | --- | --- |
-| `SMILES candidates` | Decoded valid, canonical unique candidates; full-input route uses beam 10 and ITM reranking. |
+| `SMILES candidates` | The decoder keeps the first occurrence of each valid canonical structure from 10 beams. The SDK returns beam order by default and also exposes the ITM rank. |
 | `top-k` | Generation and reranking scores are separate. No molecular formula is supplied. |
 
 ## A real recorded example

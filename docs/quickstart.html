@@ -55,6 +55,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Quick start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#use-the-website">Use the website</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install-openmolspec">1. Install OpenMolSpec</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#read-your-first-spectrum">2. Read your first spectrum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#load-a-complete-dataset">3. Load a complete dataset</a></li>
@@ -109,6 +110,11 @@
   <section class="tex2jax_ignore mathjax_ignore" id="quick-start">
 <h1>Quick start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h1>
 <p>This tutorial takes you from installation to loading an NMR record, predicting chemical shifts and training a model with your own data. Run the commands from the cloned repository so the example files are available.</p>
+<section id="use-the-website">
+<h2>Use the website<a class="headerlink" href="#use-the-website" title="Link to this heading"></a></h2>
+<p>Open the <a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/#tool">workspace</a> to choose a task and inspect its inputs and outputs. The <a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/#tool-sucrose">sucrose example</a> loads 11 measured (¹³C, ¹H) HSQC pairs from BMRB bmse000119 in D₂O. Its ¹H and ¹³C traces come from the same sample.</p>
+<p>In <a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/#dataset">Explore</a>, choose a spectrum type and enter SMILES. An exact structure match returns experimental records with provenance. An available predictor handles missing NMR, IR or Raman records. For MS/MS prediction, specify acquisition conditions in the workspace. Browse the paired examples for site-based NMR R² and peak matching. The <a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/#agent-demo">Harness gallery</a> opens recorded calls without an API key. Live questions require a configured model provider.</p>
+</section>
 <section id="install-openmolspec">
 <h2>1. Install OpenMolSpec<a class="headerlink" href="#install-openmolspec" title="Link to this heading"></a></h2>
 <p>Use Python 3.10 or newer. Create an environment and install the package with data-format and plotting dependencies.</p>

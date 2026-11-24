@@ -62,9 +62,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="datasets-overview.html">Exploring the spectroscopy datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-annotation-magma.html">MS/MS fragment annotation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-annotation-mechfrag.html">MS/MS fragment candidates with MechFrag-MS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-forward-glacier.html">MS/MS prediction with GLACIER</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-forward-iceberg.html">MS/MS prediction with ICEBERG</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multispectral-spectrallm-generation.html">Structure generation with SpectraLLM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-assignment.html">Peak-to-atom assignment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-forward-11B.html">11B chemical shift prediction</a></li>
@@ -86,7 +87,7 @@
 <li class="toctree-l2"><a class="reference internal" href="nmr-solvent_transfer.html">Cross-solvent chemical shift transfer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk-inference.html">Python SDK: real NMR inference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk-training-preflight.html">Training data preparation and preflight</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">Spectral question answering with SpecMol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking.html">Candidate reranking: IR + Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking-hc.html">Candidate reranking: IR + Raman + NMR</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Mass spectrometry: isotope envelopes and resolving power</a></li>
@@ -102,6 +103,8 @@
 <li class="toctree-l2"><a class="reference internal" href="vibrational-generation-hc.html">Structure generation: IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval.html">Structure retrieval: IR + Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-hc.html">Structure retrieval: IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-ir.html">IR spectrum-to-structure retrieval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-raman.html">Raman spectrum-to-structure retrieval</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#theory-simulations">Theory simulations / 理论模拟</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#nmr">NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#mass-spectrometry">Mass spectrometry</a></li>
@@ -203,7 +206,9 @@ Scope: carbon isotope contribution only; not an experimental MS/MS spectrum.
   func(*args, **kwargs)
 /mnt/shared-storage-user/xiejiaqing/OpenMolSpec/studio/.runtime/docs-sphinx/lib/python3.13/site-packages/IPython/core/events.py:101: UserWarning: Glyph 8320 (\N{SUBSCRIPT ZERO}) missing from font(s) Arial.
   func(*args, **kwargs)
-/mnt/shared-storage-user/xiejiaqing/OpenMolSpec/studio/.runtime/docs-sphinx/lib/python3.13/site-packages/IPython/core/pylabtools.py:158: UserWarning: Glyph 8321 (\N{SUBSCRIPT ONE}) missing from font(s) Arial.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/mnt/shared-storage-user/xiejiaqing/OpenMolSpec/studio/.runtime/docs-sphinx/lib/python3.13/site-packages/IPython/core/pylabtools.py:158: UserWarning: Glyph 8321 (\N{SUBSCRIPT ONE}) missing from font(s) Arial.
   fig.canvas.print_figure(bytes_io, **kw)
 /mnt/shared-storage-user/xiejiaqing/OpenMolSpec/studio/.runtime/docs-sphinx/lib/python3.13/site-packages/IPython/core/pylabtools.py:158: UserWarning: Glyph 8320 (\N{SUBSCRIPT ZERO}) missing from font(s) Arial.
   fig.canvas.print_figure(bytes_io, **kw)
@@ -225,17 +230,19 @@ Scope: carbon isotope contribution only; not an experimental MS/MS spectrum.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1986996/2404734664.py:3: UserWarning: Glyph 8321 (\N{SUBSCRIPT ONE}) missing from font(s) Arial.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1183/2404734664.py:3: UserWarning: Glyph 8321 (\N{SUBSCRIPT ONE}) missing from font(s) Arial.
   fig.tight_layout(w_pad=2)
-/tmp/ipykernel_1986996/2404734664.py:3: UserWarning: Glyph 8320 (\N{SUBSCRIPT ZERO}) missing from font(s) Arial.
+/tmp/ipykernel_1183/2404734664.py:3: UserWarning: Glyph 8320 (\N{SUBSCRIPT ZERO}) missing from font(s) Arial.
   fig.tight_layout(w_pad=2)
-/tmp/ipykernel_1986996/2404734664.py:5: UserWarning: Glyph 8321 (\N{SUBSCRIPT ONE}) missing from font(s) Arial.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1183/2404734664.py:5: UserWarning: Glyph 8321 (\N{SUBSCRIPT ONE}) missing from font(s) Arial.
   fig.savefig(image,format='svg',metadata={'Date':None})
-/tmp/ipykernel_1986996/2404734664.py:5: UserWarning: Glyph 8320 (\N{SUBSCRIPT ZERO}) missing from font(s) Arial.
+/tmp/ipykernel_1183/2404734664.py:5: UserWarning: Glyph 8320 (\N{SUBSCRIPT ZERO}) missing from font(s) Arial.
   fig.savefig(image,format='svg',metadata={'Date':None})
 </pre></div>
 </div>
-<img alt="../_images/b3a577b342628ff893a135ae4616715225106bc1b035a9fa70ba8542a80857e3.svg" src="../_images/b3a577b342628ff893a135ae4616715225106bc1b035a9fa70ba8542a80857e3.svg" />
+<img alt="../_images/439141d85279b6949533cba475ac6c51dac41007f99d4391f9707519947077fd.svg" src="../_images/439141d85279b6949533cba475ac6c51dac41007f99d4391f9707519947077fd.svg" />
 </div>
 </div>
 <p><a class="reference internal" href="../theory/index.html"><span class="std std-doc">Theory</span></a> · <a class="reference internal" href="../inversion/index.html"><span class="std std-doc">Inversion</span></a> · <a class="reference internal" href="index.html"><span class="std std-doc">Tutorials</span></a></p>

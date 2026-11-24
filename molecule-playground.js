@@ -49,7 +49,9 @@
     transition = reducedMotion.matches ? 1 : 0;
     canvas.dataset.isomer = isomer;
     for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.isomer === mode));
-    caption.textContent = `${presets[mode].label} · ${presets[mode].smiles}. Drag oxygen again to switch back.`;
+    caption.textContent = mode === 'ethanol'
+      ? 'Ethanol · CCO · Two distinct carbon environments.'
+      : 'Dimethyl ether · COC · One carbon environment by symmetry.';
     schedule();
   }
 

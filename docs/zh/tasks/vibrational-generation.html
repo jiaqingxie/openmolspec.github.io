@@ -70,6 +70,8 @@
 <li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval.html">结构检索：IR + Raman</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">结构生成：IR + Raman</a></li>
 <li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking.html">候选重排：IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-ir.html">IR 单谱到结构检索</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-raman.html">Raman 单谱到结构检索</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="multimodal.html">多谱联合</a></li>
@@ -127,7 +129,31 @@
 <h1>结构生成：IR + Raman<a class="headerlink" href="#ir-raman" title="Link to this heading"></a></h1>
 <p>从分子谱图生成结构。</p>
 <section id="id1">
-<h2>输入是什么<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<h2>无分子式的结构生成<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>默认接口只需计算得到的 IR 和 Raman。位移估计模型在 11,632 个连通结构上拟合，预测氢、碳位移的数量和位置，再由冻结的解码器生成候选。在 24 个开发分子上，第一名命中 3/24；仅微调解码器输出层和直接留空 NMR 输入都为 0/24。另取 24 个独立分子，估计位移后第一名命中 2/24，前三名 5/24，前五名 6/24；留空 NMR 的原模型三项均为 0/24。结构匹配采用去除立体化学后的规范 SMILES。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Vib2Mol</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Vib2Mol</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">openspec_root</span><span class="p">,</span> <span class="n">python</span><span class="o">=</span><span class="n">model_python</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">({</span><span class="s2">"ir"</span><span class="p">:</span> <span class="n">ir</span><span class="p">,</span> <span class="s2">"raman"</span><span class="p">:</span> <span class="n">raman</span><span class="p">},</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">candidates</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">"candidates"</span><span class="p">]</span>
+<span class="n">estimated_ppm</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">"estimated_shifts_ppm"</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>下方示例图和原始评测表展示留空 NMR 的旧模型。当前 benchmark 已排除位移估计模型拟合及选参用到的全部 13,190 个连通结构。</p>
+</section>
+<section id="xinyu-lu">
+<h2>Xinyu Lu 发布的双谱模型<a class="headerlink" href="#xinyu-lu" title="Link to this heading"></a></h2>
+<p>VB-Mols 的 MMM 解码器接受 IR、Raman 和独立提供的分子式。使用 10 条 beam，在作者 VB-Mols 测试集抽取的 24 个结构中，第一名命中 24 个；在 OpenMolSpec 抽取的另 24 个结构中命中 0 个。两组均按忽略立体化学的规范 SMILES 比较，覆盖的化学空间不同。下方原有案例使用无需分子式的 OpenMolSpec 解码器。<a class="reference external" href="https://github.com/X1nyuLu/vib2mol">作者实现</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Vib2Mol</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Vib2Mol</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">openspec_root</span><span class="p">,</span> <span class="n">python</span><span class="o">=</span><span class="n">model_python</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_native</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">"ir"</span><span class="p">:</span> <span class="n">ir</span><span class="p">,</span> <span class="s2">"raman"</span><span class="p">:</span> <span class="n">raman</span><span class="p">},</span> <span class="n">formula</span><span class="o">=</span><span class="n">formula</span><span class="p">,</span> <span class="n">checkout</span><span class="o">=</span><span class="n">vib2mol_checkout</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2>输入是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -138,14 +164,14 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IR</span> <span class="pre">/</span> <span class="pre">Raman</span></code></p></td>
 <td><p>每个可见通道 1024 个强度点，按 400→4000 cm⁻¹ 排列，并采用 checkpoint 的归一化。</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">missing</span> <span class="pre">channels</span></code></p></td>
-<td><p>输入掩码选择共享四模态权重的可见通道。</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">estimated</span> <span class="pre">shifts</span></code></p></td>
+<td><p>只给 IR 和 Raman 时，软件先估计氢、碳位移，再解码候选结构。调用原作者 VB-Mols 解码器时另需提供已知分子式。</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="id2">
-<h2>输出是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="id3">
+<h2>输出是什么<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -154,7 +180,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SMILES</span> <span class="pre">candidates</span></code></p></td>
-<td><p>解码后有效、规范化且去重的结构；完整输入路径使用 beam 10 和 ITM 重排。</p></td>
+<td><p>从 10 条 beam 中取有效规范结构并按首次出现去重。SDK 默认保留该顺序，同时返回 ITM 排名。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">top-k</span></code></p></td>
 <td><p>分别报告生成与重排后的 top-k；不提供分子式。</p></td>
@@ -162,8 +188,8 @@
 </tbody>
 </table>
 </section>
-<section id="id3">
-<h2>真实运行案例<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="id4">
+<h2>真实运行案例<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <p>下面展示示例的输入、预测与参考。下载 JSON 可获取完整数值数组及更多示例。</p>
 <p><img alt="vibrational.generation actual results" src="../_images/vibrational-generation.png" /></p>
 <p><a class="reference download internal" download="" href="../_downloads/cc1c213d62bbef5490a066f032a854f3/vibrational-generation.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/71c37ba7fc4767eb717056499aa19afe/vibrational-generation.png"><span class="xref download myst">PNG</span></a> · <a class="reference download internal" download="" href="../_downloads/ca9e055b1d3456d9c0840b509c2d1827/vibrational-generation.json"><span class="xref download myst">Full input/output JSON</span></a></p>
@@ -197,8 +223,8 @@
 </div>
 </details>
 </section>
-<section id="id4">
-<h2>实际评测结果<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id5">
+<h2>实际评测结果<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
@@ -226,25 +252,25 @@
 </tbody>
 </table>
 </section>
-<section id="id5">
-<h2>模型与方法<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="id6">
+<h2>模型与方法<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
 <p>openSpec 模型通过 Vib2Mol 编码谱通道。生成使用 beam search 和分子匹配分数；检索比较嵌入，候选重排使用匹配头。</p>
 <p>生成报告 top-k 准确率，排序报告 Recall&#64;k 与 MRR。</p>
 </section>
-<section id="id6">
-<h2>复现方式<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<section id="id7">
+<h2>复现方式<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <p><a class="reference internal" href="../notebooks/vibrational-generation.html"><span class="std std-doc">Notebook with executed figures</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick Start</span></a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tasks<span class="w"> </span>vibrational.generation<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/vibrational-generation-new.json
 </pre></div>
 </div>
 </section>
-<section id="id7">
-<h2>调用模型与微调<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<section id="id8">
+<h2>调用模型与微调<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Vib2Mol</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Vib2Mol</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">'/path/to/portable-models'</span><span class="p">,</span>
     <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/vibrational-env/bin/python'</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">allow_missing_modalities</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>通过 <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">openSpec／Vib2Mol 作者训练流程</a>进行适配。准备谱—结构对齐的 LMDB，保留 H/C 参考和归一化，确保 train/val 分组独立。检索采用双向对比交叉熵与配对分类交叉熵；生成使用分子 token 自回归交叉熵。性质回归按其训练配置保留目标变换和回归准则。SDK 提供推理，相关训练通过作者实现执行。</p>
@@ -257,8 +283,8 @@
 </details>
 <p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">Model implementation / 模型实现</a> · <a class="reference internal" href="../model-audit.html"><span class="std std-doc">Model review / 模型检查</span></a></p>
 </section>
-<section id="id8">
-<h2>参考文献<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<section id="id9">
+<h2>参考文献<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>OpenMolSpec contributors. openSpec models and benchmark training workflows. Source archive, v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">Source</a></p></li>
 <li><p>OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">Source</a></p></li>

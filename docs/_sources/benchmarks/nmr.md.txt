@@ -2,6 +2,61 @@
 
 The sections below give each task definition and the results from its recorded evaluation runs. Open the task guide for model calls and full input/output examples.
 
+## NMRGym spectrum-to-structure evaluation
+
+The 24 November comparison fixes 10,000 test records and scores exact isomeric canonical SMILES. Each model receives only its selected channels. The +formula condition additionally supplies the reference molecular formula. Greedy and beam-10 decoding have separate scores.
+
+| Initialization | Formula | Input | Epoch budget | Validation greedy exact | Test records scored | Test exact |
+| --- | --- | --- | --- | --- | --- | --- |
+| generic T5-small | − | ¹H | 10,000 | — | 0 / 10,000 | Pending |
+| generic T5-small | − | ¹³C | 10,000 | — | 0 / 10,000 | Pending |
+| generic T5-small | − | ¹H + ¹³C | 10,000 | — | 0 / 10,000 | Pending |
+| generic T5-small | + | ¹H | 10,000 | — | 0 / 10,000 | Pending |
+| generic T5-small | + | ¹³C | 10,000 | — | 0 / 10,000 | Pending |
+| generic T5-small | + | ¹H + ¹³C | 10,000 | — | 0 / 10,000 | Pending |
+| NMRTrans H+C checkpoint | − | ¹H | 100 | 0.166% | 0 / 10,000 | Pending |
+| NMRTrans H+C checkpoint | − | ¹³C | 100 | 0.186% | 0 / 10,000 | Pending |
+| NMRTrans H+C checkpoint | − | ¹H + ¹³C | 100 | 0.497% | 0 / 10,000 | Pending |
+
+Four accepted training submissions cover the dedicated NMRGym split and a pooled NMRSpec / NMRExp / patent split, each with and without molecular formula. The configurations start from generic T5-small with randomly initialized spectral encoders, four GPUs per submission and separate H, C and H+C runs. The epoch budget is the configured maximum.
+
+[Download the split and scores](../assets/benchmarks/nmrgym-nmrtrans.json) · [Training configurations and submission records](../assets/benchmarks/adaptation-protocols.json)
+
+## Experimental atom assignments
+
+The fitted atom-site model was evaluated on every held-out connectivity, including unmatched experimental peaks in the accuracy denominator. Hungarian matching used tolerances of 0.5 ppm for H and 5 ppm for C. Symmetry-equivalent labelled sites count as correct.
+
+| Nucleus | Connectivities | Spectra | Correct / labelled peaks | Accuracy |
+| --- | --- | --- | --- | --- |
+| 1H | 1,720 | 1,851 | 6,633 / 12,543 | 52.9% |
+| 13C | 3,142 | 3,482 | 18,193 / 31,018 | 58.7% |
+
+## Cross-solvent shifts
+
+Each prediction excludes the query connectivity from fitting the ridge correction and searching reference spectra. The table weights each eligible atom–solvent pair equally.
+
+| Nucleus | Molecules | Pairs | Keep shift / ppm MAE | Reference / ppm MAE | Ridge / ppm MAE |
+| --- | --- | --- | --- | --- | --- |
+| 1H | 20 | 1,453 | 0.144 | 0.193 | 0.258 |
+| 13C | 26 | 283 | 1.238 | 1.144 | 0.809 |
+
+## NMR retrieval across sources
+
+Top-1 recall on 512 fixed queries from each source with 2,048 candidates. Known aligner training and validation structures are excluded. Each cell gives spectra-to-molecule / molecule-to-spectra recall.
+
+| Source | ¹H | ¹³C | ¹H + ¹³C |
+| --- | --- | --- | --- |
+| nmrspec_test | 95.1% / 94.3% | 49.8% / 50.8% | 97.1% / 96.7% |
+| patent_test_10k | 74.6% / 71.7% | 30.1% / 31.4% | 77.7% / 77.7% |
+| nmrexp_exp_10k | 90.8% / 90.4% | 47.1% / 50.6% | 92.4% / 91.8% |
+| nmrgym_test | 15.8% / 12.5% | 28.9% / 29.7% | 40.0% / 35.7% |
+
+## External NMR interfaces
+
+UltraNMR passed its upstream formula and peak-encoding example. NMRAgent exercised its planner and verifier through a local fixture with dry-run chemistry tools. ChefNMR loaded its sampling configuration and transformed 238 Real-SpecTeach inputs. These checks cover input preparation and interfaces. Model inference and accuracy remain unevaluated for all three.
+
+[Download the metrics and source fingerprints](../assets/benchmarks/heldout-tasks.json)
+
 ## 1H chemical shift prediction
 
 `nmr.forward.1H`
@@ -840,7 +895,7 @@ Run settings: `dataset="nmrgym_test"`; `sampling="first_distinct_canonical_struc
 
 Assign measured NMR peaks to atoms in a known molecular structure.
 
-Peak coverage and matched-peak MAE summarize the assignment.
+Evaluate correct experimental peak-to-site assignments, counting unmatched peaks as incorrect. The assigned-site backend accepts symmetry-equivalent sites.
 
 [Task guide](../tasks/nmr-assignment.md) · [Tutorial](../notebooks/nmr-assignment.ipynb) · [Predictions](../assets/examples/nmr-assignment.json)
 

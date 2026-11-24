@@ -111,3 +111,66 @@ python -m benchmarks run \
 - OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). [Source](https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0)
 - Yuan, M., Zou, Z. & Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). [Source](https://arxiv.org/abs/2501.18876)
 - Zou, Z., Zhang, Y., Liang, L., Wei, M., Leng, J., Jiang, J., Luo, Y. & Hu, W. A deep learning model for predicting selected organic molecular spectra. Nature Computational Science 3, 957–964 (2023). doi:10.1038/s43588-023-00550-y. [Source](https://www.nature.com/articles/s43588-023-00550-y)
+
+## SpecMol 和 SpectraLLM 的训练接口
+
+在独立环境安装语言模型依赖，准备本地合并权重和 UTF-8 JSONL。每行包含用户的 `prompt`、作为训练目标的 `response`，以及可选的 `system`。
+
+```json
+{"system":"只回答峰数。","prompt":"¹³C 谱中列出 18.2、58.1 ppm，共有几个峰？","response":"2"}
+```
+
+```bash
+python -m pip install '.[spectral-language]'
+openmolspec-train-language --checkpoint /path/to/merged-model \
+  --jsonl train.jsonl --output ./new-adapter --max-steps 1 --device cuda
+```
+
+训练对注意力的 Q、V 投影应用 LoRA，只在回答及结束标记上计算损失。输出可用 `PeftModel.from_pretrained(base_model, adapter_directory)` 重载。以正式 tokenizer 和微型 Qwen2、Qwen3 各验证过一次参数更新、保存和重载。评测已合并的 SpecMol 权重可运行以下命令。
+
+```bash
+openmolspec-bench run --tasks spectroscopy.qa --language-checkpoint /path/to/SpecMol/exported_model \
+  --workspace /path/to/OpenMolSpec --device cuda --limit 32 --output qa.json
+```
+
+## 拟合任务模型
+
+在源码目录运行下列命令。位点模型需要带实验原子标注的 JSONL 压缩包及同目录校验清单。跨溶剂模型需要配对参考库和由该库计算的基线报告。能隙模型需要计算谱 LMDB 及包含预留样本编号的先前评测。各命令输出权重和评测报告。
+
+```bash
+mkdir -p runs/example-training
+python scripts/train_assigned_hc.py --data /path/to/assigned.jsonl.gz --nucleus 13C --output runs/example-training/13C-assigned --report runs/example-training/carbon.json
+python -m openmolspec_bench.solvent_fit --library /path/to/solvent_reference_library.json --baseline results/solvent_transfer_all_reviewed.json --weights runs/example-training/solvent.json --report runs/example-training/solvent-eval.json
+python scripts/train_gap_vibrational.py --lmdb /path/to/openspec_test.lmdb --original results/gap_protocol_random128_20261116.json --weights runs/example-training/gap.npz --report runs/example-training/gap-eval.json
+```
+
+## NMRGym 谱到结构评测
+
+11 月 24 日的对照固定 10,000 条测试记录，按保留立体化学的规范 SMILES 统计精确命中。每个模型仅接收所选谱种；+formula 条件额外提供参考分子式。贪心解码与 beam-10 分开计分。
+
+| 初始化 | 分子式 | 谱种 | 轮数上限 | 验证集贪心精确率 | 测试计分条数 | 测试精确率 |
+| --- | --- | --- | --- | --- | --- | --- |
+| generic T5-small | − | ¹H | 10,000 | — | 0 / 10,000 | 待评测 |
+| generic T5-small | − | ¹³C | 10,000 | — | 0 / 10,000 | 待评测 |
+| generic T5-small | − | ¹H + ¹³C | 10,000 | — | 0 / 10,000 | 待评测 |
+| generic T5-small | + | ¹H | 10,000 | — | 0 / 10,000 | 待评测 |
+| generic T5-small | + | ¹³C | 10,000 | — | 0 / 10,000 | 待评测 |
+| generic T5-small | + | ¹H + ¹³C | 10,000 | — | 0 / 10,000 | 待评测 |
+| NMRTrans H+C checkpoint | − | ¹H | 100 | 0.166% | 0 / 10,000 | 待评测 |
+| NMRTrans H+C checkpoint | − | ¹³C | 100 | 0.186% | 0 / 10,000 | 待评测 |
+| NMRTrans H+C checkpoint | − | ¹H + ¹³C | 100 | 0.497% | 0 / 10,000 | 待评测 |
+
+四组训练提交覆盖 NMRGym 单库和 NMRSpec、NMRExp、专利三库合并数据，两类数据各有提供分子式和不提供分子式的条件。配置使用通用 T5-small 初始化，谱编码器随机初始化，每组申请四卡，分别运行 H、C、H+C。轮数列为配置上限。
+
+[下载测试协议与成绩](../assets/benchmarks/nmrgym-nmrtrans.json) · [训练配置与提交记录](../assets/benchmarks/adaptation-protocols.json)
+
+## SpecMol 谱学问答
+
+发布版 SpecMol-7B 在 GPU 上回答了 32 道 NMRSpec 四选一题，任务是数出 ¹H 或 ¹³C 峰表中的条目。完整生成回答中，**4/32 题答对（12.5%）**，**29/32 个回答可解析为有效选项（90.6%）**。
+
+另有四卡 LoRA 微调提交，按分子连通性划分 8,192 条训练题与 512 条验证题。11 月 24 日快照收录了上述基础模型结果，微调模型留出集成绩待回收。
+
+[下载全部问题、生成回答与标准选项](../assets/benchmarks/specmol-qa-responses.json)
+
+独立的 IR + Raman 双卡微调提交按连通结构划分 11,632 个训练、1,558 个验证和 24 个测试结构。11 月 24 日快照收录了数据划分与任务提交回执，微调权重的评测结果待回收。
+

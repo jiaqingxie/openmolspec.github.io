@@ -56,13 +56,14 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">快速开始</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">使用网页</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#openmolspec">1. 安装 OpenMolSpec</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">2. 读取第一条谱</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">3. 加载完整数据集</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">4. 预测化学位移</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">5. 与实测峰比较并保存结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">2. 读取第一条谱</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">3. 加载完整数据集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">4. 预测化学位移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">5. 与实测峰比较并保存结果</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nmr">6. 使用自己的 NMR 数据训练</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">继续学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">继续学习</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="data/index.html">数据</a></li>
@@ -110,6 +111,11 @@
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>快速开始<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>本教程从安装开始，依次介绍如何读取 NMR 记录、预测化学位移，以及用自己的数据训练模型。命令在克隆后的仓库根目录运行，示例文件位于仓库中。</p>
+<section id="id2">
+<h2>使用网页<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>在<a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/?lang=zh#tool">工作台</a>中选择任务，查看输入和输出。<a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/?lang=zh#tool-sucrose">蔗糖案例</a>可载入 BMRB bmse000119 在重水中的 11 组实测（¹³C，¹H）HSQC 峰对。首页的氢谱和碳谱来自同一样品。</p>
+<p>在<a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/?lang=zh#dataset">数据探索</a>中选择谱种并输入 SMILES。命中同结构记录时可查看实验谱及来源，缺少对应核磁、红外或拉曼记录时调用已部署的预测器。预测 MS/MS 时请在工作台填写采集条件。配对案例可查看基于独立位点标注的核磁 R² 与峰位匹配。<a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/?lang=zh#agent-demo">智能体案例</a>支持免密钥回放，实时提问需要服务端配置模型提供方。</p>
+</section>
 <section id="openmolspec">
 <h2>1. 安装 OpenMolSpec<a class="headerlink" href="#openmolspec" title="Link to this heading"></a></h2>
 <p>使用 Python 3.10 或更新版本。创建环境后，安装工具包及数据格式、绘图依赖。</p>
@@ -123,8 +129,8 @@ python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </sp
 </div>
 <p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">v1.0 发布页</a>也提供 wheel 安装包。release 分支包含当前数据卡与手册示例。</p>
 </section>
-<section id="id2">
-<h2>2. 读取第一条谱<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="id3">
+<h2>2. 读取第一条谱<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <p>先读取仓库自带的三个 NMRSpec 示例分子。<code class="docutils literal notranslate"><span class="pre">MolecularSpectra</span></code> 按名称组织数据划分，每个划分从文件逐条读取；<code class="docutils literal notranslate"><span class="pre">head(1)</span></code> 返回第一条记录。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularSpectra</span>
 
@@ -139,8 +145,8 @@ python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </sp
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">smiles</span></code> 描述分子结构，<code class="docutils literal notranslate"><span class="pre">formula</span></code> 保存分子式，<code class="docutils literal notranslate"><span class="pre">h_nmr</span></code>／<code class="docutils literal notranslate"><span class="pre">c_nmr</span></code> 保存实验谱记录。<code class="docutils literal notranslate"><span class="pre">_openmolspec</span></code> 记录数据集名称、划分和可用通道。</p>
 </section>
-<section id="id3">
-<h2>3. 加载完整数据集<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="id4">
+<h2>3. 加载完整数据集<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <p>使用清洗后的 OpenDataLab H/C 集合时，将 <code class="docutils literal notranslate"><span class="pre">train.jsonl</span></code>、<code class="docutils literal notranslate"><span class="pre">val.jsonl</span></code>、<code class="docutils literal notranslate"><span class="pre">test.jsonl</span></code> 放在 <code class="docutils literal notranslate"><span class="pre">data/nmr</span></code>，再按注册名称加载。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">molspectra</span><span class="p">,</span> <span class="n">list_datasets</span>
 
@@ -154,8 +160,8 @@ python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </sp
 </div>
 <p>通道筛选会选择同时含 H、C 谱的分子。<code class="docutils literal notranslate"><span class="pre">verify()</span></code> 核对本地文件与数据版本是否一致。<a class="reference internal" href="data/index.html"><span class="std std-doc">数据指南</span></a>提供清洗后数量、各核种文件、实验条件及其他资源。</p>
 </section>
-<section id="id4">
-<h2>4. 预测化学位移<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id5">
+<h2>4. 预测化学位移<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <p>NMRNet 使用发布的模型文件和对应 Python 环境。<code class="docutils literal notranslate"><span class="pre">models_root</span></code> 指向包含 <code class="docutils literal notranslate"><span class="pre">nmrnet/</span></code> 的目录，<code class="docutils literal notranslate"><span class="pre">python</span></code> 指向安装了 NMRNet 依赖的解释器。<a class="reference internal" href="tasks/nmr-forward-13C.html"><span class="std std-doc">模型指南</span></a>介绍所需文件及核种设置。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">NMRNet</span>
 
@@ -168,8 +174,8 @@ python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </sp
 </div>
 <p>乙醇示例返回碳原子编号 <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>，位移约为 <code class="docutils literal notranslate"><span class="pre">[17.774,</span> <span class="pre">57.774]</span></code> ppm。原子编号遵循 RDKit 加氢后的 0 起始顺序，可用这些编号把位移标到分子图上。</p>
 </section>
-<section id="id5">
-<h2>5. 与实测峰比较并保存结果<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="id6">
+<h2>5. 与实测峰比较并保存结果<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.benchmark</span><span class="w"> </span><span class="kn">import</span> <span class="n">evaluate_nmr</span>
@@ -208,8 +214,8 @@ python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </sp
 </div>
 <p>数据准备会检查分子式、核种标签及训练／验证分子重叠。对齐阶段学习共享的谱与分子表征。训练结构生成器时使用 <code class="docutils literal notranslate"><span class="pre">stage=&quot;generate&quot;</span></code>，并提供保存的对齐 checkpoint。<a class="reference internal" href="notebooks/sdk-training-preflight.html"><span class="std std-doc">训练教程</span></a>逐步介绍数据准备、参数配置、权重保存与重载。</p>
 </section>
-<section id="id6">
-<h2>继续学习<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<section id="id7">
+<h2>继续学习<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="tasks/index.html"><span class="std std-doc">Tasks</span></a>: 每个谱学任务的输入、输出与模型调用。</p></li>
 <li><p><a class="reference internal" href="notebooks/index.html"><span class="std std-doc">Tutorials</span></a>: 已执行的示例、图与解释。</p></li>

@@ -62,9 +62,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="datasets-overview.html">Exploring the spectroscopy datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-annotation-magma.html">MS/MS fragment annotation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-annotation-mechfrag.html">MS/MS fragment candidates with MechFrag-MS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-forward-glacier.html">MS/MS prediction with GLACIER</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-forward-iceberg.html">MS/MS prediction with ICEBERG</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multispectral-spectrallm-generation.html">Structure generation with SpectraLLM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-assignment.html">Peak-to-atom assignment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-forward-11B.html">11B chemical shift prediction</a></li>
@@ -92,7 +93,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="sdk-training-preflight.html">Training data preparation and preflight</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">Spectral question answering with SpecMol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking.html">Candidate reranking: IR + Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking-hc.html">Candidate reranking: IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theory-ms-isotopes.html">Mass spectrometry: isotope envelopes and resolving power</a></li>
@@ -108,6 +109,8 @@
 <li class="toctree-l2"><a class="reference internal" href="vibrational-generation-hc.html">Structure generation: IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval.html">Structure retrieval: IR + Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-hc.html">Structure retrieval: IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-ir.html">IR spectrum-to-structure retrieval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-raman.html">Raman spectrum-to-structure retrieval</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#theory-simulations">Theory simulations / 理论模拟</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#nmr">NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#mass-spectrometry">Mass spectrometry</a></li>
@@ -344,6 +347,10 @@ Checkpoint SHA-256: 0efb06c233a6e851629f695e516d94209963fb60df39194a5dbb20bd3cb9
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+  "matched_peak_r2": 0.9998938500783204,
+  "matched_peaks": 16,
+  "reference_peaks": 16,
+  "predicted_peaks": 22,
   "matched_peak_mae_ppm": 0.360868186950682,
   "matched_peak_rmse_ppm": 0.5066505398060095,
   "peak_count_mae": 6.0,

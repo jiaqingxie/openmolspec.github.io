@@ -43,6 +43,7 @@ Choose the kind of evidence you have: NMR peaks, MS/MS peaks, a molecular geomet
 | `ms.forward.glacier` | MS/MS | [MS/MS prediction with GLACIER](ms-forward-glacier.md) |
 | `ms.forward.iceberg` | MS/MS | [MS/MS prediction with ICEBERG](ms-forward-iceberg.md) |
 | `ms.annotation.magma` | MS/MS | [MS/MS fragment annotation](ms-annotation-magma.md) |
+| `ms.annotation.mechfrag` | MS/MS | [MS/MS fragment candidates with MechFrag-MS](ms-annotation-mechfrag.md) |
 
 ## [IR / Raman](vibrational.md)
 
@@ -55,20 +56,22 @@ Choose the kind of evidence you have: NMR peaks, MS/MS peaks, a molecular geomet
 | `vibrational.retrieval` | IR, Raman | [Structure retrieval: IR + Raman](vibrational-retrieval.md) |
 | `vibrational.generation` | IR, Raman | [Structure generation: IR + Raman](vibrational-generation.md) |
 | `spectroscopy.reranking` | IR, Raman | [Candidate reranking: IR + Raman](spectroscopy-reranking.md) |
+| `vibrational.retrieval.ir` | IR | [IR spectrum-to-structure retrieval](vibrational-retrieval-ir.md) |
+| `vibrational.retrieval.raman` | RAMAN | [Raman spectrum-to-structure retrieval](vibrational-retrieval-raman.md) |
 
 ## [Multimodal spectroscopy](multimodal.md)
 
 | Task / 任务 | Spectroscopy / 谱型 | Definition / 定义 |
 | --- | --- | --- |
 | `vibrational.gap.ir_raman_hc` | IR, Raman, 1H, 13C | [HOMO–LUMO gap from IR + Raman + NMR](vibrational-gap-ir_raman_hc.md) |
+| `spectroscopy.qa` | NMR, IR, Raman | [Spectral question answering with SpecMol](spectroscopy-qa.md) |
 | `vibrational.retrieval.hc` | IR, Raman, 1H, 13C | [Structure retrieval: IR + Raman + NMR](vibrational-retrieval-hc.md) |
 | `vibrational.generation.hc` | IR, Raman, 1H, 13C | [Structure generation: IR + Raman + NMR](vibrational-generation-hc.md) |
 | `spectroscopy.reranking.hc` | IR, Raman, 1H, 13C | [Candidate reranking: IR + Raman + NMR](spectroscopy-reranking-hc.md) |
+| `multispectral.spectrallm.generation` | IR, Raman, NMR, MS/MS | [Structure generation with SpectraLLM](multispectral-spectrallm-generation.md) |
 
 ## [Deferred tasks](deferred.md)
 
 | Task / 任务 | Spectroscopy / 谱型 | Definition / 定义 |
 | --- | --- | --- |
 | `nmr.formula` | 1H, 13C | [谱图 → 分子式](nmr-formula.md) |
-| `spectroscopy.qa` | NMR, IR, Raman | [谱学问答 / 推理](spectroscopy-qa.md) |
-| `multispectral.spectrallm.generation` | IR, Raman, NMR, MS/MS | [多谱 → 结构（SpectraLLM）](multispectral-spectrallm-generation.md) |

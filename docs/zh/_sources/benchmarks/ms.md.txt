@@ -2,6 +2,12 @@
 
 下面按任务列出定义及保存的评测结果。模型调用和完整输入输出示例见相应任务指南。
 
+## MS/MS 碎片质量覆盖率
+
+在 55 张 MassSpecGym 谱图的同一批 1,741 个实测峰上，采用 10 ppm 容差，MechFrag-MS 的质量匹配率为 62.26%，MAGMa 为 58.13%。另有 9 张谱缺采集条件。碎片原子身份的准确率需要独立实验标注。
+
+[下载指标与原始报告指纹](../assets/benchmarks/heldout-tasks.json)
+
 ## 使用 GLACIER 预测 MS/MS
 
 `ms.forward.glacier`
@@ -53,6 +59,25 @@
 | recorded evaluation | recorded model | matched_peak_fraction | 0.568182 |
 | recorded evaluation | recorded model | annotated_spectra | 2 |
 | recorded evaluation | recorded model | checked_fragments | 1534 |
+
+## MechFrag-MS 碎片候选指认
+
+`ms.annotation.mechfrag`
+
+寻找质量与实测子离子一致的候选碎片及原子编号。
+
+报告 10 ppm 窗口内实测峰的质量匹配覆盖率，结构正确率需要实验碎片原子标注。
+
+[Task guide](../tasks/ms-annotation-mechfrag.md) · [Tutorial](../notebooks/ms-annotation-mechfrag.ipynb) · [Predictions](../assets/examples/ms-annotation-mechfrag.json)
+
+运行设置：`dataset="MassSpecGym / 10 ppm"`
+
+| Dataset / scope | Model / variant | Metric | Value |
+| --- | --- | --- | ---: |
+| MassSpecGym / 10 ppm | recorded model | variant | balanced_neutral_context |
+| MassSpecGym / 10 ppm | recorded model | peaks | 1741 |
+| MassSpecGym / 10 ppm | recorded model | matched_fraction | 0.622631 |
+| MassSpecGym / 10 ppm | recorded model | magma_matched_fraction_same_peaks | 0.581275 |
 
 
 ## 参考文献

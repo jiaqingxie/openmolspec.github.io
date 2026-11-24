@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "selection": "First 4 valid test records in source order for each view; H/C previews require both nuclei.",
+  "version": 2,
+  "selection": "Up to 18 valid, distinct test records in source order for each view. H/C previews require both nuclei. Small views include all qualifying records.",
   "summary": {
     "nmr": {
       "spectra": 2972843,
@@ -146,7 +146,7 @@
       "units": "ppm",
       "spectra": 2972843,
       "molecules": 2678511,
-      "preview_samples": 4,
+      "preview_samples": 18,
       "domain": "experimental"
     },
     {
@@ -156,7 +156,7 @@
       "units": "ppm",
       "spectra": 1140,
       "molecules": 1017,
-      "preview_samples": 4,
+      "preview_samples": 18,
       "domain": "experimental"
     },
     {
@@ -166,7 +166,7 @@
       "units": "ppm",
       "spectra": 56679,
       "molecules": 50402,
-      "preview_samples": 4,
+      "preview_samples": 18,
       "domain": "experimental"
     },
     {
@@ -176,7 +176,7 @@
       "units": "ppm",
       "spectra": 726,
       "molecules": 636,
-      "preview_samples": 4,
+      "preview_samples": 18,
       "domain": "experimental"
     },
     {
@@ -186,7 +186,7 @@
       "units": "ppm",
       "spectra": 21662,
       "molecules": 18238,
-      "preview_samples": 4,
+      "preview_samples": 18,
       "domain": "experimental"
     },
     {
@@ -196,7 +196,7 @@
       "units": "cm-1",
       "spectra": 177759,
       "molecules": 168197,
-      "preview_samples": 4,
+      "preview_samples": 18,
       "domain": "experimental"
     },
     {
@@ -206,7 +206,7 @@
       "units": "cm-1",
       "spectra": 42,
       "molecules": 39,
-      "preview_samples": 4,
+      "preview_samples": 5,
       "domain": "experimental"
     },
     {
@@ -216,7 +216,7 @@
       "units": "m/z",
       "spectra": 5233,
       "molecules": 4980,
-      "preview_samples": 4,
+      "preview_samples": 18,
       "domain": "experimental"
     }
   ],
@@ -457,6 +457,1027 @@
       "structure_svg": "assets/molecules/opendatalab_nmr-08552a1ed062.svg"
     },
     {
+      "dataset": "opendatalab_nmr",
+      "modality": "1H + 13C",
+      "smiles": "N#CC(OC(=O)c1ccccc1)c1ccc([N+](=O)[O-])cc1.N#Cc1cccc(C(=O)O)c1Cc1ccc([N+](=O)[O-])cc1",
+      "formula": "C30H20N4O8",
+      "spectra": [
+        {
+          "modality": "1H",
+          "units": "ppm",
+          "peaks": [
+            6.79,
+            7.5,
+            7.645,
+            7.785,
+            8.075,
+            8.344999999999999
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "400 MHz",
+          "source_line": 198,
+          "source_id": "2003/US06552195-20030422"
+        },
+        {
+          "modality": "13C",
+          "units": "ppm",
+          "peaks": [
+            62.23,
+            115.25,
+            124.12,
+            127.46,
+            128.87,
+            130.16,
+            134.57,
+            138.28,
+            149.03,
+            164.32
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "100 MHz",
+          "source_line": 198,
+          "source_id": "2003/US06552195-20030422"
+        }
+      ],
+      "split": "test",
+      "source": "USPTO",
+      "source_id": "2003/US06552195-20030422",
+      "standard_inchikey": "IXLCXEHKMNMCLT-UHFFFAOYSA-N",
+      "id": "opendatalab_nmr-1b09f3f54e7f",
+      "structure_svg": "assets/molecules/opendatalab_nmr-1b09f3f54e7f.svg"
+    },
+    {
+      "dataset": "opendatalab_nmr",
+      "modality": "1H + 13C",
+      "smiles": "CC(C)N(C1=C(N(C(C)C)C(C)C)[CH]1[Mg]([Br])([Br])[CH]1C(N(C(C)C)C(C)C)=C1N(C(C)C)C(C)C)C(C)C",
+      "formula": "C30H58Br2MgN4",
+      "spectra": [
+        {
+          "modality": "1H",
+          "units": "ppm",
+          "peaks": [
+            4.15,
+            3.4749999999999996,
+            1.75,
+            0.95
+          ],
+          "intensity_available": false,
+          "solvent": "[D8]THF",
+          "frequency": "300 MHz",
+          "source_line": 394,
+          "source_id": "2008/US20080269525A1-20081030"
+        },
+        {
+          "modality": "13C",
+          "units": "ppm",
+          "peaks": [
+            170.8,
+            150.3,
+            51.4,
+            21.5
+          ],
+          "intensity_available": false,
+          "solvent": "[D8]THF",
+          "frequency": "75 MHz",
+          "source_line": 394,
+          "source_id": "2008/US20080269525A1-20081030"
+        }
+      ],
+      "split": "test",
+      "source": "Pistachio",
+      "source_id": "2008/US20080269525A1-20081030",
+      "standard_inchikey": "YAWLPFUMPJIGGG-UHFFFAOYSA-L",
+      "id": "opendatalab_nmr-cfa6681929dd",
+      "structure_svg": "assets/molecules/opendatalab_nmr-cfa6681929dd.svg"
+    },
+    {
+      "dataset": "opendatalab_nmr",
+      "modality": "1H + 13C",
+      "smiles": "CCCCCCCCCCCCCCCC(=O)O.CCCCCCCCCCCCCCCC(=O)O.OCC1CCC(CO)O1",
+      "formula": "C38H76O7",
+      "spectra": [
+        {
+          "modality": "1H",
+          "units": "ppm",
+          "peaks": [
+            4.16,
+            3.985,
+            2.315,
+            1.98,
+            1.69,
+            1.59,
+            1.22,
+            0.85
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "500 MHz",
+          "source_line": 907,
+          "source_id": "2017/US20170305871A1-20171026"
+        },
+        {
+          "modality": "13C",
+          "units": "ppm",
+          "peaks": [
+            173.8,
+            66.2,
+            34.2,
+            32.0,
+            29.7,
+            29.7,
+            29.7,
+            29.7,
+            29.7,
+            29.6,
+            29.5,
+            29.4,
+            29.3,
+            29.2,
+            27.7,
+            24.9,
+            22.7,
+            14.2
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "126 MHz",
+          "source_line": 908,
+          "source_id": "2017/US20170305871A1-20171026"
+        }
+      ],
+      "split": "test",
+      "source": "Pistachio",
+      "source_id": "2017/US20170305871A1-20171026",
+      "standard_inchikey": "GXIZAXYSLOOELB-UHFFFAOYSA-N",
+      "id": "opendatalab_nmr-2a3dc97ff3b8",
+      "structure_svg": "assets/molecules/opendatalab_nmr-2a3dc97ff3b8.svg"
+    },
+    {
+      "dataset": "opendatalab_nmr",
+      "modality": "1H + 13C",
+      "smiles": "Cc1cc(C)c(N2[CH]([Ru]([Cl])([Cl])(=[C]3C=C(c4ccccc4)c4ccccc43)[CH]3N(c4c(C)cc(C)cc4C)C(C)(C)CC3(C)C)C(C)(C)CC2(C)C)c(C)c1",
+      "formula": "C49H62Cl2N2Ru",
+      "spectra": [
+        {
+          "modality": "1H",
+          "units": "ppm",
+          "peaks": [
+            8.51,
+            7.7,
+            7.49,
+            7.425,
+            7.14,
+            7.075,
+            6.995,
+            6.84,
+            6.23,
+            5.79,
+            2.16,
+            2.11,
+            2.045,
+            1.86,
+            1.72,
+            1.18,
+            1.12
+          ],
+          "intensity_available": false,
+          "solvent": "CD2Cl2",
+          "frequency": "500 MHz",
+          "source_line": 1340,
+          "source_id": "2025/US20250066402A1-20250227"
+        },
+        {
+          "modality": "13C",
+          "units": "ppm",
+          "peaks": [
+            280.2,
+            277.9,
+            144.0,
+            140.7,
+            138.2,
+            137.9,
+            137.4,
+            136.4,
+            135.8,
+            135.4,
+            134.1,
+            129.7,
+            129.6,
+            129.3,
+            129.2,
+            127.3,
+            127.0,
+            126.6,
+            126.6,
+            115.5,
+            80.9,
+            56.9,
+            54.5,
+            32.3,
+            32.1,
+            30.2,
+            29.5,
+            21.6,
+            21.4,
+            21.0
+          ],
+          "intensity_available": false,
+          "solvent": "CD2Cl2",
+          "frequency": "125 MHz",
+          "source_line": 1341,
+          "source_id": "2025/US20250066402A1-20250227"
+        }
+      ],
+      "split": "test",
+      "source": "Pistachio",
+      "source_id": "2025/US20250066402A1-20250227",
+      "standard_inchikey": "NCADVAJRCJHVRN-UHFFFAOYSA-L",
+      "id": "opendatalab_nmr-eaf8c07a64be",
+      "structure_svg": "assets/molecules/opendatalab_nmr-eaf8c07a64be.svg"
+    },
+    {
+      "dataset": "opendatalab_nmr",
+      "modality": "1H + 13C",
+      "smiles": "CCc1cccc(C)c1N1[CH]([Ru]([Cl])([Cl])(=[C]2C=C(c3ccccc3)c3ccccc32)[CH]2N(c3c(C)cccc3CC)C(C)(C)CC2(C)C)C(C)(C)CC1(C)C",
+      "formula": "C49H62Cl2N2Ru",
+      "spectra": [
+        {
+          "modality": "1H",
+          "units": "ppm",
+          "peaks": [
+            8.98,
+            7.71,
+            7.295,
+            6.984999999999999,
+            6.425,
+            3.375,
+            2.77,
+            2.58,
+            2.11,
+            1.475,
+            0.895,
+            2.34
+          ],
+          "intensity_available": false,
+          "solvent": "C6D6",
+          "frequency": "500 MHz",
+          "source_line": 1332,
+          "source_id": "2022/US20220073549A1-20220310"
+        },
+        {
+          "modality": "13C",
+          "units": "ppm",
+          "peaks": [
+            280.4,
+            280.3,
+            277.9,
+            277.8,
+            277.6,
+            144.2,
+            144.1,
+            141.1,
+            141.0,
+            140.9,
+            139.5,
+            139.4,
+            139.1,
+            139.1,
+            138.8,
+            137.9,
+            137.8,
+            137.8,
+            137.4,
+            135.5,
+            135.0,
+            134.6,
+            134.5,
+            131.0,
+            130.5,
+            129.7,
+            129.3,
+            129.2,
+            129.1,
+            129.0,
+            128.7,
+            128.4,
+            127.8,
+            127.7,
+            127.4,
+            127.3,
+            127.0,
+            126.8,
+            126.7,
+            126.6,
+            126.5,
+            125.2,
+            124.3,
+            116.3,
+            116.2,
+            116.1,
+            81.9,
+            80.6,
+            80.5,
+            61.5,
+            57.0,
+            56.9,
+            56.5,
+            54.9,
+            54.8,
+            54.7,
+            54.6,
+            32.7,
+            32.4,
+            32.4,
+            32.0,
+            31.8,
+            31.0,
+            30.2,
+            29.6,
+            29.5,
+            29.1,
+            28.8,
+            27.4,
+            25.2,
+            25.1,
+            24.6,
+            22.1,
+            21.8,
+            14.7,
+            13.1,
+            12.7
+          ],
+          "intensity_available": false,
+          "solvent": "CD2Cl2",
+          "frequency": "125 MHz",
+          "source_line": 1333,
+          "source_id": "2022/US20220073549A1-20220310"
+        }
+      ],
+      "split": "test",
+      "source": "Pistachio",
+      "source_id": "2022/US20220073549A1-20220310",
+      "standard_inchikey": "OLWNJEOSGXGXCO-UHFFFAOYSA-L",
+      "id": "opendatalab_nmr-b737b129d25c",
+      "structure_svg": "assets/molecules/opendatalab_nmr-b737b129d25c.svg"
+    },
+    {
+      "dataset": "opendatalab_nmr",
+      "modality": "1H + 13C",
+      "smiles": "CC1=[N+](CCC[N+](C)(C)C)c2ccc(S(=O)(=O)[O-])cc2C1(C)C.CC1=[N+](CCC[N+](C)(C)C)c2ccc(S(=O)(=O)[O-])cc2C1(C)C.[Br-].[Br-]",
+      "formula": "C34H54Br2N4O6S2",
+      "spectra": [
+        {
+          "modality": "1H",
+          "units": "ppm",
+          "peaks": [
+            1.56,
+            2.51,
+            3.07,
+            3.12,
+            3.62,
+            4.5,
+            7.71,
+            7.79,
+            8.01
+          ],
+          "intensity_available": false,
+          "solvent": "DMSO-d6",
+          "frequency": "400 MHz",
+          "source_line": 248,
+          "source_id": "2023/US20230098702A1-20230330"
+        },
+        {
+          "modality": "13C",
+          "units": "ppm",
+          "peaks": [
+            15.0,
+            21.6,
+            22.3,
+            45.2,
+            53.1,
+            55.0,
+            62.4,
+            115.4,
+            121.2,
+            126.8,
+            141.3,
+            142.0,
+            149.9,
+            199.1
+          ],
+          "intensity_available": false,
+          "solvent": "DMSO-d6",
+          "frequency": "100 MHz",
+          "source_line": 248,
+          "source_id": "2023/US20230098702A1-20230330"
+        }
+      ],
+      "split": "test",
+      "source": "Pistachio",
+      "source_id": "2023/US20230098702A1-20230330",
+      "standard_inchikey": "JHXOUDOFOYPNFB-UHFFFAOYSA-L",
+      "id": "opendatalab_nmr-ae2b6843a26a",
+      "structure_svg": "assets/molecules/opendatalab_nmr-ae2b6843a26a.svg"
+    },
+    {
+      "dataset": "opendatalab_nmr",
+      "modality": "1H + 13C",
+      "smiles": "CC(C)(C)C1[O][Ru]2([PH](c3ccccc3)(c3ccccc3)c3ccccc3)([PH](c3ccccc3)(c3ccccc3)c3ccccc3)([O]1)[O]C(C(C)(C)C)[O]2",
+      "formula": "C46H52O4P2Ru",
+      "spectra": [
+        {
+          "modality": "1H",
+          "units": "ppm",
+          "peaks": [
+            7.16,
+            0.78
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "200.1 MHz",
+          "source_line": 2068,
+          "source_id": "2018/US20180148465A1-20180531"
+        },
+        {
+          "modality": "13C",
+          "units": "ppm",
+          "peaks": [
+            195.2,
+            131.0,
+            39.4,
+            26.6
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "50.3 MHz",
+          "source_line": 2068,
+          "source_id": "2018/US20180148465A1-20180531"
+        }
+      ],
+      "split": "test",
+      "source": "Pistachio",
+      "source_id": "2018/US20180148465A1-20180531",
+      "standard_inchikey": "WXRKBVWRSZYWNA-UHFFFAOYSA-P",
+      "id": "opendatalab_nmr-2aae84fea0d0",
+      "structure_svg": "assets/molecules/opendatalab_nmr-2aae84fea0d0.svg"
+    },
+    {
+      "dataset": "opendatalab_nmr",
+      "modality": "1H + 13C",
+      "smiles": "CC(=O)[O][Ru]1([O]C(C)=O)([PH](c2ccccc2)(c2ccccc2)c2ccccc2)([PH](c2ccccc2)(c2ccccc2)c2ccccc2)[CH2]CC[NH]1",
+      "formula": "C43H45NO4P2Ru",
+      "spectra": [
+        {
+          "modality": "1H",
+          "units": "ppm",
+          "peaks": [
+            9.11,
+            9.0,
+            8.79,
+            7.855,
+            7.235,
+            6.45,
+            6.22,
+            5.8,
+            5.01,
+            4.365,
+            4.2,
+            3.98,
+            3.65,
+            3.32,
+            3.08,
+            2.22,
+            1.92
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "400 MHz",
+          "source_line": 2673,
+          "source_id": "2018/US20180148465A1-20180531"
+        },
+        {
+          "modality": "13C",
+          "units": "ppm",
+          "peaks": [
+            176.8,
+            155.4,
+            152.1,
+            147.2,
+            146.8,
+            144.1,
+            143.8,
+            141.6,
+            139.7,
+            139.4,
+            138.7,
+            138.6,
+            135.8,
+            135.4,
+            135.2,
+            133.9,
+            132.6,
+            126.6,
+            126.1,
+            125.3,
+            123.8,
+            119.0,
+            118.6,
+            117.5,
+            88.7,
+            88.3,
+            86.8,
+            86.3,
+            77.9,
+            77.2,
+            75.5,
+            73.9,
+            73.3,
+            69.2,
+            68.9,
+            68.6,
+            63.6,
+            50.9,
+            25.2,
+            17.9
+          ],
+          "intensity_available": false,
+          "solvent": "C6D6",
+          "frequency": "100 MHz",
+          "source_line": 2673,
+          "source_id": "2018/US20180148465A1-20180531"
+        }
+      ],
+      "split": "test",
+      "source": "Pistachio",
+      "source_id": "2018/US20180148465A1-20180531",
+      "standard_inchikey": "GWAHAPLKMKZROZ-UHFFFAOYSA-N",
+      "id": "opendatalab_nmr-1310005b68e0",
+      "structure_svg": "assets/molecules/opendatalab_nmr-1310005b68e0.svg"
+    },
+    {
+      "dataset": "opendatalab_nmr",
+      "modality": "1H + 13C",
+      "smiles": "Cc1cccc(C(C)C)c1N1[CH]([Ru]([Cl])([Cl])(=[C]2C=C(c3ccccc3)c3ccccc32)[CH]2N(c3c(C)cccc3C(C)C)C(C)(C)CC2(C)C)C(C)(C)CC1(C)C",
+      "formula": "C51H66Cl2N2Ru",
+      "spectra": [
+        {
+          "modality": "1H",
+          "units": "ppm",
+          "peaks": [
+            9.350000000000001,
+            7.975,
+            7.275,
+            6.55,
+            3.74,
+            3.005,
+            2.44,
+            1.5150000000000001,
+            0.875,
+            0.44
+          ],
+          "intensity_available": false,
+          "solvent": "C6D6",
+          "frequency": "500 MHz",
+          "source_line": 1194,
+          "source_id": "2018/US20180298046A1-20181018"
+        },
+        {
+          "modality": "13C",
+          "units": "ppm",
+          "peaks": [
+            281.7,
+            281.0,
+            280.1,
+            279.1,
+            278.5,
+            147.6,
+            146.3,
+            142.0,
+            141.8,
+            141.1,
+            140.9,
+            139.9,
+            139.8,
+            139.5,
+            137.7,
+            136.7,
+            136.4,
+            136.1,
+            134.0,
+            131.8,
+            130.7,
+            130.0,
+            129.8,
+            129.5,
+            129.4,
+            129.2,
+            129.0,
+            128.7,
+            127.5,
+            127.3,
+            127.2,
+            127.0,
+            126.6,
+            125.8,
+            125.4,
+            116.6,
+            116.5,
+            80.3,
+            80.3,
+            62.7,
+            61.9,
+            61.4,
+            57.3,
+            56.8,
+            56.0,
+            32.0,
+            31.4,
+            30.8,
+            30.0,
+            28.9,
+            28.8,
+            28.6,
+            28.4,
+            27.8,
+            27.5,
+            27.3,
+            26.9,
+            26.5,
+            26.4,
+            25.7,
+            25.4,
+            24.0,
+            23.8,
+            23.2,
+            22.7
+          ],
+          "intensity_available": false,
+          "solvent": "CD2Cl2",
+          "frequency": "125 MHz",
+          "source_line": 1195,
+          "source_id": "2018/US20180298046A1-20181018"
+        }
+      ],
+      "split": "test",
+      "source": "Pistachio",
+      "source_id": "2018/US20180298046A1-20181018",
+      "standard_inchikey": "PDPHYBCVNIOGAD-UHFFFAOYSA-L",
+      "id": "opendatalab_nmr-e8a85978d73d",
+      "structure_svg": "assets/molecules/opendatalab_nmr-e8a85978d73d.svg"
+    },
+    {
+      "dataset": "opendatalab_nmr",
+      "modality": "1H + 13C",
+      "smiles": "CCc1cccc(CC)c1N1[CH]([Ru]([Cl])([Cl])(=[C]2C=C(c3ccccc3)c3ccccc32)[CH]2N(c3c(CC)cccc3CC)C(C)(C)CC2(C)C)C(C)(C)CC1(C)C",
+      "formula": "C51H66Cl2N2Ru",
+      "spectra": [
+        {
+          "modality": "1H",
+          "units": "ppm",
+          "peaks": [
+            9.74,
+            9.09,
+            8.16,
+            7.85,
+            7.365,
+            6.65,
+            3.76,
+            2.9,
+            2.37,
+            1.4849999999999999,
+            0.9750000000000001
+          ],
+          "intensity_available": false,
+          "solvent": "C6D6",
+          "frequency": "500 MHz",
+          "source_line": 1090,
+          "source_id": "2024/US11976085-20240507"
+        },
+        {
+          "modality": "13C",
+          "units": "ppm",
+          "peaks": [
+            279.9,
+            278.5,
+            277.8,
+            276.2,
+            145.5,
+            144.1,
+            143.6,
+            143.5,
+            141.3,
+            141.1,
+            140.8,
+            140.7,
+            140.2,
+            139.0,
+            138.6,
+            138.4,
+            137.9,
+            137.6,
+            134.3,
+            134.1,
+            130.6,
+            129.8,
+            129.4,
+            129.2,
+            128.2,
+            127.9,
+            127.6,
+            127.4,
+            127.0,
+            126.9,
+            126.7,
+            125.7,
+            125.5,
+            124.9,
+            124.7,
+            116.5,
+            116.1,
+            81.3,
+            79.7,
+            61.5,
+            56.9,
+            56.4,
+            55.0,
+            34.7,
+            32.5,
+            32.0,
+            31.5,
+            31.0,
+            30.5,
+            30.3,
+            30.0,
+            29.9,
+            29.6,
+            29.2,
+            27.5,
+            27.4,
+            25.3,
+            25.2,
+            24.7,
+            22.9,
+            14.8,
+            14.7,
+            14.4,
+            13.5,
+            13.2,
+            12.9
+          ],
+          "intensity_available": false,
+          "solvent": "CD2Cl2",
+          "frequency": "125 MHz",
+          "source_line": 1120,
+          "source_id": "2024/US12173015-20241224"
+        }
+      ],
+      "split": "test",
+      "source": "USPTO",
+      "source_id": "2024/US11976085-20240507",
+      "standard_inchikey": "LYYQMJQMPPJXGG-UHFFFAOYSA-L",
+      "id": "opendatalab_nmr-0fcc626887cd",
+      "structure_svg": "assets/molecules/opendatalab_nmr-0fcc626887cd.svg"
+    },
+    {
+      "dataset": "opendatalab_nmr",
+      "modality": "1H + 13C",
+      "smiles": "CC(C)[C@@H]1CC[C@@H](C)C[C@H]1C(=O)NCCc1ccccn1.CC1CCC(C(C)C)C(C(=O)NCCc2ccccn2)C1",
+      "formula": "C36H56N4O2",
+      "spectra": [
+        {
+          "modality": "1H",
+          "units": "ppm",
+          "peaks": [
+            8.53,
+            7.62,
+            7.16,
+            6.43,
+            3.67,
+            3.0,
+            1.95,
+            1.685,
+            1.47,
+            1.25,
+            0.87,
+            0.84,
+            0.66
+          ],
+          "intensity_available": false,
+          "solvent": "DMSO",
+          "frequency": "300 MHz",
+          "source_line": 1213,
+          "source_id": "2019/US10221136-20190305"
+        },
+        {
+          "modality": "13C",
+          "units": "ppm",
+          "peaks": [
+            175.8,
+            159.7,
+            148.9,
+            136.7,
+            123.6,
+            121.55,
+            49.8,
+            44.3,
+            39.4,
+            38.35,
+            36.9,
+            34.6,
+            32.3,
+            28.55,
+            23.9,
+            22.3,
+            21.3,
+            15.95
+          ],
+          "intensity_available": false,
+          "solvent": "DMSO",
+          "frequency": "75 MHz",
+          "source_line": 1214,
+          "source_id": "2019/US10221136-20190305"
+        }
+      ],
+      "split": "test",
+      "source": "USPTO",
+      "source_id": "2019/US10221136-20190305",
+      "standard_inchikey": "XMWAPUBDCPYTIV-UANXYBPYSA-N",
+      "id": "opendatalab_nmr-a60c3df92b8b",
+      "structure_svg": "assets/molecules/opendatalab_nmr-a60c3df92b8b.svg"
+    },
+    {
+      "dataset": "opendatalab_nmr",
+      "modality": "1H + 13C",
+      "smiles": "C=[C]=[Ru]([Cl])([Cl])([PH](C1CCCCC1)(C1CCCCC1)C1CCCCC1)[PH](C1CCCCC1)(C1CCCCC1)C1CCCCC1",
+      "formula": "C38H70Cl2P2Ru",
+      "spectra": [
+        {
+          "modality": "1H",
+          "units": "ppm",
+          "peaks": [
+            3.63,
+            2.675,
+            2.03,
+            1.67,
+            1.275,
+            3.0
+          ],
+          "intensity_available": false,
+          "solvent": "CD2Cl2",
+          "frequency": "MHz",
+          "source_line": 1200,
+          "source_id": "2004/US06806325-20041019"
+        },
+        {
+          "modality": "13C",
+          "units": "ppm",
+          "peaks": [
+            327.41,
+            99.34,
+            33.3,
+            3.0,
+            30.41,
+            3.0,
+            28.32,
+            3.0,
+            27.02,
+            3.0
+          ],
+          "intensity_available": false,
+          "solvent": "CD2Cl2",
+          "frequency": "MHz",
+          "source_line": 1200,
+          "source_id": "2004/US06806325-20041019"
+        }
+      ],
+      "split": "test",
+      "source": "xiegeo",
+      "source_id": "2004/US06806325-20041019",
+      "standard_inchikey": "CONKHNUDOXAPSF-UHFFFAOYSA-N",
+      "id": "opendatalab_nmr-186c0025414a",
+      "structure_svg": "assets/molecules/opendatalab_nmr-186c0025414a.svg"
+    },
+    {
+      "dataset": "opendatalab_nmr",
+      "modality": "1H + 13C",
+      "smiles": "[CH2]=[Ru]([Cl])([Cl])([PH](C1CCCCC1)(C1CCCCC1)C1CCCCC1)[PH](C1CCCCC1)(C1CCCCC1)C1CCCCC1",
+      "formula": "C37H70Cl2P2Ru",
+      "spectra": [
+        {
+          "modality": "1H",
+          "units": "ppm",
+          "peaks": [
+            18.94,
+            2.4699999999999998,
+            3.0,
+            1.755,
+            3.0,
+            1.46,
+            3.0,
+            1.24,
+            3.0
+          ],
+          "intensity_available": false,
+          "solvent": "CD2Cl2",
+          "frequency": "400 MHz",
+          "source_line": 1190,
+          "source_id": "2004/US06806325-20041019"
+        },
+        {
+          "modality": "13C",
+          "units": "ppm",
+          "peaks": [
+            294.71,
+            31.05,
+            3.0,
+            29.58,
+            3.0,
+            28.2,
+            3.0,
+            26.94,
+            3.0
+          ],
+          "intensity_available": false,
+          "solvent": "CD2Cl2",
+          "frequency": "100 MHz",
+          "source_line": 1190,
+          "source_id": "2004/US06806325-20041019"
+        }
+      ],
+      "split": "test",
+      "source": "xiegeo",
+      "source_id": "2004/US06806325-20041019",
+      "standard_inchikey": "CTHNKRNRZOJWKY-UHFFFAOYSA-N",
+      "id": "opendatalab_nmr-67b4eea95b94",
+      "structure_svg": "assets/molecules/opendatalab_nmr-67b4eea95b94.svg"
+    },
+    {
+      "dataset": "opendatalab_nmr",
+      "modality": "1H + 13C",
+      "smiles": "CC(C)=CCC/C(C)=C/CC/C(C)=C/CCCC(P(=O)(O)CO)S(=O)(=O)[O-].CC(C)=CCC/C(C)=C/CC/C(C)=C/CCCC(P(=O)(O)CO)S(=O)(=O)[O-].[K+].[K+]",
+      "formula": "C38H68K2O12P2S2",
+      "spectra": [
+        {
+          "modality": "1H",
+          "units": "ppm",
+          "peaks": [
+            5.12,
+            5.05,
+            5.03,
+            3.76,
+            3.53,
+            2.98,
+            1.88,
+            1.75,
+            1.4500000000000002,
+            1.53,
+            1.48,
+            1.46
+          ],
+          "intensity_available": false,
+          "solvent": "D2O",
+          "frequency": "400 MHz",
+          "source_line": 4277,
+          "source_id": "1995/US054708451-19951128"
+        },
+        {
+          "modality": "13C",
+          "units": "ppm",
+          "peaks": [
+            136.35,
+            135.78,
+            132.37,
+            124.56,
+            60.65,
+            60.49,
+            39.34,
+            39.24,
+            29.3,
+            27.69,
+            26.35,
+            26.28,
+            26.1,
+            25.17,
+            17.24,
+            15.56
+          ],
+          "intensity_available": false,
+          "solvent": "D2O",
+          "frequency": "100 MHz",
+          "source_line": 4277,
+          "source_id": "1995/US054708451-19951128"
+        }
+      ],
+      "split": "test",
+      "source": "USPTO",
+      "source_id": "1995/US054708451-19951128",
+      "standard_inchikey": "JGJNBXFMZNIXHZ-LRMSUEDUSA-L",
+      "id": "opendatalab_nmr-616441a85da0",
+      "structure_svg": "assets/molecules/opendatalab_nmr-616441a85da0.svg"
+    },
+    {
       "dataset": "opendatalab_11b",
       "modality": "11B",
       "smiles": "BC(=O)O.CN(C)C",
@@ -552,6 +1573,355 @@
       "standard_inchikey": "DEHPRSMKNZOZFR-UHFFFAOYSA-M",
       "id": "opendatalab_11b-06300299eccb",
       "structure_svg": "assets/molecules/opendatalab_11b-06300299eccb.svg"
+    },
+    {
+      "dataset": "opendatalab_11b",
+      "modality": "11B",
+      "smiles": "C(=C(\\B(c1ccc2ccccc2c1)c1ccc2ccccc2c1)c1ccc2ccccc2c1)\\c1ccccn1",
+      "formula": "C37H26BN",
+      "spectra": [
+        {
+          "modality": "11B",
+          "units": "ppm",
+          "peaks": [
+            3.9
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "128 MHz",
+          "source_id": "2011/US20110046372A1-20110224"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2011/US20110046372A1-20110224",
+      "standard_inchikey": "NJRPTKBVQLKXFZ-UOZKZNBHSA-N",
+      "id": "opendatalab_11b-3bf5d641e42e",
+      "structure_svg": "assets/molecules/opendatalab_11b-3bf5d641e42e.svg"
+    },
+    {
+      "dataset": "opendatalab_11b",
+      "modality": "11B",
+      "smiles": "OB(c1cc2ccccc2o1)c1cc2ccccc2o1",
+      "formula": "C16H11BO3",
+      "spectra": [
+        {
+          "modality": "11B",
+          "units": "ppm",
+          "peaks": [
+            10.89
+          ],
+          "intensity_available": false,
+          "frequency": "400 MHz",
+          "source_id": "2015/US20150105562A1-20150416"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2015/US20150105562A1-20150416",
+      "standard_inchikey": "RQTOLDUOWIWMPB-UHFFFAOYSA-N",
+      "id": "opendatalab_11b-6ead60203fd1",
+      "structure_svg": "assets/molecules/opendatalab_11b-6ead60203fd1.svg"
+    },
+    {
+      "dataset": "opendatalab_11b",
+      "modality": "11B",
+      "smiles": "Cc1cc(C)c(S(=O)(=O)NN=C2CC(C(B3OC(C)(C)C(C)(C)O3)B3OC(C)(C)C(C)(C)O3)(N(Cc3ccccc3)C(=O)OC(C)(C)C)C2)c(C)c1",
+      "formula": "C38H57B2N3O8S",
+      "spectra": [
+        {
+          "modality": "11B",
+          "units": "ppm",
+          "peaks": [
+            37.71
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "128 MHz",
+          "source_id": "2025/US20250215019A1-20250703"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2025/US20250215019A1-20250703",
+      "standard_inchikey": "YKBKHXJGLHJRNF-UHFFFAOYSA-N",
+      "id": "opendatalab_11b-a4259ac91ac5",
+      "structure_svg": "assets/molecules/opendatalab_11b-a4259ac91ac5.svg"
+    },
+    {
+      "dataset": "opendatalab_11b",
+      "modality": "11B",
+      "smiles": "COc1ccc(C2(C(B3OC(C)(C)C(C)(C)O3)B3OC(C)(C)C(C)(C)O3)CC(=NNS(=O)(=O)c3c(C)cc(C)cc3C)C2)cc1",
+      "formula": "C33H48B2N2O7S",
+      "spectra": [
+        {
+          "modality": "11B",
+          "units": "ppm",
+          "peaks": [
+            32.77
+          ],
+          "intensity_available": false,
+          "solvent": "Acetone-d6",
+          "frequency": "128 MHz",
+          "source_id": "2025/US20250215019A1-20250703"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2025/US20250215019A1-20250703",
+      "standard_inchikey": "GGSRWKOTIRNTOK-UHFFFAOYSA-N",
+      "id": "opendatalab_11b-a3934445bab6",
+      "structure_svg": "assets/molecules/opendatalab_11b-a3934445bab6.svg"
+    },
+    {
+      "dataset": "opendatalab_11b",
+      "modality": "11B",
+      "smiles": "CC(C)OC(=O)C12CC(C1)C2B1OC(C)(C)C(C)(C)O1",
+      "formula": "C15H25BO4",
+      "spectra": [
+        {
+          "modality": "11B",
+          "units": "ppm",
+          "peaks": [
+            31.65
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "128 MHz",
+          "source_id": "2025/US20250215019A1-20250703"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2025/US20250215019A1-20250703",
+      "standard_inchikey": "FCQGOPJTHBITMJ-UHFFFAOYSA-N",
+      "id": "opendatalab_11b-1df6d362b774",
+      "structure_svg": "assets/molecules/opendatalab_11b-1df6d362b774.svg"
+    },
+    {
+      "dataset": "opendatalab_11b",
+      "modality": "11B",
+      "smiles": "CC1(C)OB(C2C3CC2(C(F)(F)F)C3)OC1(C)C",
+      "formula": "C12H18BF3O2",
+      "spectra": [
+        {
+          "modality": "11B",
+          "units": "ppm",
+          "peaks": [
+            31.45
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "128 MHz",
+          "source_id": "2025/US20250215019A1-20250703"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2025/US20250215019A1-20250703",
+      "standard_inchikey": "ZCUUKTGYUNJAJS-UHFFFAOYSA-N",
+      "id": "opendatalab_11b-bed37dc1f074",
+      "structure_svg": "assets/molecules/opendatalab_11b-bed37dc1f074.svg"
+    },
+    {
+      "dataset": "opendatalab_11b",
+      "modality": "11B",
+      "smiles": "CC12CC(C#N)(C1)C2B1OC(C)(C)C(C)(C)O1",
+      "formula": "C13H20BNO2",
+      "spectra": [
+        {
+          "modality": "11B",
+          "units": "ppm",
+          "peaks": [
+            31.12
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "128 MHz",
+          "source_id": "2025/US20250215019A1-20250703"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2025/US20250215019A1-20250703",
+      "standard_inchikey": "GCXIVVDYRUPEAF-UHFFFAOYSA-N",
+      "id": "opendatalab_11b-585acda2fc78",
+      "structure_svg": "assets/molecules/opendatalab_11b-585acda2fc78.svg"
+    },
+    {
+      "dataset": "opendatalab_11b",
+      "modality": "11B",
+      "smiles": "CC(=O)CCC12CC(C(=O)OC(C)C)(C1)C2B1OC(C)(C)C(C)(C)O1",
+      "formula": "C19H31BO5",
+      "spectra": [
+        {
+          "modality": "11B",
+          "units": "ppm",
+          "peaks": [
+            31.62
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "128 MHz",
+          "source_id": "2025/US20250215019A1-20250703"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2025/US20250215019A1-20250703",
+      "standard_inchikey": "FGUWWKBGSXYIQC-UHFFFAOYSA-N",
+      "id": "opendatalab_11b-2fe1f0082920",
+      "structure_svg": "assets/molecules/opendatalab_11b-2fe1f0082920.svg"
+    },
+    {
+      "dataset": "opendatalab_11b",
+      "modality": "11B",
+      "smiles": "CC1(C)OB(C2C3(COCc4ccccc4)CC2(c2ncc(Cl)nc2Cl)C3)OC1(C)C",
+      "formula": "C23H27BCl2N2O3",
+      "spectra": [
+        {
+          "modality": "11B",
+          "units": "ppm",
+          "peaks": [
+            31.26
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "128 MHz",
+          "source_id": "2025/US20250215019A1-20250703"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2025/US20250215019A1-20250703",
+      "standard_inchikey": "OYZOFAPCNZNVDT-UHFFFAOYSA-N",
+      "id": "opendatalab_11b-7eb0739ca4eb",
+      "structure_svg": "assets/molecules/opendatalab_11b-7eb0739ca4eb.svg"
+    },
+    {
+      "dataset": "opendatalab_11b",
+      "modality": "11B",
+      "smiles": "B.CCN(CC)CC",
+      "formula": "C6H18BN",
+      "spectra": [
+        {
+          "modality": "11B",
+          "units": "ppm",
+          "peaks": [
+            -13.94
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "96 MHz",
+          "source_id": "2025/US20250145552A1-20250508"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2025/US20250145552A1-20250508",
+      "standard_inchikey": "KDKNBGWKECQREO-UHFFFAOYSA-N",
+      "id": "opendatalab_11b-3a9d3ffd3f09",
+      "structure_svg": "assets/molecules/opendatalab_11b-3a9d3ffd3f09.svg"
+    },
+    {
+      "dataset": "opendatalab_11b",
+      "modality": "11B",
+      "smiles": "CC1(C)OB(CC2(c3ccccc3)CC(=O)C2)OC1(C)C",
+      "formula": "C17H23BO3",
+      "spectra": [
+        {
+          "modality": "11B",
+          "units": "ppm",
+          "peaks": [
+            32.46
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "128 MHz",
+          "source_id": "2025/US20250346612A1-20251113"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2025/US20250346612A1-20251113",
+      "standard_inchikey": "IJQZGEYFAOZLAS-UHFFFAOYSA-N",
+      "id": "opendatalab_11b-3d3346d8e5bc",
+      "structure_svg": "assets/molecules/opendatalab_11b-3d3346d8e5bc.svg"
+    },
+    {
+      "dataset": "opendatalab_11b",
+      "modality": "11B",
+      "smiles": "CC(B1OC(C)(C)C(C)(C)O1)C1(c2ccccc2)CC(=O)C1",
+      "formula": "C18H25BO3",
+      "spectra": [
+        {
+          "modality": "11B",
+          "units": "ppm",
+          "peaks": [
+            33.55
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "128 MHz",
+          "source_id": "2025/US20250346612A1-20251113"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2025/US20250346612A1-20251113",
+      "standard_inchikey": "NREPLSKGGODZBH-UHFFFAOYSA-N",
+      "id": "opendatalab_11b-3572843347a7",
+      "structure_svg": "assets/molecules/opendatalab_11b-3572843347a7.svg"
+    },
+    {
+      "dataset": "opendatalab_11b",
+      "modality": "11B",
+      "smiles": "CCCCC(B1OC(C)(C)C(C)(C)O1)C1(c2ccccc2)CC(=O)C1",
+      "formula": "C21H31BO3",
+      "spectra": [
+        {
+          "modality": "11B",
+          "units": "ppm",
+          "peaks": [
+            33.15
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "128 MHz",
+          "source_id": "2025/US20250346612A1-20251113"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2025/US20250346612A1-20251113",
+      "standard_inchikey": "DGXNQCQTDSKRCW-UHFFFAOYSA-N",
+      "id": "opendatalab_11b-6e5e37dcd7bf",
+      "structure_svg": "assets/molecules/opendatalab_11b-6e5e37dcd7bf.svg"
+    },
+    {
+      "dataset": "opendatalab_11b",
+      "modality": "11B",
+      "smiles": "CC1(C)OB(C(C[Si](C)(C)C)C2(c3ccccc3)CC(=O)C2)OC1(C)C",
+      "formula": "C21H33BO3Si",
+      "spectra": [
+        {
+          "modality": "11B",
+          "units": "ppm",
+          "peaks": [
+            33.02
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "128 MHz",
+          "source_id": "2025/US20250346612A1-20251113"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2025/US20250346612A1-20251113",
+      "standard_inchikey": "RODMIZWAQZFCES-UHFFFAOYSA-N",
+      "id": "opendatalab_11b-8885491c761e",
+      "structure_svg": "assets/molecules/opendatalab_11b-8885491c761e.svg"
     },
     {
       "dataset": "opendatalab_19f",
@@ -658,6 +2028,366 @@
       "structure_svg": "assets/molecules/opendatalab_19f-616afe58ec8a.svg"
     },
     {
+      "dataset": "opendatalab_19f",
+      "modality": "19F",
+      "smiles": "CC(C)CCC1(C(F)(F)F)NC(=O)Nc2ccc(F)cc21",
+      "formula": "C14H16F4N2O",
+      "spectra": [
+        {
+          "modality": "19F",
+          "units": "ppm",
+          "peaks": [
+            -82.6,
+            0.060000000000002274
+          ],
+          "intensity_available": false,
+          "solvent": "acetone-d6",
+          "frequency": "282 MHz",
+          "source_id": "2000/US061243027-20000926"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2000/US061243027-20000926",
+      "standard_inchikey": "IHCPJVUKBCEUAU-UHFFFAOYSA-N",
+      "id": "opendatalab_19f-31194fbb7389",
+      "structure_svg": "assets/molecules/opendatalab_19f-31194fbb7389.svg"
+    },
+    {
+      "dataset": "opendatalab_19f",
+      "modality": "19F",
+      "smiles": "C#CCN1C(=O)NC(C)(C(F)(F)F)c2cc(F)ccc21",
+      "formula": "C13H10F4N2O",
+      "spectra": [
+        {
+          "modality": "19F",
+          "units": "ppm",
+          "peaks": [
+            -81.86,
+            0.005000000000002558
+          ],
+          "intensity_available": false,
+          "solvent": "acetone-d6",
+          "frequency": "282 MHz",
+          "source_id": "2000/US061243027-20000926"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2000/US061243027-20000926",
+      "standard_inchikey": "NQJZNLVTPYAASE-UHFFFAOYSA-N",
+      "id": "opendatalab_19f-9f8bbfb40b25",
+      "structure_svg": "assets/molecules/opendatalab_19f-9f8bbfb40b25.svg"
+    },
+    {
+      "dataset": "opendatalab_19f",
+      "modality": "19F",
+      "smiles": "C#CN1C(=O)NC(CCO)(C(F)(F)F)c2c1ccc(F)c2F",
+      "formula": "C13H9F5N2O2",
+      "spectra": [
+        {
+          "modality": "19F",
+          "units": "ppm",
+          "peaks": [
+            -83.3,
+            -135.78,
+            -148.16
+          ],
+          "intensity_available": false,
+          "solvent": "acetone-d.sub.6",
+          "frequency": "282 MHz",
+          "source_id": "2000/US061243027-20000926"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2000/US061243027-20000926",
+      "standard_inchikey": "DXUMJBFGJKEQOC-UHFFFAOYSA-N",
+      "id": "opendatalab_19f-8222b9ad38b2",
+      "structure_svg": "assets/molecules/opendatalab_19f-8222b9ad38b2.svg"
+    },
+    {
+      "dataset": "opendatalab_19f",
+      "modality": "19F",
+      "smiles": "C#CN1C(=O)NC(C(C)O)(C(F)(F)F)c2c1ccc(F)c2F",
+      "formula": "C13H9F5N2O2",
+      "spectra": [
+        {
+          "modality": "19F",
+          "units": "ppm",
+          "peaks": [
+            -83.15,
+            -135.4,
+            -135.6,
+            -148.14
+          ],
+          "intensity_available": false,
+          "solvent": "acetone-d.sub.6",
+          "frequency": "282 MHz",
+          "source_id": "2000/US061243027-20000926"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2000/US061243027-20000926",
+      "standard_inchikey": "VKRVTALEWLEXRE-UHFFFAOYSA-N",
+      "id": "opendatalab_19f-548a6a97828d",
+      "structure_svg": "assets/molecules/opendatalab_19f-548a6a97828d.svg"
+    },
+    {
+      "dataset": "opendatalab_19f",
+      "modality": "19F",
+      "smiles": "Fc1ccc(-c2ncn(C3CCCCO3)c2-c2ccc(F)cc2)cc1",
+      "formula": "C20H18F2N2O",
+      "spectra": [
+        {
+          "modality": "19F",
+          "units": "ppm",
+          "peaks": [
+            112.4,
+            116.5
+          ],
+          "intensity_available": false,
+          "source_id": "1980/US041995929-19800422"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1980/US041995929-19800422",
+      "standard_inchikey": "JRKLLMBFTGWAHF-UHFFFAOYSA-N",
+      "id": "opendatalab_19f-11f80cbdb63d",
+      "structure_svg": "assets/molecules/opendatalab_19f-11f80cbdb63d.svg"
+    },
+    {
+      "dataset": "opendatalab_19f",
+      "modality": "19F",
+      "smiles": "NS(=O)(=O)c1ccc(-n2nc(C(F)(F)F)c3c2-c2ccccc2CS3)cc1",
+      "formula": "C17H12F3N3O2S2",
+      "spectra": [
+        {
+          "modality": "19F",
+          "units": "ppm",
+          "peaks": [
+            -62.94
+          ],
+          "intensity_available": false,
+          "solvent": "acetone-d6",
+          "frequency": "300 MHz",
+          "source_id": "1996/US055479758-19960820"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055479758-19960820",
+      "standard_inchikey": "FOTJKGZGHZQSLX-UHFFFAOYSA-N",
+      "id": "opendatalab_19f-9b9515458c4c",
+      "structure_svg": "assets/molecules/opendatalab_19f-9b9515458c4c.svg"
+    },
+    {
+      "dataset": "opendatalab_19f",
+      "modality": "19F",
+      "smiles": "Cc1ccc2c(c1)CSc1c(C(F)(F)F)nn(-c3ccc(S(N)(=O)=O)cc3)c1-2",
+      "formula": "C18H14F3N3O2S2",
+      "spectra": [
+        {
+          "modality": "19F",
+          "units": "ppm",
+          "peaks": [
+            -72.76
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "300 MHz",
+          "source_id": "1996/US055479758-19960820"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055479758-19960820",
+      "standard_inchikey": "XTDMKGFJRUDIKB-UHFFFAOYSA-N",
+      "id": "opendatalab_19f-7ffef6790d85",
+      "structure_svg": "assets/molecules/opendatalab_19f-7ffef6790d85.svg"
+    },
+    {
+      "dataset": "opendatalab_19f",
+      "modality": "19F",
+      "smiles": "Cc1ccc2c(c1)CSc1c(C(F)(F)F)nn(-c3ccc(S(N)(=O)=O)cc3)c1-2",
+      "formula": "C18H14F3N3O2S2",
+      "spectra": [
+        {
+          "modality": "19F",
+          "units": "ppm",
+          "peaks": [
+            -62.94
+          ],
+          "intensity_available": false,
+          "solvent": "acetone-d6",
+          "frequency": "300 MHz",
+          "source_id": "1996/US055479758-19960820"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055479758-19960820",
+      "standard_inchikey": "XTDMKGFJRUDIKB-UHFFFAOYSA-N",
+      "id": "opendatalab_19f-578d2b599f0f",
+      "structure_svg": "assets/molecules/opendatalab_19f-578d2b599f0f.svg"
+    },
+    {
+      "dataset": "opendatalab_19f",
+      "modality": "19F",
+      "smiles": "Cc1ccc2c(c1)CSc1c(C(F)(F)F)nn(-c3ccc(S(C)(=O)=O)cc3)c1-2",
+      "formula": "C19H15F3N2O2S2",
+      "spectra": [
+        {
+          "modality": "19F",
+          "units": "ppm",
+          "peaks": [
+            -62.97
+          ],
+          "intensity_available": false,
+          "solvent": "acetone-d6",
+          "frequency": "300 MHz",
+          "source_id": "1996/US055479758-19960820"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055479758-19960820",
+      "standard_inchikey": "SZXNJELKBWYVMQ-UHFFFAOYSA-N",
+      "id": "opendatalab_19f-440c620dddad",
+      "structure_svg": "assets/molecules/opendatalab_19f-440c620dddad.svg"
+    },
+    {
+      "dataset": "opendatalab_19f",
+      "modality": "19F",
+      "smiles": "NS(=O)(=O)c1ccc(-n2nc(C(F)(F)F)c3c2-c2ccc(Cl)cc2CS3)cc1",
+      "formula": "C17H11ClF3N3O2S2",
+      "spectra": [
+        {
+          "modality": "19F",
+          "units": "ppm",
+          "peaks": [
+            62.94
+          ],
+          "intensity_available": false,
+          "solvent": "acetone-d6",
+          "frequency": "MHz",
+          "source_id": "1996/US055479758-19960820"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055479758-19960820",
+      "standard_inchikey": "TZBRXUNLBFSYTO-UHFFFAOYSA-N",
+      "id": "opendatalab_19f-1cb63f538981",
+      "structure_svg": "assets/molecules/opendatalab_19f-1cb63f538981.svg"
+    },
+    {
+      "dataset": "opendatalab_19f",
+      "modality": "19F",
+      "smiles": "NS(=O)(=O)c1ccc(-n2nc(C(F)(F)F)c3c2-c2cc(Cl)sc2CS3)cc1",
+      "formula": "C15H9ClF3N3O2S3",
+      "spectra": [
+        {
+          "modality": "19F",
+          "units": "ppm",
+          "peaks": [
+            -59.25
+          ],
+          "intensity_available": false,
+          "solvent": "acetone-d6",
+          "frequency": "400 MHz",
+          "source_id": "1996/US055479758-19960820"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055479758-19960820",
+      "standard_inchikey": "QZZQMGGDPYUUEU-UHFFFAOYSA-N",
+      "id": "opendatalab_19f-52763d6098c6",
+      "structure_svg": "assets/molecules/opendatalab_19f-52763d6098c6.svg"
+    },
+    {
+      "dataset": "opendatalab_19f",
+      "modality": "19F",
+      "smiles": "C=C(F)c1c[nH]c(=O)[nH]c1=O",
+      "formula": "C6H5FN2O2",
+      "spectra": [
+        {
+          "modality": "19F",
+          "units": "ppm",
+          "peaks": [
+            -166.99,
+            -167.57
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "470 MHz",
+          "source_id": "1996/US055126782-19960430"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055126782-19960430",
+      "standard_inchikey": "UUOKKFQSVXEMEB-UHFFFAOYSA-N",
+      "id": "opendatalab_19f-bc2ae6c0c830",
+      "structure_svg": "assets/molecules/opendatalab_19f-bc2ae6c0c830.svg"
+    },
+    {
+      "dataset": "opendatalab_19f",
+      "modality": "19F",
+      "smiles": "C=C(F)c1c[nH]c(=O)[nH]c1=O",
+      "formula": "C6H5FN2O2",
+      "spectra": [
+        {
+          "modality": "19F",
+          "units": "ppm",
+          "peaks": [
+            -84.77,
+            38.1,
+            67.6,
+            228.0,
+            238.0
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "470 MHz",
+          "source_id": "1996/US055126782-19960430"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055126782-19960430",
+      "standard_inchikey": "UUOKKFQSVXEMEB-UHFFFAOYSA-N",
+      "id": "opendatalab_19f-7747851126ad",
+      "structure_svg": "assets/molecules/opendatalab_19f-7747851126ad.svg"
+    },
+    {
+      "dataset": "opendatalab_19f",
+      "modality": "19F",
+      "smiles": "O=C1c2ccccc2CCC1C(=O)C(F)(F)F",
+      "formula": "C12H9F3O2",
+      "spectra": [
+        {
+          "modality": "19F",
+          "units": "ppm",
+          "peaks": [
+            -72.0
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "source_id": "1996/US055212077-19960528"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055212077-19960528",
+      "standard_inchikey": "GGDMEHMCEGBLBB-UHFFFAOYSA-N",
+      "id": "opendatalab_19f-6b927e59d83a",
+      "structure_svg": "assets/molecules/opendatalab_19f-6b927e59d83a.svg"
+    },
+    {
       "dataset": "opendatalab_29si",
       "modality": "29Si",
       "smiles": "CCO[Si](CCCN1C(=O)C=CC1=O)(OCC)OCC",
@@ -758,6 +2488,356 @@
       "structure_svg": "assets/molecules/opendatalab_29si-d14466466b46.svg"
     },
     {
+      "dataset": "opendatalab_29si",
+      "modality": "29Si",
+      "smiles": "CC(C)[Si](O)(O)C(C)C",
+      "formula": "C6H16O2Si",
+      "spectra": [
+        {
+          "modality": "29Si",
+          "units": "ppm",
+          "peaks": [
+            -3.75
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "79.5 MHz",
+          "source_id": "2008/US20080194856A1-20080814"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2008/US20080194856A1-20080814",
+      "standard_inchikey": "ZXWUGCNBZZSJJN-UHFFFAOYSA-N",
+      "id": "opendatalab_29si-03900a27e22f",
+      "structure_svg": "assets/molecules/opendatalab_29si-03900a27e22f.svg"
+    },
+    {
+      "dataset": "opendatalab_29si",
+      "modality": "29Si",
+      "smiles": "CC[Si](CC)(CC)OC(OC)=C(C)C",
+      "formula": "C11H24O2Si",
+      "spectra": [
+        {
+          "modality": "29Si",
+          "units": "ppm",
+          "peaks": [
+            20.1
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "59.7 MHz",
+          "source_id": "2004/US20040215033A1-20041028"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2004/US20040215033A1-20041028",
+      "standard_inchikey": "FQAOMFRENYVGBX-UHFFFAOYSA-N",
+      "id": "opendatalab_29si-1eb9856e5fd9",
+      "structure_svg": "assets/molecules/opendatalab_29si-1eb9856e5fd9.svg"
+    },
+    {
+      "dataset": "opendatalab_29si",
+      "modality": "29Si",
+      "smiles": "C=COC(O[Si](CC)(CC)CC)=C(C)C",
+      "formula": "C12H24O2Si",
+      "spectra": [
+        {
+          "modality": "29Si",
+          "units": "ppm",
+          "peaks": [
+            21.9
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "59.7 MHz",
+          "source_id": "2004/US20040215033A1-20041028"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2004/US20040215033A1-20041028",
+      "standard_inchikey": "ZQRNNOYSWXLVTO-UHFFFAOYSA-N",
+      "id": "opendatalab_29si-225d6c28605b",
+      "structure_svg": "assets/molecules/opendatalab_29si-225d6c28605b.svg"
+    },
+    {
+      "dataset": "opendatalab_29si",
+      "modality": "29Si",
+      "smiles": "CO[Si](C)(C)Cn1c(=O)n(C[Si](C)(C)OC)c(=O)n(C[Si](C)(C)OC)c1=O",
+      "formula": "C15H33N3O6Si3",
+      "spectra": [
+        {
+          "modality": "29Si",
+          "units": "ppm",
+          "peaks": [
+            14.43
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "60 MHz",
+          "source_id": "2008/US20080255354A1-20081016"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2008/US20080255354A1-20081016",
+      "standard_inchikey": "KEAXADADLVOZKG-UHFFFAOYSA-N",
+      "id": "opendatalab_29si-f59997b21e9c",
+      "structure_svg": "assets/molecules/opendatalab_29si-f59997b21e9c.svg"
+    },
+    {
+      "dataset": "opendatalab_29si",
+      "modality": "29Si",
+      "smiles": "CC(C)[Si](O)(c1cccc(CCC(=O)NCc2ccccc2)c1)C(C)C",
+      "formula": "C22H31NO2Si",
+      "spectra": [
+        {
+          "modality": "29Si",
+          "units": "ppm",
+          "peaks": [
+            7.31
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "79.4 MHz",
+          "source_id": "2009/US20090035215A1-20090205"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2009/US20090035215A1-20090205",
+      "standard_inchikey": "OFNTXQCPZXMZKY-UHFFFAOYSA-N",
+      "id": "opendatalab_29si-d41854fb0f52",
+      "structure_svg": "assets/molecules/opendatalab_29si-d41854fb0f52.svg"
+    },
+    {
+      "dataset": "opendatalab_29si",
+      "modality": "29Si",
+      "smiles": "CC(C)[Si](OCCc1ccncn1)(C(C)C)C(C)C",
+      "formula": "C15H28N2OSi",
+      "spectra": [
+        {
+          "modality": "29Si",
+          "units": "ppm",
+          "peaks": [
+            13.3
+          ],
+          "intensity_available": false,
+          "solvent": "CD2Cl2",
+          "frequency": "470 MHz",
+          "source_id": "2024/US20240383863A1-20241121"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2024/US20240383863A1-20241121",
+      "standard_inchikey": "IYQFEJRJDIWIAQ-UHFFFAOYSA-N",
+      "id": "opendatalab_29si-ac1b569b13c5",
+      "structure_svg": "assets/molecules/opendatalab_29si-ac1b569b13c5.svg"
+    },
+    {
+      "dataset": "opendatalab_29si",
+      "modality": "29Si",
+      "smiles": "C=Cc1ccc([Si](OC)(c2ccc(C=C)cc2)c2ccc(C=C)cc2)cc1",
+      "formula": "C25H24OSi",
+      "spectra": [
+        {
+          "modality": "29Si",
+          "units": "ppm",
+          "peaks": [
+            -11.5
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "79.5 MHz",
+          "source_id": "2003/US20030139621A1-20030724"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2003/US20030139621A1-20030724",
+      "standard_inchikey": "DNHULLFEFLPBHN-UHFFFAOYSA-N",
+      "id": "opendatalab_29si-5e2b5c3a0923",
+      "structure_svg": "assets/molecules/opendatalab_29si-5e2b5c3a0923.svg"
+    },
+    {
+      "dataset": "opendatalab_29si",
+      "modality": "29Si",
+      "smiles": "C[Si](C)(C)O[Si](O[Si](C)(C)C)(O[Si](C)(C)C)O[Si](C)(C)C",
+      "formula": "C12H36O4Si5",
+      "spectra": [
+        {
+          "modality": "29Si",
+          "units": "ppm",
+          "peaks": [
+            8.5,
+            -104.7
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "71.6 MHz",
+          "source_id": "2018/US20180010027A1-20180111"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2018/US20180010027A1-20180111",
+      "standard_inchikey": "VNRWTCZXQWOWIG-UHFFFAOYSA-N",
+      "id": "opendatalab_29si-14b383bbc8cf",
+      "structure_svg": "assets/molecules/opendatalab_29si-14b383bbc8cf.svg"
+    },
+    {
+      "dataset": "opendatalab_29si",
+      "modality": "29Si",
+      "smiles": "CC(C)(C)[Si]1(C(C)(C)C)CC1C[Si](CC1C[Si]1(C(C)(C)C)C(C)(C)C)(CC1C[Si]1(C(C)(C)C)C(C)(C)C)CC1C[Si]1(C(C)(C)C)C(C)(C)C",
+      "formula": "C44H92Si5",
+      "spectra": [
+        {
+          "modality": "29Si",
+          "units": "ppm",
+          "peaks": [
+            5.0,
+            -49.5
+          ],
+          "intensity_available": false,
+          "solvent": "C6D6",
+          "frequency": "100 MHz",
+          "source_id": "2023/US20230250113A1-20230810"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2023/US20230250113A1-20230810",
+      "standard_inchikey": "QLOLRRPVRYCBBU-UHFFFAOYSA-N",
+      "id": "opendatalab_29si-73ee30e3e195",
+      "structure_svg": "assets/molecules/opendatalab_29si-73ee30e3e195.svg"
+    },
+    {
+      "dataset": "opendatalab_29si",
+      "modality": "29Si",
+      "smiles": "[SiH3]C(c1ccc(OCc2ccccc2)cc1)(c1ccc(OCc2ccccc2)cc1)c1ccc(OCc2ccccc2)cc1",
+      "formula": "C40H36O3Si",
+      "spectra": [
+        {
+          "modality": "29Si",
+          "units": "ppm",
+          "peaks": [
+            -12.32
+          ],
+          "intensity_available": false,
+          "solvent": "acetone-d6",
+          "frequency": "300 MHz",
+          "source_id": "2014/US20140206812A1-20140724"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2014/US20140206812A1-20140724",
+      "standard_inchikey": "IVJTUFQUTAGRTP-UHFFFAOYSA-N",
+      "id": "opendatalab_29si-302b10811995",
+      "structure_svg": "assets/molecules/opendatalab_29si-302b10811995.svg"
+    },
+    {
+      "dataset": "opendatalab_29si",
+      "modality": "29Si",
+      "smiles": "CCO[Si](COC(C)=O)(OCC)OCC",
+      "formula": "C9H20O5Si",
+      "spectra": [
+        {
+          "modality": "29Si",
+          "units": "ppm",
+          "peaks": [
+            -54.2
+          ],
+          "intensity_available": false,
+          "source_id": "1994/US053712625-19941206"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1994/US053712625-19941206",
+      "standard_inchikey": "CSDVDSUBFYNSMC-UHFFFAOYSA-N",
+      "id": "opendatalab_29si-c7bc83bcfdf2",
+      "structure_svg": "assets/molecules/opendatalab_29si-c7bc83bcfdf2.svg"
+    },
+    {
+      "dataset": "opendatalab_29si",
+      "modality": "29Si",
+      "smiles": "COc1ccc(CC2=CCC[Si](C)(C)O2)cc1",
+      "formula": "C14H20O2Si",
+      "spectra": [
+        {
+          "modality": "29Si",
+          "units": "ppm",
+          "peaks": [
+            18.0
+          ],
+          "intensity_available": false,
+          "solvent": "C6D6",
+          "frequency": "79 MHz",
+          "source_id": "1997/US056633971-19970902"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1997/US056633971-19970902",
+      "standard_inchikey": "HXRXLXZYDDTBCY-UHFFFAOYSA-N",
+      "id": "opendatalab_29si-19640871b254",
+      "structure_svg": "assets/molecules/opendatalab_29si-19640871b254.svg"
+    },
+    {
+      "dataset": "opendatalab_29si",
+      "modality": "29Si",
+      "smiles": "C=Cc1ccc([Si](OC)(c2ccc(C=C)cc2)c2ccc(C=C)cc2)cc1",
+      "formula": "C25H24OSi",
+      "spectra": [
+        {
+          "modality": "29Si",
+          "units": "ppm",
+          "peaks": [
+            -29.0
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "79.5 MHz",
+          "source_id": "2006/US06984747-20060110"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2006/US06984747-20060110",
+      "standard_inchikey": "DNHULLFEFLPBHN-UHFFFAOYSA-N",
+      "id": "opendatalab_29si-a2aedd576f02",
+      "structure_svg": "assets/molecules/opendatalab_29si-a2aedd576f02.svg"
+    },
+    {
+      "dataset": "opendatalab_29si",
+      "modality": "29Si",
+      "smiles": "CC(C)[Si](Cl)(C(C)C)[Si](Cl)(C(C)C)C(C)C",
+      "formula": "C12H28Cl2Si2",
+      "spectra": [
+        {
+          "modality": "29Si",
+          "units": "ppm",
+          "peaks": [
+            24.67
+          ],
+          "intensity_available": false,
+          "solvent": "C6D6",
+          "frequency": "79.5 MHz",
+          "source_id": "2016/US09290521-20160322"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2016/US09290521-20160322",
+      "standard_inchikey": "GARPOVHOOLEGDD-UHFFFAOYSA-N",
+      "id": "opendatalab_29si-759b5152ef0f",
+      "structure_svg": "assets/molecules/opendatalab_29si-759b5152ef0f.svg"
+    },
+    {
       "dataset": "opendatalab_31p",
       "modality": "31P",
       "smiles": "CC1CCC1(P(=O)(O)O)P(=O)(O)O",
@@ -852,6 +2932,353 @@
       "standard_inchikey": "SBEWMAXKBISIOC-UHFFFAOYSA-N",
       "id": "opendatalab_31p-dd266477a3b3",
       "structure_svg": "assets/molecules/opendatalab_31p-dd266477a3b3.svg"
+    },
+    {
+      "dataset": "opendatalab_31p",
+      "modality": "31P",
+      "smiles": "COCC(COC)(CP(C)C)CP(C)C",
+      "formula": "C11H26O2P2",
+      "spectra": [
+        {
+          "modality": "31P",
+          "units": "ppm",
+          "peaks": [
+            -63.0
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3/dioxane",
+          "source_id": "1990/US049162144-19900410"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1990/US049162144-19900410",
+      "standard_inchikey": "SBEWMAXKBISIOC-UHFFFAOYSA-N",
+      "id": "opendatalab_31p-36d913317f6d",
+      "structure_svg": "assets/molecules/opendatalab_31p-36d913317f6d.svg"
+    },
+    {
+      "dataset": "opendatalab_31p",
+      "modality": "31P",
+      "smiles": "Cl.O=P(O)(CCCNCc1ccc(Cl)cc1)C1CCCO1",
+      "formula": "C14H22Cl2NO3P",
+      "spectra": [
+        {
+          "modality": "31P",
+          "units": "ppm",
+          "peaks": [
+            49.4
+          ],
+          "intensity_available": false,
+          "solvent": "CD3OD",
+          "frequency": "MHz",
+          "source_id": "1993/US052293793-19930720"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1993/US052293793-19930720",
+      "standard_inchikey": "XFBPWVQBIQLCKF-UHFFFAOYSA-N",
+      "id": "opendatalab_31p-27f3ebb4b438",
+      "structure_svg": "assets/molecules/opendatalab_31p-27f3ebb4b438.svg"
+    },
+    {
+      "dataset": "opendatalab_31p",
+      "modality": "31P",
+      "smiles": "CCOP(S)OCC",
+      "formula": "C4H11O2PS",
+      "spectra": [
+        {
+          "modality": "31P",
+          "units": "ppm",
+          "peaks": [
+            69.3
+          ],
+          "intensity_available": false,
+          "source_id": "1991/US050720325-19911210"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1991/US050720325-19911210",
+      "standard_inchikey": "OWTILJFWSAQIRG-UHFFFAOYSA-N",
+      "id": "opendatalab_31p-3aab88a41695",
+      "structure_svg": "assets/molecules/opendatalab_31p-3aab88a41695.svg"
+    },
+    {
+      "dataset": "opendatalab_31p",
+      "modality": "31P",
+      "smiles": "O=P(Cl)(N(CCCl)CCCl)N(CCCl)CCCl",
+      "formula": "C8H16Cl5N2OP",
+      "spectra": [
+        {
+          "modality": "31P",
+          "units": "ppm",
+          "peaks": [
+            0.66
+          ],
+          "intensity_available": false,
+          "source_id": "1990/US049083562-19900313"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1990/US049083562-19900313",
+      "standard_inchikey": "QXUFUUCHZZBJNO-UHFFFAOYSA-N",
+      "id": "opendatalab_31p-2ee7189b3243",
+      "structure_svg": "assets/molecules/opendatalab_31p-2ee7189b3243.svg"
+    },
+    {
+      "dataset": "opendatalab_31p",
+      "modality": "31P",
+      "smiles": "CC(C)=CCC/C(C)=C/CC/C(C)=C\\COCP(=O)(O)CP(=O)([O-])[O-].[Na+].[Na+].[Na+]",
+      "formula": "C17H30Na3O6P2+",
+      "spectra": [
+        {
+          "modality": "31P",
+          "units": "ppm",
+          "peaks": [
+            32.4,
+            12.6
+          ],
+          "intensity_available": false,
+          "solvent": "D2O",
+          "frequency": "36.2 MHz",
+          "source_id": "1993/US052739694-19931228"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1993/US052739694-19931228",
+      "standard_inchikey": "IFLLAOMKWAVEAL-IAUGCSKSSA-L",
+      "id": "opendatalab_31p-a2f6c09067d9",
+      "structure_svg": "assets/molecules/opendatalab_31p-a2f6c09067d9.svg"
+    },
+    {
+      "dataset": "opendatalab_31p",
+      "modality": "31P",
+      "smiles": "CCC(CC)OP(=O)(OC(CC)CC)C(Cl)(Cl)P(=O)(OC(CC)CC)OC(CC)CC",
+      "formula": "C21H44Cl2O6P2",
+      "spectra": [
+        {
+          "modality": "31P",
+          "units": "ppm",
+          "peaks": [
+            7.89
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "source_id": "1994/US053766490-19941227"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1994/US053766490-19941227",
+      "standard_inchikey": "YSBOTOBUBXDFRJ-UHFFFAOYSA-N",
+      "id": "opendatalab_31p-e72c2d8a9ba0",
+      "structure_svg": "assets/molecules/opendatalab_31p-e72c2d8a9ba0.svg"
+    },
+    {
+      "dataset": "opendatalab_31p",
+      "modality": "31P",
+      "smiles": "CC(C)OP(=O)([O-])C(Cl)(Cl)P(=O)(OC(C)C)OC(C)C",
+      "formula": "C10H21Cl2O6P2-",
+      "spectra": [
+        {
+          "modality": "31P",
+          "units": "ppm",
+          "peaks": [
+            11.87,
+            5.19,
+            17.3
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "source_id": "1994/US053766490-19941227"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1994/US053766490-19941227",
+      "standard_inchikey": "RCFAVXBYIFIDLY-UHFFFAOYSA-M",
+      "id": "opendatalab_31p-ccc43f2cb3ea",
+      "structure_svg": "assets/molecules/opendatalab_31p-ccc43f2cb3ea.svg"
+    },
+    {
+      "dataset": "opendatalab_31p",
+      "modality": "31P",
+      "smiles": "CCCCCCOP(=O)([O-])C(Cl)(Cl)P(=O)([O-])[O-]",
+      "formula": "C7H13Cl2O6P2-3",
+      "spectra": [
+        {
+          "modality": "31P",
+          "units": "ppm",
+          "peaks": [
+            11.5,
+            9.36,
+            15.74
+          ],
+          "intensity_available": false,
+          "solvent": "D2O",
+          "source_id": "1994/US053766490-19941227"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1994/US053766490-19941227",
+      "standard_inchikey": "IPURVIXSXJUNHF-UHFFFAOYSA-K",
+      "id": "opendatalab_31p-051719b0e1dc",
+      "structure_svg": "assets/molecules/opendatalab_31p-051719b0e1dc.svg"
+    },
+    {
+      "dataset": "opendatalab_31p",
+      "modality": "31P",
+      "smiles": "COP(=O)([O-])C(Br)P(=O)(OC)OC",
+      "formula": "C4H10BrO6P2-",
+      "spectra": [
+        {
+          "modality": "31P",
+          "units": "ppm",
+          "peaks": [
+            30.51,
+            9.54
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "source_id": "1994/US053766490-19941227"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1994/US053766490-19941227",
+      "standard_inchikey": "JOBSKMGCZGRAPT-UHFFFAOYSA-M",
+      "id": "opendatalab_31p-5c3e035e2f9f",
+      "structure_svg": "assets/molecules/opendatalab_31p-5c3e035e2f9f.svg"
+    },
+    {
+      "dataset": "opendatalab_31p",
+      "modality": "31P",
+      "smiles": "CCOC(OCC)P(=O)(CCC(C)N)OCC",
+      "formula": "C11H26NO4P",
+      "spectra": [
+        {
+          "modality": "31P",
+          "units": "ppm",
+          "peaks": [
+            46.0
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "source_id": "1991/US050648195-19911112"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1991/US050648195-19911112",
+      "standard_inchikey": "ZVUYFMOSURHPHS-UHFFFAOYSA-N",
+      "id": "opendatalab_31p-250dc55b6d11",
+      "structure_svg": "assets/molecules/opendatalab_31p-250dc55b6d11.svg"
+    },
+    {
+      "dataset": "opendatalab_31p",
+      "modality": "31P",
+      "smiles": "O=P(OCc1ccccc1)(OCc1ccccc1)C(CCc1cccc2ccccc12)OS(=O)(=O)C(F)(F)F",
+      "formula": "C28H26F3O6PS",
+      "spectra": [
+        {
+          "modality": "31P",
+          "units": "ppm",
+          "peaks": [
+            16.58
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "121.5 MHz",
+          "source_id": "1996/US055831230-19961210"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055831230-19961210",
+      "standard_inchikey": "SRTGRDJFMFEZPD-UHFFFAOYSA-N",
+      "id": "opendatalab_31p-332bb4cb8f31",
+      "structure_svg": "assets/molecules/opendatalab_31p-332bb4cb8f31.svg"
+    },
+    {
+      "dataset": "opendatalab_31p",
+      "modality": "31P",
+      "smiles": "O=P([O-])([O-])C(Cl)(Cl)P(=O)([O-])[O-].[Na+].[Na+].[Na+].[Na+]",
+      "formula": "CCl2Na4O6P2",
+      "spectra": [
+        {
+          "modality": "31P",
+          "units": "ppm",
+          "peaks": [
+            9.4,
+            2.3,
+            -9.15
+          ],
+          "intensity_available": false,
+          "solvent": "D2O",
+          "source_id": "1997/US056542852-19970805"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1997/US056542852-19970805",
+      "standard_inchikey": "LQHJDMDQUHOTFV-UHFFFAOYSA-J",
+      "id": "opendatalab_31p-c531b52521fa",
+      "structure_svg": "assets/molecules/opendatalab_31p-c531b52521fa.svg"
+    },
+    {
+      "dataset": "opendatalab_31p",
+      "modality": "31P",
+      "smiles": "CC(C)N(C(C)C)P(OCCC#N)N(C(C)C)C(C)C",
+      "formula": "C15H32N3OP",
+      "spectra": [
+        {
+          "modality": "31P",
+          "units": "ppm",
+          "peaks": [
+            124.6
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "400 MHz",
+          "source_id": "1999/US058639055-19990126"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1999/US058639055-19990126",
+      "standard_inchikey": "RKVHNYJPIXOHRW-UHFFFAOYSA-N",
+      "id": "opendatalab_31p-5bb03c48091e",
+      "structure_svg": "assets/molecules/opendatalab_31p-5bb03c48091e.svg"
+    },
+    {
+      "dataset": "opendatalab_31p",
+      "modality": "31P",
+      "smiles": "C=C[C@@H]1C[C@]1(C)P(=O)(OCC)OCC",
+      "formula": "C10H19O3P",
+      "spectra": [
+        {
+          "modality": "31P",
+          "units": "ppm",
+          "peaks": [
+            23.7
+          ],
+          "intensity_available": false,
+          "solvent": "CDCl3",
+          "frequency": "121.4 MHz",
+          "source_id": "2013/US08586744-20131119"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2013/US08586744-20131119",
+      "standard_inchikey": "SUIRWVCPVWVUIP-ZJUUUORDSA-N",
+      "id": "opendatalab_31p-e6dce184b33a",
+      "structure_svg": "assets/molecules/opendatalab_31p-e6dce184b33a.svg"
     },
     {
       "dataset": "opendatalab_ir",
@@ -970,6 +3397,362 @@
       "standard_inchikey": "QDEZKOJQJDUGGC-UHFFFAOYSA-N",
       "id": "opendatalab_ir-d063c449671f",
       "structure_svg": "assets/molecules/opendatalab_ir-d063c449671f.svg"
+    },
+    {
+      "dataset": "opendatalab_ir",
+      "modality": "IR",
+      "smiles": "CC(N)CC(=O)Nc1cc(-c2ccncc2)ccc1OCC(F)(F)F.Cl",
+      "formula": "C17H19ClF3N3O2",
+      "spectra": [
+        {
+          "modality": "IR",
+          "units": "cm-1",
+          "peaks": [
+            3420.0,
+            3268.0,
+            1688.0,
+            1600.0,
+            1547.0,
+            1484.0,
+            1147.0,
+            960.0,
+            802.0
+          ],
+          "intensity_available": false,
+          "source_id": "1989/US048868221-19891212"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1989/US048868221-19891212",
+      "standard_inchikey": "DBAHMINSKROSLJ-UHFFFAOYSA-N",
+      "id": "opendatalab_ir-aea6619c65e5",
+      "structure_svg": "assets/molecules/opendatalab_ir-aea6619c65e5.svg"
+    },
+    {
+      "dataset": "opendatalab_ir",
+      "modality": "IR",
+      "smiles": "COc1ccc(CCNCCN2COc3cc(OC)c(OC)cc3C2=O)cc1OC.Cl",
+      "formula": "C22H29ClN2O6",
+      "spectra": [
+        {
+          "modality": "IR",
+          "units": "cm-1",
+          "peaks": [
+            1660.0,
+            1350.0,
+            1180.0
+          ],
+          "intensity_available": false,
+          "source_id": "1991/US050718509-19911210"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1991/US050718509-19911210",
+      "standard_inchikey": "IPCBCAJXPGYWAP-UHFFFAOYSA-N",
+      "id": "opendatalab_ir-66233d5758a8",
+      "structure_svg": "assets/molecules/opendatalab_ir-66233d5758a8.svg"
+    },
+    {
+      "dataset": "opendatalab_ir",
+      "modality": "IR",
+      "smiles": "COC1(C(=O)O)C[C@@H](O)[C@H]([C@H](O)[C@H](O)CN=[N+]=[N-])O1",
+      "formula": "C9H15N3O7",
+      "spectra": [
+        {
+          "modality": "IR",
+          "units": "cm-1",
+          "peaks": [
+            1410.0,
+            1605.0,
+            2105.0
+          ],
+          "intensity_available": false,
+          "source_id": "1986/US046135901-19860923"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1986/US046135901-19860923",
+      "standard_inchikey": "HBDWVFXMSXEDLH-YHQHWJDSSA-N",
+      "id": "opendatalab_ir-5f5abac8642e",
+      "structure_svg": "assets/molecules/opendatalab_ir-5f5abac8642e.svg"
+    },
+    {
+      "dataset": "opendatalab_ir",
+      "modality": "IR",
+      "smiles": "COCOC(=O)c1cn(-c2ccc(OCOC)cc2)c(-c2ccc(N(C)C)cc2)cc1=O",
+      "formula": "C24H26N2O6",
+      "spectra": [
+        {
+          "modality": "IR",
+          "units": "cm-1",
+          "peaks": [
+            1725.0,
+            1695.0
+          ],
+          "intensity_available": false,
+          "source_id": "1987/US046983520-19871006"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1987/US046983520-19871006",
+      "standard_inchikey": "SLJSEAITZPGFDD-UHFFFAOYSA-N",
+      "id": "opendatalab_ir-3ccdc649d2fc",
+      "structure_svg": "assets/molecules/opendatalab_ir-3ccdc649d2fc.svg"
+    },
+    {
+      "dataset": "opendatalab_ir",
+      "modality": "IR",
+      "smiles": "COCOC(=O)c1cn(-c2ccc(O)cc2)c(-c2ccc(N(C)C)cc2)cc1=O",
+      "formula": "C22H22N2O5",
+      "spectra": [
+        {
+          "modality": "IR",
+          "units": "cm-1",
+          "peaks": [
+            1735.0,
+            1700.0
+          ],
+          "intensity_available": false,
+          "source_id": "1987/US046983520-19871006"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1987/US046983520-19871006",
+      "standard_inchikey": "OZOJGFVZTHXNBP-UHFFFAOYSA-N",
+      "id": "opendatalab_ir-7d32ef57a9ec",
+      "structure_svg": "assets/molecules/opendatalab_ir-7d32ef57a9ec.svg"
+    },
+    {
+      "dataset": "opendatalab_ir",
+      "modality": "IR",
+      "smiles": "CC(=O)OCC1=C(C(=O)O)N2C(=O)C(NC(=O)Cc3csc(=O)[nH]3)[C@H]2SC1",
+      "formula": "C15H15N3O7S2",
+      "spectra": [
+        {
+          "modality": "IR",
+          "units": "cm-1",
+          "peaks": [
+            1775.0,
+            1715.0,
+            1665.0
+          ],
+          "intensity_available": false,
+          "source_id": "1983/US043799248-19830412"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1983/US043799248-19830412",
+      "standard_inchikey": "PFNLHBCFFUGEON-JLOHTSLTSA-N",
+      "id": "opendatalab_ir-41319fce57ef",
+      "structure_svg": "assets/molecules/opendatalab_ir-41319fce57ef.svg"
+    },
+    {
+      "dataset": "opendatalab_ir",
+      "modality": "IR",
+      "smiles": "Cn1nnnc1SCC1=C(C(=O)O)N2C(=O)C(NC(=O)Cc3csc(=O)[nH]3)[C@H]2SC1",
+      "formula": "C15H15N7O5S3",
+      "spectra": [
+        {
+          "modality": "IR",
+          "units": "cm-1",
+          "peaks": [
+            1785.0,
+            1730.0,
+            1660.0
+          ],
+          "intensity_available": false,
+          "source_id": "1983/US043799248-19830412"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1983/US043799248-19830412",
+      "standard_inchikey": "DDEKEMDXFOLAEJ-FFFFSGIJSA-N",
+      "id": "opendatalab_ir-f4f25df8d2d5",
+      "structure_svg": "assets/molecules/opendatalab_ir-f4f25df8d2d5.svg"
+    },
+    {
+      "dataset": "opendatalab_ir",
+      "modality": "IR",
+      "smiles": "CCOC(=O)c1c(O)c2cc(C)cc3c2n(c1=O)CCO3",
+      "formula": "C15H15NO5",
+      "spectra": [
+        {
+          "modality": "IR",
+          "units": "cm-1",
+          "peaks": [
+            1670.0,
+            1570.0,
+            1495.0
+          ],
+          "intensity_available": false,
+          "source_id": "1996/US055831354-19961210"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055831354-19961210",
+      "standard_inchikey": "JCHUWUACEBSJOJ-UHFFFAOYSA-N",
+      "id": "opendatalab_ir-3c19b57330b4",
+      "structure_svg": "assets/molecules/opendatalab_ir-3c19b57330b4.svg"
+    },
+    {
+      "dataset": "opendatalab_ir",
+      "modality": "IR",
+      "smiles": "CCOC(=O)c1c(O)c2cc(OC)cc3c2n(c1=O)CCO3",
+      "formula": "C15H15NO6",
+      "spectra": [
+        {
+          "modality": "IR",
+          "units": "cm-1",
+          "peaks": [
+            1645.0,
+            1570.0,
+            1490.0
+          ],
+          "intensity_available": false,
+          "source_id": "1996/US055831354-19961210"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055831354-19961210",
+      "standard_inchikey": "NSGZAAUXAXPWTB-UHFFFAOYSA-N",
+      "id": "opendatalab_ir-007148c8c988",
+      "structure_svg": "assets/molecules/opendatalab_ir-007148c8c988.svg"
+    },
+    {
+      "dataset": "opendatalab_ir",
+      "modality": "IR",
+      "smiles": "CCOC(=O)c1c(O)c2cc(SC)cc3c2n(c1=O)CCO3",
+      "formula": "C15H15NO5S",
+      "spectra": [
+        {
+          "modality": "IR",
+          "units": "cm-1",
+          "peaks": [
+            1670.0,
+            1650.0,
+            1570.0
+          ],
+          "intensity_available": false,
+          "source_id": "1996/US055831354-19961210"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055831354-19961210",
+      "standard_inchikey": "GUAOSWUGGVWUIK-UHFFFAOYSA-N",
+      "id": "opendatalab_ir-68d01596e340",
+      "structure_svg": "assets/molecules/opendatalab_ir-68d01596e340.svg"
+    },
+    {
+      "dataset": "opendatalab_ir",
+      "modality": "IR",
+      "smiles": "CCOC(=O)c1c(O)c2cc(OC)cc3c2n(c1=O)CCS3",
+      "formula": "C15H15NO5S",
+      "spectra": [
+        {
+          "modality": "IR",
+          "units": "cm-1",
+          "peaks": [
+            1660.0,
+            1640.0,
+            1620.0,
+            1560.0
+          ],
+          "intensity_available": false,
+          "source_id": "1996/US055831354-19961210"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055831354-19961210",
+      "standard_inchikey": "IOUWYFJCYRTUHJ-UHFFFAOYSA-N",
+      "id": "opendatalab_ir-1fb2f6d01754",
+      "structure_svg": "assets/molecules/opendatalab_ir-1fb2f6d01754.svg"
+    },
+    {
+      "dataset": "opendatalab_ir",
+      "modality": "IR",
+      "smiles": "CCOC(=O)c1c(O)c2cc(OC)cc3c2n(c1=O)C(C)CO3",
+      "formula": "C16H17NO6",
+      "spectra": [
+        {
+          "modality": "IR",
+          "units": "cm-1",
+          "peaks": [
+            1655.0,
+            1630.0,
+            1580.0,
+            1490.0
+          ],
+          "intensity_available": false,
+          "source_id": "1996/US055831354-19961210"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055831354-19961210",
+      "standard_inchikey": "BGOLSEMHHZOBJE-UHFFFAOYSA-N",
+      "id": "opendatalab_ir-d50ad4e73bab",
+      "structure_svg": "assets/molecules/opendatalab_ir-d50ad4e73bab.svg"
+    },
+    {
+      "dataset": "opendatalab_ir",
+      "modality": "IR",
+      "smiles": "CN(C(=O)c1c(O)c2cccc3c2n(c1=O)CCS3)c1ccccc1",
+      "formula": "C19H16N2O3S",
+      "spectra": [
+        {
+          "modality": "IR",
+          "units": "cm-1",
+          "peaks": [
+            1640.0,
+            1605.0,
+            1580.0
+          ],
+          "intensity_available": false,
+          "source_id": "1996/US055831354-19961210"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055831354-19961210",
+      "standard_inchikey": "VGNHKMMOUCYDQS-UHFFFAOYSA-N",
+      "id": "opendatalab_ir-24710a114f51",
+      "structure_svg": "assets/molecules/opendatalab_ir-24710a114f51.svg"
+    },
+    {
+      "dataset": "opendatalab_ir",
+      "modality": "IR",
+      "smiles": "COc1cc2c3c(c1)c(O)c(C(=O)O)c(=O)n3CCS2",
+      "formula": "C13H11NO5S",
+      "spectra": [
+        {
+          "modality": "IR",
+          "units": "cm-1",
+          "peaks": [
+            1690.0,
+            1630.0,
+            1595.0
+          ],
+          "intensity_available": false,
+          "source_id": "1996/US055831354-19961210"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1996/US055831354-19961210",
+      "standard_inchikey": "GYYZMRKDXSQBSJ-UHFFFAOYSA-N",
+      "id": "opendatalab_ir-334d481062ef",
+      "structure_svg": "assets/molecules/opendatalab_ir-334d481062ef.svg"
     },
     {
       "dataset": "opendatalab_raman",
@@ -1093,6 +3876,35 @@
       "standard_inchikey": "GJVZJCAIXCEKGO-UHFFFAOYSA-N",
       "id": "opendatalab_raman-d18e6e9acd06",
       "structure_svg": "assets/molecules/opendatalab_raman-d18e6e9acd06.svg"
+    },
+    {
+      "dataset": "opendatalab_raman",
+      "modality": "Raman",
+      "smiles": "Cc1cc(OC/C=C(/c2ccc(F)cc2)c2ccc(C#CCN3CCOCC3)cc2)ccc1OCC(=O)O",
+      "formula": "C31H30FNO5",
+      "spectra": [
+        {
+          "modality": "Raman",
+          "units": "cm-1",
+          "peaks": [
+            103.0,
+            126.0,
+            810.0,
+            1158.0,
+            1238.0,
+            1604.0,
+            1629.0
+          ],
+          "intensity_available": false,
+          "source_id": "2024/US20240002356A1-20240104"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "2024/US20240002356A1-20240104",
+      "standard_inchikey": "UAQOKKXVCNQHIP-IPPBACCNSA-N",
+      "id": "opendatalab_raman-d810620bfe5b",
+      "structure_svg": "assets/molecules/opendatalab_raman-d810620bfe5b.svg"
     },
     {
       "dataset": "opendatalab_ms",
@@ -1273,6 +4085,676 @@
       "standard_inchikey": "PUZOQLKLCNWXCR-OCBCSQNSSA-N",
       "id": "opendatalab_ms-353bdaf5e875",
       "structure_svg": "assets/molecules/opendatalab_ms-353bdaf5e875.svg"
+    },
+    {
+      "dataset": "opendatalab_ms",
+      "modality": "MS",
+      "smiles": "C[C@H]1COC(OCc2cc(C(F)(F)F)cc(C(F)(F)F)c2)[C@H](c2ccccc2)N1",
+      "formula": "C20H19F6NO2",
+      "spectra": [
+        {
+          "modality": "MS",
+          "units": "m/z",
+          "peaks": [
+            [
+              420.0,
+              60.0
+            ],
+            [
+              227.0,
+              68.0
+            ],
+            [
+              192.0,
+              56.0
+            ],
+            [
+              176.0,
+              100.0
+            ]
+          ],
+          "intensity_available": true,
+          "intensity_units": "relative intensity (source scale)",
+          "source_id": "1999/US059227060-19990713"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1999/US059227060-19990713",
+      "standard_inchikey": "PUZOQLKLCNWXCR-LWNRLHBOSA-N",
+      "id": "opendatalab_ms-540ef442c58a",
+      "structure_svg": "assets/molecules/opendatalab_ms-540ef442c58a.svg"
+    },
+    {
+      "dataset": "opendatalab_ms",
+      "modality": "MS",
+      "smiles": "C[C@H]1COC(OCc2cc(C(F)(F)F)cc(C(F)(F)F)c2)[C@H](c2ccccc2)N1",
+      "formula": "C20H19F6NO2",
+      "spectra": [
+        {
+          "modality": "MS",
+          "units": "m/z",
+          "peaks": [
+            [
+              420.0,
+              50.0
+            ],
+            [
+              227.0,
+              45.0
+            ],
+            [
+              192.0,
+              40.0
+            ],
+            [
+              176.0,
+              100.0
+            ]
+          ],
+          "intensity_available": true,
+          "intensity_units": "relative intensity (source scale)",
+          "source_id": "1999/US059227060-19990713"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1999/US059227060-19990713",
+      "standard_inchikey": "PUZOQLKLCNWXCR-LWNRLHBOSA-N",
+      "id": "opendatalab_ms-823d46472ea7",
+      "structure_svg": "assets/molecules/opendatalab_ms-823d46472ea7.svg"
+    },
+    {
+      "dataset": "opendatalab_ms",
+      "modality": "MS",
+      "smiles": "O=C(O)CN1CCO[C@H](OCc2cc(C(F)(F)F)cc(C(F)(F)F)c2)[C@@H]1c1ccccc1",
+      "formula": "C21H19F6NO4",
+      "spectra": [
+        {
+          "modality": "MS",
+          "units": "m/z",
+          "peaks": [
+            [
+              464.0,
+              90.0
+            ],
+            [
+              420.0,
+              10.0
+            ],
+            [
+              227.0,
+              35.0
+            ],
+            [
+              220.0,
+              100.0
+            ],
+            [
+              161.0,
+              20.0
+            ]
+          ],
+          "intensity_available": true,
+          "intensity_units": "relative intensity (source scale)",
+          "source_id": "1999/US059227060-19990713"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1999/US059227060-19990713",
+      "standard_inchikey": "LEMUQYVGNWVOOC-RBUKOAKNSA-N",
+      "id": "opendatalab_ms-baff8247ff3e",
+      "structure_svg": "assets/molecules/opendatalab_ms-baff8247ff3e.svg"
+    },
+    {
+      "dataset": "opendatalab_ms",
+      "modality": "MS",
+      "smiles": "Cl.NCCNC(=O)CN1CCO[C@H](OCc2cc(C(F)(F)F)cc(C(F)(F)F)c2)[C@@H]1c1ccccc1",
+      "formula": "C23H26ClF6N3O3",
+      "spectra": [
+        {
+          "modality": "MS",
+          "units": "m/z",
+          "peaks": [
+            [
+              506.0,
+              100.0
+            ],
+            [
+              418.0,
+              15.0
+            ],
+            [
+              262.0,
+              35.0
+            ],
+            [
+              227.0,
+              30.0
+            ],
+            [
+              173.0,
+              40.0
+            ]
+          ],
+          "intensity_available": true,
+          "intensity_units": "relative intensity (source scale)",
+          "source_id": "1999/US059227060-19990713"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1999/US059227060-19990713",
+      "standard_inchikey": "ASLJOUUIAKRDTQ-JUDYQFGCSA-N",
+      "id": "opendatalab_ms-fceef4ff5e1d",
+      "structure_svg": "assets/molecules/opendatalab_ms-fceef4ff5e1d.svg"
+    },
+    {
+      "dataset": "opendatalab_ms",
+      "modality": "MS",
+      "smiles": "CCOC(=O)C1CC2CCCC(C1)N2",
+      "formula": "C11H19NO2",
+      "spectra": [
+        {
+          "modality": "MS",
+          "units": "m/z",
+          "peaks": [
+            [
+              198.0,
+              92.0
+            ],
+            [
+              197.0,
+              71.0
+            ],
+            [
+              168.0,
+              63.0
+            ],
+            [
+              152.0,
+              61.0
+            ],
+            [
+              140.0,
+              67.0
+            ],
+            [
+              139.0,
+              79.0
+            ],
+            [
+              124.0,
+              91.0
+            ],
+            [
+              97.0,
+              50.0
+            ],
+            [
+              96.0,
+              100.0
+            ],
+            [
+              83.0,
+              51.0
+            ],
+            [
+              82.0,
+              96.0
+            ],
+            [
+              81.0,
+              50.0
+            ],
+            [
+              80.0,
+              52.0
+            ],
+            [
+              69.0,
+              50.0
+            ],
+            [
+              68.0,
+              61.0
+            ],
+            [
+              55.0,
+              53.0
+            ],
+            [
+              54.0,
+              43.0
+            ]
+          ],
+          "intensity_available": true,
+          "intensity_units": "relative intensity (source scale)",
+          "source_id": "1995/US054223547-19950606"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1995/US054223547-19950606",
+      "standard_inchikey": "DETHQVZHERPHHS-UHFFFAOYSA-N",
+      "id": "opendatalab_ms-b6911245a62c",
+      "structure_svg": "assets/molecules/opendatalab_ms-b6911245a62c.svg"
+    },
+    {
+      "dataset": "opendatalab_ms",
+      "modality": "MS",
+      "smiles": "CCOC(=O)CN1C2CCCC1C(C(=O)OCC)CC2",
+      "formula": "C15H25NO4",
+      "spectra": [
+        {
+          "modality": "MS",
+          "units": "m/z",
+          "peaks": [
+            [
+              283.0,
+              15.0
+            ],
+            [
+              21.0,
+              49.0
+            ],
+            [
+              210.0,
+              100.0
+            ],
+            [
+              182.0,
+              36.0
+            ],
+            [
+              168.0,
+              30.0
+            ],
+            [
+              152.0,
+              71.0
+            ]
+          ],
+          "intensity_available": true,
+          "intensity_units": "relative intensity (source scale)",
+          "source_id": "1995/US054223547-19950606"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1995/US054223547-19950606",
+      "standard_inchikey": "SSGPCOYNOTWJFD-UHFFFAOYSA-N",
+      "id": "opendatalab_ms-0df1c95ba036",
+      "structure_svg": "assets/molecules/opendatalab_ms-0df1c95ba036.svg"
+    },
+    {
+      "dataset": "opendatalab_ms",
+      "modality": "MS",
+      "smiles": "CC(=O)Oc1ccccc1CCCCCCCS(=O)(=O)CCCCCCCc1ccccc1OC(C)=O",
+      "formula": "C30H42O6S",
+      "spectra": [
+        {
+          "modality": "MS",
+          "units": "m/z",
+          "peaks": [
+            [
+              299.0,
+              40.0
+            ],
+            [
+              257.0,
+              100.0
+            ],
+            [
+              79.0,
+              24.0
+            ]
+          ],
+          "intensity_available": true,
+          "intensity_units": "relative intensity (source scale)",
+          "source_id": "1999/US059731915-19991026"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1999/US059731915-19991026",
+      "standard_inchikey": "YDEUIMBXDVGRBW-UHFFFAOYSA-N",
+      "id": "opendatalab_ms-5ee6af3c5fec",
+      "structure_svg": "assets/molecules/opendatalab_ms-5ee6af3c5fec.svg"
+    },
+    {
+      "dataset": "opendatalab_ms",
+      "modality": "MS",
+      "smiles": "C1=CCN(c2c[nH]c3ccc(OCc4ccccc4)nc23)CC1",
+      "formula": "C19H19N3O",
+      "spectra": [
+        {
+          "modality": "MS",
+          "units": "m/z",
+          "peaks": [
+            [
+              305.0,
+              4.0
+            ],
+            [
+              264.0,
+              3.0
+            ],
+            [
+              228.0,
+              8.0
+            ],
+            [
+              214.0,
+              96.0
+            ],
+            [
+              197.0,
+              100.0
+            ],
+            [
+              91.0,
+              75.0
+            ],
+            [
+              72.0,
+              28.0
+            ]
+          ],
+          "intensity_available": true,
+          "intensity_units": "relative intensity (source scale)",
+          "source_id": "1991/US050514121-19910924"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1991/US050514121-19910924",
+      "standard_inchikey": "AKIYQOXNUQOVFA-UHFFFAOYSA-N",
+      "id": "opendatalab_ms-741ba0fe3c15",
+      "structure_svg": "assets/molecules/opendatalab_ms-741ba0fe3c15.svg"
+    },
+    {
+      "dataset": "opendatalab_ms",
+      "modality": "MS",
+      "smiles": "CCC1(c2cn(Cc3ccccc3)cn2)Cc2ccccc2C1",
+      "formula": "C21H22N2",
+      "spectra": [
+        {
+          "modality": "MS",
+          "units": "m/z",
+          "peaks": [
+            [
+              302.0,
+              37.0
+            ],
+            [
+              287.0,
+              8.0
+            ],
+            [
+              273.0,
+              83.0
+            ],
+            [
+              182.0,
+              23.0
+            ],
+            [
+              128.0,
+              10.0
+            ],
+            [
+              115.0,
+              10.0
+            ],
+            [
+              91.0,
+              100.0
+            ]
+          ],
+          "intensity_available": true,
+          "intensity_units": "relative intensity (source scale)",
+          "source_id": "1994/US052928870-19940308"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1994/US052928870-19940308",
+      "standard_inchikey": "FNGQQGLSKKEIFT-UHFFFAOYSA-N",
+      "id": "opendatalab_ms-56d95a53264b",
+      "structure_svg": "assets/molecules/opendatalab_ms-56d95a53264b.svg"
+    },
+    {
+      "dataset": "opendatalab_ms",
+      "modality": "MS",
+      "smiles": "Cc1nc(-c2ccc(CCCCN3CCC(c4noc5cc(F)ccc45)CC3)cc2)cs1.Cc1nc(-c2ccc(CCCCN3CCC(c4noc5cc(F)ccc45)CC3)cc2)cs1.Cl.Cl.Cl.Cl.O",
+      "formula": "C52H62Cl4F2N6O3S2",
+      "spectra": [
+        {
+          "modality": "MS",
+          "units": "m/z",
+          "peaks": [
+            [
+              451.0,
+              6.0
+            ],
+            [
+              450.0,
+              20.0
+            ],
+            [
+              449.0,
+              52.0
+            ],
+            [
+              311.0,
+              33.0
+            ],
+            [
+              233.0,
+              100.0
+            ]
+          ],
+          "intensity_available": true,
+          "intensity_units": "relative intensity (source scale)",
+          "source_id": "1994/US052760405-19940104"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1994/US052760405-19940104",
+      "standard_inchikey": "YDKYFIOLMITSMB-UHFFFAOYSA-N",
+      "id": "opendatalab_ms-5505bba92c9a",
+      "structure_svg": "assets/molecules/opendatalab_ms-5505bba92c9a.svg"
+    },
+    {
+      "dataset": "opendatalab_ms",
+      "modality": "MS",
+      "smiles": "O=c1c2ccccc2[se]n1-c1nccs1",
+      "formula": "C10H6N2OSSe",
+      "spectra": [
+        {
+          "modality": "MS",
+          "units": "m/z",
+          "peaks": [
+            [
+              282.0,
+              85.6
+            ],
+            [
+              234.0,
+              12.2
+            ],
+            [
+              202.0,
+              18.5
+            ],
+            [
+              184.0,
+              100.0
+            ],
+            [
+              156.0,
+              59.5
+            ],
+            [
+              136.0,
+              11.6
+            ],
+            [
+              117.0,
+              16.0
+            ]
+          ],
+          "intensity_available": true,
+          "intensity_units": "relative intensity (source scale)",
+          "source_id": "1985/US045501688-19851029"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1985/US045501688-19851029",
+      "standard_inchikey": "UJOWPGFRUZFDTE-UHFFFAOYSA-N",
+      "id": "opendatalab_ms-4b247afd6140",
+      "structure_svg": "assets/molecules/opendatalab_ms-4b247afd6140.svg"
+    },
+    {
+      "dataset": "opendatalab_ms",
+      "modality": "MS",
+      "smiles": "O=C(OCCCN1CCC(c2noc3cc(F)ccc23)CC1)N1CCc2ccccc21",
+      "formula": "C24H26FN3O3",
+      "spectra": [
+        {
+          "modality": "MS",
+          "units": "m/z",
+          "peaks": [
+            [
+              423.0,
+              30.0
+            ],
+            [
+              285.0,
+              21.0
+            ],
+            [
+              233.0,
+              60.0
+            ],
+            [
+              204.0,
+              52.0
+            ],
+            [
+              96.0,
+              100.0
+            ]
+          ],
+          "intensity_available": true,
+          "intensity_units": "relative intensity (source scale)",
+          "source_id": "1995/US054788455-19951226"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1995/US054788455-19951226",
+      "standard_inchikey": "GGXJKCUEQAODHJ-UHFFFAOYSA-N",
+      "id": "opendatalab_ms-5583e4a29e4c",
+      "structure_svg": "assets/molecules/opendatalab_ms-5583e4a29e4c.svg"
+    },
+    {
+      "dataset": "opendatalab_ms",
+      "modality": "MS",
+      "smiles": "COc1ccc2c(c1)Sc1c(ccc(OC)c1CO)N2Cc1ccccc1",
+      "formula": "C22H21NO3S",
+      "spectra": [
+        {
+          "modality": "MS",
+          "units": "m/z",
+          "peaks": [
+            [
+              379.0,
+              8.0
+            ],
+            [
+              289.0,
+              19.0
+            ],
+            [
+              288.0,
+              100.0
+            ],
+            [
+              91.0,
+              27.0
+            ],
+            [
+              65.0,
+              11.0
+            ]
+          ],
+          "intensity_available": true,
+          "intensity_units": "relative intensity (source scale)",
+          "source_id": "1998/US058113894-19980922"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1998/US058113894-19980922",
+      "standard_inchikey": "MXSPZMDFOXXCLI-UHFFFAOYSA-N",
+      "id": "opendatalab_ms-2b7a65fafe37",
+      "structure_svg": "assets/molecules/opendatalab_ms-2b7a65fafe37.svg"
+    },
+    {
+      "dataset": "opendatalab_ms",
+      "modality": "MS",
+      "smiles": "COc1ccc2c(c1CO)Sc1c(ccc(OC)c1CO[Si](C)(C)C(C)(C)C)N2Cc1ccccc1",
+      "formula": "C29H37NO4SSi",
+      "spectra": [
+        {
+          "modality": "MS",
+          "units": "m/z",
+          "peaks": [
+            [
+              523.0,
+              8.0
+            ],
+            [
+              434.0,
+              14.0
+            ],
+            [
+              433.0,
+              33.0
+            ],
+            [
+              432.0,
+              100.0
+            ],
+            [
+              360.0,
+              11.0
+            ],
+            [
+              91.0,
+              22.0
+            ],
+            [
+              75.0,
+              7.0
+            ]
+          ],
+          "intensity_available": true,
+          "intensity_units": "relative intensity (source scale)",
+          "source_id": "1998/US058113894-19980922"
+        }
+      ],
+      "split": "test",
+      "source": "OpenDataLab",
+      "source_id": "1998/US058113894-19980922",
+      "standard_inchikey": "SIBPTQOFJXQLKJ-UHFFFAOYSA-N",
+      "id": "opendatalab_ms-02ed4670b6eb",
+      "structure_svg": "assets/molecules/opendatalab_ms-02ed4670b6eb.svg"
     }
   ]
 }

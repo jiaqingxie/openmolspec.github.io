@@ -80,6 +80,7 @@
 <li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_element_coverage.html">openmolspec.analysis.plot_element_coverage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="module-analysis-plot_openmolspec_overview.html">openmolspec.analysis.plot_openmolspec_overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="module-analysis-visualize_opt_trajectory.html">openmolspec.analysis.visualize_opt_trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-assigned_shifts.html">openmolspec.assigned_shifts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="module-cli.html">openmolspec.cli</a></li>
 <li class="toctree-l3"><a class="reference internal" href="module-core-processing.html">openmolspec.core.processing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="module-core-progress.html">openmolspec.core.progress</a></li>
@@ -89,9 +90,13 @@
 <li class="toctree-l3"><a class="reference internal" href="module-legacy-extract_spectra.html">openmolspec.legacy.extract_spectra</a></li>
 <li class="toctree-l3"><a class="reference internal" href="module-legacy-function.html">openmolspec.legacy.function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="module-maintenance-parse_zinc_v2_nmr.html">openmolspec.maintenance.parse_zinc_v2_nmr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-nmrgym_analogs.html">openmolspec.nmrgym_analogs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-nmrgym_proton.html">openmolspec.nmrgym_proton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-peak_learning.html">openmolspec.peak_learning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="module-phosphorus_gnn.html">openmolspec.phosphorus_gnn</a></li>
 <li class="toctree-l3"><a class="reference internal" href="module-plotting.html">openmolspec.plotting</a></li>
 <li class="toctree-l3"><a class="reference internal" href="module-solution_shifts.html">openmolspec.solution_shifts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module-ultranmr_input.html">openmolspec.ultranmr_input</a></li>
 <li class="toctree-l3"><a class="reference internal" href="module-openmolspec.html">openmolspec</a></li>
 </ul>
 </li>
@@ -165,32 +170,44 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="module-analysis-visualize_opt_trajectory.html"><span class="std std-doc">openmolspec.analysis.visualize_opt_trajectory</span></a></p></td>
 <td><p>Visualize one molecular optimization trajectory as an animated GIF.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="module-cli.html"><span class="std std-doc">openmolspec.cli</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="module-assigned_shifts.html"><span class="std std-doc">openmolspec.assigned_shifts</span></a></p></td>
+<td><p>Predict experimental 1H and 13C shifts for symmetry-distinct heavy-atom sites.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="module-cli.html"><span class="std std-doc">openmolspec.cli</span></a></p></td>
 <td><p>OpenMolSpec staged data-production entry point.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="module-core-processing.html"><span class="std std-doc">openmolspec.core.processing</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="module-core-processing.html"><span class="std std-doc">openmolspec.core.processing</span></a></p></td>
 <td><p>Shared structured processing results for the extraction CLIs.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="module-core-progress.html"><span class="std std-doc">openmolspec.core.progress</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="module-core-progress.html"><span class="std std-doc">openmolspec.core.progress</span></a></p></td>
 <td><p>Progress reporting that stays readable in terminals and log files.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="module-legacy-extract_nmr.html"><span class="std std-doc">openmolspec.legacy.extract_nmr</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="module-legacy-extract_nmr.html"><span class="std std-doc">openmolspec.legacy.extract_nmr</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="module-legacy-extract_properties.html"><span class="std std-doc">openmolspec.legacy.extract_properties</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="module-legacy-extract_properties.html"><span class="std std-doc">openmolspec.legacy.extract_properties</span></a></p></td>
 <td><p>Extract structures and quantum-chemical properties from Gaussian logs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="module-legacy-extract_properties_backup.html"><span class="std std-doc">openmolspec.legacy.extract_properties_backup</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="module-legacy-extract_properties_backup.html"><span class="std std-doc">openmolspec.legacy.extract_properties_backup</span></a></p></td>
 <td><p>Compatibility backup entry point for the shared Gaussian parser.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="module-legacy-extract_spectra.html"><span class="std std-doc">openmolspec.legacy.extract_spectra</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="module-legacy-extract_spectra.html"><span class="std std-doc">openmolspec.legacy.extract_spectra</span></a></p></td>
 <td><p>Extract structures, quantum properties, IR and Raman data from Gaussian logs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="module-legacy-function.html"><span class="std std-doc">openmolspec.legacy.function</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="module-legacy-function.html"><span class="std std-doc">openmolspec.legacy.function</span></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="module-maintenance-parse_zinc_v2_nmr.html"><span class="std std-doc">openmolspec.maintenance.parse_zinc_v2_nmr</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="module-maintenance-parse_zinc_v2_nmr.html"><span class="std std-doc">openmolspec.maintenance.parse_zinc_v2_nmr</span></a></p></td>
 <td><p>Parse only the ZINCV2 NMR Gaussian logs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="module-nmrgym_analogs.html"><span class="std std-doc">openmolspec.nmrgym_analogs</span></a></p></td>
+<td><p>Adjust proton peak positions using aligned spectra from similar training structures.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="module-nmrgym_proton.html"><span class="std std-doc">openmolspec.nmrgym_proton</span></a></p></td>
+<td><p>NMRGym-specific transfer model for unassigned 1H peak lists.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="module-peak_learning.html"><span class="std std-doc">openmolspec.peak_learning</span></a></p></td>
+<td><p>Estimate H/C site shifts using observed spectra matched to atom environments.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="module-phosphorus_gnn.html"><span class="std std-doc">openmolspec.phosphorus_gnn</span></a></p></td>
 <td><p>Bond-conditioned message passing from a molecular graph to a solution NMR chemical shift.</p></td>
@@ -201,7 +218,10 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="module-solution_shifts.html"><span class="std std-doc">openmolspec.solution_shifts</span></a></p></td>
 <td><p>Atom-centred chemical-shift prediction for experimental solution NMR.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="module-openmolspec.html"><span class="std std-doc">openmolspec</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="module-ultranmr_input.html"><span class="std std-doc">openmolspec.ultranmr_input</span></a></p></td>
+<td><p>Prepare the inputs to UltraNMR’s formula-conditioned NMRGym decoder.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="module-openmolspec.html"><span class="std std-doc">openmolspec</span></a></p></td>
 <td><p>OpenMolSpec spectroscopy datasets, model interfaces and learning workflows.</p></td>
 </tr>
 </tbody>

@@ -111,3 +111,66 @@ Download a YAML file to inspect the exact targets, architecture and training bud
 - OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). [Source](https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0)
 - Yuan, M., Zou, Z. & Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). [Source](https://arxiv.org/abs/2501.18876)
 - Zou, Z., Zhang, Y., Liang, L., Wei, M., Leng, J., Jiang, J., Luo, Y. & Hu, W. A deep learning model for predicting selected organic molecular spectra. Nature Computational Science 3, 957–964 (2023). doi:10.1038/s43588-023-00550-y. [Source](https://www.nature.com/articles/s43588-023-00550-y)
+
+## Spectral language models
+
+Install the optional language-model dependencies in a separate environment. The packaged command accepts a local merged Qwen2 SpecMol or Qwen3 SpectraLLM checkpoint and UTF-8 JSONL with one supervised example per line. Each row has a user prompt, an assistant response, and an optional system message.
+
+```json
+{"system":"Answer with the requested count.","prompt":"How many distinct 13C shifts are listed at 18.2 and 58.1 ppm?","response":"2"}
+```
+
+```bash
+python -m pip install '.[spectral-language]'
+openmolspec-train-language --checkpoint /path/to/merged-model \
+  --jsonl train.jsonl --output ./new-adapter --max-steps 1 --device cuda
+```
+
+The command applies LoRA to the query and value projections and computes loss on the assistant response and end token. Load the saved directory with `PeftModel.from_pretrained(base_model, adapter_directory)`. The package validates this training path by updating and reloading tiny Qwen2 and Qwen3 models with the released tokenizers. The one-step check measures software behavior. The separate evaluation CLI uses merged inference weights.
+
+```bash
+openmolspec-bench run --tasks spectroscopy.qa --language-checkpoint /path/to/SpecMol/exported_model \
+  --workspace /path/to/OpenMolSpec --device cuda --limit 32 --output qa.json
+```
+
+## Fit a task model
+
+These commands run from the source checkout. The assigned-site trainer reads an annotated JSONL gzip and its adjacent checksum manifest. For solvent transfer, use a paired reference library and its matching baseline report. For the gap models, supply the computed spectrum LMDB and the earlier evaluation with sample IDs to reserve. Each command writes weights and an evaluation report.
+
+```bash
+mkdir -p runs/example-training
+python scripts/train_assigned_hc.py --data /path/to/assigned.jsonl.gz --nucleus 13C --output runs/example-training/13C-assigned --report runs/example-training/carbon.json
+python -m openmolspec_bench.solvent_fit --library /path/to/solvent_reference_library.json --baseline results/solvent_transfer_all_reviewed.json --weights runs/example-training/solvent.json --report runs/example-training/solvent-eval.json
+python scripts/train_gap_vibrational.py --lmdb /path/to/openspec_test.lmdb --original results/gap_protocol_random128_20261116.json --weights runs/example-training/gap.npz --report runs/example-training/gap-eval.json
+```
+
+## NMRGym spectrum-to-structure evaluation
+
+The 24 November comparison fixes 10,000 test records and scores exact isomeric canonical SMILES. Each model receives only its selected channels. The +formula condition additionally supplies the reference molecular formula. Greedy and beam-10 decoding have separate scores.
+
+| Initialization | Formula | Input | Epoch budget | Validation greedy exact | Test records scored | Test exact |
+| --- | --- | --- | --- | --- | --- | --- |
+| generic T5-small | − | ¹H | 10,000 | — | 0 / 10,000 | Pending |
+| generic T5-small | − | ¹³C | 10,000 | — | 0 / 10,000 | Pending |
+| generic T5-small | − | ¹H + ¹³C | 10,000 | — | 0 / 10,000 | Pending |
+| generic T5-small | + | ¹H | 10,000 | — | 0 / 10,000 | Pending |
+| generic T5-small | + | ¹³C | 10,000 | — | 0 / 10,000 | Pending |
+| generic T5-small | + | ¹H + ¹³C | 10,000 | — | 0 / 10,000 | Pending |
+| NMRTrans H+C checkpoint | − | ¹H | 100 | 0.166% | 0 / 10,000 | Pending |
+| NMRTrans H+C checkpoint | − | ¹³C | 100 | 0.186% | 0 / 10,000 | Pending |
+| NMRTrans H+C checkpoint | − | ¹H + ¹³C | 100 | 0.497% | 0 / 10,000 | Pending |
+
+Four accepted training submissions cover the dedicated NMRGym split and a pooled NMRSpec / NMRExp / patent split, each with and without molecular formula. The configurations start from generic T5-small with randomly initialized spectral encoders, four GPUs per submission and separate H, C and H+C runs. The epoch budget is the configured maximum.
+
+[Download the split and scores](../assets/benchmarks/nmrgym-nmrtrans.json) · [Training configurations and submission records](../assets/benchmarks/adaptation-protocols.json)
+
+## SpecMol spectroscopy QA
+
+The released SpecMol-7B model answered 32 four-choice questions counting entries in NMRSpec ¹H or ¹³C peak lists on GPU. Scoring the full decoded answer gave **4/32 correct (12.5%)** and **29/32 valid choices (90.6%)**.
+
+The separate four-GPU LoRA submission uses 8,192 training and 512 validation questions split by connectivity. The 24 November snapshot contains the base-model result above. The adapted-model held-out result is pending.
+
+[Download all questions and decoded choices](../assets/benchmarks/specmol-qa-responses.json)
+
+A separate two-GPU IR + Raman adaptation submission uses connectivity-disjoint splits of 11,632 training, 1,558 validation and 24 test structures. The 24 November snapshot contains its split manifest and submission receipt. Its fitted checkpoint scores are pending.
+

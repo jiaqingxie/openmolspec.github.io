@@ -1,0 +1,11 @@
+{
+  "task": "nmr.solvent_transfer",
+  "inputs": {
+    "nucleus": "13C",
+    "source_solvent": "CDCl3",
+    "target_solvent": "DMSO-d6",
+    "source_ppm": 50.0
+  },
+  "model_config": {},
+  "repeats": 2
+}

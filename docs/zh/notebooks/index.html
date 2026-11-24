@@ -63,9 +63,10 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">教程</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="datasets-overview.html">探索谱学数据集</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-annotation-magma.html">MS/MS 碎片指认</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-annotation-mechfrag.html">MechFrag-MS 碎片候选指认</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-forward-glacier.html">使用 GLACIER 预测 MS/MS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-forward-iceberg.html">使用 ICEBERG 预测 MS/MS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multispectral-spectrallm-generation.html">SpectraLLM 多谱结构生成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-assignment.html">峰到原子的指认</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-forward-11B.html">11B 化学位移预测</a></li>
@@ -87,7 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="nmr-solvent_transfer.html">跨溶剂化学位移迁移</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk-inference.html">Python SDK：真实 NMR 推理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk-training-preflight.html">训练数据准备与启动前检查</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">SpecMol 谱学问答</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking.html">候选重排：IR + Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking-hc.html">候选重排：IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theory-ms-isotopes.html">质谱：同位素包络与分辨率</a></li>
@@ -103,6 +104,8 @@
 <li class="toctree-l2"><a class="reference internal" href="vibrational-generation-hc.html">结构生成：IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval.html">结构检索：IR + Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-hc.html">结构检索：IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-ir.html">IR 单谱到结构检索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-raman.html">Raman 单谱到结构检索</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#theory-simulations">Theory simulations / 理论模拟</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nmr">核磁共振 NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ms">质谱 MS</a></li>
@@ -193,6 +196,7 @@
 <li><p><a class="reference internal" href="ms-forward-glacier.html"><span class="std std-doc">使用 GLACIER 预测 MS/MS</span></a></p></li>
 <li><p><a class="reference internal" href="ms-forward-iceberg.html"><span class="std std-doc">使用 ICEBERG 预测 MS/MS</span></a></p></li>
 <li><p><a class="reference internal" href="ms-annotation-magma.html"><span class="std std-doc">MS/MS 碎片指认</span></a></p></li>
+<li><p><a class="reference internal" href="ms-annotation-mechfrag.html"><span class="std std-doc">MechFrag-MS 碎片候选指认</span></a></p></li>
 </ul>
 </section>
 <section id="ir-raman">
@@ -205,23 +209,25 @@
 <li><p><a class="reference internal" href="vibrational-retrieval.html"><span class="std std-doc">结构检索：IR + Raman</span></a></p></li>
 <li><p><a class="reference internal" href="vibrational-generation.html"><span class="std std-doc">结构生成：IR + Raman</span></a></p></li>
 <li><p><a class="reference internal" href="spectroscopy-reranking.html"><span class="std std-doc">候选重排：IR + Raman</span></a></p></li>
+<li><p><a class="reference internal" href="vibrational-retrieval-ir.html"><span class="std std-doc">IR 单谱到结构检索</span></a></p></li>
+<li><p><a class="reference internal" href="vibrational-retrieval-raman.html"><span class="std std-doc">Raman 单谱到结构检索</span></a></p></li>
 </ul>
 </section>
 <section id="id2">
 <h2>多谱联合<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="vibrational-gap-ir_raman_hc.html"><span class="std std-doc">由 IR + Raman + NMR 预测 HOMO–LUMO 能隙</span></a></p></li>
+<li><p><a class="reference internal" href="spectroscopy-qa.html"><span class="std std-doc">SpecMol 谱学问答</span></a></p></li>
 <li><p><a class="reference internal" href="vibrational-retrieval-hc.html"><span class="std std-doc">结构检索：IR + Raman + NMR</span></a></p></li>
 <li><p><a class="reference internal" href="vibrational-generation-hc.html"><span class="std std-doc">结构生成：IR + Raman + NMR</span></a></p></li>
 <li><p><a class="reference internal" href="spectroscopy-reranking-hc.html"><span class="std std-doc">候选重排：IR + Raman + NMR</span></a></p></li>
+<li><p><a class="reference internal" href="multispectral-spectrallm-generation.html"><span class="std std-doc">SpectraLLM 多谱结构生成</span></a></p></li>
 </ul>
 </section>
 <section id="id3">
 <h2>暂不推进<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="nmr-formula.html"><span class="std std-doc">谱图 → 分子式</span></a></p></li>
-<li><p><a class="reference internal" href="spectroscopy-qa.html"><span class="std std-doc">谱学问答 / 推理</span></a></p></li>
-<li><p><a class="reference internal" href="multispectral-spectrallm-generation.html"><span class="std std-doc">多谱 → 结构（SpectraLLM）</span></a></p></li>
 </ul>
 </section>
 </section>

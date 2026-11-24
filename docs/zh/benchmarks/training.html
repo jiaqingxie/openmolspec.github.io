@@ -82,14 +82,24 @@
 <li class="toctree-l3"><a class="reference internal" href="#structure2response">structure2response</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#structure2spectrum">structure2spectrum</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">参考文献</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specmol-spectrallm">SpecMol 和 SpectraLLM 的训练接口</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">拟合任务模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nmrgym">NMRGym 谱到结构评测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specmol">SpecMol 谱学问答</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id2">任务基准</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id3">训练基准配置</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id4">评测指标</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id5">运行评测</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id6">其他任务定义</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id7">参考文献</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id2">正向光谱预测结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#nmr-r2">NMR 化学位移 R²</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#nmr">NMR 峰位余弦相似度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id3">4,096 个候选结构的检索与重排</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#nmrgym">NMRGym 谱到结构评测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#specmol">SpecMol 谱学问答</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id4">任务基准</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id5">训练基准配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id6">评测指标</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id7">运行评测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id8">其他任务定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id9">参考文献</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
@@ -580,6 +590,132 @@ python<span class="w"> </span>-m<span class="w"> </span>benchmarks<span class="w
 <li><p>Yuan, M., Zou, Z. &amp; Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). <a class="reference external" href="https://arxiv.org/abs/2501.18876">Source</a></p></li>
 <li><p>Zou, Z., Zhang, Y., Liang, L., Wei, M., Leng, J., Jiang, J., Luo, Y. &amp; Hu, W. A deep learning model for predicting selected organic molecular spectra. Nature Computational Science 3, 957–964 (2023). doi:10.1038/s43588-023-00550-y. <a class="reference external" href="https://www.nature.com/articles/s43588-023-00550-y">Source</a></p></li>
 </ul>
+</section>
+<section id="specmol-spectrallm">
+<h2>SpecMol 和 SpectraLLM 的训练接口<a class="headerlink" href="#specmol-spectrallm" title="Link to this heading"></a></h2>
+<p>在独立环境安装语言模型依赖，准备本地合并权重和 UTF-8 JSONL。每行包含用户的 <code class="docutils literal notranslate"><span class="pre">prompt</span></code>、作为训练目标的 <code class="docutils literal notranslate"><span class="pre">response</span></code>，以及可选的 <code class="docutils literal notranslate"><span class="pre">system</span></code>。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">"system"</span><span class="p">:</span><span class="s2">"只回答峰数。"</span><span class="p">,</span><span class="nt">"prompt"</span><span class="p">:</span><span class="s2">"¹³C 谱中列出 18.2、58.1 ppm，共有几个峰？"</span><span class="p">,</span><span class="nt">"response"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s1">'.[spectral-language]'</span>
+openmolspec-train-language<span class="w"> </span>--checkpoint<span class="w"> </span>/path/to/merged-model<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--jsonl<span class="w"> </span>train.jsonl<span class="w"> </span>--output<span class="w"> </span>./new-adapter<span class="w"> </span>--max-steps<span class="w"> </span><span class="m">1</span><span class="w"> </span>--device<span class="w"> </span>cuda
+</pre></div>
+</div>
+<p>训练对注意力的 Q、V 投影应用 LoRA，只在回答及结束标记上计算损失。输出可用 <code class="docutils literal notranslate"><span class="pre">PeftModel.from_pretrained(base_model,</span> <span class="pre">adapter_directory)</span></code> 重载。以正式 tokenizer 和微型 Qwen2、Qwen3 各验证过一次参数更新、保存和重载。评测已合并的 SpecMol 权重可运行以下命令。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openmolspec-bench<span class="w"> </span>run<span class="w"> </span>--tasks<span class="w"> </span>spectroscopy.qa<span class="w"> </span>--language-checkpoint<span class="w"> </span>/path/to/SpecMol/exported_model<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span>--device<span class="w"> </span>cuda<span class="w"> </span>--limit<span class="w"> </span><span class="m">32</span><span class="w"> </span>--output<span class="w"> </span>qa.json
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>拟合任务模型<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>在源码目录运行下列命令。位点模型需要带实验原子标注的 JSONL 压缩包及同目录校验清单。跨溶剂模型需要配对参考库和由该库计算的基线报告。能隙模型需要计算谱 LMDB 及包含预留样本编号的先前评测。各命令输出权重和评测报告。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>runs/example-training
+python<span class="w"> </span>scripts/train_assigned_hc.py<span class="w"> </span>--data<span class="w"> </span>/path/to/assigned.jsonl.gz<span class="w"> </span>--nucleus<span class="w"> </span>13C<span class="w"> </span>--output<span class="w"> </span>runs/example-training/13C-assigned<span class="w"> </span>--report<span class="w"> </span>runs/example-training/carbon.json
+python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench.solvent_fit<span class="w"> </span>--library<span class="w"> </span>/path/to/solvent_reference_library.json<span class="w"> </span>--baseline<span class="w"> </span>results/solvent_transfer_all_reviewed.json<span class="w"> </span>--weights<span class="w"> </span>runs/example-training/solvent.json<span class="w"> </span>--report<span class="w"> </span>runs/example-training/solvent-eval.json
+python<span class="w"> </span>scripts/train_gap_vibrational.py<span class="w"> </span>--lmdb<span class="w"> </span>/path/to/openspec_test.lmdb<span class="w"> </span>--original<span class="w"> </span>results/gap_protocol_random128_20261116.json<span class="w"> </span>--weights<span class="w"> </span>runs/example-training/gap.npz<span class="w"> </span>--report<span class="w"> </span>runs/example-training/gap-eval.json
+</pre></div>
+</div>
+</section>
+<section id="nmrgym">
+<h2>NMRGym 谱到结构评测<a class="headerlink" href="#nmrgym" title="Link to this heading"></a></h2>
+<p>11 月 24 日的对照固定 10,000 条测试记录，按保留立体化学的规范 SMILES 统计精确命中。每个模型仅接收所选谱种；+formula 条件额外提供参考分子式。贪心解码与 beam-10 分开计分。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>初始化</p></th>
+<th class="head"><p>分子式</p></th>
+<th class="head"><p>谱种</p></th>
+<th class="head"><p>轮数上限</p></th>
+<th class="head"><p>验证集贪心精确率</p></th>
+<th class="head"><p>测试计分条数</p></th>
+<th class="head"><p>测试精确率</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>generic T5-small</p></td>
+<td><p>−</p></td>
+<td><p>¹H</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>待评测</p></td>
+</tr>
+<tr class="row-odd"><td><p>generic T5-small</p></td>
+<td><p>−</p></td>
+<td><p>¹³C</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>待评测</p></td>
+</tr>
+<tr class="row-even"><td><p>generic T5-small</p></td>
+<td><p>−</p></td>
+<td><p>¹H + ¹³C</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>待评测</p></td>
+</tr>
+<tr class="row-odd"><td><p>generic T5-small</p></td>
+<td><p>+</p></td>
+<td><p>¹H</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>待评测</p></td>
+</tr>
+<tr class="row-even"><td><p>generic T5-small</p></td>
+<td><p>+</p></td>
+<td><p>¹³C</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>待评测</p></td>
+</tr>
+<tr class="row-odd"><td><p>generic T5-small</p></td>
+<td><p>+</p></td>
+<td><p>¹H + ¹³C</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>待评测</p></td>
+</tr>
+<tr class="row-even"><td><p>NMRTrans H+C checkpoint</p></td>
+<td><p>−</p></td>
+<td><p>¹H</p></td>
+<td><p>100</p></td>
+<td><p>0.166%</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>待评测</p></td>
+</tr>
+<tr class="row-odd"><td><p>NMRTrans H+C checkpoint</p></td>
+<td><p>−</p></td>
+<td><p>¹³C</p></td>
+<td><p>100</p></td>
+<td><p>0.186%</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>待评测</p></td>
+</tr>
+<tr class="row-even"><td><p>NMRTrans H+C checkpoint</p></td>
+<td><p>−</p></td>
+<td><p>¹H + ¹³C</p></td>
+<td><p>100</p></td>
+<td><p>0.497%</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>待评测</p></td>
+</tr>
+</tbody>
+</table>
+<p>四组训练提交覆盖 NMRGym 单库和 NMRSpec、NMRExp、专利三库合并数据，两类数据各有提供分子式和不提供分子式的条件。配置使用通用 T5-small 初始化，谱编码器随机初始化，每组申请四卡，分别运行 H、C、H+C。轮数列为配置上限。</p>
+<p><a class="reference download internal" download="" href="../_downloads/07cbf2e0d4cce10fd5bef29275967cfa/nmrgym-nmrtrans.json"><span class="xref download myst">下载测试协议与成绩</span></a> · <a class="reference download internal" download="" href="../_downloads/a2ea1188c0da0f3b03eda12605f1f36a/adaptation-protocols.json"><span class="xref download myst">训练配置与提交记录</span></a></p>
+</section>
+<section id="specmol">
+<h2>SpecMol 谱学问答<a class="headerlink" href="#specmol" title="Link to this heading"></a></h2>
+<p>发布版 SpecMol-7B 在 GPU 上回答了 32 道 NMRSpec 四选一题，任务是数出 ¹H 或 ¹³C 峰表中的条目。完整生成回答中，<strong>4/32 题答对（12.5%）</strong>，<strong>29/32 个回答可解析为有效选项（90.6%）</strong>。</p>
+<p>另有四卡 LoRA 微调提交，按分子连通性划分 8,192 条训练题与 512 条验证题。11 月 24 日快照收录了上述基础模型结果，微调模型留出集成绩待回收。</p>
+<p><a class="reference download internal" download="" href="../_downloads/42458f75db5df795f9d3aa89280ab6f3/specmol-qa-responses.json"><span class="xref download myst">下载全部问题、生成回答与标准选项</span></a></p>
+<p>独立的 IR + Raman 双卡微调提交按连通结构划分 11,632 个训练、1,558 个验证和 24 个测试结构。11 月 24 日快照收录了数据划分与任务提交回执，微调权重的评测结果待回收。</p>
 </section>
 </section>
 

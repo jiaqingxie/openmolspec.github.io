@@ -7,6 +7,7 @@
 ms-forward-glacier
 ms-forward-iceberg
 ms-annotation-magma
+ms-annotation-mechfrag
 ```
 
 选择任务，查看用途、输入输出、模型调用与示例。
@@ -16,3 +17,4 @@ ms-annotation-magma
 | [使用 GLACIER 预测 MS/MS](ms-forward-glacier.md) | `ms.forward.glacier` |
 | [使用 ICEBERG 预测 MS/MS](ms-forward-iceberg.md) | `ms.forward.iceberg` |
 | [MS/MS 碎片指认](ms-annotation-magma.md) | `ms.annotation.magma` |
+| [MechFrag-MS 碎片候选指认](ms-annotation-mechfrag.md) | `ms.annotation.mechfrag` |

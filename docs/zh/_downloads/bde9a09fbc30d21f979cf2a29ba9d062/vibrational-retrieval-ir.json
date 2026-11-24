@@ -1,0 +1,57 @@
+{
+  "task": "vibrational.retrieval.ir",
+  "enabled": true,
+  "training_performed": false,
+  "source_files": [
+    "vib_reference_library4096.json"
+  ],
+  "source_hashes": {
+    "vib_reference_library4096.json": "584176f40f614b46e220ece2991c7d6066d9dcb6b218559e534c9cd3e3782eeb"
+  },
+  "runs": [
+    {
+      "dataset": "4096 candidates / 128 queries",
+      "metrics": {
+        "reference_rank": {
+          "top1_hits": 27,
+          "top5_hits": 64,
+          "mrr": 0.3511007387383326,
+          "queries": 128
+        },
+        "shortlist_rank": {
+          "top1_hits": 23,
+          "top5_hits": 71,
+          "mrr": 0.3319611445613743,
+          "queries": 128
+        },
+        "full_rank": {
+          "top1_hits": 21,
+          "top5_hits": 62,
+          "mrr": 0.3078015779495653,
+          "queries": 128
+        }
+      }
+    }
+  ],
+  "examples": [
+    {
+      "target": "CCC(N)c1cncc2ccccc12",
+      "reference_rank": 2,
+      "shortlist_rank": 3,
+      "full_rank": 3
+    },
+    {
+      "target": "CCCC(CC)NC(=O)NCC1CC1C1CC1",
+      "reference_rank": 4,
+      "shortlist_rank": 3,
+      "full_rank": 3
+    },
+    {
+      "target": "Cc1ccsc1CN(C)C(=O)C1(C)CC1F",
+      "reference_rank": 2,
+      "shortlist_rank": 4,
+      "full_rank": 5
+    }
+  ],
+  "status": "recorded_results"
+}

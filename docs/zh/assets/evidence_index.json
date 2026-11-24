@@ -197,9 +197,12 @@
     "example_count": 0
   },
   "spectroscopy.qa": {
-    "status": "deferred_by_user",
-    "sources": [],
-    "example_count": 0
+    "status": "recorded_results",
+    "sources": [
+      "specmol_qa_first_token4.json",
+      "specmol_qa32.json"
+    ],
+    "example_count": 6
   },
   "spectroscopy.reranking": {
     "status": "recorded_results",
@@ -258,7 +261,7 @@
     "figure": "gallery/ms-annotation-magma.png"
   },
   "multispectral.spectrallm.generation": {
-    "status": "deferred_by_user",
+    "status": "awaiting_evaluation",
     "sources": [],
     "example_count": 0
   },
@@ -269,5 +272,26 @@
     ],
     "example_count": 1,
     "figure": "gallery/nmr-hsqc-transpeaknet.png"
+  },
+  "vibrational.retrieval.ir": {
+    "status": "recorded_results",
+    "sources": [
+      "vib_reference_library4096.json"
+    ],
+    "example_count": 3
+  },
+  "vibrational.retrieval.raman": {
+    "status": "recorded_results",
+    "sources": [
+      "vib_reference_library4096.json"
+    ],
+    "example_count": 3
+  },
+  "ms.annotation.mechfrag": {
+    "status": "recorded_results",
+    "sources": [
+      "mechfrag_fragment_annotations.json"
+    ],
+    "example_count": 3
   }
 }

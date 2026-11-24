@@ -1,24 +1,30 @@
 {
   "completed": true,
-  "active_tasks": 32,
+  "active_tasks": 37,
   "scientific_figures": 43,
-  "executed_tutorials": 84,
+  "executed_tutorials": 90,
   "cleaned_nmr_molecular_identities": 2678511,
   "interactive_molecular_isomers": 2,
-  "manual_html_pages": 386,
+  "manual_html_pages": 412,
   "manual_languages": [
     "en",
     "zh"
   ],
-  "dataset_preview_records": 32,
+  "dataset_preview_records": 131,
   "dataset_preview_views": 8,
   "verified_online_workflows": 13,
   "agent_demo": "recorded real API and MCP execution",
   "navigation": [
     "Workspace",
-    "Datasets",
+    "Explore",
+    "Agent Harness",
+    "Benchmarks",
     "Documentation",
     "GitHub"
+  ],
+  "interface_languages": [
+    "en",
+    "zh-Hans"
   ],
   "cdn_dependencies": false,
   "online_inference_requires_api": true,

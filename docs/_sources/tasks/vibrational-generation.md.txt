@@ -2,18 +2,45 @@
 
 Generate structures from molecular spectra.
 
+## Structure generation without a formula
+
+The default OpenMolSpec route takes only calculated IR and Raman intensities. A shift estimator fitted on 11,632 connectivities predicts H and C shift counts and positions for the frozen structure decoder. On 24 development molecules it recovered 3 structures at rank 1. Updating the decoder output weights recovered 0/24, as did the frozen decoder with empty NMR inputs. On a separate 24-molecule confirmation set, estimated shifts recovered 2/24 at rank 1, 5/24 in the first three and 6/24 in the first five. The frozen baseline recovered 0/24 at all three cutoffs. All scores compare canonical molecular structures without stereochemistry.
+
+```python
+from openmolspec.model import Vib2Mol
+model = Vib2Mol(root=openspec_root, python=model_python)
+result = model.predict({"ir": ir, "raman": raman}, top_k=5)
+candidates = result["candidates"]
+estimated_ppm = result["estimated_shifts_ppm"]
+```
+
+The example figure and original evaluation table below use the earlier empty-NMR decoder. The current benchmark excludes all 13,190 train and validation connectivities used for fitting the shift estimator.
+
+## Xinyu Lu’s released dual-spectrum model
+
+The released VB-Mols MMM decoder takes IR, Raman and an independently supplied molecular formula. With 10 beams, the first candidate matched 24 of 24 sampled VB-Mols test structures and 0 of 24 sampled OpenMolSpec structures. Both panels use canonical SMILES with stereochemistry removed. [Author’s implementation](https://github.com/X1nyuLu/vib2mol)
+
+```python
+from openmolspec.model import Vib2Mol
+
+model = Vib2Mol(root=openspec_root, python=model_python)
+result = model.predict_native(
+    {"ir": ir, "raman": raman}, formula=formula, checkout=vib2mol_checkout
+)
+```
+
 ## What goes in
 
 | Field | Meaning |
 | --- | --- |
 | `IR / Raman` | 1024 intensity samples per visible channel, ordered 400→4000 cm⁻¹, using the checkpoint normalization. |
-| `missing channels` | The input mask selects visible channels from the shared four-modal checkpoint. |
+| `estimated shifts` | With IR and Raman alone, the software estimates H and C shifts and then decodes candidate structures. The native VB-Mols decoder requires a known molecular formula. |
 
 ## What comes out
 
 | Field | Meaning |
 | --- | --- |
-| `SMILES candidates` | Decoded valid, canonical unique candidates; full-input route uses beam 10 and ITM reranking. |
+| `SMILES candidates` | The decoder keeps the first occurrence of each valid canonical structure from 10 beams. The SDK returns beam order by default and also exposes the ITM rank. |
 | `top-k` | Generation and reranking scores are separate. No molecular formula is supplied. |
 
 ## A real recorded example
@@ -85,7 +112,7 @@ python -m openmolspec_bench run --workspace /path/to/OpenMolSpec \
 from openmolspec.model import Vib2Mol
 model = Vib2Mol(root='/path/to/portable-models',
     python='/path/to/vibrational-env/bin/python')
-result = model.predict(inputs, allow_missing_modalities=True)
+result = model.predict(inputs)
 ```
 
 Use the [openSpec/Vib2Mol author training workflow](https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks) for adaptation. Export aligned spectral/structure LMDBs, retain H/C references and normalization, and keep train/validation groups disjoint. Retrieval combines symmetric contrastive cross-entropy with matching cross-entropy; generation adds autoregressive molecular-token cross-entropy. Property regression uses the target transform and regression criterion from its training configuration. SDK classes expose inference; these training workflows run in the author implementation.

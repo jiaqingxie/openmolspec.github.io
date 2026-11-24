@@ -1,0 +1,68 @@
+{
+  "completed": true,
+  "transport": "stdio",
+  "server": {
+    "name": "OpenMolSpec v1.0",
+    "title": null,
+    "version": "1.0",
+    "description": null,
+    "website_url": null,
+    "icons": null
+  },
+  "tools": [
+    "spectra_tasks",
+    "spectra_datasets",
+    "spectra_validate",
+    "spectra_predict"
+  ],
+  "discovery_call": true,
+  "valid_request_call": true,
+  "invalid_request_rejected": true,
+  "model_inference_performed": true,
+  "inference": {
+    "version": "1.0",
+    "task": "nmr.solvent_transfer",
+    "harness": "Solvent shift fit",
+    "request_sha256": "7cef26599d836a5dcbffbe35179a2770e1bb4d33235a7ebaa2a16049d22a6673",
+    "completed": true,
+    "calls": [
+      {
+        "index": 0,
+        "status": "passed",
+        "elapsed_seconds": 1.3827758198603988,
+        "output_sha256": "594667052483bf854c836f3617adca66ba1a4b9716ceee339b33de45cdf6d170",
+        "prediction_sha256": "594667052483bf854c836f3617adca66ba1a4b9716ceee339b33de45cdf6d170"
+      },
+      {
+        "index": 1,
+        "status": "passed",
+        "elapsed_seconds": 0.0012218900956213474,
+        "output_sha256": "594667052483bf854c836f3617adca66ba1a4b9716ceee339b33de45cdf6d170",
+        "prediction_sha256": "594667052483bf854c836f3617adca66ba1a4b9716ceee339b33de45cdf6d170"
+      }
+    ],
+    "result": {
+      "nucleus": "13C",
+      "predicted_delta_ppm": -0.12565800098165103,
+      "predicted_target_ppm": 49.87434199901835,
+      "method": "ridge_solvent_difference_v1"
+    },
+    "repeat_outputs_equal": true,
+    "repeat_predictions_equal": true,
+    "repeat_results": [
+      {
+        "nucleus": "13C",
+        "predicted_delta_ppm": -0.12565800098165103,
+        "predicted_target_ppm": 49.87434199901835,
+        "method": "ridge_solvent_difference_v1"
+      },
+      {
+        "nucleus": "13C",
+        "predicted_delta_ppm": -0.12565800098165103,
+        "predicted_target_ppm": 49.87434199901835,
+        "method": "ridge_solvent_difference_v1"
+      }
+    ],
+    "validation_scope": "request contract, execution and repeated serialized outputs; scientific accuracy requires reference data"
+  }
+}

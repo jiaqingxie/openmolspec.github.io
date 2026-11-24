@@ -25,7 +25,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="29Si solution chemical shifts" href="nmr-forward-29Si.html" />
-    <link rel="prev" title="31P chemical shift prediction" href="nmr-forward-31P.html" /> 
+    <link rel="prev" title="31P solution chemical shifts" href="nmr-forward-31P.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -58,10 +58,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tasks by spectroscopy family</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="nmr.html">NMR</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H experimental peak-list prediction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C chemical shift prediction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F solution chemical shifts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P solution chemical shifts</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">11B solution chemical shifts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si solution chemical shifts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">Spectrum-to-structure retrieval: ¹H</a></li>
@@ -134,7 +134,7 @@
   <section class="tex2jax_ignore mathjax_ignore" id="b-solution-chemical-shifts">
 <h1>11B solution chemical shifts<a class="headerlink" href="#b-solution-chemical-shifts" title="Link to this heading"></a></h1>
 <p>The validation-selected model predicts chemical shifts in ppm from a SMILES string and an optional solvent. The training partition contains 13,011 molecular connectivities. Models were selected by giving each of 1,501 validation connectivities equal weight. The selected combination (50% 11B-gnn, 50% 11B-gnn-r2) achieved 1.48 ppm validation MAE.</p>
-<p>The independent test contains 1,517 connectivities and 1,669 measured single-environment observations. Observation MAE is <strong>1.24 ppm</strong>, molecule-weighted MAE is <strong>1.28 ppm</strong>, and the 90th percentile absolute error is 2.35 ppm. Each prediction lists the input atom indices belonging to that symmetry class. Multi-environment site assignments require separate validation.</p>
+<p>The complete test set contains 1,517 connectivities and 1,669 measured single-environment observations. Observation MAE is <strong>1.24 ppm</strong>, molecule-weighted MAE is <strong>1.28 ppm</strong>, and the 90th percentile absolute error is 2.35 ppm. Each prediction lists the input atom indices belonging to that symmetry class. Multi-environment site assignments require separate validation.</p>
 <p><a class="reference external" href="https://jiaqingxie.github.io/openmolspec.github.io/#tool-11b">Run a structure online</a> · <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/download/solution-nmr-v2/openmolspec-11B.zip">Download the model and SDK</a></p>
 <p>Extract the ZIP and run the following commands in its directory.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"./openmolspec-1.0.0-py3-none-any.whl[phosphorus-gnn,solution-nmr]"</span>
@@ -153,7 +153,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="nmr-forward-31P.html" class="btn btn-neutral float-left" title="31P chemical shift prediction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nmr-forward-31P.html" class="btn btn-neutral float-left" title="31P solution chemical shifts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="nmr-forward-29Si.html" class="btn btn-neutral float-right" title="29Si solution chemical shifts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -1,5 +1,7 @@
 # 由 IR + Raman + NMR 预测 HOMO–LUMO 能隙
 
+[能隙评测](../benchmarks/vibrational.md)收录了 1,024 条四谱输入和 3,381 条缺通道模型的结果。
+
 根据谱图估计分子的 HOMO–LUMO 能隙。
 
 ## 输入是什么

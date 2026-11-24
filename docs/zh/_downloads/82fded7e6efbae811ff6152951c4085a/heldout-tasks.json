@@ -1,0 +1,756 @@
+{
+  "assignment_all_heldout_sites": {
+    "source_sha256": "2ecfb46591ac6c8115992a7cdd98b2596752d462ff94ba85eaae0e4549f85db1",
+    "scoring": "All annotated peaks including unmatched; chirality-aware equivalent heavy sites; 0.5 ppm H and 5 ppm C; fixed Hungarian assignment.",
+    "split": "all test connectivities disjoint from training and validation",
+    "nuclei": {
+      "1H": {
+        "connectivities": 1720,
+        "spectra": 1851,
+        "peaks": 12543,
+        "assigned": 10777,
+        "correct": 6633,
+        "accuracy": 0.5288208562544846,
+        "coverage": 0.8592043370804433,
+        "failures": 0,
+        "weights": {
+          "nucleus": "1H",
+          "lookup_weight": 0.8,
+          "tree_sha256": "abdb868fe33e6035db2435adef9c425107d8fa6a43a8c55c341c13c95a005332",
+          "lookup_sha256": "33102a6b897f3f82e9c642225494ef42c85e208aa8b518f4046ec5914587c6cf"
+        }
+      },
+      "13C": {
+        "connectivities": 3142,
+        "spectra": 3482,
+        "peaks": 31018,
+        "assigned": 25797,
+        "correct": 18193,
+        "accuracy": 0.5865304017022374,
+        "coverage": 0.8316783802953124,
+        "failures": 0,
+        "weights": {
+          "nucleus": "13C",
+          "lookup_weight": 1.0,
+          "tree_sha256": "43f1f7b301903af4407baf5bbe5dc324fd9e6a9dbe12372bffa90a57ea1d2cee",
+          "lookup_sha256": "4a31d80276d28aad5902a88c1706d5b1e1e3f417faaef4f99b5ab96ea4d5abbb"
+        }
+      }
+    }
+  },
+  "solvent_all_supported_pairs": {
+    "source_sha256": "37a3a24e07ebd33a4e3915b82de2d1d50b1cceeedbc3bdaab2b022c670b50299",
+    "protocol": "All observed ordered-by-solvent atom pairs with another connectivity in the same nucleus/solvent pair. Entire connectivity excluded from ridge fit and reference search. Pair-weighted and molecule-weighted MAE in ppm.",
+    "eligible": {
+      "1H": {
+        "rows": 1453,
+        "molecules": 20,
+        "all_rows": 1462,
+        "all_molecules": 20,
+        "pair_weighted_mae": {
+          "ridge": 0.25838378936922846,
+          "reference": 0.1931039229181,
+          "unchanged": 0.14379215416379917,
+          "median": 0.14640399174122523
+        },
+        "molecule_weighted_mae": {
+          "ridge": 0.3681119856257432,
+          "reference": 0.31758393224086356,
+          "unchanged": 0.37488496878657823,
+          "median": 0.327930508518663
+        }
+      },
+      "13C": {
+        "rows": 283,
+        "molecules": 26,
+        "all_rows": 407,
+        "all_molecules": 33,
+        "pair_weighted_mae": {
+          "ridge": 0.808714438670606,
+          "reference": 1.1435689045936415,
+          "unchanged": 1.2378798586572448,
+          "median": 0.8444876325088355
+        },
+        "molecule_weighted_mae": {
+          "ridge": 0.870305368299621,
+          "reference": 1.1766554262920563,
+          "unchanged": 1.2478458306399485,
+          "median": 0.8927846048160716
+        }
+      }
+    }
+  },
+  "nmr_cross_source_library_scale": {
+    "source_sha256": "3db5729040dbb1248c7a96c4d049378ee9e0a9f2e70d8f66d8d735202933a666",
+    "results": {
+      "nmrspec_test": {
+        "h": {
+          "s2m": {
+            "512": {
+              "queries": 512,
+              "r1": 0.974609375,
+              "r5": 0.994140625,
+              "mrr": 0.9842119660364146
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.966796875,
+              "r5": 0.98828125,
+              "mrr": 0.9772263447603122
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.951171875,
+              "r5": 0.984375,
+              "mrr": 0.9673069998436874
+            }
+          },
+          "m2s": {
+            "512": {
+              "queries": 512,
+              "r1": 0.96484375,
+              "r5": 0.9921875,
+              "mrr": 0.9775596582237207
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.953125,
+              "r5": 0.9921875,
+              "mrr": 0.9694500243110497
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.943359375,
+              "r5": 0.982421875,
+              "mrr": 0.9613287613777484
+            }
+          }
+        },
+        "c": {
+          "s2m": {
+            "512": {
+              "queries": 512,
+              "r1": 0.62109375,
+              "r5": 0.87109375,
+              "mrr": 0.7272192060728642
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.55078125,
+              "r5": 0.783203125,
+              "mrr": 0.65734027788488
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.498046875,
+              "r5": 0.720703125,
+              "mrr": 0.6023456441121801
+            }
+          },
+          "m2s": {
+            "512": {
+              "queries": 512,
+              "r1": 0.66015625,
+              "r5": 0.892578125,
+              "mrr": 0.7587919191515478
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.587890625,
+              "r5": 0.810546875,
+              "mrr": 0.6902397276965657
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.5078125,
+              "r5": 0.7578125,
+              "mrr": 0.6208475157245277
+            }
+          }
+        },
+        "hc": {
+          "s2m": {
+            "512": {
+              "queries": 512,
+              "r1": 0.98828125,
+              "r5": 0.99609375,
+              "mrr": 0.9914467740221088
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.978515625,
+              "r5": 0.99609375,
+              "mrr": 0.9853376667490119
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.970703125,
+              "r5": 0.98828125,
+              "mrr": 0.9796483872287287
+            }
+          },
+          "m2s": {
+            "512": {
+              "queries": 512,
+              "r1": 0.978515625,
+              "r5": 0.99609375,
+              "mrr": 0.986985878436426
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.96875,
+              "r5": 0.99609375,
+              "mrr": 0.9802007378472222
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.966796875,
+              "r5": 0.98828125,
+              "mrr": 0.9768849740866175
+            }
+          }
+        }
+      },
+      "patent_test_10k": {
+        "h": {
+          "s2m": {
+            "512": {
+              "queries": 512,
+              "r1": 0.779296875,
+              "r5": 0.89453125,
+              "mrr": 0.8319061636927295
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.765625,
+              "r5": 0.8828125,
+              "mrr": 0.8178680958353091
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.74609375,
+              "r5": 0.865234375,
+              "mrr": 0.8029774395566827
+            }
+          },
+          "m2s": {
+            "512": {
+              "queries": 512,
+              "r1": 0.740234375,
+              "r5": 0.888671875,
+              "mrr": 0.8070119432686114
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.728515625,
+              "r5": 0.884765625,
+              "mrr": 0.7975302465956009
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.716796875,
+              "r5": 0.8671875,
+              "mrr": 0.7842873240505195
+            }
+          }
+        },
+        "c": {
+          "s2m": {
+            "512": {
+              "queries": 512,
+              "r1": 0.369140625,
+              "r5": 0.646484375,
+              "mrr": 0.49830244469707596
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.33984375,
+              "r5": 0.609375,
+              "mrr": 0.46327553460673665
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.30078125,
+              "r5": 0.546875,
+              "mrr": 0.41629637244779555
+            }
+          },
+          "m2s": {
+            "512": {
+              "queries": 512,
+              "r1": 0.365234375,
+              "r5": 0.66015625,
+              "mrr": 0.4994729341561126
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.341796875,
+              "r5": 0.625,
+              "mrr": 0.47121745858508096
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.314453125,
+              "r5": 0.564453125,
+              "mrr": 0.4371893194376102
+            }
+          }
+        },
+        "hc": {
+          "s2m": {
+            "512": {
+              "queries": 512,
+              "r1": 0.8046875,
+              "r5": 0.919921875,
+              "mrr": 0.8565517037602672
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.7890625,
+              "r5": 0.900390625,
+              "mrr": 0.8409556417726931
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.77734375,
+              "r5": 0.890625,
+              "mrr": 0.8290743261211371
+            }
+          },
+          "m2s": {
+            "512": {
+              "queries": 512,
+              "r1": 0.794921875,
+              "r5": 0.908203125,
+              "mrr": 0.8445950237550117
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.7890625,
+              "r5": 0.8984375,
+              "mrr": 0.8392075285246763
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.77734375,
+              "r5": 0.892578125,
+              "mrr": 0.827783045721558
+            }
+          }
+        }
+      },
+      "nmrexp_exp_10k": {
+        "h": {
+          "s2m": {
+            "512": {
+              "queries": 512,
+              "r1": 0.919921875,
+              "r5": 0.994140625,
+              "mrr": 0.9539302918548843
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.91796875,
+              "r5": 0.98828125,
+              "mrr": 0.9510366390422671
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.908203125,
+              "r5": 0.986328125,
+              "mrr": 0.9449239025235736
+            }
+          },
+          "m2s": {
+            "512": {
+              "queries": 512,
+              "r1": 0.919921875,
+              "r5": 0.994140625,
+              "mrr": 0.9541229077979876
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.912109375,
+              "r5": 0.990234375,
+              "mrr": 0.9485150444721772
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.904296875,
+              "r5": 0.98828125,
+              "mrr": 0.9435524738584425
+            }
+          }
+        },
+        "c": {
+          "s2m": {
+            "512": {
+              "queries": 512,
+              "r1": 0.62109375,
+              "r5": 0.88671875,
+              "mrr": 0.7340568119595042
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.544921875,
+              "r5": 0.830078125,
+              "mrr": 0.6716106397850028
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.470703125,
+              "r5": 0.791015625,
+              "mrr": 0.6083658547832048
+            }
+          },
+          "m2s": {
+            "512": {
+              "queries": 512,
+              "r1": 0.64453125,
+              "r5": 0.888671875,
+              "mrr": 0.7555635104309795
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.58203125,
+              "r5": 0.859375,
+              "mrr": 0.6988172324248897
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.505859375,
+              "r5": 0.796875,
+              "mrr": 0.6341496745683348
+            }
+          }
+        },
+        "hc": {
+          "s2m": {
+            "512": {
+              "queries": 512,
+              "r1": 0.931640625,
+              "r5": 0.998046875,
+              "mrr": 0.9614954170291957
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.927734375,
+              "r5": 0.994140625,
+              "mrr": 0.9578148141291469
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.923828125,
+              "r5": 0.98828125,
+              "mrr": 0.9549313389854517
+            }
+          },
+          "m2s": {
+            "512": {
+              "queries": 512,
+              "r1": 0.927734375,
+              "r5": 0.998046875,
+              "mrr": 0.9603561473004695
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.919921875,
+              "r5": 0.99609375,
+              "mrr": 0.9550478127389144
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.91796875,
+              "r5": 0.990234375,
+              "mrr": 0.9532423590338208
+            }
+          }
+        }
+      },
+      "nmrgym_test": {
+        "h": {
+          "s2m": {
+            "512": {
+              "queries": 512,
+              "r1": 0.263671875,
+              "r5": 0.521484375,
+              "mrr": 0.38378343649061714
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.2109375,
+              "r5": 0.419921875,
+              "mrr": 0.3184702272899867
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.158203125,
+              "r5": 0.361328125,
+              "mrr": 0.25674773661774886
+            }
+          },
+          "m2s": {
+            "512": {
+              "queries": 512,
+              "r1": 0.259765625,
+              "r5": 0.50390625,
+              "mrr": 0.38251616990982373
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.177734375,
+              "r5": 0.423828125,
+              "mrr": 0.30147756373981716
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.125,
+              "r5": 0.341796875,
+              "mrr": 0.23430284239727175
+            }
+          }
+        },
+        "c": {
+          "s2m": {
+            "512": {
+              "queries": 512,
+              "r1": 0.361328125,
+              "r5": 0.671875,
+              "mrr": 0.502851761699862
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.306640625,
+              "r5": 0.619140625,
+              "mrr": 0.44847044554628135
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.2890625,
+              "r5": 0.57421875,
+              "mrr": 0.41868888508071556
+            }
+          },
+          "m2s": {
+            "512": {
+              "queries": 512,
+              "r1": 0.392578125,
+              "r5": 0.654296875,
+              "mrr": 0.5143142117979738
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.328125,
+              "r5": 0.599609375,
+              "mrr": 0.45679729262083857
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.296875,
+              "r5": 0.54296875,
+              "mrr": 0.4159006756855327
+            }
+          }
+        },
+        "hc": {
+          "s2m": {
+            "512": {
+              "queries": 512,
+              "r1": 0.48828125,
+              "r5": 0.775390625,
+              "mrr": 0.6187099551259609
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.43359375,
+              "r5": 0.734375,
+              "mrr": 0.5705582875821862
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.400390625,
+              "r5": 0.68359375,
+              "mrr": 0.529618688593446
+            }
+          },
+          "m2s": {
+            "512": {
+              "queries": 512,
+              "r1": 0.513671875,
+              "r5": 0.783203125,
+              "mrr": 0.6340942424904059
+            },
+            "1024": {
+              "queries": 512,
+              "r1": 0.42578125,
+              "r5": 0.724609375,
+              "mrr": 0.5606710055570392
+            },
+            "2048": {
+              "queries": 512,
+              "r1": 0.357421875,
+              "r5": 0.640625,
+              "mrr": 0.4938507767581573
+            }
+          }
+        }
+      }
+    },
+    "protocol": "Same queries across sizes. Own-source identities first, then distinct cross-source distractors in fixed hash order. One positive per query. Known alignment train and validation excluded."
+  },
+  "mechfrag_fragment_annotations": {
+    "source_sha256": "49b901b1687e5cf03379559a801bcc0cd617df72224f872139bd4a1d0f9418aa",
+    "ppm": 10,
+    "peaks": 1741,
+    "matched_fraction": 0.6226306720275704,
+    "magma_matched_fraction_same_peaks": 0.5812751292360713,
+    "checkpoint_sha256": "4efd945c5eefacc64d6941969a06cfc0f89dd67c87115b1206b1e1805753295c",
+    "interpretation": "Measured peak m/z coverage; atom masks are model hypotheses.",
+    "spectra": 55,
+    "missing_conditions": 9
+  },
+  "gap_four_channel_1024": {
+    "source_sha256": "12f7c14e1f310abd983d8f851123a66cf5e27456598af3b7e86ff52fc34a28c7",
+    "metrics": {
+      "mae_ev": 0.1350445953092414,
+      "rmse_ev": 0.19862885701670896,
+      "examples": 1024
+    },
+    "training_mean_baseline": {
+      "constant_ev": 5.645122750946045,
+      "mae_ev": 0.8044890683126571,
+      "rmse_ev": 0.9648351654830524,
+      "examples": 1024
+    },
+    "dataset_sha256": "736a234607992865136b23b3d091b26323936f08377362a196fe97ceb3bdb6a1"
+  },
+  "gap_vibrational_heldout": {
+    "source_sha256": "e3eb01bc07c0bc17ee47ad9a4037a059a72204b9787eb39737d1cd15443023cd",
+    "counts": {
+      "prior": 128,
+      "replay": 128,
+      "test": 3381,
+      "train": 11568,
+      "val": 1651
+    },
+    "test_mae_ev": {
+      "ir": 0.3822414266129247,
+      "raman": 0.3184470710886718,
+      "ir_raman": 0.2875221981930671
+    },
+    "mean_baseline_mae_ev": 0.7485560071628693
+  },
+  "vib_generation_rerank_replay64": {
+    "source_sha256": "a3a0876d402d9c74106498211567e167b7f330e4f09fde96e6fd901eeed8c043",
+    "totals": {
+      "beam": {
+        "top1_hits": 48,
+        "top3_hits": 57,
+        "top5_hits": 57,
+        "top10_hits": 57
+      },
+      "itm": {
+        "top1_hits": 44,
+        "top3_hits": 54,
+        "top5_hits": 57,
+        "top10_hits": 57
+      },
+      "beam_first_itm_tail": {
+        "top1_hits": 48,
+        "top3_hits": 54,
+        "top5_hits": 57,
+        "top10_hits": 57
+      }
+    },
+    "queries": 64
+  },
+  "vib_generation_hc_heldout24": {
+    "source_sha256": "088869cd14ee968e68dbee2e897723b6d01959faef466abe99c6a70d518785a4",
+    "counts": {
+      "canonical_beam_order": {
+        "top1": 14,
+        "top3": 19,
+        "top5": 19,
+        "top10": 19
+      },
+      "itm": {
+        "top1": 14,
+        "top3": 19,
+        "top5": 19,
+        "top10": 19
+      }
+    },
+    "queries": 24,
+    "selection": "First distinct structures by SHA256(vib-gen-check-v1 + nonisomeric SMILES), excluding legacy panel structures."
+  },
+  "external_nmr_interfaces": {
+    "source_sha256": "7ceffb0d2d3464a38bbd919979ed35606226591540149e8b7c4f56671d747847",
+    "interfaces": {
+      "UltraNMR": {
+        "source": "https://github.com/wuycM/UltraNMR",
+        "status": "formula and peak encoder checked against the upstream example and upstream element vector",
+        "given_formula": "C20H30O3",
+        "proton_peaks": 32,
+        "carbon_peaks": 20,
+        "vocab_size": 50,
+        "model_inference": false
+      },
+      "NMRAgent": {
+        "source": "https://github.com/Meaw0415/NMRAgent",
+        "cli": "passed",
+        "loopback_calls": [
+          "planner",
+          "verifier"
+        ],
+        "chemistry_tools": "dry-run",
+        "llm": "fixed local protocol fixture",
+        "model_inference": false
+      },
+      "ChefNMR": {
+        "source": "https://github.com/ml-struct-bio/chefnmr",
+        "status": "Hydra sampling configuration composed with upstream release defaults",
+        "preset": "SB-H10kC80-S128",
+        "model_inference": false,
+        "config_sha256": "28e5af395adc2e7d2189d1b9a2cc6165cd63ae3b3a4077344d76aed2e6f646e7",
+        "upstream_input_transform": {
+          "archive": "https://zenodo.org/records/17766755",
+          "file": "real-specteach.tar.gz",
+          "md5": "md5:934c4fd52eb0bd5bc528895e9acd5ca7",
+          "dataset": "Real-SpecTeach",
+          "inputs": [
+            "atom_mask",
+            "atom_one_hot",
+            "condition"
+          ],
+          "shape": [
+            10000,
+            80
+          ],
+          "records": 238,
+          "nonempty_both": 238,
+          "examples": [
+            {
+              "record": "0006225",
+              "condition_sha256": "ebfc308c8a35dc624d478237ce121a25bb11e2ab6b030fd0efc707d70fe82b47",
+              "proton_signal_bins": 9173,
+              "carbon_signal_bins": 6
+            },
+            {
+              "record": "0007006",
+              "condition_sha256": "ce440d7aa04de383ad349a91f3fdba3a5033c17b0431c75dd8ab4ec2719c4a9e",
+              "proton_signal_bins": 9181,
+              "carbon_signal_bins": 6
+            },
+            {
+              "record": "0007142",
+              "condition_sha256": "007336b529189f5a156f4dbc5168f0253401269eab214816bca136876d134e84",
+              "proton_signal_bins": 9172,
+              "carbon_signal_bins": 8
+            }
+          ],
+          "model_inference": false
+        }
+      }
+    }
+  }
+}

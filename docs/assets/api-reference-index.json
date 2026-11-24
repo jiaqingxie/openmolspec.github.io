@@ -113,6 +113,16 @@
       "openmolspec.analysis.visualize_opt_trajectory.main",
       "openmolspec.analysis.visualize_opt_trajectory.ATOM_COLORS"
     ],
+    "openmolspec.assigned_shifts": [
+      "openmolspec.assigned_shifts.assigned_sites",
+      "openmolspec.assigned_shifts.AssignedShiftPredictor",
+      "openmolspec.assigned_shifts.AssignedShiftPredictor.predict",
+      "openmolspec.assigned_shifts.AssignedShiftPredictor.assignment_predictions",
+      "openmolspec.assigned_shifts.merge_peaks",
+      "openmolspec.assigned_shifts.combine_sites",
+      "openmolspec.assigned_shifts.PeakSpectrumPredictor",
+      "openmolspec.assigned_shifts.PeakSpectrumPredictor.predict"
+    ],
     "openmolspec.benchmark": [
       "openmolspec.benchmark.Benchmark",
       "openmolspec.benchmark.Benchmark.run",
@@ -317,6 +327,7 @@
       "openmolspec.model.GapModel.capabilities",
       "openmolspec.model.Vib2Mol",
       "openmolspec.model.Vib2Mol.predict",
+      "openmolspec.model.Vib2Mol.predict_native",
       "openmolspec.model.Vib2Mol.retrieve",
       "openmolspec.model.Vib2Mol.save_config",
       "openmolspec.model.Vib2Mol.from_config",
@@ -327,6 +338,22 @@
       "openmolspec.model.MSPredictor.from_config",
       "openmolspec.model.MSPredictor.capabilities"
     ],
+    "openmolspec.nmrgym_analogs": [
+      "openmolspec.nmrgym_analogs.ProtonSpectrumLibrary",
+      "openmolspec.nmrgym_analogs.ProtonSpectrumLibrary.nearest",
+      "openmolspec.nmrgym_analogs.ProtonSpectrumLibrary.adjust"
+    ],
+    "openmolspec.nmrgym_proton": [
+      "openmolspec.nmrgym_proton.fingerprint_generator",
+      "openmolspec.nmrgym_proton.resample",
+      "openmolspec.nmrgym_proton.proton_features",
+      "openmolspec.nmrgym_proton.NMRGymProtonPredictor",
+      "openmolspec.nmrgym_proton.NMRGymProtonPredictor.predict",
+      "openmolspec.nmrgym_proton.adapter_outputs",
+      "openmolspec.nmrgym_proton.decode",
+      "openmolspec.nmrgym_proton.GRID",
+      "openmolspec.nmrgym_proton.FP_SIZE"
+    ],
     "openmolspec.parsing.gaussian": [
       "openmolspec.parsing.gaussian.lorentzian_broadening",
       "openmolspec.parsing.gaussian.raman_intensity",
@@ -336,6 +363,12 @@
     ],
     "openmolspec.parsing.trajectory": [
       "openmolspec.parsing.trajectory.parse_gaussian_trajectory"
+    ],
+    "openmolspec.peak_learning": [
+      "openmolspec.peak_learning.environments",
+      "openmolspec.peak_learning.estimate",
+      "openmolspec.peak_learning.PeakLearningPredictor",
+      "openmolspec.peak_learning.PeakLearningPredictor.predict"
     ],
     "openmolspec.phosphorus_gnn": [
       "openmolspec.phosphorus_gnn.GraphIndex",
@@ -481,6 +514,9 @@
       "openmolspec.training.TrainingPlan.seed",
       "openmolspec.training.TrainingPlan.parameters"
     ],
+    "openmolspec.ultranmr_input": [
+      "openmolspec.ultranmr_input.decoder_inputs"
+    ],
     "openmolspec.workflows.frequency": [
       "openmolspec.workflows.frequency.extract_frequency"
     ],
@@ -541,6 +577,6 @@
       "openmolspec.release.build_splits"
     ]
   },
-  "module_count": 54,
-  "object_count": 432
+  "module_count": 59,
+  "object_count": 458
 }

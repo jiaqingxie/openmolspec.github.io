@@ -2,18 +2,45 @@
 
 从分子谱图生成结构。
 
+## 无分子式的结构生成
+
+默认接口只需计算得到的 IR 和 Raman。位移估计模型在 11,632 个连通结构上拟合，预测氢、碳位移的数量和位置，再由冻结的解码器生成候选。在 24 个开发分子上，第一名命中 3/24；仅微调解码器输出层和直接留空 NMR 输入都为 0/24。另取 24 个独立分子，估计位移后第一名命中 2/24，前三名 5/24，前五名 6/24；留空 NMR 的原模型三项均为 0/24。结构匹配采用去除立体化学后的规范 SMILES。
+
+```python
+from openmolspec.model import Vib2Mol
+model = Vib2Mol(root=openspec_root, python=model_python)
+result = model.predict({"ir": ir, "raman": raman}, top_k=5)
+candidates = result["candidates"]
+estimated_ppm = result["estimated_shifts_ppm"]
+```
+
+下方示例图和原始评测表展示留空 NMR 的旧模型。当前 benchmark 已排除位移估计模型拟合及选参用到的全部 13,190 个连通结构。
+
+## Xinyu Lu 发布的双谱模型
+
+VB-Mols 的 MMM 解码器接受 IR、Raman 和独立提供的分子式。使用 10 条 beam，在作者 VB-Mols 测试集抽取的 24 个结构中，第一名命中 24 个；在 OpenMolSpec 抽取的另 24 个结构中命中 0 个。两组均按忽略立体化学的规范 SMILES 比较，覆盖的化学空间不同。下方原有案例使用无需分子式的 OpenMolSpec 解码器。[作者实现](https://github.com/X1nyuLu/vib2mol)
+
+```python
+from openmolspec.model import Vib2Mol
+
+model = Vib2Mol(root=openspec_root, python=model_python)
+result = model.predict_native(
+    {"ir": ir, "raman": raman}, formula=formula, checkout=vib2mol_checkout
+)
+```
+
 ## 输入是什么
 
 | Field | Meaning |
 | --- | --- |
 | `IR / Raman` | 每个可见通道 1024 个强度点，按 400→4000 cm⁻¹ 排列，并采用 checkpoint 的归一化。 |
-| `missing channels` | 输入掩码选择共享四模态权重的可见通道。 |
+| `estimated shifts` | 只给 IR 和 Raman 时，软件先估计氢、碳位移，再解码候选结构。调用原作者 VB-Mols 解码器时另需提供已知分子式。 |
 
 ## 输出是什么
 
 | Field | Meaning |
 | --- | --- |
-| `SMILES candidates` | 解码后有效、规范化且去重的结构；完整输入路径使用 beam 10 和 ITM 重排。 |
+| `SMILES candidates` | 从 10 条 beam 中取有效规范结构并按首次出现去重。SDK 默认保留该顺序，同时返回 ITM 排名。 |
 | `top-k` | 分别报告生成与重排后的 top-k；不提供分子式。 |
 
 ## 真实运行案例
@@ -85,7 +112,7 @@ python -m openmolspec_bench run --workspace /path/to/OpenMolSpec \
 from openmolspec.model import Vib2Mol
 model = Vib2Mol(root='/path/to/portable-models',
     python='/path/to/vibrational-env/bin/python')
-result = model.predict(inputs, allow_missing_modalities=True)
+result = model.predict(inputs)
 ```
 
 通过 [openSpec／Vib2Mol 作者训练流程](https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks)进行适配。准备谱—结构对齐的 LMDB，保留 H/C 参考和归一化，确保 train/val 分组独立。检索采用双向对比交叉熵与配对分类交叉熵；生成使用分子 token 自回归交叉熵。性质回归按其训练配置保留目标变换和回归准则。SDK 提供推理，相关训练通过作者实现执行。

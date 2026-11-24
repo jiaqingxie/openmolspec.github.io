@@ -2,6 +2,12 @@
 
 This tutorial takes you from installation to loading an NMR record, predicting chemical shifts and training a model with your own data. Run the commands from the cloned repository so the example files are available.
 
+## Use the website
+
+Open the [workspace](https://jiaqingxie.github.io/openmolspec.github.io/#tool) to choose a task and inspect its inputs and outputs. The [sucrose example](https://jiaqingxie.github.io/openmolspec.github.io/#tool-sucrose) loads 11 measured (¹³C, ¹H) HSQC pairs from BMRB bmse000119 in D₂O. Its ¹H and ¹³C traces come from the same sample.
+
+In [Explore](https://jiaqingxie.github.io/openmolspec.github.io/#dataset), choose a spectrum type and enter SMILES. An exact structure match returns experimental records with provenance. An available predictor handles missing NMR, IR or Raman records. For MS/MS prediction, specify acquisition conditions in the workspace. Browse the paired examples for site-based NMR R² and peak matching. The [Harness gallery](https://jiaqingxie.github.io/openmolspec.github.io/#agent-demo) opens recorded calls without an API key. Live questions require a configured model provider.
+
 ## 1. Install OpenMolSpec
 
 Use Python 3.10 or newer. Create an environment and install the package with data-format and plotting dependencies.

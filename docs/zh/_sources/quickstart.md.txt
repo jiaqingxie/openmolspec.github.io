@@ -2,6 +2,12 @@
 
 本教程从安装开始，依次介绍如何读取 NMR 记录、预测化学位移，以及用自己的数据训练模型。命令在克隆后的仓库根目录运行，示例文件位于仓库中。
 
+## 使用网页
+
+在[工作台](https://jiaqingxie.github.io/openmolspec.github.io/?lang=zh#tool)中选择任务，查看输入和输出。[蔗糖案例](https://jiaqingxie.github.io/openmolspec.github.io/?lang=zh#tool-sucrose)可载入 BMRB bmse000119 在重水中的 11 组实测（¹³C，¹H）HSQC 峰对。首页的氢谱和碳谱来自同一样品。
+
+在[数据探索](https://jiaqingxie.github.io/openmolspec.github.io/?lang=zh#dataset)中选择谱种并输入 SMILES。命中同结构记录时可查看实验谱及来源，缺少对应核磁、红外或拉曼记录时调用已部署的预测器。预测 MS/MS 时请在工作台填写采集条件。配对案例可查看基于独立位点标注的核磁 R² 与峰位匹配。[智能体案例](https://jiaqingxie.github.io/openmolspec.github.io/?lang=zh#agent-demo)支持免密钥回放，实时提问需要服务端配置模型提供方。
+
 ## 1. 安装 OpenMolSpec
 
 使用 Python 3.10 或更新版本。创建环境后，安装工具包及数据格式、绘图依赖。

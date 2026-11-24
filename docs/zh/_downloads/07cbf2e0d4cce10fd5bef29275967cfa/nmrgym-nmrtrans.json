@@ -1,0 +1,103 @@
+{
+  "source_sha256": "2b84b81211c42a4e44eec33f49e7c0d20d40b57ff6a933e8dc05411657d48878",
+  "task": "NMRGym spectrum to structure",
+  "test_protocol": {
+    "n": 10000,
+    "h_entries": 168456,
+    "c_entries": 213570,
+    "input_sha256": "bf8cb0cdcaf19884349e15230206c6110a29b479b1a04bec7ec0b9e5bff3ff9b",
+    "pack_sha256": "c3fa5e2c4535e77b4952ee12584269fe4d25f51d326797986b03f248c6ec07f9",
+    "source": "data/align_eval/nmrgym_test/test.jsonl",
+    "supplied_formula": "Reference molecular formula, only exposed to +formula models"
+  },
+  "metric": "Exact isomeric canonical SMILES. Greedy and beam-10 ranks reported separately.",
+  "conditions": [
+    {
+      "given_formula": false,
+      "suite": "nmrtrans-from-t5/noformula",
+      "initialization": "generic T5-small",
+      "max_epochs": 10000,
+      "views": [
+        {
+          "view": "h",
+          "validation_selected_greedy_exact": null,
+          "selection_record": null,
+          "evaluated_test_records": 0,
+          "test_exact_rates": null
+        },
+        {
+          "view": "c",
+          "validation_selected_greedy_exact": null,
+          "selection_record": null,
+          "evaluated_test_records": 0,
+          "test_exact_rates": null
+        },
+        {
+          "view": "hc",
+          "validation_selected_greedy_exact": null,
+          "selection_record": null,
+          "evaluated_test_records": 0,
+          "test_exact_rates": null
+        }
+      ]
+    },
+    {
+      "given_formula": true,
+      "suite": "nmrtrans-from-t5/formula",
+      "initialization": "generic T5-small",
+      "max_epochs": 10000,
+      "views": [
+        {
+          "view": "h",
+          "validation_selected_greedy_exact": null,
+          "selection_record": null,
+          "evaluated_test_records": 0,
+          "test_exact_rates": null
+        },
+        {
+          "view": "c",
+          "validation_selected_greedy_exact": null,
+          "selection_record": null,
+          "evaluated_test_records": 0,
+          "test_exact_rates": null
+        },
+        {
+          "view": "hc",
+          "validation_selected_greedy_exact": null,
+          "selection_record": null,
+          "evaluated_test_records": 0,
+          "test_exact_rates": null
+        }
+      ]
+    },
+    {
+      "given_formula": false,
+      "suite": "nmrtrans-inverse-v1",
+      "initialization": "NMRTrans H+C checkpoint",
+      "max_epochs": 100,
+      "views": [
+        {
+          "view": "h",
+          "validation_selected_greedy_exact": 0.0016556291375309229,
+          "selection_record": "runs/nmrtrans-inverse-v1/nmrgym/h/complete.json",
+          "evaluated_test_records": 0,
+          "test_exact_rates": null
+        },
+        {
+          "view": "c",
+          "validation_selected_greedy_exact": 0.001855976297520101,
+          "selection_record": "runs/nmrtrans-inverse-v1/nmrgym/c/complete.json",
+          "evaluated_test_records": 0,
+          "test_exact_rates": null
+        },
+        {
+          "view": "hc",
+          "validation_selected_greedy_exact": 0.004966887645423412,
+          "selection_record": "runs/nmrtrans-inverse-v1/nmrgym/hc/complete.json",
+          "evaluated_test_records": 0,
+          "test_exact_rates": null
+        }
+      ]
+    }
+  ]
+}

@@ -7,6 +7,8 @@ python -m pip install ".[mcp]"
 python -m openmolspec.mcp
 ```
 
+![Agent tool execution through MCP](../assets/harness/mcp-workflow.svg)
+
 ```json
 {
   "mcpServers": {

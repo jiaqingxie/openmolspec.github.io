@@ -34,6 +34,15 @@ result = report['result']
 
 [Task guide / 任务指南](../tasks/vibrational-gap-ir_raman_hc.md) · [Python API](../api-reference/module-harness.md)
 
+
+## 显式候选库
+
+给定 IR 和 Raman 时，`vibrational.retrieval` 默认从两种实测输入估计 H/C 位移。`spectroscopy.reranking` 可通过 `shortlist` 指定先用嵌入选多少候选，再用 ITM 排序。`vibrational.retrieval.ir` 和 `vibrational.retrieval.raman` 分别接收单一通道。以下离线命令可复现跨候选全库的参考谱方法。它从安装包读取拟合集索引。
+
+```bash
+python -m openmolspec_bench.vib_reference_library --portable /path/to/vib-assets   --pool 4096 --queries 128 --seed 1123 --output reference4096.json
+```
+
 ## 参考文献
 
 - DeepSeek-AI. DeepSeek Harness: modular agent tools and execution infrastructure. Software repository. Accessed 18 November 2026. [Source](https://github.com/deepseek-ai/deepseek-harness)

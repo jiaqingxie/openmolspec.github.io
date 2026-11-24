@@ -1,0 +1,25 @@
+digraph SpectraHarness {
+  graph [bgcolor="white", pad=".20", nodesep=".35", ranksep=".52", fontname="Helvetica", fontsize=17,
+         labelloc=t, label="OpenMolSpec  |  Agent tool calls"];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=12, margin=".15,.12",
+        color="#466178", fillcolor="#EFF4F7", fontcolor="#18384B"];
+  edge [color="#526D80", fontcolor="#365363", fontname="Helvetica", fontsize=10, arrowsize=.72];
+  client [label="Agent / MCP client\nSelect a spectroscopy task"];
+  discover [label="Discover tools\ninitialize, tools/list\nspectra_tasks, spectra_datasets"];
+  validate [label="Validate inputs\nspectra_validate\nChannels, shapes, model settings"];
+  execute [label="Execute\nspectra_predict", fillcolor="#DBEEE4", color="#47755B"];
+  runtime [label="SpectraHarness\nDispatch to the configured backend\nNMR, IR/Raman, MS/MS, language"];
+  result [label="Return to agent\nPrediction, status, elapsed time\nand reproducibility hashes",fillcolor="#DBEEE4",color="#47755B"];
+  repair [label="Request missing\nor corrected inputs", fillcolor="#FFF3D9", color="#A37F42"];
+  {rank=same;client;discover;validate}
+  {rank=same;result;runtime;execute}
+  client -> discover [label=" MCP stdio"];
+  discover -> validate;
+  validate -> execute [label=" valid"];
+  execute -> runtime [constraint=false];
+  runtime -> result [constraint=false];
+  result -> runtime -> execute [style=invis];
+  client -> result [style=invis]; discover -> runtime [style=invis];
+  validate -> repair [label=" invalid"]; repair -> validate [constraint=false];
+  result -> client [label=" Next tool if needed",constraint=false,style=dashed];
+}

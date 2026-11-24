@@ -1,0 +1,181 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "d05beb80aec9",
+   "metadata": {},
+   "source": [
+    "# IR spectrum-to-structure retrieval\n",
+    "\n",
+    "Rank a SMILES library using one vibrational spectrum.\n",
+    "\n",
+    "Retrieve independent reference spectra and rank candidate fingerprint similarity. The native four-channel model is also evaluated with the other channels masked.\n",
+    "\n",
+    "This tutorial loads the saved predictions, explains the input/output fields and evaluates the results. Use the final command to run the model on a new dataset."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "72a955825cad",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-24T10:08:02.599924Z",
+     "iopub.status.busy": "2026-11-24T10:08:02.599744Z",
+     "iopub.status.idle": "2026-11-24T10:08:02.630574Z",
+     "shell.execute_reply": "2026-11-24T10:08:02.629637Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Task: vibrational.retrieval.ir\n",
+      "Examples: 3\n"
+     ]
+    }
+   ],
+   "source": [
+    "import json, sys, io\n",
+    "from pathlib import Path\n",
+    "from IPython.display import display, Markdown, SVG\n",
+    "root = next((p for p in [Path.cwd(), *Path.cwd().parents] if (p / 'openmolspec_bench').is_dir()), None)\n",
+    "if root is None:\n",
+    "    raise RuntimeError('Run from the cloned release repository; see Quick Start')\n",
+    "sys.path.insert(0, str(root / 'scripts'))\n",
+    "from documentation_evidence import load_evidence, compact, recompute, render\n",
+    "from documentation_content import results_table\n",
+    "evidence = load_evidence('vibrational.retrieval.ir')\n",
+    "print('Task:', evidence['task'])\n",
+    "print('Examples:', len(evidence['examples']))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "62c29a687543",
+   "metadata": {},
+   "source": [
+    "Retrieve independent reference spectra and rank candidate fingerprint similarity. The native four-channel model is also evaluated with the other channels masked.\n",
+    "\n",
+    "Report query count, library size, Top-1/5 hits and mean reciprocal rank."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "c532eed0968d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-24T10:08:02.632447Z",
+     "iopub.status.busy": "2026-11-24T10:08:02.632227Z",
+     "iopub.status.idle": "2026-11-24T10:08:02.639780Z",
+     "shell.execute_reply": "2026-11-24T10:08:02.638938Z"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/markdown": [
+       "| Dataset / scope | Model / variant | Metric | Value |\n",
+       "| --- | --- | --- | ---: |\n",
+       "| 4096 candidates / 128 queries | reference_rank | top1_hits | 27 |\n",
+       "| 4096 candidates / 128 queries | reference_rank | top5_hits | 64 |\n",
+       "| 4096 candidates / 128 queries | reference_rank | mrr | 0.351101 |\n",
+       "| 4096 candidates / 128 queries | reference_rank | queries | 128 |\n",
+       "| 4096 candidates / 128 queries | shortlist_rank | top1_hits | 23 |\n",
+       "| 4096 candidates / 128 queries | shortlist_rank | top5_hits | 71 |\n",
+       "| 4096 candidates / 128 queries | shortlist_rank | mrr | 0.331961 |\n",
+       "| 4096 candidates / 128 queries | shortlist_rank | queries | 128 |\n",
+       "| 4096 candidates / 128 queries | full_rank | top1_hits | 21 |\n",
+       "| 4096 candidates / 128 queries | full_rank | top5_hits | 62 |\n",
+       "| 4096 candidates / 128 queries | full_rank | mrr | 0.307802 |\n",
+       "| 4096 candidates / 128 queries | full_rank | queries | 128 |\n"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Markdown object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "recorded_results\n",
+      "{\n",
+      "  \"target\": \"CCC(N)c1cncc2ccccc12\",\n",
+      "  \"reference_rank\": 2,\n",
+      "  \"shortlist_rank\": 3,\n",
+      "  \"full_rank\": 3\n",
+      "}\n",
+      "{\n",
+      "  \"target\": \"CCCC(CC)NC(=O)NCC1CC1C1CC1\",\n",
+      "  \"reference_rank\": 4,\n",
+      "  \"shortlist_rank\": 3,\n",
+      "  \"full_rank\": 3\n",
+      "}\n",
+      "{\n",
+      "  \"target\": \"Cc1ccsc1CN(C)C(=O)C1(C)CC1F\",\n",
+      "  \"reference_rank\": 2,\n",
+      "  \"shortlist_rank\": 4,\n",
+      "  \"full_rank\": 5\n",
+      "}\n"
+     ]
+    }
+   ],
+   "source": [
+    "display(Markdown(results_table(evidence, True)))\n",
+    "print(evidence['status'])\n",
+    "for row in evidence['examples'][:3]:\n",
+    "    print(json.dumps(compact(row), ensure_ascii=False, indent=2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f35d2cb87098",
+   "metadata": {},
+   "source": [
+    "[Task guide](../tasks/vibrational-retrieval-ir.md)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.5"
+  },
+  "openmolspec_evidence_files": [
+   "documentation/assets/examples/vibrational-retrieval-ir.json",
+   "scripts/documentation_evidence.py",
+   "scripts/documentation_figures.py",
+   "src/openmolspec/plotting.py",
+   "scripts/documentation_content.py"
+  ],
+  "openmolspec_execution": {
+   "engine": "jupyter",
+   "evaluation_index_sha256": "250e5f79ad07913c972f05b004161fc200b29763e8acc108508a0e92a4ce27b5",
+   "evidence_sha256": "da676fb2fdc191e55aa5186def8cb7a5694c1dec4878b361685f40a65606c052",
+   "model_execution_enabled": false,
+   "scope": "real_input_output_recomputed_diagnostics_and_scientific_figures",
+   "source_sha256": "cb6cd74473fb99c12eff5b872846033ab533d9506225a4bdc418209e91c21b2f",
+   "training_performed": false
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

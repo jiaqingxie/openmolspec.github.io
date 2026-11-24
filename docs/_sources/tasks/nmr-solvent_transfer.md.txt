@@ -1,6 +1,12 @@
 # Cross-solvent chemical shift transfer
 
+[Expanded NMR evaluations](../benchmarks/nmr.md) include all held-out experimental sites, all eligible cross-solvent pairs, and 2,048-candidate retrieval.
+
 Estimate a spectrum in a target solvent from measurements in a source solvent.
+
+## Expanded paired reference benchmark
+
+All eligible reviewed pairs gave 46 distinct molecular connectivities and 442 atom-shift pairs. With the query connectivity excluded from the reference search, ¹H MAE was 0.151 ppm versus 0.159 ppm for retaining the source shift (159 atoms). For ¹³C the corresponding values were 1.144 and 1.238 ppm (283 atoms). Seven pairs lacked an independent reference for their solvent combination.
 
 ## What goes in
 
@@ -93,7 +99,7 @@ Inspect the input, prediction and reference for the example below. Download the 
 
 ## Model and method
 
-The experimental-reference model retrieves a similar molecular environment with paired measurements in both solvents. It adds the reference solvent difference to the query shift and returns the reference molecule and atom IDs alongside the estimate.
+Carbon defaults to the fitted ridge correction. For hydrogen, the experimental-reference model retrieves a similar molecular environment with paired measurements in both solvents. It adds the reference solvent difference to the query shift and returns the reference molecule and atom IDs alongside the estimate.
 
 Evaluate H and C shifts separately using MAE in ppm.
 

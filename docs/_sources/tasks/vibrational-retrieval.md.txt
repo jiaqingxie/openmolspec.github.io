@@ -1,6 +1,12 @@
 # Structure retrieval: IR + Raman
 
+The [4,096-candidate comparison](../benchmarks/vibrational.md) reports embedding search, top-32 reranking and exhaustive matching, with separate query counts.
+
 Rank molecular structures by agreement with the input spectra.
+
+## Retrieval from 1,024 candidates
+
+Using Xinyu Lu’s published VB-Mols dual-spectrum matcher, with the reference present, embedding retrieval ranked it first for 1/64 queries. ITM rescoring of the top 16 gave 1/64. Exhaustive ITM scoring over all 1,024 candidates gave 0/8 on the prespecified first eight queries. With the project checkpoint and only IR and Raman supplied, the corresponding counts were 0/64, 0/64 and 0/2. Models shared identical queries and candidates. The pool contained same-formula distractors for 61 of the 64 queries.
 
 ## What goes in
 

@@ -67,6 +67,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API reference</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../benchmarks.html">Benchmarks</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">NMR benchmarks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nmrgym-spectrum-to-structure-evaluation">NMRGym spectrum-to-structure evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#experimental-atom-assignments">Experimental atom assignments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cross-solvent-shifts">Cross-solvent shifts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nmr-retrieval-across-sources">NMR retrieval across sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-nmr-interfaces">External NMR interfaces</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#h-chemical-shift-prediction">1H chemical shift prediction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#c-chemical-shift-prediction">13C chemical shift prediction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#f-chemical-shift-prediction">19F chemical shift prediction</a></li>
@@ -93,6 +98,12 @@
 <li class="toctree-l2"><a class="reference internal" href="multimodal.html">Multimodal spectroscopy benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="production.html">Production benchmark results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="training.html">Training benchmark configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#forward-prediction-results">Forward prediction results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#nmr-chemical-shift-r2">NMR chemical-shift R²</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#nmr-peak-position-cosine-similarity">NMR peak-position cosine similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#retrieval-and-reranking-in-a-4-096-structure-library">Retrieval and reranking in a 4,096-structure library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#nmrgym-spectrum-to-structure-evaluation">NMRGym spectrum-to-structure evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#specmol-spectroscopy-qa">SpecMol spectroscopy QA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#task-benchmarks">Task benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#training-benchmark-configurations">Training benchmark configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#metrics">Metrics</a></li>
@@ -136,6 +147,197 @@
   <section class="tex2jax_ignore mathjax_ignore" id="nmr-benchmarks">
 <h1>NMR benchmarks<a class="headerlink" href="#nmr-benchmarks" title="Link to this heading"></a></h1>
 <p>The sections below give each task definition and the results from its recorded evaluation runs. Open the task guide for model calls and full input/output examples.</p>
+<section id="nmrgym-spectrum-to-structure-evaluation">
+<h2>NMRGym spectrum-to-structure evaluation<a class="headerlink" href="#nmrgym-spectrum-to-structure-evaluation" title="Link to this heading"></a></h2>
+<p>The 24 November comparison fixes 10,000 test records and scores exact isomeric canonical SMILES. Each model receives only its selected channels. The +formula condition additionally supplies the reference molecular formula. Greedy and beam-10 decoding have separate scores.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Initialization</p></th>
+<th class="head"><p>Formula</p></th>
+<th class="head"><p>Input</p></th>
+<th class="head"><p>Epoch budget</p></th>
+<th class="head"><p>Validation greedy exact</p></th>
+<th class="head"><p>Test records scored</p></th>
+<th class="head"><p>Test exact</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>generic T5-small</p></td>
+<td><p>−</p></td>
+<td><p>¹H</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+<tr class="row-odd"><td><p>generic T5-small</p></td>
+<td><p>−</p></td>
+<td><p>¹³C</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+<tr class="row-even"><td><p>generic T5-small</p></td>
+<td><p>−</p></td>
+<td><p>¹H + ¹³C</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+<tr class="row-odd"><td><p>generic T5-small</p></td>
+<td><p>+</p></td>
+<td><p>¹H</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+<tr class="row-even"><td><p>generic T5-small</p></td>
+<td><p>+</p></td>
+<td><p>¹³C</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+<tr class="row-odd"><td><p>generic T5-small</p></td>
+<td><p>+</p></td>
+<td><p>¹H + ¹³C</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+<tr class="row-even"><td><p>NMRTrans H+C checkpoint</p></td>
+<td><p>−</p></td>
+<td><p>¹H</p></td>
+<td><p>100</p></td>
+<td><p>0.166%</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+<tr class="row-odd"><td><p>NMRTrans H+C checkpoint</p></td>
+<td><p>−</p></td>
+<td><p>¹³C</p></td>
+<td><p>100</p></td>
+<td><p>0.186%</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+<tr class="row-even"><td><p>NMRTrans H+C checkpoint</p></td>
+<td><p>−</p></td>
+<td><p>¹H + ¹³C</p></td>
+<td><p>100</p></td>
+<td><p>0.497%</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+</tbody>
+</table>
+<p>Four accepted training submissions cover the dedicated NMRGym split and a pooled NMRSpec / NMRExp / patent split, each with and without molecular formula. The configurations start from generic T5-small with randomly initialized spectral encoders, four GPUs per submission and separate H, C and H+C runs. The epoch budget is the configured maximum.</p>
+<p><a class="reference download internal" download="" href="../_downloads/07cbf2e0d4cce10fd5bef29275967cfa/nmrgym-nmrtrans.json"><span class="xref download myst">Download the split and scores</span></a> · <a class="reference download internal" download="" href="../_downloads/a2ea1188c0da0f3b03eda12605f1f36a/adaptation-protocols.json"><span class="xref download myst">Training configurations and submission records</span></a></p>
+</section>
+<section id="experimental-atom-assignments">
+<h2>Experimental atom assignments<a class="headerlink" href="#experimental-atom-assignments" title="Link to this heading"></a></h2>
+<p>The fitted atom-site model was evaluated on every held-out connectivity, including unmatched experimental peaks in the accuracy denominator. Hungarian matching used tolerances of 0.5 ppm for H and 5 ppm for C. Symmetry-equivalent labelled sites count as correct.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Nucleus</p></th>
+<th class="head"><p>Connectivities</p></th>
+<th class="head"><p>Spectra</p></th>
+<th class="head"><p>Correct / labelled peaks</p></th>
+<th class="head"><p>Accuracy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1H</p></td>
+<td><p>1,720</p></td>
+<td><p>1,851</p></td>
+<td><p>6,633 / 12,543</p></td>
+<td><p>52.9%</p></td>
+</tr>
+<tr class="row-odd"><td><p>13C</p></td>
+<td><p>3,142</p></td>
+<td><p>3,482</p></td>
+<td><p>18,193 / 31,018</p></td>
+<td><p>58.7%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cross-solvent-shifts">
+<h2>Cross-solvent shifts<a class="headerlink" href="#cross-solvent-shifts" title="Link to this heading"></a></h2>
+<p>Each prediction excludes the query connectivity from fitting the ridge correction and searching reference spectra. The table weights each eligible atom–solvent pair equally.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Nucleus</p></th>
+<th class="head"><p>Molecules</p></th>
+<th class="head"><p>Pairs</p></th>
+<th class="head"><p>Keep shift / ppm MAE</p></th>
+<th class="head"><p>Reference / ppm MAE</p></th>
+<th class="head"><p>Ridge / ppm MAE</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1H</p></td>
+<td><p>20</p></td>
+<td><p>1,453</p></td>
+<td><p>0.144</p></td>
+<td><p>0.193</p></td>
+<td><p>0.258</p></td>
+</tr>
+<tr class="row-odd"><td><p>13C</p></td>
+<td><p>26</p></td>
+<td><p>283</p></td>
+<td><p>1.238</p></td>
+<td><p>1.144</p></td>
+<td><p>0.809</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="nmr-retrieval-across-sources">
+<h2>NMR retrieval across sources<a class="headerlink" href="#nmr-retrieval-across-sources" title="Link to this heading"></a></h2>
+<p>Top-1 recall on 512 fixed queries from each source with 2,048 candidates. Known aligner training and validation structures are excluded. Each cell gives spectra-to-molecule / molecule-to-spectra recall.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Source</p></th>
+<th class="head"><p>¹H</p></th>
+<th class="head"><p>¹³C</p></th>
+<th class="head"><p>¹H + ¹³C</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nmrspec_test</p></td>
+<td><p>95.1% / 94.3%</p></td>
+<td><p>49.8% / 50.8%</p></td>
+<td><p>97.1% / 96.7%</p></td>
+</tr>
+<tr class="row-odd"><td><p>patent_test_10k</p></td>
+<td><p>74.6% / 71.7%</p></td>
+<td><p>30.1% / 31.4%</p></td>
+<td><p>77.7% / 77.7%</p></td>
+</tr>
+<tr class="row-even"><td><p>nmrexp_exp_10k</p></td>
+<td><p>90.8% / 90.4%</p></td>
+<td><p>47.1% / 50.6%</p></td>
+<td><p>92.4% / 91.8%</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmrgym_test</p></td>
+<td><p>15.8% / 12.5%</p></td>
+<td><p>28.9% / 29.7%</p></td>
+<td><p>40.0% / 35.7%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="external-nmr-interfaces">
+<h2>External NMR interfaces<a class="headerlink" href="#external-nmr-interfaces" title="Link to this heading"></a></h2>
+<p>UltraNMR passed its upstream formula and peak-encoding example. NMRAgent exercised its planner and verifier through a local fixture with dry-run chemistry tools. ChefNMR loaded its sampling configuration and transformed 238 Real-SpecTeach inputs. These checks cover input preparation and interfaces. Model inference and accuracy remain unevaluated for all three.</p>
+<p><a class="reference download internal" download="" href="../_downloads/82fded7e6efbae811ff6152951c4085a/heldout-tasks.json"><span class="xref download myst">Download the metrics and source fingerprints</span></a></p>
+</section>
 <section id="h-chemical-shift-prediction">
 <h2>1H chemical shift prediction<a class="headerlink" href="#h-chemical-shift-prediction" title="Link to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">nmr.forward.1H</span></code></p>
@@ -3031,7 +3233,7 @@
 <h2>Peak-to-atom assignment<a class="headerlink" href="#peak-to-atom-assignment" title="Link to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">nmr.assignment</span></code></p>
 <p>Assign measured NMR peaks to atoms in a known molecular structure.</p>
-<p>Peak coverage and matched-peak MAE summarize the assignment.</p>
+<p>Evaluate correct experimental peak-to-site assignments, counting unmatched peaks as incorrect. The assigned-site backend accepts symmetry-equivalent sites.</p>
 <p><a class="reference internal" href="../tasks/nmr-assignment.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/nmr-assignment.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/ec70670ac0d381b4476925ce03d0e34e/nmr-assignment.json"><span class="xref download myst">Predictions</span></a></p>
 <p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;recorded</span> <span class="pre">evaluation&quot;</span></code></p>
 <table class="docutils align-default">

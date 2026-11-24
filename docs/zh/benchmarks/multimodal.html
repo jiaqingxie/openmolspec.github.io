@@ -71,21 +71,32 @@
 <li class="toctree-l2"><a class="reference internal" href="ms.html">质谱 MS benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational.html">红外 / 拉曼 IR / Raman benchmarks</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">多谱联合 benchmarks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#specmol">SpecMol 谱学问答</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4,096 个候选结构的检索与重排</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">生成结构排序</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ir-raman-nmr-homolumo">由 IR + Raman + NMR 预测 HOMO–LUMO 能隙</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">SpecMol 谱学问答</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ir-raman-nmr">结构检索：IR + Raman + NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">结构生成：IR + Raman + NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">候选重排：IR + Raman + NMR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">参考文献</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">结构生成：IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">候选重排：IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spectrallm">SpectraLLM 多谱结构生成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">参考文献</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="production.html">生产基准结果</a></li>
 <li class="toctree-l2"><a class="reference internal" href="training.html">训练基准配置</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id2">任务基准</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id3">训练基准配置</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id4">评测指标</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id5">运行评测</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id6">其他任务定义</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id7">参考文献</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id2">正向光谱预测结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#nmr-r2">NMR 化学位移 R²</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#nmr">NMR 峰位余弦相似度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id3">4,096 个候选结构的检索与重排</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#nmrgym">NMRGym 谱到结构评测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#specmol">SpecMol 谱学问答</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id4">任务基准</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id5">训练基准配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id6">评测指标</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id7">运行评测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id8">其他任务定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#id9">参考文献</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">常用流程</a></li>
@@ -123,6 +134,65 @@
   <section class="tex2jax_ignore mathjax_ignore" id="benchmarks">
 <h1>多谱联合 benchmarks<a class="headerlink" href="#benchmarks" title="Link to this heading"></a></h1>
 <p>下面按任务列出定义及保存的评测结果。模型调用和完整输入输出示例见相应任务指南。</p>
+<section id="specmol">
+<h2>SpecMol 谱学问答<a class="headerlink" href="#specmol" title="Link to this heading"></a></h2>
+<p>发布版 SpecMol-7B 在 GPU 上回答了 32 道 NMRSpec 四选一题，任务是数出 ¹H 或 ¹³C 峰表中的条目。完整生成回答中，<strong>4/32 题答对（12.5%）</strong>，<strong>29/32 个回答可解析为有效选项（90.6%）</strong>。</p>
+<p>另有四卡 LoRA 微调提交，按分子连通性划分 8,192 条训练题与 512 条验证题。11 月 24 日快照收录了上述基础模型结果，微调模型留出集成绩待回收。</p>
+<p><a class="reference download internal" download="" href="../_downloads/42458f75db5df795f9d3aa89280ab6f3/specmol-qa-responses.json"><span class="xref download myst">下载全部问题、生成回答与标准选项</span></a></p>
+</section>
+<section id="id1">
+<h2>4,096 个候选结构的检索与重排<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>128 个查询共用同一候选库，每个真结构都在库中。嵌入检索和前 32 名匹配头重排覆盖全部查询；全库重排对前 32 个查询分别给全部 4,096 个候选打分。目标按忽略立体化学的规范 SMILES 比对，模型输入不含分子式。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>输入与模型</p></th>
+<th class="head"><p>嵌入 Top-1</p></th>
+<th class="head"><p>前 32 重排 Top-1</p></th>
+<th class="head"><p>全库重排 Top-1</p></th>
+<th class="head"><p>全库重排 Top-5</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>IR 单谱，屏蔽其余通道</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 32</p></td>
+<td><p>0 / 32</p></td>
+</tr>
+<tr class="row-odd"><td><p>Raman 单谱，屏蔽其余通道</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 32</p></td>
+<td><p>0 / 32</p></td>
+</tr>
+<tr class="row-even"><td><p>IR + Raman，VB-Mols</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 32</p></td>
+<td><p>1 / 32</p></td>
+</tr>
+<tr class="row-odd"><td><p>IR + Raman，估计 H/C</p></td>
+<td><p>41 / 128</p></td>
+<td><p>39 / 128</p></td>
+<td><p>8 / 32</p></td>
+<td><p>13 / 32</p></td>
+</tr>
+<tr class="row-even"><td><p>IR + Raman + 给定 ¹H + ¹³C</p></td>
+<td><p>118 / 128</p></td>
+<td><p>120 / 128</p></td>
+<td><p>31 / 32</p></td>
+<td><p>32 / 32</p></td>
+</tr>
+</tbody>
+</table>
+<p>另一条检索路径将查询谱与独立理论参考谱库比较。128 个查询上，第一轮检索的 Top-1 命中数为 IR 27/128, Raman 28/128, IR + Raman 31/128, 四谱 34/128。上表神经模型的候选库仅提供 SMILES。</p>
+<p><a class="reference download internal" download="" href="../_downloads/b6367ddbaa6d47290964f61c3db0b969/matched-library-4096.json"><span class="xref download myst">下载候选结构、逐查询排名与模型指纹</span></a></p>
+</section>
+<section id="id2">
+<h2>生成结构排序<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>在原有的 64 个四谱查询上，按去重后有效 beam 候选的默认顺序，第一名命中 48 个目标；匹配头打分排序后为 44 个。另选 24 个查询后，两种顺序的第一名均命中 14 个，前三名均命中 19 个。</p>
+<p><a class="reference download internal" download="" href="../_downloads/82fded7e6efbae811ff6152951c4085a/heldout-tasks.json"><span class="xref download myst">下载指标与原始报告指纹</span></a></p>
+</section>
 <section id="ir-raman-nmr-homolumo">
 <h2>由 IR + Raman + NMR 预测 HOMO–LUMO 能隙<a class="headerlink" href="#ir-raman-nmr-homolumo" title="Link to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">vibrational.gap.ir_raman_hc</span></code></p>
@@ -173,6 +243,67 @@
 <td><p>Training-mean baseline</p></td>
 <td><p>examples</p></td>
 <td class="text-right"><p>128</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h2>SpecMol 谱学问答<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">spectroscopy.qa</span></code></p>
+<p>针对输入谱图文本提问。</p>
+<p>统计完整回答的选项正确率和格式有效率，首个 token 的诊断单列。</p>
+<p><a class="reference internal" href="../tasks/spectroscopy-qa.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/spectroscopy-qa.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/a38455b8f002e8d2363a43e9a6948950/spectroscopy-qa.json"><span class="xref download myst">Predictions</span></a></p>
+<p>运行设置：<code class="docutils literal notranslate"><span class="pre">dataset=&quot;First</span> <span class="pre">token</span> <span class="pre">only</span> <span class="pre">/</span> <span class="pre">4</span> <span class="pre">NMR</span> <span class="pre">counting</span> <span class="pre">questions&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>First token only / 4 NMR counting questions</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>First token only / 4 NMR counting questions</p></td>
+<td><p>recorded model</p></td>
+<td><p>unrestricted_first_token_hits</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>First token only / 4 NMR counting questions</p></td>
+<td><p>recorded model</p></td>
+<td><p>four_choice_hits</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>运行设置：<code class="docutils literal notranslate"><span class="pre">dataset=&quot;Full</span> <span class="pre">generated</span> <span class="pre">responses</span> <span class="pre">/</span> <span class="pre">32</span> <span class="pre">examples&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Full generated responses / 32 examples</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>Full generated responses / 32 examples</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_rate</p></td>
+<td class="text-right"><p>0.125</p></td>
+</tr>
+<tr class="row-even"><td><p>Full generated responses / 32 examples</p></td>
+<td><p>recorded model</p></td>
+<td><p>format_valid_rate</p></td>
+<td class="text-right"><p>0.90625</p></td>
 </tr>
 </tbody>
 </table>
@@ -236,8 +367,8 @@
 </tbody>
 </table>
 </section>
-<section id="id1">
-<h2>结构生成：IR + Raman + NMR<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<section id="id4">
+<h2>结构生成：IR + Raman + NMR<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">vibrational.generation.hc</span></code></p>
 <p>从分子谱图生成结构。</p>
 <p>生成报告 top-k 准确率，排序报告 Recall&#64;k 与 MRR。</p>
@@ -310,8 +441,8 @@
 </tbody>
 </table>
 </section>
-<section id="id2">
-<h2>候选重排：IR + Raman + NMR<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="id5">
+<h2>候选重排：IR + Raman + NMR<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">spectroscopy.reranking.hc</span></code></p>
 <p>按候选结构与输入谱图的一致性进行排序。</p>
 <p>生成报告 top-k 准确率，排序报告 Recall&#64;k 与 MRR。</p>
@@ -374,8 +505,15 @@
 </tbody>
 </table>
 </section>
-<section id="id3">
-<h2>参考文献<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="spectrallm">
+<h2>SpectraLLM 多谱结构生成<a class="headerlink" href="#spectrallm" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">multispectral.spectrallm.generation</span></code></p>
+<p>根据多谱文本生成分子结构。</p>
+<p>统计格式有效率及规范 SMILES 完全匹配率。</p>
+<p><a class="reference internal" href="../tasks/multispectral-spectrallm-generation.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/multispectral-spectrallm-generation.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/594953d75e58a0bdd392cf6c8b697b5c/multispectral-spectrallm-generation.json"><span class="xref download myst">Predictions</span></a></p>
+</section>
+<section id="id6">
+<h2>参考文献<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">Source</a></p></li>
 <li><p>Yuan, M., Zou, Z. &amp; Hu, W. QMe14S, A Comprehensive and Efficient Spectral Dataset for Small Organic Molecules. arXiv:2501.18876 (2025). <a class="reference external" href="https://arxiv.org/abs/2501.18876">Source</a></p></li>

@@ -1,13 +1,19 @@
 # HOMO–LUMO gap from IR + Raman
 
+[Gap benchmark](../benchmarks/vibrational.md) with 1,024 four-spectrum examples and 3,381 examples for the partial-input models.
+
 Estimate the molecular HOMO–LUMO energy gap from spectra.
+
+## Vibrational-only regression
+
+With IR + Raman and no NMR, the software selects a regressor fitted to these vibrational inputs. A new connectivity-disjoint split of the packaged theoretical spectra contains 11,568 training, 1,651 validation and 3,381 test molecules. Test MAE is 0.288 eV versus 0.749 eV for the training mean. The original 128 queries were separately reserved and give 0.304 eV MAE. The historical figures below show the four-channel checkpoint with inputs masked.
 
 ## What goes in
 
 | Field | Meaning |
 | --- | --- |
 | `IR / Raman` | 1024 intensity samples per visible channel, ordered 400→4000 cm⁻¹, using the checkpoint normalization. |
-| `missing channels` | The input mask selects visible channels from the shared four-modal checkpoint. |
+| `model selection` | The observed vibrational channels select the corresponding fitted gap regressor. |
 
 ## What comes out
 
@@ -60,7 +66,7 @@ Inspect the input, prediction and reference for the example below. Download the 
 
 </details>
 
-## Actual evaluation results
+## Earlier evaluation of the four-channel model with missing spectra
 
 | Dataset / scope | Model / variant | Metric | Value |
 | --- | --- | --- | ---: |
@@ -74,7 +80,7 @@ Inspect the input, prediction and reference for the example below. Download the 
 
 ## Model and method
 
-The openSpec spectral Transformer encodes the selected channels and its regression head predicts the energy gap. The prediction is returned in eV.
+A ridge regressor fits pooled vibrational intensities and similarities to reference spectra. The model for the observed channels predicts the energy gap in eV.
 
 Report MAE and RMSE in eV.
 

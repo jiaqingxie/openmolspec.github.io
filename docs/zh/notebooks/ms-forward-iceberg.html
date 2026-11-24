@@ -25,7 +25,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="多谱 → 结构（SpectraLLM）" href="multispectral-spectrallm-generation.html" />
+    <link rel="next" title="SpectraLLM 多谱结构生成" href="multispectral-spectrallm-generation.html" />
     <link rel="prev" title="使用 GLACIER 预测 MS/MS" href="ms-forward-glacier.html" /> 
 </head>
 
@@ -63,6 +63,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">教程</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="datasets-overview.html">探索谱学数据集</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-annotation-magma.html">MS/MS 碎片指认</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-annotation-mechfrag.html">MechFrag-MS 碎片候选指认</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-forward-glacier.html">使用 GLACIER 预测 MS/MS</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">使用 ICEBERG 预测 MS/MS</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">输入与输出</a></li>
@@ -72,7 +73,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id5">参考文献</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multispectral-spectrallm-generation.html">SpectraLLM 多谱结构生成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-assignment.html">峰到原子的指认</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-forward-11B.html">11B 化学位移预测</a></li>
@@ -94,7 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="nmr-solvent_transfer.html">跨溶剂化学位移迁移</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk-inference.html">Python SDK：真实 NMR 推理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk-training-preflight.html">训练数据准备与启动前检查</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">SpecMol 谱学问答</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking.html">候选重排：IR + Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking-hc.html">候选重排：IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theory-ms-isotopes.html">质谱：同位素包络与分辨率</a></li>
@@ -110,6 +111,8 @@
 <li class="toctree-l2"><a class="reference internal" href="vibrational-generation-hc.html">结构生成：IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval.html">结构检索：IR + Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-hc.html">结构检索：IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-ir.html">IR 单谱到结构检索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-raman.html">Raman 单谱到结构检索</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#theory-simulations">Theory simulations / 理论模拟</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#nmr">核磁共振 NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ms">质谱 MS</a></li>
@@ -568,7 +571,7 @@ Examples: 3
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
         <a href="ms-forward-glacier.html" class="btn btn-neutral float-left" title="使用 GLACIER 预测 MS/MS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="multispectral-spectrallm-generation.html" class="btn btn-neutral float-right" title="多谱 → 结构（SpectraLLM）" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="multispectral-spectrallm-generation.html" class="btn btn-neutral float-right" title="SpectraLLM 多谱结构生成" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

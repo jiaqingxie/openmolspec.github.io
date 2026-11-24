@@ -43,6 +43,7 @@ deferred
 | `ms.forward.glacier` | MS/MS | [使用 GLACIER 预测 MS/MS](ms-forward-glacier.md) |
 | `ms.forward.iceberg` | MS/MS | [使用 ICEBERG 预测 MS/MS](ms-forward-iceberg.md) |
 | `ms.annotation.magma` | MS/MS | [MS/MS 碎片指认](ms-annotation-magma.md) |
+| `ms.annotation.mechfrag` | MS/MS | [MechFrag-MS 碎片候选指认](ms-annotation-mechfrag.md) |
 
 ## [红外 / 拉曼 IR / Raman](vibrational.md)
 
@@ -55,20 +56,22 @@ deferred
 | `vibrational.retrieval` | IR, Raman | [结构检索：IR + Raman](vibrational-retrieval.md) |
 | `vibrational.generation` | IR, Raman | [结构生成：IR + Raman](vibrational-generation.md) |
 | `spectroscopy.reranking` | IR, Raman | [候选重排：IR + Raman](spectroscopy-reranking.md) |
+| `vibrational.retrieval.ir` | IR | [IR 单谱到结构检索](vibrational-retrieval-ir.md) |
+| `vibrational.retrieval.raman` | RAMAN | [Raman 单谱到结构检索](vibrational-retrieval-raman.md) |
 
 ## [多谱联合](multimodal.md)
 
 | Task / 任务 | Spectroscopy / 谱型 | Definition / 定义 |
 | --- | --- | --- |
 | `vibrational.gap.ir_raman_hc` | IR, Raman, 1H, 13C | [由 IR + Raman + NMR 预测 HOMO–LUMO 能隙](vibrational-gap-ir_raman_hc.md) |
+| `spectroscopy.qa` | NMR, IR, Raman | [SpecMol 谱学问答](spectroscopy-qa.md) |
 | `vibrational.retrieval.hc` | IR, Raman, 1H, 13C | [结构检索：IR + Raman + NMR](vibrational-retrieval-hc.md) |
 | `vibrational.generation.hc` | IR, Raman, 1H, 13C | [结构生成：IR + Raman + NMR](vibrational-generation-hc.md) |
 | `spectroscopy.reranking.hc` | IR, Raman, 1H, 13C | [候选重排：IR + Raman + NMR](spectroscopy-reranking-hc.md) |
+| `multispectral.spectrallm.generation` | IR, Raman, NMR, MS/MS | [SpectraLLM 多谱结构生成](multispectral-spectrallm-generation.md) |
 
 ## [暂不推进](deferred.md)
 
 | Task / 任务 | Spectroscopy / 谱型 | Definition / 定义 |
 | --- | --- | --- |
 | `nmr.formula` | 1H, 13C | [谱图 → 分子式](nmr-formula.md) |
-| `spectroscopy.qa` | NMR, IR, Raman | [谱学问答 / 推理](spectroscopy-qa.md) |
-| `multispectral.spectrallm.generation` | IR, Raman, NMR, MS/MS | [多谱 → 结构（SpectraLLM）](multispectral-spectrallm-generation.md) |

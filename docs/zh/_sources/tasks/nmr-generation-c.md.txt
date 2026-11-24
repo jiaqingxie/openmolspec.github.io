@@ -1,5 +1,7 @@
 # 从 ¹³C NMR 解析结构
 
+[NMRGym 的 NMRTrans 对照](../benchmarks/nmr.md)为 H 单谱、C 单谱、H+C 各设有式和无式模型，共用固定 10,000 条测试协议。
+
 根据 NMR 峰表和分子式生成候选结构。
 
 ## 输入是什么

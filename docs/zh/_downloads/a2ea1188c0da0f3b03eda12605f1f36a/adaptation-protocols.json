@@ -1,0 +1,229 @@
+{
+  "snapshot_date": "2026-11-24",
+  "qa": {
+    "source": "runs/task-evaluation/qa-fit/manifest.json",
+    "source_sha256": "34eaca87e1ae2bcc3afbc41cd1d84123a4c4394f9c8c066d274261866b315212",
+    "test_sha256": "256ca2d733db0103e99aad5855bc66b73e3a0bd2117ce2bd3204b63eff0f67a2",
+    "split_identity": "InChIKey connectivity",
+    "splits": {
+      "val": {
+        "n": 512,
+        "answers": {
+          "D": 135,
+          "A": 130,
+          "B": 127,
+          "C": 120
+        },
+        "sha256": "a480a45e0ddd4a3e9a3b5b0b10a0fb3836c2562884a7c9d5fcde83dc63117d2e"
+      },
+      "train": {
+        "n": 8192,
+        "answers": {
+          "D": 2022,
+          "A": 2013,
+          "B": 2074,
+          "C": 2083
+        },
+        "sha256": "6a73b83434199022b201166d49d2f24f1132fa2eedea29ef211931ad2d7cf566"
+      }
+    }
+  },
+  "vib": {
+    "source": "runs/task-evaluation/vib-fit/manifest.json",
+    "source_sha256": "41d0a9072e5d50a6d01d7a2548fd67e61382f61823333dbd716f28f22dff58ae",
+    "protocol": "Connectivity-disjoint internal adaptation of the packaged OpenMolSpec spectra",
+    "archive": "openspec_test.lmdb",
+    "archive_sha256": "736a234607992865136b23b3d091b26323936f08377362a196fe97ceb3bdb6a1",
+    "index_sha256": "1556554f5dce02fdf699df163277b7ae3e84c0b1fd210f377ef9116b1e4cf44b",
+    "generation_panel_sha256": "5f9a3ab2f971b488727bfa87fae9a42e43fca3e70758510adfcb597d22a80a98",
+    "retrieval_panel_sha256": "0e94181b15f1e06e1563619d6f27fa1a7a43d877a57f72166beb2d3a480200e4",
+    "counts": {
+      "train": 11632,
+      "val": 1558,
+      "test": 24
+    },
+    "given_formula": false
+  },
+  "nmrtrans_groups": [
+    {
+      "source": "runs/nmrtrans-inverse-v2/submissions/gym.json",
+      "source_sha256": "fe6e87cba39ac0122de0f4aff13c85ccc7c1db73973bfbcf784f37f2023d5d92",
+      "group": "nmrgym",
+      "given_formula": false,
+      "submission": "accepted",
+      "submitted_at_utc": "2026-11-24T03:30:45.881802+00:00",
+      "views": [
+        {
+          "source": "runs/nmrtrans-from-t5/noformula/nmrgym/h/initialization.json",
+          "source_sha256": "45a883ac0629d0bc2cea4f157073e401250ff28f415307d4f0a240c8f3e7eab8",
+          "view": "h",
+          "given_formula": false,
+          "max_epochs": 10000,
+          "backbone": "T5-small",
+          "spectral_encoders": "random",
+          "global_batch": 4096
+        },
+        {
+          "source": "runs/nmrtrans-from-t5/noformula/nmrgym/c/initialization.json",
+          "source_sha256": "7013d29a690070d3b299d18f75d9ba938af0adfe379538d6854f6cb418e4f767",
+          "view": "c",
+          "given_formula": false,
+          "max_epochs": 10000,
+          "backbone": "T5-small",
+          "spectral_encoders": "random",
+          "global_batch": 4096
+        },
+        {
+          "source": "runs/nmrtrans-from-t5/noformula/nmrgym/hc/initialization.json",
+          "source_sha256": "9cfe3226c28611fe554f7a1a7a357cd13bedbd8a55201e8f7092d42b073e635d",
+          "view": "hc",
+          "given_formula": false,
+          "max_epochs": 10000,
+          "backbone": "T5-small",
+          "spectral_encoders": "random",
+          "global_batch": 4096
+        }
+      ]
+    },
+    {
+      "source": "runs/nmrtrans-inverse-v2/submissions/other.json",
+      "source_sha256": "0b2ca9ffd1fc7a596a93a5598570d11fee07bccabc13a3da683ccb90f6a3fd29",
+      "group": "pooled",
+      "given_formula": false,
+      "submission": "accepted",
+      "submitted_at_utc": "2026-11-23T06:40:29.632653+00:00",
+      "views": [
+        {
+          "source": "runs/nmrtrans-from-t5/noformula/pooled/h/initialization.json",
+          "source_sha256": "e23acaacaa1c6260e2e02b56696f059bbb945b81fe4e5ad2a5aea0207cfafb8a",
+          "view": "h",
+          "given_formula": false,
+          "max_epochs": 10000,
+          "backbone": "T5-small",
+          "spectral_encoders": "random",
+          "global_batch": 4096
+        },
+        {
+          "source": "runs/nmrtrans-from-t5/noformula/pooled/c/initialization.json",
+          "source_sha256": "5c89dd3d7d81d00e5c58c0a8402c13220f27d7a9a1729fd0ed0837b604f0a7a5",
+          "view": "c",
+          "given_formula": false,
+          "max_epochs": 10000,
+          "backbone": "T5-small",
+          "spectral_encoders": "random",
+          "global_batch": 4096
+        },
+        {
+          "source": "runs/nmrtrans-from-t5/noformula/pooled/hc/initialization.json",
+          "source_sha256": "14d9ff9b3229ea8b5639a43f04d9b59bc21dbe9a10ab70bc2e45851cf220fc1e",
+          "view": "hc",
+          "given_formula": false,
+          "max_epochs": 10000,
+          "backbone": "T5-small",
+          "spectral_encoders": "random",
+          "global_batch": 4096
+        }
+      ]
+    },
+    {
+      "source": "runs/nmrtrans-inverse-formula-v2/submissions/gym.json",
+      "source_sha256": "8cdec89054351bc34c0836f6ea2f8ab75a64abd833a4730e07d315d7a31c6da0",
+      "group": "nmrgym",
+      "given_formula": true,
+      "submission": "accepted",
+      "submitted_at_utc": "2026-11-23T05:59:06.959139+00:00",
+      "views": [
+        {
+          "source": "runs/nmrtrans-from-t5/formula/nmrgym/h/initialization.json",
+          "source_sha256": "c765bc3a10381beb33539661f20fb685af672e4835d0368e20b1ae271cba5479",
+          "view": "h",
+          "given_formula": true,
+          "max_epochs": 10000,
+          "backbone": "T5-small",
+          "spectral_encoders": "random",
+          "global_batch": 4096
+        },
+        {
+          "source": "runs/nmrtrans-from-t5/formula/nmrgym/c/initialization.json",
+          "source_sha256": "ca462a76181e1042d6b51b50418b6625a2652d3735d9aa6f7e60d348b978f9ca",
+          "view": "c",
+          "given_formula": true,
+          "max_epochs": 10000,
+          "backbone": "T5-small",
+          "spectral_encoders": "random",
+          "global_batch": 4096
+        },
+        {
+          "source": "runs/nmrtrans-from-t5/formula/nmrgym/hc/initialization.json",
+          "source_sha256": "f47dbe1d0d3cac915fc9e2618e2c669debabdad446f6646aaa6d3ee2d358910a",
+          "view": "hc",
+          "given_formula": true,
+          "max_epochs": 10000,
+          "backbone": "T5-small",
+          "spectral_encoders": "random",
+          "global_batch": 4096
+        }
+      ]
+    },
+    {
+      "source": "runs/nmrtrans-inverse-formula-v2/submissions/other.json",
+      "source_sha256": "d094902605be9e4dc5106f74a07b3c4d587cc89c2defb4132b74bc89dd84111d",
+      "group": "pooled",
+      "given_formula": true,
+      "submission": "accepted",
+      "submitted_at_utc": "2026-11-23T05:59:09.338211+00:00",
+      "views": [
+        {
+          "source": "runs/nmrtrans-from-t5/formula/pooled/h/initialization.json",
+          "source_sha256": "84e7f36cae5ab313cdde7317a424ff29d18c33ea853caf76987a3584766d451b",
+          "view": "h",
+          "given_formula": true,
+          "max_epochs": 10000,
+          "backbone": "T5-small",
+          "spectral_encoders": "random",
+          "global_batch": 4096
+        },
+        {
+          "source": "runs/nmrtrans-from-t5/formula/pooled/c/initialization.json",
+          "source_sha256": "59ef3aeea6b0b2e83e4bd9671f2ad183f7147e997228ad68d0de5cc4dd3a6ee7",
+          "view": "c",
+          "given_formula": true,
+          "max_epochs": 10000,
+          "backbone": "T5-small",
+          "spectral_encoders": "random",
+          "global_batch": 4096
+        },
+        {
+          "source": "runs/nmrtrans-from-t5/formula/pooled/hc/initialization.json",
+          "source_sha256": "2b906e6d50b6b13bb91718c54780da33465eaaf2b608ff495e20c714592f3f21",
+          "view": "hc",
+          "given_formula": true,
+          "max_epochs": 10000,
+          "backbone": "T5-small",
+          "spectral_encoders": "random",
+          "global_batch": 4096
+        }
+      ]
+    }
+  ],
+  "additional_submissions": [
+    {
+      "source": "runs/task-evaluation/qafit.submit.log",
+      "source_sha256": "0e6fde47a1036e008cfa8b0cd3ca234bf8bae69115a76ce466e907589e8e2fe9",
+      "experiment": "qafit",
+      "submission": "accepted"
+    },
+    {
+      "source": "runs/task-evaluation/vibfit.submit.log",
+      "source_sha256": "5781da81ee7aff47290fb3352dbdb5e40f85e7b86bb891c21ed435568dd80b18",
+      "experiment": "vibfit",
+      "submission": "accepted"
+    },
+    {
+      "source": "runs/task-evaluation/gymeval.submit.log",
+      "source_sha256": "5878ea0cfc3d8f4a74d80ab764ab622f59b11c1d55afd83bc01d75759092ed89",
+      "experiment": "gymeval",
+      "submission": "accepted"
+    }
+  ]
+}

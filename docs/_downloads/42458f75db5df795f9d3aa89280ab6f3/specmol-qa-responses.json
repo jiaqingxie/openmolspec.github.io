@@ -1,0 +1,270 @@
+{
+  "source_sha256": "ef9032c6dde99a69a84aa4f98d0b1e07094eb83c850cfc3839647eb5f1e9a05a",
+  "task": "spectroscopy.qa",
+  "device": "cuda",
+  "metrics": {
+    "examples": 32,
+    "exact_rate": 0.125,
+    "format_valid_rate": 0.90625
+  },
+  "dataset_sha256": "256ca2d733db0103e99aad5855bc66b73e3a0bd2117ce2bd3204b63eff0f67a2",
+  "index_sha256": "f00d17cbf433746c391ad43948613e373aa51222dbee3b0db61ffff59a74bb1a",
+  "records": [
+    {
+      "question": "How many 13C chemical-shift entries are explicitly listed? Respond with only the letter of the correct answer.\nA. 15\nB. 14\nC. 17\nD. 16",
+      "raw": "A",
+      "prompt_sha256": "fd557568614d1b85f58d18de2ac6640e73aecc21b570dd3e0292d2537ec729d5",
+      "target": "D",
+      "predicted": "A",
+      "correct": false
+    },
+    {
+      "question": "How many 1H chemical-shift entries are explicitly listed? Respond with only the letter of the correct answer.\nA. 9\nB. 10\nC. 12\nD. 11",
+      "raw": "D",
+      "prompt_sha256": "d74f50e4e43dcb0966d4357d11f371c6c9ad5bd879f95437b3b795ea4d54fa47",
+      "target": "A",
+      "predicted": "D",
+      "correct": false
+    },
+    {
+      "question": "How many 13C chemical-shift entries fall in the inclusive range 160 to 220 ppm? Respond with only the letter of the correct answer.\nA. 3\nB. 0\nC. 1\nD. 2",
+      "raw": "A",
+      "prompt_sha256": "2c09dad418a809699ec6a9c2a86fb61e5fc34ead3c55906d7c7c0b3bc5d5a7af",
+      "target": "B",
+      "predicted": "A",
+      "correct": false
+    },
+    {
+      "question": "How many 1H chemical-shift entries fall in the inclusive range 6 to 9 ppm? Respond with only the letter of the correct answer.\nA. 3\nB. 4\nC. 5\nD. 2",
+      "raw": "C",
+      "prompt_sha256": "24edff0728f9304884e34517ef7fca59e6519c5e0cbf30cef3c1587c1cb3056b",
+      "target": "B",
+      "predicted": "C",
+      "correct": false
+    },
+    {
+      "question": "How many 13C chemical-shift entries are explicitly listed? Respond with only the letter of the correct answer.\nA. 13\nB. 11\nC. 14\nD. 12",
+      "raw": "A",
+      "prompt_sha256": "1560f9c578b0d84b39f9d3dc2648df12e3a2e9ce502d9d1de1b2a06744387387",
+      "target": "C",
+      "predicted": "A",
+      "correct": false
+    },
+    {
+      "question": "How many 1H chemical-shift entries are explicitly listed? Respond with only the letter of the correct answer.\nA. 15\nB. 13\nC. 16\nD. 14",
+      "raw": "<1H_NMR>(unknown, unknown) 26.0313, 26.0012, 26.",
+      "prompt_sha256": "f2dea4a539a6405e4f24029c41d7e1ab665de6cf7ba49d541a4814ede5766597",
+      "target": "B",
+      "predicted": null,
+      "correct": false
+    },
+    {
+      "question": "How many 13C chemical-shift entries fall in the inclusive range 160 to 220 ppm? Respond with only the letter of the correct answer.\nA. 1\nB. 3\nC. 0\nD. 2",
+      "raw": "C",
+      "prompt_sha256": "0d88248dbb36f5522a1e75f2b95d07d0861e20d0e829712c3ea098cf5a0d90bb",
+      "target": "A",
+      "predicted": "C",
+      "correct": false
+    },
+    {
+      "question": "How many 1H chemical-shift entries fall in the inclusive range 6 to 9 ppm? Respond with only the letter of the correct answer.\nA. 0\nB. 2\nC. 1\nD. 3",
+      "raw": "D",
+      "prompt_sha256": "3083fc84b4aae023e19cc05eaf52437ccb61f67b3072c1a9a6de59f20216db99",
+      "target": "A",
+      "predicted": "D",
+      "correct": false
+    },
+    {
+      "question": "How many 13C chemical-shift entries are explicitly listed? Respond with only the letter of the correct answer.\nA. 24\nB. 23\nC. 22\nD. 21",
+      "raw": "<13C_NMR>(unknown, unknown) δ 167.1094, 156.5378,",
+      "prompt_sha256": "665bd1c7ce2050cf84d51c2feb9a0595ebc9520c67dc1c6706eedc5de3bc3c1b",
+      "target": "D",
+      "predicted": null,
+      "correct": false
+    },
+    {
+      "question": "How many 1H chemical-shift entries are explicitly listed? Respond with only the letter of the correct answer.\nA. 14\nB. 13\nC. 12\nD. 11",
+      "raw": "B",
+      "prompt_sha256": "bac3e95eda29e63fd8826709eab61afbbb2133271105cc864106ea82574b6bac",
+      "target": "C",
+      "predicted": "B",
+      "correct": false
+    },
+    {
+      "question": "How many 13C chemical-shift entries fall in the inclusive range 160 to 220 ppm? Respond with only the letter of the correct answer.\nA. 3\nB. 1\nC. 2\nD. 4",
+      "raw": "D",
+      "prompt_sha256": "c83d40b252a844d85b714d97111bcda4274e73136db8418f141cd7a31a2f08c4",
+      "target": "C",
+      "predicted": "D",
+      "correct": false
+    },
+    {
+      "question": "How many 1H chemical-shift entries fall in the inclusive range 6 to 9 ppm? Respond with only the letter of the correct answer.\nA. 6\nB. 4\nC. 7\nD. 5",
+      "raw": "D",
+      "prompt_sha256": "b54acd411b7d3013e8cbdeaa47a24285d6ab2b712e9465651d8deabecdcfda5f",
+      "target": "B",
+      "predicted": "D",
+      "correct": false
+    },
+    {
+      "question": "How many 13C chemical-shift entries are explicitly listed? Respond with only the letter of the correct answer.\nA. 13\nB. 12\nC. 10\nD. 11",
+      "raw": "D",
+      "prompt_sha256": "379d81dec5350bf5d53fa2f1fcca5c6c66178a4ff8662f4665cc3772c4ec07b6",
+      "target": "A",
+      "predicted": "D",
+      "correct": false
+    },
+    {
+      "question": "How many 1H chemical-shift entries are explicitly listed? Respond with only the letter of the correct answer.\nA. 12\nB. 11\nC. 10\nD. 9",
+      "raw": "<1H_NMR>(unknown, unknown) δ 8.39 (dd, J= 1.82397460",
+      "prompt_sha256": "22fdfcb9afaba203caa182c93f1e8a528cdd7e3bbe4d7baea52a45b1e422c60f",
+      "target": "D",
+      "predicted": null,
+      "correct": false
+    },
+    {
+      "question": "How many 13C chemical-shift entries fall in the inclusive range 160 to 220 ppm? Respond with only the letter of the correct answer.\nA. 0\nB. 2\nC. 3\nD. 1",
+      "raw": "C",
+      "prompt_sha256": "b935cc610d47c82262de3d4453821f9340bc06adc98080cce3f42685550ca376",
+      "target": "A",
+      "predicted": "C",
+      "correct": false
+    },
+    {
+      "question": "How many 1H chemical-shift entries fall in the inclusive range 6 to 9 ppm? Respond with only the letter of the correct answer.\nA. 4\nB. 1\nC. 2\nD. 3",
+      "raw": "A",
+      "prompt_sha256": "077ba1b98ead2cea5fa128984c239a6ebd920c63fa3b284baed905f6eaf06472",
+      "target": "D",
+      "predicted": "A",
+      "correct": false
+    },
+    {
+      "question": "How many 13C chemical-shift entries are explicitly listed? Respond with only the letter of the correct answer.\nA. 11\nB. 12\nC. 10\nD. 13",
+      "raw": "D",
+      "prompt_sha256": "d04f6dfe908d061f46c822939ed0eeec691dbab9a6c0fc9439ab61233af852f0",
+      "target": "C",
+      "predicted": "D",
+      "correct": false
+    },
+    {
+      "question": "How many 1H chemical-shift entries are explicitly listed? Respond with only the letter of the correct answer.\nA. 2\nB. 5\nC. 4\nD. 3",
+      "raw": "A",
+      "prompt_sha256": "825dd2433c87e40c02fbc2a184236279f5ea84e8414a048e6879c6ddb209db01",
+      "target": "C",
+      "predicted": "A",
+      "correct": false
+    },
+    {
+      "question": "How many 13C chemical-shift entries fall in the inclusive range 160 to 220 ppm? Respond with only the letter of the correct answer.\nA. 2\nB. 3\nC. 0\nD. 1",
+      "raw": "D",
+      "prompt_sha256": "a2172fbf2e7e252fb8124eb969b3d896907184f03f2b6997d2f665796cc67c25",
+      "target": "D",
+      "predicted": "D",
+      "correct": true
+    },
+    {
+      "question": "How many 1H chemical-shift entries fall in the inclusive range 6 to 9 ppm? Respond with only the letter of the correct answer.\nA. 6\nB. 8\nC. 9\nD. 7",
+      "raw": "D",
+      "prompt_sha256": "638a31569436bcbd6ae5697793072bc612f7fa3139ff2954193318db9be80bbb",
+      "target": "A",
+      "predicted": "D",
+      "correct": false
+    },
+    {
+      "question": "How many 13C chemical-shift entries are explicitly listed? Respond with only the letter of the correct answer.\nA. 17\nB. 18\nC. 20\nD. 19",
+      "raw": "B",
+      "prompt_sha256": "6f400e0ee59dfc12bfd8dd245b9cf0edbf647f36899910ec52a17dbe44086ea6",
+      "target": "B",
+      "predicted": "B",
+      "correct": true
+    },
+    {
+      "question": "How many 1H chemical-shift entries are explicitly listed? Respond with only the letter of the correct answer.\nA. 8\nB. 6\nC. 7\nD. 9",
+      "raw": "B",
+      "prompt_sha256": "941a65826c6e866e52f1541fd4528691d532cf297a4dde50a0ef9bd2d037ec7f",
+      "target": "D",
+      "predicted": "B",
+      "correct": false
+    },
+    {
+      "question": "How many 13C chemical-shift entries fall in the inclusive range 160 to 220 ppm? Respond with only the letter of the correct answer.\nA. 0\nB. 1\nC. 3\nD. 2",
+      "raw": "A",
+      "prompt_sha256": "2ac453ff8ae077277d70b2831b6b2811209b3ae9d36f8af5ba16e463a296cab4",
+      "target": "A",
+      "predicted": "A",
+      "correct": true
+    },
+    {
+      "question": "How many 1H chemical-shift entries fall in the inclusive range 6 to 9 ppm? Respond with only the letter of the correct answer.\nA. 1\nB. 0\nC. 2\nD. 3",
+      "raw": "A",
+      "prompt_sha256": "540e83f3fb9df88389958aba5fb1fd62e3c7f12e5107f706ed160ce69e8737e6",
+      "target": "D",
+      "predicted": "A",
+      "correct": false
+    },
+    {
+      "question": "How many 13C chemical-shift entries are explicitly listed? Respond with only the letter of the correct answer.\nA. 19\nB. 21\nC. 20\nD. 22",
+      "raw": "D",
+      "prompt_sha256": "5f7aff2d846d0873da25a65e0d2288fee6bb1ce280c7d00aa46ae20161795710",
+      "target": "C",
+      "predicted": "D",
+      "correct": false
+    },
+    {
+      "question": "How many 1H chemical-shift entries are explicitly listed? Respond with only the letter of the correct answer.\nA. 10\nB. 9\nC. 12\nD. 11",
+      "raw": "B",
+      "prompt_sha256": "5847b2e2f043629c79d59d70106d16a080ba1e0f88b660b2c2557fb3d6450fa2",
+      "target": "C",
+      "predicted": "B",
+      "correct": false
+    },
+    {
+      "question": "How many 13C chemical-shift entries fall in the inclusive range 160 to 220 ppm? Respond with only the letter of the correct answer.\nA. 0\nB. 3\nC. 1\nD. 2",
+      "raw": "C",
+      "prompt_sha256": "4eca0e113b13d7269e0e3f40ff21a17c2a01d4b8947bd5dcdf60e194d0b9a8ca",
+      "target": "A",
+      "predicted": "C",
+      "correct": false
+    },
+    {
+      "question": "How many 1H chemical-shift entries fall in the inclusive range 6 to 9 ppm? Respond with only the letter of the correct answer.\nA. 6\nB. 5\nC. 7\nD. 8",
+      "raw": "D",
+      "prompt_sha256": "128778f41937162504ca295fceb09454b0fe3b232fc74c18029d78b48e5bdcf6",
+      "target": "A",
+      "predicted": "D",
+      "correct": false
+    },
+    {
+      "question": "How many 13C chemical-shift entries are explicitly listed? Respond with only the letter of the correct answer.\nA. 19\nB. 21\nC. 22\nD. 20",
+      "raw": "A",
+      "prompt_sha256": "b1534d0be6eea064a30ea07f79a369329dc1e67144130b614b8a3b4ccaee1305",
+      "target": "D",
+      "predicted": "A",
+      "correct": false
+    },
+    {
+      "question": "How many 1H chemical-shift entries are explicitly listed? Respond with only the letter of the correct answer.\nA. 10\nB. 7\nC. 8\nD. 9",
+      "raw": "B",
+      "prompt_sha256": "2475892a61f2ea8e729390f6fb3350770cc3b14cc9e19fb650ee259a7eec316f",
+      "target": "B",
+      "predicted": "B",
+      "correct": true
+    },
+    {
+      "question": "How many 13C chemical-shift entries fall in the inclusive range 160 to 220 ppm? Respond with only the letter of the correct answer.\nA. 1\nB. 2\nC. 3\nD. 4",
+      "raw": "D",
+      "prompt_sha256": "eeb9472dc8154a17d74871d59ce36cbd75c873bd66646b4d3aa6830072034318",
+      "target": "A",
+      "predicted": "D",
+      "correct": false
+    },
+    {
+      "question": "How many 1H chemical-shift entries fall in the inclusive range 6 to 9 ppm? Respond with only the letter of the correct answer.\nA. 11\nB. 9\nC. 10\nD. 8",
+      "raw": "B",
+      "prompt_sha256": "1339f9617b48f18e592cec6895ed8cfbb8bd1c7b8a089eb39eaba883a3aa4649",
+      "target": "D",
+      "predicted": "B",
+      "correct": false
+    }
+  ]
+}

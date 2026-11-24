@@ -63,7 +63,7 @@ Run existing benchmark adapters through the same public Python package.
       :raises FileExistsError: If the output file already exists.
       :raises ValueError: If task IDs or sampling options are invalid.
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/benchmark.py#L42>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/benchmark.py#L43>`__
 
 .. py:function:: evaluate_nmr(prediction, references)
 
@@ -77,5 +77,5 @@ Run existing benchmark adapters through the same public Python package.
    :returns: Peak-matching MAE/RMSE, matched coverage and peak-count statistics.
    :rtype: dict
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/benchmark.py#L107>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/benchmark.py#L108>`__
 ```

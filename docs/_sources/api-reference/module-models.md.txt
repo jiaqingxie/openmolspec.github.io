@@ -269,7 +269,8 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
       :param inputs: ``ir`` and ``raman`` are 1024-point intensity arrays on the
                      400–4000 cm⁻¹ grid; ``nmr_h`` and ``nmr_c`` contain shifts in ppm.
       :type inputs: dict
-      :param allow_missing_modalities: Set to ``True`` to evaluate a selected subset of channels.
+      :param allow_missing_modalities: IR alone, Raman alone or both use their dedicated vibrational regressor.
+                                       Set this flag for ablations that include a partial NMR input.
       :type allow_missing_modalities: bool, default False
 
       :returns: Predicted ``gap_ev``, checkpoint information and channel settings.
@@ -320,9 +321,9 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
    :param device: Torch inference device.
    :type device: str, default 'cpu'
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L339>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L340>`__
 
-   .. py:method:: predict(inputs, *, top_k=10, allow_missing_modalities=False)
+   .. py:method:: predict(inputs, *, top_k=10, allow_missing_modalities=False, ranking='beam', estimate_missing_nmr=True)
 
       Generate molecular structures from IR, Raman and NMR spectra.
 
@@ -331,16 +332,32 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
       :type inputs: dict
       :param top_k: Number of candidates to return, between 1 and 10.
       :type top_k: int, default 10
-      :param allow_missing_modalities: Enable inference on a subset of spectral channels.
+      :param allow_missing_modalities: Permit additional missing-channel ablations.
       :type allow_missing_modalities: bool, default False
+      :param estimate_missing_nmr: With only IR and Raman, estimate chemical shifts from the two spectra
+                                   before decoding. The result includes the estimated shifts in ppm.
+                                   Combine False with allow_missing_modalities=True for the unadapted decoder.
+      :type estimate_missing_nmr: bool, default True
 
       :returns: Canonical candidate structures, decoding/matching scores and
-                checkpoint metadata, using beam size 10 and ITM reranking.
+                checkpoint metadata. The decoder ranks canonical valid beams by default.
+                Pass ranking="itm" to rank by the matching model instead.
       :rtype: dict
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L354>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L355>`__
 
-   .. py:method:: retrieve(inputs, candidates, *, top_k=10, rerank=False, allow_missing_modalities=False)
+   .. py:method:: predict_native(inputs, *, formula, checkout, top_k=10)
+
+      Generate with Xinyu Lu's VB-Mols IR+Raman checkpoint and a supplied formula.
+
+      The checkout must contain the author's model code, tokenizers and released
+      MMM generation weights under checkpoints/mols. Supply 1024 points per
+      channel on the 400–4000 cm⁻¹ grid. Results include decoded order and
+      formula agreement for each valid candidate.
+
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L386>`__
+
+   .. py:method:: retrieve(inputs, candidates, *, top_k=10, rerank=False, allow_missing_modalities=False, estimate_missing_nmr=False, shortlist=None)
 
       Rank a supplied molecular library against a spectral query.
 
@@ -355,12 +372,16 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
       :type rerank: bool, default False
       :param allow_missing_modalities: Enable inference with selected channels omitted.
       :type allow_missing_modalities: bool, default False
+      :param estimate_missing_nmr: Estimate H/C shifts from measured IR and Raman with the fitted adapter.
+      :type estimate_missing_nmr: bool, default False
+      :param shortlist: Apply ITM to this many embedding-ranked candidates. With None, score the full supplied library.
+      :type shortlist: int or None
 
       :returns: ``candidate_pool``, ranking method, and ``candidates`` with SMILES
                 and their scores in descending order.
       :rtype: dict
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L378>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L397>`__
 
    .. py:method:: save_config(path)
 
@@ -410,7 +431,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
    :param author_baseline: Return the original checkpoint intensities for comparison.
    :type author_baseline: bool, default False
 
-   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L407>`__
+   `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L434>`__
 
    .. py:method:: predict(*, smiles, adduct, collision_energy, instrument, precursor_mz=None)
 
@@ -430,7 +451,7 @@ Public model facades. Heavy dependencies load only inside the selected runtime.
       :returns: Numerical predicted MS/MS peaks and the acquisition/model metadata.
       :rtype: dict
 
-      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L436>`__
+      `Source code <https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/src/openmolspec/model.py#L463>`__
 
    .. py:method:: save_config(path)
 

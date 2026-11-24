@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>多谱 → 结构（SpectraLLM） &mdash; OpenMolSpec v1.0</title>
+  <title>SpectraLLM 多谱结构生成 &mdash; OpenMolSpec v1.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
@@ -63,9 +63,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">教程</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="datasets-overview.html">探索谱学数据集</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-annotation-magma.html">MS/MS 碎片指认</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-annotation-mechfrag.html">MechFrag-MS 碎片候选指认</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-forward-glacier.html">使用 GLACIER 预测 MS/MS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-forward-iceberg.html">使用 ICEBERG 预测 MS/MS</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SpectraLLM 多谱结构生成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-assignment.html">峰到原子的指认</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-forward-11B.html">11B 化学位移预测</a></li>
@@ -87,7 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="nmr-solvent_transfer.html">跨溶剂化学位移迁移</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk-inference.html">Python SDK：真实 NMR 推理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk-training-preflight.html">训练数据准备与启动前检查</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">SpecMol 谱学问答</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking.html">候选重排：IR + Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking-hc.html">候选重排：IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theory-ms-isotopes.html">质谱：同位素包络与分辨率</a></li>
@@ -103,6 +104,8 @@
 <li class="toctree-l2"><a class="reference internal" href="vibrational-generation-hc.html">结构生成：IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval.html">结构检索：IR + Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-hc.html">结构检索：IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-ir.html">IR 单谱到结构检索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-raman.html">Raman 单谱到结构检索</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#theory-simulations">Theory simulations / 理论模拟</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#nmr">核磁共振 NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ms">质谱 MS</a></li>
@@ -137,7 +140,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">教程</a></li>
-      <li class="breadcrumb-item active">多谱 → 结构（SpectraLLM）</li>
+      <li class="breadcrumb-item active">SpectraLLM 多谱结构生成</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/notebooks/multispectral-spectrallm-generation.ipynb.txt" rel="nofollow"> 查看页面源码</a>
       </li>
@@ -152,8 +155,9 @@
   
   
   <section class="tex2jax_ignore mathjax_ignore" id="spectrallm">
-<h1>多谱 → 结构（SpectraLLM）<a class="headerlink" href="#spectrallm" title="Link to this heading"></a></h1>
-<p>其他谱学任务。</p>
+<h1>SpectraLLM 多谱结构生成<a class="headerlink" href="#spectrallm" title="Link to this heading"></a></h1>
+<p>根据多谱文本生成分子结构。</p>
+<p>32B 权重读取作者提供的系统消息与谱图问题，参考 SMILES 仅用于评分。</p>
 <p>本教程读取保存的预测，解释输入输出字段，并评估结果。最后给出在新数据集上运行模型的命令。</p>
 <div class="cell config_scroll_outputs docutils container">
 <div class="cell_input docutils container">
@@ -179,7 +183,26 @@ Examples: 0
 </div>
 </div>
 </div>
-<p>用户已暂停此任务，本轮不运行模型，也不展示新的科学评分。</p>
+<p>32B 权重读取作者提供的系统消息与谱图问题，参考 SMILES 仅用于评分。</p>
+<p>统计格式有效率及规范 SMILES 完全匹配率。</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">results_table</span><span class="p">(</span><span class="n">evidence</span><span class="p">,</span> <span class="kc">False</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evidence</span><span class="p">[</span><span class="s1">'status'</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">evidence</span><span class="p">[</span><span class="s1">'examples'</span><span class="p">][:</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">compact</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p>| Dataset / scope | Model / variant | Metric | Value |
+| --- | --- | --- | ---: |</p>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>awaiting_evaluation
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference internal" href="../tasks/multispectral-spectrallm-generation.html"><span class="std std-doc">Task guide</span></a></p>
 </section>
 
 

@@ -1,5 +1,7 @@
 # Structure elucidation from ¹H + ¹³C NMR
 
+The [NMRGym NMRTrans comparison](../benchmarks/nmr.md) reports H-only, C-only and H+C models with and without supplied formula on a fixed 10,000-record test protocol.
+
 Generate candidate molecular structures from NMR peak lists and a molecular formula.
 
 ## What goes in

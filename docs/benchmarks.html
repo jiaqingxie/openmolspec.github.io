@@ -77,6 +77,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#forward-prediction-results">Forward prediction results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nmr-chemical-shift-r2">NMR chemical-shift R²</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nmr-peak-position-cosine-similarity">NMR peak-position cosine similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#retrieval-and-reranking-in-a-4-096-structure-library">Retrieval and reranking in a 4,096-structure library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nmrgym-spectrum-to-structure-evaluation">NMRGym spectrum-to-structure evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specmol-spectroscopy-qa">SpecMol spectroscopy QA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#task-benchmarks">Task benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#training-benchmark-configurations">Training benchmark configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#metrics">Metrics</a></li>
@@ -123,7 +126,7 @@
 <p>OpenMolSpec defines benchmark tasks for NMR, MS, vibrational and multimodal spectroscopy. This catalogue includes every active task, its saved evaluation results and the configured training experiments.</p>
 <section id="forward-prediction-results">
 <h2>Forward prediction results<a class="headerlink" href="#forward-prediction-results" title="Link to this heading"></a></h2>
-<p>All 10 enabled forward tasks are listed below. Each task card specifies its reference, selection protocol and available inference routes.</p>
+<p>The ten enabled forward configurations are listed below. The ³¹P and ¹⁹F rows use the full holdouts. Each task card specifies its reference, selection protocol and available inference routes.</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Task</p></th>
@@ -141,12 +144,12 @@
 <td><p>1.217 / 1.143 / 2.772 ppm</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="tasks/nmr-forward-31P.html"><span class="std std-doc">³¹P</span></a></p></td>
-<td><p>6,626 measurements, 4,198 structures</p></td>
-<td><p>2.89 / 3.62 ppm</p></td>
+<td><p>6,693 measurements, 4,248 structures</p></td>
+<td><p>4.27 / 5.54 ppm</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="tasks/nmr-forward-19F.html"><span class="std std-doc">¹⁹F</span></a></p></td>
-<td><p>15,644 measurements, 14,225 structures</p></td>
-<td><p>3.31 / 3.23 ppm</p></td>
+<td><p>15,803 measurements, 14,330 structures</p></td>
+<td><p>5.92 / 5.62 ppm</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="tasks/nmr-forward-11B.html"><span class="std std-doc">¹¹B</span></a></p></td>
 <td><p>1,669 measurements, 1,517 structures</p></td>
@@ -157,8 +160,8 @@
 <td><p>1.96 / 2.03 ppm</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="tasks/nmr-hsqc-transpeaknet.html"><span class="std std-doc">HSQC</span></a></p></td>
-<td><p>479 spectra, 7,926 cross-peaks</p></td>
-<td><p>¹³C 2.005 ppm · ¹H 0.164 ppm</p></td>
+<td><p>2DNMRGym, 479 spectra, 7,926 cross-peaks</p></td>
+<td><p>¹³C 2.068 ppm · ¹H 0.166 ppm</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="tasks/vibrational-forward.html"><span class="std std-doc">IR / Raman</span></a></p></td>
 <td><p>303 optimized geometries</p></td>
@@ -175,7 +178,8 @@
 </tbody>
 </table>
 <p>¹H and ¹³C use NMRSpec, NMRExp and NMRGym in that order. Their molecule-weighted error penalizes each unmatched peak by 1 ppm (H) or 10 ppm (C). Other 1D NMR rows give per-observation and per-connectivity MAE on single-environment measurements. The ²⁹Si test comprised 177 structures. The shortlisted NMR models have been compared on these same audit sets in successive releases. Upstream pretraining overlap for imported models has not been independently established.</p>
-<p>IR and Raman scores compare to quantum-chemical references on H/C/N/O/F molecules with at most nine heavy atoms. Each MS method was confirmed on a separate set of up to 40-heavy-atom structures with supported acquisition conditions. The reported fraction counts successful paired predictions among 1,024 newly sampled structures per method. <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_benchmark_summary.json">Machine-readable results</a></p>
+<p>The 405 2DNMRGym spectra outside known 2D fitting pools have 50.96% cross-peak recall. A second panel contains 21 partial WanJuan peak lists. Of 95 reported peaks, 35 are recovered and 69 receive a candidate carbon. Partial-list cosine is 0.0405. Atom-level reference assignments are unavailable. <a class="reference internal" href="tasks/nmr-hsqc-transpeaknet.html"><span class="std std-doc">HSQC task guide</span></a></p>
+<p>IR and Raman scores compare to quantum-chemical references on H/C/N/O/F molecules with at most nine heavy atoms. Both MS backends scored the same 875 confirmation identities on structures with at most 40 heavy atoms. The reported fraction counts successful paired predictions among 1,024 newly sampled structures per method. <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_benchmark_summary.json">Machine-readable results</a></p>
 </section>
 <section id="nmr-chemical-shift-r2">
 <h2>NMR chemical-shift R²<a class="headerlink" href="#nmr-chemical-shift-r2" title="Link to this heading"></a></h2>
@@ -259,7 +263,7 @@
 </section>
 <section id="nmr-peak-position-cosine-similarity">
 <h2>NMR peak-position cosine similarity<a class="headerlink" href="#nmr-peak-position-cosine-similarity" title="Link to this heading"></a></h2>
-<p>Each listed predicted and reference peak contributes a unit-area Lorentzian. The cosine integrates all peaks over the full ppm axis, including extra and missing peaks. It measures overlap in peak positions. Experimental intensities, multiplet splitting and measured line shapes are outside its scope. HSQC uses the joint carbon and proton coordinates with equal weight per expert spectrum.</p>
+<p>Each listed predicted and reference peak contributes a unit-area Lorentzian. The cosine integrates all peaks over the full ppm axis, including extra and missing peaks. It measures overlap in peak positions. Experimental intensities, multiplet splitting and measured line shapes are outside its scope. HSQC uses the joint carbon and proton coordinates with equal weight per official 2DNMRGym spectrum.</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Task</p></th>
@@ -286,18 +290,18 @@
 <td class="text-right"><p>0.8806</p></td>
 </tr>
 <tr class="row-even"><td><p>³¹P</p></td>
-<td class="text-right"><p>4,198</p></td>
+<td class="text-right"><p>4,248</p></td>
 <td><p>1</p></td>
-<td class="text-right"><p>0.3250</p></td>
-<td class="text-right"><p><strong>0.4679</strong></p></td>
-<td class="text-right"><p>0.6160</p></td>
+<td class="text-right"><p>0.3211</p></td>
+<td class="text-right"><p><strong>0.4623</strong></p></td>
+<td class="text-right"><p>0.6085</p></td>
 </tr>
 <tr class="row-odd"><td><p>¹⁹F</p></td>
-<td class="text-right"><p>14,225</p></td>
+<td class="text-right"><p>14,330</p></td>
 <td><p>1</p></td>
-<td class="text-right"><p>0.5062</p></td>
-<td class="text-right"><p><strong>0.6428</strong></p></td>
-<td class="text-right"><p>0.7654</p></td>
+<td class="text-right"><p>0.5020</p></td>
+<td class="text-right"><p><strong>0.6374</strong></p></td>
+<td class="text-right"><p>0.7590</p></td>
 </tr>
 <tr class="row-even"><td><p>¹¹B</p></td>
 <td class="text-right"><p>1,517</p></td>
@@ -316,13 +320,159 @@
 <tr class="row-even"><td><p>HSQC (¹³C, ¹H)</p></td>
 <td class="text-right"><p>479</p></td>
 <td><p>1 / 0.05</p></td>
-<td class="text-right"><p>0.0822</p></td>
-<td class="text-right"><p><strong>0.2115</strong></p></td>
-<td class="text-right"><p>0.4347</p></td>
+<td class="text-right"><p>0.0817</p></td>
+<td class="text-right"><p><strong>0.2118</strong></p></td>
+<td class="text-right"><p>0.4361</p></td>
 </tr>
 </tbody>
 </table>
 <p>¹H and ¹³C pool the three held-out sets with equal weight per molecule. In NMRSpec, NMRExp and NMRGym order, the respective scores are 0.4417 / 0.4364 / 0.4373 for ¹H and 0.8568 / 0.8716 / 0.6397 for ¹³C. Each ³¹P, ¹⁹F, ¹¹B and ²⁹Si record has one distinct chemical environment. Measurements are averaged within each connectivity before averaging over structures. Widths are benchmark settings. Both HSQC widths change together. The forward results table above gives the intensity-spectrum cosine for IR, Raman and MS/MS. <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_cosine_similarity.json">Full precision, split results and source checksums</a></p>
+</section>
+<section id="retrieval-and-reranking-in-a-4-096-structure-library">
+<h2>Retrieval and reranking in a 4,096-structure library<a class="headerlink" href="#retrieval-and-reranking-in-a-4-096-structure-library" title="Link to this heading"></a></h2>
+<p>Each of 128 queries has its target in the same bank. Embedding search and matching-head reranking of the top 32 use all queries. Exhaustive reranking scores all 4,096 candidates for the first 32 queries. Targets use canonical SMILES with stereochemistry removed. The model receives no molecular formula.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input / model</p></th>
+<th class="head"><p>Embedding Top-1</p></th>
+<th class="head"><p>Shortlist Top-1</p></th>
+<th class="head"><p>Exhaustive Top-1</p></th>
+<th class="head"><p>Exhaustive Top-5</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>IR only, masked model</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 32</p></td>
+<td><p>0 / 32</p></td>
+</tr>
+<tr class="row-odd"><td><p>Raman only, masked model</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 32</p></td>
+<td><p>0 / 32</p></td>
+</tr>
+<tr class="row-even"><td><p>IR + Raman, VB-Mols</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 32</p></td>
+<td><p>1 / 32</p></td>
+</tr>
+<tr class="row-odd"><td><p>IR + Raman, estimated H/C</p></td>
+<td><p>41 / 128</p></td>
+<td><p>39 / 128</p></td>
+<td><p>8 / 32</p></td>
+<td><p>13 / 32</p></td>
+</tr>
+<tr class="row-even"><td><p>IR + Raman + supplied ¹H + ¹³C</p></td>
+<td><p>118 / 128</p></td>
+<td><p>120 / 128</p></td>
+<td><p>31 / 32</p></td>
+<td><p>32 / 32</p></td>
+</tr>
+</tbody>
+</table>
+<p>An independent method compares query spectra with a theoretical spectral library. Its first-pass Top-1 counts on the 128 queries were IR 27/128, Raman 28/128, IR + Raman 31/128, four spectra 34/128. The neural library supplies candidate SMILES only.</p>
+<p><a class="reference download internal" download="" href="_downloads/b6367ddbaa6d47290964f61c3db0b969/matched-library-4096.json"><span class="xref download myst">Download candidates, individual ranks and model fingerprints</span></a></p>
+</section>
+<section id="nmrgym-spectrum-to-structure-evaluation">
+<h2>NMRGym spectrum-to-structure evaluation<a class="headerlink" href="#nmrgym-spectrum-to-structure-evaluation" title="Link to this heading"></a></h2>
+<p>The 24 November comparison fixes 10,000 test records and scores exact isomeric canonical SMILES. Each model receives only its selected channels. The +formula condition additionally supplies the reference molecular formula. Greedy and beam-10 decoding have separate scores.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Initialization</p></th>
+<th class="head"><p>Formula</p></th>
+<th class="head"><p>Input</p></th>
+<th class="head"><p>Epoch budget</p></th>
+<th class="head"><p>Validation greedy exact</p></th>
+<th class="head"><p>Test records scored</p></th>
+<th class="head"><p>Test exact</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>generic T5-small</p></td>
+<td><p>−</p></td>
+<td><p>¹H</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+<tr class="row-odd"><td><p>generic T5-small</p></td>
+<td><p>−</p></td>
+<td><p>¹³C</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+<tr class="row-even"><td><p>generic T5-small</p></td>
+<td><p>−</p></td>
+<td><p>¹H + ¹³C</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+<tr class="row-odd"><td><p>generic T5-small</p></td>
+<td><p>+</p></td>
+<td><p>¹H</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+<tr class="row-even"><td><p>generic T5-small</p></td>
+<td><p>+</p></td>
+<td><p>¹³C</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+<tr class="row-odd"><td><p>generic T5-small</p></td>
+<td><p>+</p></td>
+<td><p>¹H + ¹³C</p></td>
+<td><p>10,000</p></td>
+<td><p>—</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+<tr class="row-even"><td><p>NMRTrans H+C checkpoint</p></td>
+<td><p>−</p></td>
+<td><p>¹H</p></td>
+<td><p>100</p></td>
+<td><p>0.166%</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+<tr class="row-odd"><td><p>NMRTrans H+C checkpoint</p></td>
+<td><p>−</p></td>
+<td><p>¹³C</p></td>
+<td><p>100</p></td>
+<td><p>0.186%</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+<tr class="row-even"><td><p>NMRTrans H+C checkpoint</p></td>
+<td><p>−</p></td>
+<td><p>¹H + ¹³C</p></td>
+<td><p>100</p></td>
+<td><p>0.497%</p></td>
+<td><p>0 / 10,000</p></td>
+<td><p>Pending</p></td>
+</tr>
+</tbody>
+</table>
+<p>Four accepted training submissions cover the dedicated NMRGym split and a pooled NMRSpec / NMRExp / patent split, each with and without molecular formula. The configurations start from generic T5-small with randomly initialized spectral encoders, four GPUs per submission and separate H, C and H+C runs. The epoch budget is the configured maximum.</p>
+<p><a class="reference download internal" download="" href="_downloads/07cbf2e0d4cce10fd5bef29275967cfa/nmrgym-nmrtrans.json"><span class="xref download myst">Download the split and scores</span></a> · <a class="reference download internal" download="" href="_downloads/a2ea1188c0da0f3b03eda12605f1f36a/adaptation-protocols.json"><span class="xref download myst">Training configurations and submission records</span></a></p>
+</section>
+<section id="specmol-spectroscopy-qa">
+<h2>SpecMol spectroscopy QA<a class="headerlink" href="#specmol-spectroscopy-qa" title="Link to this heading"></a></h2>
+<p>The released SpecMol-7B model answered 32 four-choice questions counting entries in NMRSpec ¹H or ¹³C peak lists on GPU. Scoring the full decoded answer gave <strong>4/32 correct (12.5%)</strong> and <strong>29/32 valid choices (90.6%)</strong>.</p>
+<p>The separate four-GPU LoRA submission uses 8,192 training and 512 validation questions split by connectivity. The 24 November snapshot contains the base-model result above. The adapted-model held-out result is pending.</p>
+<p><a class="reference download internal" download="" href="_downloads/42458f75db5df795f9d3aa89280ab6f3/specmol-qa-responses.json"><span class="xref download myst">Download all questions and decoded choices</span></a></p>
 </section>
 <section id="task-benchmarks">
 <h2>Task benchmarks<a class="headerlink" href="#task-benchmarks" title="Link to this heading"></a></h2>
@@ -339,15 +489,15 @@
 <td><p>Definitions, inputs, metrics and recorded results.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="benchmarks/ms.html"><span class="std std-doc">Mass spectrometry</span></a></p></td>
-<td><p>3</p></td>
+<td><p>4</p></td>
 <td><p>Definitions, inputs, metrics and recorded results.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="benchmarks/vibrational.html"><span class="std std-doc">IR / Raman</span></a></p></td>
-<td><p>7</p></td>
+<td><p>9</p></td>
 <td><p>Definitions, inputs, metrics and recorded results.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="benchmarks/multimodal.html"><span class="std std-doc">Multimodal spectroscopy</span></a></p></td>
-<td><p>4</p></td>
+<td><p>6</p></td>
 <td><p>Definitions, inputs, metrics and recorded results.</p></td>
 </tr>
 </tbody>
@@ -426,7 +576,7 @@ python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span c
 </section>
 <section id="additional-task-definitions">
 <h2>Additional task definitions<a class="headerlink" href="#additional-task-definitions" title="Link to this heading"></a></h2>
-<p>Molecular formula prediction, spectroscopy QA and SpectraLLM generation are listed in the task registry as deferred.</p>
+<p>SpecMol accepts a spectroscopy question and spectral text. SpectraLLM scores structure generation against canonical SMILES. Both require their respective local merged checkpoints. Standalone formula prediction is disabled.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>

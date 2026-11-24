@@ -64,9 +64,11 @@
 <li class="toctree-l2"><a class="reference internal" href="vibrational.html">IR / Raman</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="multimodal.html">Multimodal spectroscopy</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman_hc.html">HOMO–LUMO gap from IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-qa.html">Spectral question answering with SpecMol</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-hc.html">Structure retrieval: IR + Raman + NMR</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Structure generation: IR + Raman + NMR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking-hc.html">Candidate reranking: IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multispectral-spectrallm-generation.html">Structure generation with SpectraLLM</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="deferred.html">Deferred tasks</a></li>
@@ -122,6 +124,10 @@
   <section class="tex2jax_ignore mathjax_ignore" id="structure-generation-ir-raman-nmr">
 <h1>Structure generation: IR + Raman + NMR<a class="headerlink" href="#structure-generation-ir-raman-nmr" title="Link to this heading"></a></h1>
 <p>Generate structures from molecular spectra.</p>
+<section id="ordering-generated-candidates">
+<h2>Ordering generated candidates<a class="headerlink" href="#ordering-generated-candidates" title="Link to this heading"></a></h2>
+<p>The decoder keeps the first occurrence of each valid canonical structure. The SDK returns that order and reports the matching model’s probability, beam rank and ITM rank for each candidate. Pass <code class="docutils literal notranslate"><span class="pre">ranking=&quot;itm&quot;</span></code> to reproduce the original matching-head order. On the 64-query replay, the default has 48 first-place and 57 top-three hits. ITM alone gives 44 and 54. On 24 additional structures excluded from the 64-query replay, both orderings achieved 14/24 top-1 and 19/24 top-3.</p>
+</section>
 <section id="what-goes-in">
 <h2>What goes in<a class="headerlink" href="#what-goes-in" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
@@ -150,7 +156,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SMILES</span> <span class="pre">candidates</span></code></p></td>
-<td><p>Decoded valid, canonical unique candidates; full-input route uses beam 10 and ITM reranking.</p></td>
+<td><p>The decoder keeps the first occurrence of each valid canonical structure from 10 beams. The SDK returns beam order by default and also exposes the ITM rank.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">top-k</span></code></p></td>
 <td><p>Generation and reranking scores are separate. No molecular formula is supplied.</p></td>

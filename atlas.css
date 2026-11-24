@@ -1,0 +1,66 @@
+.oms-portal {font-family:"Instrument Sans","Noto Sans CJK SC","PingFang SC","Microsoft YaHei",Arial,sans-serif}
+.oms-portal .header-row {column-gap:clamp(12px,2vw,30px)}
+.oms-portal .header-row .brand {margin-right:auto}
+.oms-portal .header-row #nav {order:1}
+.oms-portal .header-row .language-switch {order:2; color:#f6f1ff; background:#292a41; border:1px solid #626173; border-radius:5px; padding:7px 12px; font-family:inherit; font-size:14px; font-weight:600; line-height:1.45; white-space:nowrap}
+.oms-portal .header-row .language-switch:hover {background:#393952}
+.oms-portal .header-row .menu-toggle {order:3}
+.oms-portal .hero-layout {grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);padding-block:clamp(42px,5vw,80px);gap:clamp(22px,3vw,54px)}
+.oms-portal .hero-copy h1 {font-size:clamp(54px,6vw,94px)}
+.oms-portal .modalities {font-size:clamp(16px,1.4vw,22px);color:#efedf8;letter-spacing:.035em}
+.oms-portal #molecular-specimen {min-width:0;width:100%}
+.oms-portal .launch-metrics dt {font-size:14px;max-width:126px}
+.oms-portal .tool-shell {grid-template-columns:minmax(185px,18%) minmax(0,1fr);overflow:clip;border-radius:10px}
+.oms-portal .tool-shell .tool-tabs {grid-column:1;grid-row:2/4}
+.oms-portal .tool-shell .tool-tabs button {font-size:15px;padding:13px 12px}
+.oms-portal #workflow-guide {grid-column:2;padding:20px clamp(18px,2.2vw,34px);background:#eeedf7;border-bottom:1px solid #d6d4e4}
+.oms-portal #workflow-guide p {margin:0 0 12px;color:#29243c;font-size:17px;font-weight:550;line-height:1.4}
+.oms-portal #workflow-guide dl {display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0}
+.oms-portal #workflow-guide dt {font-size:13px;font-weight:650;color:#584987}
+.oms-portal #workflow-guide dd {margin:3px 0 0;font-size:15px;line-height:1.45;color:#484457}
+.oms-portal #tool-workspace {grid-column:2;min-width:0}
+.oms-portal .tool-shell .tool-panel label,.oms-portal .tool-shell .tool-note,.oms-portal .tool-shell .tool-tabs button {line-height:1.5}
+.oms-portal .tool-shell .tool-note {font-size:14px}
+.oms-portal #tool-sucrose {position:absolute;top:0}
+.oms-portal .isomer-purpose {max-width:71ch;color:var(--portal-body);line-height:1.55;margin:0}
+.oms-portal .coverage {display:grid;grid-template-columns:minmax(180px,.55fr) minmax(0,1.45fr);gap:clamp(24px,4vw,66px);border:1px solid #d3d1df;border-top:3px solid #69608c;border-radius:5px;padding:clamp(20px,2.2vw,35px);background:#faf9fc;margin-bottom:36px}
+.oms-portal .coverage h3,.oms-portal .records-heading h3 {margin:0;color:#282538;font-size:clamp(21px,2vw,30px);line-height:1.15;letter-spacing:-.03em}
+.oms-portal .coverage-intro p {font-size:15px;line-height:1.6;color:#5f5b70;margin:12px 0 0;max-width:30ch}
+.oms-portal .coverage-groups {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,32px)}
+.oms-portal .coverage-groups h4 {margin:0 0 8px;font-size:14px;font-weight:600;color:#554a72}
+.oms-portal .coverage-groups ul {padding:0;margin:0;list-style:none}
+.oms-portal .coverage-groups button {width:100%;display:flex;align-items:baseline;gap:6px;justify-content:space-between;padding:7px 0;background:none;border:0;border-bottom:1px solid #dedde6;color:#272638;font:inherit;text-align:start}
+.oms-portal .coverage-groups button:hover {color:#60469a;text-decoration:underline}
+.oms-portal .coverage-groups strong {font-weight:550;font-variant-numeric:tabular-nums}
+.oms-portal .records-heading {display:flex;align-items:center;justify-content:space-between;gap:12px;margin:34px 0 16px}
+.oms-portal .records-heading a {font-size:14px;color:var(--portal-teal)}
+.oms-portal #measured-records,.oms-portal #data-sources {scroll-margin-top:85px}
+:lang(zh-Hans) .hero-copy h1 {letter-spacing:-.045em;line-height:1.14}
+:lang(zh-Hans) .section-heading h2 {line-height:1.2;letter-spacing:-.025em}
+@media(max-width:900px) {
+ .oms-portal .coverage {grid-template-columns:1fr;gap:20px}
+ .oms-portal .coverage-intro p {max-width:none}
+}
+@media(max-width:800px) {
+ .oms-portal .hero-layout {grid-template-columns:1fr}
+ .oms-portal .header-row .language-switch {margin-left:auto}
+ .oms-portal .header-row .menu-toggle {margin-left:0}
+ .oms-portal .tool-shell .tool-tabs button {font-size:14px;margin:0}
+}
+@media(max-width:600px) {
+ .oms-portal .hero-copy h1 {font-size:clamp(45px,11vw,67px)}
+ .oms-portal .launch-metrics dt {font-size:13px}
+ .oms-portal .coverage-groups {grid-template-columns:repeat(2,minmax(0,1fr));row-gap:16px}
+ .oms-portal .coverage-groups section:first-child {grid-column:1/-1}
+ .oms-portal .coverage-groups section:first-child ul {display:grid;grid-template-columns:1fr 1fr;gap:14px}
+ .oms-portal #workflow-guide dl {grid-template-columns:1fr;gap:7px}
+}
+.oms-portal .results-section {padding-block:clamp(40px,5vw,76px)}
+.oms-portal .results-section .records-heading {margin-top:0}
+.oms-portal .results-section h2 {font-size:clamp(28px,3.2vw,49px);font-weight:520;letter-spacing:-.04em;line-height:1.15;margin:0}
+.oms-portal .benchmark-cards {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(177px,100%),1fr));gap:1px;padding:1px;background:#d6d4e1;border-radius:6px;overflow:hidden;margin-bottom:20px}
+.oms-portal .benchmark-cards a {display:grid;grid-template-rows:auto 1fr auto;align-items:start;gap:14px;padding:18px;background:#f8f8fc;color:#37304a;text-decoration:none}
+.oms-portal .benchmark-cards a:hover {background:#eeecf6}
+.oms-portal .benchmark-cards strong {font-size:clamp(25px,2.5vw,39px);font-weight:550;letter-spacing:-.05em}
+.oms-portal .benchmark-cards span {font-weight:580}
+.oms-portal .benchmark-cards small {font-size:13px;color:#625d72}

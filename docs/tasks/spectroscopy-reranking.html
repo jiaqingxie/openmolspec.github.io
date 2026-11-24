@@ -26,7 +26,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Multimodal spectroscopy" href="multimodal.html" />
+    <link rel="next" title="IR spectrum-to-structure retrieval" href="vibrational-retrieval-ir.html" />
     <link rel="prev" title="Structure generation: IR + Raman" href="vibrational-generation.html" /> 
 </head>
 
@@ -69,6 +69,8 @@
 <li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval.html">Structure retrieval: IR + Raman</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vibrational-generation.html">Structure generation: IR + Raman</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Candidate reranking: IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-ir.html">IR spectrum-to-structure retrieval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-raman.html">Raman spectrum-to-structure retrieval</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="multimodal.html">Multimodal spectroscopy</a></li>
@@ -124,7 +126,12 @@
   
   <section class="tex2jax_ignore mathjax_ignore" id="candidate-reranking-ir-raman">
 <h1>Candidate reranking: IR + Raman<a class="headerlink" href="#candidate-reranking-ir-raman" title="Link to this heading"></a></h1>
+<p>The <a class="reference internal" href="../benchmarks/vibrational.html"><span class="std std-doc">4,096-candidate comparison</span></a> reports embedding search, top-32 reranking and exhaustive matching, with separate query counts.</p>
 <p>Rank molecular structures by agreement with the input spectra.</p>
+<section id="retrieval-from-1-024-candidates">
+<h2>Retrieval from 1,024 candidates<a class="headerlink" href="#retrieval-from-1-024-candidates" title="Link to this heading"></a></h2>
+<p>Using Xinyu Lu’s published VB-Mols dual-spectrum matcher, with the reference present, embedding retrieval ranked it first for 1/64 queries. ITM rescoring of the top 16 gave 1/64. Exhaustive ITM scoring over all 1,024 candidates gave 0/8 on the prespecified first eight queries. With the project checkpoint and only IR and Raman supplied, the corresponding counts were 0/64, 0/64 and 0/2. Models shared identical queries and candidates. The pool contained same-formula distractors for 61 of the 64 queries.</p>
+</section>
 <section id="what-goes-in">
 <h2>What goes in<a class="headerlink" href="#what-goes-in" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
@@ -333,7 +340,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="vibrational-generation.html" class="btn btn-neutral float-left" title="Structure generation: IR + Raman" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="multimodal.html" class="btn btn-neutral float-right" title="Multimodal spectroscopy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="vibrational-retrieval-ir.html" class="btn btn-neutral float-right" title="IR spectrum-to-structure retrieval" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

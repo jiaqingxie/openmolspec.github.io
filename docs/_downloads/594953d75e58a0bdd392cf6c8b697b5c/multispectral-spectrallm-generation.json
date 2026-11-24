@@ -1,0 +1,10 @@
+{
+  "task": "multispectral.spectrallm.generation",
+  "enabled": true,
+  "training_performed": false,
+  "source_files": [],
+  "source_hashes": {},
+  "runs": [],
+  "examples": [],
+  "status": "awaiting_evaluation"
+}

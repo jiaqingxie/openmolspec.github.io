@@ -1,0 +1,623 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MS/MS fragment candidates with MechFrag-MS &mdash; OpenMolSpec v1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/openmolspec.css?v=79e73b8e" />
+
+  
+    <link rel="shortcut icon" href="../_static/mark.svg"/>
+    <link rel="canonical" href="https://openmolspec.readthedocs.io/en/latest/notebooks/ms-annotation-mechfrag.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script defer="defer" src="../_static/openmolspec-viewer.js?v=0bbd0e50"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MS/MS prediction with GLACIER" href="ms-forward-glacier.html" />
+    <link rel="prev" title="MS/MS fragment annotation" href="ms-annotation-magma.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            OpenMolSpec
+              <img src="../_static/openmolspec-dark.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  <div class="oms-language-switch">
+    <a href="../zh/notebooks/ms-annotation-mechfrag.html" hreflang="zh-CN" aria-label="Switch language">简体中文</a>
+  </div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tasks/index.html">Tasks by spectroscopy family</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-audit.html">Models and training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Python SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="datasets-overview.html">Exploring the spectroscopy datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-annotation-magma.html">MS/MS fragment annotation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MS/MS fragment candidates with MechFrag-MS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-forward-glacier.html">MS/MS prediction with GLACIER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-forward-iceberg.html">MS/MS prediction with ICEBERG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multispectral-spectrallm-generation.html">Structure generation with SpectraLLM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-assignment.html">Peak-to-atom assignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-11B.html">11B chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-13C.html">13C chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-19F.html">19F chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-1H.html">1H chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-29Si.html">29Si chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-forward-31P.html">31P chemical shift prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-generation-c.html">Structure elucidation from ¹³C NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-generation-h.html">Structure elucidation from ¹H NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-generation-hc.html">Structure elucidation from ¹H + ¹³C NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-hsqc-transpeaknet.html">HSQC cross-peak prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-c-m2s.html">Structure-to-spectrum retrieval: ¹³C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-c-s2m.html">Spectrum-to-structure retrieval: ¹³C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-h-m2s.html">Structure-to-spectrum retrieval: ¹H</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-h-s2m.html">Spectrum-to-structure retrieval: ¹H</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-hc-m2s.html">Structure-to-spectrum retrieval: ¹H + ¹³C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-retrieval-hc-s2m.html">Spectrum-to-structure retrieval: ¹H + ¹³C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nmr-solvent_transfer.html">Cross-solvent chemical shift transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk-inference.html">Python SDK: real NMR inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk-training-preflight.html">Training data preparation and preflight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">Spectral question answering with SpecMol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking.html">Candidate reranking: IR + Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking-hc.html">Candidate reranking: IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory-ms-isotopes.html">Mass spectrometry: isotope envelopes and resolving power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory-nmr-fourier.html">NMR: from a free induction decay to a spectrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory-nmr-inversion.html">NMR inversion: recovering a relaxation distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory-vibrational-broadening.html">IR and Raman: normal modes and spectral broadening</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-forward.html">IR and Raman from a molecular geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-gap-ir.html">HOMO–LUMO gap from IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-gap-ir_raman.html">HOMO–LUMO gap from IR + Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-gap-ir_raman_hc.html">HOMO–LUMO gap from IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-gap-raman.html">HOMO–LUMO gap from Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-generation.html">Structure generation: IR + Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-generation-hc.html">Structure generation: IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval.html">Structure retrieval: IR + Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-hc.html">Structure retrieval: IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-ir.html">IR spectrum-to-structure retrieval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-raman.html">Raman spectrum-to-structure retrieval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#theory-simulations">Theory simulations / 理论模拟</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#nmr">NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#mass-spectrometry">Mass spectrometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ir-raman">IR / Raman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#multimodal-spectroscopy">Multimodal spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#deferred-tasks">Deferred tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/index.html">Spectroscopy theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inversion/index.html">Inversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harness.html">Agent Harness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/index.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Common workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OpenMolSpec</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Tutorials</a></li>
+      <li class="breadcrumb-item active">MS/MS fragment candidates with MechFrag-MS</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/ms-annotation-mechfrag.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+    <p><a class="btn btn-neutral" href="../downloads/notebooks/ms-annotation-mechfrag.ipynb" download>Download notebook</a></p>
+  
+  
+  <section class="tex2jax_ignore mathjax_ignore" id="ms-ms-fragment-candidates-with-mechfrag-ms">
+<h1>MS/MS fragment candidates with MechFrag-MS<a class="headerlink" href="#ms-ms-fragment-candidates-with-mechfrag-ms" title="Link to this heading"></a></h1>
+<p>Find atom-indexed fragments consistent with observed product ion masses.</p>
+<p>The locked policy proposes fragment ions for the known molecule and acquisition conditions.</p>
+<p>This tutorial loads the saved predictions, explains the input/output fields and evaluates the results. Use the final command to run the model on a new dataset.</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">SVG</span>
+<span class="n">root</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">(),</span> <span class="o">*</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">parents</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="s1">'openmolspec_bench'</span><span class="p">)</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()),</span> <span class="kc">None</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">'Run from the cloned release repository; see Quick Start'</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="s1">'scripts'</span><span class="p">))</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">documentation_evidence</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_evidence</span><span class="p">,</span> <span class="n">compact</span><span class="p">,</span> <span class="n">recompute</span><span class="p">,</span> <span class="n">render</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">documentation_content</span><span class="w"> </span><span class="kn">import</span> <span class="n">results_table</span>
+<span class="n">evidence</span> <span class="o">=</span> <span class="n">load_evidence</span><span class="p">(</span><span class="s1">'ms.annotation.mechfrag'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Task:'</span><span class="p">,</span> <span class="n">evidence</span><span class="p">[</span><span class="s1">'task'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Examples:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">evidence</span><span class="p">[</span><span class="s1">'examples'</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Task: ms.annotation.mechfrag
+Examples: 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>The locked policy proposes fragment ions for the known molecule and acquisition conditions.</p>
+<p>Report observed-peak mass coverage at 10 ppm. Experimental atom masks would be needed to measure structural accuracy.</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">results_table</span><span class="p">(</span><span class="n">evidence</span><span class="p">,</span> <span class="kc">True</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evidence</span><span class="p">[</span><span class="s1">'status'</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">evidence</span><span class="p">[</span><span class="s1">'examples'</span><span class="p">][:</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">compact</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p>| Dataset / scope | Model / variant | Metric | Value |
+| — | — | — | —: |
+| MassSpecGym / 10 ppm | recorded model | variant | balanced_neutral_context |
+| MassSpecGym / 10 ppm | recorded model | peaks | 1741 |
+| MassSpecGym / 10 ppm | recorded model | matched_fraction | 0.622631 |
+| MassSpecGym / 10 ppm | recorded model | magma_matched_fraction_same_peaks | 0.581275 |</p>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>recorded_results
+{
+  "spec_id": "MassSpecGymID0013877",
+  "magma_matched": 11,
+  "smiles": "CCC(=NOC/C=C/Cl)C1=C(O)CC(C2CCOCC2)CC1=O",
+  "atom_index_basis": "zero-based RDKit atom order of the input SMILES",
+  "checkpoint_sha256": "4efd945c5eefacc64d6941969a06cfc0f89dd67c87115b1206b1e1805753295c",
+  "peaks": {
+    "length": 14,
+    "first_values": [
+      {
+        "observed_mz": 138.0901,
+        "match": {
+          "atom_indices": {
+            "length": 10,
+            "first_values": [
+              0,
+              1,
+              2,
+              3,
+              9,
+              10,
+              11,
+              12
+            ]
+          },
+          "calculated_mz": 138.091340424,
+          "ppm_error": 8.982714908616542,
+          "h_shift": 1,
+          "ion_mode": "charge_only",
+          "candidate_ions": 6
+        }
+      },
+      {
+        "observed_mz": 164.0692,
+        "match": {
+          "atom_indices": {
+            "length": 12,
+            "first_values": [
+              0,
+              1,
+              2,
+              3,
+              9,
+              10,
+              11,
+              12
+            ]
+          },
+          "calculated_mz": 164.07060498,
+          "ppm_error": 8.563337908748172,
+          "h_shift": -1,
+          "ion_mode": "charge_only",
+          "candidate_ions": 8
+        }
+      },
+      {
+        "observed_mz": 166.085,
+        "match": {
+          "atom_indices": {
+            "length": 12,
+            "first_values": [
+              0,
+              1,
+              2,
+              3,
+              9,
+              10,
+              11,
+              12
+            ]
+          },
+          "calculated_mz": 166.086255044,
+          "ppm_error": 7.556636661974837,
+          "h_shift": 1,
+          "ion_mode": "charge_only",
+          "candidate_ions": 8
+        }
+      },
+      {
+        "observed_mz": 167.0882,
+        "match": null
+      },
+      {
+        "observed_mz": 204.1367,
+        "match": {
+          "atom_indices": {
+            "length": 15,
+            "first_values": [
+              0,
+              1,
+              2,
+              3,
+              9,
+              10,
+              12,
+              13
+            ]
+          },
+          "calculated_mz": 204.138290616,
+          "ppm_error": 7.791915907407357,
+          "h_shift": -1,
+          "ion_mode": "charge_only",
+          "candidate_ions": 10
+        }
+      },
+      {
+        "observed_mz": 208.1321,
+        "match": {
+          "atom_indices": {
+            "length": 15,
+            "first_values": [
+              0,
+              1,
+              2,
+              3,
+              9,
+              10,
+              11,
+              12
+            ]
+          },
+          "calculated_mz": 208.133205236,
+          "ppm_error": 5.310262088360164,
+          "h_shift": 0,
+          "ion_mode": "charge_only",
+          "candidate_ions": 16
+        }
+      },
+      {
+        "observed_mz": 222.1119,
+        "match": {
+          "atom_indices": {
+            "length": 16,
+            "first_values": [
+              2,
+              3,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14
+            ]
+          },
+          "calculated_mz": 222.112469792,
+          "ppm_error": 2.565337561929853,
+          "h_shift": 1,
+          "ion_mode": "charge_only",
+          "candidate_ions": 6
+        }
+      },
+      {
+        "observed_mz": 222.1481,
+        "match": {
+          "atom_indices": {
+            "length": 16,
+            "first_values": [
+              0,
+              1,
+              2,
+              3,
+              9,
+              10,
+              11,
+              12
+            ]
+          },
+          "calculated_mz": 222.1488553,
+          "ppm_error": 3.3999840647238218,
+          "h_shift": 0,
+          "ion_mode": "charge_only",
+          "candidate_ions": 20
+        }
+      }
+    ]
+  },
+  "matched": 11
+}
+{
+  "spec_id": "MassSpecGymID0018505",
+  "magma_matched": 3,
+  "smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c([N+](=O)[O-])c1",
+  "atom_index_basis": "zero-based RDKit atom order of the input SMILES",
+  "checkpoint_sha256": "4efd945c5eefacc64d6941969a06cfc0f89dd67c87115b1206b1e1805753295c",
+  "peaks": [
+    {
+      "observed_mz": 227.9952,
+      "match": {
+        "atom_indices": {
+          "length": 15,
+          "first_values": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "calculated_mz": 227.99611971200002,
+        "ppm_error": 4.033909485868105,
+        "h_shift": -1,
+        "ion_mode": "retained_adduct",
+        "candidate_ions": 4
+      }
+    },
+    {
+      "observed_mz": 228.9989,
+      "match": {
+        "atom_indices": {
+          "length": 17,
+          "first_values": [
+            4,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        },
+        "calculated_mz": 229.00057361600003,
+        "ppm_error": 7.3084019182339395,
+        "h_shift": -6,
+        "ion_mode": "retained_adduct",
+        "candidate_ions": 4
+      }
+    },
+    {
+      "observed_mz": 340.0512,
+      "match": {
+        "atom_indices": {
+          "length": 23,
+          "first_values": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "calculated_mz": 340.048549208,
+        "ppm_error": -7.79527318238307,
+        "h_shift": 0,
+        "ion_mode": "retained_adduct",
+        "candidate_ions": 2
+      }
+    }
+  ],
+  "matched": 3
+}
+{
+  "spec_id": "MassSpecGymID0030187",
+  "magma_matched": 24,
+  "smiles": "CCOC(=O)c1cn2nc(OP(=S)(OCC)OCC)cc2nc1C",
+  "atom_index_basis": "zero-based RDKit atom order of the input SMILES",
+  "checkpoint_sha256": "4efd945c5eefacc64d6941969a06cfc0f89dd67c87115b1206b1e1805753295c",
+  "peaks": {
+    "length": 49,
+    "first_values": [
+      {
+        "observed_mz": 64.9783,
+        "match": null
+      },
+      {
+        "observed_mz": 93.0103,
+        "match": null
+      },
+      {
+        "observed_mz": 98.985,
+        "match": {
+          "atom_indices": [
+            5,
+            6,
+            7,
+            8,
+            19,
+            20,
+            21,
+            22
+          ],
+          "calculated_mz": 98.985198324,
+          "ppm_error": 2.003576299397526,
+          "h_shift": -6,
+          "ion_mode": "retained_adduct",
+          "candidate_ions": 2
+        }
+      },
+      {
+        "observed_mz": 113.9543,
+        "match": {
+          "atom_indices": [
+            10,
+            11,
+            12,
+            13,
+            16
+          ],
+          "calculated_mz": 113.953503006,
+          "ppm_error": -6.993979165315463,
+          "h_shift": 2,
+          "ion_mode": "retained_adduct",
+          "candidate_ions": 2
+        }
+      },
+      {
+        "observed_mz": 114.9625,
+        "match": null
+      },
+      {
+        "observed_mz": 127.0156,
+        "match": {
+          "atom_indices": {
+            "length": 10,
+            "first_values": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              19,
+              20,
+              21
+            ]
+          },
+          "calculated_mz": 127.016498452,
+          "ppm_error": 7.0735563189644415,
+          "h_shift": -5,
+          "ion_mode": "retained_adduct",
+          "candidate_ions": 2
+        }
+      },
+      {
+        "observed_mz": 141.9843,
+        "match": {
+          "atom_indices": [
+            10,
+            11,
+            12,
+            13,
+            16,
+            17,
+            18
+          ],
+          "calculated_mz": 141.98480313400003,
+          "ppm_error": 3.5435889745656914,
+          "h_shift": 1,
+          "ion_mode": "retained_adduct",
+          "candidate_ions": 4
+        }
+      },
+      {
+        "observed_mz": 142.992,
+        "match": {
+          "atom_indices": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "calculated_mz": 142.992628166,
+          "ppm_error": 4.393014993934609,
+          "h_shift": 2,
+          "ion_mode": "retained_adduct",
+          "candidate_ions": 4
+        }
+      }
+    ]
+  },
+  "matched": 20
+}
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference internal" href="../tasks/ms-annotation-mechfrag.html"><span class="std std-doc">Task guide</span></a></p>
+</section>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ms-annotation-magma.html" class="btn btn-neutral float-left" title="MS/MS fragment annotation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ms-forward-glacier.html" class="btn btn-neutral float-right" title="MS/MS prediction with GLACIER" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, OpenMolSpec contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

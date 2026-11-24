@@ -2,6 +2,30 @@
 
 The sections below give each task definition and the results from its recorded evaluation runs. Open the task guide for model calls and full input/output examples.
 
+## Retrieval and reranking in a 4,096-structure library
+
+Each of 128 queries has its target in the same bank. Embedding search and matching-head reranking of the top 32 use all queries. Exhaustive reranking scores all 4,096 candidates for the first 32 queries. Targets use canonical SMILES with stereochemistry removed. The model receives no molecular formula.
+
+| Input / model | Embedding Top-1 | Shortlist Top-1 | Exhaustive Top-1 | Exhaustive Top-5 |
+| --- | --- | --- | --- | --- |
+| IR only, masked model | 0 / 128 | 0 / 128 | 0 / 32 | 0 / 32 |
+| Raman only, masked model | 0 / 128 | 0 / 128 | 0 / 32 | 0 / 32 |
+| IR + Raman, VB-Mols | 0 / 128 | 0 / 128 | 0 / 32 | 1 / 32 |
+| IR + Raman, estimated H/C | 41 / 128 | 39 / 128 | 8 / 32 | 13 / 32 |
+| IR + Raman + supplied ¹H + ¹³C | 118 / 128 | 120 / 128 | 31 / 32 | 32 / 32 |
+
+An independent method compares query spectra with a theoretical spectral library. Its first-pass Top-1 counts on the 128 queries were IR 27/128, Raman 28/128, IR + Raman 31/128, four spectra 34/128. The neural library supplies candidate SMILES only.
+
+[Download candidates, individual ranks and model fingerprints](../assets/benchmarks/matched-library-4096.json)
+
+A separate two-GPU IR + Raman adaptation submission uses connectivity-disjoint splits of 11,632 training, 1,558 validation and 24 test structures. The 24 November snapshot contains its split manifest and submission receipt. Its fitted checkpoint scores are pending.
+
+## HOMO–LUMO gap
+
+With IR, Raman and H/C available, the model reached 0.135 eV MAE and 0.199 eV RMSE on 1,024 molecules. In a separate connectivity-disjoint panel of 3,381, models fitted for IR, Raman and IR + Raman reached 0.382, 0.318 and 0.288 eV MAE. The corresponding training-mean baseline was 0.749 eV.
+
+[Download the metrics and source fingerprints](../assets/benchmarks/heldout-tasks.json)
+
 ## HOMO–LUMO gap from IR
 
 `vibrational.gap.ir`
@@ -151,6 +175,60 @@ Run settings: `sampling="reservoir"`; `seed=42`; `given_formula=false`; `given_n
 | recorded sample | recorded model | unique_candidates | 16 |
 | recorded sample | recorded model | tie_policy | stable_candidate_order |
 | recorded sample | recorded model | top_1_hit_rate | 0.0625 |
+
+## IR spectrum-to-structure retrieval
+
+`vibrational.retrieval.ir`
+
+Rank a SMILES library using one vibrational spectrum.
+
+Report query count, library size, Top-1/5 hits and mean reciprocal rank.
+
+[Task guide](../tasks/vibrational-retrieval-ir.md) · [Tutorial](../notebooks/vibrational-retrieval-ir.ipynb) · [Predictions](../assets/examples/vibrational-retrieval-ir.json)
+
+Run settings: `dataset="4096 candidates / 128 queries"`
+
+| Dataset / scope | Model / variant | Metric | Value |
+| --- | --- | --- | ---: |
+| 4096 candidates / 128 queries | reference_rank | top1_hits | 27 |
+| 4096 candidates / 128 queries | reference_rank | top5_hits | 64 |
+| 4096 candidates / 128 queries | reference_rank | mrr | 0.351101 |
+| 4096 candidates / 128 queries | reference_rank | queries | 128 |
+| 4096 candidates / 128 queries | shortlist_rank | top1_hits | 23 |
+| 4096 candidates / 128 queries | shortlist_rank | top5_hits | 71 |
+| 4096 candidates / 128 queries | shortlist_rank | mrr | 0.331961 |
+| 4096 candidates / 128 queries | shortlist_rank | queries | 128 |
+| 4096 candidates / 128 queries | full_rank | top1_hits | 21 |
+| 4096 candidates / 128 queries | full_rank | top5_hits | 62 |
+| 4096 candidates / 128 queries | full_rank | mrr | 0.307802 |
+| 4096 candidates / 128 queries | full_rank | queries | 128 |
+
+## Raman spectrum-to-structure retrieval
+
+`vibrational.retrieval.raman`
+
+Rank a SMILES library using one vibrational spectrum.
+
+Report query count, library size, Top-1/5 hits and mean reciprocal rank.
+
+[Task guide](../tasks/vibrational-retrieval-raman.md) · [Tutorial](../notebooks/vibrational-retrieval-raman.ipynb) · [Predictions](../assets/examples/vibrational-retrieval-raman.json)
+
+Run settings: `dataset="4096 candidates / 128 queries"`
+
+| Dataset / scope | Model / variant | Metric | Value |
+| --- | --- | --- | ---: |
+| 4096 candidates / 128 queries | reference_rank | top1_hits | 28 |
+| 4096 candidates / 128 queries | reference_rank | top5_hits | 76 |
+| 4096 candidates / 128 queries | reference_rank | mrr | 0.383086 |
+| 4096 candidates / 128 queries | reference_rank | queries | 128 |
+| 4096 candidates / 128 queries | shortlist_rank | top1_hits | 26 |
+| 4096 candidates / 128 queries | shortlist_rank | top5_hits | 74 |
+| 4096 candidates / 128 queries | shortlist_rank | mrr | 0.372979 |
+| 4096 candidates / 128 queries | shortlist_rank | queries | 128 |
+| 4096 candidates / 128 queries | full_rank | top1_hits | 21 |
+| 4096 candidates / 128 queries | full_rank | top5_hits | 66 |
+| 4096 candidates / 128 queries | full_rank | mrr | 0.320162 |
+| 4096 candidates / 128 queries | full_rank | queries | 128 |
 
 
 ## References

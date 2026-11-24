@@ -4,7 +4,7 @@
 
 ## 新增结构复核
 
-在 280 种可评分的验证分子上做五折验证并锁定设置，再从 MassSpecGym 测试集中另取 1,024 种结构，排除首轮的全部 384 种。此次有 875 种得到配对分数，跳过 149 种。原模型与候选模型的平均余弦相似度分别为 0.5118 和 0.5175，差值的配对 95% 区间为 [+0.0018, +0.0096]。线上模型在上述条件下采用选出的相对强度设置。SDK 可通过 `author_baseline=True` 复算原始输出。该校准适用于经过评测的权重及至多 40 个重原子的分子。复算本次结果时使用单 CPU 线程（`--threads 1`），与网页模型相同。 [配对评测记录](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_confirmation_iceberg.json)
+先在 280 个可评分的验证结构上做五折验证并锁定设置，复核样本排除了首轮测试的全部 384 种结构。在另抽的 1,024 种 MassSpecGym 结构中，875 种得到配对分数，其余 149 种未计分。校准前后的平均余弦为 0.5118 和 0.5175，差值的配对 95% 区间为 [+0.0018, +0.0096]。发布模型在经过评测的采集条件及至多 40 个重原子的分子上采用所选校准。复核时使用一个 CPU 线程，SDK 可通过 `author_baseline=True` 复算原始输出。 [配对评测记录](https://github.com/jiaqingxie/openmolspec-studio-frontend/blob/release/openmolspec-v1/results/forward_confirmation_iceberg.json)
 
 ## 验证与独立测试
 

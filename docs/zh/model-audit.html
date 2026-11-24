@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
     <link rel="next" title="Python SDK" href="api.html" />
-    <link rel="prev" title="多谱 → 结构（SpectraLLM）" href="tasks/multispectral-spectrallm-generation.html" /> 
+    <link rel="prev" title="谱图 → 分子式" href="tasks/nmr-formula.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -203,39 +203,59 @@
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.solvent_transfer</span></code></p></td>
 <td><p>1H, 13C</p></td>
-<td><p><a class="reference internal" href="tasks/nmr-solvent_transfer.html"><span class="std std-doc">H/C 跨溶剂位移 · 参考检索基线</span></a></p></td>
+<td><p><a class="reference internal" href="tasks/nmr-solvent_transfer.html"><span class="std std-doc">H/C 跨溶剂位移</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spectroscopy.reranking</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spectroscopy.qa</span></code></p></td>
+<td><p>NMR, IR, Raman</p></td>
+<td><p><a class="reference internal" href="tasks/spectroscopy-qa.html"><span class="std std-doc">谱学问答 · SpecMol</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spectroscopy.reranking</span></code></p></td>
 <td><p>IR, Raman</p></td>
 <td><p><a class="reference internal" href="tasks/spectroscopy-reranking.html"><span class="std std-doc">谱图 + 候选结构 → 重排</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vibrational.retrieval.hc</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vibrational.retrieval.hc</span></code></p></td>
 <td><p>IR, Raman, 1H, 13C</p></td>
 <td><p><a class="reference internal" href="tasks/vibrational-retrieval-hc.html"><span class="std std-doc">IR + Raman + H/C → 结构检索</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vibrational.generation.hc</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vibrational.generation.hc</span></code></p></td>
 <td><p>IR, Raman, 1H, 13C</p></td>
 <td><p><a class="reference internal" href="tasks/vibrational-generation-hc.html"><span class="std std-doc">IR + Raman + H/C → SMILES（Xinyu 协议）</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spectroscopy.reranking.hc</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spectroscopy.reranking.hc</span></code></p></td>
 <td><p>IR, Raman, 1H, 13C</p></td>
 <td><p><a class="reference internal" href="tasks/spectroscopy-reranking-hc.html"><span class="std std-doc">IR + Raman + H/C + 候选 → ITM 重排</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.hsqc.transpeaknet</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vibrational.retrieval.ir</span></code></p></td>
+<td><p>IR</p></td>
+<td><p><a class="reference internal" href="tasks/vibrational-retrieval-ir.html"><span class="std std-doc">IR → 结构检索</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vibrational.retrieval.raman</span></code></p></td>
+<td><p>RAMAN</p></td>
+<td><p><a class="reference internal" href="tasks/vibrational-retrieval-raman.html"><span class="std std-doc">RAMAN → 结构检索</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nmr.hsqc.transpeaknet</span></code></p></td>
 <td><p>HSQC</p></td>
 <td><p><a class="reference internal" href="tasks/nmr-hsqc-transpeaknet.html"><span class="std std-doc">结构与溶剂 → HSQC 交叉峰</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ms.forward.glacier</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ms.forward.glacier</span></code></p></td>
 <td><p>MS/MS</p></td>
 <td><p><a class="reference internal" href="tasks/ms-forward-glacier.html"><span class="std std-doc">分子 → MS/MS（GLACIER）</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ms.forward.iceberg</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ms.forward.iceberg</span></code></p></td>
 <td><p>MS/MS</p></td>
 <td><p><a class="reference internal" href="tasks/ms-forward-iceberg.html"><span class="std std-doc">分子 → MS/MS（ICEBERG）</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ms.annotation.magma</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ms.annotation.magma</span></code></p></td>
 <td><p>MS/MS</p></td>
 <td><p><a class="reference internal" href="tasks/ms-annotation-magma.html"><span class="std std-doc">MS/MS 峰 → MAGMa 候选碎片标注</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ms.annotation.mechfrag</span></code></p></td>
+<td><p>MS/MS</p></td>
+<td><p><a class="reference internal" href="tasks/ms-annotation-mechfrag.html"><span class="std std-doc">MS/MS 峰 → MechFrag-MS 候选碎片</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">multispectral.spectrallm.generation</span></code></p></td>
+<td><p>IR, Raman, NMR, MS/MS</p></td>
+<td><p><a class="reference internal" href="tasks/multispectral-spectrallm-generation.html"><span class="std std-doc">多谱 → 结构（SpectraLLM）</span></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -247,7 +267,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
-        <a href="tasks/multispectral-spectrallm-generation.html" class="btn btn-neutral float-left" title="多谱 → 结构（SpectraLLM）" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="tasks/nmr-formula.html" class="btn btn-neutral float-left" title="谱图 → 分子式" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="api.html" class="btn btn-neutral float-right" title="Python SDK" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

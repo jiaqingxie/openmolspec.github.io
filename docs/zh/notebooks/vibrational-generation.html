@@ -63,9 +63,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">教程</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="datasets-overview.html">探索谱学数据集</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-annotation-magma.html">MS/MS 碎片指认</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-annotation-mechfrag.html">MechFrag-MS 碎片候选指认</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-forward-glacier.html">使用 GLACIER 预测 MS/MS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-forward-iceberg.html">使用 ICEBERG 预测 MS/MS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multispectral-spectrallm-generation.html">SpectraLLM 多谱结构生成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-assignment.html">峰到原子的指认</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-forward-11B.html">11B 化学位移预测</a></li>
@@ -87,7 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="nmr-solvent_transfer.html">跨溶剂化学位移迁移</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk-inference.html">Python SDK：真实 NMR 推理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk-training-preflight.html">训练数据准备与启动前检查</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">SpecMol 谱学问答</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking.html">候选重排：IR + Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking-hc.html">候选重排：IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theory-ms-isotopes.html">质谱：同位素包络与分辨率</a></li>
@@ -110,6 +111,8 @@
 <li class="toctree-l2"><a class="reference internal" href="vibrational-generation-hc.html">结构生成：IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval.html">结构检索：IR + Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-hc.html">结构检索：IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-ir.html">IR 单谱到结构检索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-raman.html">Raman 单谱到结构检索</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#theory-simulations">Theory simulations / 理论模拟</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#nmr">核磁共振 NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ms">质谱 MS</a></li>
@@ -199,8 +202,8 @@ Examples: 3
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IR</span> <span class="pre">/</span> <span class="pre">Raman</span></code></p></td>
 <td><p>每个可见通道 1024 个强度点，按 400→4000 cm⁻¹ 排列，并采用 checkpoint 的归一化。</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">missing</span> <span class="pre">channels</span></code></p></td>
-<td><p>输入掩码选择共享四模态权重的可见通道。</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">estimated</span> <span class="pre">shifts</span></code></p></td>
+<td><p>只给 IR 和 Raman 时，软件先估计氢、碳位移，再解码候选结构。调用原作者 VB-Mols 解码器时另需提供已知分子式。</p></td>
 </tr>
 </tbody>
 </table>
@@ -212,7 +215,7 @@ Examples: 3
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SMILES</span> <span class="pre">candidates</span></code></p></td>
-<td><p>解码后有效、规范化且去重的结构；完整输入路径使用 beam 10 和 ITM 重排。</p></td>
+<td><p>从 10 条 beam 中取有效规范结构并按首次出现去重。SDK 默认保留该顺序，同时返回 ITM 排名。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">top-k</span></code></p></td>
 <td><p>分别报告生成与重排后的 top-k；不提供分子式。</p></td>

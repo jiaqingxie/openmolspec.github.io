@@ -70,15 +70,26 @@
 <li class="toctree-l2"><a class="reference internal" href="ms.html">Mass spectrometry benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational.html">IR / Raman benchmarks</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Multimodal spectroscopy benchmarks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#specmol-spectroscopy-qa">SpecMol spectroscopy QA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#retrieval-and-reranking-in-a-4-096-structure-library">Retrieval and reranking in a 4,096-structure library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ranking-generated-structures">Ranking generated structures</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#homolumo-gap-from-ir-raman-nmr">HOMO–LUMO gap from IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spectral-question-answering-with-specmol">Spectral question answering with SpecMol</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#structure-retrieval-ir-raman-nmr">Structure retrieval: IR + Raman + NMR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#structure-generation-ir-raman-nmr">Structure generation: IR + Raman + NMR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#candidate-reranking-ir-raman-nmr">Candidate reranking: IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#structure-generation-with-spectrallm">Structure generation with SpectraLLM</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="production.html">Production benchmark results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="training.html">Training benchmark configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#forward-prediction-results">Forward prediction results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#nmr-chemical-shift-r2">NMR chemical-shift R²</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#nmr-peak-position-cosine-similarity">NMR peak-position cosine similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#retrieval-and-reranking-in-a-4-096-structure-library">Retrieval and reranking in a 4,096-structure library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#nmrgym-spectrum-to-structure-evaluation">NMRGym spectrum-to-structure evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#specmol-spectroscopy-qa">SpecMol spectroscopy QA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#task-benchmarks">Task benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#training-benchmark-configurations">Training benchmark configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#metrics">Metrics</a></li>
@@ -122,6 +133,65 @@
   <section class="tex2jax_ignore mathjax_ignore" id="multimodal-spectroscopy-benchmarks">
 <h1>Multimodal spectroscopy benchmarks<a class="headerlink" href="#multimodal-spectroscopy-benchmarks" title="Link to this heading"></a></h1>
 <p>The sections below give each task definition and the results from its recorded evaluation runs. Open the task guide for model calls and full input/output examples.</p>
+<section id="specmol-spectroscopy-qa">
+<h2>SpecMol spectroscopy QA<a class="headerlink" href="#specmol-spectroscopy-qa" title="Link to this heading"></a></h2>
+<p>The released SpecMol-7B model answered 32 four-choice questions counting entries in NMRSpec ¹H or ¹³C peak lists on GPU. Scoring the full decoded answer gave <strong>4/32 correct (12.5%)</strong> and <strong>29/32 valid choices (90.6%)</strong>.</p>
+<p>The separate four-GPU LoRA submission uses 8,192 training and 512 validation questions split by connectivity. The 24 November snapshot contains the base-model result above. The adapted-model held-out result is pending.</p>
+<p><a class="reference download internal" download="" href="../_downloads/42458f75db5df795f9d3aa89280ab6f3/specmol-qa-responses.json"><span class="xref download myst">Download all questions and decoded choices</span></a></p>
+</section>
+<section id="retrieval-and-reranking-in-a-4-096-structure-library">
+<h2>Retrieval and reranking in a 4,096-structure library<a class="headerlink" href="#retrieval-and-reranking-in-a-4-096-structure-library" title="Link to this heading"></a></h2>
+<p>Each of 128 queries has its target in the same bank. Embedding search and matching-head reranking of the top 32 use all queries. Exhaustive reranking scores all 4,096 candidates for the first 32 queries. Targets use canonical SMILES with stereochemistry removed. The model receives no molecular formula.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input / model</p></th>
+<th class="head"><p>Embedding Top-1</p></th>
+<th class="head"><p>Shortlist Top-1</p></th>
+<th class="head"><p>Exhaustive Top-1</p></th>
+<th class="head"><p>Exhaustive Top-5</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>IR only, masked model</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 32</p></td>
+<td><p>0 / 32</p></td>
+</tr>
+<tr class="row-odd"><td><p>Raman only, masked model</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 32</p></td>
+<td><p>0 / 32</p></td>
+</tr>
+<tr class="row-even"><td><p>IR + Raman, VB-Mols</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 128</p></td>
+<td><p>0 / 32</p></td>
+<td><p>1 / 32</p></td>
+</tr>
+<tr class="row-odd"><td><p>IR + Raman, estimated H/C</p></td>
+<td><p>41 / 128</p></td>
+<td><p>39 / 128</p></td>
+<td><p>8 / 32</p></td>
+<td><p>13 / 32</p></td>
+</tr>
+<tr class="row-even"><td><p>IR + Raman + supplied ¹H + ¹³C</p></td>
+<td><p>118 / 128</p></td>
+<td><p>120 / 128</p></td>
+<td><p>31 / 32</p></td>
+<td><p>32 / 32</p></td>
+</tr>
+</tbody>
+</table>
+<p>An independent method compares query spectra with a theoretical spectral library. Its first-pass Top-1 counts on the 128 queries were IR 27/128, Raman 28/128, IR + Raman 31/128, four spectra 34/128. The neural library supplies candidate SMILES only.</p>
+<p><a class="reference download internal" download="" href="../_downloads/b6367ddbaa6d47290964f61c3db0b969/matched-library-4096.json"><span class="xref download myst">Download candidates, individual ranks and model fingerprints</span></a></p>
+</section>
+<section id="ranking-generated-structures">
+<h2>Ranking generated structures<a class="headerlink" href="#ranking-generated-structures" title="Link to this heading"></a></h2>
+<p>On the original 64 four-spectrum queries, the default order of distinct valid beam candidates recovered 48 top-1 targets. Sorting by the matching head recovered 44. In a separately selected panel of 24, both orders recovered 14 top-1 and 19 top-3 targets.</p>
+<p><a class="reference download internal" download="" href="../_downloads/82fded7e6efbae811ff6152951c4085a/heldout-tasks.json"><span class="xref download myst">Download the metrics and source fingerprints</span></a></p>
+</section>
 <section id="homolumo-gap-from-ir-raman-nmr">
 <h2>HOMO–LUMO gap from IR + Raman + NMR<a class="headerlink" href="#homolumo-gap-from-ir-raman-nmr" title="Link to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">vibrational.gap.ir_raman_hc</span></code></p>
@@ -172,6 +242,67 @@
 <td><p>Training-mean baseline</p></td>
 <td><p>examples</p></td>
 <td class="text-right"><p>128</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="spectral-question-answering-with-specmol">
+<h2>Spectral question answering with SpecMol<a class="headerlink" href="#spectral-question-answering-with-specmol" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">spectroscopy.qa</span></code></p>
+<p>Ask a question about a supplied spectrum.</p>
+<p>Score the complete choice and report response format validity. The separately labeled pilot scores only the first token.</p>
+<p><a class="reference internal" href="../tasks/spectroscopy-qa.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/spectroscopy-qa.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/a38455b8f002e8d2363a43e9a6948950/spectroscopy-qa.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;First</span> <span class="pre">token</span> <span class="pre">only</span> <span class="pre">/</span> <span class="pre">4</span> <span class="pre">NMR</span> <span class="pre">counting</span> <span class="pre">questions&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>First token only / 4 NMR counting questions</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>First token only / 4 NMR counting questions</p></td>
+<td><p>recorded model</p></td>
+<td><p>unrestricted_first_token_hits</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>First token only / 4 NMR counting questions</p></td>
+<td><p>recorded model</p></td>
+<td><p>four_choice_hits</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;Full</span> <span class="pre">generated</span> <span class="pre">responses</span> <span class="pre">/</span> <span class="pre">32</span> <span class="pre">examples&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Full generated responses / 32 examples</p></td>
+<td><p>recorded model</p></td>
+<td><p>examples</p></td>
+<td class="text-right"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>Full generated responses / 32 examples</p></td>
+<td><p>recorded model</p></td>
+<td><p>exact_rate</p></td>
+<td class="text-right"><p>0.125</p></td>
+</tr>
+<tr class="row-even"><td><p>Full generated responses / 32 examples</p></td>
+<td><p>recorded model</p></td>
+<td><p>format_valid_rate</p></td>
+<td class="text-right"><p>0.90625</p></td>
 </tr>
 </tbody>
 </table>
@@ -372,6 +503,13 @@
 </tr>
 </tbody>
 </table>
+</section>
+<section id="structure-generation-with-spectrallm">
+<h2>Structure generation with SpectraLLM<a class="headerlink" href="#structure-generation-with-spectrallm" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">multispectral.spectrallm.generation</span></code></p>
+<p>Generate a structure from a multispectral text prompt.</p>
+<p>Report valid output format and canonical SMILES exact match.</p>
+<p><a class="reference internal" href="../tasks/multispectral-spectrallm-generation.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/multispectral-spectrallm-generation.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/594953d75e58a0bdd392cf6c8b697b5c/multispectral-spectrallm-generation.json"><span class="xref download myst">Predictions</span></a></p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>

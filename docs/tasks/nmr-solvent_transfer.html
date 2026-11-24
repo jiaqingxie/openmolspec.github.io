@@ -58,12 +58,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tasks by spectroscopy family</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="nmr.html">NMR</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-1H.html">1H experimental peak-list prediction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-forward-13C.html">13C chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B chemical shift prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si chemical shift prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-19F.html">19F solution chemical shifts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-31P.html">31P solution chemical shifts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-11B.html">11B solution chemical shifts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nmr-forward-29Si.html">29Si solution chemical shifts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-s2m.html">Spectrum-to-structure retrieval: ¹H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-retrieval-h-m2s.html">Structure-to-spectrum retrieval: ¹H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nmr-generation-h.html">Structure elucidation from ¹H NMR</a></li>
@@ -133,7 +133,12 @@
   
   <section class="tex2jax_ignore mathjax_ignore" id="cross-solvent-chemical-shift-transfer">
 <h1>Cross-solvent chemical shift transfer<a class="headerlink" href="#cross-solvent-chemical-shift-transfer" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="../benchmarks/nmr.html"><span class="std std-doc">Expanded NMR evaluations</span></a> include all held-out experimental sites, all eligible cross-solvent pairs, and 2,048-candidate retrieval.</p>
 <p>Estimate a spectrum in a target solvent from measurements in a source solvent.</p>
+<section id="expanded-paired-reference-benchmark">
+<h2>Expanded paired reference benchmark<a class="headerlink" href="#expanded-paired-reference-benchmark" title="Link to this heading"></a></h2>
+<p>All eligible reviewed pairs gave 46 distinct molecular connectivities and 442 atom-shift pairs. With the query connectivity excluded from the reference search, ¹H MAE was 0.151 ppm versus 0.159 ppm for retaining the source shift (159 atoms). For ¹³C the corresponding values were 1.144 and 1.238 ppm (283 atoms). Seven pairs lacked an independent reference for their solvent combination.</p>
+</section>
 <section id="what-goes-in">
 <h2>What goes in<a class="headerlink" href="#what-goes-in" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
@@ -293,7 +298,7 @@
 </section>
 <section id="model-and-method">
 <h2>Model and method<a class="headerlink" href="#model-and-method" title="Link to this heading"></a></h2>
-<p>The experimental-reference model retrieves a similar molecular environment with paired measurements in both solvents. It adds the reference solvent difference to the query shift and returns the reference molecule and atom IDs alongside the estimate.</p>
+<p>Carbon defaults to the fitted ridge correction. For hydrogen, the experimental-reference model retrieves a similar molecular environment with paired measurements in both solvents. It adds the reference solvent difference to the query shift and returns the reference molecule and atom IDs alongside the estimate.</p>
 <p>Evaluate H and C shifts separately using MAE in ppm.</p>
 </section>
 <section id="reproduce">

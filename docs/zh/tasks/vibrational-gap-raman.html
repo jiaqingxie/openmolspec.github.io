@@ -70,6 +70,8 @@
 <li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval.html">结构检索：IR + Raman</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vibrational-generation.html">结构生成：IR + Raman</a></li>
 <li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking.html">候选重排：IR + Raman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-ir.html">IR 单谱到结构检索</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrational-retrieval-raman.html">Raman 单谱到结构检索</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="multimodal.html">多谱联合</a></li>
@@ -125,9 +127,14 @@
   
   <section class="tex2jax_ignore mathjax_ignore" id="raman-homolumo">
 <h1>由 Raman 预测 HOMO–LUMO 能隙<a class="headerlink" href="#raman-homolumo" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="../benchmarks/vibrational.html"><span class="std std-doc">能隙评测</span></a>收录了 1,024 条四谱输入和 3,381 条缺通道模型的结果。</p>
 <p>根据谱图估计分子的 HOMO–LUMO 能隙。</p>
 <section id="id1">
-<h2>输入是什么<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<h2>仅用振动谱的回归模型<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>输入 Raman 且没有 NMR 时，软件使用专门训练的谱到能隙回归模型。在 OpenMolSpec 理论谱上重新按连通结构划分，训练 11,568 种分子，验证 1,651 种，测试 3,381 种。测试 MAE 为 0.318 eV，训练均值对照为 0.749 eV。历史 128 个查询单独留出，回测 MAE 为 0.327 eV。下方原始图表记录四通道模型屏蔽输入后的表现。</p>
+</section>
+<section id="id2">
+<h2>输入是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -138,14 +145,14 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IR</span> <span class="pre">/</span> <span class="pre">Raman</span></code></p></td>
 <td><p>每个可见通道 1024 个强度点，按 400→4000 cm⁻¹ 排列，并采用 checkpoint 的归一化。</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">missing</span> <span class="pre">channels</span></code></p></td>
-<td><p>输入掩码选择共享四模态权重的可见通道。</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">selection</span></code></p></td>
+<td><p>根据提供的振动谱通道选择相应的能隙回归模型。</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="id2">
-<h2>输出是什么<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="id3">
+<h2>输出是什么<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -162,8 +169,8 @@
 </tbody>
 </table>
 </section>
-<section id="id3">
-<h2>真实运行案例<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="id4">
+<h2>真实运行案例<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <p>下面展示示例的输入、预测与参考。下载 JSON 可获取完整数值数组及更多示例。</p>
 <p><img alt="vibrational.gap.raman actual results" src="../_images/vibrational-gap-raman.png" /></p>
 <p><a class="reference download internal" download="" href="../_downloads/ebfe348529d3116b67fa6d93059443eb/vibrational-gap-raman.svg"><span class="xref download myst">SVG</span></a> · <a class="reference download internal" download="" href="../_downloads/690922d24cfc4c3b565a3ec7c41feec8/vibrational-gap-raman.png"><span class="xref download myst">PNG</span></a> · <a class="reference download internal" download="" href="../_downloads/cc0cbd7054c7b9c272792f7b6b5cd188/vibrational-gap-raman.json"><span class="xref download myst">Full input/output JSON</span></a></p>
@@ -192,8 +199,8 @@
 </div>
 </details>
 </section>
-<section id="id4">
-<h2>实际评测结果<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id5">
+<h2>较早的四通道模型缺谱评测<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
@@ -241,21 +248,21 @@
 </tbody>
 </table>
 </section>
-<section id="id5">
-<h2>模型与方法<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
-<p>openSpec 谱 Transformer 编码所选通道，由回归头预测能隙，输出单位为 eV。</p>
+<section id="id6">
+<h2>模型与方法<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>岭回归模型使用合并频段后的振动谱强度及与参考谱的相似度。软件根据输入通道选择模型，输出单位为 eV。</p>
 <p>报告以 eV 为单位的 MAE 与 RMSE。</p>
 </section>
-<section id="id6">
-<h2>复现方式<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<section id="id7">
+<h2>复现方式<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <p><a class="reference internal" href="../notebooks/vibrational-gap-raman.html"><span class="std std-doc">Notebook with executed figures</span></a> · <a class="reference internal" href="../quickstart.html"><span class="std std-doc">Quick Start</span></a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench<span class="w"> </span>run<span class="w"> </span>--workspace<span class="w"> </span>/path/to/OpenMolSpec<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tasks<span class="w"> </span>vibrational.gap.raman<span class="w"> </span>--limit<span class="w"> </span><span class="m">8</span><span class="w"> </span>--output<span class="w"> </span>results/vibrational-gap-raman-new.json
 </pre></div>
 </div>
 </section>
-<section id="id7">
-<h2>调用模型与微调<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<section id="id8">
+<h2>调用模型与微调<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openmolspec.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">GapModel</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">GapModel</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">'/path/to/portable-models'</span><span class="p">,</span>
     <span class="n">python</span><span class="o">=</span><span class="s1">'/path/to/vibrational-env/bin/python'</span><span class="p">)</span>
@@ -274,8 +281,8 @@
 </details>
 <p><a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">Model implementation / 模型实现</a> · <a class="reference internal" href="../model-audit.html"><span class="std std-doc">Model review / 模型检查</span></a></p>
 </section>
-<section id="id8">
-<h2>参考文献<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<section id="id9">
+<h2>参考文献<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>OpenMolSpec contributors. openSpec models and benchmark training workflows. Source archive, v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/tree/release/openmolspec-v1/documentation/assets/benchmarks">Source</a></p></li>
 <li><p>OpenMolSpec contributors. OpenMolSpec: Chemical spectroscopy datasets, models and learning workflows. Software release v1.0 (2026). <a class="reference external" href="https://github.com/jiaqingxie/openmolspec-studio-frontend/releases/tag/v1.0">Source</a></p></li>

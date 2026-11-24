@@ -27,7 +27,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Structure generation: IR + Raman + NMR" href="vibrational-generation-hc.html" />
-    <link rel="prev" title="HOMO–LUMO gap from IR + Raman + NMR" href="vibrational-gap-ir_raman_hc.html" /> 
+    <link rel="prev" title="Spectral question answering with SpecMol" href="spectroscopy-qa.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -64,9 +64,11 @@
 <li class="toctree-l2"><a class="reference internal" href="vibrational.html">IR / Raman</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="multimodal.html">Multimodal spectroscopy</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="vibrational-gap-ir_raman_hc.html">HOMO–LUMO gap from IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy-qa.html">Spectral question answering with SpecMol</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Structure retrieval: IR + Raman + NMR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vibrational-generation-hc.html">Structure generation: IR + Raman + NMR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="spectroscopy-reranking-hc.html">Candidate reranking: IR + Raman + NMR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multispectral-spectrallm-generation.html">Structure generation with SpectraLLM</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="deferred.html">Deferred tasks</a></li>
@@ -121,7 +123,12 @@
   
   <section class="tex2jax_ignore mathjax_ignore" id="structure-retrieval-ir-raman-nmr">
 <h1>Structure retrieval: IR + Raman + NMR<a class="headerlink" href="#structure-retrieval-ir-raman-nmr" title="Link to this heading"></a></h1>
+<p>The <a class="reference internal" href="../benchmarks/vibrational.html"><span class="std std-doc">4,096-candidate comparison</span></a> reports embedding search, top-32 reranking and exhaustive matching, with separate query counts.</p>
 <p>Rank molecular structures by agreement with the input spectra.</p>
+<section id="retrieval-from-1-024-candidates">
+<h2>Retrieval from 1,024 candidates<a class="headerlink" href="#retrieval-from-1-024-candidates" title="Link to this heading"></a></h2>
+<p>Using the OpenMolSpec four-channel checkpoint, with the reference present, embedding retrieval ranked it first for 63/64 queries. ITM rescoring of the top 16 gave 64/64. Exhaustive ITM scoring over all 1,024 candidates gave 8/8 on the prespecified first eight queries. Models shared identical queries and candidates. The pool contained same-formula distractors for 61 of the 64 queries.</p>
+</section>
 <section id="what-goes-in">
 <h2>What goes in<a class="headerlink" href="#what-goes-in" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
@@ -340,7 +347,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="vibrational-gap-ir_raman_hc.html" class="btn btn-neutral float-left" title="HOMO–LUMO gap from IR + Raman + NMR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="spectroscopy-qa.html" class="btn btn-neutral float-left" title="Spectral question answering with SpecMol" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="vibrational-generation-hc.html" class="btn btn-neutral float-right" title="Structure generation: IR + Raman + NMR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -1,6 +1,12 @@
 # Peak-to-atom assignment
 
+[Expanded NMR evaluations](../benchmarks/nmr.md) include all held-out experimental sites, all eligible cross-solvent pairs, and 2,048-candidate retrieval.
+
 Assign measured NMR peaks to atoms in a known molecular structure.
+
+## Experimental ground truth
+
+The frozen NMRNet assignment was scored on a structure-held-out sample of 256 NMRShiftDB connectivities per nucleus. For ¹H, 1,289 of 2,009 observed shifts across 280 spectra were assigned to the labelled or symmetry-equivalent attached heavy atom (64.2%). For ¹³C, 2,131 of 2,576 shifts across 275 spectra matched a labelled carbon site (82.7%). Unmatched peaks and conformer failures count against accuracy. The upstream checkpoint's exposure to these structures is unverified.
 
 ## What goes in
 
@@ -143,7 +149,7 @@ Inspect the input, prediction and reference for the example below. Download the 
 
 </details>
 
-## Actual evaluation results
+## Earlier evaluation without atom labels
 
 | Dataset / scope | Model / variant | Metric | Value |
 | --- | --- | --- | ---: |
@@ -157,7 +163,7 @@ Inspect the input, prediction and reference for the example below. Download the 
 
 NMRNet first predicts atomwise shifts. Symmetry-related sites are grouped, then a minimum-cost matching step pairs the measured peaks with the predicted sites. The output includes atom indices, predicted shifts, residuals and alternative assignments.
 
-Peak coverage and matched-peak MAE summarize the assignment.
+Evaluate correct experimental peak-to-site assignments, counting unmatched peaks as incorrect. The assigned-site backend accepts symmetry-equivalent sites.
 
 ## Reproduce
 

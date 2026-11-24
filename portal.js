@@ -25,7 +25,20 @@
   if(!response.ok){const failure=Error(result?.error||'The service could not complete this request');failure.retryable=response.status>=500;throw failure;}
   return result;
  }
- async function status(){try{const s=await request('/api/status');connected=s.connected;availableTools=new Set(s.tools);agentAvailable=s.agent_available!==false;$('#service-status').textContent=connected?'Model service connected':'Connecting model service…';$('#service-status').dataset.ready=String(connected);}catch{$('#service-status').textContent='Model service is reconnecting';$('#service-status').dataset.ready='false';availableTools=null;}}
+ function showAvailability(){
+  const indicator=$('#service-status');
+  indicator.textContent=connected?(agentAvailable?'Model tools and agent online':'Model tools online · live agent offline'):'Model service is reconnecting';
+  indicator.dataset.ready=String(connected);
+  const go=$('#run-agent');
+  if(go){go.disabled=busy||!agentAvailable||!connected;go.title=go.disabled?'A live agent needs a connected model provider.':'';}
+  const hint=$('#agent-availability');if(hint)hint.hidden=agentAvailable&&connected;
+ }
+ async function status(){
+  try{
+   const s=await request('/api/status');connected=s.connected;availableTools=new Set(s.tools);agentAvailable=s.agent_available!==false;
+  }catch{connected=false;availableTools=null;agentAvailable=false;}
+  showAvailability();
+ }
  status();setInterval(status,30000);
  const preview=await fetch('assets/dataset-preview.json').then(r=>r.json());
  const dataFilter=$('#dataset-filter'),search=$('#dataset-search'),recordList=$('#dataset-records'),detail=$('#dataset-detail');
@@ -62,6 +75,7 @@
    detail.append(plot(positions,intensities,s.modality,s.units,s.units==='ppm'));
    const text=[s.solvent?'Solvent: '+s.solvent:null,s.frequency?'Frequency: '+s.frequency:null,s.source_id?'Source: '+s.source_id:null].filter(Boolean).join(' · ');
    if(text)detail.append(el('p','sample-meta',text));
+   if(s.conditions?.length>1)detail.append(el('p','sample-meta','Combined peak list from '+s.conditions.length+' acquisitions.'));
   });
   const actions=el('div','sample-actions');const save=el('button','button-secondary','Download record');save.type='button';save.onclick=()=>download(sample,sample.id+'.json');
   const use=el('button','button-primary','Use this structure');use.type='button';use.onclick=()=>{switchTab('structure');$('#tool-smiles').value=sample.smiles;location.hash='tool';};actions.append(use,save);detail.append(actions);
@@ -76,10 +90,20 @@
   const view=preview.datasets.find(d=>d.id===dataset);
   $('#preview-count').textContent=samples.length+' real preview records'+(view?' · '+view.spectra.toLocaleString()+' spectra / '+view.molecules.toLocaleString()+' molecules':' across '+preview.datasets.length+' experimental views');
   if(samples.length&&!samples.some(s=>s.id===selected?.id))showSample(samples[0]);
-  if(!samples.length)recordList.append(el('p','empty-state','No records match this filter.'));
+  if(!samples.length){
+   recordList.append(el('p','empty-state','No records match this filter.'));
+   detail.replaceChildren(); selected=null;
+  }
  }
  dataFilter.addEventListener('change',filterSamples);search.addEventListener('input',filterSamples);showSample(selected);filterSamples();
 
+ document.querySelectorAll('[data-collection]').forEach(control=>control.addEventListener('click',()=>{
+  dataFilter.value=control.dataset.collection;
+  search.value='';
+  filterSamples();
+  $('#measured-records').scrollIntoView();
+  dataFilter.focus({preventScroll:true});
+ }));
  function field(label,id,value,type='text'){const holder=el('label','tool-field',label);const input=el(type==='textarea'?'textarea':'input');input.id=id;if(type!=='textarea')input.type=type;input.value=value;holder.append(input);return holder;}
  function button(text,cls='button-primary'){const b=el('button',cls,text);b.type='button';return b;}
  function selectField(label,id,choices){
@@ -134,10 +158,11 @@
   }
   if(value?.hsqc_measured){renderHsqc(value,target);return;}
   if(typeof value?.predicted_target_ppm==='number'){
-   target.append(el('h3','','Cross-solvent reference estimate'),el('p','gap-number',value.predicted_target_ppm.toFixed(3)+' ppm'),
-    el('p','result-label',value.source_solvent+' → '+value.target_solvent+' · '+value.nucleus),
-    el('p','tool-note','Shift change '+value.predicted_delta_ppm.toFixed(3)+' ppm. Nearest paired experimental reference with a different molecular connectivity.'),
-    el('p','tool-note','Reference: '+value.reference.identity+' · similarity '+value.tanimoto_similarity.toFixed(3)));
+   target.append(el('h3','','Estimated target shift'),el('p','gap-number',value.predicted_target_ppm.toFixed(3)+' ppm'),
+    el('p','result-label',[value.nucleus,value.source_solvent,value.target_solvent].filter(Boolean).join(' · ')),
+    el('p','tool-note','Shift change: '+value.predicted_delta_ppm.toFixed(3)+' ppm'));
+   if(value.reference)target.append(el('p','tool-note','Reference: '+value.reference.identity+' · similarity '+value.tanimoto_similarity.toFixed(3)));
+   else if(value.method)target.append(el('p','tool-note',value.method));
    return;
   }
   const candidates=value?.candidates||value?.records?.[0]?.candidates;
@@ -145,16 +170,16 @@
    target.append(el('h3','','Molecular candidates'));
    const rows=candidates.map((v,i)=>[i+1,v.smiles||'(empty)',typeof v.score==='number'?v.score.toFixed(5):'—']);
    target.append(resultTable(['Rank','SMILES','Model score'],rows),el('p','tool-note',result.task==='nmr.retrieval.hc.s2m'
-    ?'Ranking uses only the submitted candidates. If none is a convincing match, add more candidates or check the input spectra.'
+    ?'Ranking covers the candidate SMILES you supplied.'
     :'Scores rank candidates within this request. Verify candidates against the experimental spectra.'));
    return;
   }
-  if(value?.assignment){
-   const a=value.assignment;target.append(el('h3','','Candidate peak-to-atom assignments'));
+  if(value?.assignment||Array.isArray(value?.assignments)){
+   const a=value.assignment||value;target.append(el('h3','','Candidate peak-to-atom assignments'));
    const wrap=el('div','answer-table'),table=el('table','prediction-table'),head=el('tr');
    ['Observed / ppm','Atom indices','Predicted / ppm','Difference / ppm'].forEach(v=>head.append(el('th','',v)));table.append(head);
    a.assignments.forEach(v=>{const row=el('tr');[v.observed_ppm,v.atom_indices.join(', '),v.predicted_ppm.toFixed(4),v.absolute_error_ppm.toFixed(4)].forEach(v=>row.append(el('td','',String(v))));table.append(row);});
-   wrap.append(table);target.append(wrap,el('p','tool-note','Predicted mapping. '+a.unmatched_peak_indices.length+' unmatched peaks; atom indices are zero based. Experimental atom labels were not supplied.'));
+   wrap.append(table);target.append(wrap,el('p','tool-note','Predicted mapping. '+a.unmatched_peak_indices.length+' unmatched peaks; atom indices are zero based. Experimental atom labels were not supplied.'));return;
   }
   if(value?.records){
    value.records.forEach(record=>{target.append(el('h3','',record.nucleus+' chemical shifts'));const table=el('table','prediction-table');const header=el('tr');['Atom index','Predicted shift / ppm'].forEach(t=>header.append(el('th','',t)));table.append(header);record.prediction_ppm.forEach((v,i)=>{const row=el('tr');row.append(el('td','',String(record.atom_indices[i])),el('td','',Number(v).toFixed(4)));table.append(row);});target.append(table,plot(record.prediction_ppm,null,record.nucleus,'ppm',true));});
@@ -211,6 +236,26 @@
    el('p','tool-note',value.matcher),
    el('code','sample-smiles',value.mapped_smiles));
  }
+ function nmrGenerationFollowup(payload,output,trace){
+  if(payload?.task!=='nmr.retrieval.hc.s2m'||!payload.inputs?.query)return;
+  if(availableTools&&!availableTools.has('nmr.generation.hc'))return;
+  const measured=payload.inputs.query;
+  const section=el('section','tool-form');
+  section.append(el('h3','','None of these structures fit?'),
+   el('p','tool-note','Generate new structures from the same ¹H and ¹³C spectra. Enter the molecular formula from your experiment.'));
+  const formula=el('input');formula.type='text';formula.autocomplete='off';
+  const label=el('label','tool-field','Molecular formula');label.append(formula);
+  const generate=button('Generate alternatives');
+  generate.dataset.run='true';
+  const generated=el('div','tool-result');
+  generate.onclick=()=>{
+   const value=formula.value.trim();
+   if(!value){error('Enter a molecular formula.',generated);formula.focus();return;}
+   const query={h_nmr:measured.h_nmr,c_nmr:measured.c_nmr,formula:value};
+   run({kind:'tool',task:'nmr.generation.hc',inputs:{query}},generated,trace);
+  };
+  section.append(label,generate,generated);output.append(section);
+ }
  async function run(payload,output,trace,existingId=null){
   if(busy)return;busy=true;output.dataset.complete='false';workspace.querySelectorAll('button[data-run]').forEach(b=>b.disabled=true);
   const started=performance.now();
@@ -235,13 +280,13 @@
     const toolStages={spectra_tasks:'Reading available tools',spectra_validate:'Validating inputs',spectra_predict:'Running the spectroscopy model','vibrational.forward':'Predicting vibrational spectra','nmr.solvent_transfer':'Finding an experimental reference','nmr.hsqc.transpeaknet':'Predicting and assigning HSQC cross-peaks','nmr.forward.31P':'Predicting phosphorus chemical shifts'};
     const label=job.status==='queued'?'Waiting for the model worker':latest?.type==='tool_start'?(toolStages[latest.data.name]||'Running a spectroscopy tool'):latest?.data.label||'Processing your request';
     stage.textContent=label+' · '+elapsed;
-    if(job.status==='completed'){renderResult(job.result,output);const save=button('Download result and trace','button-secondary');save.onclick=()=>download(lastRun,'openmolspec-'+job.id+'.json');output.append(save,permalink);output.dataset.complete='true';break;}
+    if(job.status==='completed'){renderResult(job.result,output);const save=button('Download result and trace','button-secondary');const completedRun=lastRun;save.onclick=()=>download(completedRun,'openmolspec-'+job.id+'.json');output.append(save,permalink);nmrGenerationFollowup(completedRun.request,output,trace);output.dataset.complete='true';break;}
     if(job.status==='failed')throw Error(job.error||'Model execution failed');
     await new Promise(resolve=>setTimeout(resolve,1200));
    }
    if(job?.status!=='completed')throw Error('The run is still processing. Keep its run ID to continue later.');
   }catch(e){error(e.message||'The model service could not be reached.',output);}
-  finally{busy=false;workspace.querySelectorAll('button[data-run]').forEach(b=>b.disabled=false);}
+  finally{busy=false;workspace.querySelectorAll('button[data-run]').forEach(b=>b.disabled=false);if(active==='agent')showAvailability();}
  }
  function runButton(form,label,payload,output,trace){
   const go=button(label);
@@ -343,7 +388,7 @@
    selectField('Nucleus','transfer-nucleus',[['1H','¹H'],['13C','¹³C']]),
    field('Source solvent','source-solvent','CD3OD'),field('Target solvent','target-solvent','acetone-d6'),
    field('Observed shift in the source solvent / ppm','source-ppm','1.45','number'),
-   el('p','tool-note','This reference baseline uses an independently measured shift change for the selected solvent pair.'));
+   el('p','tool-note','The result identifies the fitted solvent model or paired experimental reference used for your inputs.'));
   runButton(form,'Estimate target shift',()=>{
    const read=id=>$('#'+id,form).value.trim();
    if(!read('source-ppm'))throw Error('Enter an observed shift.');
@@ -351,8 +396,25 @@
     source_solvent:read('source-solvent'),target_solvent:read('target-solvent'),source_ppm:Number(read('source-ppm'))}};
   },output,trace);
  }
+ const workflowGuides={
+  structure:['Which spectrum should this structure produce?', 'Molecular SMILES and the spectrum type. MS/MS also needs acquisition conditions.', 'NMR shifts in ppm, an MS/MS peak list, or IR and Raman intensity curves.'],
+  nmr:['Which structures fit my measured NMR peaks?', '¹H and ¹³C peak lists. Supply a candidate library to search, or a formula to generate structures.', 'Ranked molecular structures, with SMILES and model scores.'],
+  hsqc:['Which carbon is associated with each C–H cross-peak?', 'Known SMILES and solvent. Add measured (¹³C, ¹H) pairs to request assignments.', 'Predicted cross-peaks and carbon indices, with a measured/predicted overlay for assignment.'],
+  solvent:['How might this shift change in another solvent?', 'SMILES, nucleus, measured shift, source solvent and target solvent.', 'An estimated target shift, its change in ppm and the estimation method.'],
+  gap:['What molecular energy gap do the spectra predict?', 'IR, Raman, both channels, or the full set with ¹H and ¹³C shifts.', 'A predicted HOMO–LUMO energy gap in electronvolts.'],
+  generate:['Which structures fit my spectra?', 'Choose the available channels. For retrieval or reranking, also provide a candidate SMILES list.', 'Generated structures or a ranked candidate list.'],
+  agent:['Can an agent run a spectroscopy workflow for me?', 'A question with a SMILES or spectral peaks and the task you want to run.', 'An answer with model results and an inspectable record of MCP tool calls.'],
+ };
+ function showWorkflowGuide(name){
+  const [question,input,output]=workflowGuides[name];
+  const items=el('dl');
+  for(const [label,value] of [['Input',input],['Output',output]]){
+   const item=el('div');item.append(el('dt','',label),el('dd','',value));items.append(item);
+  }
+  $('#workflow-guide').replaceChildren(el('p','',question),items);
+ }
  function switchTab(name){
-  if(busy)return;active=name;document.querySelectorAll('[data-tool-tab]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.toolTab===name)));workspace.replaceChildren();
+  if(busy)return;active=name;showWorkflowGuide(name);document.querySelectorAll('[data-tool-tab]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.toolTab===name)));workspace.replaceChildren();
   const form=el('div','tool-panel');const output=resultsBox();const trace=el('div','tool-progress');trace.id='live-tool-progress';
   if(name==='structure'){
    if(workspace.dataset.exampleShifts?.startsWith('[')){
@@ -362,8 +424,13 @@
     el('p','preview-spectrum-values',shifts.map(shift=>shift.toFixed(2)).join('  /  ')+' ppm'));
    }
    form.append(el('h3','','Start with a molecular structure'),field('SMILES','tool-smiles','CCO'));
-   const select=el('select');select.id='tool-task';[['nmr.forward.13C','Predict ¹³C NMR'],['nmr.forward.1H','Predict ¹H NMR'],...Object.entries(solutionNuclei).map(([key,v])=>['nmr.forward.'+key,'Predict '+v.label+' solution NMR']),['nmr.assignment','Assign measured ¹³C peaks'],['ms.forward.glacier','Predict MS/MS · GLACIER'],['ms.forward.iceberg','Predict MS/MS · ICEBERG'],['vibrational.forward','Predict IR and Raman from a conformer']].forEach(([v,t])=>select.add(new Option(t,v)));const label=el('label','tool-field','Task');label.append(select);form.append(label);
-   const observed=field('Observed ¹³C peaks / ppm','tool-peaks','18.2, 58.3');observed.hidden=true;form.append(observed);
+   const select=el('select');select.id='tool-task';[['nmr.forward.13C','Predict ¹³C NMR'],['nmr.forward.1H','Predict ¹H NMR'],...Object.entries(solutionNuclei).map(([key,v])=>['nmr.forward.'+key,'Predict '+v.label+' solution NMR']),['nmr.assignment','Assign measured ¹H or ¹³C peaks'],['ms.forward.glacier','Predict MS/MS · GLACIER'],['ms.forward.iceberg','Predict MS/MS · ICEBERG'],['vibrational.forward','Predict IR and Raman from a conformer']].forEach(([v,t])=>select.add(new Option(t,v)));const label=el('label','tool-field','Task');label.append(select);form.append(label);
+   const assignNucleus=selectField('Nucleus','assign-nucleus',[['13C','¹³C'],['1H','¹H']]);
+   const observed=field('Measured peaks / ppm','tool-peaks','18.2, 58.3');
+   observed.hidden=true;assignNucleus.hidden=true;form.append(assignNucleus,observed);
+   $('#assign-nucleus',form).onchange=()=>{
+    if(['18.2, 58.3','1.2, 3.6'].includes($('#tool-peaks').value))$('#tool-peaks').value=$('#assign-nucleus').value==='1H'?'1.2, 3.6':'18.2, 58.3';
+   };
    const convention=el('label','tool-field','IR/Raman reference convention');convention.hidden=true;
    const profile=el('select');profile.id='vibrational-profile';
    profile.add(new Option('openSpec · 400–4,000 cm⁻¹','openspec'));
@@ -382,8 +449,8 @@
      guide.textContent=nucleus.label+' model and accuracy';guide.href='docs/tasks/nmr-forward-'+select.value.split('.').pop()+'.html';
      example.textContent='Use '+nucleus.example+' example';note.textContent='Enter a SMILES containing '+nucleus.element+'. Equivalent sites share a predicted shift.';
     }
-    const smiles=$('#tool-smiles');if(nucleus&&(smiles.value==='CCO'||Object.values(solutionNuclei).some(n=>n.smiles===smiles.value)))smiles.value=nucleus.smiles;observed.hidden=select.value!=='nmr.assignment';acquisition.hidden=!select.value.startsWith('ms.forward.');};
-   const go=button('Run model');go.dataset.run='true';go.onclick=()=>{const inputs={smiles:$('#tool-smiles').value.trim()};if(select.value==='vibrational.forward')inputs.reference_profile=profile.value;if(selectedNucleus()&&$('#phosphorus-solvent').value.trim())inputs.solvent=$('#phosphorus-solvent').value.trim();if(select.value==='nmr.assignment'){inputs.nucleus='13C';inputs.peaks_ppm=$('#tool-peaks').value.split(/[,\s]+/).filter(Boolean).map(Number);}if(select.value.startsWith('ms.forward.')){inputs.adduct=$('#ms-adduct').value.trim();inputs.collision_energy=Number($('#ms-energy').value);inputs.instrument=$('#ms-instrument').value.trim();}run({kind:'tool',task:select.value,inputs},output,trace);};form.append(go,el('p','tool-note','Chemical shifts are returned in ppm with atom indices. MS/MS returns m/z and relative intensity. IR/Raman use the generated molecular conformer.'));
+    const smiles=$('#tool-smiles');if(nucleus&&(smiles.value==='CCO'||Object.values(solutionNuclei).some(n=>n.smiles===smiles.value)))smiles.value=nucleus.smiles;observed.hidden=select.value!=='nmr.assignment';assignNucleus.hidden=observed.hidden;acquisition.hidden=!select.value.startsWith('ms.forward.');};
+   const go=button('Run model');go.dataset.run='true';go.onclick=()=>{const inputs={smiles:$('#tool-smiles').value.trim()};if(select.value==='vibrational.forward')inputs.reference_profile=profile.value;if(selectedNucleus()&&$('#phosphorus-solvent').value.trim())inputs.solvent=$('#phosphorus-solvent').value.trim();if(select.value==='nmr.assignment'){inputs.nucleus=$('#assign-nucleus').value;inputs.peaks_ppm=$('#tool-peaks').value.split(/[,\s]+/).filter(Boolean).map(Number);}if(select.value.startsWith('ms.forward.')){inputs.adduct=$('#ms-adduct').value.trim();inputs.collision_energy=Number($('#ms-energy').value);inputs.instrument=$('#ms-instrument').value.trim();}run({kind:'tool',task:select.value,inputs},output,trace);};form.append(go,el('p','tool-note','Chemical shifts are returned in ppm with atom indices. MS/MS returns m/z and relative intensity. IR/Raman use the generated molecular conformer.'));
   }else if(name==='nmr'){
    nmrStructureForm(form,output,trace);
   }else if(name==='hsqc'){
@@ -391,26 +458,62 @@
   }else if(name==='solvent'){
    solventForm(form,output,trace);
   }else if(name==='gap'||name==='generate'){
-   form.append(el('h3','',name==='gap'?'Predict a molecular energy gap':'Generate or rank molecular structures'),el('p','','Use IR, Raman and H/C NMR together. Load the recorded four-channel example or import your own JSON.'));
-   const input=el('textarea','spectral-json');input.id='tool-spectral-input';input.rows=8;input.setAttribute('aria-label','Four-channel spectral input JSON');
+   form.append(el('h3','',name==='gap'?'Predict a molecular energy gap':'Generate or rank molecular structures'));
+   const channels=selectField('Spectral channels','vib-channels',[['four','IR + Raman + ¹H + ¹³C'],['both','IR + Raman'],['ir','IR'],['raman','Raman']]);
+   form.append(channels);
+   const input=el('textarea','spectral-json');input.id='tool-spectral-input';input.rows=8;input.setAttribute('aria-label','Spectral input JSON');
    const inspect=el('details','spectral-editor');inspect.append(el('summary','','Inspect or edit numerical inputs'),input);
    const load=button('Load a real spectral example','button-secondary');load.onclick=async()=>{try{const s=await fetch('assets/tool-sample.json').then(r=>r.json());input.value=JSON.stringify(s.inputs||s,null,2);$('#channel-status').textContent='IR: 1,024 points · Raman: 1,024 points · H/C shifts loaded';}catch(e){error(e.message,form);}};
    const file=el('input');file.type='file';file.accept='.json,application/json';file.setAttribute('aria-label','Import spectral JSON');file.onchange=async()=>{try{const v=JSON.parse(await file.files[0].text());input.value=JSON.stringify(v.inputs||v,null,2);$('#channel-status').textContent='Your spectral file is loaded';}catch{error('Choose a JSON file with ir, raman, nmr_h and nmr_c arrays.',form);}};
-   form.append(load,file,el('p','tool-note','The example is a recorded computed IR/Raman/H/C benchmark input. It is separate from the experimental dataset previews below.'),el('p','channel-status','Load an example or import a JSON file.'));form.lastChild.id='channel-status';form.append(inspect);
-   const mode=el('select');mode.id='generation-mode';mode.add(new Option('Generate molecular candidates','generate'));mode.add(new Option('Rank a candidate list','retrieve'));
-   const candidates=field('Candidate SMILES, one per line','candidate-smiles','CCO\nCCCO\nCC(=O)O','textarea');candidates.hidden=true;
-   if(name==='generate'){form.append(mode,candidates);mode.onchange=()=>candidates.hidden=mode.value!=='retrieve';}
-   const go=button(name==='gap'?'Predict gap':'Run structure model');go.dataset.run='true';go.onclick=()=>{try{const inputs=JSON.parse(input.value);if(name==='generate'&&mode.value==='retrieve')inputs.candidates=$('#candidate-smiles').value.split('\n').map(v=>v.trim()).filter(Boolean);run({kind:'tool',task:name==='gap'?'vibrational.gap.ir_raman_hc':mode.value==='retrieve'?'vibrational.retrieval.hc':'vibrational.generation.hc',inputs},output,trace);}catch{error('Load the example or enter valid spectral JSON.',form);}};form.append(go);
+   form.append(load,file,el('p','tool-note','The example comes from a computed IR/Raman/H/C benchmark. Only the selected channels are sent to the model.'),el('p','channel-status','Load an example or import a JSON file.'));form.lastChild.id='channel-status';form.append(inspect);
+   const mode=selectField('Workflow','generation-mode',[['generate','Generate molecular candidates'],['retrieve','Rank a candidate list'],['rerank','Rerank a candidate shortlist']]);
+   const candidates=field('Candidate SMILES, one per line','candidate-smiles','CCO\nCCCO\nCC(=O)O','textarea');
+   const channelSelect=$('select',channels),modeSelect=$('select',mode);
+   if(name==='generate')form.append(mode,candidates);
+   function updateModes(){
+    const view=channelSelect.value;
+    modeSelect.options[0].disabled=view!=='four';
+    modeSelect.options[2].disabled=!['four','both'].includes(view);
+    if(modeSelect.selectedOptions[0].disabled)modeSelect.value='retrieve';
+    candidates.hidden=modeSelect.value==='generate';
+   }
+   channelSelect.onchange=modeSelect.onchange=updateModes;updateModes();
+   runButton(form,name==='gap'?'Predict gap':'Run structure model',()=>{
+    let all;
+    try{all=JSON.parse(input.value);}catch{throw Error('Load the example or enter valid spectral JSON.');}
+    const view=channelSelect.value;
+    const keys={four:['ir','raman','nmr_h','nmr_c'],both:['ir','raman'],ir:['ir'],raman:['raman']}[view];
+    const inputs={};
+    for(const key of keys){
+     if(!Array.isArray(all?.[key])||!all[key].length)throw Error('Missing spectral input: '+key);
+     inputs[key]=all[key];
+    }
+    let task;
+    if(name==='gap')task='vibrational.gap.'+({four:'ir_raman_hc',both:'ir_raman',ir:'ir',raman:'raman'}[view]);
+    else if(modeSelect.value==='generate')task='vibrational.generation.hc';
+    else{
+     inputs.candidates=$('textarea',candidates).value.trim().split(/\r?\n/).map(v=>v.trim()).filter(Boolean);
+     if(inputs.candidates.length<2)throw Error('Enter at least two candidate SMILES.');
+     inputs.top_k=Math.min(10,inputs.candidates.length);
+     if(modeSelect.value==='rerank'){
+      task='spectroscopy.reranking'+(view==='four'?'.hc':'');
+      inputs.shortlist=Math.min(32,inputs.candidates.length);
+     }else task='vibrational.retrieval'+({four:'.hc',both:'',ir:'.ir',raman:'.raman'}[view]);
+    }
+    return {kind:'tool',task,inputs};
+   },output,trace);
   }else{
    form.classList.add('agent-composer');form.append(el('h3','','Ask the spectroscopy agent'),el('p','','Watch the agent discover tools, validate your inputs, call a model and explain its output.'));
-   form.append(field('Your question','agent-prompt','请先查看可用工具，验证乙醇 CCO 的输入，再预测它的 13C NMR 化学位移。用中文给出原子编号和 ppm 数值。','textarea'));
-   const examples=el('div','prompt-examples');['Predict the ¹³C NMR shifts of ethanol (CCO).','Validate CCO and assign measured carbon peaks at 18.2 and 58.3 ppm.'].forEach(text=>{const b=button(text,'prompt-example');b.onclick=()=>$('#agent-prompt').value=text;examples.append(b);});form.append(examples);
-   const go=button('Run Agent Harness');go.id='run-agent';go.dataset.run='true';go.onclick=()=>run({kind:'agent',prompt:$('#agent-prompt').value},output,trace);form.append(go,el('p','tool-note','Model API → MCP tool discovery → input validation → model execution. Expand each tool call to inspect its input and output.'));
+   const startingPrompt='List available tools, validate ethanol (CCO), then predict its ¹³C shifts with atom indices and ppm values.';
+   form.append(field('Your question','agent-prompt',window.omsTranslate(startingPrompt),'textarea'));
+   const examples=el('div','prompt-examples');['Predict the ¹³C NMR shifts of ethanol (CCO).','Validate CCO and assign measured carbon peaks at 18.2 and 58.3 ppm.'].forEach(text=>{const b=button(text,'prompt-example');b.onclick=()=>$('#agent-prompt').value=window.omsTranslate(text);examples.append(b);});form.append(examples);
+   const go=button('Run Agent Harness');go.id='run-agent';go.dataset.run='true';go.onclick=()=>run({kind:'agent',prompt:$('#agent-prompt').value},output,trace);const hint=el('p','tool-note','Live questions require a connected model provider. You can explore the recorded Harness cases below.');
+   hint.id='agent-availability';form.append(hint);form.append(go,el('p','tool-note','Model API → MCP tool discovery → input validation → model execution. Expand each tool call to inspect its input and output.'));
   }
-  const response=el('div','tool-response');response.append(trace,output);workspace.append(form,response);
+  const response=el('div','tool-response');response.append(trace,output);workspace.append(form,response);if(name==='agent')showAvailability();
  }
  document.querySelectorAll('[data-tool-tab]').forEach(b=>b.onclick=()=>switchTab(b.dataset.toolTab));switchTab('structure');
- function loadLinkedExample(){
+ async function loadLinkedExample(){
   if(busy)return;
   const saved=location.hash.match(/^#run-([0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12})$/i);
   if(saved){switchTab('structure');run({},$('#tool-results'),$('#live-tool-progress'),saved[1]);$('#tool-workspace').scrollIntoView();return;}
@@ -425,13 +528,29 @@
   if(location.hash==='#tool-1h'||location.hash==='#tool-13c'){
    switchTab('structure');const task=$('#tool-task');task.value=location.hash==='#tool-1h'?'nmr.forward.1H':'nmr.forward.13C';task.onchange();$('#tool-smiles').value='CCO';$('#tool-workspace').scrollIntoView();return;
   }
+  if(location.hash==='#tool-sucrose'){
+   switchTab('hsqc');
+   const form=$('#hsqc-smiles').parentElement.parentElement;
+   try{
+    const response=await fetch('assets/specimen/sucrose.json');
+    if(!response.ok)throw Error('Could not load the sucrose record.');
+    const sample=await response.json();
+    if(!form.isConnected)return;
+    $('#hsqc-smiles',form).value=sample.smiles;
+    $('#hsqc-solvent',form).value=sample.solvent;
+    $('#hsqc-peaks',form).value=sample.hsqcPairs.map(row=>row.join(', ')).join('\n');
+    const note=el('p','tool-note','Loaded sucrose in D₂O · BMRB bmse000119.');
+    $('#hsqc-example',form).before(note);
+   }catch(e){error(e.message,form);}
+   return;
+  }
   if(location.hash!=='#tool-hsqc')return;
   switchTab('hsqc');
   $('#hsqc-example').click();
  }
  window.addEventListener('hashchange',loadLinkedExample);
- document.querySelector('.hero-text-link[href="#tool-hsqc"]').addEventListener('click',()=>{
-  if(location.hash==='#tool-hsqc')loadLinkedExample();
+ document.querySelector('.hero-text-link')?.addEventListener('click',event=>{
+  if(location.hash===event.currentTarget.hash)loadLinkedExample();
  });
  loadLinkedExample();
  document.querySelectorAll('[data-open-workflow]').forEach(control=>control.onclick=()=>{

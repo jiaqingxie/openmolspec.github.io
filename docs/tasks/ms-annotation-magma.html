@@ -24,7 +24,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="IR / Raman" href="vibrational.html" />
+    <link rel="next" title="MS/MS fragment candidates with MechFrag-MS" href="ms-annotation-mechfrag.html" />
     <link rel="prev" title="MS/MS prediction with ICEBERG" href="ms-forward-iceberg.html" /> 
 </head>
 
@@ -62,6 +62,7 @@
 <li class="toctree-l3"><a class="reference internal" href="ms-forward-glacier.html">MS/MS prediction with GLACIER</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ms-forward-iceberg.html">MS/MS prediction with ICEBERG</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">MS/MS fragment annotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ms-annotation-mechfrag.html">MS/MS fragment candidates with MechFrag-MS</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational.html">IR / Raman</a></li>
@@ -118,7 +119,12 @@
   
   <section class="tex2jax_ignore mathjax_ignore" id="ms-ms-fragment-annotation">
 <h1>MS/MS fragment annotation<a class="headerlink" href="#ms-ms-fragment-annotation" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="../benchmarks/ms.html"><span class="std std-doc">Mass coverage on identical observed peaks</span></a> compares MechFrag-MS and MAGMa at 10 ppm.</p>
 <p>Find molecular fragments that explain the measured MS/MS peaks.</p>
+<section id="expanded-spectrum-benchmark">
+<h2>Expanded spectrum benchmark<a class="headerlink" href="#expanded-spectrum-benchmark" title="Link to this heading"></a></h2>
+<p>MAGMa annotated 64 MassSpecGym test spectra at 10 ppm with a 24-heavy-atom limit. The benchmark checked 70,498 candidate fragment mappings against the parent structure. At least one candidate matched the mass of 49.80% of observed peaks. Fragment identities require independent labels to score structural correctness.</p>
+</section>
 <section id="what-goes-in">
 <h2>What goes in<a class="headerlink" href="#what-goes-in" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
@@ -493,7 +499,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="ms-forward-iceberg.html" class="btn btn-neutral float-left" title="MS/MS prediction with ICEBERG" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="vibrational.html" class="btn btn-neutral float-right" title="IR / Raman" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ms-annotation-mechfrag.html" class="btn btn-neutral float-right" title="MS/MS fragment candidates with MechFrag-MS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

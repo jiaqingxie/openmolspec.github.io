@@ -20,10 +20,10 @@
    "id": "23928f1fa626",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-11-21T10:48:35.487448Z",
-     "iopub.status.busy": "2026-11-21T10:48:35.487194Z",
-     "iopub.status.idle": "2026-11-21T10:48:35.530285Z",
-     "shell.execute_reply": "2026-11-21T10:48:35.526007Z"
+     "iopub.execute_input": "2026-11-24T10:07:53.258009Z",
+     "iopub.status.busy": "2026-11-24T10:07:53.257807Z",
+     "iopub.status.idle": "2026-11-24T10:07:53.301783Z",
+     "shell.execute_reply": "2026-11-24T10:07:53.299301Z"
     }
    },
    "outputs": [
@@ -65,7 +65,7 @@
     "\n",
     "| Field | Meaning |\n",
     "| --- | --- |\n",
-    "| `SMILES candidates` | 解码后有效、规范化且去重的结构；完整输入路径使用 beam 10 和 ITM 重排。 |\n",
+    "| `SMILES candidates` | 从 10 条 beam 中取有效规范结构并按首次出现去重。SDK 默认保留该顺序，同时返回 ITM 排名。 |\n",
     "| `top-k` | 分别报告生成与重排后的 top-k；不提供分子式。 |\n",
     "\n",
     "查看下面的示例记录。长数组显示长度与前几个数值，下载 JSON 可获取完整数组。"
@@ -77,10 +77,10 @@
    "id": "90e12c524e69",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-11-21T10:48:35.535179Z",
-     "iopub.status.busy": "2026-11-21T10:48:35.534794Z",
-     "iopub.status.idle": "2026-11-21T10:48:35.539251Z",
-     "shell.execute_reply": "2026-11-21T10:48:35.538329Z"
+     "iopub.execute_input": "2026-11-24T10:07:53.304292Z",
+     "iopub.status.busy": "2026-11-24T10:07:53.303819Z",
+     "iopub.status.idle": "2026-11-24T10:07:53.312609Z",
+     "shell.execute_reply": "2026-11-24T10:07:53.311112Z"
     }
    },
    "outputs": [
@@ -274,10 +274,10 @@
    "id": "d90c81bb6005",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-11-21T10:48:35.541375Z",
-     "iopub.status.busy": "2026-11-21T10:48:35.541092Z",
-     "iopub.status.idle": "2026-11-21T10:48:36.892404Z",
-     "shell.execute_reply": "2026-11-21T10:48:36.890490Z"
+     "iopub.execute_input": "2026-11-24T10:07:53.315185Z",
+     "iopub.status.busy": "2026-11-24T10:07:53.314941Z",
+     "iopub.status.idle": "2026-11-24T10:07:54.179570Z",
+     "shell.execute_reply": "2026-11-24T10:07:54.177872Z"
     }
    },
    "outputs": [
@@ -338,10 +338,10 @@
    "id": "b2e448559699",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-11-21T10:48:36.894954Z",
-     "iopub.status.busy": "2026-11-21T10:48:36.894407Z",
-     "iopub.status.idle": "2026-11-21T10:48:39.204526Z",
-     "shell.execute_reply": "2026-11-21T10:48:39.202937Z"
+     "iopub.execute_input": "2026-11-24T10:07:54.181950Z",
+     "iopub.status.busy": "2026-11-24T10:07:54.181511Z",
+     "iopub.status.idle": "2026-11-24T10:07:56.415454Z",
+     "shell.execute_reply": "2026-11-24T10:07:56.414118Z"
     }
    },
    "outputs": [
@@ -543,11 +543,11 @@
   ],
   "openmolspec_execution": {
    "engine": "jupyter",
-   "evaluation_index_sha256": "9e6e757d145143791db0d1a97b2677e88f3b30b31606b9904cb4c479a028b057",
-   "evidence_sha256": "40264e726488398dc5a47fb7eb7a386a16ba6653e4ffcd3a617b645f9e97615b",
+   "evaluation_index_sha256": "250e5f79ad07913c972f05b004161fc200b29763e8acc108508a0e92a4ce27b5",
+   "evidence_sha256": "d42572c71a1269dfd743962f7d9a34416d2eaef215a34ecf5577f681e11ac47a",
    "model_execution_enabled": false,
    "scope": "real_input_output_recomputed_diagnostics_and_scientific_figures",
-   "source_sha256": "1ee0d2dd3f8f82f74be241732d58f6c62995ee1019f4b19f17652de30e8614d7",
+   "source_sha256": "1cb4feebdab2a40b3a5c8b4d16ba6b9018674d062c41ca1a80bd080fadb1840e",
    "training_performed": false
   }
  },

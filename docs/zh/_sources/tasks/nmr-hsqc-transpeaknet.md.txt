@@ -4,7 +4,13 @@
 
 ## 验证与独立测试
 
-使用 16,311 种分子的银标准谱拟合校正量，再在 3,968 种独立验证分子上选定参数。两个集合均已排除专家测试分子的连通结构。在 479 张专家指认谱上，碳 MAE 从 2.028 降至 **2.005 ppm**，氢 MAE 从 0.1659 降至 **0.1642 ppm**。同一批 7,926 个实测交叉峰中，网页正确指认的峰从 5,141 个增至 5,214 个。下方的示例来自原作者权重，可通过 `--hsqc-author-baseline` 复现。 [TransPeakNet](https://www.nature.com/articles/s42004-025-01455-9) · [2DNMRGym (CC BY-NC 4.0)](https://huggingface.co/datasets/siriusxiao/2DNMRGym)
+主基准使用 2DNMRGym 官方的溶剂和逐位点标签。479 张谱上的 ¹³C / ¹H 位点 MAE 为 2.068 / 0.166 ppm，峰位 cosine 为 0.2118。万卷是单独的局部报告峰基准。用项目根目录下的命令可重跑两组。
+
+```sh
+python scripts/evaluate_hsqc_panels.py --panels results/hsqc_benchmarks --source /path/to/2dNMR
+```
+
+以下校准对照使用同一批谱的 TransPeakNet 作者标注版本。使用 16,311 种分子的银标准谱拟合校正量，再在 3,968 种独立验证分子上选定参数。两个集合均已排除专家测试分子的连通结构。在 479 张专家指认谱上，碳 MAE 从 2.028 降至 **2.005 ppm**，氢 MAE 从 0.1659 降至 **0.1642 ppm**。同一批 7,926 个实测交叉峰中，网页正确指认的峰从 5,141 个增至 5,214 个。下方的示例来自原作者权重，可通过 `--hsqc-author-baseline` 复现。 [TransPeakNet](https://www.nature.com/articles/s42004-025-01455-9) · [2DNMRGym (CC BY-NC 4.0)](https://huggingface.co/datasets/siriusxiao/2DNMRGym)
 
 ## 输入是什么
 

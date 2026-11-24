@@ -4358,7 +4358,24 @@
     }
   ],
   "nmr.formula": [],
-  "spectroscopy.qa": [],
+  "spectroscopy.qa": [
+    {
+      "dataset": "First token only / 4 NMR counting questions",
+      "metrics": {
+        "examples": 4,
+        "unrestricted_first_token_hits": 0,
+        "four_choice_hits": 0
+      }
+    },
+    {
+      "dataset": "Full generated responses / 32 examples",
+      "metrics": {
+        "examples": 32,
+        "exact_rate": 0.125,
+        "format_valid_rate": 0.90625
+      }
+    }
+  ],
   "spectroscopy.reranking": [
     {
       "dataset": null,
@@ -4447,6 +4464,56 @@
       "seed": 42
     }
   ],
+  "vibrational.retrieval.ir": [
+    {
+      "dataset": "4096 candidates / 128 queries",
+      "metrics": {
+        "reference_rank": {
+          "top1_hits": 27,
+          "top5_hits": 64,
+          "mrr": 0.3511007387383326,
+          "queries": 128
+        },
+        "shortlist_rank": {
+          "top1_hits": 23,
+          "top5_hits": 71,
+          "mrr": 0.3319611445613743,
+          "queries": 128
+        },
+        "full_rank": {
+          "top1_hits": 21,
+          "top5_hits": 62,
+          "mrr": 0.3078015779495653,
+          "queries": 128
+        }
+      }
+    }
+  ],
+  "vibrational.retrieval.raman": [
+    {
+      "dataset": "4096 candidates / 128 queries",
+      "metrics": {
+        "reference_rank": {
+          "top1_hits": 28,
+          "top5_hits": 76,
+          "mrr": 0.3830857885834784,
+          "queries": 128
+        },
+        "shortlist_rank": {
+          "top1_hits": 26,
+          "top5_hits": 74,
+          "mrr": 0.3729788599218622,
+          "queries": 128
+        },
+        "full_rank": {
+          "top1_hits": 21,
+          "top5_hits": 66,
+          "mrr": 0.320162356506632,
+          "queries": 128
+        }
+      }
+    }
+  ],
   "nmr.hsqc.transpeaknet": [
     {
       "dataset": "479 expert spectra",
@@ -4506,6 +4573,17 @@
       },
       "counts": {
         "passed": 2
+      }
+    }
+  ],
+  "ms.annotation.mechfrag": [
+    {
+      "dataset": "MassSpecGym / 10 ppm",
+      "metrics": {
+        "variant": "balanced_neutral_context",
+        "peaks": 1741,
+        "matched_fraction": 0.6226306720275704,
+        "magma_matched_fraction_same_peaks": 0.5812751292360713
       }
     }
   ],

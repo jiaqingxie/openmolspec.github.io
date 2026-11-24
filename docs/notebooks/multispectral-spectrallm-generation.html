@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>多谱 → 结构（SpectraLLM） &mdash; OpenMolSpec v1.0</title>
+  <title>Structure generation with SpectraLLM &mdash; OpenMolSpec v1.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
@@ -62,9 +62,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="datasets-overview.html">Exploring the spectroscopy datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-annotation-magma.html">MS/MS fragment annotation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-annotation-mechfrag.html">MS/MS fragment candidates with MechFrag-MS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-forward-glacier.html">MS/MS prediction with GLACIER</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-forward-iceberg.html">MS/MS prediction with ICEBERG</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Structure generation with SpectraLLM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-assignment.html">Peak-to-atom assignment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-forward-11B.html">11B chemical shift prediction</a></li>
@@ -86,7 +87,7 @@
 <li class="toctree-l2"><a class="reference internal" href="nmr-solvent_transfer.html">Cross-solvent chemical shift transfer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk-inference.html">Python SDK: real NMR inference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk-training-preflight.html">Training data preparation and preflight</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">谱学问答 / 推理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy-qa.html">Spectral question answering with SpecMol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking.html">Candidate reranking: IR + Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking-hc.html">Candidate reranking: IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theory-ms-isotopes.html">Mass spectrometry: isotope envelopes and resolving power</a></li>
@@ -102,6 +103,8 @@
 <li class="toctree-l2"><a class="reference internal" href="vibrational-generation-hc.html">Structure generation: IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval.html">Structure retrieval: IR + Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-hc.html">Structure retrieval: IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-ir.html">IR spectrum-to-structure retrieval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-raman.html">Raman spectrum-to-structure retrieval</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#theory-simulations">Theory simulations / 理论模拟</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#nmr">NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#mass-spectrometry">Mass spectrometry</a></li>
@@ -136,7 +139,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Tutorials</a></li>
-      <li class="breadcrumb-item active">多谱 → 结构（SpectraLLM）</li>
+      <li class="breadcrumb-item active">Structure generation with SpectraLLM</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/notebooks/multispectral-spectrallm-generation.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -150,9 +153,10 @@
     <p><a class="btn btn-neutral" href="../downloads/notebooks/multispectral-spectrallm-generation.ipynb" download>Download notebook</a></p>
   
   
-  <section class="tex2jax_ignore mathjax_ignore" id="spectrallm">
-<h1>多谱 → 结构（SpectraLLM）<a class="headerlink" href="#spectrallm" title="Link to this heading"></a></h1>
-<p>Additional spectroscopy task.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="structure-generation-with-spectrallm">
+<h1>Structure generation with SpectraLLM<a class="headerlink" href="#structure-generation-with-spectrallm" title="Link to this heading"></a></h1>
+<p>Generate a structure from a multispectral text prompt.</p>
+<p>The released 32B model reads the author system message and spectrum prompt. The reference SMILES is used only during scoring.</p>
 <p>This tutorial loads the saved predictions, explains the input/output fields and evaluates the results. Use the final command to run the model on a new dataset.</p>
 <div class="cell config_scroll_outputs docutils container">
 <div class="cell_input docutils container">
@@ -178,7 +182,26 @@ Examples: 0
 </div>
 </div>
 </div>
-<p>Task deferred by the user. No model inference or new scientific score is presented.</p>
+<p>The released 32B model reads the author system message and spectrum prompt. The reference SMILES is used only during scoring.</p>
+<p>Report valid output format and canonical SMILES exact match.</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">results_table</span><span class="p">(</span><span class="n">evidence</span><span class="p">,</span> <span class="kc">True</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evidence</span><span class="p">[</span><span class="s1">'status'</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">evidence</span><span class="p">[</span><span class="s1">'examples'</span><span class="p">][:</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">compact</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p>| Dataset / scope | Model / variant | Metric | Value |
+| — | — | — | —: |</p>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>awaiting_evaluation
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference internal" href="../tasks/multispectral-spectrallm-generation.html"><span class="std std-doc">Task guide</span></a></p>
 </section>
 
 

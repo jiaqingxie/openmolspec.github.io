@@ -73,7 +73,8 @@
 <li class="toctree-l2"><a class="reference internal" href="ms.html">MS Spectra Harness</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Vibrational Spectra Harness</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">输出</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">参考文献</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">显式候选库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">参考文献</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html">Examples</a></li>
@@ -149,7 +150,14 @@
 <p><a class="reference internal" href="../tasks/vibrational-gap-ir_raman_hc.html"><span class="std std-doc">Task guide / 任务指南</span></a> · <a class="reference internal" href="../api-reference/module-harness.html"><span class="std std-doc">Python API</span></a></p>
 </section>
 <section id="id2">
-<h2>参考文献<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<h2>显式候选库<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>给定 IR 和 Raman 时，<code class="docutils literal notranslate"><span class="pre">vibrational.retrieval</span></code> 默认从两种实测输入估计 H/C 位移。<code class="docutils literal notranslate"><span class="pre">spectroscopy.reranking</span></code> 可通过 <code class="docutils literal notranslate"><span class="pre">shortlist</span></code> 指定先用嵌入选多少候选，再用 ITM 排序。<code class="docutils literal notranslate"><span class="pre">vibrational.retrieval.ir</span></code> 和 <code class="docutils literal notranslate"><span class="pre">vibrational.retrieval.raman</span></code> 分别接收单一通道。以下离线命令可复现跨候选全库的参考谱方法。它从安装包读取拟合集索引。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>openmolspec_bench.vib_reference_library<span class="w"> </span>--portable<span class="w"> </span>/path/to/vib-assets<span class="w">   </span>--pool<span class="w"> </span><span class="m">4096</span><span class="w"> </span>--queries<span class="w"> </span><span class="m">128</span><span class="w"> </span>--seed<span class="w"> </span><span class="m">1123</span><span class="w"> </span>--output<span class="w"> </span>reference4096.json
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>参考文献<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>DeepSeek-AI. DeepSeek Harness: modular agent tools and execution infrastructure. Software repository. Accessed 18 November 2026. <a class="reference external" href="https://github.com/deepseek-ai/deepseek-harness">Source</a></p></li>
 <li><p>Xu, F., Guo, W., Wang, F., Yao, L., Wang, H., Tang, F., Gao, Z., Zhang, L., E, W., Tian, Z.-Q., et al. Toward a unified benchmark and framework for deep learning-based prediction of nuclear magnetic resonance chemical shifts. Nature Computational Science 5, 292–300 (2025). doi:10.1038/s43588-025-00783-z. <a class="reference external" href="https://doi.org/10.1038/s43588-025-00783-z">Source</a></p></li>

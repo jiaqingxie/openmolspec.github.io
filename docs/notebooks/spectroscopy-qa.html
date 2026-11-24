@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>谱学问答 / 推理 &mdash; OpenMolSpec v1.0</title>
+  <title>Spectral question answering with SpecMol &mdash; OpenMolSpec v1.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
@@ -62,9 +62,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="datasets-overview.html">Exploring the spectroscopy datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-annotation-magma.html">MS/MS fragment annotation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ms-annotation-mechfrag.html">MS/MS fragment candidates with MechFrag-MS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-forward-glacier.html">MS/MS prediction with GLACIER</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ms-forward-iceberg.html">MS/MS prediction with ICEBERG</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multispectral-spectrallm-generation.html">多谱 → 结构（SpectraLLM）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multispectral-spectrallm-generation.html">Structure generation with SpectraLLM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-assignment.html">Peak-to-atom assignment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-formula.html">谱图 → 分子式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nmr-forward-11B.html">11B chemical shift prediction</a></li>
@@ -86,7 +87,7 @@
 <li class="toctree-l2"><a class="reference internal" href="nmr-solvent_transfer.html">Cross-solvent chemical shift transfer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk-inference.html">Python SDK: real NMR inference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk-training-preflight.html">Training data preparation and preflight</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">谱学问答 / 推理</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Spectral question answering with SpecMol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking.html">Candidate reranking: IR + Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy-reranking-hc.html">Candidate reranking: IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theory-ms-isotopes.html">Mass spectrometry: isotope envelopes and resolving power</a></li>
@@ -102,6 +103,8 @@
 <li class="toctree-l2"><a class="reference internal" href="vibrational-generation-hc.html">Structure generation: IR + Raman + NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval.html">Structure retrieval: IR + Raman</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-hc.html">Structure retrieval: IR + Raman + NMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-ir.html">IR spectrum-to-structure retrieval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vibrational-retrieval-raman.html">Raman spectrum-to-structure retrieval</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#theory-simulations">Theory simulations / 理论模拟</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#nmr">NMR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#mass-spectrometry">Mass spectrometry</a></li>
@@ -136,7 +139,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Tutorials</a></li>
-      <li class="breadcrumb-item active">谱学问答 / 推理</li>
+      <li class="breadcrumb-item active">Spectral question answering with SpecMol</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/notebooks/spectroscopy-qa.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -150,9 +153,10 @@
     <p><a class="btn btn-neutral" href="../downloads/notebooks/spectroscopy-qa.ipynb" download>Download notebook</a></p>
   
   
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>谱学问答 / 推理<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
-<p>Additional spectroscopy task.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="spectral-question-answering-with-specmol">
+<h1>Spectral question answering with SpecMol<a class="headerlink" href="#spectral-question-answering-with-specmol" title="Link to this heading"></a></h1>
+<p>Ask a question about a supplied spectrum.</p>
+<p>The released SpecMol-7B chat model receives the question and spectrum as text.</p>
 <p>This tutorial loads the saved predictions, explains the input/output fields and evaluates the results. Use the final command to run the model on a new dataset.</p>
 <div class="cell config_scroll_outputs docutils container">
 <div class="cell_input docutils container">
@@ -173,12 +177,55 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Task: spectroscopy.qa
-Examples: 0
+Examples: 6
 </pre></div>
 </div>
 </div>
 </div>
-<p>Task deferred by the user. No model inference or new scientific score is presented.</p>
+<p>The released SpecMol-7B chat model receives the question and spectrum as text.</p>
+<p>Score the complete choice and report response format validity. The separately labeled pilot scores only the first token.</p>
+<div class="cell config_scroll_outputs docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">results_table</span><span class="p">(</span><span class="n">evidence</span><span class="p">,</span> <span class="kc">True</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evidence</span><span class="p">[</span><span class="s1">'status'</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">evidence</span><span class="p">[</span><span class="s1">'examples'</span><span class="p">][:</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">compact</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p>| Dataset / scope | Model / variant | Metric | Value |
+| — | — | — | —: |
+| First token only / 4 NMR counting questions | recorded model | examples | 4 |
+| First token only / 4 NMR counting questions | recorded model | unrestricted_first_token_hits | 0 |
+| First token only / 4 NMR counting questions | recorded model | four_choice_hits | 0 |
+| Full generated responses / 32 examples | recorded model | examples | 32 |
+| Full generated responses / 32 examples | recorded model | exact_rate | 0.125 |
+| Full generated responses / 32 examples | recorded model | format_valid_rate | 0.90625 |</p>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>recorded_results
+{
+  "target": "D",
+  "first_token": "A",
+  "forced_choice": "A",
+  "prompt_sha256": "516228008a5fa802263c63ec9844e18f7f5a1e53e89d3ebe97f8973433d8dbfc"
+}
+{
+  "target": "B",
+  "first_token": "&lt;",
+  "forced_choice": "D",
+  "prompt_sha256": "dfeb0eb0d39689fc5960e77bd8ee3910141657f05e9e9d88203c88f1ce8c1265"
+}
+{
+  "target": "B",
+  "first_token": "A",
+  "forced_choice": "A",
+  "prompt_sha256": "350d27704be9911354ef9b451cdeb6b6580afe15e79576a311eb3837b0df2776"
+}
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference internal" href="../tasks/spectroscopy-qa.html"><span class="std std-doc">Task guide</span></a></p>
 </section>
 
 

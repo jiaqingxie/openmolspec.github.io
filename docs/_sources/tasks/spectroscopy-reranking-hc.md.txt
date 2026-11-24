@@ -1,6 +1,12 @@
 # Candidate reranking: IR + Raman + NMR
 
+The [4,096-candidate comparison](../benchmarks/vibrational.md) reports embedding search, top-32 reranking and exhaustive matching, with separate query counts.
+
 Rank molecular structures by agreement with the input spectra.
+
+## Retrieval from 1,024 candidates
+
+Using the OpenMolSpec four-channel checkpoint, with the reference present, embedding retrieval ranked it first for 63/64 queries. ITM rescoring of the top 16 gave 64/64. Exhaustive ITM scoring over all 1,024 candidates gave 8/8 on the prespecified first eight queries. Models shared identical queries and candidates. The pool contained same-formula distractors for 61 of the 64 queries.
 
 ## What goes in
 

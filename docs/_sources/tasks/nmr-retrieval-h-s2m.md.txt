@@ -1,5 +1,7 @@
 # Spectrum-to-structure retrieval: ¹H
 
+[Expanded NMR evaluations](../benchmarks/nmr.md) include all held-out experimental sites, all eligible cross-solvent pairs, and 2,048-candidate retrieval.
+
 Rank the candidates that best match the query molecule or spectrum.
 
 ## What goes in

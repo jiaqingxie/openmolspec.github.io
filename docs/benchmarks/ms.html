@@ -68,9 +68,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../benchmarks.html">Benchmarks</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="nmr.html">NMR benchmarks</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Mass spectrometry benchmarks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ms-ms-fragment-mass-coverage">MS/MS fragment mass coverage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ms-ms-prediction-with-glacier">MS/MS prediction with GLACIER</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ms-ms-prediction-with-iceberg">MS/MS prediction with ICEBERG</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ms-ms-fragment-annotation">MS/MS fragment annotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ms-ms-fragment-candidates-with-mechfrag-ms">MS/MS fragment candidates with MechFrag-MS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
@@ -78,6 +80,12 @@
 <li class="toctree-l2"><a class="reference internal" href="multimodal.html">Multimodal spectroscopy benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="production.html">Production benchmark results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="training.html">Training benchmark configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#forward-prediction-results">Forward prediction results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#nmr-chemical-shift-r2">NMR chemical-shift R²</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#nmr-peak-position-cosine-similarity">NMR peak-position cosine similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#retrieval-and-reranking-in-a-4-096-structure-library">Retrieval and reranking in a 4,096-structure library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#nmrgym-spectrum-to-structure-evaluation">NMRGym spectrum-to-structure evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#specmol-spectroscopy-qa">SpecMol spectroscopy QA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#task-benchmarks">Task benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#training-benchmark-configurations">Training benchmark configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../benchmarks.html#metrics">Metrics</a></li>
@@ -121,6 +129,11 @@
   <section class="tex2jax_ignore mathjax_ignore" id="mass-spectrometry-benchmarks">
 <h1>Mass spectrometry benchmarks<a class="headerlink" href="#mass-spectrometry-benchmarks" title="Link to this heading"></a></h1>
 <p>The sections below give each task definition and the results from its recorded evaluation runs. Open the task guide for model calls and full input/output examples.</p>
+<section id="ms-ms-fragment-mass-coverage">
+<h2>MS/MS fragment mass coverage<a class="headerlink" href="#ms-ms-fragment-mass-coverage" title="Link to this heading"></a></h2>
+<p>On the same 1,741 observed peaks from 55 MassSpecGym spectra, MechFrag-MS matched 62.26% and MAGMa matched 58.13% within 10 ppm. 9 additional spectra lacked acquisition conditions. Scoring fragment atom identities would require experimental labels.</p>
+<p><a class="reference download internal" download="" href="../_downloads/82fded7e6efbae811ff6152951c4085a/heldout-tasks.json"><span class="xref download myst">Download the metrics and source fingerprints</span></a></p>
+</section>
 <section id="ms-ms-prediction-with-glacier">
 <h2>MS/MS prediction with GLACIER<a class="headerlink" href="#ms-ms-prediction-with-glacier" title="Link to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">ms.forward.glacier</span></code></p>
@@ -209,6 +222,45 @@
 <td><p>recorded model</p></td>
 <td><p>checked_fragments</p></td>
 <td class="text-right"><p>1534</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ms-ms-fragment-candidates-with-mechfrag-ms">
+<h2>MS/MS fragment candidates with MechFrag-MS<a class="headerlink" href="#ms-ms-fragment-candidates-with-mechfrag-ms" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ms.annotation.mechfrag</span></code></p>
+<p>Find atom-indexed fragments consistent with observed product ion masses.</p>
+<p>Report observed-peak mass coverage at 10 ppm. Experimental atom masks would be needed to measure structural accuracy.</p>
+<p><a class="reference internal" href="../tasks/ms-annotation-mechfrag.html"><span class="std std-doc">Task guide</span></a> · <a class="reference internal" href="../notebooks/ms-annotation-mechfrag.html"><span class="std std-doc">Tutorial</span></a> · <a class="reference download internal" download="" href="../_downloads/8068baf34ac59d5585a54ef221958b47/ms-annotation-mechfrag.json"><span class="xref download myst">Predictions</span></a></p>
+<p>Run settings: <code class="docutils literal notranslate"><span class="pre">dataset=&quot;MassSpecGym</span> <span class="pre">/</span> <span class="pre">10</span> <span class="pre">ppm&quot;</span></code></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset / scope</p></th>
+<th class="head"><p>Model / variant</p></th>
+<th class="head"><p>Metric</p></th>
+<th class="head text-right"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MassSpecGym / 10 ppm</p></td>
+<td><p>recorded model</p></td>
+<td><p>variant</p></td>
+<td class="text-right"><p>balanced_neutral_context</p></td>
+</tr>
+<tr class="row-odd"><td><p>MassSpecGym / 10 ppm</p></td>
+<td><p>recorded model</p></td>
+<td><p>peaks</p></td>
+<td class="text-right"><p>1741</p></td>
+</tr>
+<tr class="row-even"><td><p>MassSpecGym / 10 ppm</p></td>
+<td><p>recorded model</p></td>
+<td><p>matched_fraction</p></td>
+<td class="text-right"><p>0.622631</p></td>
+</tr>
+<tr class="row-odd"><td><p>MassSpecGym / 10 ppm</p></td>
+<td><p>recorded model</p></td>
+<td><p>magma_matched_fraction_same_peaks</p></td>
+<td class="text-right"><p>0.581275</p></td>
 </tr>
 </tbody>
 </table>
