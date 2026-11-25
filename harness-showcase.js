@@ -6,6 +6,10 @@
 
   const folder = 'assets/harness/';
   const cases = [
+    { id: 'retrieval', title: ['Identify a structure from two NMR spectra', '用氢谱和碳谱检索结构'], tag: ['¹H + ¹³C NMR · DeepSeek + MCP', '¹H + ¹³C NMR · DeepSeek + MCP'],
+      summary: ['DeepSeek corrected an input error and retrieved the reference structure from 32 candidates without a molecular formula.', 'DeepSeek 根据校验反馈修正了输入，仅用氢谱和碳谱检索 32 个候选，参考结构排在第一。'],
+      alt: ['Top-ranked structure with cosine scores for the first three candidates', '排名第一的分子结构及前三名候选的余弦相似度'],
+      raw: folder + 'nmr-retrieval-agent.json' },
     { id: 'ethanol', title: ['Ethanol carbon shifts', '乙醇的碳化学位移'], tag: ['¹³C NMR · Agent + MCP', '¹³C NMR · 智能体 + MCP'],
       summary: ['The agent validated CCO and called NMRNet to predict the two carbon shifts.', '智能体校验 CCO 后调用 NMRNet，得到两个碳原子的预测位移。'],
       alt: ['Recorded ethanol prediction with two carbon positions at 57.77 and 17.77 ppm', '乙醇执行记录截图，两处碳位移为 57.77 和 17.77 ppm'],
@@ -132,7 +136,24 @@
   // These views are drawn from the same stored tool responses linked in the dialog.
   function resultView(id, record, request) {
     const view = elem('article', 'hs-result');
-    if (id === 'ethanol') {
+    if (id === 'retrieval') {
+      const event = record.events.find(e => e.type === 'tool_end' && e.data.name === 'spectra_predict');
+      const result = event.data.result.result;
+      const diagram = elem('img', 'hs-retrieved-structure');
+      diagram.src = folder + 'nmr-retrieval-first.svg';
+      diagram.alt = t('Highest-scoring candidate', '得分最高的候选结构') + ' · ' + result.candidates[0].smiles;
+      const ranking = elem('ol', 'hs-ranking');
+      result.candidates.slice(0, 3).forEach((candidate, i) => {
+        const row = elem('li');
+        row.append(elem('span', '', t('Rank ', '第 ') + (i + 1) + t('', ' 名')), elem('strong', '', candidate.score.toFixed(4)));
+        ranking.append(row);
+      });
+      const panel = elem('div', 'hs-retrieval-panel');
+      panel.append(diagram, ranking);
+      view.append(resultHeader('¹H + ¹³C NMR', record.result.model), elem('h4', '', t('The reference ranked first', '参考结构排名第一')),
+        elem('p', 'hs-units', t('Top structure and candidate cosine similarities', '首选结构与候选的余弦相似度')), panel,
+        stats([[t('Candidate library', '候选库'), String(result.candidate_pool)], [t('Formula supplied', '给定分子式'), t('No', '无')]]));
+    } else if (id === 'ethanol') {
       const end = record.events.find(e => e.type === 'tool_end' && e.data.name === 'spectra_predict');
       const value = end.data.result.result.records[0];
       view.append(resultHeader('¹³C NMR', 'NMRNet'), elem('h4', '', t('Carbon chemical shifts', '碳化学位移')),
@@ -170,11 +191,23 @@
   }
   function evidence(id, record) {
     const wrap = elem('div', 'hs-evidence');
-    if (id === 'ethanol') {
+    if (id === 'ethanol' || id === 'retrieval') {
       const tools = record.events.filter(e => e.type === 'tool_end');
-      wrap.append(elem('p', '', t('The original prompt and answer were recorded in Chinese.', '原始提问和回答均以中文记录。')),
-        elem('blockquote', '', record.request.prompt),
-        table([t('Tool', '工具'), t('Elapsed', '耗时')], tools.map(e => [e.data.name, e.data.elapsed_seconds.toFixed(3) + ' s'])));
+      if (id === 'retrieval') {
+        const result = tools.find(e => e.data.name === 'spectra_predict').data.result.result;
+        const query = record.events.find(e => e.type === 'tool_start' && e.data.name === 'spectra_predict').data.args.inputs.query;
+        wrap.append(elem('p', '', t('The first paired spectrum in the NMRSpec test split was queried against 32 distinct structures, presented in hash order. The reference was checked after retrieval.',
+          '取 NMRSpec 测试集第一条配对谱，在按哈希排序的 32 个不同结构中检索。检索结束后再核对参考结构。')),
+          detailsSection(t('View input spectra (ppm)', '查看输入谱图（ppm）'), table([t('Nucleus', '核种'), t('Chemical shifts', '化学位移')], [
+            ['¹H', query.h_nmr[0].chemical_shift], ['¹³C', query.c_nmr[0].chemical_shift]])),
+          table([t('Rank', '名次'), 'SMILES', t('Cosine', '余弦相似度')], result.candidates.slice(0, 3).map((r, i) => [String(i + 1), r.smiles, r.score.toFixed(4)])),
+          elem('p', '', t('DeepSeek made four API calls. After validation flagged the input format, it placed both spectra under query and resubmitted the same candidate list.',
+            'DeepSeek 共调用四轮 API。第一次校验发现输入格式有误，它把两张谱放进 query 字段，保留原候选列表后重新提交。')));
+      } else {
+        wrap.append(elem('p', '', t('The original prompt and answer were recorded in Chinese.', '原始提问和回答均以中文记录。')), elem('blockquote', '', record.request.prompt));
+      }
+      wrap.append(table([t('Tool', '工具'), t('Result', '结果'), t('Elapsed', '耗时')], tools.map(({data}) => [
+        data.name, data.result?.valid === false ? t('Invalid input', '输入有误') : t('Completed', '完成'), data.elapsed_seconds.toFixed(3) + ' s'])));
       const steps = elem('div', 'hs-call-steps');
       const starts = new Map(record.events.filter(e => e.type === 'tool_start').map(e => [e.data.id, e.data.args]));
       tools.forEach(({data}) => {
@@ -185,6 +218,11 @@
       });
       wrap.append(detailsSection(t('Inspect tool inputs and outputs', '查看逐次工具输入与输出'), steps),
         detailsSection(t('Read the recorded answer', '查看原始回答'), elem('pre', 'hs-answer', record.result.answer)));
+      if (id === 'retrieval') {
+        wrap.append(elem('p', '', t('The recorded answer misplaces the aryl groups in its informal name. The structure drawing follows the verified first-ranked SMILES.',
+          '原始回答中的文字命名写错了芳基的位置。上方结构图按核对过的第一名 SMILES 绘制。')));
+        return wrap;
+      }
       const images = elem('div', 'hs-originals');
       [[t('Request screenshot', '提问截图'), '01-plan'], [t('Tool screenshot', '调用截图'), '02-tools'],
         [t('Result screenshot', '结果截图'), '03-result']].forEach(([label, name]) => images.append(link(label, 'assets/agent-demo/'+name+'.png')));
@@ -239,8 +277,7 @@
     if (currentDialog?.open) currentDialog.close();
     const intro = elem('div', 'hs-intro');
     const title = elem('h2', '', t('Agent Harness', '智能体工具台')); title.id = 'agent-demo-title';
-    intro.append(title, elem('p', '', t('Follow a spectroscopy request from tool discovery to a model result. Explore three recorded runs, or send a new question to the live agent.',
-      '从发现工具、校验输入，到模型返回结果，查看三个真实案例，也可向在线智能体提交新问题。')));
+    intro.append(title, elem('p', '', t('Explore the input spectra, tool calls and model results from recorded runs.', '从执行记录中查看输入谱图、工具调用和模型结果。')));
     const workflow = elem('figure', 'hs-workflow');
     const fighead = elem('figcaption');
     const figTitle = elem('h3', '', t('How tool calls work', '工具如何调用'));

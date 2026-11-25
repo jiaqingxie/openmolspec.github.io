@@ -1,0 +1,506 @@
+{
+  "id": "92193622-37b3-4463-ac61-dd9503188ba0",
+  "status": "completed",
+  "created_at": 1795570900.8421972,
+  "result": {
+    "answer": "## 校验与执行\n\n- 任务：`nmr.retrieval.hc.s2m`，也就是用 ¹H 和 ¹³C 两种谱联合进行谱图到结构检索；采用实验谱域，使用 NMR Spectra Harness。\n- 第一次按顶层摘要形式传参时，校验返回 `valid=false`（\"Supply query with H/C NMR records\"）；改成 `query.h_nmr` / `query.c_nmr`（保留原始记录字符串和 `modality_mask:[1,1]`）后，校验通过 `valid=true`。\n- 正式调用完成（`completed: true`，使用冻结模型直接推理，未做训练），候选库 **32 个**，与你给出的候选逐一对应，**未补充分子式**（`given_formula: false`）。\n\n## 检索结果（前 3 名，按工具返回）\n\n| 排名 | SMILES | 相似度分数 |\n|---|---|---|\n| 1 | `C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1` | **0.9107** |\n| 2 | `Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1` | 0.3582 |\n| 3 | `CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O` | 0.3038 |\n\n（第 4、5 名分别为 0.2366、0.1852，其余候选 ≤0.175。）\n\n## 这一点支持什么结论\n\n- 第 1 名（0.911）与第 2 名（0.358）之间差距约 0.55，说明在这 32 个候选内，谱图与该单体的匹配明显领先，可以认为**检索结果首选该结构**，即对位叔丁基取代的 α-苯基长链端烯（1-苯基-5-(4-叔丁基苯基)己-1-烯类型骨架）。\n- 谱学计数也自洽：¹H 积分合计 28H（9H t-Bu 单峰、5H 单取代苯、4H 对位芳基、=CH₂ 的 1H+1H、4×CH₂ = 8H），与 C₂₂H₂₈ 相符；¹³C 共 16 个信号，与该结构 16 种碳环境一致，其中 111.5 ppm 归属末端烯烃 =CH₂。\n- 但这种 S→M 检索只是**候选库内的排序判别**，不是结构确认或全新结构鉴定：\n  - 相似度是模型排序分数，不构成概率或置信度；没有参考谱图就无法评估科学准确性（工具本身也声明 `validation_scope` 仅覆盖请求约定与执行）。\n  - 结论只在给定 32 个候选范围内成立；若真实结构不在库中，第 1 名仍会出现。\n  - 未提供分子式，因此无法做 CHNO 层面的独立一致性检验。\n\n如果需要进一步提升结论强度，建议补充：分子式（HRMS 精确质量）、采样条件（氘代溶剂、场强、温度），以及 IR/Raman 数据以做多谱联用交叉验证；也可考虑在更大候选库或加入 MS/MS 正向预测后复检。",
+    "model": "deepseek-v4.1-flash",
+    "usage": [
+      {
+        "prompt_tokens": 2857,
+        "completion_tokens": 1297,
+        "total_tokens": 4154,
+        "completion_tokens_details": {
+          "reasoning_tokens": 40
+        }
+      },
+      {
+        "prompt_tokens": 4159,
+        "completion_tokens": 1329,
+        "total_tokens": 5488,
+        "prompt_tokens_details": {
+          "cached_tokens": 2816
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        }
+      },
+      {
+        "prompt_tokens": 5506,
+        "completion_tokens": 1306,
+        "total_tokens": 6812,
+        "prompt_tokens_details": {
+          "cached_tokens": 4096
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 4
+        }
+      },
+      {
+        "prompt_tokens": 7613,
+        "completion_tokens": 1064,
+        "total_tokens": 8677,
+        "prompt_tokens_details": {
+          "cached_tokens": 5376
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 326
+        }
+      }
+    ],
+    "transport": "MCP stdio"
+  },
+  "error": null,
+  "events": [
+    {
+      "id": 1,
+      "type": "status",
+      "data": {
+        "stage": "connecting",
+        "label": "Connecting the model API and MCP tools"
+      },
+      "created_at": 1795570900.8428864
+    },
+    {
+      "id": 2,
+      "type": "discovery",
+      "data": {
+        "transport": "MCP stdio",
+        "tools": [
+          "spectra_tasks",
+          "spectra_datasets",
+          "spectra_validate",
+          "spectra_predict"
+        ]
+      },
+      "created_at": 1795570900.845523
+    },
+    {
+      "id": 3,
+      "type": "tool_start",
+      "data": {
+        "id": "5b83580e-223f-4521-9c1e-d7774bea69ee",
+        "name": "spectra_tasks",
+        "args": {}
+      },
+      "created_at": 1795570900.8456352
+    },
+    {
+      "id": 4,
+      "type": "tool_end",
+      "data": {
+        "id": "5b83580e-223f-4521-9c1e-d7774bea69ee",
+        "name": "spectra_tasks",
+        "result": [
+          {
+            "task": "nmr.retrieval.h.s2m",
+            "title": "谱图 → 结构检索 · H",
+            "modalities": [
+              "1H"
+            ],
+            "domain": "experimental",
+            "harness": "NMR Spectra Harness"
+          },
+          {
+            "task": "nmr.retrieval.c.s2m",
+            "title": "谱图 → 结构检索 · C",
+            "modalities": [
+              "13C"
+            ],
+            "domain": "experimental",
+            "harness": "NMR Spectra Harness"
+          },
+          {
+            "task": "nmr.retrieval.hc.s2m",
+            "title": "谱图 → 结构检索 · HC",
+            "modalities": [
+              "1H",
+              "13C"
+            ],
+            "domain": "experimental",
+            "harness": "NMR Spectra Harness"
+          }
+        ],
+        "elapsed_seconds": 0.2827066108584404
+      },
+      "created_at": 1795570901.1284416
+    },
+    {
+      "id": 5,
+      "type": "status",
+      "data": {
+        "stage": "model",
+        "label": "The agent is selecting its next action",
+        "step": 1
+      },
+      "created_at": 1795570901.1285508
+    },
+    {
+      "id": 6,
+      "type": "tool_start",
+      "data": {
+        "id": "1580cd1f-30c6-4933-a928-de07581973cb",
+        "name": "spectra_validate",
+        "args": {
+          "task": "nmr.retrieval.hc.s2m",
+          "inputs": {
+            "h_nmr": [
+              "7.34 (s, 4H), 7.265 (m, 2H), 7.165 (m, 3H), 5.26 (d, J=1.6 Hz, 1H), 5.01 (t, J=1.4 Hz, 1H), 2.61 (t, J=7.8 Hz, 2H), 2.53 (t, J=7.6 Hz, 2H), 1.665 (m, 2H), 1.52 (d, J=7.7 Hz, 2H), 1.33 (s, 9H)"
+            ],
+            "c_nmr": [
+              "150.22, 148.03, 142.68, 138.28, 128.36, 128.22, 125.68, 125.58, 125.12, 111.51, 35.72, 35.03, 34.46, 31.32, 31.11, 27.93"
+            ],
+            "candidates": [
+              "CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O",
+              "COc1ccccc1-n1nnc2ccccc21",
+              "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+              "CCOC(=O)C(OS(=O)(=O)c1ccc2ccccc2c1)c1ccc(F)cc1",
+              "CC(C)CC(/C=C/c1ccccc1)CO",
+              "Nc1cccc(C(=O)c2ccccc2)c1",
+              "C[C@H]1CCc2ccccc2N1",
+              "Cc1cnn(C2CCc3ccccc32)c1",
+              "Cc1c(C(=O)OCc2ccccc2)c2ccccc2n1-c1ccccn1",
+              "Fc1ccc2c(ccn2Cc2ccc(C3COC(c4c(F)cccc4F)=N3)cc2)c1",
+              "COc1cccc(N[C@H](C(=O)O)C(C)C)c1",
+              "Cc1cc(C[C@H](C(=O)c2nccn2C(C)C)c2ccc(F)cc2)cc(C)c1O",
+              "O=C1c2sccc2[C@H]2[C@H]([C@H]3O[C@@H]2c2cc(Br)c(Br)cc23)N1c1cccc2cccnc12",
+              "C=CCC(C(=O)OC)(c1cccc(Cl)c1)c1cn(C)c2ccccc12",
+              "CC1=C2CCCCCCCCCCC2OC1=O",
+              "FC(F)(F)C1(C#Cc2ccsc2)CNCC1c1ccccc1",
+              "O=C1/C(=C(/c2ccccc2)c2c(OC3CCCCC3)ccc3ccccc23)Cc2ccccc21",
+              "O=C1C[C@@H](c2cccc([N+](=O)[O-])c2)SC(c2ccccc2)=N1",
+              "Cc1ccc(-c2nn(-c3ccccc3)cc2C(Cc2onc(C)c2[N+](=O)[O-])C[N+](=O)[O-])cc1",
+              "COC(=O)c1cc(-c2ccccc2)n(N)c1C",
+              "Cc1c(/C=C/[N+](=O)[O-])cc([N+](=O)[O-])c(Cl)c1[N+](=O)[O-]",
+              "CCCCCCOc1cc2ccccc2c(B(O)O)c1OCCCCCC",
+              "O=C(c1ccccc1)c1cn(Cc2ccccc2)c2cc(Br)cc([N+](=O)[O-])c12",
+              "Cc1ccc(S(=O)(=O)N2C[C@@H](O)[C@@H](C(=O)c3ccc(F)cc3)[C@@H]3CC(=O)C=C[C@]32C)cc1",
+              "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+              "COC(=O)C[C@@H]1C[C@@H]([N+](=O)[O-])[C@@H](c2ccc(C)cc2)[C@H]1C=O",
+              "CCN(CC)c1nc2ccccc2c2ccccc12",
+              "Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1",
+              "CCOP(=O)(CC(CP(=O)(OCC)OCC)C(=O)c1ccc(C)cc1C)OCC",
+              "CC(C)(C)OC(=O)N[C@H](CCC(=O)c1ccccc1)c1c[nH]c2cc(Cl)ccc12",
+              "CC[C@H]1c2c(n(Cc3ccccc3)c3c(C)cccc23)CC[C@@H]1C=O",
+              "COC(=O)[C@@]12N=NC[C@@H]1CN(Cc1ccccc1)[C@@H]2C"
+            ]
+          }
+        }
+      },
+      "created_at": 1795570908.9719
+    },
+    {
+      "id": 7,
+      "type": "tool_end",
+      "data": {
+        "id": "1580cd1f-30c6-4933-a928-de07581973cb",
+        "name": "spectra_validate",
+        "result": {
+          "valid": false,
+          "task": "nmr.retrieval.hc.s2m",
+          "error": "Supply query with H/C NMR records"
+        },
+        "elapsed_seconds": 0.0029576891101896763
+      },
+      "created_at": 1795570908.9749746
+    },
+    {
+      "id": 8,
+      "type": "status",
+      "data": {
+        "stage": "model",
+        "label": "The agent is selecting its next action",
+        "step": 2
+      },
+      "created_at": 1795570908.975059
+    },
+    {
+      "id": 9,
+      "type": "tool_start",
+      "data": {
+        "id": "f2c0cecd-acf3-4390-8f0c-248d3c60a120",
+        "name": "spectra_validate",
+        "args": {
+          "task": "nmr.retrieval.hc.s2m",
+          "inputs": {
+            "query": {
+              "h_nmr": [
+                {
+                  "type": "1H NMR",
+                  "chemical_shift": "7.34 (s, 4H), 7.265 (m, 2H), 7.165 (m, 3H), 5.26 (d, J=1.6 Hz, 1H), 5.01 (t, J=1.4 Hz, 1H), 2.61 (t, J=7.8 Hz, 2H), 2.53 (t, J=7.6 Hz, 2H), 1.665 (m, 2H), 1.52 (d, J=7.7 Hz, 2H), 1.33 (s, 9H)"
+                }
+              ],
+              "c_nmr": [
+                {
+                  "type": "13C NMR",
+                  "chemical_shift": "150.22, 148.03, 142.68, 138.28, 128.36, 128.22, 125.68, 125.58, 125.12, 111.51, 35.72, 35.03, 34.46, 31.32, 31.11, 27.93"
+                }
+              ],
+              "modality_mask": [
+                1,
+                1
+              ]
+            },
+            "candidates": [
+              "CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O",
+              "COc1ccccc1-n1nnc2ccccc21",
+              "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+              "CCOC(=O)C(OS(=O)(=O)c1ccc2ccccc2c1)c1ccc(F)cc1",
+              "CC(C)CC(/C=C/c1ccccc1)CO",
+              "Nc1cccc(C(=O)c2ccccc2)c1",
+              "C[C@H]1CCc2ccccc2N1",
+              "Cc1cnn(C2CCc3ccccc32)c1",
+              "Cc1c(C(=O)OCc2ccccc2)c2ccccc2n1-c1ccccn1",
+              "Fc1ccc2c(ccn2Cc2ccc(C3COC(c4c(F)cccc4F)=N3)cc2)c1",
+              "COc1cccc(N[C@H](C(=O)O)C(C)C)c1",
+              "Cc1cc(C[C@H](C(=O)c2nccn2C(C)C)c2ccc(F)cc2)cc(C)c1O",
+              "O=C1c2sccc2[C@H]2[C@H]([C@H]3O[C@@H]2c2cc(Br)c(Br)cc23)N1c1cccc2cccnc12",
+              "C=CCC(C(=O)OC)(c1cccc(Cl)c1)c1cn(C)c2ccccc12",
+              "CC1=C2CCCCCCCCCCC2OC1=O",
+              "FC(F)(F)C1(C#Cc2ccsc2)CNCC1c1ccccc1",
+              "O=C1/C(=C(/c2ccccc2)c2c(OC3CCCCC3)ccc3ccccc23)Cc2ccccc21",
+              "O=C1C[C@@H](c2cccc([N+](=O)[O-])c2)SC(c2ccccc2)=N1",
+              "Cc1ccc(-c2nn(-c3ccccc3)cc2C(Cc2onc(C)c2[N+](=O)[O-])C[N+](=O)[O-])cc1",
+              "COC(=O)c1cc(-c2ccccc2)n(N)c1C",
+              "Cc1c(/C=C/[N+](=O)[O-])cc([N+](=O)[O-])c(Cl)c1[N+](=O)[O-]",
+              "CCCCCCOc1cc2ccccc2c(B(O)O)c1OCCCCCC",
+              "O=C(c1ccccc1)c1cn(Cc2ccccc2)c2cc(Br)cc([N+](=O)[O-])c12",
+              "Cc1ccc(S(=O)(=O)N2C[C@@H](O)[C@@H](C(=O)c3ccc(F)cc3)[C@@H]3CC(=O)C=C[C@]32C)cc1",
+              "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+              "COC(=O)C[C@@H]1C[C@@H]([N+](=O)[O-])[C@@H](c2ccc(C)cc2)[C@H]1C=O",
+              "CCN(CC)c1nc2ccccc2c2ccccc12",
+              "Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1",
+              "CCOP(=O)(CC(CP(=O)(OCC)OCC)C(=O)c1ccc(C)cc1C)OCC",
+              "CC(C)(C)OC(=O)N[C@H](CCC(=O)c1ccccc1)c1c[nH]c2cc(Cl)ccc12",
+              "CC[C@H]1c2c(n(Cc3ccccc3)c3c(C)cccc23)CC[C@@H]1C=O",
+              "COC(=O)[C@@]12N=NC[C@@H]1CN(Cc1ccccc1)[C@@H]2C"
+            ]
+          }
+        }
+      },
+      "created_at": 1795570915.7991843
+    },
+    {
+      "id": 10,
+      "type": "tool_end",
+      "data": {
+        "id": "f2c0cecd-acf3-4390-8f0c-248d3c60a120",
+        "name": "spectra_validate",
+        "result": {
+          "valid": true,
+          "task": "nmr.retrieval.hc.s2m",
+          "harness": "NMR Spectra Harness"
+        },
+        "elapsed_seconds": 0.0031957998871803284
+      },
+      "created_at": 1795570915.8025575
+    },
+    {
+      "id": 11,
+      "type": "status",
+      "data": {
+        "stage": "model",
+        "label": "The agent is selecting its next action",
+        "step": 3
+      },
+      "created_at": 1795570915.8026726
+    },
+    {
+      "id": 12,
+      "type": "tool_start",
+      "data": {
+        "id": "8814bf9e-f0a6-4fbc-82c5-9cc1a8df4734",
+        "name": "spectra_predict",
+        "args": {
+          "task": "nmr.retrieval.hc.s2m",
+          "inputs": {
+            "query": {
+              "h_nmr": [
+                {
+                  "type": "1H NMR",
+                  "chemical_shift": "7.34 (s, 4H), 7.265 (m, 2H), 7.165 (m, 3H), 5.26 (d, J=1.6 Hz, 1H), 5.01 (t, J=1.4 Hz, 1H), 2.61 (t, J=7.8 Hz, 2H), 2.53 (t, J=7.6 Hz, 2H), 1.665 (m, 2H), 1.52 (d, J=7.7 Hz, 2H), 1.33 (s, 9H)"
+                }
+              ],
+              "c_nmr": [
+                {
+                  "type": "13C NMR",
+                  "chemical_shift": "150.22, 148.03, 142.68, 138.28, 128.36, 128.22, 125.68, 125.58, 125.12, 111.51, 35.72, 35.03, 34.46, 31.32, 31.11, 27.93"
+                }
+              ],
+              "modality_mask": [
+                1,
+                1
+              ]
+            },
+            "candidates": [
+              "CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O",
+              "COc1ccccc1-n1nnc2ccccc21",
+              "CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1",
+              "CCOC(=O)C(OS(=O)(=O)c1ccc2ccccc2c1)c1ccc(F)cc1",
+              "CC(C)CC(/C=C/c1ccccc1)CO",
+              "Nc1cccc(C(=O)c2ccccc2)c1",
+              "C[C@H]1CCc2ccccc2N1",
+              "Cc1cnn(C2CCc3ccccc32)c1",
+              "Cc1c(C(=O)OCc2ccccc2)c2ccccc2n1-c1ccccn1",
+              "Fc1ccc2c(ccn2Cc2ccc(C3COC(c4c(F)cccc4F)=N3)cc2)c1",
+              "COc1cccc(N[C@H](C(=O)O)C(C)C)c1",
+              "Cc1cc(C[C@H](C(=O)c2nccn2C(C)C)c2ccc(F)cc2)cc(C)c1O",
+              "O=C1c2sccc2[C@H]2[C@H]([C@H]3O[C@@H]2c2cc(Br)c(Br)cc23)N1c1cccc2cccnc12",
+              "C=CCC(C(=O)OC)(c1cccc(Cl)c1)c1cn(C)c2ccccc12",
+              "CC1=C2CCCCCCCCCCC2OC1=O",
+              "FC(F)(F)C1(C#Cc2ccsc2)CNCC1c1ccccc1",
+              "O=C1/C(=C(/c2ccccc2)c2c(OC3CCCCC3)ccc3ccccc23)Cc2ccccc21",
+              "O=C1C[C@@H](c2cccc([N+](=O)[O-])c2)SC(c2ccccc2)=N1",
+              "Cc1ccc(-c2nn(-c3ccccc3)cc2C(Cc2onc(C)c2[N+](=O)[O-])C[N+](=O)[O-])cc1",
+              "COC(=O)c1cc(-c2ccccc2)n(N)c1C",
+              "Cc1c(/C=C/[N+](=O)[O-])cc([N+](=O)[O-])c(Cl)c1[N+](=O)[O-]",
+              "CCCCCCOc1cc2ccccc2c(B(O)O)c1OCCCCCC",
+              "O=C(c1ccccc1)c1cn(Cc2ccccc2)c2cc(Br)cc([N+](=O)[O-])c12",
+              "Cc1ccc(S(=O)(=O)N2C[C@@H](O)[C@@H](C(=O)c3ccc(F)cc3)[C@@H]3CC(=O)C=C[C@]32C)cc1",
+              "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+              "COC(=O)C[C@@H]1C[C@@H]([N+](=O)[O-])[C@@H](c2ccc(C)cc2)[C@H]1C=O",
+              "CCN(CC)c1nc2ccccc2c2ccccc12",
+              "Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1",
+              "CCOP(=O)(CC(CP(=O)(OCC)OCC)C(=O)c1ccc(C)cc1C)OCC",
+              "CC(C)(C)OC(=O)N[C@H](CCC(=O)c1ccccc1)c1c[nH]c2cc(Cl)ccc12",
+              "CC[C@H]1c2c(n(Cc3ccccc3)c3c(C)cccc23)CC[C@@H]1C=O",
+              "COC(=O)[C@@]12N=NC[C@@H]1CN(Cc1ccccc1)[C@@H]2C"
+            ]
+          }
+        }
+      },
+      "created_at": 1795570922.999754
+    },
+    {
+      "id": 13,
+      "type": "tool_end",
+      "data": {
+        "id": "8814bf9e-f0a6-4fbc-82c5-9cc1a8df4734",
+        "name": "spectra_predict",
+        "result": {
+          "version": "1.0",
+          "task": "nmr.retrieval.hc.s2m",
+          "harness": "NMR Spectra Harness",
+          "request_sha256": "27d48b498543913df86cc8b1a5c72f3dc71ca99bbbcd4af64b39c8c84bc0f586",
+          "completed": true,
+          "calls": [
+            {
+              "index": 0,
+              "status": "passed",
+              "elapsed_seconds": 10.960248191840947,
+              "output_sha256": "6e9fc4aad55c5ddc08168f83d41a4a8c5096e5c347785f0547b944ee906f2403",
+              "prediction_sha256": "5094c4973a24c7c7770b54db018a18315beb9868a8dac543c3d970490ae8ae36"
+            }
+          ],
+          "result": {
+            "training_performed": false,
+            "inference_mode": "direct_frozen_checkpoint",
+            "provenance": {
+              "checkpoint_sha256": "94e8cf0b1b53863f8909e4eb1317bd5dfbdf396a435cfead0d25d15403fd9f15",
+              "stage": "align"
+            },
+            "given_formula": false,
+            "candidate_pool": 32,
+            "candidates": [
+              {
+                "smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+                "score": 0.9107389450073242
+              },
+              {
+                "smiles": "Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1",
+                "score": 0.3581680655479431
+              },
+              {
+                "smiles": "CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O",
+                "score": 0.3037793040275574
+              },
+              {
+                "smiles": "CC(C)(C)OC(=O)N[C@H](CCC(=O)c1ccccc1)c1c[nH]c2cc(Cl)ccc12",
+                "score": 0.2366214543581009
+              },
+              {
+                "smiles": "CC1=C2CCCCCCCCCCC2OC1=O",
+                "score": 0.18519020080566406
+              },
+              {
+                "smiles": "COC(=O)c1cc(-c2ccccc2)n(N)c1C",
+                "score": 0.17479389905929565
+              },
+              {
+                "smiles": "Cc1cnn(C2CCc3ccccc32)c1",
+                "score": 0.10219381004571915
+              },
+              {
+                "smiles": "C[C@H]1CCc2ccccc2N1",
+                "score": 0.09225556999444962
+              },
+              {
+                "smiles": "CCOC(=O)C(OS(=O)(=O)c1ccc2ccccc2c1)c1ccc(F)cc1",
+                "score": 0.07981668412685394
+              },
+              {
+                "smiles": "O=C1c2sccc2[C@H]2[C@H]([C@H]3O[C@@H]2c2cc(Br)c(Br)cc23)N1c1cccc2cccnc12",
+                "score": 0.07979624718427658
+              }
+            ]
+          },
+          "repeat_outputs_equal": null,
+          "repeat_predictions_equal": null,
+          "repeat_results": [],
+          "validation_scope": "request contract, execution and repeated serialized outputs; scientific accuracy requires reference data"
+        },
+        "elapsed_seconds": 10.963759581092745
+      },
+      "created_at": 1795570933.9637268
+    },
+    {
+      "id": 14,
+      "type": "status",
+      "data": {
+        "stage": "model",
+        "label": "The agent is selecting its next action",
+        "step": 4
+      },
+      "created_at": 1795570933.9638953
+    },
+    {
+      "id": 15,
+      "type": "answer",
+      "data": {
+        "content": "## 校验与执行\n\n- 任务：`nmr.retrieval.hc.s2m`，也就是用 ¹H 和 ¹³C 两种谱联合进行谱图到结构检索；采用实验谱域，使用 NMR Spectra Harness。\n- 第一次按顶层摘要形式传参时，校验返回 `valid=false`（\"Supply query with H/C NMR records\"）；改成 `query.h_nmr` / `query.c_nmr`（保留原始记录字符串和 `modality_mask:[1,1]`）后，校验通过 `valid=true`。\n- 正式调用完成（`completed: true`，使用冻结模型直接推理，未做训练），候选库 **32 个**，与你给出的候选逐一对应，**未补充分子式**（`given_formula: false`）。\n\n## 检索结果（前 3 名，按工具返回）\n\n| 排名 | SMILES | 相似度分数 |\n|---|---|---|\n| 1 | `C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1` | **0.9107** |\n| 2 | `Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1` | 0.3582 |\n| 3 | `CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O` | 0.3038 |\n\n（第 4、5 名分别为 0.2366、0.1852，其余候选 ≤0.175。）\n\n## 这一点支持什么结论\n\n- 第 1 名（0.911）与第 2 名（0.358）之间差距约 0.55，说明在这 32 个候选内，谱图与该单体的匹配明显领先，可以认为**检索结果首选该结构**，即对位叔丁基取代的 α-苯基长链端烯（1-苯基-5-(4-叔丁基苯基)己-1-烯类型骨架）。\n- 谱学计数也自洽：¹H 积分合计 28H（9H t-Bu 单峰、5H 单取代苯、4H 对位芳基、=CH₂ 的 1H+1H、4×CH₂ = 8H），与 C₂₂H₂₈ 相符；¹³C 共 16 个信号，与该结构 16 种碳环境一致，其中 111.5 ppm 归属末端烯烃 =CH₂。\n- 但这种 S→M 检索只是**候选库内的排序判别**，不是结构确认或全新结构鉴定：\n  - 相似度是模型排序分数，不构成概率或置信度；没有参考谱图就无法评估科学准确性（工具本身也声明 `validation_scope` 仅覆盖请求约定与执行）。\n  - 结论只在给定 32 个候选范围内成立；若真实结构不在库中，第 1 名仍会出现。\n  - 未提供分子式，因此无法做 CHNO 层面的独立一致性检验。\n\n如果需要进一步提升结论强度，建议补充：分子式（HRMS 精确质量）、采样条件（氘代溶剂、场强、温度），以及 IR/Raman 数据以做多谱联用交叉验证；也可考虑在更大候选库或加入 MS/MS 正向预测后复检。"
+      },
+      "created_at": 1795570943.214701
+    }
+  ],
+  "request": {
+    "kind": "agent",
+    "prompt": "用下面的一组 ¹H 和 ¹³C NMR 谱，在给定候选库中检索结构。请用 OpenMolSpec 的校验和谱到结构检索工具，逐个保留输入中的候选，不补分子式。根据工具的实际返回，用中文给出前三个候选的 SMILES 和相似度，并说明这一次检索能支持什么结论。\n{\"query\":{\"h_nmr\":[{\"type\":\"1H NMR\",\"chemical_shift\":\"7.34 (s, 4H), 7.265 (m, 2H), 7.165 (m, 3H), 5.26 (d, J=1.6 Hz, 1H), 5.01 (t, J=1.4 Hz, 1H), 2.61 (t, J=7.8 Hz, 2H), 2.53 (t, J=7.6 Hz, 2H), 1.665 (m, 2H), 1.52 (d, J=7.7 Hz, 2H), 1.33 (s, 9H)\"}],\"c_nmr\":[{\"type\":\"13C NMR\",\"chemical_shift\":\"150.22, 148.03, 142.68, 138.28, 128.36, 128.22, 125.68, 125.58, 125.12, 111.51, 35.72, 35.03, 34.46, 31.32, 31.11, 27.93\"}],\"modality_mask\":[1,1]},\"candidates\":[\"CC(C)(C)C1=CC(=Cc2ccc(Cl)cc2)C=C(C(C)(C)C)C1=O\",\"COc1ccccc1-n1nnc2ccccc21\",\"CCOC(=O)C1=C(C)NC(C)C(C)(C(=O)[O-])C1c1ccc(-c2ccccc2)cc1\",\"CCOC(=O)C(OS(=O)(=O)c1ccc2ccccc2c1)c1ccc(F)cc1\",\"CC(C)CC(/C=C/c1ccccc1)CO\",\"Nc1cccc(C(=O)c2ccccc2)c1\",\"C[C@H]1CCc2ccccc2N1\",\"Cc1cnn(C2CCc3ccccc32)c1\",\"Cc1c(C(=O)OCc2ccccc2)c2ccccc2n1-c1ccccn1\",\"Fc1ccc2c(ccn2Cc2ccc(C3COC(c4c(F)cccc4F)=N3)cc2)c1\",\"COc1cccc(N[C@H](C(=O)O)C(C)C)c1\",\"Cc1cc(C[C@H](C(=O)c2nccn2C(C)C)c2ccc(F)cc2)cc(C)c1O\",\"O=C1c2sccc2[C@H]2[C@H]([C@H]3O[C@@H]2c2cc(Br)c(Br)cc23)N1c1cccc2cccnc12\",\"C=CCC(C(=O)OC)(c1cccc(Cl)c1)c1cn(C)c2ccccc12\",\"CC1=C2CCCCCCCCCCC2OC1=O\",\"FC(F)(F)C1(C#Cc2ccsc2)CNCC1c1ccccc1\",\"O=C1/C(=C(/c2ccccc2)c2c(OC3CCCCC3)ccc3ccccc23)Cc2ccccc21\",\"O=C1C[C@@H](c2cccc([N+](=O)[O-])c2)SC(c2ccccc2)=N1\",\"Cc1ccc(-c2nn(-c3ccccc3)cc2C(Cc2onc(C)c2[N+](=O)[O-])C[N+](=O)[O-])cc1\",\"COC(=O)c1cc(-c2ccccc2)n(N)c1C\",\"Cc1c(/C=C/[N+](=O)[O-])cc([N+](=O)[O-])c(Cl)c1[N+](=O)[O-]\",\"CCCCCCOc1cc2ccccc2c(B(O)O)c1OCCCCCC\",\"O=C(c1ccccc1)c1cn(Cc2ccccc2)c2cc(Br)cc([N+](=O)[O-])c12\",\"Cc1ccc(S(=O)(=O)N2C[C@@H](O)[C@@H](C(=O)c3ccc(F)cc3)[C@@H]3CC(=O)C=C[C@]32C)cc1\",\"C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1\",\"COC(=O)C[C@@H]1C[C@@H]([N+](=O)[O-])[C@@H](c2ccc(C)cc2)[C@H]1C=O\",\"CCN(CC)c1nc2ccccc2c2ccccc12\",\"Cc1ccc(/C=C/C(O)(CCCCCO)c2ccccc2)cc1\",\"CCOP(=O)(CC(CP(=O)(OCC)OCC)C(=O)c1ccc(C)cc1C)OCC\",\"CC(C)(C)OC(=O)N[C@H](CCC(=O)c1ccccc1)c1c[nH]c2cc(Cl)ccc12\",\"CC[C@H]1c2c(n(Cc3ccccc3)c3c(C)cccc23)CC[C@@H]1C=O\",\"COC(=O)[C@@]12N=NC[C@@H]1CN(Cc1ccccc1)[C@@H]2C\"]}"
+  },
+  "provenance": {
+    "provider": "OpenAI-compatible API",
+    "base_url": "https://hapiopen.cc/v1",
+    "model_requested": "deepseek-v4.1-flash",
+    "controller": "OpenMolSpec online_api.Service.agent",
+    "mcp": "python -m openmolspec.mcp",
+    "enabled_tasks": [
+      "nmr.retrieval.c.s2m",
+      "nmr.retrieval.h.s2m",
+      "nmr.retrieval.hc.s2m"
+    ]
+  },
+  "reference_check": {
+    "dataset": "nmrspec_test",
+    "split": "test",
+    "query_selection": "First paired 1H/13C record in file order.",
+    "candidate_selection": "First 32 paired records with distinct InChI in file order, sorted by SHA-256 of the UTF-8 SMILES before submission.",
+    "reference_smiles": "C=C(CCCCc1ccccc1)c1ccc(C(C)(C)C)cc1",
+    "method": "Canonical isomeric SMILES compared after the model returned its answer.",
+    "reference_input_position": 25,
+    "reference_rank": 1,
+    "scored_candidates": 32,
+    "returned_candidates": 10,
+    "score_metric": "cosine similarity of normalized spectrum and structure embeddings",
+    "query_and_candidates_verified": true,
+    "answer_annotation": "The ranked SMILES and its score agree with the tool. The informal chemical name in the answer misplaces the aryl groups; use the recorded SMILES for connectivity."
+  }
+}

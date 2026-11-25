@@ -16,7 +16,10 @@
 .hs-compact-flow { display: none; }
 .hs-workflow img { width: min(100%, 64rem); height: auto; aspect-ratio: 849 / 219; object-fit: contain; display: block; margin: .4rem auto; }
 #harness-showcase .hs-subtitle { margin: 2rem 0 .875rem; }
-.hs-cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.8rem, 1.6vw, 1.4rem); }
+.hs-cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(.8rem, 1.6vw, 1.4rem); }
+@media (min-width: 1250px) {
+  .hs-cases { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
 .hs-case { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--hs-line); border-radius: .55rem; background: white; }
 .hs-preview { display: block; width: 100%; background: #20263c; border: none; padding: 0; cursor: pointer; border-radius: 0; }
 .hs-preview img { display: block; width: 100%; height: auto; aspect-ratio: 520 / 300; object-fit: cover; }
@@ -41,6 +44,13 @@
 .hs-model { color: #c1cbe2; font-size: .8125rem; font-weight: 500; }
 .hs-result h4 { font-size: clamp(1.35rem, 3vw, 1.75rem); font-weight: 550; color: #fff; line-height: 1.22; letter-spacing: -.024em; margin: .75rem 0 .25rem; }
 .hs-units { margin: 0; color: #bdc7db; font-size: .875rem; }
+.hs-retrieval-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(6.5rem, .48fr); align-items: center; gap: .8rem; margin: .65rem 0; }
+.hs-retrieved-structure { display: block; width: 100%; }
+.hs-ranking { margin: 0; padding: 0; list-style: none; }
+.hs-ranking li { display: flex; justify-content: space-between; align-items: baseline; gap: .45rem; padding: .2rem 0; color: #c1cbe2; font-size: .875rem; }
+.hs-ranking strong { font-variant-numeric: tabular-nums; color: #f0f3fb; }
+.hs-ranking li:first-child strong { color: #b7e9d4; }
+.hs-evidence td { overflow-wrap: anywhere; }
 .hs-result svg { display: block; width: 100%; height: auto; max-height: 9rem; margin-top: .2rem; }
 .hs-grid { stroke: #596378; stroke-width: 1; }
 .hs-stick { stroke: #abdbc8; stroke-width: 3; }
