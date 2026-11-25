@@ -15,8 +15,8 @@
       alt: ['Quercetin carbon spectrum with the two swapped assignments highlighted', '槲皮素的碳谱，标出了两个指认对调的峰'],
       raw: folder + 'quercetin-agent.json' },
     { id: 'fragments', title: ['Annotating MS/MS fragments', '串联质谱碎片指认'], tag: ['MS/MS · MCP', 'MS/MS · MCP'],
-      summary: ['MechFrag-MS returned fragment atom indices for 11 of 14 observed peaks in one MassSpecGym spectrum.', '在一张 MassSpecGym 谱图中，MechFrag-MS 为 14 个实测峰中的 11 个给出了碎片原子编号。'],
-      alt: ['Recorded MechFrag-MS result showing observed mass-to-charge ratios and fragment mass errors', 'MechFrag-MS 执行记录截图，展示实测质荷比与匹配碎片的质量误差'],
+      summary: ['Select an observed peak to see where its candidate fragment comes from and which functional groups it retains.', '选择实测峰，查看候选碎片在母体上的位置，以及其中保留的官能团。'],
+      alt: ['Measured MS/MS peak, parent structure and highlighted fragment functional group', '实测串联质谱峰、母体结构及高亮的碎片官能团'],
       raw: folder + 'harness_mcp_mechfrag.json' },
     { id: 'solvent', title: ['Transferring a solvent shift', '跨溶剂化学位移'], tag: ['Solvent transfer · MCP', '跨溶剂位移 · MCP'],
       summary: ['A fitted solvent correction converts a 50.00 ppm carbon shift in CDCl₃ to 49.87 ppm in DMSO-d₆.', '将 CDCl₃ 中 50.00 ppm 的碳位移输入溶剂校正模型，得到 DMSO-d₆ 中的预测值 49.87 ppm。'],
@@ -104,22 +104,118 @@
     draw('text', {x:center, y:19, 'text-anchor':'middle', class:'hs-swap-label'}, swapped.map(r => r.ppm.toFixed(1)).join(' / '));
     return svg;
   }
-  function plotFragments(peaks) {
-    const {svg, draw} = chart(t('Fragment mass error in ppm versus observed m/z', '碎片质量误差（ppm）与实测 m/z'));
-    const x = mz => 42 + (mz - 120) * 386 / 240;
-    const matched = peaks.filter(p => p.match);
-    const extent = Math.max(10, ...matched.map(p => Math.abs(p.match.ppm_error)));
-    const y = ppm => 48 - ppm / extent * 32;
-    for (const v of [-extent, 0, extent]) {
-      draw('line', {x1:42,x2:428,y1:y(v),y2:y(v),class:'hs-grid'});
-      draw('text', {x:30,y:y(v)+4,'text-anchor':'end',class:'hs-tick'}, v.toFixed(0));
+  function fragmentStructure(drawing, atoms, group, parent) {
+    const {svg, draw} = chart(parent ? t('Parent structure with retained atoms highlighted', '母体结构及保留原子') :
+      t('Candidate fragment heavy-atom skeleton', '候选碎片重原子骨架'));
+    svg.classList.add('hs-frag-molecule');
+    const points = parent ? drawing.coordinates : atoms.map(i => drawing.coordinates[i]);
+    const xs = points.map(p => p[0]), ys = points.map(p => p[1]);
+    const left = Math.min(...xs) - 17, top = Math.min(...ys) - 17;
+    svg.setAttribute('viewBox', [left, top, Math.max(...xs) + 17 - left, Math.max(...ys) + 17 - top].join(' '));
+    for (const path of drawing.paths) {
+      const kept = path.atoms.every(i => atoms.includes(i));
+      if (!parent && !kept) continue;
+      const marked = group && path.atoms.every(i => group.atoms.includes(i));
+      const color = marked ? '#ffc585' : kept ? '#9ce2cf' : '#8390a6';
+      const bond = path.atoms.length === 2;
+      draw('path', {d:path.d, fill:bond ? 'none' : color, stroke:bond ? color : 'none',
+        'stroke-width':marked ? 3.2 : 2, 'stroke-linecap':'round', 'stroke-linejoin':'round'});
     }
-    for (const mz of [140, 200, 260, 320]) {
-      draw('text', {x:x(mz),y:98,'text-anchor':'middle',class:'hs-tick'}, mz);
-    }
-    matched.forEach(p => draw('circle', {cx:x(p.observed_mz),cy:y(p.match.ppm_error),r:4,class:'hs-dot'}));
     return svg;
   }
+
+  function fragmentSpectrum(peaks, observed, selected, choose) {
+    const {svg, draw} = chart(t('Measured MS/MS spectrum. Select a peak for its fragment.', '实测串联质谱，选择峰查看候选碎片。'));
+    svg.classList.add('hs-frag-spectrum');
+    svg.setAttribute('viewBox','0 0 500 110');
+    const x = mz => 32 + (mz - 130) * 450 / 220;
+    const y = height => 78 - height * 61;
+    draw('line', {x1:32,x2:482,y1:78,y2:78,class:'hs-grid'});
+    draw('line', {x1:32,x2:482,y1:17,y2:17,class:'hs-grid','stroke-dasharray':'2 5'});
+    draw('text', {x:28,y:20,'text-anchor':'end',class:'hs-tick'}, '100');
+    draw('text', {x:28,y:81,'text-anchor':'end',class:'hs-tick'}, '0');
+    for (const mz of [140,180,220,260,300,340]) {
+      draw('text', {x:x(mz),y:99,'text-anchor':'middle',class:'hs-tick'}, mz);
+    }
+    const coordinates = observed.map(([mz,height]) => [x(mz),y(height)]);
+    const drawPeak = i => {
+      const [cx,cy] = coordinates[i];
+      draw('line', {x1:cx,x2:cx,y1:78,y2:cy,stroke:i === selected ? '#ffc585' : peaks[i].match ? '#9ce2cf' : '#a5aec2',
+        'stroke-width':i === selected ? 3 : 2});
+    };
+    coordinates.forEach((_, i) => { if (i !== selected) drawPeak(i); });
+    drawPeak(selected);
+    const [cx,cy] = coordinates[selected];
+    draw('circle', {cx,cy,r:3.2,fill:'#ffc585'});
+    svg.addEventListener('click', event => {
+      const point = new DOMPoint(event.clientX,event.clientY).matrixTransform(svg.getScreenCTM().inverse());
+      // Nearby m/z values can share a screen column. Use distance to the measured peak tip.
+      const distances = coordinates.map(([px,py]) => (px-point.x)**2 + (py-point.y)**2);
+      const i = distances.indexOf(Math.min(...distances));
+      if (distances[i] <= 16**2) choose(i);
+      else {
+        const offsets = coordinates.map(([px,py]) => point.y >= py && point.y <= 80 ? Math.abs(px-point.x) : Infinity);
+        const nearest = Math.min(...offsets);
+        if (nearest < 7) choose(offsets.indexOf(nearest));
+      }
+    });
+    return svg;
+  }
+
+  function fragmentPanel(result, drawing) {
+    if (result.smiles !== drawing.smiles || result.peaks.length !== drawing.observed_peaks.length ||
+        result.peaks.some((p,i) => p.observed_mz !== drawing.observed_peaks[i][0])) throw Error('Spectrum and drawing disagree');
+    const panel = elem('div', 'hs-fragments');
+    const select = elem('select', 'hs-frag-select');
+    result.peaks.forEach((p,i) => {
+      const option = elem('option','', p.observed_mz.toFixed(4) + (p.match ? '' : t(' · unmatched',' · 未匹配')));
+      option.value = String(i); select.append(option);
+    });
+    const picker = elem('label', 'hs-frag-picker', t('Observed m/z', '实测 m/z'));
+    picker.append(select);
+    const chartBox = elem('div');
+    const figureBox = elem('div','hs-frag-pair');
+    const info = elem('div','hs-frag-info');
+    info.setAttribute('aria-live','polite');
+    const groups = elem('div','hs-frag-groups');
+    groups.setAttribute('role','group');
+    groups.setAttribute('aria-label',t('Highlight a retained functional group','高亮保留的官能团'));
+    function choose(i) {
+      select.value = String(i);
+      const peak = result.peaks[i], hit = peak.match, atoms = hit?.atom_indices || [];
+      const keptGroups = drawing.groups.filter(g => g.atoms.every(a => atoms.includes(a)));
+      chartBox.replaceChildren(fragmentSpectrum(result.peaks,drawing.observed_peaks,i,choose));
+      const activeButtons = new Map();
+      function highlight(group) {
+        const parent = elem('figure'), fragment = elem('figure');
+        parent.append(elem('figcaption','',t('Parent structure','母体结构')), fragmentStructure(drawing,atoms,group,true));
+        fragment.append(elem('figcaption','',t('Candidate fragment skeleton','候选碎片骨架')));
+        if (hit) fragment.append(fragmentStructure(drawing,atoms,group,false));
+        else fragment.append(elem('p','hs-frag-empty',t('No candidate within 10 ppm','10 ppm 内无匹配候选')));
+        figureBox.replaceChildren(parent,fragment);
+        activeButtons.forEach((b,g) => b.setAttribute('aria-pressed',String(g === group)));
+      }
+      groups.replaceChildren();
+      if (keptGroups.length) groups.append(elem('span','',t('Retained groups','保留的官能团')));
+      keptGroups.forEach(g => {
+        const b = button(localized(g.labels), 'hs-group-button', () => highlight(b.getAttribute('aria-pressed') === 'true' ? null : g));
+        activeButtons.set(g,b); groups.append(b);
+      });
+      highlight(keptGroups[0]);
+      info.replaceChildren();
+      if (hit) {
+        info.append(elem('span','',t('Calculated m/z ','计算 m/z ') + hit.calculated_mz.toFixed(4)),
+          elem('span','',t('Mass error ','质量误差 ') + (hit.ppm_error > 0 ? '+' : '') + hit.ppm_error.toFixed(2) + ' ppm'),
+          elem('span','',t('Model H shift ','模型氢偏移 ') + (hit.h_shift > 0 ? '+' : '') + hit.h_shift));
+      }
+    }
+    select.addEventListener('change', () => choose(Number(select.value)));
+    const heights = drawing.observed_peaks.map(p => p[1]);
+    choose(heights.indexOf(Math.max(...heights)));
+    panel.append(picker, elem('p','hs-units',t('Relative intensity (%) · m/z','相对强度（%）· m/z')),chartBox,figureBox,groups,info);
+    return panel;
+  }
+
   function solventPanel(result, inputs) {
     const group = elem('div', 'hs-solvents');
     const items = [
@@ -164,10 +260,9 @@
           [t('Reference matches', '与实验标签一致'), check.correct + ' / ' + check.peaks.length]]));
     } else if (id === 'fragments') {
       const value = record.inference.result;
-      view.append(resultHeader('MS/MS', record.inference.harness), elem('h4', '', t('Fragment mass errors', '碎片质量误差')),
-        elem('p', 'hs-units', t('Mass error / ppm by observed m/z', '质量误差 / ppm，横轴为实测 m/z')),
-        plotFragments(value.peaks),
-        stats([[t('Matched peaks', '匹配峰'), value.matched + ' / ' + value.peaks.length], [t('Spectrum', '谱图'), 'MassSpecGymID0013877']]));
+      view.append(resultHeader('MS/MS', 'MechFrag-MS'), elem('h4', '', t('From peak to fragment', '从质谱峰到碎片结构')),
+        fragmentPanel(value, request),
+        stats([[t('Matched peaks', '匹配峰'), value.matched + ' / ' + value.peaks.length], [t('Spectrum', '谱图'), request.spectrum_id]]));
     } else {
       const value = record.inference.result;
       view.append(resultHeader('¹³C NMR', t('Solvent shift fit', '溶剂位移拟合')),
@@ -243,6 +338,8 @@
         table([t('Model call', '模型调用'), t('Elapsed', '耗时'), t('Status', '状态')],
           inference.calls.map(call => [String(call.index + 1), call.elapsed_seconds.toFixed(3) + ' s', call.status])));
       if (id === 'fragments') {
+        wrap.append(elem('p','',t('Structures show the retained heavy atoms and parent bonds in each MechFrag-MS candidate. Teal marks retained atoms and bonds. The selected functional group appears in amber in both drawings. Hydrogen rearrangements and charge locations are unresolved.',
+          '结构图按 MechFrag-MS 候选显示保留的重原子和母体中的键。青色表示保留的骨架，两幅图用橙色标出选中的官能团。氢迁移后的成键方式与电荷位置尚未确定。')));
         const rows = inference.result.peaks.map(p => [p.observed_mz.toFixed(4), p.match ? p.match.ppm_error.toFixed(2) : '—', p.match ? p.match.atom_indices.join(', ') : '—']);
         wrap.append(detailsSection(t('Inspect all 14 observed peaks', '查看 14 个实测峰'),
           table(['m/z', t('Error / ppm', '误差 / ppm'), t('Atom indices (zero-based)', '原子编号（从 0 起）')], rows)));
@@ -277,7 +374,7 @@
     });
     document.body.append(dialog);
     dialog.showModal();
-    Promise.all([readJson(item.raw), item.id === 'solvent' ? readJson(folder+'solvent-fitted-request.json') : null]).then(([record, request]) => {
+    Promise.all([readJson(item.raw), item.id === 'fragments' ? readJson(folder+'mechfrag-drawing.json') : item.id === 'solvent' ? readJson(folder+'solvent-fitted-request.json') : null]).then(([record, request]) => {
       if (!dialog.open) return;
       content.replaceChildren(resultView(item.id, record, request), evidence(item.id, record));
     }).catch(() => { content.textContent = t('The recording could not be loaded. Open the source JSON below.', '暂时无法加载记录，可通过下方链接查看原始 JSON。'); });
@@ -317,6 +414,7 @@
     const casesHeading = elem('h3', 'hs-subtitle', t('Recorded cases', '案例回放'));
     cases.forEach(item => {
       const card = elem('article', 'hs-case');
+      card.id = 'case-' + item.id;
       const preview = button('', 'hs-preview', () => openCase(item, preview));
       const img = elem('img');
       img.src = folder + item.id + (zh() ? '-zh' : '-en') + '.webp';

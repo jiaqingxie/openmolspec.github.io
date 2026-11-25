@@ -103,3 +103,19 @@
 .hs-call-steps { border-left: 2px solid #d9d4e8; padding-left: .9rem; }
 .hs-call-steps p { font-weight: 600; margin: .5rem 0 .2rem; }
 .hs-json { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 16rem; overflow: auto; margin: 0; padding: .65rem; color: #2d3450; background: #f4f4f9; border-radius: .25rem; font: .875rem/1.45 ui-monospace, monospace; }
+.hs-fragments { margin-top: .75rem; }
+.hs-frag-picker, .hs-frag-groups, .hs-frag-info { display: flex; align-items: center; flex-wrap: wrap; gap: .45rem .8rem; }
+.hs-frag-picker { margin: 0 0 .6rem; color: #dbe3f3; font-size: 1rem; }
+.hs-frag-select { color: #242b3e; background: #f8f9fd; border: 1px solid #a9b5cc; border-radius: .25rem; padding: .32rem .55rem; font-family: inherit; font-size: 1rem; line-height: 1.2; font-weight: 600; }
+.hs-result .hs-frag-spectrum { width: 100%; max-height: none; margin: 0; cursor: crosshair; }
+.hs-frag-pair { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .6rem; }
+.hs-frag-pair figure { display: flex; flex-direction: column; margin: 0; padding: .5rem; border: 1px solid #4b566c; border-radius: .35rem; }
+.hs-frag-pair figcaption { color: #e0e6f2; font-size: .875rem; font-weight: 600; }
+.hs-frag-pair .hs-frag-molecule { width: 100%; height: clamp(5.2rem, 16vw, 9rem); max-height: none; }
+.hs-frag-groups { margin-top: .65rem; color: #cbd5e8; font-size: .875rem; gap: .4rem; }
+.hs-frag-groups:empty, .hs-frag-info:empty { display: none; }
+.hs-group-button { font: inherit; font-weight: 550; border-radius: .35rem; border: 1px solid #799a9e; background: #253644; padding: .25rem .52rem; cursor: pointer; color: #b6edde; }
+.hs-group-button[aria-pressed="true"] { color: #221e1d; background: #ffc585; border-color: #ffc585; }
+.hs-group-button:focus-visible, .hs-frag-select:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+.hs-frag-info { margin: .65rem 0; color: #e8edf8; font-size: .875rem; font-variant-numeric: tabular-nums; }
+.hs-frag-empty { margin: auto; padding: .65rem 0; font-size: .9rem; color: #c4cfe3; }
