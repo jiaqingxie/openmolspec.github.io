@@ -10,10 +10,10 @@
       summary: ['DeepSeek corrected an input error and retrieved the reference structure from 32 candidates without a molecular formula.', 'DeepSeek 根据校验反馈修正了输入，仅用氢谱和碳谱检索 32 个候选，参考结构排在第一。'],
       alt: ['Top-ranked structure with cosine scores for the first three candidates', '排名第一的分子结构及前三名候选的余弦相似度'],
       raw: folder + 'nmr-retrieval-agent.json' },
-    { id: 'ethanol', title: ['Ethanol carbon shifts', '乙醇的碳化学位移'], tag: ['¹³C NMR · Agent + MCP', '¹³C NMR · 智能体 + MCP'],
-      summary: ['The agent validated CCO and called NMRNet to predict the two carbon shifts.', '智能体校验 CCO 后调用 NMRNet，得到两个碳原子的预测位移。'],
-      alt: ['Recorded ethanol prediction with two carbon positions at 57.77 and 17.77 ppm', '乙醇执行记录截图，两处碳位移为 57.77 和 17.77 ppm'],
-      raw: 'assets/agent-demo/run.json' },
+    { id: 'quercetin', title: ['Assign the carbon spectrum of quercetin', '槲皮素的碳谱指认'], tag: ['¹³C NMR · DeepSeek + MCP', '¹³C NMR · DeepSeek + MCP'],
+      summary: ['The model assigned all 14 observed peaks. Experimental labels show which two nearby peaks it swapped.', '14 个实测峰都有候选指认。与实验标签逐峰核对，可以看到模型对调了哪两个相邻峰。'],
+      alt: ['Quercetin carbon spectrum with the two swapped assignments highlighted', '槲皮素的碳谱，标出了两个指认对调的峰'],
+      raw: folder + 'quercetin-agent.json' },
     { id: 'fragments', title: ['Annotating MS/MS fragments', '串联质谱碎片指认'], tag: ['MS/MS · MCP', 'MS/MS · MCP'],
       summary: ['MechFrag-MS returned fragment atom indices for 11 of 14 observed peaks in one MassSpecGym spectrum.', '在一张 MassSpecGym 谱图中，MechFrag-MS 为 14 个实测峰中的 11 个给出了碎片原子编号。'],
       alt: ['Recorded MechFrag-MS result showing observed mass-to-charge ratios and fragment mass errors', 'MechFrag-MS 执行记录截图，展示实测质荷比与匹配碎片的质量误差'],
@@ -86,19 +86,22 @@
     };
     return {svg, draw};
   }
-  function plotCarbon(shifts) {
-    const {svg, draw} = chart(t('Predicted carbon positions in ppm', '预测碳化学位移，单位 ppm'));
-    const x = ppm => 24 + (70 - ppm) * 412 / 70;
-    const axis = 77;
-    for (let n = 0; n <= 70; n += 10) {
-      draw('line', {x1:x(n), x2:x(n), y1:11, y2:axis+3, class:'hs-grid'});
-      draw('text', {x:x(n), y:96, 'text-anchor':'middle', class:'hs-tick'}, n);
+  function plotAssignments(rows) {
+    const {svg, draw} = chart(t('Observed carbon peak positions, with swapped assignments highlighted', '实测碳峰位置，突出显示指认对调的峰'));
+    const x = ppm => 26 + (180 - ppm) * 408 / 90;
+    for (let ppm = 180; ppm >= 90; ppm -= 15) {
+      draw('line', {x1:x(ppm), x2:x(ppm), y1:29, y2:79, class:'hs-grid'});
+      draw('text', {x:x(ppm), y:97, 'text-anchor':'middle', class:'hs-tick'}, ppm);
     }
-    draw('line', {x1:24, x2:436, y1:axis, y2:axis, class:'hs-grid'});
-    shifts.forEach(ppm => {
-      draw('line', {x1:x(ppm), x2:x(ppm), y1:31, y2:axis, class:'hs-stick'});
-      draw('text', {x:x(ppm), y:22, 'text-anchor':'middle', class:'hs-point-label'}, ppm.toFixed(2));
-    });
+    draw('line', {x1:26, x2:434, y1:78, y2:78, class:'hs-grid'});
+    for (const row of rows) {
+      draw('line', {x1:x(row.ppm), x2:x(row.ppm), y1:40, y2:78,
+        class: row.correct ? 'hs-stick' : 'hs-swapped'});
+    }
+    const swapped = rows.filter(r => !r.correct);
+    const center = x((swapped[0].ppm + swapped[1].ppm) / 2);
+    draw('line', {x1:center, x2:center, y1:25, y2:36, class:'hs-swapped'});
+    draw('text', {x:center, y:19, 'text-anchor':'middle', class:'hs-swap-label'}, swapped.map(r => r.ppm.toFixed(1)).join(' / '));
     return svg;
   }
   function plotFragments(peaks) {
@@ -153,13 +156,12 @@
       view.append(resultHeader('¹H + ¹³C NMR', record.result.model), elem('h4', '', t('The reference ranked first', '参考结构排名第一')),
         elem('p', 'hs-units', t('Top structure and candidate cosine similarities', '首选结构与候选的余弦相似度')), panel,
         stats([[t('Candidate library', '候选库'), String(result.candidate_pool)], [t('Formula supplied', '给定分子式'), t('No', '无')]]));
-    } else if (id === 'ethanol') {
-      const end = record.events.find(e => e.type === 'tool_end' && e.data.name === 'spectra_predict');
-      const value = end.data.result.result.records[0];
-      view.append(resultHeader('¹³C NMR', 'NMRNet'), elem('h4', '', t('Carbon chemical shifts', '碳化学位移')),
-        elem('p', 'hs-units', t('Predicted peak positions / ppm', '预测峰位 / ppm')),
-        plotCarbon(value.prediction_ppm),
-        stats(value.atom_indices.map((atom, i) => [t('Carbon ', '碳原子 ') + atom, value.prediction_ppm[i].toFixed(2) + ' ppm'])));
+    } else if (id === 'quercetin') {
+      const check = record.reference_check;
+      view.append(resultHeader('¹³C NMR · CD₃OD', record.result.model), elem('h4', '', t('Quercetin carbon assignments', '槲皮素的碳峰指认')),
+        elem('p', 'hs-units', t('Observed peak positions (ppm) · swapped assignments in amber', '实测峰位（ppm）· 橙色标出指认对调的峰')),
+        plotAssignments(check.peaks), stats([[t('Peaks matched', '峰匹配数'), check.matched + ' / ' + check.peaks.length],
+          [t('Reference matches', '与实验标签一致'), check.correct + ' / ' + check.peaks.length]]));
     } else if (id === 'fragments') {
       const value = record.inference.result;
       view.append(resultHeader('MS/MS', record.inference.harness), elem('h4', '', t('Fragment mass errors', '碎片质量误差')),
@@ -191,7 +193,7 @@
   }
   function evidence(id, record) {
     const wrap = elem('div', 'hs-evidence');
-    if (id === 'ethanol' || id === 'retrieval') {
+    if (id === 'quercetin' || id === 'retrieval') {
       const tools = record.events.filter(e => e.type === 'tool_end');
       if (id === 'retrieval') {
         const result = tools.find(e => e.data.name === 'spectra_predict').data.result.result;
@@ -204,7 +206,20 @@
           elem('p', '', t('DeepSeek made four API calls. After validation flagged the input format, it placed both spectra under query and resubmitted the same candidate list.',
             'DeepSeek 共调用四轮 API。第一次校验发现输入格式有误，它把两张谱放进 query 字段，保留原候选列表后重新提交。')));
       } else {
-        wrap.append(elem('p', '', t('The original prompt and answer were recorded in Chinese.', '原始提问和回答均以中文记录。')), elem('blockquote', '', record.request.prompt));
+        const diagram = elem('img', 'hs-assignment-map');
+        diagram.src = folder + 'quercetin-carbons.svg';
+        diagram.alt = t('Quercetin with the zero-based carbon atom indices used in the table', '槲皮素结构，碳原子按表中使用的零基编号标注');
+        const ref = record.reference_check;
+        wrap.append(elem('p', '', t('The agent received a structure and the peak positions measured in methanol-d₄. We then compared its assignments to the held-out nmrshiftdb2 atom labels.',
+          '智能体只收到结构和氘代甲醇中的实测峰位。指认完成后，再与 nmrshiftdb2 测试集中的原子标签核对。')),
+          diagram,
+          elem('p', '', t('At 115.0 and 115.6 ppm, the model interchanged atoms 7 and 12. The reference assigns 147.8 ppm to both atoms 4 and 8; the model returned atom 4. This peak counts once in the score.',
+            '模型把 115.0 和 115.6 ppm 的原子 7、12 对调了。147.8 ppm 的实验标签同时指向原子 4 和 8，模型给出原子 4；这个峰在统计中只计一次。')),
+          detailsSection(t('Compare all 14 peaks (zero-based atom indices)', '逐峰核对 14 个峰（零基原子编号）'),
+            table(['ppm', t('Model', '模型指认'), t('Reference', '实验标签'), t('Outcome', '核对结果')], ref.peaks.map(r => [
+              r.ppm.toFixed(1), r.predicted_atom_indices.join(', '), r.reference_atom_indices.join(', '),
+              r.correct ? t('Match', '一致') : t('Swapped', '对调')]))));
+
       }
       wrap.append(table([t('Tool', '工具'), t('Result', '结果'), t('Elapsed', '耗时')], tools.map(({data}) => [
         data.name, data.result?.valid === false ? t('Invalid input', '输入有误') : t('Completed', '完成'), data.elapsed_seconds.toFixed(3) + ' s'])));
@@ -221,12 +236,7 @@
       if (id === 'retrieval') {
         wrap.append(elem('p', '', t('The recorded answer misplaces the aryl groups in its informal name. The structure drawing follows the verified first-ranked SMILES.',
           '原始回答中的文字命名写错了芳基的位置。上方结构图按核对过的第一名 SMILES 绘制。')));
-        return wrap;
       }
-      const images = elem('div', 'hs-originals');
-      [[t('Request screenshot', '提问截图'), '01-plan'], [t('Tool screenshot', '调用截图'), '02-tools'],
-        [t('Result screenshot', '结果截图'), '03-result']].forEach(([label, name]) => images.append(link(label, 'assets/agent-demo/'+name+'.png')));
-      wrap.append(images);
     } else {
       const inference = record.inference;
       wrap.append(elem('p', '', t('The MCP client discovered tools, validated the request and ran ', 'MCP 客户端发现工具、校验请求并执行了 ') + inference.task + t(' through stdio.', '（stdio 传输）。')),

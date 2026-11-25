@@ -504,9 +504,18 @@
    },output,trace);
   }else{
    form.classList.add('agent-composer');form.append(el('h3','','Ask the spectroscopy agent'),el('p','','Watch the agent discover tools, validate your inputs, call a model and explain its output.'));
-   const startingPrompt='List available tools, validate ethanol (CCO), then predict its ¹³C shifts with atom indices and ppm values.';
-   form.append(field('Your question','agent-prompt',window.omsTranslate(startingPrompt),'textarea'));
-   const examples=el('div','prompt-examples');['Predict the ¹³C NMR shifts of ethanol (CCO).','Validate CCO and assign measured carbon peaks at 18.2 and 58.3 ppm.'].forEach(text=>{const b=button(text,'prompt-example');b.onclick=()=>$('#agent-prompt').value=window.omsTranslate(text);examples.append(b);});form.append(examples);
+   const prompts=['Assign the 14 measured carbon peaks of quercetin.','Compare the carbon assignments at 115.0 and 115.6 ppm.'];
+   const spectrum={smiles:'O=c1c(O)c(-c2ccc(O)c(O)c2)oc2cc(O)cc(O)c12',nucleus:'13C',solvent:'CD3OD',
+    peaks_ppm:[94.5,98.2,103,115,115.6,121.9,124.5,135.7,145,147.8,156.1,160.7,163.9,176.8]};
+   form.append(field('Your question','agent-prompt','','textarea'));
+   const question=$('#agent-prompt',form),examples=el('div','prompt-examples');
+   const useExample=label=>{
+    question.dataset.exampleLabel=label;
+    question.dataset.exampleInputs=JSON.stringify(spectrum);
+    question.value=window.omsTranslate(label)+'\n'+question.dataset.exampleInputs;
+   };
+   useExample(prompts[0]);
+   prompts.forEach(label=>{const b=button(label,'prompt-example');b.onclick=()=>useExample(label);examples.append(b);});form.append(examples);
    const go=button('Run Agent Harness');go.id='run-agent';go.dataset.run='true';go.onclick=()=>run({kind:'agent',prompt:$('#agent-prompt').value},output,trace);const hint=el('p','tool-note','Live questions require a connected model provider. You can explore the recorded Harness cases below.');
    hint.id='agent-availability';form.append(hint);form.append(go,el('p','tool-note','Model API → MCP tool discovery → input validation → model execution. Expand each tool call to inspect its input and output.'));
   }
@@ -568,7 +577,7 @@
  async function replay(){
   const host=$('#agent-demo-player');if(!host)return;
   try{
-   const run=await fetch('assets/agent-demo/run.json').then(r=>{if(!r.ok)throw Error('No recorded run');return r.json();});
+   const run=await fetch('assets/harness/quercetin-agent.json').then(r=>{if(!r.ok)throw Error('No recorded run');return r.json();});
    const controls=el('div','replay-controls'),stage=el('div','recorded-trace'),text=el('div','recorded-answer');
    host.replaceChildren(el('p','recording-label','Recorded API run · '+new Date(run.created_at*1000).toLocaleString()),controls,stage,text);
    const ends=run.events.filter(e=>e.type==='tool_end');const frames=[run.events.findIndex(e=>e.type==='discovery')+1,run.events.findIndex(e=>e.type==='tool_start'&&e.data.name==='spectra_predict')+1,run.events.length];

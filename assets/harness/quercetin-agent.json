@@ -1,0 +1,698 @@
+{
+  "id": "c44a9faf-9fd6-451a-b9ca-607379b43c5d",
+  "status": "completed",
+  "created_at": 1795571641.2155643,
+  "result": {
+    "answer": "已完成校验（valid=true）并执行了 ¹³C 峰到碳原子的指认。\n\n**总体结果**\n- 观测峰总数：14\n- 匹配峰数：14（matched_fraction = 1.0）\n- 未匹配峰：无（unmatched_peak_indices = []）\n- 另有 1 个未匹配位点（有预测但无对应观测峰）：原子索引 [8]，预测 149.5 ppm\n\n**指定三行的首选碳原子（零基 RDKit AddHs 编号）**\n\n| 观测 δ (ppm) | 首选碳原子索引 | 预测位移 (ppm) | 绝对误差 (ppm) |\n|---|---|---|---|\n| 115.0 | 7 | 115.9 | 0.90 |\n| 115.6 | 12 | 116.1 | 0.50 |\n| 147.8 | 4 | 146.99 | 0.81 |\n\n说明：以上均为模型预测指认结果（容差 5.0 ppm），实验原子标签未提供，稍后可与实测标签核对。",
+    "model": "deepseek-v4.1-flash",
+    "usage": [
+      {
+        "prompt_tokens": 1670,
+        "completion_tokens": 239,
+        "total_tokens": 1909,
+        "completion_tokens_details": {
+          "reasoning_tokens": 55
+        }
+      },
+      {
+        "prompt_tokens": 1891,
+        "completion_tokens": 190,
+        "total_tokens": 2081,
+        "completion_tokens_details": {
+          "reasoning_tokens": 6
+        }
+      },
+      {
+        "prompt_tokens": 3129,
+        "completion_tokens": 363,
+        "total_tokens": 3492,
+        "completion_tokens_details": {
+          "reasoning_tokens": 125
+        }
+      }
+    ],
+    "transport": "MCP stdio"
+  },
+  "error": null,
+  "events": [
+    {
+      "id": 1,
+      "type": "status",
+      "data": {
+        "stage": "connecting",
+        "label": "Connecting the model API and MCP tools"
+      },
+      "created_at": 1795571641.2160726
+    },
+    {
+      "id": 2,
+      "type": "discovery",
+      "data": {
+        "transport": "MCP stdio",
+        "tools": [
+          "spectra_tasks",
+          "spectra_datasets",
+          "spectra_validate",
+          "spectra_predict"
+        ]
+      },
+      "created_at": 1795571641.2193506
+    },
+    {
+      "id": 3,
+      "type": "tool_start",
+      "data": {
+        "id": "483c04ad-9ff9-411d-8399-25ff11a07a8b",
+        "name": "spectra_tasks",
+        "args": {}
+      },
+      "created_at": 1795571641.2194507
+    },
+    {
+      "id": 4,
+      "type": "tool_end",
+      "data": {
+        "id": "483c04ad-9ff9-411d-8399-25ff11a07a8b",
+        "name": "spectra_tasks",
+        "result": [
+          {
+            "task": "nmr.assignment",
+            "title": "H/C 峰 → 原子指认",
+            "modalities": [
+              "1H",
+              "13C"
+            ],
+            "domain": "experimental",
+            "harness": "NMR Spectra Harness"
+          }
+        ],
+        "elapsed_seconds": 0.18491559894755483
+      },
+      "created_at": 1795571641.4044266
+    },
+    {
+      "id": 5,
+      "type": "status",
+      "data": {
+        "stage": "model",
+        "label": "The agent is selecting its next action",
+        "step": 1
+      },
+      "created_at": 1795571641.404513
+    },
+    {
+      "id": 6,
+      "type": "tool_start",
+      "data": {
+        "id": "5546456a-c1fb-4983-985a-05a43f78c28c",
+        "name": "spectra_validate",
+        "args": {
+          "task": "nmr.assignment",
+          "inputs": {
+            "smiles": "O=c1c(O)c(-c2ccc(O)c(O)c2)oc2cc(O)cc(O)c12",
+            "nucleus": "13C",
+            "solvent": "CD3OD",
+            "peaks_ppm": [
+              94.5,
+              98.2,
+              103.0,
+              115.0,
+              115.6,
+              121.9,
+              124.5,
+              135.7,
+              145.0,
+              147.8,
+              156.1,
+              160.7,
+              163.9,
+              176.8
+            ]
+          }
+        }
+      },
+      "created_at": 1795571645.6372392
+    },
+    {
+      "id": 7,
+      "type": "tool_end",
+      "data": {
+        "id": "5546456a-c1fb-4983-985a-05a43f78c28c",
+        "name": "spectra_validate",
+        "result": {
+          "valid": true,
+          "task": "nmr.assignment",
+          "harness": "NMR Spectra Harness"
+        },
+        "elapsed_seconds": 0.002822466194629669
+      },
+      "created_at": 1795571645.6401637
+    },
+    {
+      "id": 8,
+      "type": "status",
+      "data": {
+        "stage": "model",
+        "label": "The agent is selecting its next action",
+        "step": 2
+      },
+      "created_at": 1795571645.6402547
+    },
+    {
+      "id": 9,
+      "type": "tool_start",
+      "data": {
+        "id": "2930e2c9-a733-4fea-b06c-c45231ca4893",
+        "name": "spectra_predict",
+        "args": {
+          "task": "nmr.assignment",
+          "inputs": {
+            "smiles": "O=c1c(O)c(-c2ccc(O)c(O)c2)oc2cc(O)cc(O)c12",
+            "nucleus": "13C",
+            "solvent": "CD3OD",
+            "peaks_ppm": [
+              94.5,
+              98.2,
+              103.0,
+              115.0,
+              115.6,
+              121.9,
+              124.5,
+              135.7,
+              145.0,
+              147.8,
+              156.1,
+              160.7,
+              163.9,
+              176.8
+            ]
+          }
+        }
+      },
+      "created_at": 1795571648.9392555
+    },
+    {
+      "id": 10,
+      "type": "tool_end",
+      "data": {
+        "id": "2930e2c9-a733-4fea-b06c-c45231ca4893",
+        "name": "spectra_predict",
+        "result": {
+          "version": "1.0",
+          "task": "nmr.assignment",
+          "harness": "NMR Spectra Harness",
+          "request_sha256": "11114033b98b50b81118a64003c416c4494ab0370e7ee3eb75e35f098ac4345d",
+          "completed": true,
+          "calls": [
+            {
+              "index": 0,
+              "status": "passed",
+              "elapsed_seconds": 7.26754304766655,
+              "output_sha256": "7b1d4dd62344f97725463f658d92a636c13f4050fba25e1a8d033bd52a33b86b",
+              "prediction_sha256": "ee56f964b6459a9ef9b0e8fde926005596431645c563bfcdb1970f3b62b1ab9f"
+            }
+          ],
+          "result": {
+            "smiles": "O=c1c(O)c(-c2ccc(O)c(O)c2)oc2cc(O)cc(O)c12",
+            "symbol": "C",
+            "mapped_smiles": "[O:1]=[c:2]1[c:3]([O:4][H:23])[c:5](-[c:6]2[c:7]([H:24])[c:8]([H:25])[c:9]([O:10][H:26])[c:11]([O:12][H:27])[c:13]2[H:28])[o:14][c:15]2[c:16]([H:29])[c:17]([O:18][H:30])[c:19]([H:31])[c:20]([O:21][H:32])[c:22]12",
+            "atom_index_basis": "zero-based RDKit AddHs(input_smiles); atom-map numbers = index + 1",
+            "equivalence": "topological symmetry including chirality; not proof of magnetic equivalence",
+            "assignments": [
+              {
+                "peak_index": 0,
+                "observed_ppm": 94.5,
+                "atom_indices": [
+                  15
+                ],
+                "predicted_ppm": 94.15,
+                "absolute_error_ppm": 0.3499999999999943,
+                "other_sites_within_tolerance": []
+              },
+              {
+                "peak_index": 1,
+                "observed_ppm": 98.2,
+                "atom_indices": [
+                  18
+                ],
+                "predicted_ppm": 99.8,
+                "absolute_error_ppm": 1.5999999999999943,
+                "other_sites_within_tolerance": [
+                  10,
+                  14
+                ]
+              },
+              {
+                "peak_index": 2,
+                "observed_ppm": 103.0,
+                "atom_indices": [
+                  21
+                ],
+                "predicted_ppm": 103.19979919181546,
+                "absolute_error_ppm": 0.19979919181545824,
+                "other_sites_within_tolerance": [
+                  12
+                ]
+              },
+              {
+                "peak_index": 3,
+                "observed_ppm": 115.0,
+                "atom_indices": [
+                  7
+                ],
+                "predicted_ppm": 115.9,
+                "absolute_error_ppm": 0.9000000000000057,
+                "other_sites_within_tolerance": [
+                  3,
+                  8
+                ]
+              },
+              {
+                "peak_index": 4,
+                "observed_ppm": 115.6,
+                "atom_indices": [
+                  12
+                ],
+                "predicted_ppm": 116.1,
+                "absolute_error_ppm": 0.5,
+                "other_sites_within_tolerance": [
+                  3,
+                  5
+                ]
+              },
+              {
+                "peak_index": 5,
+                "observed_ppm": 121.9,
+                "atom_indices": [
+                  5
+                ],
+                "predicted_ppm": 119.37165147950913,
+                "absolute_error_ppm": 2.52834852049088,
+                "other_sites_within_tolerance": [
+                  4
+                ]
+              },
+              {
+                "peak_index": 6,
+                "observed_ppm": 124.5,
+                "atom_indices": [
+                  6
+                ],
+                "predicted_ppm": 122.3,
+                "absolute_error_ppm": 2.200000000000003,
+                "other_sites_within_tolerance": []
+              },
+              {
+                "peak_index": 7,
+                "observed_ppm": 135.7,
+                "atom_indices": [
+                  2
+                ],
+                "predicted_ppm": 136.6,
+                "absolute_error_ppm": 0.9000000000000057,
+                "other_sites_within_tolerance": []
+              },
+              {
+                "peak_index": 8,
+                "observed_ppm": 145.0,
+                "atom_indices": [
+                  10
+                ],
+                "predicted_ppm": 145.6,
+                "absolute_error_ppm": 0.5999999999999943,
+                "other_sites_within_tolerance": [
+                  2,
+                  6
+                ]
+              },
+              {
+                "peak_index": 9,
+                "observed_ppm": 147.8,
+                "atom_indices": [
+                  4
+                ],
+                "predicted_ppm": 146.9897969960407,
+                "absolute_error_ppm": 0.810203003959316,
+                "other_sites_within_tolerance": [
+                  6,
+                  7
+                ]
+              },
+              {
+                "peak_index": 10,
+                "observed_ppm": 156.1,
+                "atom_indices": [
+                  14
+                ],
+                "predicted_ppm": 157.75,
+                "absolute_error_ppm": 1.6500000000000057,
+                "other_sites_within_tolerance": []
+              },
+              {
+                "peak_index": 11,
+                "observed_ppm": 160.7,
+                "atom_indices": [
+                  19
+                ],
+                "predicted_ppm": 163.1,
+                "absolute_error_ppm": 2.4000000000000057,
+                "other_sites_within_tolerance": [
+                  9,
+                  11
+                ]
+              },
+              {
+                "peak_index": 12,
+                "observed_ppm": 163.9,
+                "atom_indices": [
+                  16
+                ],
+                "predicted_ppm": 165.0,
+                "absolute_error_ppm": 1.0999999999999943,
+                "other_sites_within_tolerance": [
+                  13
+                ]
+              },
+              {
+                "peak_index": 13,
+                "observed_ppm": 176.8,
+                "atom_indices": [
+                  1
+                ],
+                "predicted_ppm": 181.53767917547773,
+                "absolute_error_ppm": 4.737679175477723,
+                "other_sites_within_tolerance": []
+              }
+            ],
+            "unmatched_peak_indices": [],
+            "unmatched_sites": [
+              {
+                "atom_indices": [
+                  8
+                ],
+                "predicted_ppm": 149.5
+              }
+            ],
+            "sites": [
+              {
+                "atom_indices": [
+                  1
+                ],
+                "predicted_ppm": 181.53767917547773
+              },
+              {
+                "atom_indices": [
+                  2
+                ],
+                "predicted_ppm": 136.6
+              },
+              {
+                "atom_indices": [
+                  4
+                ],
+                "predicted_ppm": 146.9897969960407
+              },
+              {
+                "atom_indices": [
+                  5
+                ],
+                "predicted_ppm": 119.37165147950913
+              },
+              {
+                "atom_indices": [
+                  6
+                ],
+                "predicted_ppm": 122.3
+              },
+              {
+                "atom_indices": [
+                  7
+                ],
+                "predicted_ppm": 115.9
+              },
+              {
+                "atom_indices": [
+                  8
+                ],
+                "predicted_ppm": 149.5
+              },
+              {
+                "atom_indices": [
+                  10
+                ],
+                "predicted_ppm": 145.6
+              },
+              {
+                "atom_indices": [
+                  12
+                ],
+                "predicted_ppm": 116.1
+              },
+              {
+                "atom_indices": [
+                  14
+                ],
+                "predicted_ppm": 157.75
+              },
+              {
+                "atom_indices": [
+                  15
+                ],
+                "predicted_ppm": 94.15
+              },
+              {
+                "atom_indices": [
+                  16
+                ],
+                "predicted_ppm": 165.0
+              },
+              {
+                "atom_indices": [
+                  18
+                ],
+                "predicted_ppm": 99.8
+              },
+              {
+                "atom_indices": [
+                  19
+                ],
+                "predicted_ppm": 163.1
+              },
+              {
+                "atom_indices": [
+                  21
+                ],
+                "predicted_ppm": 103.19979919181546
+              }
+            ],
+            "tolerance_ppm": 5.0,
+            "matched_fraction": 1.0,
+            "assignment_accuracy": null,
+            "accuracy_note": "Predicted assignments; experimental atom labels are not supplied.",
+            "backend": "assigned_sites",
+            "provenance": {
+              "nucleus": "13C",
+              "lookup_weight": 1.0,
+              "tree_sha256": "43f1f7b301903af4407baf5bbe5dc324fd9e6a9dbe12372bffa90a57ea1d2cee",
+              "lookup_sha256": "4a31d80276d28aad5902a88c1706d5b1e1e3f417faaef4f99b5ab96ea4d5abbb"
+            }
+          },
+          "repeat_outputs_equal": null,
+          "repeat_predictions_equal": null,
+          "repeat_results": [],
+          "validation_scope": "request contract, execution and repeated serialized outputs; scientific accuracy requires reference data"
+        },
+        "elapsed_seconds": 7.27089761197567
+      },
+      "created_at": 1795571656.2104428
+    },
+    {
+      "id": 11,
+      "type": "status",
+      "data": {
+        "stage": "model",
+        "label": "The agent is selecting its next action",
+        "step": 3
+      },
+      "created_at": 1795571656.2106266
+    },
+    {
+      "id": 12,
+      "type": "answer",
+      "data": {
+        "content": "已完成校验（valid=true）并执行了 ¹³C 峰到碳原子的指认。\n\n**总体结果**\n- 观测峰总数：14\n- 匹配峰数：14（matched_fraction = 1.0）\n- 未匹配峰：无（unmatched_peak_indices = []）\n- 另有 1 个未匹配位点（有预测但无对应观测峰）：原子索引 [8]，预测 149.5 ppm\n\n**指定三行的首选碳原子（零基 RDKit AddHs 编号）**\n\n| 观测 δ (ppm) | 首选碳原子索引 | 预测位移 (ppm) | 绝对误差 (ppm) |\n|---|---|---|---|\n| 115.0 | 7 | 115.9 | 0.90 |\n| 115.6 | 12 | 116.1 | 0.50 |\n| 147.8 | 4 | 146.99 | 0.81 |\n\n说明：以上均为模型预测指认结果（容差 5.0 ppm），实验原子标签未提供，稍后可与实测标签核对。"
+      },
+      "created_at": 1795571660.7628276
+    }
+  ],
+  "request": {
+    "kind": "agent",
+    "prompt": "这是槲皮素在 CD3OD 中测得的 ¹³C NMR。请用 OpenMolSpec Harness 校验输入并执行峰到碳原子的指认。请简要报告匹配峰数和未匹配峰；分别列出 115.0、115.6 和 147.8 ppm 的首选碳原子（使用工具的零基编号）与预测位移。请按匹配数和这三行数据作答，使用工具输出的原子编号。我们稍后再核对实验原子标签。\n{\"smiles\":\"O=c1c(O)c(-c2ccc(O)c(O)c2)oc2cc(O)cc(O)c12\",\"nucleus\":\"13C\",\"solvent\":\"CD3OD\",\"peaks_ppm\":[94.5,98.2,103.0,115.0,115.6,121.9,124.5,135.7,145.0,147.8,156.1,160.7,163.9,176.8]}"
+  },
+  "provenance": {
+    "provider": "OpenAI-compatible API",
+    "base_url": "https://hapiopen.cc/v1",
+    "model_requested": "deepseek-v4.1-flash",
+    "controller": "OpenMolSpec online_api.Service.agent",
+    "mcp": "python -m openmolspec.mcp",
+    "enabled_tasks": [
+      "nmr.assignment"
+    ]
+  },
+  "reference_check": {
+    "compound": "Quercetin",
+    "source": "nmrshiftdb2",
+    "connectivity": "REFJWTPEDVJJIY",
+    "selection": "First held-out experimental 13C record for quercetin in dataset order.",
+    "split": "test; molecular connectivity disjoint from training and validation",
+    "dataset_sha256": "99419bc56b4c1282c656cbdc3cb1922b0beea31f042ebda4af8c2c1d977328eb",
+    "source_row": 51213,
+    "solvent": "CD3OD",
+    "method": "Compare each distinct observed peak after inference. Count the peak once if the prediction matches any reference atom or its chirality-aware symmetry equivalent. Atom labels were withheld from the agent.",
+    "matched": 14,
+    "correct": 12,
+    "peaks": [
+      {
+        "ppm": 94.5,
+        "predicted_atom_indices": [
+          15
+        ],
+        "reference_atom_indices": [
+          15
+        ],
+        "correct": true
+      },
+      {
+        "ppm": 98.2,
+        "predicted_atom_indices": [
+          18
+        ],
+        "reference_atom_indices": [
+          18
+        ],
+        "correct": true
+      },
+      {
+        "ppm": 103.0,
+        "predicted_atom_indices": [
+          21
+        ],
+        "reference_atom_indices": [
+          21
+        ],
+        "correct": true
+      },
+      {
+        "ppm": 115.0,
+        "predicted_atom_indices": [
+          7
+        ],
+        "reference_atom_indices": [
+          12
+        ],
+        "correct": false
+      },
+      {
+        "ppm": 115.6,
+        "predicted_atom_indices": [
+          12
+        ],
+        "reference_atom_indices": [
+          7
+        ],
+        "correct": false
+      },
+      {
+        "ppm": 121.9,
+        "predicted_atom_indices": [
+          5
+        ],
+        "reference_atom_indices": [
+          5
+        ],
+        "correct": true
+      },
+      {
+        "ppm": 124.5,
+        "predicted_atom_indices": [
+          6
+        ],
+        "reference_atom_indices": [
+          6
+        ],
+        "correct": true
+      },
+      {
+        "ppm": 135.7,
+        "predicted_atom_indices": [
+          2
+        ],
+        "reference_atom_indices": [
+          2
+        ],
+        "correct": true
+      },
+      {
+        "ppm": 145.0,
+        "predicted_atom_indices": [
+          10
+        ],
+        "reference_atom_indices": [
+          10
+        ],
+        "correct": true
+      },
+      {
+        "ppm": 147.8,
+        "predicted_atom_indices": [
+          4
+        ],
+        "reference_atom_indices": [
+          4,
+          8
+        ],
+        "correct": true
+      },
+      {
+        "ppm": 156.1,
+        "predicted_atom_indices": [
+          14
+        ],
+        "reference_atom_indices": [
+          14
+        ],
+        "correct": true
+      },
+      {
+        "ppm": 160.7,
+        "predicted_atom_indices": [
+          19
+        ],
+        "reference_atom_indices": [
+          19
+        ],
+        "correct": true
+      },
+      {
+        "ppm": 163.9,
+        "predicted_atom_indices": [
+          16
+        ],
+        "reference_atom_indices": [
+          16
+        ],
+        "correct": true
+      },
+      {
+        "ppm": 176.8,
+        "predicted_atom_indices": [
+          1
+        ],
+        "reference_atom_indices": [
+          1
+        ],
+        "correct": true
+      }
+    ]
+  }
+}

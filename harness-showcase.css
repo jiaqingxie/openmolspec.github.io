@@ -54,8 +54,10 @@
 .hs-result svg { display: block; width: 100%; height: auto; max-height: 9rem; margin-top: .2rem; }
 .hs-grid { stroke: #596378; stroke-width: 1; }
 .hs-stick { stroke: #abdbc8; stroke-width: 3; }
-.hs-point-label, .hs-tick { fill: #d7deee; font: 12px Arial, sans-serif; }
-.hs-point-label { font-size: 15px; font-weight: bold; fill: #b7e9d4; }
+.hs-swapped { stroke: #ffbf74; stroke-width: 2; }
+.hs-swap-label { fill: #ffcf95; font: 600 14px Arial, sans-serif; }
+.hs-assignment-map { display: block; width: min(100%, 29rem); height: auto; margin: 1rem auto; }
+.hs-tick { fill: #d7deee; font: 12px Arial, sans-serif; }
 .hs-dot { fill: #ffcf95; stroke: #1b2238; stroke-width: 1; }
 .hs-values { display: flex; align-items: baseline; gap: 1.6rem; border-top: 1px solid #4a5369; margin: .375rem 0 0; padding: .7rem 0 0; }
 .hs-values dt, .hs-solvent-kind { font-size: .8125rem; color: #c1cbe2; }
