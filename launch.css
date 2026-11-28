@@ -24,6 +24,9 @@
 .oms-portal .header-row { min-height: 66px; }
 .oms-portal .brand { gap: 9px; font-size: 21px; letter-spacing: -.055em; }
 .oms-portal .brand img { width: 30px; height: 30px; filter: brightness(0) invert(1); }
+.oms-portal .brand-motion { animation: intern-mindspec-mark 4.8s ease-in-out infinite; transform-origin: 50% 50%; }
+.oms-portal .brand span { display: inline-flex; align-items: baseline; gap: 8px; }
+.oms-portal .brand span small { color: #bcb9d1; font-size: 10px; font-weight: 500; letter-spacing: .01em; }
 .oms-portal .portal-header .brand, .oms-portal .portal-header #nav a { color: #f5f3ff; }
 .oms-portal .portal-header #nav { gap: clamp(20px, 3vw, 48px); }
 .oms-portal #nav a { font-size: 14px; font-weight: 500; }
@@ -198,3 +201,11 @@
 }
 .oms-portal .tool-section { position: relative; }
 .oms-portal #tool-hsqc { position: absolute; top: 0; }
+@keyframes intern-mindspec-mark {
+  0%, 100% { transform: rotate(0deg) scale(1); opacity: .9; }
+  45% { transform: rotate(4deg) scale(1.08); opacity: 1; }
+  70% { transform: rotate(-3deg) scale(.98); opacity: .96; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .oms-portal .brand-motion { animation: none; }
+}
